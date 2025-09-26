@@ -1,8 +1,9 @@
 body{
-	background-color: #ededed;
+	background-color: #0f1419;
 	font-family: 'Oswald';
 	position: relative;
 	margin-top: 0;
+	color: #f1f5f9;
 }
 
 /*======================================================================
@@ -39,34 +40,34 @@ body{
 }
 .title{
 	font-weight: 300;
-	color: #999;
+	color: #cbd5e1;
 	font-size: 36px;
 	letter-spacing: 2px;
 }
 .title.mt0{
 	text-transform: capitalize;
 	font-weight: 400;
-	color: #444;
+	color: #f1f5f9;
 }
 .title span{
-	color: #444;
+	color: #22c55e;
 }
 .btn-robot{
-	border-radius: 0;
-	background-color: #fabe12;
-	color: #fff;
+	border-radius: 8px;
+	background-color: #22c55e;
+	color: #07210f;
 	text-transform: uppercase;
 	border-color: transparent;
-	padding: 5px 15px;
+	padding: 8px 20px;
 	transition: all 0.4s ease-in-out;
 	letter-spacing: 1px;
-	font-weight: 300;
+	font-weight: 500;
 	margin-top: 15px;
 }
 .btn-robot:hover{
 	background-color: transparent;
-	color: #fabe12;
-	border-color: #fabe12;
+	color: #22c55e;
+	border-color: #22c55e;
 }
 
 
@@ -77,10 +78,10 @@ body{
 =======================================================================*/
 .site-header-bg{
 	width: 100%;
-	background-color: #111;
+	background-color: #141b22;
 	z-index: 1;
 	padding: 30px 0;
-	color: #fff;
+	color: #f1f5f9;
 	text-transform: uppercase;
 	font-family: 'Roboto';
 }
@@ -111,7 +112,7 @@ body{
 	text-align: center;
 	color: #fff;
 	letter-spacing: 3px;
-	background: #111;
+	background: #141b22;
 	position: relative;
 }
 .header-quote{
@@ -132,10 +133,10 @@ body{
 }
 .intro{
 	padding: 200px 0;
-    background-image: url(../images/header.jpg);
+    background-image: url(../images/wds-logo.png);
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    background-size: contain;
+    background-position: left;
     margin-bottom: -90px;
     z-index: 11;
     position: relative;
@@ -239,7 +240,8 @@ body{
 ##		Product Section
 =======================================================================*/
 .product .section-bg{
-	background-color: #fff;
+	background-color: #0f1620;
+	border: 1px solid #334155;
 }
 .porduct-box{
 	margin-bottom: 30px;
@@ -254,11 +256,11 @@ body{
     left: 25px;
     right: 25px;
     padding: 15px;
-    background-color: #fabe12;
+    background-color: #22c55e;
     text-transform: uppercase;
-    color: #fff;
+    color: #07210f;
     text-align: center;
-    font-weight: 300;
+    font-weight: 500;
 }
 .classic-title{
 	margin-top: 100px;
@@ -271,7 +273,7 @@ body{
 	position: absolute;
 	top: 3px;
 	left: 0;
-	border-top: 60px solid #fabe12;
+	border-top: 60px solid #22c55e;
 	border-right: 60px solid transparent;
 	margin-left: -15px;
 	width: 250px;
@@ -279,13 +281,13 @@ body{
 }
 .outer-stiker{
 	display: inline-block;
-	color: #d0d0d0;
+	color: #cbd5e1;
 }
 .stiker{
 	display: inline-block;
 }
 .inner-stiker{
-	color: #fff;
+	color: #0f1419;
 	padding-right: 50px;
 }
 .outer-stiker, .inner-stiker{
@@ -316,14 +318,15 @@ body{
 ##		History Section
 =======================================================================*/
 .history .section-bg{
-	background-color: #111;
+	background-color: #0f1620;
 	text-align: center;
+	border: 1px solid #334155;
 }
 .history p{
-	color: #fff;
+	color: #f1f5f9;
 }
 .history .title{
-	color: #fabe12;
+	color: #22c55e;
 }
 .history img{
 	padding: 60px 0 0;
@@ -385,7 +388,7 @@ body{
 	font-size: 16px;
 }
 .page-bgc{
-	background-color: #fff;
+	background-color: #0f1620;
 	padding-bottom: 100px;
 }
 
