@@ -1,0 +1,180 @@
+/* Global Readability Improvements for Dystopian 1984 Theme */
+
+/* Enhanced text contrast and visibility with oppressive feel */
+body {
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    background: #1C1C1C !important;
+}
+
+/* Improve all low-contrast text with dystopian colors */
+.text-muted,
+[style*="#cbd5e1"],
+[style*="color: #666"],
+[style*="rgba(255,255,255,0.9)"] {
+    color: #D2B48C !important;
+    font-weight: 500 !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+
+/* Enhanced transparent backgrounds with industrial feel */
+[style*="rgba(255,255,255,0.05)"] {
+    background: rgba(139, 69, 19, 0.1) !important;
+}
+
+[style*="rgba(255,255,255,0.08)"] {
+    background: rgba(139, 69, 19, 0.15) !important;
+}
+
+[style*="rgba(255,255,255,0.1)"] {
+    background: rgba(139, 69, 19, 0.18) !important;
+}
+
+/* Improve form fields visibility with dystopian styling */
+input[type="text"],
+input[type="email"], 
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+    background: rgba(139, 69, 19, 0.2) !important;
+    color: #D2B48C !important;
+    font-weight: 500 !important;
+    padding: 14px !important;
+    font-size: 17px !important;
+    border: 2px solid #2F4F4F !important;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #8B4513 !important;
+    box-shadow: 0 0 10px rgba(139, 69, 19, 0.5) !important;
+    background: rgba(139, 69, 19, 0.3) !important;
+}
+
+/* Enhance buttons with dystopian feel */
+button,
+[type="submit"],
+.btn {
+    background: #8B4513 !important;
+    color: #D2B48C !important;
+    border: 2px solid #A0522D !important;
+    font-weight: 600 !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+
+button:hover,
+[type="submit"]:hover,
+.btn:hover {
+    background: #A0522D !important;
+    color: #D2B48C !important;
+    box-shadow: 0 0 15px rgba(139, 69, 19, 0.4) !important;
+}
+
+/* Links styling for dystopian theme */
+a {
+    color: #8B4513 !important;
+    text-decoration: none !important;
+}
+
+a:hover {
+    color: #A0522D !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
+}
+
+/* Header and title improvements */
+h1, h2, h3, h4, h5, h6 {
+    color: #8B4513 !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+    font-weight: 600 !important;
+}
+
+/* Paragraph text improvements */
+p {
+    color: #D2B48C !important;
+    line-height: 1.6 !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
+}
+
+/* List improvements */
+ul li, ol li {
+    color: #D2B48C !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
+}
+
+/* Border improvements for dystopian feel */
+[style*="border"] {
+    border-color: #2F4F4F !important;
+}
+
+/* Background improvements */
+.page-bgc {
+    background: #1C1C1C !important;
+}
+
+/* Navigation improvements */
+.navbar-nav li a {
+    color: #D2B48C !important;
+    font-weight: 500 !important;
+}
+
+/* Footer improvements */
+.footer-widget {
+    background: #2F2F2F !important;
+}
+
+/* Table improvements */
+table {
+    background: rgba(139, 69, 19, 0.1) !important;
+    border: 1px solid #2F4F4F !important;
+}
+
+th, td {
+    color: #D2B48C !important;
+    border: 1px solid #2F4F4F !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
+}
+
+/* Card and panel improvements */
+.card, .panel {
+    background: rgba(139, 69, 19, 0.15) !important;
+    border: 2px solid #2F4F4F !important;
+}
+
+/* Alert and notification improvements */
+.alert-success {
+    background: rgba(85, 107, 47, 0.3) !important;
+    color: #D2B48C !important;
+    border: 1px solid #556B2F !important;
+}
+
+.alert-danger {
+    background: rgba(139, 0, 0, 0.3) !important;
+    color: #D2B48C !important;
+    border: 1px solid #8B0000 !important;
+}
+
+.alert-warning {
+    background: rgba(205, 133, 63, 0.3) !important;
+    color: #D2B48C !important;
+    border: 1px solid #CD853F !important;
+}
+
+/* Responsive text size improvements */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px !important;
+    }
+    
+    h1, h2, h3 {
+        font-size: 1.4em !important;
+    }
+    
+    input, textarea, select {
+        font-size: 18px !important;
+        padding: 16px !important;
+    }
+}

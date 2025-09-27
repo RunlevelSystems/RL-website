@@ -1,0 +1,82 @@
+    <!-- Footer -->
+        <section id="footer-widget" class="footer-widget">
+            <div class="container header-bg">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h3>Our Services</h3>
+                        <ul>
+                            <li><a href="https://gameservers.world" target="_blank">Game Server Hosting</a></li>
+                            <li><a href="/projects.php">Game Development</a></li>
+                            <li><a href="/projects.php">Business Applications</a></li>
+                            <li><a href="/joinus.php">Co-op Opportunities</a></li>
+                            <li><a href="/contact.php">Technical Support</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3">
+                        <h3>Development Links</h3>
+                        <ul>
+                            <li><a href="https://github.com/World-Domination-Software" target="_blank">
+                                <i class="ion-social-github" style="margin-right: 8px;"></i>GitHub Repository
+                            </a></li>
+                            <li><a href="https://cpanel.iaregamer.com" target="_blank">
+                                <i class="ion-monitor" style="margin-right: 8px;"></i>Partner cPanel Hosting
+                            </a></li>
+                            <li><a href="#" target="_blank">
+                                <i class="ion-social-steam" style="margin-right: 8px;"></i>Steam Developer Page
+                            </a></li>
+                            <li><a href="#" target="_blank">
+                                <i class="ion-social-youtube" style="margin-right: 8px;"></i>YouTube Channel
+                            </a></li>
+                            <li><a href="/projects.php">Current Projects</a></li>
+                            <li><a href="/about.php">About Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3">
+                        <h3>Community</h3>
+                        <ul>
+                            <li><a href="https://discord.gg/XPFnNdWGyW" target="_blank">
+                                <i class="ion-social-discord" style="margin-right: 8px;"></i>Main Discord Server
+                            </a></li>
+                            <li><a href="https://gameservers.world/discord" target="_blank">
+                                <i class="ion-social-discord" style="margin-right: 8px;"></i>Gameservers Discord
+                            </a></li>
+                            <li><a href="/joinus.php">Join Our Co-op</a></li>
+                            <li><a href="/faq.php">FAQ</a></li>
+                            <li><a href="/contact.php">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3">
+                        <h3>Quick Access</h3>
+                        <div style="margin-bottom: 20px;">
+                            <a href="https://gameservers.world" target="_blank" 
+                               style="display: inline-block; background: #8B4513; color: #0f1419; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-bottom: 10px; transition: all 0.3s ease;">
+                                Visit Gameservers.world
+                            </a>
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <a href="/joinus.php" 
+                               style="display: inline-block; background: transparent; color: #8B4513; border: 1px solid #8B4513; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: all 0.3s ease;">
+                                Join Our Team
+                            </a>
+                        </div>
+                        <p style="color: #8B7355; font-size: 14px; line-height: 1.5;">
+                            Building games, hosting servers, and creating solutions since 1996. 
+                            Join our co-op and share in the profits!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="footer text-center">
+            <div style="padding: 20px 0; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p style="color: #8B7355; margin-bottom: 10px; font-size: 16px;">
+                    &copy; 2025 World Domination Software. All rights reserved.
+                </p>
+                <p style="color: #64748b; margin: 0; font-size: 14px;">
+                    Building the future, one line of code at a time. | 
+                    <a href="https://gameservers.world" target="_blank" style="color: #8B4513;">Gameservers.world</a> | 
+                    <a href="https://github.com/World-Domination-Software" target="_blank" style="color: #8B4513;">GitHub</a> | 
+                    <a href="https://discord.gg/XPFnNdWGyW" target="_blank" style="color: #8B4513;">Discord</a>
+                </p>
+            </div>
+        </footer>

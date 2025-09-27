@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Dev Career Starts Here: Join Our Co-op</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 450px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #FF6B6B, #FFD166);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #4ECDC4;
+            border-radius: 2px;
+        }
+        .timeline-item {
+            position: relative;
+            width: 50%;
+        }
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 2rem;
+            text-align: right;
+        }
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 2rem;
+            text-align: left;
+        }
+        .timeline-dot {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #FFE66D;
+            border: 4px solid #4ECDC4;
+        }
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+    </style>
+</head>
+<body class="bg-[#FEF9E7] text-[#2C3E50]">
+
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <header class="text-center my-12 md:my-16">
+            <h1 class="text-4xl md:text-6xl font-black mb-4">Stop Dreaming. Start <span class="gradient-text">Building.</span></h1>
+            <p class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">Turn your passion for development into real-world experience, a powerful resume, and actual income. Our co-op is a launchpad for hobbyists and aspiring devs who are ready to ship real products.</p>
+        </header>
+
+        <main class="space-y-16 md:space-y-24">
+
+            <section>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-12">Your Mission, Should You Choose to Accept It</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-2xl shadow-xl p-8 transform hover:scale-105 transition-transform duration-300">
+                        <div class="text-5xl mb-4">🎮</div>
+                        <h3 class="text-2xl font-bold text-[#17A589] mb-3">Game Server Hosting</h3>
+                        <p class="text-gray-600">We'll spin up popular game servers, manage them, and rent them to players. This is our foundation for steady, reliable income while we work on bigger projects. It's also your training ground.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl shadow-xl p-8 transform hover:scale-105 transition-transform duration-300">
+                        <div class="text-5xl mb-4">🚀</div>
+                        <h3 class="text-2xl font-bold text-[#F39C12] mb-3">Indie Game Development</h3>
+                        <p class="text-gray-600">This is the long-term goal. We collaborate on building and publishing our own games. Your ideas, your code, your chance at a massive hit. All profits are shared equitably.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="bg-white rounded-2xl shadow-xl p-6 md:p-8">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-4">From Hobbyist to Hired: The Co-op Advantage</h2>
+                <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">This isn't just about coding. It's a free, hands-on education in the skills that actually get you hired. Here's what you'll put on your resume:</p>
+                <div class="relative">
+                    <div class="timeline">
+                        <div class="timeline-item mb-8">
+                            <div class="timeline-dot"></div>
+                            <h4 class="font-bold text-xl text-[#FF6B6B]">Linux/Windows Server Admin</h4>
+                            <p>Deploying, securing, and maintaining live game servers. This is a six-figure skill, learned here for free.</p>
+                        </div>
+                        <div class="timeline-item mb-8">
+                            <div class="timeline-dot"></div>
+                            <h4 class="font-bold text-xl text-[#FF6B6B]">Network Management</h4>
+                            <p>Configuring firewalls, managing ports, and ensuring low-latency performance for gamers.</p>
+                        </div>
+                        <div class="timeline-item mb-8">
+                            <div class="timeline-dot"></div>
+                            <h4 class="font-bold text-xl text-[#FF6B6B]">CI/CD & DevOps</h4>
+                            <p>Using tools like GitHub Actions to automate builds, testing, and deployments for our games and apps.</p>
+                        </div>
+                        <div class="timeline-item mb-8">
+                            <div class="timeline-dot"></div>
+                            <h4 class="font-bold text-xl text-[#FF6B6B]">Project Management & Team Collab</h4>
+                            <p>Working in an Agile-like environment, managing tasks, and contributing to a shared codebase on a real dev team.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-2">How You Get Paid: A Radically Fair Model</h2>
+                <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">Our success is your success. The model is simple: the more profit we make, the larger your share becomes. This applies to both the steady server income and any hit game we launch.</p>
+                <div class="chart-container mx-auto">
+                    <canvas id="profitShareChart"></canvas>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-2xl shadow-xl p-6 md:p-8">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-4">Visualizing Your Potential Earnings</h2>
+                <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">This chart shows how the effective profit split shifts dramatically in your favor as the co-op's quarterly profits grow. A hit game doesn't just pay off—it could be life-changing.</p>
+                <div class="chart-container mx-auto">
+                    <canvas id="earningPotentialChart"></canvas>
+                </div>
+            </section>
+
+            <section class="bg-gradient-to-r from-[#FF6B6B] to-[#FFD166] rounded-2xl shadow-xl p-8 md:p-12 text-white text-center">
+                 <h2 class="text-3xl md:text-4xl font-extrabold mb-4">The Ultimate Goal: Hobby to Career</h2>
+                 <p class="text-xl md:text-2xl mb-6">While we can't guarantee a hit game, we <span class="font-bold">can</span> guarantee you'll gain the experience to build a professional career. Our founder leveraged this exact experience into a nearly six-figure IT job. You can too.</p>
+                 <div class="mt-8">
+                     <a href="#" class="bg-white text-[#FF6B6B] font-bold py-3 px-8 rounded-full text-lg hover:bg-gray-200 transition-all duration-300 shadow-lg">Start Your Journey Now</a>
+                 </div>
+            </section>
+
+        </main>
+
+        <footer class="text-center mt-16 md:mt-24 py-8 border-t border-gray-300">
+            <p class="text-gray-600">Build your portfolio, your skills, and your future. All in one place.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const energeticPalette = {
+            manager: '#4ECDC4',
+            contributors: '#FF6B6B', 
+            accent: '#FFE66D',
+            dark: '#1A5276'
+        };
+
+        const sharedChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        font: { size: 14, family: 'Inter' },
+                        color: '#2C3E50'
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            } else {
+                              return label;
+                            }
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: { font: { size: 12, family: 'Inter' }, color: '#2C3E50' },
+                    grid: { display: false }
+                },
+                y: {
+                    ticks: { 
+                        font: { size: 12, family: 'Inter' },
+                        color: '#2C3E50',
+                        callback: function(value) { return value + '%'; }
+                    },
+                    beginAtZero: true
+                }
+            }
+        };
+
+        const profitShareCtx = document.getElementById('profitShareChart').getContext('2d');
+        new Chart(profitShareCtx, {
+            type: 'bar',
+            data: {
+                labels: [['First $5K', 'Quarterly'], ['Next $45K', 'Quarterly'], ['Next $50K', 'Quarterly'], ['Over $100K', 'Quarterly']],
+                datasets: [{
+                    label: 'Manager Share (for infrastructure)',
+                    data: [75, 40, 25, 15],
+                    backgroundColor: energeticPalette.manager,
+                }, {
+                    label: 'Your Contributor Pool Share',
+                    data: [25, 60, 75, 85],
+                    backgroundColor: energeticPalette.contributors,
+                }]
+            },
+            options: {
+                ...sharedChartOptions,
+                scales: {
+                    x: { ...sharedChartOptions.scales.x, stacked: true },
+                    y: { ...sharedChartOptions.scales.y, stacked: true, max: 100 }
+                },
+                plugins: {
+                     ...sharedChartOptions.plugins,
+                    title: {
+                        display: true,
+                        text: 'Profit Split by Tier',
+                        font: { size: 18, weight: 'bold' },
+                        color: '#2C3E50'
+                    }
+                }
+            }
+        });
+        
+        const earningPotentialCtx = document.getElementById('earningPotentialChart').getContext('2d');
+        new Chart(earningPotentialCtx, {
+            type: 'line',
+            data: {
+                labels: ['$20K Profit', '$60K Profit', '$120K Profit', '$300K Profit'],
+                datasets: [{
+                    label: 'Contributor Pool Share %',
+                    data: [41, 52, 65, 75],
+                    borderColor: energeticPalette.contributors,
+                    backgroundColor: energeticPalette.contributors + '4D',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 6,
+                    pointBackgroundColor: energeticPalette.contributors
+                },{
+                    label: 'Manager Share %',
+                    data: [59, 48, 35, 25],
+                    borderColor: energeticPalette.manager,
+                    backgroundColor: energeticPalette.manager + '4D',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 6,
+                    pointBackgroundColor: energeticPalette.manager
+                }]
+            },
+            options: {
+                ...sharedChartOptions,
+                plugins: {
+                     ...sharedChartOptions.plugins,
+                    title: {
+                        display: true,
+                        text: 'Effective Profit Share vs. Total Profit',
+                        font: { size: 18, weight: 'bold' },
+                        color: '#2C3E50'
+                    }
+                },
+                scales: {
+                    ...sharedChartOptions.scales,
+                    y: { ...sharedChartOptions.scales.y, max: 100 }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
