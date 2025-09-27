@@ -988,7 +988,7 @@
                                 and profits already earned.</li>
                         </ul>
 
-                        <div style="margin-top: 50px; border-top: 1px solid #ccc; padding-top: 30px;">
+                        <div style="margin-top: 50px; border-top: 1px solid #8B7355; padding-top: 30px;">
                             <p style="margin-bottom: 40px;">
                                 <strong>Signed:</strong> ______________________ &nbsp;&nbsp;&nbsp;&nbsp; <strong>Date:</strong> __________
                             </p>

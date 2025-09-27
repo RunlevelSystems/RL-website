@@ -162,7 +162,7 @@
                         <!-- Discord Section - Right Side -->
                         <div class="col-sm-6">
                             <h4>Join Our Community</h4>
-                            <p style="color: #666; margin-bottom: 20px;">
+                            <p style="color: #D2B48C; margin-bottom: 20px; font-weight: 500;">
                                 <i class="ion-chatbubbles" style="margin-right: 8px;"></i>
                                 Chat with us directly on Discord! Ask questions, share ideas, and collaborate in real-time.
                             </p>
@@ -192,7 +192,7 @@
                                     </a>
                                 </div>
                                 
-                                <p style="margin-top: 15px; font-size: 14px; color: #666;">
+                                <p style="margin-top: 15px; font-size: 14px; color: #8B7355; font-weight: 500;">
                                     New to Discord? Click the button above to get started!
                                 </p>
                             </div>

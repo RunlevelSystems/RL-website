@@ -7,11 +7,13 @@
             </div>
             <div class="col-sm-3 col-sm-offset-3 text-right">
                 <!-- <span class="ion-android-cart"></span> 0 products -->
-                <form>
+                <form method="GET" action="search.php">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="">
+                        <input type="text" name="q" class="form-control" placeholder="Search WDS...">
                         <span class="input-group-btn">
-                            <button class="btn btn-default btn-robot" type="button">Search</button>
+                            <button class="btn btn-default btn-robot" type="submit">
+                                <i class="ion-search"></i> Search
+                            </button>
                         </span>
                     </div><!-- /input-group -->
                 </form>

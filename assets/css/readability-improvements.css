@@ -178,3 +178,154 @@ th, td {
         padding: 16px !important;
     }
 }
+
+/* Additional Contrast Fixes for All Low-Contrast Colors */
+
+/* Fix #999 gray text to better contrast */
+.panel-body,
+.team-img-detail {
+    color: #D2B48C !important;
+}
+
+/* Fix any remaining gray text colors */
+[style*="color: #666"],
+[style*="color: #999"],
+[style*="color: #ccc"],
+[style*="color: #aaa"],
+[style*="color: #555"] {
+    color: #D2B48C !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+
+/* Fix specific low-contrast colors found in pages */
+[style*="color: #475569"] {
+    color: #8B7355 !important;
+}
+
+/* Improve search page contrast */
+.search-result-snippet {
+    color: #D2B48C !important;
+}
+
+.no-results {
+    color: #D2B48C !important;
+}
+
+.search-stats {
+    color: #8B7355 !important;
+}
+
+/* Improve any remaining low-contrast elements */
+*[style*="color: rgba(255,255,255,0.6)"],
+*[style*="color: rgba(255,255,255,0.7)"],
+*[style*="color: rgba(255,255,255,0.8)"] {
+    color: #D2B48C !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+
+/* Ensure proper contrast for muted text */
+.text-muted,
+.muted {
+    color: #8B7355 !important;
+    font-weight: 500 !important;
+}
+
+/* Improve contrast for any disabled or secondary text */
+.text-secondary,
+.secondary-text,
+small,
+.small {
+    color: #8B7355 !important;
+}
+
+/* Mobile Navigation Fixes */
+@media (max-width: 767px) {
+    /* Fix navbar collapse to stack items properly */
+    .navbar-collapse {
+        text-align: left !important;
+        background-color: #080808 !important;
+        border-top: 1px solid #8B4513;
+        margin-top: 1px;
+        padding: 10px 0;
+    }
+    
+    /* Ensure all navbar items stack vertically */
+    .navbar-nav {
+        margin: 0 !important;
+        float: none !important;
+        display: block !important;
+        width: 100% !important;
+    }
+    
+    /* Fix navbar-right items to stack below main nav */
+    .navbar-right {
+        float: none !important;
+        margin: 0 !important;
+        border-top: 1px solid rgba(139, 69, 19, 0.3);
+        padding-top: 10px;
+        margin-top: 10px !important;
+    }
+    
+    /* Ensure proper spacing for all nav items */
+    .navbar-nav > li {
+        float: none !important;
+        display: block !important;
+        width: 100% !important;
+    }
+    
+    /* Style nav links for better mobile experience */
+    .navbar-nav > li > a {
+        padding: 12px 15px !important;
+        border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+        display: block !important;
+        color: #D2B48C !important;
+    }
+    
+    /* Highlight active nav items on mobile */
+    .navbar-nav > li.active > a {
+        background-color: rgba(139, 69, 19, 0.2) !important;
+        color: #8B4513 !important;
+    }
+    
+    /* Fix dropdown menus on mobile */
+    .navbar-nav .dropdown-menu {
+        position: static !important;
+        float: none !important;
+        width: auto !important;
+        margin-top: 0 !important;
+        background-color: #1a1a1a !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+    
+    .navbar-nav .dropdown-menu > li > a {
+        padding: 10px 30px !important;
+        color: #8B7355 !important;
+        background-color: transparent !important;
+    }
+    
+    /* Fix navbar toggle button */
+    .navbar-toggle {
+        border-color: #8B4513 !important;
+        background-color: transparent !important;
+    }
+    
+    .navbar-toggle:hover,
+    .navbar-toggle:focus {
+        background-color: rgba(139, 69, 19, 0.2) !important;
+    }
+    
+    .navbar-toggle .icon-bar {
+        background-color: #8B4513 !important;
+    }
+    
+    /* Ensure proper alignment of text */
+    .navbar-collapse .navbar-nav {
+        text-align: left !important;
+    }
+    
+    /* Fix any text alignment issues */
+    .navbar-collapse ul {
+        text-align: left !important;
+    }
+}
