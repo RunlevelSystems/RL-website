@@ -11,22 +11,40 @@ body {
 [style*="#cbd5e1"],
 [style*="color: #666"],
 [style*="rgba(255,255,255,0.9)"] {
-    color: #D2B48C !important;
+    color: #E6D3B7 !important; /* Lighter tan for better contrast */
     font-weight: 500 !important;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
 }
 
-/* Enhanced transparent backgrounds with industrial feel */
+/* Improve rust text colors for better readability */
+[style*="#8B7355"],
+[style*="color:#8B7355"],
+[style*="color: #8B7355"] {
+    color: #C4A676 !important; /* Brighter rust color */
+    font-weight: 500 !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6) !important;
+}
+
+/* Improve main rust headings */
+[style*="#8B4513"],
+[style*="color:#8B4513"],
+[style*="color: #8B4513"] {
+    color: #B8621B !important; /* Brighter rust for headings */
+    font-weight: 600 !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+}
+
+/* Enhanced transparent backgrounds with grey industrial feel */
 [style*="rgba(255,255,255,0.05)"] {
-    background: rgba(139, 69, 19, 0.1) !important;
+    background: rgba(80, 80, 80, 0.1) !important;
 }
 
 [style*="rgba(255,255,255,0.08)"] {
-    background: rgba(139, 69, 19, 0.15) !important;
+    background: rgba(80, 80, 80, 0.15) !important;
 }
 
 [style*="rgba(255,255,255,0.1)"] {
-    background: rgba(139, 69, 19, 0.18) !important;
+    background: rgba(80, 80, 80, 0.18) !important;
 }
 
 /* Improve form fields visibility with dystopian styling */
@@ -94,9 +112,17 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Paragraph text improvements */
 p {
-    color: #D2B48C !important;
+    color: #E6D3B7 !important; /* Lighter tan for better readability */
     line-height: 1.6 !important;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
+}
+
+/* Ensure all rust text colors are readable */
+p[style*="#8B7355"],
+span[style*="#8B7355"],
+div[style*="#8B7355"],
+li[style*="#8B7355"] {
+    color: #C4A676 !important; /* Brighter rust for better contrast */
 }
 
 /* List improvements */
@@ -105,9 +131,9 @@ ul li, ol li {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
 }
 
-/* Border improvements for dystopian feel */
+/* Border improvements for grey dystopian feel */
 [style*="border"] {
-    border-color: #2F4F4F !important;
+    border-color: #444444 !important;
 }
 
 /* Background improvements */
@@ -184,7 +210,7 @@ th, td {
 /* Fix #999 gray text to better contrast */
 .panel-body,
 .team-img-detail {
-    color: #D2B48C !important;
+    color: #E6D3B7 !important; /* Brighter tan */
 }
 
 /* Fix any remaining gray text colors */
@@ -193,34 +219,271 @@ th, td {
 [style*="color: #ccc"],
 [style*="color: #aaa"],
 [style*="color: #555"] {
-    color: #D2B48C !important;
+    color: #E6D3B7 !important; /* Brighter tan for better contrast */
     text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
 }
 
 /* Fix specific low-contrast colors found in pages */
 [style*="color: #475569"] {
-    color: #8B7355 !important;
+    color: #C4A676 !important; /* Brighter rust */
 }
 
 /* Improve search page contrast */
 .search-result-snippet {
-    color: #D2B48C !important;
+    color: #E6D3B7 !important; /* Brighter tan */
 }
 
 .no-results {
-    color: #D2B48C !important;
+    color: #E6D3B7 !important; /* Brighter tan */
 }
 
 .search-stats {
-    color: #8B7355 !important;
+    color: #C4A676 !important; /* Brighter rust */
 }
 
 /* Improve any remaining low-contrast elements */
 *[style*="color: rgba(255,255,255,0.6)"],
 *[style*="color: rgba(255,255,255,0.7)"],
 *[style*="color: rgba(255,255,255,0.8)"] {
-    color: #D2B48C !important;
+    color: #E6D3B7 !important; /* Brighter tan for better readability */
     text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+
+/* Global rust text color improvements for better contrast */
+/* Target all elements with inline rust colors */
+*[style*="color:#8B7355"],
+*[style*="color: #8B7355"] {
+    color: #C4A676 !important; /* Brighter rust */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6) !important;
+}
+
+*[style*="color:#8B4513"],
+*[style*="color: #8B4513"] {
+    color: #B8621B !important; /* Brighter main rust */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+}
+
+/* Improve D2B48C tan color for even better contrast */
+*[style*="color:#D2B48C"],
+*[style*="color: #D2B48C"] {
+    color: #E6D3B7 !important; /* Brighter tan */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
+}
+
+/* Ensure list items with rust colors are readable */
+ul[style*="#8B7355"],
+ol[style*="#8B7355"] {
+    color: #C4A676 !important;
+}
+
+/* Improve breadcrumb and navigation rust colors */
+.breadcrumb,
+nav li a {
+    color: #C4A676 !important;
+}
+
+/* Better contrast for small text elements */
+small,
+.small-text,
+*[style*="font-size: 14px"] {
+    color: #E6D3B7 !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7) !important;
+}
+
+/* CRITICAL: Fix all rust background elements for proper contrast */
+/* All elements with rust background need white or very light text */
+*[style*="background: #8B4513"],
+*[style*="background:#8B4513"],
+*[style*="background-color: #8B4513"],
+*[style*="background-color:#8B4513"],
+.btn[style*="background: #8B4513"],
+button[style*="background: #8B4513"],
+a[style*="background: #8B4513"] {
+    color: #FFFFFF !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+
+/* Ensure btn-wds class has proper contrast everywhere */
+.btn-wds,
+*[class*="btn-wds"] {
+    background: #555555 !important;
+    color: #C4A676 !important; /* Rust text on grey background */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+
+.btn-wds:hover,
+*[class*="btn-wds"]:hover {
+    background: #666666 !important;
+    color: #E6D3B7 !important; /* Brighter rust text on hover */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.9) !important;
+}
+
+/* Fix specific button styles with grey backgrounds */
+button[style*="background: #8B4513"],
+input[type="submit"][style*="background: #8B4513"],
+a[style*="background: #8B4513"] {
+    background: #555555 !important;
+    color: #C4A676 !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+
+/* Fix any divs or spans with grey backgrounds that contain text */
+div[style*="background: #8B4513"],
+div[style*="background-color: #8B4513"],
+span[style*="background: #8B4513"],
+span[style*="background-color: #8B4513"] {
+    background: #555555 !important;
+    color: #C4A676 !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+
+/* Progress bars and indicators with rust backgrounds */
+*[style*="background: #8B4513"][style*="height:"],
+*[style*="background: #8B4513"][style*="width:"] {
+    /* These are usually progress bars, don't change their color */
+    color: inherit !important;
+    text-shadow: none !important;
+}
+
+/* Fix main CSS button classes with grey backgrounds */
+.btn-robot {
+    background-color: #555555 !important;
+    color: #C4A676 !important; /* Rust text on grey background */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+
+.btn-robot:hover {
+    background-color: transparent !important;
+    color: #B8621B !important; /* Brighter rust for hover */
+    border-color: #B8621B !important;
+    text-shadow: none !important;
+}
+
+.product-title {
+    background-color: #8B4513 !important;
+    color: #FFFFFF !important; /* White instead of tan */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+
+/* Fix homepage hero buttons */
+.hero-hook .primary {
+    background: #8B4513 !important;
+    color: #FFFFFF !important; /* White instead of dark */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+
+.hero-hook .btn:hover.primary {
+    background: #B8621B !important;
+    color: #FFFFFF !important;
+}
+
+/* Fix any remaining buttons and links with poor contrast */
+button[style*="color: #0f1419"][style*="background: #8B4513"],
+input[type="submit"][style*="color: #0f1419"][style*="background: #8B4513"],
+a[style*="color: #0f1419"][style*="background: #8B4513"] {
+    color: #FFFFFF !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+
+/* Fix notification boxes and alert-style divs with rust backgrounds */
+div[style*="background-color: #8B4513"][style*="text-align: center"],
+div[style*="background: #8B4513"][style*="text-align: center"] {
+    color: #FFFFFF !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+
+/* Ensure all rust background text is readable */
+*[style*="background: #8B4513"]:not([style*="height:"]):not([style*="width:"]) {
+    color: #FFFFFF !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+
+*[style*="background-color: #8B4513"]:not([style*="height:"]):not([style*="width:"]) {
+    color: #FFFFFF !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+
+/* Fix GameServer Panel specific elements */
+.sidebar-link.active {
+    background-color: #555555 !important;
+    color: #C4A676 !important; /* Rust text on grey background */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+
+.back-link {
+    background: #555555 !important;
+    color: #C4A676 !important; /* Rust text on grey background */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+
+.back-link:hover {
+    background: #666666 !important;
+    color: #E6D3B7 !important;
+}
+
+/* Fix any project-specific icon containers with rust backgrounds */
+div[style*="background: #8B4513"][style*="border-radius: 4px"] {
+    /* This is likely the GameServer Panel icon container */
+    color: #FFFFFF !important;
+}
+
+/* Ensure form elements and notification areas are readable */
+*[style*="background-color: #8B4513"][style*="padding: 20px"] {
+    color: #FFFFFF !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+
+/* Fix technology badge elements and similar oval/rounded elements */
+.tech-badge,
+*[class*="tech-badge"],
+*[class*="badge"],
+span[style*="border-radius"][style*="background:"],
+span[style*="border-radius"][style*="background-color:"] {
+    background: #2A2A2A !important;
+    color: #E6D3B7 !important;
+    border: 1px solid #555555 !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
+}
+
+.tech-badge:hover,
+*[class*="tech-badge"]:hover,
+*[class*="badge"]:hover {
+    background: #555555 !important;
+    color: #E6D3B7 !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+}
+
+/* Fix any elements with low contrast rust backgrounds */
+*[style*="background: rgba(139, 69, 19, 0.1)"],
+*[style*="background: rgba(139, 69, 19, 0.2)"],
+*[style*="background: rgba(139, 69, 19, 0.3)"] {
+    background: #2A2A2A !important;
+    color: #E6D3B7 !important;
+    border: 1px solid #555555 !important;
+}
+
+/* Improve text contrast in any technology stack or similar sections */
+*[style*="color: #8B7355"]:not([style*="background:"]) {
+    color: #C4A676 !important; /* Brighter rust for better contrast */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6) !important;
+}
+
+/* Fix small text elements that might be hard to read */
+span[style*="font-size: 14px"],
+p[style*="font-size: 14px"],
+*[style*="font-size: 12px"] {
+    color: #E6D3B7 !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
+}
+
+/* Ensure all pill-shaped elements (border-radius > 10px) have good contrast */
+*[style*="border-radius: 15px"],
+*[style*="border-radius: 20px"],
+*[style*="border-radius: 25px"] {
+    background: #2A2A2A !important;
+    color: #E6D3B7 !important;
+    border: 1px solid #555555 !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
 }
 
 /* Ensure proper contrast for muted text */
@@ -312,7 +575,7 @@ small,
     
     .navbar-toggle:hover,
     .navbar-toggle:focus {
-        background-color: rgba(139, 69, 19, 0.2) !important;
+        background-color: rgba(85, 85, 85, 0.3) !important;
     }
     
     .navbar-toggle .icon-bar {

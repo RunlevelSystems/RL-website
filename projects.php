@@ -21,6 +21,8 @@
         <link href="assets/css/ionicons.css" rel="stylesheet">
         <link href="assets/css/main.css" rel="stylesheet">
         <link href="assets/css/readability-improvements.css" rel="stylesheet">
+        <!-- Font Awesome for GameServer Panel icons -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -141,6 +143,19 @@
                                     </div>
                                     <p style="color: #8B7355; line-height: 1.6; margin: 0; font-size: 14px;">
                                         Advanced DevOps automation platform streamlining deployment pipelines, infrastructure management, and continuous integration for scalable software operations.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6" style="margin-bottom: 30px;">
+                                <div class="project-card" onclick="loadProject('gameserver-panel', 'GameServer Panel', 'Current Project')" style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 20px; height: 200px; transition: all 0.3s ease; cursor: pointer; position: relative;">
+                                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                                        <h3 style="color: #8B4513; margin: 0; font-size: 18px;">GameServer Panel</h3>
+                                        <div style="width: 40px; height: 40px; background: #8B4513; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+                                            <i class="fas fa-server" style="color: #D2B48C; font-size: 20px;"></i>
+                                        </div>
+                                    </div>
+                                    <p style="color: #8B7355; line-height: 1.6; margin: 0; font-size: 14px;">
+                                        Enhanced OpenGamePanel fork with commercial billing, professional support, and multi-location management. Open source game server control panel for hosting providers.
                                     </p>
                                 </div>
                             </div>
@@ -301,6 +316,12 @@
     <!-- Project Loading JavaScript -->
     <script>
         function loadProject(slug, title, category) {
+            // Special handling for GameServer Panel - redirect to full page
+            if (slug === 'gameserver-panel') {
+                window.location.href = 'projects/gameserver-panel.php';
+                return;
+            }
+            
             // Show the project detail container
             document.getElementById('project-detail').style.display = 'block';
             

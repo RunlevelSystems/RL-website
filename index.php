@@ -47,11 +47,11 @@
   <style>
     .wds-hero { 
       /* Higher contrast for black page backgrounds */
-      --wds-primary: #8B4513;   /* darker hacker green accent */
+      --wds-primary: #B8621B;   /* brighter rust accent for better contrast */
       --wds-bg-top: #0f1419;    /* lighter than pure black for separation */
       --wds-bg-btm: #141b22;
-      --wds-text: #D2B48C;      /* near-white */
-      --wds-muted: #8B7355;     /* brighter muted text */
+      --wds-text: #E6D3B7;      /* brighter tan for better readability */
+      --wds-muted: #C4A676;     /* much brighter muted text for better contrast */
       --wds-card: #0f1620;      /* cards stand out from section bg */
       --wds-border: #334155;    /* stronger border for definition */
 

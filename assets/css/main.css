@@ -54,8 +54,8 @@ body{
 }
 .btn-robot{
 	border-radius: 0;
-	background-color: #8B4513;
-	color: #D2B48C;
+	background-color: #555555;
+	color: #C4A676;
 	text-transform: uppercase;
 	border-color: transparent;
 	padding: 5px 15px;
@@ -67,7 +67,7 @@ body{
 .btn-robot:hover{
 	background-color: transparent;
 	color: #8B4513;
-	border-color: #8B4513;
+	border-color: #555555;
 }
 
 
@@ -255,9 +255,9 @@ body{
     left: 25px;
     right: 25px;
     padding: 15px;
-    background-color: #8B4513;
+    background-color: #555555;
     text-transform: uppercase;
-    color: #D2B48C;
+    color: #C4A676;
     text-align: center;
     font-weight: 300;
 }
@@ -272,7 +272,7 @@ body{
 	position: absolute;
 	top: 3px;
 	left: 0;
-	border-top: 60px solid #8B4513;
+	border-top: 60px solid #555555;
 	border-right: 60px solid transparent;
 	margin-left: -15px;
 	width: 250px;
