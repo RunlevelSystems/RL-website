@@ -30,13 +30,13 @@
         
         .sidebar {
             width: 280px;
-            background-color: #0f1419;
+            background-color: #2A2A2A;
             color: #D2B48C;
             padding: 30px 20px;
             position: fixed;
             height: 100vh;
             overflow-y: auto;
-            border-right: 2px solid #555555;
+            border-right: 2px solid #777777;
         }
         
         .sidebar h1 {
@@ -45,7 +45,7 @@
             font-weight: bold;
             margin-bottom: 30px;
             text-align: center;
-            border-bottom: 2px solid #555555;
+            border-bottom: 2px solid #777777;
             padding-bottom: 15px;
         }
         
@@ -87,7 +87,7 @@
         .main-content {
             margin-left: 280px;
             padding: 40px;
-            background-color: #1C1C1C;
+            background-color: #2D2D2D;
             min-height: 100vh;
             width: calc(100% - 280px);
         }
@@ -222,9 +222,9 @@
         .accordion-button {
             width: 100%;
             text-align: left;
-            background-color: #2a2a2a;
+            background-color: #4A4A4A;
             color: #D2B48C;
-            border: 1px solid #555555;
+            border: 1px solid #777777;
             padding: 20px;
             border-radius: 8px;
             font-weight: 600;
@@ -236,15 +236,15 @@
         }
         
         .accordion-button:hover {
-            background-color: #555555;
+            background-color: #777777;
         }
         
         .accordion-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
-            background-color: #1a1a1a;
-            border: 1px solid #555555;
+            background-color: #3A3A3A;
+            border: 1px solid #777777;
             border-top: none;
             border-radius: 0 0 8px 8px;
         }

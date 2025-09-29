@@ -54,10 +54,10 @@ body{
 }
 .btn-robot{
 	border-radius: 0;
-	background-color: #555555;
-	color: #C4A676;
+	background-color: #777777;
+	color: #B8621B;
 	text-transform: uppercase;
-	border-color: transparent;
+	border-color: #999999;
 	padding: 5px 15px;
 	transition: all 0.4s ease-in-out;
 	letter-spacing: 1px;
@@ -66,8 +66,8 @@ body{
 }
 .btn-robot:hover{
 	background-color: transparent;
-	color: #8B4513;
-	border-color: #555555;
+	color: #D2691E;
+	border-color: #D2691E;
 }
 
 
@@ -255,9 +255,9 @@ body{
     left: 25px;
     right: 25px;
     padding: 15px;
-    background-color: #555555;
+    background-color: #777777;
     text-transform: uppercase;
-    color: #C4A676;
+    color: #B8621B;
     text-align: center;
     font-weight: 300;
 }
@@ -272,7 +272,7 @@ body{
 	position: absolute;
 	top: 3px;
 	left: 0;
-	border-top: 60px solid #555555;
+	border-top: 60px solid #777777;
 	border-right: 60px solid transparent;
 	margin-left: -15px;
 	width: 250px;

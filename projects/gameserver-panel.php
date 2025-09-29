@@ -34,15 +34,15 @@
         }
         
         .feature-card {
-            background: #1a1a1a;
-            border: 1px solid #555555;
+            background: #3A3A3A;
+            border: 1px solid #777777;
             border-radius: 8px;
             padding: 30px;
             transition: all 0.3s ease;
         }
         
         .feature-card:hover {
-            background: #2a2a2a;
+            background: #4A4A4A;
             border-color: #D2B48C;
             transform: translateY(-5px);
         }
@@ -54,8 +54,8 @@
         }
         
         .cta-section {
-            background: rgba(80, 80, 80, 0.1);
-            border: 2px solid #555555;
+            background: rgba(120, 120, 120, 0.2);
+            border: 2px solid #777777;
             border-radius: 12px;
             padding: 40px;
             text-align: center;
@@ -63,8 +63,8 @@
         }
         
         .btn-wds {
-            background: #555555;
-            color: #C4A676 !important; /* Rust text on grey background */
+            background: #777777;
+            color: #B8621B !important; /* Bright rust text on lighter grey background */
             border: none;
             padding: 15px 30px;
             font-size: 16px;
@@ -92,21 +92,21 @@
         
         .tech-badge {
             display: inline-block;
-            background: #2A2A2A; /* Darker background for better contrast */
+            background: #4A4A4A; /* Brighter background for better visibility */
             color: #E6D3B7; /* Bright tan text for excellent readability */
-            border: 1px solid #555555; /* Grey border to match new theme */
+            border: 1px solid #777777; /* Lighter grey border */
             padding: 8px 15px; /* Slightly larger padding */
             border-radius: 20px; /* More rounded for better appearance */
             font-size: 14px;
             margin: 5px;
             font-weight: 500;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Text shadow for definition */
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Lighter shadow */
             transition: all 0.3s ease;
         }
         
         .tech-badge:hover {
-            background: #555555; /* Grey background on hover */
-            color: #E6D3B7; /* Bright rust text on hover */
+            background: #777777; /* Brighter grey background on hover */
+            color: #F0E68C; /* Bright khaki text on hover */
             transform: translateY(-1px); /* Slight lift effect */
             box-shadow: 0 2px 8px rgba(139, 69, 19, 0.3);
         }
