@@ -1,50 +1,50 @@
-/* Global Readability Improvements for Orwellian Theme */
+/* Global Readability Improvements for Orwellian Fascist Theme */
 
-/* Enhanced text contrast and visibility with Orwellian atmosphere */
+/* Orwellian atmosphere with concrete/urban feel */
 body {
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
-    background: #2D2D2D !important; /* Lighter grey background */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    background: #2C2C2C !important; /* Concrete background */
 }
 
-/* Improve all low-contrast text with dystopian colors */
+/* Improve all low-contrast text with Orwellian colors */
 .text-muted,
 [style*="#cbd5e1"],
 [style*="color: #666"],
 [style*="rgba(255,255,255,0.9)"] {
-    color: #E6D3B7 !important; /* Lighter tan for better contrast */
+    color: #D9D9D9 !important; /* Accessible light gray */
     font-weight: 500 !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
 }
 
-/* Improve rust text colors for better readability */
+/* Improve muted text colors for Orwellian readability */
 [style*="#8B7355"],
 [style*="color:#8B7355"],
 [style*="color: #8B7355"] {
-    color: #C4A676 !important; /* Brighter rust color */
+    color: #B0B0B0 !important; /* Shadowed Desolation for subtle text */
     font-weight: 500 !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.6) !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
 }
 
-/* Improve main rust headings */
+/* Keep rust headings but make them authoritarian red for critical elements */
 [style*="#8B4513"],
 [style*="color:#8B4513"],
 [style*="color: #8B4513"] {
-    color: #B8621B !important; /* Brighter rust for headings */
+    color: #8B4513 !important; /* Keep original rust for headings - not critical actions */
     font-weight: 600 !important;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.4) !important;
 }
 
-/* Enhanced transparent backgrounds with lighter grey industrial feel */
+/* Enhanced transparent backgrounds with Orwellian concrete feel */
 [style*="rgba(255,255,255,0.05)"] {
-    background: rgba(120, 120, 120, 0.2) !important;
+    background: rgba(75, 75, 75, 0.2) !important; /* Gritty Urban surface */
 }
 
 [style*="rgba(255,255,255,0.08)"] {
-    background: rgba(120, 120, 120, 0.25) !important;
+    background: rgba(75, 75, 75, 0.3) !important;
 }
 
 [style*="rgba(255,255,255,0.1)"] {
-    background: rgba(120, 120, 120, 0.3) !important;
+    background: rgba(75, 75, 75, 0.4) !important;
 }
 
 /* Improve form fields visibility with dystopian styling */
@@ -103,42 +103,42 @@ a:hover {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
 }
 
-/* Header and title improvements */
+/* Header and title improvements - Orwellian styling */
 h1, h2, h3, h4, h5, h6 {
-    color: #8B4513 !important;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+    color: #8B4513 !important; /* Keep rust for non-critical headings */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.4) !important;
     font-weight: 600 !important;
 }
 
-/* Paragraph text improvements */
+/* Paragraph text improvements - accessible light gray */
 p {
-    color: #E6D3B7 !important; /* Lighter tan for better readability */
+    color: #D9D9D9 !important; /* Accessible light gray for body text */
     line-height: 1.6 !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
 }
 
-/* Ensure all rust text colors are readable */
+/* Ensure all subtle text colors are Orwellian compliant */
 p[style*="#8B7355"],
 span[style*="#8B7355"],
 div[style*="#8B7355"],
 li[style*="#8B7355"] {
-    color: #C4A676 !important; /* Brighter rust for better contrast */
+    color: #B0B0B0 !important; /* Shadowed Desolation for subtle text */
 }
 
-/* List improvements */
+/* List improvements - accessible gray */
 ul li, ol li {
-    color: #D2B48C !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
+    color: #D9D9D9 !important; /* Accessible light gray */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
 }
 
-/* Border improvements for brighter grey Orwellian feel */
+/* Border improvements for Orwellian concrete feel */
 [style*="border"] {
-    border-color: #666666 !important;
+    border-color: #4B4B4B !important; /* Gritty Urban borders */
 }
 
-/* Background improvements */
+/* Background improvements - concrete foundation */
 .page-bgc {
-    background: #2D2D2D !important;
+    background: #2C2C2C !important; /* Concrete background */
 }
 
 /* Navigation improvements */
@@ -303,40 +303,42 @@ a[style*="background: #8B4513"] {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
 }
 
-/* Ensure btn-wds class has proper contrast everywhere */
+/* Critical action buttons - Authoritarian Red for CTAs */
 .btn-wds,
 *[class*="btn-wds"] {
-    background: #777777 !important; /* Brighter grey background */
-    color: #B8621B !important; /* Bright rust text */
+    background: #BA3F3F !important; /* Authoritarian red for critical actions */
+    color: #F5F5F5 !important; /* Off-white text for maximum contrast */
     text-shadow: 1px 1px 2px rgba(0,0,0,0.4) !important;
-    border: 1px solid #999999 !important;
+    border: 1px solid #943333 !important; /* Darker red border */
+    font-weight: 600 !important;
 }
 
 .btn-wds:hover,
 *[class*="btn-wds"]:hover {
-    background: #888888 !important; /* Even brighter on hover */
-    color: #D2691E !important; /* Brighter rust text on hover */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
+    background: #D14545 !important; /* Slightly brighter red on hover */
+    color: #FFFFFF !important; /* Pure white on hover for emphasis */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6) !important;
+    transform: translateY(-1px) !important; /* Slight lift for menacing effect */
 }
 
-/* Fix specific button styles with brighter grey backgrounds */
+/* Fix specific button styles - use surfaces for non-critical buttons */
 button[style*="background: #8B4513"],
 input[type="submit"][style*="background: #8B4513"],
 a[style*="background: #8B4513"] {
-    background: #777777 !important;
-    color: #B8621B !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.4) !important;
-    border: 1px solid #999999 !important;
+    background: #4B4B4B !important; /* Gritty Urban surface for regular buttons */
+    color: #D9D9D9 !important; /* Accessible light gray text */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
+    border: 1px solid #7A7A7A !important;
 }
 
-/* Fix any divs or spans with brighter grey backgrounds that contain text */
+/* Fix any divs or spans - use urban surfaces */
 div[style*="background: #8B4513"],
 div[style*="background-color: #8B4513"],
 span[style*="background: #8B4513"],
 span[style*="background-color: #8B4513"] {
-    background: #777777 !important;
-    color: #B8621B !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.4) !important;
+    background: #4B4B4B !important; /* Gritty Urban surface */
+    color: #D9D9D9 !important; /* Accessible light gray text */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
 }
 
 /* Progress bars and indicators with rust backgrounds */
@@ -347,19 +349,19 @@ span[style*="background-color: #8B4513"] {
     text-shadow: none !important;
 }
 
-/* Fix main CSS button classes with brighter grey backgrounds */
+/* Fix main CSS button classes - secondary actions use surfaces */
 .btn-robot {
-    background-color: #777777 !important;
-    color: #B8621B !important; /* Bright rust text on lighter grey background */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.4) !important;
-    border: 1px solid #999999 !important;
+    background-color: #4B4B4B !important; /* Gritty Urban surface */
+    color: #D9D9D9 !important; /* Accessible light gray text */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
+    border: 1px solid #7A7A7A !important;
 }
 
 .btn-robot:hover {
-    background-color: transparent !important;
-    color: #D2691E !important; /* Even brighter rust for hover */
-    border-color: #D2691E !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
+    background-color: #7A7A7A !important; /* Slightly lighter urban surface on hover */
+    color: #F5F5F5 !important; /* Off-white for emphasis */
+    border-color: #7A7A7A !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4) !important;
 }
 
 .product-title {
@@ -406,22 +408,22 @@ div[style*="background: #8B4513"][style*="text-align: center"] {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
 }
 
-/* Fix GameServer Panel specific elements */
+/* Fix GameServer Panel specific elements - use surfaces */
 .sidebar-link.active {
-    background-color: #777777 !important;
-    color: #B8621B !important; /* Bright rust text on lighter grey background */
+    background-color: #4B4B4B !important; /* Gritty Urban surface for active state */
+    color: #F5F5F5 !important; /* Off-white for active text */
     text-shadow: 1px 1px 2px rgba(0,0,0,0.4) !important;
 }
 
 .back-link {
-    background: #777777 !important;
-    color: #B8621B !important; /* Bright rust text on lighter grey background */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.4) !important;
+    background: #4B4B4B !important; /* Gritty Urban surface */
+    color: #D9D9D9 !important; /* Accessible light gray */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
 }
 
 .back-link:hover {
-    background: #888888 !important;
-    color: #D2691E !important;
+    background: #7A7A7A !important; /* Lighter surface on hover */
+    color: #F5F5F5 !important; /* Off-white on hover */
 }
 
 /* Fix any project-specific icon containers with rust backgrounds */
@@ -436,33 +438,33 @@ div[style*="background: #8B4513"][style*="border-radius: 4px"] {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
 }
 
-/* Fix technology badge elements and similar oval/rounded elements */
+/* Fix technology badge elements - neutral surfaces */
 .tech-badge,
 *[class*="tech-badge"],
 *[class*="badge"],
 span[style*="border-radius"][style*="background:"],
 span[style*="border-radius"][style*="background-color:"] {
-    background: #4A4A4A !important; /* Brighter grey background */
-    color: #E6D3B7 !important;
-    border: 1px solid #777777 !important;
+    background: #4B4B4B !important; /* Gritty Urban surface */
+    color: #D9D9D9 !important; /* Accessible light gray */
+    border: 1px solid #7A7A7A !important;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
 }
 
 .tech-badge:hover,
 *[class*="tech-badge"]:hover,
 *[class*="badge"]:hover {
-    background: #777777 !important; /* Even brighter on hover */
-    color: #F0E68C !important; /* Bright khaki text */
+    background: #7A7A7A !important; /* Lighter surface on hover */
+    color: #F5F5F5 !important; /* Off-white text on hover */
     text-shadow: 1px 1px 2px rgba(0,0,0,0.4) !important;
 }
 
-/* Fix any elements with low contrast rust backgrounds */
+/* Fix any elements with low contrast backgrounds */
 *[style*="background: rgba(139, 69, 19, 0.1)"],
 *[style*="background: rgba(139, 69, 19, 0.2)"],
 *[style*="background: rgba(139, 69, 19, 0.3)"] {
-    background: #4A4A4A !important; /* Brighter grey background */
-    color: #E6D3B7 !important;
-    border: 1px solid #777777 !important;
+    background: #4B4B4B !important; /* Gritty Urban surface */
+    color: #D9D9D9 !important; /* Accessible light gray */
+    border: 1px solid #7A7A7A !important;
 }
 
 /* Improve text contrast in any technology stack or similar sections */
@@ -471,28 +473,28 @@ span[style*="border-radius"][style*="background-color:"] {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.6) !important;
 }
 
-/* Fix small text elements that might be hard to read */
+/* Fix small text elements - use accessible grays */
 span[style*="font-size: 14px"],
 p[style*="font-size: 14px"],
 *[style*="font-size: 12px"] {
-    color: #E6D3B7 !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
+    color: #D9D9D9 !important; /* Accessible light gray */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
 }
 
-/* Ensure all pill-shaped elements (border-radius > 10px) have good contrast */
+/* Ensure all pill-shaped elements use urban surfaces */
 *[style*="border-radius: 15px"],
 *[style*="border-radius: 20px"],
 *[style*="border-radius: 25px"] {
-    background: #2A2A2A !important;
-    color: #E6D3B7 !important;
-    border: 1px solid #555555 !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
+    background: #4B4B4B !important; /* Gritty Urban surface */
+    color: #D9D9D9 !important; /* Accessible light gray */
+    border: 1px solid #7A7A7A !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
 }
 
 /* Ensure proper contrast for muted text */
 .text-muted,
 .muted {
-    color: #8B7355 !important;
+    color: #B0B0B0 !important; /* Shadowed Desolation for subtle text */
     font-weight: 500 !important;
 }
 

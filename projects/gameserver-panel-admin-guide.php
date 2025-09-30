@@ -30,22 +30,22 @@
         
         .sidebar {
             width: 280px;
-            background-color: #2A2A2A;
-            color: #D2B48C;
+            background-color: #2C2C2C; /* Concrete background */
+            color: #D9D9D9; /* Accessible light gray */
             padding: 30px 20px;
             position: fixed;
             height: 100vh;
             overflow-y: auto;
-            border-right: 2px solid #777777;
+            border-right: 2px solid #4B4B4B; /* Gritty Urban border */
         }
         
         .sidebar h1 {
-            color: #8B4513;
+            color: #8B4513; /* Keep rust for non-critical headings */
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 30px;
             text-align: center;
-            border-bottom: 2px solid #777777;
+            border-bottom: 2px solid #4B4B4B; /* Gritty Urban border */
             padding-bottom: 15px;
         }
         
@@ -58,7 +58,7 @@
         .sidebar-link {
             display: block;
             padding: 15px;
-            color: #8B7355;
+            color: #B0B0B0; /* Shadowed Desolation for subtle navigation */
             text-decoration: none;
             border-radius: 6px;
             margin-bottom: 8px;
@@ -67,15 +67,15 @@
         }
         
         .sidebar-link:hover {
-            background-color: #2a2a2a;
-            color: #D2B48C;
-            border-color: #555555;
+            background-color: #4B4B4B; /* Gritty Urban surface */
+            color: #F5F5F5; /* Off-white on hover */
+            border-color: #7A7A7A;
             text-decoration: none;
         }
         
         .sidebar-link.active {
-            background-color: #555555;
-            color: #C4A676;
+            background-color: #4B4B4B; /* Gritty Urban surface */
+            color: #F5F5F5; /* Off-white for active */
             font-weight: 500;
         }
         
@@ -87,7 +87,7 @@
         .main-content {
             margin-left: 280px;
             padding: 40px;
-            background-color: #2D2D2D;
+            background-color: #2C2C2C; /* Concrete background */
             min-height: 100vh;
             width: calc(100% - 280px);
         }
