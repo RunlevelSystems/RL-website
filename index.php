@@ -76,7 +76,7 @@
     .wds-title { font-size: clamp(30px, 4vw, 44px); line-height: 1.05; margin: 0 0 12px; }
     .wds-tagline { font-size: clamp(16px, 2.4vw, 19px); color: #e2e8f0; margin: 0 0 18px; }
     .wds-motto { font-size: 15px; color: var(--wds-muted); margin: 0 0 22px; }
-    .wds-cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0 26px; }
+    .wds-cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0 26px; }  
     .wds-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 16px; border-radius: 999px; text-decoration: none; border: 1px solid var(--wds-border); font-weight: 700; }
     .wds-btn--primary { background: var(--wds-primary); color: #07210f; border-color: transparent; }
     .wds-btn--ghost { background: rgba(255,255,255,.02); color: #e8fff3; }
