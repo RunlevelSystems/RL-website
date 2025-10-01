@@ -1,5 +1,28 @@
 /* Global Readability Improvements for Orwellian Fascist Theme */
 
+/* Full-width layout while maintaining mobile responsiveness */
+.container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+/* Responsive padding for better mobile experience */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+}
+
 /* Orwellian atmosphere with concrete/urban feel */
 body {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
@@ -45,6 +68,63 @@ body {
 
 [style*="rgba(255,255,255,0.1)"] {
     background: rgba(75, 75, 75, 0.4) !important;
+}
+
+/* Comprehensive background normalization - all containers match concrete theme */
+div, section, article, main, aside, header, footer, nav {
+    background-color: #2C2C2C !important; /* Force concrete background on all containers */
+}
+
+/* Specific container fixes */
+.container, .container-fluid, .row, .col, .col-md-6, .col-md-12, .col-lg-6, .col-lg-12 {
+    background-color: transparent !important; /* Let parent background show through */
+}
+
+/* Card-like elements use urban surface */
+.card, .panel, .well, .jumbotron, .hero-section {
+    background-color: #4B4B4B !important; /* Gritty Urban surface */
+    border: 1px solid #7A7A7A !important;
+}
+
+/* Navigation containers */
+.navbar, .nav, .navigation {
+    background-color: #2C2C2C !important; /* Concrete background */
+    border-color: #4B4B4B !important;
+}
+
+/* Content wrappers */
+.content, .main-content, .page-content, .wrapper {
+    background-color: #2C2C2C !important; /* Concrete background */
+}
+
+/* Override common hardcoded inline background colors for Orwellian consistency */
+[style*="background: #1a1a1a"],
+[style*="background-color: #1a1a1a"],
+[style*="background:#1a1a1a"],
+[style*="background-color:#1a1a1a"],
+[style*="background: #2a2a2a"], 
+[style*="background-color: #2a2a2a"],
+[style*="background:#2a2a2a"],
+[style*="background-color:#2a2a2a"],
+[style*="background: #333"],
+[style*="background-color: #333"],
+[style*="background:#333"],
+[style*="background-color:#333"],
+[style*="background: #2A2A2A"],
+[style*="background-color: #2A2A2A"],
+[style*="background:#2A2A2A"],
+[style*="background-color:#2A2A2A"] {
+    background-color: #2C2C2C !important; /* Force Orwellian concrete */
+}
+
+/* Override hardcoded border colors */
+[style*="border: 1px solid #333"],
+[style*="border:1px solid #333"],
+[style*="border: 1px solid #444"],
+[style*="border:1px solid #444"],
+[style*="border: 1px solid #555"],
+[style*="border:1px solid #555"] {
+    border-color: #4B4B4B !important; /* Gritty Urban borders */
 }
 
 /* Improve form fields visibility with dystopian styling */

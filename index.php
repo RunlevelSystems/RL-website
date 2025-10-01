@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Robot</title>
+        <title>WDS</title>
 
         <!-- CSS -->
 
@@ -169,7 +169,7 @@
 
     <!-- History -->
         <section id="history" class="history">
-            <div class="container section-bg">
+            <div class="container-fluid section-bg">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="title-box">

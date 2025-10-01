@@ -16,6 +16,7 @@
         <link href="../assets/css/owl.carousel.theme.min.css" rel="stylesheet">
         <link href="../assets/css/ionicons.css" rel="stylesheet">
         <link href="../assets/css/main.css" rel="stylesheet">
+        <link href="../assets/css/readability-improvements.css" rel="stylesheet">
     </head>
     <body>
         <?php 
