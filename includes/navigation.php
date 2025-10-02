@@ -21,7 +21,7 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
 <!-- Navigation Header -->
 <section id="header" class="main-header <?php echo isset($header_class) ? $header_class : ''; ?>">
     <div class="container-fluid">
-        <div class="row" style="background-color: #1C1C1C;">
+        <div class="row" style="background-color: #000000; position: relative; z-index: 5;">
             <nav class="navbar navbar-default">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#site-nav-bar" aria-expanded="false">
@@ -32,14 +32,21 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
                     </button>
                 </div>
 
-                <div class="collapse navbar-collapse" id="site-nav-bar" style="background-color: #080808;">
+                <div class="collapse navbar-collapse" id="site-nav-bar" style="background-color: #000000;">
                     <ul class="nav navbar-nav">
                         <?php 
-                        // Determine if we're in a subdirectory
-                        $base_path = (basename(dirname(__FILE__)) == 'includes') ? '../' : './';
-                        $is_in_projects = (strpos($_SERVER['REQUEST_URI'], '/projects/') !== false);
+                        // Universal path detection for both XAMPP and web hosting
+                        // Get the current page's directory level
+                        $current_url = $_SERVER['REQUEST_URI'];
+                        $is_in_projects = (strpos($current_url, '/projects/') !== false);
+                        
                         if ($is_in_projects) {
+                            // We're in a project page, need to go up one directory level
                             $base_path = '../';
+                        } else {
+                            // We're at root level, use relative paths
+                            // This works for both XAMPP and most web hosts
+                            $base_path = '';
                         }
                         ?>
                         <li <?php echo ($current_page == 'index') ? 'class="active"' : ''; ?>><a href="<?php echo $base_path; ?>index.php">Home</a></li>
@@ -73,11 +80,11 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
             </nav>
         </div>
         
-        <div class="intro row intro-fixed-height" style="height: 300px; min-height: 300px; background: transparent;">
+        <div class="intro row intro-fixed-height" style="height: 400px; min-height: 400px; background: #000000; position: relative; z-index: 2;">
             <div class="overlay"></div>
-            <div class="col-sm-3" style="display: flex; align-items: center; height: 100%;">
+            <div class="col-sm-6" style="display: flex; align-items: center; height: 100%; position: relative; z-index: 3;">
                 <a href="<?php echo $base_path; ?>index.php" style="height: 100%; width: 100%; display: flex; align-items: center; justify-content: center;">
-                    <img src="<?php echo $base_path; ?>assets/images/wds-logo.png" alt="WDS Logo" class="header-logo" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                    <img src="<?php echo $base_path; ?>assets/images/wds-logo.png" alt="WDS Logo" class="header-logo" style="max-width: 90%; max-height: 90%; object-fit: contain;">
                 </a>
             </div>
             <?php if(isset($show_breadcrumb) && $show_breadcrumb): ?>
@@ -98,5 +105,5 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
             <?php endif; ?>
         </div> <!-- /.intro.row -->
     </div> <!-- /.container -->
-    <div class="nutral" style="background: url('<?php echo $base_path; ?>assets/images/code.png') center center / cover no-repeat, #2C2C2C; height: 390px; margin-top: -300px; z-index: -1;"></div>
+
 </section> <!-- /#header -->

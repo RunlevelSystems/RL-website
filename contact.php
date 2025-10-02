@@ -2,17 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-U                                                       <div style="margin-bottom: 25px;">
-                                        <label style="display: block; color: #8B4513; margin-bottom: 8px; font-weight: bold; font-size: 18px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">Email</label>
-                                        <input type="email" name="email" required 
-                                               style="width: 100%; padding: 14px; border-radius: 8px; background: rgba(255,255,255,0.18); color: #D2B48C; font-size: 17px; font-weight: 500;"
-                                               placeholder="your@email.com">
-                                    </div>           <div style="margin-bottom: 25px;">
-                                        <label style="display: block; color: #8B4513; margin-bottom: 8px; font-weight: bold; font-size: 18px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">Name</label>
-                                        <input type="text" name="name" required 
-                                               style="width: 100%; padding: 14px; border-radius: 8px; background: rgba(255,255,255,0.18); color: #D2B48C; font-size: 17px; font-weight: 500;"
-                                               placeholder="Your full name">
-                                    </div>atible" content="IE=edge">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Robot | Contact</title>

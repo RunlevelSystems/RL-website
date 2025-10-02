@@ -23,11 +23,129 @@
     }
 }
 
-/* Orwellian atmosphere with concrete/urban feel */
+/* Two-Tone Design with Rust Accents */
 body {
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-    background: #2C2C2C !important; /* Concrete background */
+    background: #E8E8E8 !important; /* Middle grey background for content */
+    color: #333333 !important; /* Dark text for readability */
+    font-family: Arial, sans-serif !important; /* Clean readable font */
 }
+
+/* Navigation Styling - BLACK Header Area */
+.navbar, 
+.navbar-default,
+#header,
+.main-header,
+header,
+nav,
+[style*="background-color: #1C1C1C"],
+[style*="background-color:#1C1C1C"],
+[style*="background-color: #2C2C2C"],
+[style*="background-color:#2C2C2C"],
+[style*="background-color: #000000"],
+[style*="background-color:#000000"] {
+    background-color: #000000 !important; /* Black navigation to match breadcrumbs */
+    border: none !important;
+}
+
+/* Header Styling - BLACK Header Area */
+.site-header-bg {
+    background-color: #000000 !important; /* Black header to match breadcrumbs */
+}
+
+/* Navigation links */
+.navbar-nav > li > a {
+    color: #F5F5F5 !important; /* Light text on dark grey */
+    font-weight: normal !important;
+}
+
+.navbar-nav > li > a:hover,
+.navbar-nav > li > a:focus {
+    background-color: #444444 !important; /* Darker grey hover */
+    color: #FFFFFF !important;
+}
+
+/* Active navigation item */
+.navbar-nav > li.active > a {
+    background-color: #8B4513 !important; /* Rust accent for active */
+    color: #FFFFFF !important;
+}
+
+/* Button Styling - Rust Accent */
+.btn, 
+button,
+input[type="submit"],
+input[type="button"],
+.btn-default,
+.btn-robot {
+    background-color: #8B4513 !important; /* Rust buttons */
+    color: #FFFFFF !important; /* White text */
+    border: 1px solid #A0522D !important;
+    font-weight: normal !important;
+}
+
+.btn:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+    background-color: #A0522D !important; /* Darker rust on hover */
+    color: #FFFFFF !important;
+}
+
+/* Text Styling - Rust Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: #8B4513 !important; /* Rust headings */
+    font-weight: bold !important;
+}
+
+/* Regular text - Dark on light background */
+p, span, div, td, th, li {
+    color: #333333 !important; /* Dark text for readability */
+}
+
+/* Links - Rust Accent */
+a {
+    color: #8B4513 !important; /* Rust links */
+}
+
+a:hover {
+    color: #A0522D !important; /* Darker rust on hover */
+    text-decoration: underline !important;
+}
+
+/* Logo section */
+.intro, .intro-fixed-height {
+    background-color: transparent !important; /* Let code.png show through */
+}
+
+/* Breadcrumbs - Part of black header area */
+.breadcrumb {
+    background-color: #000000 !important; /* Black breadcrumb background */
+    border: 1px solid #333333 !important; /* Subtle border */
+}
+
+.breadcrumb > li > a {
+    color: #F5F5F5 !important; /* Light text on dark background */
+}
+
+.breadcrumb > .active {
+    color: #8B4513 !important; /* Rust for active breadcrumb */
+}
+
+/* Search form styling - Clean and simple */
+.form-control {
+    background: #FFFFFF !important; /* White form fields */
+    color: #333333 !important; /* Dark text */
+    border: 2px solid #8B4513 !important; /* Rust border */
+    font-family: Arial, sans-serif !important;
+}
+
+.form-control:focus {
+    background: #FFFFFF !important;
+    border-color: #A0522D !important; /* Darker rust on focus */
+    box-shadow: 0 0 5px rgba(139, 69, 19, 0.3) !important;
+}
+
+/* Clean, simple styling - no excessive effects */
 
 /* Improve all low-contrast text with Orwellian colors */
 .text-muted,
@@ -70,76 +188,22 @@ body {
     background: rgba(75, 75, 75, 0.4) !important;
 }
 
-/* Comprehensive background normalization - all containers match concrete theme */
-div, section, article, main, aside, header, footer, nav {
-    background-color: #2C2C2C !important; /* Force concrete background on all containers */
-}
+/* Minimal background styling - let original layouts work */
 
-/* Specific container fixes */
-.container, .container-fluid, .row, .col, .col-md-6, .col-md-12, .col-lg-6, .col-lg-12 {
-    background-color: transparent !important; /* Let parent background show through */
-}
+/* Minimal overrides - let original styling work */
 
-/* Card-like elements use urban surface */
-.card, .panel, .well, .jumbotron, .hero-section {
-    background-color: #4B4B4B !important; /* Gritty Urban surface */
-    border: 1px solid #7A7A7A !important;
-}
-
-/* Navigation containers */
-.navbar, .nav, .navigation {
-    background-color: #2C2C2C !important; /* Concrete background */
-    border-color: #4B4B4B !important;
-}
-
-/* Content wrappers */
-.content, .main-content, .page-content, .wrapper {
-    background-color: #2C2C2C !important; /* Concrete background */
-}
-
-/* Override common hardcoded inline background colors for Orwellian consistency */
-[style*="background: #1a1a1a"],
-[style*="background-color: #1a1a1a"],
-[style*="background:#1a1a1a"],
-[style*="background-color:#1a1a1a"],
-[style*="background: #2a2a2a"], 
-[style*="background-color: #2a2a2a"],
-[style*="background:#2a2a2a"],
-[style*="background-color:#2a2a2a"],
-[style*="background: #333"],
-[style*="background-color: #333"],
-[style*="background:#333"],
-[style*="background-color:#333"],
-[style*="background: #2A2A2A"],
-[style*="background-color: #2A2A2A"],
-[style*="background:#2A2A2A"],
-[style*="background-color:#2A2A2A"] {
-    background-color: #2C2C2C !important; /* Force Orwellian concrete */
-}
-
-/* Override hardcoded border colors */
-[style*="border: 1px solid #333"],
-[style*="border:1px solid #333"],
-[style*="border: 1px solid #444"],
-[style*="border:1px solid #444"],
-[style*="border: 1px solid #555"],
-[style*="border:1px solid #555"] {
-    border-color: #4B4B4B !important; /* Gritty Urban borders */
-}
-
-/* Improve form fields visibility with dystopian styling */
+/* Form inputs */
 input[type="text"],
 input[type="email"], 
 input[type="url"],
 input[type="password"],
 textarea,
-select {
-    background: rgba(139, 69, 19, 0.2) !important;
-    color: #D2B48C !important;
-    font-weight: 500 !important;
-    padding: 14px !important;
-    font-size: 17px !important;
-    border: 2px solid #2F4F4F !important;
+select,
+.form-control {
+    background: #FFFFFF !important; /* White background */
+    color: #333333 !important; /* Dark text */
+    border: 1px solid #CCCCCC !important;
+    padding: 8px 12px !important;
 }
 
 input[type="text"]:focus,
@@ -147,10 +211,11 @@ input[type="email"]:focus,
 input[type="url"]:focus,
 input[type="password"]:focus,
 textarea:focus,
-select:focus {
-    border-color: #8B4513 !important;
-    box-shadow: 0 0 10px rgba(139, 69, 19, 0.5) !important;
-    background: rgba(139, 69, 19, 0.3) !important;
+select:focus,
+.form-control:focus {
+    border-color: #007BFF !important;
+    box-shadow: 0 0 3px rgba(0, 123, 255, 0.25) !important;
+    outline: none !important;
 }
 
 /* Enhance buttons with dystopian feel */
@@ -677,3 +742,203 @@ small,
         text-align: left !important;
     }
 }
+
+/* =============================================
+   CONTENT AREA STYLING - LIGHT BACKGROUNDS
+   ============================================= */
+
+/* Force ALL content areas to be middle grey */
+section:not(.wds-hero):not(.hero-hook),
+.section,
+main,
+article,
+#content,
+#main-content,
+.main-content,
+.content,
+.boxed,
+.inner-content {
+    background-color: #E8E8E8 !important; /* Middle grey background - easier on eyes */
+}
+
+/* Override ALL inline dark backgrounds in content */
+*[style*="background: #1a1a1a"],
+*[style*="background-color: #1a1a1a"],
+*[style*="background: #1C1C1C"],
+*[style*="background-color: #1C1C1C"],
+*[style*="background: #0f1419"],
+*[style*="background-color: #0f1419"],
+*[style*="background: #333"],
+*[style*="background-color: #333"] {
+    background: #F0F0F0 !important; /* Lighter grey for content boxes */
+    background-color: #F0F0F0 !important;
+    border: 1px solid #CCCCCC !important;
+}
+
+/* Ensure containers within content maintain light background */
+.container > .row,
+.container-fluid > .row,
+.boxed > .row {
+    background-color: transparent !important; /* Let parent background show */
+}
+
+/* Content panels and cards */
+.panel,
+.card,
+.well {
+    background-color: #F0F0F0 !important; /* Light grey for content blocks */
+    border: 1px solid #CCCCCC !important;
+    color: #333333 !important;
+}
+
+/* Override any dark backgrounds in content areas - ALL Bootstrap columns */
+[class*="col-"] {
+    background-color: transparent !important; /* Let body background show through */
+}
+
+/* Override the nutral class that causes grey lines */
+.nutral {
+    background-color: transparent !important; /* Remove grey background */
+    height: 0px !important; /* Remove the height that creates a grey bar */
+    display: none !important; /* Hide it completely */
+}
+
+/* =============================================
+   FULL-WIDTH EMBEDDED CONTENT SECTIONS
+   ============================================= */
+
+/* Ensure all content sections use full width */
+.container-fluid {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+/* Full-width for embedded content sections */
+.boxed,
+.inner-content,
+section .container,
+section .container-fluid {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+/* Ensure proper spacing inside full-width sections */
+.boxed > [class*="col-"],
+.inner-content > [class*="col-"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+/* Mobile responsive padding */
+@media (max-width: 768px) {
+    .boxed > [class*="col-"],
+    .inner-content > [class*="col-"] {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .boxed > [class*="col-"],
+    .inner-content > [class*="col-"] {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+}
+
+/* Fix grey highlight lines that appear in content */
+.section-bg,
+.page-bgc,
+*[style*="background: rgba(255,255,255,0.08)"],
+*[style*="background: rgba(255,255,255,0.1)"],
+*[style*="background: rgba(75, 75, 75"] {
+    background: #F5F5F5 !important;
+    background-color: #F5F5F5 !important;
+}
+
+/* History section and other specific sections */
+#history,
+.history {
+    background-color: #F5F5F5 !important;
+}
+
+/* Override the specific wds-hero sections that should remain dark */
+.wds-hero,
+.hero-hook {
+    background: linear-gradient(180deg, #0f1419, #141b22) !important;
+}
+
+/* =============================================
+   TEXT COLOR OVERRIDES FOR LIGHT CONTENT
+   ============================================= */
+
+/* Force light text in content areas to be dark and readable */
+section:not(.wds-hero):not(.hero-hook) p,
+section:not(.wds-hero):not(.hero-hook) span,
+section:not(.wds-hero):not(.hero-hook) div,
+section:not(.wds-hero):not(.hero-hook) li,
+.content p,
+.content span,
+.content div,
+.content li {
+    color: #333333 !important; /* Dark text on light backgrounds */
+}
+
+/* Override specific light text colors used in inline styles */
+*[style*="color: #8B7355"],
+*[style*="color: #D2B48C"],
+*[style*="color: #E0E0E0"],
+*[style*="color: #CCCCCC"] {
+    color: #333333 !important; /* Make light text dark for readability */
+}
+
+/* Keep rust colors for headings and emphasis */
+section:not(.wds-hero):not(.hero-hook) h1,
+section:not(.wds-hero):not(.hero-hook) h2,
+section:not(.wds-hero):not(.hero-hook) h3,
+section:not(.wds-hero):not(.hero-hook) h4,
+section:not(.wds-hero):not(.hero-hook) h5,
+section:not(.wds-hero):not(.hero-hook) h6,
+section:not(.wds-hero):not(.hero-hook) strong {
+    color: #8B4513 !important; /* Keep rust for headings */
+}
+
+/* =============================================
+   COMPREHENSIVE GREY BACKGROUND CLEANUP
+   ============================================= */
+
+/* Override all possible grey background variations in content areas */
+*[style*="background-color: #2C2C2C"]:not(.navbar):not(header):not(nav):not(.breadcrumb):not(.intro):not(.intro-fixed-height),
+*[style*="background: #2C2C2C"]:not(.navbar):not(header):not(nav):not(.breadcrumb):not(.intro):not(.intro-fixed-height),
+*[style*="background-color: #1C1C1C"]:not(.navbar):not(header):not(nav):not(.breadcrumb):not(.intro):not(.intro-fixed-height),
+*[style*="background: #1C1C1C"]:not(.navbar):not(header):not(nav):not(.breadcrumb):not(.intro):not(.intro-fixed-height),
+.section-bg:not(.navbar):not(header):not(nav):not(.breadcrumb):not(.intro):not(.intro-fixed-height) {
+    background-color: #E8E8E8 !important;
+    background: #E8E8E8 !important;
+}
+
+/* Make sure header/nav/breadcrumb areas stay BLACK */
+.navbar, header, nav, .breadcrumb, .intro, .intro-fixed-height,
+*[style*="background-color: #2C2C2C"].navbar,
+*[style*="background-color: #2C2C2C"].breadcrumb,
+*[style*="background-color: #2C2C2C"].intro {
+    background-color: #000000 !important;
+    background: #000000 !important;
+}
+
+/* Ensure intro sections use BLACK header background */
+.intro,
+.intro-fixed-height {
+    background-color: #000000 !important;
+    background: #000000 !important;
+}
+
+/* Override overlay elements that might create grey bars */
+.overlay {
+    background: transparent !important;
+    display: none !important;
+}
+
