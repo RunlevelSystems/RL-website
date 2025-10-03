@@ -1,9 +1,9 @@
     <!-- Footer -->
-        <section id="footer-widget" class="footer-widget">
-            <div class="container header-bg">
+        <section id="footer-widget" class="footer-widget" style="background: #000000; color: #E8E8E8; padding: 40px 0;">
+            <div class="container">
                 <div class="row">
                     <div class="col-sm-3">
-                        <h3>Our Services</h3>
+                        <h3>What we Do</h3>
                         <ul>
                             <li><a href="https://gameservers.world" target="_blank">Game Server Hosting</a></li>
                             <li><a href="/projects.php">Game Development</a></li>
@@ -67,7 +67,7 @@
                 </div>
             </div>
         </section>
-        <footer class="footer text-center">
+        <footer class="footer text-center" style="background: #000000; color: #E8E8E8;">
             <div style="padding: 20px 0; border-top: 1px solid rgba(255,255,255,0.1);">
                 <p style="color: #8B7355; margin-bottom: 10px; font-size: 16px;">
                     &copy; 2025 World Domination Software. All rights reserved.

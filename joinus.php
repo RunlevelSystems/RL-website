@@ -620,7 +620,7 @@
                                     family: 'Roboto',
                                     weight: 'bold'
                                 },
-                                color: '#D2B48C',
+                                color: '#000000',
                                 padding: 20,
                                 usePointStyle: true,
                                 pointStyle: 'circle'
@@ -649,7 +649,7 @@
                                     family: 'Roboto',
                                     weight: 'bold'
                                 },
-                                color: '#D2B48C'
+                                color: '#000000'
                             },
                             grid: {
                                 color: 'rgba(241,245,249,0.1)',
@@ -665,7 +665,7 @@
                                     family: 'Roboto',
                                     weight: 'bold'
                                 },
-                                color: '#D2B48C',
+                                color: '#000000',
                                 callback: function(value) {
                                     return value + '%';
                                 }

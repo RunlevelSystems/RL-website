@@ -99,7 +99,7 @@
 
   <div class="wds-wrap">
     <div>
-      <div class="wds-eyebrow">Engineering • Delivery • Uptime</div>
+      <div class="wds-eyebrow"></div>
       <!-- NEW, neutral headline so your company name doesn't repeat -->
       <h1 class="wds-title">Build • Launch • Scale</h1>
       <p class="wds-tagline">Indie game dev • Game server hosting • Business applications</p>
@@ -233,25 +233,24 @@
 <section class="hero-hook">
   <style>
     .hero-hook {
-      padding: 64px 16px; text-align: center; color: #8B7355; background: #1C1C1C;
-      border-bottom: 1px solid #334155;
+      padding: 64px 16px; text-align: center; color: #F5F5F5; background: #8B4513;
+      border-bottom: 1px solid #A0522D;
     }
-    .hero-hook h1 { font-size: clamp(28px, 5vw, 46px); margin: 0 0 10px; color: #D2B48C; }
-    .hero-hook p { margin: 0 auto 18px; max-width: 760px; color: #8B7355; font-size: 18px; }
+    .hero-hook h1 { font-size: clamp(28px, 5vw, 46px); margin: 0 0 10px; color: #FFFFFF; }
+    .hero-hook p { margin: 0 auto 18px; max-width: 760px; color: #F5F5F5; font-size: 18px; }
     .hero-hook .cta { display: inline-flex; gap: 10px; }
     .hero-hook .btn {
       appearance: none; border-radius: 9999px; padding: 12px 20px; font-weight: 700; text-decoration: none;
       border: 1px solid #0000; display: inline-flex; align-items: center; justify-content: center;
     }
-    .hero-hook .primary { background: #8B4513; color: #0f1419; }
-    .hero-hook .secondary { background: #1C1C1C; color: #D2B48C; border-color: #475569; }
+    .hero-hook .primary { background: #FFFFFF; color: #8B4513; border: 2px solid #FFFFFF; }
+    .hero-hook .secondary { background: #A0522D; color: #FFFFFF; border-color: #A0522D; }
   </style>
 
   <h1>Build games. Host worlds. Share profits.</h1>
-  <p>Real projects in Server Hosting, Game Dev, Modding, and Web Apps — using our tools and servers. <br>Launch your own side projects too (keep 100%).</p>
-  <div class="cta">
-    <a class="btn primary" href="joinus.php" data-cta="hero-apply">Apply Now</a>
-    <a class="btn primary" href="joinus.php" data-cta="hero-details">How It Works</a>
+  <p style="color: #FFFFFF;">Real projects in Server Hosting, Game Dev, Modding, and Web Apps — using our tools and servers. <br>Launch your own side projects too (keep 100%).</p>
+  <div>
+    <a class="btn primary" href="joinus.php" data-cta="hero-readmore">Read More</a>
   </div>
 </section>
 

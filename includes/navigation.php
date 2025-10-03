@@ -87,22 +87,31 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
                     <img src="<?php echo $base_path; ?>assets/images/wds-logo.png" alt="WDS Logo" class="header-logo" style="max-width: 90%; max-height: 90%; object-fit: contain;">
                 </a>
             </div>
-            <?php if(isset($show_breadcrumb) && $show_breadcrumb): ?>
-                <div class="col-sm-9">
+            <div class="col-sm-6">
+                <?php if(isset($show_breadcrumb) && $show_breadcrumb): ?>
                     <ol class="breadcrumb">
                         <li><a href="<?php echo $base_path; ?>index.php">Home</a></li>
                         <li class="active"><?php echo $page_breadcrumb; ?></li>
                     </ol>
-                </div>
-            <?php else: ?>
-                <div class="col-sm-6 col-sm-offset-3">
-                    <h2 class="header-quote"><?php echo $page_subtitle; ?></h2>
-                    <p>
-                        <?php echo $page_description; ?>
-                    </p>
-                    <h1 class="header-title"><?php echo $page_title; ?><br><span class="thin"><?php echo $page_title_thin; ?></span></h1>
-                </div>
-            <?php endif; ?>
+                <?php else: ?>
+                    <div style="padding: 15px 0; text-align: center;">
+                        <h2 class="header-quote" style="color: #F5F5F5; margin-bottom: 5px;"><?php echo $page_subtitle; ?></h2>
+                        <?php if($page_description): ?>
+                            <p style="color: #CCCCCC; margin-bottom: 10px;">
+                                <?php echo $page_description; ?>
+                            </p>
+                        <?php endif; ?>
+                        <?php if($page_title): ?>
+                            <h1 class="header-title" style="color: #8B4513;">
+                                <?php echo $page_title; ?>
+                                <?php if($page_title_thin): ?>
+                                    <br><span class="thin"><?php echo $page_title_thin; ?></span>
+                                <?php endif; ?>
+                            </h1>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
+            </div>
         </div> <!-- /.intro.row -->
     </div> <!-- /.container -->
 

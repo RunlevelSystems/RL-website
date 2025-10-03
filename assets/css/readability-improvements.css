@@ -121,6 +121,8 @@ a:hover {
 .breadcrumb {
     background-color: #000000 !important; /* Black breadcrumb background */
     border: 1px solid #333333 !important; /* Subtle border */
+    margin-bottom: 0px !important; /* Remove bottom margin for consistent spacing */
+    padding: 15px !important; /* Consistent padding with tagline */
 }
 
 .breadcrumb > li > a {
@@ -129,6 +131,17 @@ a:hover {
 
 .breadcrumb > .active {
     color: #8B4513 !important; /* Rust for active breadcrumb */
+}
+
+/* Header quote and title styling for consistent appearance */
+.header-quote {
+    color: #F5F5F5 !important;
+    margin-bottom: 5px !important;
+}
+
+.header-title {
+    color: #8B4513 !important;
+    margin: 0 !important;
 }
 
 /* Search form styling - Clean and simple */
@@ -213,8 +226,8 @@ input[type="password"]:focus,
 textarea:focus,
 select:focus,
 .form-control:focus {
-    border-color: #007BFF !important;
-    box-shadow: 0 0 3px rgba(0, 123, 255, 0.25) !important;
+    border-color: #8B4513 !important;
+    box-shadow: 0 0 3px rgba(139, 69, 19, 0.25) !important;
     outline: none !important;
 }
 
@@ -281,9 +294,9 @@ ul li, ol li {
     border-color: #4B4B4B !important; /* Gritty Urban borders */
 }
 
-/* Background improvements - concrete foundation */
+/* Background improvements - light content areas */
 .page-bgc {
-    background: #2C2C2C !important; /* Concrete background */
+    background: #E8E8E8 !important; /* Light grey content background */
 }
 
 /* Navigation improvements */
@@ -292,10 +305,7 @@ ul li, ol li {
     font-weight: 500 !important;
 }
 
-/* Footer improvements */
-.footer-widget {
-    background: #2F2F2F !important;
-}
+/* Footer improvements - MOVED TO BOTTOM OF FILE */
 
 /* Table improvements */
 table {
@@ -761,15 +771,15 @@ article,
     background-color: #E8E8E8 !important; /* Middle grey background - easier on eyes */
 }
 
-/* Override ALL inline dark backgrounds in content */
-*[style*="background: #1a1a1a"],
-*[style*="background-color: #1a1a1a"],
-*[style*="background: #1C1C1C"],
-*[style*="background-color: #1C1C1C"],
-*[style*="background: #0f1419"],
-*[style*="background-color: #0f1419"],
-*[style*="background: #333"],
-*[style*="background-color: #333"] {
+/* Override ALL inline dark backgrounds in content EXCEPT project cards */
+*[style*="background: #1a1a1a"]:not(.project-card):not([onclick*="loadProject"]),
+*[style*="background-color: #1a1a1a"]:not(.project-card):not([onclick*="loadProject"]),
+*[style*="background: #1C1C1C"]:not(.project-card):not([onclick*="loadProject"]),
+*[style*="background-color: #1C1C1C"]:not(.project-card):not([onclick*="loadProject"]),
+*[style*="background: #0f1419"]:not(.project-card):not([onclick*="loadProject"]),
+*[style*="background-color: #0f1419"]:not(.project-card):not([onclick*="loadProject"]),
+*[style*="background: #333"]:not(.project-card):not([onclick*="loadProject"]),
+*[style*="background-color: #333"]:not(.project-card):not([onclick*="loadProject"]) {
     background: #F0F0F0 !important; /* Lighter grey for content boxes */
     background-color: #F0F0F0 !important;
     border: 1px solid #CCCCCC !important;
@@ -789,6 +799,242 @@ article,
     background-color: #F0F0F0 !important; /* Light grey for content blocks */
     border: 1px solid #CCCCCC !important;
     color: #333333 !important;
+}
+
+/* =============================================
+   BOXED CONTENT - WHITE BACKGROUNDS FOR GENERAL CONTENT
+   ============================================= */
+
+/* General boxed content sections with white backgrounds */
+.boxed,
+.boxed > div {
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    color: #333333 !important;
+    border: 1px solid #DDDDDD !important;
+    border-radius: 8px !important;
+    padding: 20px !important;
+}
+
+/* Boxed content headings */
+.boxed h1,
+.boxed h2,
+.boxed h3,
+.boxed h4,
+.boxed h5,
+.boxed h6 {
+    color: #8B4513 !important; /* Rust headings on white background */
+}
+
+/* Boxed content text */
+.boxed p,
+.boxed span,
+.boxed li,
+.boxed div {
+    color: #333333 !important; /* Dark text on white background */
+}
+
+/* Boxed content links */
+.boxed a {
+    color: #8B4513 !important; /* Rust links */
+}
+
+.boxed a:hover {
+    color: #A0522D !important; /* Darker rust on hover */
+    text-decoration: underline !important;
+}
+
+/* Override specific inline styles with rgba backgrounds */
+div[style*="background: rgba(255,255,255,0.15)"],
+div[style*="background: rgba(255,255,255,0.1)"],
+div[style*="background: rgba(255,255,255,0.08)"] {
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    color: #333333 !important;
+    border: 1px solid #DDDDDD !important;
+}
+
+/* PROJECT CARDS - RUST BACKGROUNDS */
+.project-card,
+div[onclick*="loadProject"] {
+    background: #8B4513 !important; /* Rust background for project cards */
+    background-color: #8B4513 !important;
+    border: 1px solid #A0522D !important; /* Darker rust border */
+    color: #000000 !important; /* Black text */
+}
+
+/* Override inline styles on project cards */
+div[onclick*="loadProject"][style*="background: #1a1a1a"],
+div[onclick*="loadProject"][style*="background:#1a1a1a"],
+.project-card[style*="background: #1a1a1a"],
+.project-card[style*="background:#1a1a1a"] {
+    background: #8B4513 !important; /* Force rust background */
+    background-color: #8B4513 !important;
+}
+
+/* Project card headings - override inline styles with maximum specificity */
+.project-card h3,
+div[onclick*="loadProject"] h3,
+div[onclick*="loadProject"] h3[style*="color: #8B4513"],
+div[onclick*="loadProject"] h3[style*="color:#8B4513"],
+.project-card h3[style*="color: #8B4513"],
+.project-card h3[style*="color:#8B4513"],
+div[onclick*="loadProject"][style] h3[style],
+.project-card[style] h3[style],
+div[style*="background: #1a1a1a"] h3[style*="color: #8B4513"],
+div[style*="background:#1a1a1a"] h3[style*="color:#8B4513"],
+h3[style*="color: #8B4513"][style*="margin: 0"][style*="font-size: 18px"],
+h3[style*="color:#8B4513"][style*="margin:0"][style*="font-size:18px"] {
+    color: #000000 !important; /* Solid black headings on rust background */
+    text-shadow: none !important; /* Remove any 3D/shadow effects */
+    font-weight: bold !important; /* Make text bold for better readability */
+}
+
+/* Project card text - override inline styles with maximum specificity */
+.project-card p,
+div[onclick*="loadProject"] p,
+div[onclick*="loadProject"] p[style*="color: #8B7355"],
+div[onclick*="loadProject"] p[style*="color:#8B7355"],
+.project-card p[style*="color: #8B7355"],
+.project-card p[style*="color:#8B7355"],
+div[onclick*="loadProject"][style] p[style],
+.project-card[style] p[style],
+div[style*="background: #1a1a1a"] p[style*="color: #8B7355"],
+div[style*="background:#1a1a1a"] p[style*="color:#8B7355"],
+p[style*="color: #8B7355"][style*="line-height: 1.6"][style*="margin: 0"],
+p[style*="color:#8B7355"][style*="line-height:1.6"][style*="margin:0"] {
+    color: #000000 !important; /* Black text on rust background */
+    text-shadow: none !important; /* Remove shadow effects */
+}
+
+/* Hover effects for project cards */
+.project-card:hover {
+    background: #F8F8F8 !important; /* Off-white highlight on hover */
+    background-color: #F8F8F8 !important;
+    border-color: #8B4513 !important; /* Rust border on hover */
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3) !important;
+}
+
+/* Ensure project card hover text remains readable */
+.project-card:hover h3 {
+    color: #8B4513 !important; /* Rust colored headings on off-white hover background */
+    text-shadow: none !important; /* Remove any shadow effects on hover */
+    font-weight: bold !important;
+}
+
+.project-card:hover p {
+    color: #333333 !important; /* Dark grey text on off-white hover background */
+    text-shadow: none !important; /* Remove shadow effects on hover */
+}
+
+/* Override any conflicting hover effects on project cards */
+div[onclick*="loadProject"]:hover,
+div.project-card:hover {
+    background: #F8F8F8 !important; /* Off-white - override all other hovers */
+    background-color: #F8F8F8 !important;
+    border-color: #8B4513 !important;
+}
+
+/* Ensure all project card elements stay readable on hover */
+div[onclick*="loadProject"]:hover *,
+div.project-card:hover * {
+    color: #000000 !important; /* Black text for all elements */
+    text-shadow: none !important; /* Remove shadows */
+}
+
+/* NUCLEAR OPTION: Override ALL inline styled project elements */
+div[style*="padding: 20px"] h3[style*="color: #8B4513"],
+div[style*="padding:20px"] h3[style*="color:#8B4513"],
+div[style*="height: 200px"] h3[style*="color: #8B4513"],
+div[style*="height:200px"] h3[style*="color:#8B4513"],
+div[style*="cursor: pointer"] h3[style*="color: #8B4513"],
+div[style*="cursor:pointer"] h3[style*="color:#8B4513"],
+.col-sm-6 div[style*="background: #1a1a1a"] h3,
+.service div[style*="background: #1a1a1a"] h3 {
+    color: #000000 !important; /* Force black text for all project titles */
+    text-shadow: none !important;
+    font-weight: bold !important;
+}
+
+div[style*="padding: 20px"] p[style*="color: #8B7355"],
+div[style*="padding:20px"] p[style*="color:#8B7355"],
+div[style*="height: 200px"] p[style*="color: #8B7355"],
+div[style*="height:200px"] p[style*="color:#8B7355"],
+div[style*="cursor: pointer"] p[style*="color: #8B7355"],
+div[style*="cursor:pointer"] p[style*="color:#8B7355"],
+.col-sm-6 div[style*="background: #1a1a1a"] p,
+.service div[style*="background: #1a1a1a"] p {
+    color: #000000 !important; /* Force black text for all project descriptions */
+    text-shadow: none !important;
+}
+
+div[onclick*="loadProject"]:hover h3,
+div.project-card:hover h3 {
+    color: #000000 !important; /* Solid black text on hover */
+    text-shadow: none !important; /* Remove all shadow effects */
+}
+
+/* ULTIMATE PROJECT TITLE OVERRIDE - Target exact inline style pattern */
+h3[style="color: #8B4513; margin: 0; font-size: 18px;"],
+h3[style="color:#8B4513; margin:0; font-size:18px;"],
+h3[style*="color: #8B4513"][style*="margin: 0"][style*="font-size: 18px"],
+h3[style*="color:#8B4513"][style*="margin:0"][style*="font-size:18px"] {
+    color: #000000 !important; /* Force black text for project titles */
+    text-shadow: none !important;
+    font-weight: bold !important;
+}
+
+/* ULTIMATE PROJECT DESCRIPTION OVERRIDE - Target exact inline style pattern */
+p[style="color: #8B7355; line-height: 1.6; margin: 0; font-size: 14px;"],
+p[style="color:#8B7355; line-height:1.6; margin:0; font-size:14px;"],
+p[style*="color: #8B7355"][style*="line-height: 1.6"][style*="margin: 0"][style*="font-size: 14px"],
+p[style*="color:#8B7355"][style*="line-height:1.6"][style*="margin:0"][style*="font-size:14px"] {
+    color: #000000 !important; /* Force black text for project descriptions */
+    text-shadow: none !important;
+}
+
+/* Fix "Back to All Projects" link and any other rust-colored links on potentially rust backgrounds */
+#back-to-projects,
+a[style*="color: #8B4513"],
+a[style*="color:#8B4513"] {
+    color: #333333 !important; /* Dark grey text for better contrast */
+    text-shadow: none !important;
+}
+
+/* Force all text in project cards to be black regardless of inline styles */
+div[onclick*="loadProject"] *[style*="color"],
+.project-card *[style*="color"] {
+    color: #000000 !important;
+}
+
+/* Specific override for rust colored inline text */
+*[style*="color: #8B4513"],
+*[style*="color:#8B4513"],
+*[style*="color: #8B7355"], 
+*[style*="color:#8B7355"] {
+    color: #000000 !important;
+}
+
+/* Ensure project cards override ALL inline backgrounds */
+div[style*="background"][onclick*="loadProject"] {
+    background: #8B4513 !important;
+    background-color: #8B4513 !important;
+}
+.boxed *[style*="color: #8B7355"],
+.boxed *[style*="color: #D2B48C"],
+.boxed *[style*="color: #8B4513"] {
+    color: #F5F5F5 !important; /* Light text on rust background */
+}
+
+.boxed *[style*="color: #8B4513"] h1,
+.boxed *[style*="color: #8B4513"] h2,
+.boxed *[style*="color: #8B4513"] h3,
+.boxed *[style*="color: #8B4513"] h4,
+.boxed *[style*="color: #8B4513"] h5,
+.boxed *[style*="color: #8B4513"] h6,
+.boxed strong {
+    color: #FFFFFF !important; /* White headings and strong text */
 }
 
 /* Override any dark backgrounds in content areas - ALL Bootstrap columns */
@@ -865,8 +1111,63 @@ section .container-fluid {
     background-color: #F5F5F5 !important;
 }
 
-/* Override the specific wds-hero sections that should remain dark */
+/* Fix wds-hero to match content background */
+.wds-hero {
+    background: #E8E8E8 !important; /* Match content background */
+    border: 1px solid #CCCCCC !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important; /* Subtle shadow */
+}
+
+/* wds-hero text colors for middle grey background */
 .wds-hero,
+.wds-hero * {
+    color: #333333 !important; /* Dark text for readability */
+}
+
+.wds-hero h1,
+.wds-hero h2,
+.wds-hero h3,
+.wds-hero .wds-title {
+    color: #8B4513 !important; /* Rust headings */
+}
+
+/* wds-hero cards need light background */
+.wds-hero .wds-card {
+    background: #F0F0F0 !important;
+    border: 1px solid #CCCCCC !important;
+    color: #333333 !important;
+}
+
+/* Fix wds-hero buttons */
+.wds-hero .wds-btn--primary {
+    background: #8B4513 !important; /* Rust background */
+    color: #FFFFFF !important; /* White text */
+    border-color: #8B4513 !important;
+}
+
+.wds-hero .wds-btn--ghost {
+    background: #F0F0F0 !important; /* Light background */
+    color: #8B4513 !important; /* Rust text */
+    border: 1px solid #8B4513 !important;
+}
+
+/* Fix wds-hero meta and muted text */
+.wds-hero .wds-meta,
+.wds-hero .wds-small,
+.wds-hero .wds-eyebrow {
+    color: #666666 !important; /* Darker grey for muted text */
+}
+
+/* Fix wds-hero links */
+.wds-hero a {
+    color: #8B4513 !important; /* Rust links */
+}
+
+.wds-hero a:hover {
+    color: #A0522D !important; /* Darker rust on hover */
+}
+
+/* Keep hero-hook dark as designed */
 .hero-hook {
     background: linear-gradient(180deg, #0f1419, #141b22) !important;
 }
@@ -907,6 +1208,78 @@ section:not(.wds-hero):not(.hero-hook) strong {
 }
 
 /* =============================================
+   FIX ORANGE/RUST CONTRAST ISSUES
+   ============================================= */
+
+/* Fix bright rust colors that have poor contrast */
+*[style*="color: #B8621B"] {
+    color: #8B4513 !important; /* Use darker rust for better contrast */
+}
+
+/* Fix any orange backgrounds to have proper text */
+*[style*="background: #B8621B"],
+*[style*="background-color: #B8621B"] {
+    background: #8B4513 !important;
+    color: #FFFFFF !important; /* White text on rust background */
+}
+
+/* Fix orange gradients and problematic colors */
+*[style*="FF6B6B"],
+*[style*="FFD166"] {
+    color: #8B4513 !important; /* Convert orange to rust */
+}
+
+/* Ensure good contrast on all colored backgrounds */
+.bg-gradient-to-r,
+*[class*="bg-gradient"] {
+    color: #FFFFFF !important; /* White text on gradient backgrounds */
+}
+
+/* Fix any remaining bright colors */
+*[style*="color: #FF6"],
+*[style*="color: #FFA500"],
+*[style*="color: #FFD166"] {
+    color: #8B4513 !important; /* Convert to rust */
+}
+
+/* =============================================
+   COMPREHENSIVE TEXT CONTRAST IMPROVEMENTS
+   ============================================= */
+
+/* Ensure dark text on light backgrounds */
+.container p,
+.boxed p,
+section p,
+.content p {
+    color: #333333 !important;
+}
+
+/* Fix any light text that might be hard to read */
+*[style*="color: #8B7355"],
+*[style*="color: #D2B48C"],
+*[style*="color: #C4A676"] {
+    color: #666666 !important; /* Readable grey instead of light colors */
+}
+
+/* Make sure all buttons have proper contrast */
+button,
+.btn,
+input[type="submit"],
+a[class*="btn"] {
+    background-color: #8B4513 !important;
+    color: #FFFFFF !important;
+    border-color: #8B4513 !important;
+}
+
+button:hover,
+.btn:hover,
+input[type="submit"]:hover,
+a[class*="btn"]:hover {
+    background-color: #A0522D !important;
+    color: #FFFFFF !important;
+}
+
+/* =============================================
    COMPREHENSIVE GREY BACKGROUND CLEANUP
    ============================================= */
 
@@ -940,5 +1313,164 @@ section:not(.wds-hero):not(.hero-hook) strong {
 .overlay {
     background: transparent !important;
     display: none !important;
+}
+
+/* =============================================
+   FOOTER STYLING - MATCH HEADER
+   ============================================= */
+
+/* Footer sections with black background like header */
+#footer-widget,
+.footer-widget,
+footer,
+.footer,
+section.footer-widget {
+    background-color: #000000 !important;
+    background: #000000 !important;
+    color: #F5F5F5 !important;
+}
+
+/* Ensure container inside footer also has black background */
+.footer-widget .container,
+footer .container {
+    background: transparent !important;
+}
+
+/* Footer headings */
+.footer-widget h3,
+footer h3 {
+    color: #8B4513 !important; /* Rust colored headings */
+    font-weight: bold !important;
+}
+
+/* Footer links */
+.footer-widget a,
+footer a {
+    color: #F5F5F5 !important; /* Light text for links */
+}
+
+.footer-widget a:hover,
+footer a:hover {
+    color: #8B4513 !important; /* Rust on hover */
+    text-decoration: none !important;
+}
+
+/* Footer list items */
+.footer-widget ul li,
+footer ul li {
+    color: #F5F5F5 !important;
+}
+
+/* Footer paragraph text */
+.footer-widget p,
+footer p {
+    color: #CCCCCC !important; /* Light grey for paragraph text */
+}
+
+/* Override any conflicting Bootstrap or other CSS for footer */
+section[id="footer-widget"] {
+    background-color: #000000 !important;
+    background: #000000 !important;
+}
+
+/* Ensure all footer elements have proper background */
+.footer-widget *,
+footer * {
+    background-color: transparent !important;
+}
+
+/* Force footer section backgrounds */
+section.footer-widget {
+    background-color: #000000 !important;
+    background-image: none !important;
+}
+
+/* =============================================
+   REMOVE ALL TEXT SHADOWS SITE-WIDE
+   ============================================= */
+
+/* Remove text shadows from all elements */
+*,
+*:before,
+*:after {
+    text-shadow: none !important;
+}
+
+/* Override any specific text shadow rules */
+h1, h2, h3, h4, h5, h6,
+p, span, div, a, li, td, th,
+.title, .subtitle, .text,
+[class*="text"], [class*="title"] {
+    text-shadow: none !important;
+}
+
+/* =============================================
+   JOINUS PAGE - CAREER TEXT FIXES
+   ============================================= */
+
+/* Make "Launch Your Dream Career" text black for better visibility on rust background */
+.career-hero h2 {
+    color: #000000 !important; /* Black text for maximum contrast */
+    text-shadow: none !important; /* Remove shadow effects */
+}
+
+/* Also make the subtitle more visible */
+.career-hero p {
+    color: #000000 !important; /* Black text for better readability */
+    text-shadow: none !important; /* Remove shadow effects */
+}
+
+/* Skills Development Trajectory section text */
+.skills-chart-section h3 {
+    color: #000000 !important; /* Black heading for better contrast */
+    text-shadow: none !important;
+}
+
+.skills-chart-section p {
+    color: #000000 !important; /* Black text for description */
+    text-shadow: none !important;
+}
+
+/* Override Chart.js text colors for better visibility */
+.skills-chart-section canvas,
+#skillsGrowthChart {
+    /* Chart text will be overridden via JavaScript, but we can style the container */
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+}
+
+/* =============================================
+   CONTACT PAGE - DISCORD WIDGET FIXES
+   ============================================= */
+
+/* Ensure Discord widget has rust background with contrasting text */
+div[style*="background-color: #8B4513"] {
+    background-color: #8B4513 !important; /* Force rust background */
+    color: #FFFFFF !important; /* White text for contrast */
+}
+
+/* Discord widget headings */
+div[style*="background-color: #8B4513"] h3 {
+    color: #000000 !important; /* Dark headings */
+    text-shadow: none !important;
+}
+
+/* Discord widget text */
+div[style*="background-color: #8B4513"] p {
+    color: #000000 !important; /* Dark text */
+    text-shadow: none !important;
+}
+
+/* Discord widget buttons */
+div[style*="background-color: #8B4513"] a {
+    background-color: #A0522D !important; /* Darker rust for buttons */
+    color: #FFFFFF !important; /* White button text */
+    text-shadow: none !important;
+}
+
+/* Discord widget button hover */
+div[style*="background-color: #8B4513"] a:hover {
+    background-color: #654321 !important; /* Even darker rust on hover */
+    color: #FFFFFF !important;
 }
 

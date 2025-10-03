@@ -168,21 +168,21 @@
                                 -->
                                 
                                 <!-- Discord Widget for testing -->
-                                <div style="background-color: #5865F2; color: white; padding: 30px; border-radius: 10px; margin: 20px 0;">
-                                    <h3 style="margin-bottom: 15px; color: white;">
-                                        <i class="ion-social-discord" style="margin-right: 10px; font-size: 24px;"></i>
+                                <div style="background-color: #8B4513; color: #000000; padding: 30px; border-radius: 10px; margin: 20px 0;">
+                                    <h3 style="margin-bottom: 15px; color: #000000;">
+                                        <i class="ion-social-discord" style="margin-right: 10px; font-size: 24px; color: #000000;"></i>
                                         World Domination Dev
                                     </h3>
-                                    <p style="margin-bottom: 20px; color: #e3e5e8;">
+                                    <p style="margin-bottom: 20px; color: #000000;">
                                         Join our Discord community for real-time discussions, project updates, and collaboration opportunities!
                                     </p>
                                     <a href="https://discord.gg/XPFnNdWGyW" target="_blank" 
-                                       style="background-color: #4752c4; color: white; padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; transition: background-color 0.3s;">
+                                       style="background-color: #A0522D; color: white; padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; transition: background-color 0.3s;">
                                         Join Discord Server
                                     </a>
                                 </div>
                                 
-                                <p style="margin-top: 15px; font-size: 14px; color: #8B7355; font-weight: 500;">
+                                <p style="margin-top: 15px; font-size: 14px; color: #000000; font-weight: 500;">
                                     New to Discord? Click the button above to get started!
                                 </p>
                             </div>

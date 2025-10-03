@@ -264,41 +264,9 @@
                     }
                 </style>
 
-            <!-- Machine Man -->
-                <div class="machine-man">
-                    <div class="row">
-                        <div class="boxed">
-                            <div class="col-sm-8">
-                                <h4 class="m-s-title">CES 2015 Control Product of the Year</h4>
-                                <h1 class="m-p-title">Convert your smart device into the ultimate remote control</h1>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-            <!-- CTA -->
-                <div class="cta">
-                    <div class="row">
-                        <div class="boxed">
-                            <div class="col-sm-9">
-                                <p>
-                                    If you love creating professional, beautiful and simple Robot or modify robot skills to help quickly and efficiently, then we can't wait to welcome you onto our team.
-                                </p>
-                            </div>
-                            <div class="col-sm-3">
-                                <a class="btn btn-robot btn-block" href="#">Send us your resume</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+  
 
             </div>
         </section>
