@@ -144,19 +144,19 @@
                 100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
             }
             .career-hero h2 {
-                color: #D2B48C;
+                color: #FFFFFF;
                 font-size: 48px;
                 font-weight: 900;
                 margin-bottom: 20px;
-                text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+                text-shadow: 3px 3px 6px rgba(0,0,0,0.6);
                 position: relative;
                 z-index: 1;
             }
             .career-hero p {
-                color: #D2B48C;
+                color: #F5F5F5;
                 font-size: 24px;
                 font-weight: 600;
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
                 position: relative;
                 z-index: 1;
                 max-width: 800px;
@@ -532,26 +532,7 @@
                 </div>
             </div>
             
-            <!-- Call to Action -->
-            <div class="career-cta">
-                <h3>Ready to Transform Your Career?</h3>
-                <p>Join a community where your growth is our success, your ideas drive innovation, and your career has no ceiling.</p>
-                
-                <!-- Prominent Co-op Journey Link -->
-                <div style="margin-top: 40px;">
-                    <a href="coop-journey.php" target="_blank" 
-                       style="display: inline-block; background: #D2B48C; color: #8B4513; font-size: 24px; font-weight: 900; text-decoration: none; padding: 20px 50px; border-radius: 50px; border: 4px solid #D2B48C; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; position: relative; z-index: 1; box-shadow: 0 10px 25px rgba(0,0,0,0.2);"
-                       onmouseover="this.style.background='transparent'; this.style.color='#D2B48C'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 15px 35px rgba(0,0,0,0.3)';"
-                       onmouseout="this.style.background='#D2B48C'; this.style.color='#8B4513'; this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.2)';">
-                        📊 Explore Interactive Co-op Journey
-                    </a>
-                </div>
-                
-                <div style="margin-top: 30px;">
-                    <p style="color: rgba(255,255,255,0.9); font-size: 18px; font-weight: 500; margin: 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">
-                        Discover your potential earnings, career progression, and the co-op advantage
-                    </p>
-                </div>
+
             </div>
         </div>
 

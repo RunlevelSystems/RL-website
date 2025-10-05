@@ -120,17 +120,24 @@ a:hover {
 /* Breadcrumbs - Part of black header area */
 .breadcrumb {
     background-color: #000000 !important; /* Black breadcrumb background */
-    border: 1px solid #333333 !important; /* Subtle border */
+    border: none !important; /* Remove border outline */
     margin-bottom: 0px !important; /* Remove bottom margin for consistent spacing */
     padding: 15px !important; /* Consistent padding with tagline */
+    font-size: 12px !important; /* Much smaller text size */
 }
 
 .breadcrumb > li > a {
     color: #F5F5F5 !important; /* Light text on dark background */
+    font-size: 12px !important; /* Small text for breadcrumb links */
 }
 
 .breadcrumb > .active {
     color: #8B4513 !important; /* Rust for active breadcrumb */
+    font-size: 12px !important; /* Small text for active breadcrumb */
+}
+
+.breadcrumb > li {
+    font-size: 12px !important; /* Ensure all breadcrumb elements are small */
 }
 
 /* Header quote and title styling for consistent appearance */
@@ -1167,9 +1174,20 @@ section .container-fluid {
     color: #A0522D !important; /* Darker rust on hover */
 }
 
-/* Keep hero-hook dark as designed */
+/* Keep hero-hook with rust background as designed */
 .hero-hook {
-    background: linear-gradient(180deg, #0f1419, #141b22) !important;
+    background: #8B4513 !important; /* Maintain rust background */
+}
+
+/* Ensure hero-hook text is properly visible */
+.hero-hook p {
+    color: #FFFFFF !important; /* Force white text for paragraph */
+    text-shadow: none !important; /* Remove all text shadows */
+}
+
+.hero-hook h1 {
+    color: #000000 !important; /* Black text for heading */
+    text-shadow: 2px 2px 4px rgba(255,255,255,0.8) !important; /* White shadow for contrast on rust background */
 }
 
 /* =============================================
@@ -1408,16 +1426,18 @@ p, span, div, a, li, td, th,
    JOINUS PAGE - CAREER TEXT FIXES
    ============================================= */
 
-/* Make "Launch Your Dream Career" text black for better visibility on rust background */
+/* Make "Launch Your Dream Career" text highly visible on dark rust gradient background */
 .career-hero h2 {
-    color: #000000 !important; /* Black text for maximum contrast */
-    text-shadow: none !important; /* Remove shadow effects */
+    color: #FFFFFF !important; /* White text for maximum contrast on dark background */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important; /* Strong shadow for definition */
+    font-weight: 900 !important; /* Extra bold for visibility */
 }
 
-/* Also make the subtitle more visible */
+/* Also make the subtitle highly visible */
 .career-hero p {
-    color: #000000 !important; /* Black text for better readability */
-    text-shadow: none !important; /* Remove shadow effects */
+    color: #FFFFFF !important; /* White text for maximum contrast on dark background */
+    text-shadow: none !important; /* No shadow at all */
+    font-weight: 600 !important; /* Semi-bold for better visibility */
 }
 
 /* Skills Development Trajectory section text */
