@@ -232,14 +232,14 @@
         <section id="hero" style="padding: 80px 0 120px 0;">
             <div class="container-custom" style="text-align: center;">
                 <h1 style="font-size: clamp(36px, 5vw, 64px); font-weight: 900; color: #D2B48C; line-height: 1.1; margin-bottom: 24px;">
-                    Turn Your Passion Project <br><span style="color: #8B4513;">Into a Paycheck</span>
+                    Build Projects <br><span style="color: #8B4513;">That Matter</span>
                 </h1>
                 <p style="margin-top: 24px; font-size: clamp(18px, 2.5vw, 24px); max-width: 900px; margin-left: auto; margin-right: auto; color: #8B7355; line-height: 1.5;">
-                    Stop letting your code sit on GitHub. Join our developer co-op and gain real-world experience, build a killer resume, and earn a share of the profits from day one. This is where your hobby becomes a career.
+                    Our developer co-op offers real-world experience, collaborative projects, and a share of the profits. Work on meaningful projects while building your skills and portfolio.
                 </p>
                 <div style="margin-top: 40px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-                    <a href="#earnings" class="btn-primary" style="font-size: 18px; padding: 16px 32px;">See Earning Potential</a>
-                    <a href="#skills" class="btn-secondary" style="font-size: 18px; padding: 14px 30px;">Explore Skills</a>
+                    <a href="#earnings" class="btn-primary" style="font-size: 18px; padding: 16px 32px;">View Earnings Model</a>
+                    <a href="#skills" class="btn-secondary" style="font-size: 18px; padding: 14px 30px;">See Skills Development</a>
                 </div>
             </div>
         </section>
@@ -247,8 +247,8 @@
         <section id="skills" style="padding: 80px 0; background: rgba(255,255,255,0.02);">
             <div class="container-custom">
                 <div style="text-align: center; margin-bottom: 48px;">
-                    <h2 style="font-size: clamp(32px, 4vw, 48px); font-weight: 900; color: #D2B48C; margin-bottom: 16px;">From Hobbyist to Hired</h2>
-                    <p style="font-size: 20px; max-width: 800px; margin: 0 auto; color: #8B7355;">This is a free, hands-on education in the skills that employers are desperate for. Click each card to see how it translates to your resume.</p>
+                    <h2 style="font-size: clamp(32px, 4vw, 48px); font-weight: 900; color: #D2B48C; margin-bottom: 16px;">Skills You'll Develop</h2>
+                    <p style="font-size: 20px; max-width: 800px; margin: 0 auto; color: #8B7355;">Gain hands-on experience with skills that are valued in the industry. Click each card to see how it can appear on your resume.</p>
                 </div>
                 <div id="skill-cards-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
                 </div>
@@ -258,8 +258,8 @@
         <section id="earnings" style="padding: 80px 0;">
             <div class="container-custom">
                 <div style="text-align: center; margin-bottom: 48px;">
-                    <h2 style="font-size: clamp(32px, 4vw, 48px); font-weight: 900; color: #D2B48C; margin-bottom: 16px;">Interactive Earnings Simulator</h2>
-                    <p style="font-size: 20px; max-width: 1000px; margin: 0 auto; color: #8B7355;">Our profit-sharing model is designed to be radically fair. As the co-op succeeds, your share grows exponentially. Drag the slider below to see how your potential earnings scale with our collective success.</p>
+                    <h2 style="font-size: clamp(32px, 4vw, 48px); font-weight: 900; color: #D2B48C; margin-bottom: 16px;">Earnings Calculator</h2>
+                    <p style="font-size: 20px; max-width: 1000px; margin: 0 auto; color: #8B7355;">Our profit-sharing model is designed to be fair and transparent. As the co-op succeeds, contributor shares increase. Use the slider below to see how earnings scale at different profit levels.</p>
                 </div>
                 
                 <div style="display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center;">
@@ -307,12 +307,12 @@
         <section id="model" style="padding: 80px 0; background: rgba(255,255,255,0.02);">
             <div class="container-custom">
                 <div style="text-align: center; margin-bottom: 48px;">
-                    <h2 style="font-size: clamp(32px, 4vw, 48px); font-weight: 900; color: #D2B48C; margin-bottom: 16px;">Our Two-Pronged Success Model</h2>
-                    <p style="font-size: 20px; max-width: 1000px; margin: 0 auto; color: #8B7355;">We generate income in two ways: steady revenue from services to fund our operations and big-win potential from our own products.</p>
+                    <h2 style="font-size: clamp(32px, 4vw, 48px); font-weight: 900; color: #D2B48C; margin-bottom: 16px;">Our Revenue Model</h2>
+                    <p style="font-size: 20px; max-width: 1000px; margin: 0 auto; color: #8B7355;">We generate income through two streams: steady revenue from services that fund operations, and growth potential from our own products.</p>
                 </div>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 48px;">
                     <div style="text-align: center;">
-                        <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 24px; color: #8B4513;">🎮 Path 1: Steady Income</h3>
+                        <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 24px; color: #8B4513;">🎮 Stream 1: Service Revenue</h3>
                         <div style="display: flex; flex-direction: column; gap: 16px;">
                             <div class="process-step">Host & Manage Game Servers</div>
                             <div style="font-weight: 700; font-size: 24px; color: #475569;">↓</div>
@@ -324,7 +324,7 @@
                         </div>
                     </div>
                     <div style="text-align: center;">
-                        <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 24px; color: #8B4513;">🚀 Path 2: The Big Win</h3>
+                        <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 24px; color: #8B4513;">🚀 Stream 2: Product Development</h3>
                         <div style="display: flex; flex-direction: column; gap: 16px;">
                             <div class="process-step">Collaborate on Indie Game Dev</div>
                             <div style="font-weight: 700; font-size: 24px; color: #475569;">↓</div>
@@ -332,13 +332,13 @@
                             <div style="font-weight: 700; font-size: 24px; color: #475569;">↓</div>
                             <div class="process-step">Game Sales & Revenue</div>
                             <div style="font-weight: 700; font-size: 24px; color: #475569;">↓</div>
-                            <div style="background: rgba(0,200,81,0.2); color: #8B4513; font-weight: 600; padding: 20px; border-radius: 12px; border: 2px solid #8B4513;">Massive Shared Profits Potential</div>
+                            <div style="background: rgba(0,200,81,0.2); color: #8B4513; font-weight: 600; padding: 20px; border-radius: 12px; border: 2px solid #8B4513;">Additional Shared Profits</div>
                         </div>
                     </div>
                 </div>
                 <div style="text-align: center; margin-top: 64px;">
-                    <h3 style="font-size: 24px; font-weight: 700; color: #D2B48C; margin-bottom: 16px;">The Tiered Profit Structure (The Rules)</h3>
-                    <p style="color: #8B7355; max-width: 800px; margin: 0 auto 32px; font-size: 16px;">This is the underlying system. The manager's share is higher on early profits to reinvest in tools and infrastructure, but the contributors' share quickly becomes dominant.</p>
+                    <h3 style="font-size: 24px; font-weight: 700; color: #D2B48C; margin-bottom: 16px;">Tiered Profit Distribution</h3>
+                    <p style="color: #8B7355; max-width: 800px; margin: 0 auto 32px; font-size: 16px;">The manager's share is higher on initial profits to reinvest in infrastructure, while the contributors' share increases significantly at higher profit levels.</p>
                     <div class="bar-chart-container">
                          <canvas id="tierBarChart"></canvas>
                     </div>
