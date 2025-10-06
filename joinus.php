@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>The Machine | Collective Recruitment</title>
+        <title>World Domination Software | Join Our Co-op</title>
 
         <!-- CSS -->
 
@@ -48,8 +48,8 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="title-box">
-                        <p>Submit to the</p>
-                        <h2 class="title mt0">Collective</h2>
+                        <p>Join the</p>
+                        <h2 class="title mt0">Co-op Team</h2>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                 <div class="boxed">
                     <div class="col-sm-12">
                         <div class="why-work-for-us" style="color: #D2B48C; max-width: 900px; margin: 0 auto; padding: 20px;">
-                            <h2 style="color: #8B4513; margin-bottom: 20px;">Why Join The Collective?</h2>
+                            <h2 style="color: #8B4513; margin-bottom: 20px;">About Our Co-op</h2>
                             <p style="font-size: 18px; line-height: 1.6; margin-bottom: 30px;">
                                 We're a co-op. That means instead of just collecting a paycheck, 
                                 you directly share in the <strong>profits</strong> of everything we build together. 
@@ -84,15 +84,15 @@
                                 <li><strong>Use our tools for your own side projects</strong> — we'll even help where we can</li>
                             </ul>
 
-                            <h3 style="color: #8B4513; margin-bottom: 15px;">Who Should Apply?</h3>
+                            <h3 style="color: #8B4513; margin-bottom: 15px;">Who We're Looking For</h3>
                             <p style="font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
-                                Gamers, coders, modders, and developers who want real-world experience and 
-                                the thrill of building something together. If you've dreamed of making games, 
-                                running live servers, or launching your own ideas with professional tools, 
-                                this is your chance.
+                                Gamers, coders, modders, and developers interested in real-world experience and 
+                                collaborative projects. If you're interested in game development, 
+                                server management, or working on projects with professional tools, 
+                                we'd like to hear from you.
                             </p>
 
-                            <p style="font-size: 20px; font-weight: bold; text-align: center; color: #8B4513;"><strong>Serve. Build. Submit to the Machine.</strong></p>
+                            <p style="font-size: 20px; font-weight: bold; text-align: center; color: #8B4513;"><strong>Collaborate. Build. Grow Together.</strong></p>
                         </div>
                     </div>
                 </div>
@@ -465,8 +465,8 @@
             
             <!-- Hero Section -->
             <div class="career-hero">
-                <h2>🚀 Launch Your Dream Career</h2>
-                <p>Join a co-op where your skills grow, your ideas matter, and your career accelerates beyond traditional limits.</p>
+                <h2>🚀 Grow Your Skills & Career</h2>
+                <p>A co-op where your skills develop, your ideas have value, and you share in the success of what we build together.</p>
             </div>
             
             <!-- Career Timeline -->
@@ -477,28 +477,28 @@
                         <div class="timeline-content">
                             <span class="timeline-icon">🎯</span>
                             <div class="timeline-title">Month 1-3: Foundation</div>
-                            <div class="timeline-desc">Get onboarded, learn our stack, and contribute to real projects while getting paid to learn new technologies.</div>
+                            <div class="timeline-desc">Learn our stack and contribute to real projects while earning as you develop new skills.</div>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
                             <span class="timeline-icon">💡</span>
                             <div class="timeline-title">Month 4-6: Innovation</div>
-                            <div class="timeline-desc">Lead feature development, propose new solutions, and start building your expertise in specialized areas.</div>
+                            <div class="timeline-desc">Take on feature development, suggest improvements, and develop your expertise in areas that interest you.</div>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
                             <span class="timeline-icon">🏆</span>
                             <div class="timeline-title">Month 7-12: Leadership</div>
-                            <div class="timeline-desc">Mentor new members, drive project decisions, and shape the technical direction of our products.</div>
+                            <div class="timeline-desc">Help guide new members, contribute to project decisions, and influence the technical direction.</div>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
                             <span class="timeline-icon">🌟</span>
                             <div class="timeline-title">Year 2+: Mastery</div>
-                            <div class="timeline-desc">Become a subject matter expert, launch your own projects, and earn increasing profit shares as we grow.</div>
+                            <div class="timeline-desc">Build deep expertise, work on your own projects, and benefit from increasing profit shares as the co-op grows.</div>
                         </div>
                     </div>
                 </div>
@@ -508,13 +508,13 @@
             <div class="mission-cards">
                 <div class="mission-card">
                     <span class="mission-icon">🛠️</span>
-                    <div class="mission-title">Build Real Skills</div>
-                    <div class="mission-desc">Work on production systems using cutting-edge technologies. Every project adds valuable experience to your portfolio.</div>
+                    <div class="mission-title">Develop Practical Skills</div>
+                    <div class="mission-desc">Work on production systems with modern technologies. Each project adds valuable experience to your portfolio.</div>
                 </div>
                 <div class="mission-card">
                     <span class="mission-icon">💰</span>
-                    <div class="mission-title">Earn While Learning</div>
-                    <div class="mission-desc">Get paid for your contributions from day one, with increasing profit shares as you develop expertise and the co-op grows.</div>
+                    <div class="mission-title">Share in Profits</div>
+                    <div class="mission-desc">Receive compensation for your contributions, with profit shares that grow as you develop expertise and the co-op succeeds.</div>
                 </div>
                 <div class="mission-card">
                     <span class="mission-icon">🤝</span>
@@ -525,8 +525,8 @@
             
             <!-- Skills Growth Chart -->
             <div class="skills-chart-section">
-                <h3>📈 Skills Development Trajectory</h3>
-                <p>See how your technical abilities and earning potential grow together as you advance through your career with us.</p>
+                <h3>📈 Skills & Earnings Growth</h3>
+                <p>Technical abilities and earning potential can develop together as you gain experience with the co-op.</p>
                 <div class="chart-container">
                     <canvas id="skillsGrowthChart"></canvas>
                 </div>
@@ -675,10 +675,10 @@
                         <div style="margin-bottom: 30px;">
                             <i class="fas fa-headphones" style="font-size: 48px; color: #8B4513; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);"></i>
                             <h3 style="color: #8B4513; font-size: 32px; font-weight: bold; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
-                                🎧 Take a Listen Break
+                                🎧 Learn More (Audio)
                             </h3>
                             <p style="color: #D2B48C; font-size: 18px; font-weight: 500; line-height: 1.6; max-width: 600px; margin: 0 auto 25px;">
-                                Ready for a break from reading? Here's an audio deep-dive into our accelerated exit strategy and how the co-op creates value for everyone involved.
+                                An audio overview of our exit strategy and how the co-op structure benefits all members.
                             </p>
                         </div>
                         
@@ -719,8 +719,8 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="title-box">
-                        <p>Ready to join?</p>
-                        <h2 class="title mt0" style="color: #8B4513;">Apply Now</h2>
+                        <p>Interested in joining?</p>
+                        <h2 class="title mt0" style="color: #8B4513;">Application Form</h2>
                     </div>
                 </div>
             </div>
