@@ -9,7 +9,7 @@ body{
 /*======================================================================
 ##		Global Settings
 =======================================================================*/
-.btn-robot, p{
+.btn-wds, p{
 	font-family: 'Roboto';
 	line-height: 1.5;
 	letter-spacing: 1px;
@@ -52,7 +52,7 @@ body{
 .title span{
 	color: #8B4513;
 }
-.btn-robot{
+.btn-wds{
 	border-radius: 0;
 	background-color: #777777;
 	color: #B8621B;
@@ -64,7 +64,7 @@ body{
 	font-weight: 300;
 	margin-top: 15px;
 }
-.btn-robot:hover{
+.btn-wds:hover{
 	background-color: transparent;
 	color: #D2691E;
 	border-color: #D2691E;
@@ -96,7 +96,7 @@ body{
 	text-transform: uppercase;
 	border-radius: 0;
 }
-.site-header-bg .btn-robot{
+.site-header-bg .btn-wds{
 	margin-top: 0;
 	padding-bottom: 6px;
 }
@@ -754,13 +754,13 @@ body{
 	margin-right: -15px;
 	padding: 40px 0;
 }
-.cta .btn-robot{
+.cta .btn-wds{
 	color: #393835;
 	font-size: 16px;
 	font-weight: 700;
 	margin-top: 10px;
 }
-.cta .btn-robot:hover{
+.cta .btn-wds:hover{
 	color: #fabe12;
 }
 @media (max-width: 677px){

@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Robot | Projects</title>
+    <title>Projects | WDS</title>
 
         <!-- CSS -->
 
@@ -285,7 +285,16 @@
 
     <!-- Project Loading JavaScript -->
     <script>
+        // Keep track of the currently loaded project slug for sub-file loading
+        var currentProjectSlug = null;
+
         function loadProject(slug, title, category) {
+            // remember slug for subsequent file loads
+            currentProjectSlug = slug;
+
+            // set the browser title to help with navigation and bookmarking
+            try { document.title = title + ' | WDS'; } catch (e) { /* ignore */ }
+
             // Show the project detail container
             document.getElementById('project-detail').style.display = 'block';
             
@@ -304,6 +313,7 @@
             xhr.open('GET', 'projects/' + slug + '/index.php', true);
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4) {
+                    console.info('loadProject:', slug, 'status=', xhr.status, 'responseLength=', xhr.responseText ? xhr.responseText.length : 0);
                     if (xhr.status === 200) {
                         // Since project files will now only contain content, directly insert the response
                         document.getElementById('project-content').innerHTML = xhr.responseText;
@@ -334,9 +344,9 @@
         
         // Function to load project sub-files within the same view
         function loadProjectFile(filename) {
-            // Get the current project slug from the URL or context
-            var currentSlug = getCurrentProjectSlug();
-            
+            // Use the slug remembered when loadProject() was called
+            var currentSlug = currentProjectSlug || getCurrentProjectSlug();
+
             if (!currentSlug) {
                 console.error('Cannot determine current project');
                 return;
@@ -350,6 +360,7 @@
             xhr.open('GET', 'projects/' + currentSlug + '/' + filename, true);
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4) {
+                    console.info('loadProjectFile:', currentSlug + '/' + filename, 'status=', xhr.status, 'responseLength=', xhr.responseText ? xhr.responseText.length : 0);
                     if (xhr.status === 200) {
                         // Extract just the content from the response
                         var parser = new DOMParser();

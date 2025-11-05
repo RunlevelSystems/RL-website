@@ -313,7 +313,7 @@
                     
                     <div class="trend-card">
                         <div class="trend-icon">
-                            <i class="fas fa-robot"></i>
+                            <i class="fas fa-rocket" aria-hidden="true"></i>
                         </div>
                         <div class="trend-title">AI Integration</div>
                         <div class="trend-description">

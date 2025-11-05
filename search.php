@@ -307,8 +307,8 @@ if (!empty($search_query)) {
                             <div class="input-group">
                                 <input type="text" name="q" class="form-control" placeholder="Search World Domination Software..." value="<?php echo htmlspecialchars($search_query); ?>">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default btn-robot" type="submit">
-                                        <i class="ion-search"></i> Search
+                                    <button class="btn btn-default btn-wds" type="submit">
+                                        <i class="ion-search" aria-hidden="true"></i> Search
                                     </button>
                                 </span>
                             </div>

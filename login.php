@@ -55,7 +55,7 @@ $page_subtitle = 'Design. Debug. Deploy.';
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Robot | Staff Login</title>
+    <title>Staff Login | WDS</title>
 
         <!-- CSS -->
         <!-- google fonts -->

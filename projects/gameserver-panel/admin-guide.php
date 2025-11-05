@@ -333,7 +333,7 @@
                         <i class="fas fa-cogs"></i> Core Concepts
                     </a></li>
                     <li><a href="#" class="sidebar-link" data-target="agent-management">
-                        <i class="fas fa-robot"></i> Agent Management
+                        <i class="fas fa-rocket" aria-hidden="true"></i> Agent Management
                     </a></li>
                     <li><a href="#" class="sidebar-link" data-target="xml-deep-dive">
                         <i class="fas fa-code"></i> Game XML Deep Dive
@@ -436,7 +436,7 @@
                         </div>
                         <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
                         <div class="flow-item">
-                            <div class="icon"><i class="fas fa-robot"></i></div>
+                            <div class="icon"><i class="fas fa-rocket" aria-hidden="true"></i></div>
                             <h3>GameServer Agent</h3>
                             <p>A daemon running on your game server machine(s). It listens for encrypted commands from the Panel.</p>
                         </div>
