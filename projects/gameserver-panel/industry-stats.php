@@ -8,9 +8,9 @@
     <!-- CSS -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/css/main.css" rel="stylesheet">
-    <link href="../assets/css/readability-improvements.css" rel="stylesheet">
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/css/main.css" rel="stylesheet">
+    <link href="../../assets/css/readability-improvements.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
@@ -202,7 +202,7 @@
 
     <div class="stats-container">
         <div class="container">
-            <a href="../gameserver-panel/index.php" class="back-link">
+            <a href="index.php" class="back-link">
                 <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
                 Back to GameServer Panel
             </a>
@@ -407,11 +407,11 @@
                             <i class="fas fa-book" style="margin-right: 8px;"></i>
                             Admin Guide
                         </a>
-                        <a href="../contact.php" class="btn-wds">
+                        <a href="../../contact.php" class="btn-wds">
                             <i class="fas fa-envelope" style="margin-right: 8px;"></i>
                             Contact Us
                         </a>
-                        <a href="../joinus.php" class="btn-wds">
+                        <a href="../../joinus.php" class="btn-wds">
                             <i class="fas fa-users" style="margin-right: 8px;"></i>
                             Join Team
                         </a>
