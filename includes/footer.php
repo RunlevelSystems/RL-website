@@ -48,14 +48,12 @@
                     <div class="col-sm-3">
                         <h3>Quick Access</h3>
                         <div style="margin-bottom: 20px;">
-                            <a href="https://gameservers.world" target="_blank" 
-                               style="display: inline-block; background: #8B4513; color: #0f1419; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-bottom: 10px; transition: all 0.3s ease;">
+                            <a href="https://gameservers.world" target="_blank" class="btn btn-wds" style="margin-bottom: 10px;">
                                 Visit Gameservers.world
                             </a>
                         </div>
                         <div style="margin-bottom: 20px;">
-                            <a href="/joinus.php" 
-                               style="display: inline-block; background: transparent; color: #8B4513; border: 1px solid #8B4513; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: all 0.3s ease;">
+                            <a href="/joinus.php" class="btn btn-secondary">
                                 Join Our Team
                             </a>
                         </div>

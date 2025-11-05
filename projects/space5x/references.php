@@ -292,10 +292,10 @@
                                 We welcome technical contributions from experienced developers. Check out our GitHub repository 
                                 or join our Discord server to discuss implementation details with the dev team.
                             </p>
-                            <a href="/contact.php" class="space5x-btn" style="display: inline-block; background: transparent; color: #8B4513; border: 2px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; margin-right: 15px;">
+                            <a href="/contact.php" class="btn btn-secondary" style="margin-right: 15px;">
                                 Join Dev Team
                             </a>
-                            <a href="index.php" class="space5x-btn" style="display: inline-block; background: transparent; color: #8B4513; border: 2px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease;">
+                            <a href="index.php" class="btn btn-secondary">
                                 Back to Space5X
                             </a>
                         </div>

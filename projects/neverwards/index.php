@@ -66,21 +66,21 @@
                             </div>
                         </div>
 
-                        <!-- Technology Stack -->
+                        <!-- Technology Stack (accurate summary) -->
                         <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">Technology Stack</h3>
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <h4 style="color: #D2B48C; margin-bottom: 15px;">Game Engine</h4>
-                                    <p style="color: #8B7355;">Unity 2023.3 LTS<br>Custom networking layer<br>Advanced physics integration</p>
+                                    <h4 style="color: #D2B48C; margin-bottom: 10px;">Game Client</h4>
+                                    <p style="color: #8B7355;">Unity (C#) client builds; editor and asset pipelines maintained in the repository.</p>
                                 </div>
                                 <div class="col-sm-4">
-                                    <h4 style="color: #D2B48C; margin-bottom: 15px;">Backend</h4>
-                                    <p style="color: #8B7355;">Node.js & Express<br>MongoDB Atlas<br>Redis caching</p>
+                                    <h4 style="color: #D2B48C; margin-bottom: 10px;">Backend & Services</h4>
+                                    <p style="color: #8B7355;">Node.js or lightweight services for matchmaking and APIs; MongoDB/Redis used where schemaless storage and caching are preferred.</p>
                                 </div>
                                 <div class="col-sm-4">
-                                    <h4 style="color: #D2B48C; margin-bottom: 15px;">Infrastructure</h4>
-                                    <p style="color: #8B7355;">AWS GameLift<br>Docker containers<br>CI/CD pipeline</p>
+                                    <h4 style="color: #D2B48C; margin-bottom: 10px;">Deployment</h4>
+                                    <p style="color: #8B7355;">Docker-based pipelines for consistent builds, CI (GitHub Actions) and cloud/VM hosts for production game servers.</p>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +91,7 @@
                             <p style="color: #8B7355; font-size: 16px; margin-bottom: 30px;">
                                 Join our community to get early access and help shape the future of Neverwards.
                             </p>
-                            <a href="/contact.php" style="display: inline-block; background: #8B4513; color: #0f1419; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease;">
+                            <a href="/contact.php" class="btn btn-wds">
                                 Join Beta Program
                             </a>
                         </div>

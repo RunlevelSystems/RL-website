@@ -34,51 +34,40 @@
                             </div>
                         </div>
 
-                        <!-- Technology Expertise -->
+                        <!-- Technology Expertise (accurate & repo-backed) -->
                         <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
-                            <h3 style="color: #8B4513; margin-bottom: 30px;">Technology Stack</h3>
+                            <h3 style="color: #8B4513; margin-bottom: 20px;">Technology Stack</h3>
+                            <p style="color: #8B7355; font-size: 15px; line-height: 1.6; margin-bottom: 20px;">
+                                World Domination Software builds and maintains a diverse set of web and game projects. The technologies listed here reflect the code and infrastructure used across our repositories in this workspace.
+                            </p>
+
                             <div class="row">
-                                <div class="col-sm-3">
-                                    <h4 style="color: #D2B48C; margin-bottom: 15px;">Frontend</h4>
-                                    <p style="color: #8B7355; font-size: 14px;">
-                                        React & Next.js<br>
-                                        Vue.js & Nuxt.js<br>
-                                        Angular & TypeScript<br>
-                                        Progressive Web Apps<br>
-                                        Responsive Design
-                                    </p>
+                                <div class="col-sm-6">
+                                    <h4 style="color: #D2B48C; margin-bottom: 10px;">Web & Backend</h4>
+                                    <ul style="color: #8B7355; line-height: 1.8;">
+                                        <li><strong>PHP (vanilla & Composer):</strong> Core CMS and site pages, server-side templating and APIs (this site uses PHP includes and PDO/MySQL).</li>
+                                        <li><strong>MySQL / MariaDB:</strong> Primary relational storage for site content, user accounts and legacy panel tables.</li>
+                                        <li><strong>Node.js / NPM:</strong> Build tooling, asset pipelines, and optional microservices where needed.</li>
+                                        <li><strong>Redis:</strong> Caching and short-lived data where performance requires it.</li>
+                                        <li><strong>GitHub & GitHub Actions:</strong> Source control, CI for linting and automated builds.</li>
+                                    </ul>
                                 </div>
-                                <div class="col-sm-3">
-                                    <h4 style="color: #D2B48C; margin-bottom: 15px;">Backend</h4>
-                                    <p style="color: #8B7355; font-size: 14px;">
-                                        Node.js & Express<br>
-                                        Python & Django<br>
-                                        PHP & Laravel<br>
-                                        .NET Core<br>
-                                        Microservices Architecture
-                                    </p>
-                                </div>
-                                <div class="col-sm-3">
-                                    <h4 style="color: #D2B48C; margin-bottom: 15px;">Database</h4>
-                                    <p style="color: #8B7355; font-size: 14px;">
-                                        PostgreSQL & MySQL<br>
-                                        MongoDB & Redis<br>
-                                        Elasticsearch<br>
-                                        Data Warehousing<br>
-                                        Real-time Analytics
-                                    </p>
-                                </div>
-                                <div class="col-sm-3">
-                                    <h4 style="color: #D2B48C; margin-bottom: 15px;">DevOps</h4>
-                                    <p style="color: #8B7355; font-size: 14px;">
-                                        Docker & Kubernetes<br>
-                                        AWS/Azure/GCP<br>
-                                        Jenkins & GitHub Actions<br>
-                                        Infrastructure as Code<br>
-                                        Monitoring & Logging
-                                    </p>
+
+                                <div class="col-sm-6">
+                                    <h4 style="color: #D2B48C; margin-bottom: 10px;">Tools, Hosting & Dev</h4>
+                                    <ul style="color: #8B7355; line-height: 1.8;">
+                                        <li><strong>cPanel / Apache / XAMPP:</strong> Shared and local development environments for PHP sites and quick testing.</li>
+                                        <li><strong>Linux & Windows servers:</strong> Production services run on Linux (Debian/Ubuntu) for hosting and build agents; Windows used for some game build pipelines and editor tooling.</li>
+                                        <li><strong>Docker:</strong> Containerized development workflows and optional service isolation for modern deployments.</li>
+                                        <li><strong>Visual Studio / VS Code:</strong> Primary IDEs for C#, PHP and cross-platform development.</li>
+                                        <li><strong>Monitoring & Backups:</strong> Standard uptime monitoring, log aggregation and regular scheduled backups for critical systems.</li>
+                                    </ul>
                                 </div>
                             </div>
+
+                            <p style="color: #8B7355; font-size: 14px; margin-top: 18px;">
+                                We use GitHub for all source control, follow small-branch PR workflows, and prefer lightweight automation (Actions) for CI. For larger services we adopt containerization and infrastructure-as-code patterns to keep deployments repeatable.
+                            </p>
                         </div>
 
                         <!-- Client Success Stories -->
@@ -148,10 +137,10 @@
                             <p style="color: #8B7355; font-size: 16px; margin-bottom: 30px;">
                                 Let's discuss how our enterprise-grade solutions can accelerate your digital transformation.
                             </p>
-                            <a href="https://worlddomination.dev" target="_blank" style="display: inline-block; background: #8B4513; color: #0f1419; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; margin-right: 15px;">
+                            <a href="https://worlddomination.dev" target="_blank" class="btn btn-wds" style="margin-right: 15px;">
                                 Visit Worlddomination.dev
                             </a>
-                            <a href="/contact.php" style="display: inline-block; background: transparent; color: #8B4513; border: 1px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease;">
+                            <a href="/contact.php" class="btn btn-secondary">
                                 Schedule Consultation
                             </a>
                         </div>

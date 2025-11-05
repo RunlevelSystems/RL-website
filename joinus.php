@@ -736,8 +736,7 @@
                             </div>
                             
                             <div style="margin-top: 40px;">
-                                <a href="contact.php" 
-                                   style="display: inline-block; background: #8B4513; color: #E8E4D8; padding: 18px 40px; text-decoration: none; font-weight: bold; border-radius: 8px; font-size: 20px; transition: all 0.3s ease; border: 2px solid #8B4513;">
+                                <a href="contact.php" class="btn btn-wds">
                                     Go to Contact Page
                                 </a>
                             </div>

@@ -61,24 +61,18 @@
                             <h3 style="color: #8B4513; margin-bottom: 30px;">Next-Generation Combat</h3>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <h4 style="color: #D2B48C; margin-bottom: 15px;">Enhanced Gameplay</h4>
-                                    <ul style="color: #8B7355; line-height: 1.8;">
-                                        <li>Unreal Engine 5 with ray tracing and advanced lighting</li>
-                                        <li>Realistic vehicle physics with detailed damage modeling</li>
-                                        <li>Dynamic weather affecting visibility and handling</li>
-                                        <li>Advanced AI opponents with multiple difficulty levels</li>
-                                        <li>Cross-platform multiplayer with up to 32 players</li>
-                                    </ul>
+                                        <h4 style="color: #D2B48C; margin-bottom: 12px;">Core Tech</h4>
+                                        <ul style="color: #8B7355; line-height: 1.8;">
+                                            <li><strong>Unity (C#):</strong> Project sources under /Assets and managed with the Unity Editor and solution files.</li>
+                                            <li><strong>Visual Studio:</strong> Primary IDE for script editing, debugging and build orchestration.</li>
+                                        </ul>
                                 </div>
                                 <div class="col-sm-6">
-                                    <h4 style="color: #D2B48C; margin-bottom: 15px;">New Game Modes</h4>
-                                    <ul style="color: #8B7355; line-height: 1.8;">
-                                        <li>Battle Royale with shrinking arena boundaries</li>
-                                        <li>Team-based objective modes and territory control</li>
-                                        <li>Racing circuits with combat elements</li>
-                                        <li>Survival mode against waves of enemies</li>
-                                        <li>Custom arena builder and mod support</li>
-                                    </ul>
+                                        <h4 style="color: #D2B48C; margin-bottom: 12px;">Multiplayer & Builds</h4>
+                                        <ul style="color: #8B7355; line-height: 1.8;">
+                                            <li><strong>Server-authoritative instances:</strong> Headless server builds host authoritative game state and match logic.</li>
+                                            <li><strong>Netcode & prediction:</strong> Reconciliation and interpolation keep gameplay responsive under latency.</li>
+                                        </ul>
                                 </div>
                             </div>
                         </div>
@@ -115,10 +109,10 @@
                             <p style="color: #8B7355; font-size: 16px; margin-bottom: 30px;">
                                 Join the legion of Roadkill veterans and newcomers preparing for the ultimate vehicular combat experience.
                             </p>
-                            <a href="../../contact.php" style="display: inline-block; background: #8B4513; color: #0f1419; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; margin-right: 15px;">
+                            <a href="../../contact.php" class="btn btn-wds" style="margin-right: 15px;">
                                 Join Alpha Testing
                             </a>
-                            <a href="index.php" style="display: inline-block; background: transparent; color: #8B4513; border: 1px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold;">
+                            <a href="index.php" class="btn btn-secondary">
                                 Original Roadkill
                             </a>
                         </div>

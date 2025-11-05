@@ -149,34 +149,24 @@
                             </div>
                         </div>
 
-                        <!-- Development Status -->
+                        <!-- Technology & Deployment -->
                         <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
-                            <h3 style="color: #8B4513; margin-bottom: 20px;">Development Progress</h3>
-                            <div style="margin-bottom: 20px;">
-                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                                    <span style="color: #8B7355; font-weight: bold;">Core Platform & API</span>
-                                    <span style="color: #8B4513; font-weight: bold;">90%</span>
+                            <h3 style="color: #8B4513; margin-bottom: 16px;">Technology & Deployment</h3>
+                            <p style="color: #8B7355; font-size: 15px; line-height: 1.6; margin-bottom: 18px;">
+                                PureOps is focused on automating developer and infrastructure workflows. We prefer lightweight, auditable tooling and reproducible deployments.
+                            </p>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h4 style="color: #D2B48C; margin-bottom: 10px;">Core Stack</h4>
+                                    <p style="color: #8B7355;">PHP for site tooling, Python/Node.js for small automation scripts and integrations, MySQL for stateful stores.</p>
                                 </div>
-                                <div style="background: #333; height: 8px; border-radius: 4px;">
-                                    <div style="background: #8B4513; height: 100%; width: 90%; border-radius: 4px;"></div>
+                                <div class="col-sm-4">
+                                    <h4 style="color: #D2B48C; margin-bottom: 10px;">DevOps</h4>
+                                    <p style="color: #8B7355;">Docker for reproducible builds, Ansible or bash scripts for host setup, and GitHub Actions for CI pipelines.</p>
                                 </div>
-                            </div>
-                            <div style="margin-bottom: 20px;">
-                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                                    <span style="color: #8B7355; font-weight: bold;">Frontend Dashboard</span>
-                                    <span style="color: #8B4513; font-weight: bold;">75%</span>
-                                </div>
-                                <div style="background: #333; height: 8px; border-radius: 4px;">
-                                    <div style="background: #8B4513; height: 100%; width: 75%; border-radius: 4px;"></div>
-                                </div>
-                            </div>
-                            <div style="margin-bottom: 20px;">
-                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                                    <span style="color: #8B7355; font-weight: bold;">Cloud Integrations</span>
-                                    <span style="color: #8B4513; font-weight: bold;">65%</span>
-                                </div>
-                                <div style="background: #333; height: 8px; border-radius: 4px;">
-                                    <div style="background: #8B4513; height: 100%; width: 65%; border-radius: 4px;"></div>
+                                <div class="col-sm-4">
+                                    <h4 style="color: #D2B48C; margin-bottom: 10px;">Hosting</h4>
+                                    <p style="color: #8B7355;">Linux virtual machines for services, cPanel for some shared hosting needs, and optional cloud VMs for scalable workloads.</p>
                                 </div>
                             </div>
                         </div>
@@ -187,10 +177,10 @@
                             <p style="color: #8B7355; font-size: 16px; margin-bottom: 30px;">
                                 Join our beta program to experience enterprise-grade automation without the complexity.
                             </p>
-                            <a href="/contact.php" style="display: inline-block; background: #8B4513; color: #0f1419; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; margin-right: 15px;">
+                            <a href="/contact.php" class="btn btn-wds" style="margin-right: 15px;">
                                 Join Beta Program
                             </a>
-                            <a href="/contact.php" style="display: inline-block; background: transparent; color: #8B4513; border: 1px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease;">
+                            <a href="/contact.php" class="btn btn-secondary">
                                 Enterprise Demo
                             </a>
                         </div>

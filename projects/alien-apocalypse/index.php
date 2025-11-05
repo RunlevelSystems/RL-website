@@ -86,10 +86,13 @@
                         <!-- Call to Action -->
                         <div style="text-align: center; padding: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">Coming 2026</h3>
-                            <p style="color: #8B7355; font-size: 16px; margin-bottom: 30px;">
+                            <p style="color: #8B7355; font-size: 16px; margin-bottom: 20px;">
                                 Join our mailing list for exclusive development updates and early access opportunities.
                             </p>
-                            <a href="/contact.php" style="display: inline-block; background: #8B4513; color: #0f1419; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold;">
+                            <p style="color: #8B7355; font-size: 14px; margin-bottom: 16px;">
+                                Technical foundation: Unity (C#) client builds, headless Linux servers for multiplayer sessions, and containerized tooling for reproducible server deployments.
+                            </p>
+                            <a href="/contact.php" class="btn btn-wds">
                                 Stay Updated
                             </a>
                         </div>

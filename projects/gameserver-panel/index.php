@@ -45,7 +45,7 @@
                                         <i class="fas fa-server" style="color: #8B4513; font-size: 48px; margin-bottom: 15px;"></i>
                                         <h4 style="color: #D2B48C; margin-bottom: 15px;">Main Panel</h4>
                                         <p style="color: #8B7355; font-size: 14px; margin-bottom: 20px;">Web panel with billing system and customer management</p>
-                                        <a href="https://github.com/GameServerPanel/GSP" target="_blank" style="display: inline-block; background: #8B4513; color: #E8E4D8; padding: 10px 20px; text-decoration: none; border-radius: 4px; transition: all 0.3s ease;"><i class="fab fa-github" style="margin-right: 8px;"></i>View Repository</a>
+                                        <a href="https://github.com/GameServerPanel/GSP" target="_blank" class="btn btn-wds"><i class="fab fa-github" style="margin-right: 8px;"></i>View Repository</a>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
@@ -53,7 +53,7 @@
                                         <i class="fab fa-linux" style="color: #8B4513; font-size: 48px; margin-bottom: 15px;"></i>
                                         <h4 style="color: #D2B48C; margin-bottom: 15px;">Linux Agent</h4>
                                         <p style="color: #8B7355; font-size: 14px; margin-bottom: 20px;">Agent software for Linux game server hosts</p>
-                                        <a href="https://github.com/GameServerPanel/GSP_Agent_Linux" target="_blank" style="display: inline-block; background: #8B4513; color: #E8E4D8; padding: 10px 20px; text-decoration: none; border-radius: 4px; transition: all 0.3s ease;"><i class="fab fa-github" style="margin-right: 8px;"></i>View Repository</a>
+                                        <a href="https://github.com/GameServerPanel/GSP_Agent_Linux" target="_blank" class="btn btn-wds"><i class="fab fa-github" style="margin-right: 8px;"></i>View Repository</a>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
@@ -61,7 +61,7 @@
                                         <i class="fab fa-windows" style="color: #8B4513; font-size: 48px; margin-bottom: 15px;"></i>
                                         <h4 style="color: #D2B48C; margin-bottom: 15px;">Windows Agent</h4>
                                         <p style="color: #8B7355; font-size: 14px; margin-bottom: 20px;">Agent software for Windows game server hosts</p>
-                                        <a href="https://github.com/GameServerPanel/GSP-Agent-Windows" target="_blank" style="display: inline-block; background: #8B4513; color: #E8E4D8; padding: 10px 20px; text-decoration: none; border-radius: 4px; transition: all 0.3s ease;"><i class="fab fa-github" style="margin-right: 8px;"></i>View Repository</a>
+                                        <a href="https://github.com/GameServerPanel/GSP-Agent-Windows" target="_blank" class="btn btn-wds"><i class="fab fa-github" style="margin-right: 8px;"></i>View Repository</a>
                                     </div>
                                 </div>
                             </div>
@@ -106,8 +106,8 @@
                         <div style="text-align: center; padding: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">Ready to Build Your Hosting Business?</h3>
                             <p style="color: #8B7355; font-size: 16px; margin-bottom: 30px;">Download the source code and start your commercial game server hosting company today.</p>
-                            <a href="https://github.com/GameServerPanel/GSP" target="_blank" style="display: inline-block; background: #8B4513; color: #E8E4D8; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; margin-right: 15px;"><i class="fab fa-github" style="margin-right: 8px;"></i>View on GitHub</a>
-                            <a href="/contact.php" style="display: inline-block; background: transparent; color: #8B4513; border: 1px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease;"><i class="fas fa-envelope" style="margin-right: 8px;"></i>Contact Us</a>
+                            <a href="https://github.com/GameServerPanel/GSP" target="_blank" class="btn btn-wds" style="margin-right: 15px;"><i class="fab fa-github" style="margin-right: 8px;"></i>View on GitHub</a>
+                            <a href="/contact.php" class="btn btn-secondary"><i class="fas fa-envelope" style="margin-right: 8px;"></i>Contact Us</a>
                         </div>
 
                                         <li><strong style="color: #8B4513;">Customer Portal:</strong> Professional interface for customers to manage their servers</li>    $current_page = 'projects';
@@ -172,7 +172,7 @@
 
                                         </p>                </div>
 
-                                        <a href="https://github.com/GameServerPanel/GSP" target="_blank" style="display: inline-block; background: #8B4513; color: #E8E4D8; padding: 10px 20px; text-decoration: none; border-radius: 4px; transition: all 0.3s ease;">            </div>
+                                        <a href="https://github.com/GameServerPanel/GSP" target="_blank" class="btn btn-wds">            </div>
 
                                             <i class="fab fa-github" style="margin-right: 8px;"></i>        </div>
 
@@ -198,7 +198,7 @@
 
                                         </p>                    <div class="feature-grid">
 
-                                        <a href="https://github.com/GameServerPanel/GSP_Agent_Linux" target="_blank" style="display: inline-block; background: #8B4513; color: #E8E4D8; padding: 10px 20px; text-decoration: none; border-radius: 4px; transition: all 0.3s ease;">                        <div class="feature-card">
+                                        <a href="https://github.com/GameServerPanel/GSP_Agent_Linux" target="_blank" class="btn btn-wds">                        <div class="feature-card">
 
                                             <i class="fab fa-github" style="margin-right: 8px;"></i>                            <div class="feature-icon">
 
@@ -224,7 +224,7 @@
 
                                         </p>                        <div class="feature-card">
 
-                                        <a href="https://github.com/GameServerPanel/GSP-Agent-Windows" target="_blank" style="display: inline-block; background: #8B4513; color: #E8E4D8; padding: 10px 20px; text-decoration: none; border-radius: 4px; transition: all 0.3s ease;">                            <div class="feature-icon">
+                                        <a href="https://github.com/GameServerPanel/GSP-Agent-Windows" target="_blank" class="btn btn-wds">                            <div class="feature-icon">
 
                                             <i class="fab fa-github" style="margin-right: 8px;"></i>                                <i class="fas fa-gamepad"></i>
 
@@ -464,7 +464,7 @@
 
                             </p>                            <div style="color: #D2B48C;">curl -fsSL https://install.gameserver-panel.org | sudo bash</div>
 
-                            <a href="https://github.com/GameServerPanel/GSP" target="_blank" style="display: inline-block; background: #8B4513; color: #E8E4D8; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; margin-right: 15px;">                        </div>
+                            <a href="https://github.com/GameServerPanel/GSP" target="_blank" class="btn btn-wds" style="margin-right: 15px;">                        </div>
 
                                 <i class="fab fa-github" style="margin-right: 8px;"></i>                    </div>
 
@@ -472,7 +472,7 @@
 
                             </a>            </div>
 
-                            <a href="/contact.php" style="display: inline-block; background: transparent; color: #8B4513; border: 1px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease;">            
+                            <a href="/contact.php" class="btn btn-secondary">            
 
                                 <i class="fas fa-envelope" style="margin-right: 8px;"></i>            <div class="row" style="margin-top: 40px;">
 

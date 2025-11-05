@@ -92,39 +92,31 @@
                             </div>
                         </div>
 
-                        <!-- Technology Preview -->
+                        <!-- Technology Preview (accurate) -->
                         <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
-                            <h3 style="color: #8B4513; margin-bottom: 30px;">Technical Architecture</h3>
+                            <h3 style="color: #8B4513; margin-bottom: 20px;">Technology Stack</h3>
+                            <p style="color: #8B7355; font-size: 15px; line-height: 1.6; margin-bottom: 18px;">
+                                Space5X is developed as a server-authoritative Unity project with a C# server runtime for authoritative simulation, JSON fixtures for data-driven content, and standard game tooling for builds and testing.
+                            </p>
+
                             <div class="row">
-                                <div class="col-sm-4">
-                                    <h4 style="color: #D2B48C; margin-bottom: 15px;">Game Engine</h4>
-                                    <p style="color: #8B7355; font-size: 14px;">
-                                        Custom C++ engine<br>
-                                        WebGL frontend<br>
-                                        Real-time synchronization<br>
-                                        Scalable architecture<br>
-                                        Mobile optimization
-                                    </p>
+                                <div class="col-sm-6">
+                                    <h4 style="color: #D2B48C; margin-bottom: 10px;">Engine & Code</h4>
+                                    <ul style="color: #8B7355; line-height: 1.8;">
+                                        <li><strong>Unity (C#):</strong> Primary engine for client and server builds; code lives in C# projects and Unity assemblies (see /Assets/ and .csproj files in repo).</li>
+                                        <li><strong>Mirror / Netcode patterns:</strong> Server-authoritative networking with deterministic server host loops and RPCs for reliable state.</li>
+                                        <li><strong>JSON fixtures & schemas:</strong> Game data (items, economy curves, contracts) are declarative JSON files under data/fixtures and validated at load time.</li>
+                                    </ul>
                                 </div>
-                                <div class="col-sm-4">
-                                    <h4 style="color: #D2B48C; margin-bottom: 15px;">Backend Systems</h4>
-                                    <p style="color: #8B7355; font-size: 14px;">
-                                        Distributed microservices<br>
-                                        Event sourcing<br>
-                                        Redis clustering<br>
-                                        PostgreSQL sharding<br>
-                                        Kubernetes deployment
-                                    </p>
-                                </div>
-                                <div class="col-sm-4">
-                                    <h4 style="color: #D2B48C; margin-bottom: 15px;">Player Experience</h4>
-                                    <p style="color: #8B7355; font-size: 14px;">
-                                        Progressive Web App<br>
-                                        Offline capability<br>
-                                        Push notifications<br>
-                                        Voice commands<br>
-                                        Accessibility features
-                                    </p>
+
+                                <div class="col-sm-6">
+                                    <h4 style="color: #D2B48C; margin-bottom: 10px;">Infrastructure & Tooling</h4>
+                                    <ul style="color: #8B7355; line-height: 1.8;">
+                                        <li><strong>Headless Linux servers:</strong> Production servers run headless Unity builds for authoritative simulation and persistence.</li>
+                                        <li><strong>Persistence:</strong> JSON-first snapshots with optional sync to MySQL/other stores for analytics and long-term history.</li>
+                                        <li><strong>Editor & CI:</strong> Visual Studio / VS Code for development; Unity Test Runner for automated tests; GitHub for source control and Actions for CI workflows.</li>
+                                        <li><strong>Observability:</strong> Structured logs and simple metrics emitted by the host loop for diagnostics and replayability.</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -178,13 +170,13 @@
                             <p style="color: #8B7355; font-size: 16px; margin-bottom: 30px;">
                                 Be part of creating the next generation of space strategy gaming. Early supporters will help shape the universe and receive exclusive access to development builds.
                             </p>
-                            <a href="/contact.php" class="space5x-btn space5x-btn-primary" style="display: inline-block; background: transparent; color: #8B4513; border: 2px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; margin-right: 15px;">
+                            <a href="/contact.php" class="btn btn-wds" style="margin-right: 15px;">
                                 Join Alpha Program
                             </a>
-                            <a href="#" onclick="loadProjectFile('references.php'); return false;" class="space5x-btn space5x-btn-secondary" style="display: inline-block; background: transparent; color: #8B4513; border: 2px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; margin-right: 15px;">
+                            <a href="#" onclick="loadProjectFile('references.php'); return false;" class="btn btn-secondary" style="margin-right: 15px;">
                                 Technical Details for Nerds
                             </a>
-                            <a href="/contact.php" class="space5x-btn space5x-btn-secondary" style="display: inline-block; background: transparent; color: #8B4513; border: 2px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease;">
+                            <a href="/contact.php" class="btn btn-secondary">
                                 Follow Development
                             </a>
                         </div>

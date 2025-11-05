@@ -34,42 +34,33 @@
                             </div>
                         </div>
 
-                        <!-- Technical Innovation -->
+                        <!-- Technical Innovation (accurate) -->
                         <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
-                            <h3 style="color: #8B4513; margin-bottom: 20px;">Technical Achievements</h3>
-                            <p style="color: #8B7355; font-size: 16px; line-height: 1.8; margin-bottom: 30px;">
-                                For its time, Roadkill pushed the boundaries of what was possible in multiplayer gaming, featuring innovations that would later become industry standards.
+                            <h3 style="color: #8B4513; margin-bottom: 20px;">Technical Overview</h3>
+                            <p style="color: #8B7355; font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
+                                Roadkill v2 is developed with modern, maintainable tooling focused on fast iteration and multiplayer reliability.
                             </p>
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <h4 style="color: #D2B48C; margin-bottom: 15px;">Networking</h4>
-                                    <p style="color: #8B7355; font-size: 14px;">
-                                        Custom UDP protocol<br>
-                                        Lag compensation<br>
-                                        Client-side prediction<br>
-                                        Anti-cheat systems<br>
-                                        Dedicated servers
-                                    </p>
+                                    <h4 style="color: #D2B48C; margin-bottom: 10px;">Engine & Code</h4>
+                                    <ul style="color: #8B7355; line-height: 1.8;">
+                                        <li><strong>Unity (C#):</strong> Project sources and editor assets in the repo (see Assets/ and .sln files).</li>
+                                        <li><strong>Visual Studio / VS Code:</strong> Primary development environments and debugging tools.</li>
+                                    </ul>
                                 </div>
                                 <div class="col-sm-4">
-                                    <h4 style="color: #D2B48C; margin-bottom: 15px;">Graphics Engine</h4>
-                                    <p style="color: #8B7355; font-size: 14px;">
-                                        DirectX 9 optimization<br>
-                                        Real-time shadows<br>
-                                        Particle effects<br>
-                                        Dynamic lighting<br>
-                                        LOD system
-                                    </p>
+                                    <h4 style="color: #D2B48C; margin-bottom: 10px;">Networking & Multiplayer</h4>
+                                    <ul style="color: #8B7355; line-height: 1.8;">
+                                        <li><strong>Server-authoritative model:</strong> Dedicated server builds host game state to avoid client-side tampering.</li>
+                                        <li><strong>Netcode & Prediction:</strong> Standard reconciliation and interpolation techniques to reduce perceived latency.</li>
+                                    </ul>
                                 </div>
                                 <div class="col-sm-4">
-                                    <h4 style="color: #D2B48C; margin-bottom: 15px;">Physics</h4>
-                                    <p style="color: #8B7355; font-size: 14px;">
-                                        Custom physics engine<br>
-                                        Damage propagation<br>
-                                        Debris simulation<br>
-                                        Collision detection<br>
-                                        Realistic handling
-                                    </p>
+                                    <h4 style="color: #D2B48C; margin-bottom: 10px;">Physics & Systems</h4>
+                                    <ul style="color: #8B7355; line-height: 1.8;">
+                                        <li><strong>PhysX / Unity Physics:</strong> Vehicle handling and damage models built on Unity's physics stacks.</li>
+                                        <li><strong>Object pooling & optimization:</strong> To keep performance stable in large arenas.</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -144,10 +135,10 @@
                             <p style="color: #8B7355; font-size: 16px; margin-bottom: 30px;">
                                 While the original Roadkill servers are no longer active, the spirit lives on in Roadkill v2—a complete remake with modern graphics and enhanced gameplay.
                             </p>
-                            <a href="roadkill-v2.php" style="display: inline-block; background: #8B4513; color: #0f1419; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; margin-right: 15px;">
+                            <a href="roadkill-v2.php" class="btn btn-wds" style="margin-right: 15px;">
                                 Discover Roadkill v2
                             </a>
-                            <a href="/contact.php" style="display: inline-block; background: transparent; color: #8B4513; border: 1px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease;">
+                            <a href="/contact.php" class="btn btn-secondary">
                                 Share Your Memories
                             </a>
                         </div>
