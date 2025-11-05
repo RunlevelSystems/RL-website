@@ -68,8 +68,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="title-box">
-                            <p>Get in touch</p>
-                            <h2 class="title mt0">With us</h2>
+                            <h2 class="title mt0">Get in touch with us</h2>
                         </div>
                     </div>
                 </div>
