@@ -88,29 +88,24 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
                 </a>
             </div>
             <div class="col-sm-6">
-                <?php if(isset($show_breadcrumb) && $show_breadcrumb): ?>
-                    <ol class="breadcrumb">
-                        <li><a href="<?php echo $base_path; ?>index.php">Home</a></li>
-                        <li class="active"><?php echo $page_breadcrumb; ?></li>
-                    </ol>
-                <?php else: ?>
-                    <div style="padding: 15px 0; text-align: center;">
-                        <h2 class="header-quote" style="color: #F5F5F5; margin-bottom: 5px;"><?php echo $page_subtitle; ?></h2>
-                        <?php if($page_description): ?>
-                            <p style="color: #CCCCCC; margin-bottom: 10px;">
-                                <?php echo $page_description; ?>
-                            </p>
-                        <?php endif; ?>
-                        <?php if($page_title): ?>
-                            <h1 class="header-title" style="color: #8B4513;">
-                                <?php echo $page_title; ?>
-                                <?php if($page_title_thin): ?>
-                                    <br><span class="thin"><?php echo $page_title_thin; ?></span>
-                                <?php endif; ?>
-                            </h1>
-                        <?php endif; ?>
-                    </div>
-                <?php endif; ?>
+                <div style="padding: 15px 0; text-align: center;">
+                    <h2 class="header-quote" style="color: #F5F5F5; margin-bottom: 5px;">
+                        <?php echo isset($page_subtitle) ? $page_subtitle : 'Design. Debug. Deploy.'; ?>
+                    </h2>
+                    <?php if(isset($page_description) && $page_description): ?>
+                        <p style="color: #CCCCCC; margin-bottom: 10px;">
+                            <?php echo $page_description; ?>
+                        </p>
+                    <?php endif; ?>
+                    <?php if(isset($page_title) && $page_title): ?>
+                        <h1 class="header-title" style="color: #8B4513;">
+                            <?php echo $page_title; ?>
+                            <?php if(isset($page_title_thin) && $page_title_thin): ?>
+                                <br><span class="thin"><?php echo $page_title_thin; ?></span>
+                            <?php endif; ?>
+                        </h1>
+                    <?php endif; ?>
+                </div>
             </div>
         </div> <!-- /.intro.row -->
     </div> <!-- /.container -->

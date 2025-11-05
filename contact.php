@@ -32,8 +32,7 @@
         // Page-specific variables
         $current_page = 'contact';
         $header_class = 'contact-header inner-header';
-        $show_breadcrumb = true;
-        $page_breadcrumb = 'Contact';
+        $page_subtitle = 'Design. Debug. Deploy.';
         
         // Handle form submission
         $message_sent = false;
