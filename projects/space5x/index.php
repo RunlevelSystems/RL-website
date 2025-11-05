@@ -4,10 +4,10 @@
                         <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">The Ultimate Space Empire Experience</h3>
                             <p style="color: #8B7355; font-size: 18px; line-height: 1.8; margin-bottom: 20px;">
-                                Space-4X combines the strategic depth of VGA Planets with the economic complexity of TradeWars 2002, creating the definitive space empire simulation. This isn't just another 4X game—it's a living universe where every decision ripples across space and time.
+                                Space5X combines the strategic depth of VGA Planets with the economic complexity of TradeWars 2002, creating the definitive space empire simulation. This isn't just another 4X game—it's a living universe where every decision ripples across space and time.
                             </p>
                             <p style="color: #8B7355; font-size: 16px; line-height: 1.6;">
-                                Drawing inspiration from classic space strategy games while leveraging modern technology, Space-4X will offer unprecedented depth, scale, and player interaction in a persistent universe spanning thousands of star systems.
+                                Drawing inspiration from classic space strategy games while leveraging modern technology, Space5X will offer unprecedented depth, scale, and player interaction in a persistent universe spanning thousands of star systems.
                             </p>
                         </div>
 
@@ -174,7 +174,7 @@
 
                         <!-- Call to Action -->
                         <div style="text-align: center; padding: 40px;">
-                            <h3 style="color: #8B4513; margin-bottom: 20px;">Join the Space-4X Universe</h3>
+                            <h3 style="color: #8B4513; margin-bottom: 20px;">Join the Space5X Universe</h3>
                             <p style="color: #8B7355; font-size: 16px; margin-bottom: 30px;">
                                 Be part of creating the next generation of space strategy gaming. Early supporters will help shape the universe and receive exclusive access to development builds.
                             </p>
