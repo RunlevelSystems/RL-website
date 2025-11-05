@@ -4,10 +4,10 @@
                         <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">Project Overview</h3>
                             <p style="color: #8B7355; font-size: 18px; line-height: 1.8; margin-bottom: 20px;">
-                                Gameservers.world is our flagship hosting platform, providing the most affordable and reliable game server hosting solutions across multiple global locations. Built on enterprise-grade infrastructure with 24/7 monitoring and automated management.
+                                Gameservers.world is our flagship hosting platform, providing affordable and reliable game server hosting solutions. We offer Virtual Private Gameserver (VPG) hosting - giving you complete control over your server just like it's running on your own PC, with 24/7 automated monitoring and rapid support when needed.
                             </p>
                             <p style="color: #8B7355; font-size: 16px; line-height: 1.6;">
-                                We leverage our Fortune 500 enterprise experience to deliver hosting solutions that prioritize uptime, performance, and value for gamers and communities worldwide.
+                                We don't get in your way. Full FTP access, complete mod support, and comprehensive documentation help you manage your servers exactly how you want. We're here to help when you need us.
                             </p>
                         </div>
 
@@ -17,18 +17,18 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <ul style="color: #8B7355; line-height: 2;">
-                                        <li><strong style="color: #8B4513;">Global Network:</strong> Data centers across North America, Europe, Asia</li>
-                                        <li><strong style="color: #8B4513;">99.9% Uptime:</strong> Enterprise SLA with redundant infrastructure</li>
-                                        <li><strong style="color: #8B4513;">Instant Setup:</strong> Servers deployed in under 60 seconds</li>
-                                        <li><strong style="color: #8B4513;">Auto-Scaling:</strong> Dynamic resource allocation based on player count</li>
+                                        <li><strong style="color: #8B4513;">Full Control:</strong> Complete FTP access and server management</li>
+                                        <li><strong style="color: #8B4513;">24/7 Monitoring:</strong> Automated system monitoring for hardware and uptime</li>
+                                        <li><strong style="color: #8B4513;">Quick Deployment:</strong> Fast server setup and provisioning</li>
+                                        <li><strong style="color: #8B4513;">Monitored Performance:</strong> We track server loads and take action when needed</li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-6">
                                     <ul style="color: #8B7355; line-height: 2;">
-                                        <li><strong style="color: #8B4513;">DDoS Protection:</strong> Multi-layer security with traffic filtering</li>
-                                        <li><strong style="color: #8B4513;">Automated Backups:</strong> Hourly snapshots with point-in-time recovery</li>
-                                        <li><strong style="color: #8B4513;">Mod Support:</strong> One-click mod installation and updates</li>
-                                        <li><strong style="color: #8B4513;">24/7 Support:</strong> Expert technicians available around the clock</li>
+                                        <li><strong style="color: #8B4513;">Comprehensive Mod Support:</strong> Upload and install almost any mod via FTP</li>
+                                        <li><strong style="color: #8B4513;">Automated Support:</strong> Rapid response times from real humans when needed</li>
+                                        <li><strong style="color: #8B4513;">Complete Documentation:</strong> Guides for modding, starting, and managing servers</li>
+                                        <li><strong style="color: #8B4513;">Virtual Private Gameserver:</strong> Run your server like it's on your own PC</li>
                                     </ul>
                                 </div>
                             </div>
@@ -83,32 +83,32 @@
 
                         <!-- Infrastructure -->
                         <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
-                            <h3 style="color: #8B4513; margin-bottom: 20px;">Enterprise Infrastructure</h3>
+                            <h3 style="color: #8B4513; margin-bottom: 20px;">Reliable Infrastructure</h3>
                             <div class="row">
                                 <div class="col-sm-4">
                                     <h4 style="color: #D2B48C; margin-bottom: 15px;">Hardware</h4>
-                                    <p style="color: #8B7355;">AMD Ryzen 9 & Intel Xeon<br>NVMe SSD storage<br>DDR4 ECC memory</p>
+                                    <p style="color: #8B7355;">Modern server hardware<br>SSD storage<br>Regularly monitored and maintained</p>
                                 </div>
                                 <div class="col-sm-4">
-                                    <h4 style="color: #D2B48C; margin-bottom: 15px;">Network</h4>
-                                    <p style="color: #8B7355;">10Gbps uplinks<br>Tier-1 provider redundancy<br>Global CDN integration</p>
+                                    <h4 style="color: #D2B48C; margin-bottom: 15px;">Monitoring</h4>
+                                    <p style="color: #8B7355;">24/7 automated monitoring<br>Load balancing when needed<br>Proactive maintenance</p>
                                 </div>
                                 <div class="col-sm-4">
                                     <h4 style="color: #D2B48C; margin-bottom: 15px;">Management</h4>
-                                    <p style="color: #8B7355;">Kubernetes orchestration<br>Prometheus monitoring<br>Automated scaling</p>
+                                    <p style="color: #8B7355;">Custom game server panel<br>Real-time performance tracking<br>Automated alert systems</p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Pricing Philosophy -->
                         <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
-                            <h3 style="color: #8B4513; margin-bottom: 20px;">Affordable Excellence</h3>
+                            <h3 style="color: #8B4513; margin-bottom: 20px;">Affordable Game Server Hosting</h3>
                             <p style="color: #8B7355; font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
-                                Our mission is to provide enterprise-grade hosting at prices that don't break the bank. We achieve this through efficient automation, strategic partnerships, and economies of scale from our global infrastructure.
+                                Our mission is to provide reliable game server hosting at affordable prices. We achieve this through efficient automation and careful resource management to keep costs low while maintaining quality service.
                             </p>
                             <div style="text-align: center; padding: 20px; background: rgba(0, 200, 81, 0.1); border: 1px solid #8B4513; border-radius: 6px;">
                                 <h4 style="color: #8B4513; margin-bottom: 10px;">Starting at $2.99/month</h4>
-                                <p style="color: #8B7355; margin: 0;">Premium game servers with professional support</p>
+                                <p style="color: #8B7355; margin: 0;">Affordable game servers with responsive support</p>
                             </div>
                         </div>
 

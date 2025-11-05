@@ -286,12 +286,6 @@
     <!-- Project Loading JavaScript -->
     <script>
         function loadProject(slug, title, category) {
-            // Special handling for GameServer Panel - redirect to full page
-            if (slug === 'gameserver-panel') {
-                window.location.href = 'projects/gameserver-panel/index.php';
-                return;
-            }
-            
             // Show the project detail container
             document.getElementById('project-detail').style.display = 'block';
             

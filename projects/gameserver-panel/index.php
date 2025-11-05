@@ -1,209 +1,425 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>GameServer Panel - World Domination Software</title>
+                        <html lang="en">
 
-    <!-- CSS -->
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
-    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../assets/css/magnific-popup.css" rel="stylesheet">
-    <link href="../../assets/css/owl.carousel.css" rel="stylesheet">
+                        <!-- Project Overview --><head>
+
+                        <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">    <meta charset="utf-8">
+
+                            <h3 style="color: #8B4513; margin-bottom: 20px;">Professional Game Server Management Software</h3>    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+                            <p style="color: #8B7355; font-size: 18px; line-height: 1.8; margin-bottom: 20px;">    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+                                Our enhanced fork of OpenGamePanel (OGP) featuring complete commercial billing integration 
+
+                                with PayPal, coupon system, automated provisioning, and multi-location server management.     <title>GameServer Panel - World Domination Software</title>
+
+                                Open source software for hosting providers who want to run their own commercial game server business.
+
+                            </p>    <!-- CSS -->
+
+                            <p style="color: #8B7355; font-size: 16px; line-height: 1.6;">    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+
+                                This is production-ready software you can deploy to start your own game server hosting company.     <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+
+                                Complete with billing, payment processing, customer management, and support for 100+ game server types.    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+
+                            </p>    <link href="../../assets/css/magnific-popup.css" rel="stylesheet">
+
+                        </div>    <link href="../../assets/css/owl.carousel.css" rel="stylesheet">
+
     <link href="../../assets/css/owl.carousel.theme.min.css" rel="stylesheet">
-    <link href="../../assets/css/ionicons.css" rel="stylesheet">
-    <!-- WDS Unified CSS - Simplified & Clean -->
-    <link href="../../assets/css/wds-unified.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
 
-<body>
-    <?php 
-    // Page-specific variables
-    $current_page = 'projects';
-    $page_subtitle = 'GameServer Panel';
-    $page_description = 'Professional game server management solution';
-    $page_title = 'GameServer';
-    $page_title_thin = 'Panel';
-    $header_class = 'projects-header inner-header';
-    ?>
+                        <!-- Core Features -->    <link href="../../assets/css/ionicons.css" rel="stylesheet">
 
-    <!-- Include Site Header -->
-    <?php include '../includes/header.html'; ?>
-    
-    <!-- Include Navigation Header -->
-    <?php include '../includes/navigation.php'; ?>
+                        <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">    <!-- WDS Unified CSS - Simplified & Clean -->
 
-    <section class="project-hero">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 text-center">
-                    <h1 style="color: #8B4513; font-size: 48px; margin-bottom: 20px;">
-                        <i class="fas fa-server" style="margin-right: 15px;"></i>
-                        GameServer Panel
-                    </h1>
-                    <h2 style="color: #D2B48C; font-size: 24px; margin-bottom: 30px;">
-                        Professional Open Game Panel Fork
-                    </h2>
-                    <p style="font-size: 18px; line-height: 1.8; color: #8B7355; max-width: 800px; margin: 0 auto;">
-                        Our enhanced fork of OpenGamePanel (OGP) featuring commercial billing integration, 
-                        professional support systems, and multi-location server management. Built for hosting 
-                        providers who need enterprise-grade game server management.
-                    </p>
-                </div>
-            </div>
+                            <h3 style="color: #8B4513; margin-bottom: 30px;">Key Features</h3>    <link href="../../assets/css/wds-unified.css" rel="stylesheet">
+
+                            <div class="row">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+                                <div class="col-sm-6"></head>
+
+                                    <ul style="color: #8B7355; line-height: 2;">
+
+                                        <li><strong style="color: #8B4513;">Complete Billing System:</strong> PayPal integration, coupon codes, automated provisioning</li><body>
+
+                                        <li><strong style="color: #8B4513;">100+ Supported Games:</strong> Minecraft, ARK, Rust, CS2, Valheim, and many more</li>    <?php 
+
+                                        <li><strong style="color: #8B4513;">Multi-Server Management:</strong> Manage servers across multiple physical machines</li>    // Page-specific variables
+
+                                        <li><strong style="color: #8B4513;">Customer Portal:</strong> Professional interface for customers to manage their servers</li>    $current_page = 'projects';
+
+                                    </ul>    $page_subtitle = 'GameServer Panel';
+
+                                </div>    $page_description = 'Professional game server management solution';
+
+                                <div class="col-sm-6">    $page_title = 'GameServer';
+
+                                    <ul style="color: #8B7355; line-height: 2;">    $page_title_thin = 'Panel';
+
+                                        <li><strong style="color: #8B4513;">Windows & Linux Agents:</strong> Flexible deployment on any platform</li>    $header_class = 'projects-header inner-header';
+
+                                        <li><strong style="color: #8B4513;">Optional Modules:</strong> FastDownload, addons manager, statistics, and more</li>    ?>
+
+                                        <li><strong style="color: #8B4513;">Open Source:</strong> Full source code available on GitHub</li>
+
+                                        <li><strong style="color: #8B4513;">Active Development:</strong> Regular updates and improvements</li>    <!-- Include Site Header -->
+
+                                    </ul>    <?php include '../includes/header.html'; ?>
+
+                                </div>    
+
+                            </div>    <!-- Include Navigation Header -->
+
+                        </div>    <?php include '../includes/navigation.php'; ?>
+
+
+
+                        <!-- GitHub Repositories -->    <section class="project-hero">
+
+                        <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">        <div class="container">
+
+                            <h3 style="color: #8B4513; margin-bottom: 30px;">            <div class="row">
+
+                                <i class="fab fa-github" style="margin-right: 10px;"></i>                <div class="col-md-8 col-md-offset-2 text-center">
+
+                                Source Code Repositories                    <h1 style="color: #8B4513; font-size: 48px; margin-bottom: 20px;">
+
+                            </h3>                        <i class="fas fa-server" style="margin-right: 15px;"></i>
+
+                            <p style="color: #8B7355; margin-bottom: 30px;">                        GameServer Panel
+
+                                All components are open source and available on GitHub. Fork, modify, and deploy your own game server hosting business.                    </h1>
+
+                            </p>                    <h2 style="color: #D2B48C; font-size: 24px; margin-bottom: 30px;">
+
+                            <div class="row">                        Professional Open Game Panel Fork
+
+                                <div class="col-sm-4">                    </h2>
+
+                                    <div style="background: #2a2a2a; border: 1px solid #555; border-radius: 6px; padding: 25px; text-align: center; margin-bottom: 20px;">                    <p style="font-size: 18px; line-height: 1.8; color: #8B7355; max-width: 800px; margin: 0 auto;">
+
+                                        <i class="fas fa-server" style="color: #8B4513; font-size: 48px; margin-bottom: 15px;"></i>                        Our enhanced fork of OpenGamePanel (OGP) featuring complete commercial billing integration 
+
+                                        <h4 style="color: #D2B48C; margin-bottom: 15px;">Main Panel</h4>                        with PayPal, coupon system, automated provisioning, and multi-location server management. 
+
+                                        <p style="color: #8B7355; font-size: 14px; margin-bottom: 20px;">                        Open source software for hosting providers who want to run their own commercial game server business.
+
+                                            Web panel with billing system and customer management                    </p>
+
+                                        </p>                </div>
+
+                                        <a href="https://github.com/GameServerPanel/GSP" target="_blank" style="display: inline-block; background: #8B4513; color: #E8E4D8; padding: 10px 20px; text-decoration: none; border-radius: 4px; transition: all 0.3s ease;">            </div>
+
+                                            <i class="fab fa-github" style="margin-right: 8px;"></i>        </div>
+
+                                            View Repository    </section>
+
+                                        </a>
+
+                                    </div>    <section style="background-color: #2a2a2a; padding: 80px 0; color: #D2B48C;">
+
+                                </div>        <div class="container">
+
+                                <div class="col-sm-4">            <div class="row">
+
+                                    <div style="background: #2a2a2a; border: 1px solid #555; border-radius: 6px; padding: 25px; text-align: center; margin-bottom: 20px;">                <div class="col-md-12">
+
+                                        <i class="fab fa-linux" style="color: #8B4513; font-size: 48px; margin-bottom: 15px;"></i>                    <h2 style="color: #8B4513; text-align: center; margin-bottom: 40px; font-size: 36px;">
+
+                                        <h4 style="color: #D2B48C; margin-bottom: 15px;">Linux Agent</h4>                        Why GameServer Panel?
+
+                                        <p style="color: #8B7355; font-size: 14px; margin-bottom: 20px;">                    </h2>
+
+                                            Agent software for Linux game server hosts                    
+
+                                        </p>                    <div class="feature-grid">
+
+                                        <a href="https://github.com/GameServerPanel/GSP_Agent_Linux" target="_blank" style="display: inline-block; background: #8B4513; color: #E8E4D8; padding: 10px 20px; text-decoration: none; border-radius: 4px; transition: all 0.3s ease;">                        <div class="feature-card">
+
+                                            <i class="fab fa-github" style="margin-right: 8px;"></i>                            <div class="feature-icon">
+
+                                            View Repository                                <i class="fas fa-credit-card"></i>
+
+                                        </a>                            </div>
+
+                                    </div>                            <h3 style="color: #8B4513; margin-bottom: 15px;">Complete Billing System</h3>
+
+                                </div>                            <p style="color: #8B7355;">
+
+                                <div class="col-sm-4">                                Full billing integration with PayPal payment processing, coupon management, 
+
+                                    <div style="background: #2a2a2a; border: 1px solid #555; border-radius: 6px; padding: 25px; text-align: center; margin-bottom: 20px;">                                automated server provisioning, and customer account management. Everything you need 
+
+                                        <i class="fab fa-windows" style="color: #8B4513; font-size: 48px; margin-bottom: 15px;"></i>                                to run a commercial game server hosting business.
+
+                                        <h4 style="color: #D2B48C; margin-bottom: 15px;">Windows Agent</h4>                            </p>
+
+                                        <p style="color: #8B7355; font-size: 14px; margin-bottom: 20px;">                        </div>
+
+                                            Agent software for Windows game server hosts                        
+
+                                        </p>                        <div class="feature-card">
+
+                                        <a href="https://github.com/GameServerPanel/GSP-Agent-Windows" target="_blank" style="display: inline-block; background: #8B4513; color: #E8E4D8; padding: 10px 20px; text-decoration: none; border-radius: 4px; transition: all 0.3s ease;">                            <div class="feature-icon">
+
+                                            <i class="fab fa-github" style="margin-right: 8px;"></i>                                <i class="fas fa-gamepad"></i>
+
+                                            View Repository                            </div>
+
+                                        </a>                            <h3 style="color: #8B4513; margin-bottom: 15px;">Extensive Game Support</h3>
+
+                                    </div>                            <p style="color: #8B7355;">
+
+                                </div>                                Support for 100+ game server types including Minecraft, ARK, Rust, CS2, Valheim, 
+
+                            </div>                                and many more. Pre-configured game templates with easy customization options.
+
+                        </div>                            </p>
+
+                        </div>
+
+                        <!-- What You Get -->                        
+
+                        <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">                        <div class="feature-card">
+
+                            <h3 style="color: #8B4513; margin-bottom: 30px;">What's Included</h3>                            <div class="feature-icon">
+
+                            <div class="row">                                <i class="fas fa-globe"></i>
+
+                                <div class="col-sm-6">                            </div>
+
+                                    <h4 style="color: #D2B48C; margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: #8B4513; margin-right: 10px;"></i>Billing & Payment</h4>                            <h3 style="color: #8B4513; margin-bottom: 15px;">Multi-Server Management</h3>
+
+                                    <p style="color: #8B7355; margin-bottom: 25px;">                            <p style="color: #8B7355;">
+
+                                        Complete billing module with PayPal integration, invoice generation, coupon system,                                 Manage game servers across multiple physical machines and locations from a single 
+
+                                        and automated server provisioning after payment. Everything you need to accept payments                                 web interface. Windows and Linux agent support for flexible deployment options.
+
+                                        and automatically deliver game servers to customers.                            </p>
+
+                                    </p>                        </div>
+
+                                                            
+
+                                    <h4 style="color: #D2B48C; margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: #8B4513; margin-right: 10px;"></i>Customer Management</h4>                        <div class="feature-card">
+
+                                    <p style="color: #8B7355; margin-bottom: 25px;">                            <div class="feature-icon">
+
+                                        Professional customer portal where users can view their servers, manage settings,                                 <i class="fab fa-github"></i>
+
+                                        access file managers, view invoices, and control their game servers. Clean, modern interface.                            </div>
+
+                                    </p>                            <h3 style="color: #8B4513; margin-bottom: 15px;">Fully Open Source</h3>
+
+                                                                <p style="color: #8B7355;">
+
+                                    <h4 style="color: #D2B48C; margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: #8B4513; margin-right: 10px;"></i>Multi-Location Support</h4>                                Complete source code available on GitHub. Fork, modify, and deploy your own 
+
+                                    <p style="color: #8B7355; margin-bottom: 25px;">                                game server hosting business. Active development with regular updates and improvements.
+
+                                        Manage game servers across multiple physical machines and locations. Central web panel                             </p>
+
+                                        communicates with agent software running on each game server host.                        </div>
+
+                                    </p>                        
+
+                                </div>                        <div class="feature-card">
+
+                                <div class="col-sm-6">                            <div class="feature-icon">
+
+                                    <h4 style="color: #D2B48C; margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: #8B4513; margin-right: 10px;"></i>Extensive Game Support</h4>                                <i class="fas fa-cogs"></i>
+
+                                    <p style="color: #8B7355; margin-bottom: 25px;">                            </div>
+
+                                        Pre-configured templates for 100+ game server types including Minecraft (Java/Bedrock),                             <h3 style="color: #8B4513; margin-bottom: 15px;">Optional Modules</h3>
+
+                                        ARK: Survival Evolved, Rust, Counter-Strike 2, Valheim, 7 Days to Die, Terraria,                             <p style="color: #8B7355;">
+
+                                        and many more. Easy to add new games.                                Many optional modules included: FastDownload, addons manager, statistics tracking, 
+
+                                    </p>                                and more. Extend functionality to meet your specific hosting needs.
+
+                                                                </p>
+
+                                    <h4 style="color: #D2B48C; margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: #8B4513; margin-right: 10px;"></i>Optional Modules</h4>                        </div>
+
+                                    <p style="color: #8B7355; margin-bottom: 25px;">                        
+
+                                        Many optional modules included by default: FastDownload for game content, addons manager,                         <div class="feature-card">
+
+                                        statistics tracking, MySQL database management, FTP server integration, and more.                             <div class="feature-icon">
+
+                                        Extend functionality as needed.                                <i class="fas fa-users"></i>
+
+                                    </p>                            </div>
+
+                                                                <h3 style="color: #8B4513; margin-bottom: 15px;">Customer Management</h3>
+
+                                    <h4 style="color: #D2B48C; margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: #8B4513; margin-right: 10px;"></i>Full Source Code</h4>                            <p style="color: #8B7355;">
+
+                                    <p style="color: #8B7355; margin-bottom: 25px;">                                Complete customer portal with order management, invoice history, and server controls. 
+
+                                        Complete source code available on GitHub. Fork and modify to fit your specific needs.                                 Your customers get a professional interface to manage their game servers.
+
+                                        Active community development with regular updates and improvements.                            </p>
+
+                                    </p>                        </div>
+
+                                </div>                    </div>
+
+                            </div>                </div>
+
+                        </div>            </div>
+
         </div>
-    </section>
 
-    <section style="background-color: #2a2a2a; padding: 80px 0; color: #D2B48C;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2 style="color: #8B4513; text-align: center; margin-bottom: 40px; font-size: 36px;">
-                        Why GameServer Panel?
-                    </h2>
-                    
-                    <div class="feature-grid">
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-credit-card"></i>
-                            </div>
-                            <h3 style="color: #8B4513; margin-bottom: 15px;">Commercial Billing</h3>
-                            <p style="color: #8B7355;">
-                                Integrated billing system with automated provisioning, payment processing, 
-                                and customer management. Support for multiple payment gateways and subscription models.
-                            </p>
-                        </div>
-                        
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-headset"></i>
-                            </div>
-                            <h3 style="color: #8B4513; margin-bottom: 15px;">Professional Support</h3>
-                            <p style="color: #8B7355;">
-                                Built-in ticket system, knowledge base integration, and customer portal. 
-                                Streamlined support workflows for hosting providers.
-                            </p>
-                        </div>
-                        
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-globe"></i>
-                            </div>
-                            <h3 style="color: #8B4513; margin-bottom: 15px;">Multi-Location Management</h3>
-                            <p style="color: #8B7355;">
-                                Manage game servers across multiple data centers and regions from a single 
-                                interface. Load balancing and failover capabilities included.
-                            </p>
-                        </div>
-                        
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fab fa-github"></i>
-                            </div>
-                            <h3 style="color: #8B4513; margin-bottom: 15px;">Open Source</h3>
-                            <p style="color: #8B7355;">
-                                Fully open source with comprehensive documentation. Fork, modify, and 
-                                contribute back to the community while maintaining commercial licensing options.
-                            </p>
-                        </div>
-                        
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <h3 style="color: #8B4513; margin-bottom: 15px;">Enterprise Security</h3>
-                            <p style="color: #8B7355;">
-                                Enhanced security model with user isolation, encrypted communications, 
-                                and comprehensive audit logging for enterprise compliance.
-                            </p>
-                        </div>
-                        
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <h3 style="color: #8B4513; margin-bottom: 15px;">Analytics & Reporting</h3>
-                            <p style="color: #8B7355;">
-                                Comprehensive analytics dashboard with server performance metrics, 
-                                usage statistics, and financial reporting for business intelligence.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                        <!-- Use Cases -->    </section>
 
-    <!-- Downloads and Quick Start Section -->
-    <section style="background-color: #0F1419; padding: 80px 0; color: #D2B48C;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h2 style="color: #8B4513; margin-bottom: 40px;">
-                        <i class="fas fa-download" style="margin-right: 15px;"></i>
-                        Download & Quick Start
-                    </h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="download-section" style="background-color: #1C1C1C; padding: 30px; border-radius: 8px; border: 1px solid #555555;">
-                        <h3 style="color: #8B4513; margin-bottom: 20px;">
-                            <i class="fab fa-github" style="margin-right: 10px;"></i>
-                            Repository Access
-                        </h3>
-                        <p style="color: #8B7355; margin-bottom: 25px;">
-                            Access the complete source code, documentation, and installation resources.
-                        </p>
-                        <div style="margin-bottom: 20px;">
-                            <a href="https://github.com/World-Domination-Software/GameServer-Panel" class="btn-wds" target="_blank" style="margin-right: 10px; margin-bottom: 10px;">
-                                <i class="fab fa-github" style="margin-right: 8px;"></i>
-                                Main Repository
-                            </a>
-                            <a href="https://github.com/World-Domination-Software/GameServer-Panel/releases/latest" class="btn-wds" target="_blank" style="margin-bottom: 10px;">
-                                <i class="fas fa-tag" style="margin-right: 8px;"></i>
-                                Latest Release
-                            </a>
+                        <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+
+                            <h3 style="color: #8B4513; margin-bottom: 20px;">Perfect For</h3>    <!-- Downloads and Quick Start Section -->
+
+                            <div class="row">    <section style="background-color: #0F1419; padding: 80px 0; color: #D2B48C;">
+
+                                <div class="col-sm-4">        <div class="container">
+
+                                    <div style="text-align: center; margin-bottom: 30px;">            <div class="row">
+
+                                        <i class="fas fa-rocket" style="color: #8B4513; font-size: 48px; margin-bottom: 15px;"></i>                <div class="col-md-12 text-center">
+
+                                        <h4 style="color: #D2B48C; margin-bottom: 15px;">Starting a Hosting Business</h4>                    <h2 style="color: #8B4513; margin-bottom: 40px;">
+
+                                        <p style="color: #8B7355;">                        <i class="fas fa-download" style="margin-right: 15px;"></i>
+
+                                            Everything you need to launch a commercial game server hosting company.                         Download & Quick Start
+
+                                            Billing, payment processing, and customer management all included.                    </h2>
+
+                                        </p>                </div>
+
+                                    </div>            </div>
+
+                                </div>            <div class="row">
+
+                                <div class="col-sm-4">                <div class="col-md-6">
+
+                                    <div style="text-align: center; margin-bottom: 30px;">                    <div class="download-section" style="background-color: #1C1C1C; padding: 30px; border-radius: 8px; border: 1px solid #555555;">
+
+                                        <i class="fas fa-users" style="color: #8B4513; font-size: 48px; margin-bottom: 15px;"></i>                        <h3 style="color: #8B4513; margin-bottom: 20px;">
+
+                                        <h4 style="color: #D2B48C; margin-bottom: 15px;">Gaming Communities</h4>                            <i class="fab fa-github" style="margin-right: 10px;"></i>
+
+                                        <p style="color: #8B7355;">                            GitHub Repositories
+
+                                            Manage multiple game servers for your community from one interface.                         </h3>
+
+                                            Give members access to their own servers with proper permissions.                        <p style="color: #8B7355; margin-bottom: 25px;">
+
+                                        </p>                            Access the complete source code for the panel and agent software.
+
+                                    </div>                        </p>
+
+                                </div>                        <div style="margin-bottom: 20px;">
+
+                                <div class="col-sm-4">                            <a href="https://github.com/GameServerPanel/GSP" class="btn-wds" target="_blank" style="margin-right: 10px; margin-bottom: 10px; display: inline-block; width: 100%;">
+
+                                    <div style="text-align: center; margin-bottom: 30px;">                                <i class="fab fa-github" style="margin-right: 8px;"></i>
+
+                                        <i class="fas fa-building" style="color: #8B4513; font-size: 48px; margin-bottom: 15px;"></i>                                Panel Repository
+
+                                        <h4 style="color: #D2B48C; margin-bottom: 15px;">Expanding Hosting Services</h4>                            </a>
+
+                                        <p style="color: #8B7355;">                            <a href="https://github.com/GameServerPanel/GSP_Agent_Linux" class="btn-wds" target="_blank" style="margin-right: 10px; margin-bottom: 10px; display: inline-block; width: 100%;">
+
+                                            Already provide hosting? Add game servers to your service portfolio                                 <i class="fab fa-linux" style="margin-right: 8px;"></i>
+
+                                            with professional management tools and billing integration.                                Linux Agent
+
+                                        </p>                            </a>
+
+                                    </div>                            <a href="https://github.com/GameServerPanel/GSP-Agent-Windows" class="btn-wds" target="_blank" style="margin-bottom: 10px; display: inline-block; width: 100%;">
+
+                                </div>                                <i class="fab fa-windows" style="margin-right: 8px;"></i>
+
+                            </div>                                Windows Agent
+
+                        </div>                            </a>
+
                         </div>
-                        <div style="background-color: #0f1419; padding: 15px; border-radius: 4px; border-left: 4px solid #555555;">
-                            <code style="color: #D2B48C; font-family: 'Courier New', monospace;">
-                                git clone https://github.com/World-Domination-Software/GameServer-Panel.git
-                            </code>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6">
-                    <div class="download-section" style="background-color: #1C1C1C; padding: 30px; border-radius: 8px; border: 1px solid #555555;">
-                        <h3 style="color: #8B4513; margin-bottom: 20px;">
-                            <i class="fas fa-rocket" style="margin-right: 10px;"></i>
-                            Quick Start Guide
-                        </h3>
-                        <p style="color: #8B7355; margin-bottom: 20px;">
-                            Get GameServer Panel running in minutes with our automated installer.
-                        </p>
-                        <ol style="color: #8B7355; margin-bottom: 25px; padding-left: 20px;">
-                            <li style="margin-bottom: 8px;">Download the latest release package</li>
+
+                        <!-- Getting Started -->                        <div style="background-color: #0f1419; padding: 15px; border-radius: 4px; border-left: 4px solid #555555;">
+
+                        <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">                            <code style="color: #D2B48C; font-family: 'Courier New', monospace; font-size: 12px;">
+
+                            <h3 style="color: #8B4513; margin-bottom: 20px;">Getting Started</h3>                                git clone https://github.com/GameServerPanel/GSP.git
+
+                            <ol style="color: #8B7355; font-size: 16px; line-height: 2; padding-left: 30px;">                            </code>
+
+                                <li><strong style="color: #D2B48C;">Clone the repositories:</strong> Download the panel and agent software from GitHub</li>                        </div>
+
+                                <li><strong style="color: #D2B48C;">Install the panel:</strong> Follow the installation guide to set up the web panel on your server</li>                    </div>
+
+                                <li><strong style="color: #D2B48C;">Deploy agents:</strong> Install agent software on machines that will host game servers</li>                </div>
+
+                                <li><strong style="color: #D2B48C;">Configure billing:</strong> Set up your PayPal account and payment settings</li>                
+
+                                <li><strong style="color: #D2B48C;">Add game templates:</strong> Configure which games you want to offer to customers</li>                <div class="col-md-6">
+
+                                <li><strong style="color: #D2B48C;">Launch your business:</strong> Start accepting orders and provisioning game servers!</li>                    <div class="download-section" style="background-color: #1C1C1C; padding: 30px; border-radius: 8px; border: 1px solid #555555;">
+
+                            </ol>                        <h3 style="color: #8B4513; margin-bottom: 20px;">
+
+                            <div style="margin-top: 30px; padding: 20px; background: #2a2a2a; border-left: 4px solid #8B4513; border-radius: 4px;">                            <i class="fas fa-rocket" style="margin-right: 10px;"></i>
+
+                                <p style="color: #8B7355; margin: 0;">                            Quick Start Guide
+
+                                    <i class="fas fa-info-circle" style="color: #8B4513; margin-right: 10px;"></i>                        </h3>
+
+                                    <strong>Documentation:</strong> Comprehensive setup guides and documentation are included in each repository.                         <p style="color: #8B7355; margin-bottom: 20px;">
+
+                                    Join our Discord community for support and updates.                            Get GameServer Panel running in minutes with our automated installer.
+
+                                </p>                        </p>
+
+                            </div>                        <ol style="color: #8B7355; margin-bottom: 25px; padding-left: 20px;">
+
+                        </div>                            <li style="margin-bottom: 8px;">Download the latest release package</li>
+
                             <li style="margin-bottom: 8px;">Run the installation script on your Linux server</li>
-                            <li style="margin-bottom: 8px;">Configure your first game server</li>
-                            <li>Start managing your gaming community!</li>
-                        </ol>
-                        <div style="background-color: #0f1419; padding: 15px; border-radius: 4px; border-left: 4px solid #8B4513; font-family: 'Courier New', monospace; font-size: 13px;">
-                            <div style="color: #8B7355; margin-bottom: 5px;"># Download and install</div>
-                            <div style="color: #D2B48C;">curl -fsSL https://install.gameserver-panel.org | sudo bash</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row" style="margin-top: 40px;">
-                <div class="col-md-12">
-                    <div class="requirements-section" style="background-color: #2A2A2A; padding: 40px; border-radius: 8px;">
-                        <h3 style="color: #8B4513; margin-bottom: 30px; text-align: center;">
+
+                        <!-- Call to Action -->                            <li style="margin-bottom: 8px;">Configure your first game server</li>
+
+                        <div style="text-align: center; padding: 40px;">                            <li>Start managing your gaming community!</li>
+
+                            <h3 style="color: #8B4513; margin-bottom: 20px;">Ready to Build Your Hosting Business?</h3>                        </ol>
+
+                            <p style="color: #8B7355; font-size: 16px; margin-bottom: 30px;">                        <div style="background-color: #0f1419; padding: 15px; border-radius: 4px; border-left: 4px solid #8B4513; font-family: 'Courier New', monospace; font-size: 13px;">
+
+                                Download the source code and start your commercial game server hosting company today.                            <div style="color: #8B7355; margin-bottom: 5px;"># Download and install</div>
+
+                            </p>                            <div style="color: #D2B48C;">curl -fsSL https://install.gameserver-panel.org | sudo bash</div>
+
+                            <a href="https://github.com/GameServerPanel/GSP" target="_blank" style="display: inline-block; background: #8B4513; color: #E8E4D8; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; margin-right: 15px;">                        </div>
+
+                                <i class="fab fa-github" style="margin-right: 8px;"></i>                    </div>
+
+                                View on GitHub                </div>
+
+                            </a>            </div>
+
+                            <a href="/contact.php" style="display: inline-block; background: transparent; color: #8B4513; border: 1px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease;">            
+
+                                <i class="fas fa-envelope" style="margin-right: 8px;"></i>            <div class="row" style="margin-top: 40px;">
+
+                                Contact Us                <div class="col-md-12">
+
+                            </a>                    <div class="requirements-section" style="background-color: #2A2A2A; padding: 40px; border-radius: 8px;">
+
+                        </div>                        <h3 style="color: #8B4513; margin-bottom: 30px; text-align: center;">
+
                             <i class="fas fa-server" style="margin-right: 10px;"></i>
                             System Requirements
                         </h3>
@@ -533,76 +749,7 @@
         </div>
     </section>
 
-    <!-- Related Projects Section -->
-    <section style="padding: 60px 0; background: linear-gradient(135deg, rgba(139, 69, 19, 0.1) 0%, rgba(210, 180, 140, 0.05) 100%);">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h2 style="color: #8B4513; margin-bottom: 30px;">
-                        <i class="fas fa-link" style="margin-right: 10px;"></i>
-                        Related Projects
-                    </h2>
-                    <p style="color: #8B7355; margin-bottom: 40px; font-size: 16px;">
-                        Explore our other gaming-focused initiatives and software solutions
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="feature-card text-center">
-                        <div class="feature-icon">
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <h3 style="color: #8B4513; margin-bottom: 15px;">GameServers World</h3>
-                        <p style="color: #8B7355; margin-bottom: 25px;">
-                            Professional game server hosting services with global infrastructure 
-                            and enterprise-grade support.
-                        </p>
-                        <a href="../gameservers-world/index.php" class="btn-wds">
-                            <i class="fas fa-server" style="margin-right: 8px;"></i>
-                            View Project
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="feature-card text-center">
-                        <div class="feature-icon">
-                            <i class="fas fa-comments"></i>
-                        </div>
-                        <h3 style="color: #8B4513; margin-bottom: 15px;">BBS Revival</h3>
-                        <p style="color: #8B7355; margin-bottom: 25px;">
-                            Modern bulletin board system bringing classic community 
-                            features to contemporary gaming environments.
-                        </p>
-                        <a href="../bbs-revival/index.php" class="btn-wds">
-                            <i class="fas fa-terminal" style="margin-right: 8px;"></i>
-                            View Project
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="feature-card text-center">
-                        <div class="feature-icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <h3 style="color: #8B4513; margin-bottom: 15px;">Space 4X</h3>
-                        <p style="color: #8B7355; margin-bottom: 25px;">
-                            Strategic space exploration game featuring multiplayer 
-                            campaigns and advanced diplomacy systems.
-                        </p>
-                        <a href="../space-4x/index.php" class="btn-wds">
-                            <i class="fas fa-satellite" style="margin-right: 8px;"></i>
-                            View Project
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="cta-section" style="margin: 80px auto; max-width: 800px;">
+    <div class="cta-section" style="margin: 80px auto; max-width: 800px; padding: 0 20px;">
         <h2 style="color: #8B4513; margin-bottom: 20px;">Ready to Get Started?</h2>
         <p style="color: #8B7355; font-size: 18px; margin-bottom: 30px;">
             Join the community of hosting providers using GameServer Panel to power their 
