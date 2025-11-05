@@ -89,7 +89,7 @@
                             <p style="color: #8B7355; font-size: 16px; margin-bottom: 30px;">
                                 Join our mailing list for exclusive development updates and early access opportunities.
                             </p>
-                            <a href="/contact" style="display: inline-block; background: #8B4513; color: #0f1419; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold;">
+                            <a href="/contact.php" style="display: inline-block; background: #8B4513; color: #0f1419; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold;">
                                 Stay Updated
                             </a>
                         </div>
