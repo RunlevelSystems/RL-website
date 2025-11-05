@@ -3,6 +3,27 @@
 ## Site Overview
 World Domination Software (WDS) is a worker co-op focused on game development, server hosting, and business applications. The website showcases our projects, facilitates community engagement, and provides information about joining our co-op.
 
+## Architecture Overview
+
+### Core Structure
+- **PHP-based**: Server-side includes system with modular components (`includes/`)
+- **Single-page projects**: `projects.php` loads project content via AJAX from `/projects/{slug}/` directories
+- **Database integration**: PDO-based authentication against OGP users table (gaming panel integration)
+- **Session management**: Separate namespace sessions with role-based access control
+- **Asset organization**: Unified CSS (`wds-unified.css`), Bootstrap framework, custom JavaScript
+
+### Key Files & Patterns
+- **`includes/navigation.php`**: Smart path detection for both root and project contexts
+- **`includes/db-config.php`**: PDO wrapper with admin authentication functions
+- **`projects.php`**: Dynamic project loading with metadata from `project.json` files
+- **Each project**: Self-contained directory with `index.php` and `project.json` metadata
+
+### Project System Architecture
+- Projects auto-discovered by scanning `/projects/` directories
+- Each project requires `project.json` with title, category, description, and icon
+- AJAX loading keeps users within `projects.php` context - never navigate to separate pages
+- Project sub-files load via `loadProjectFile()` JavaScript function, maintaining context
+
 ## Design Philosophy & Style Guide
 
 ### Color Scheme (Orwellian Theme)
@@ -88,11 +109,23 @@ World Domination Software (WDS) is a worker co-op focused on game development, s
 ## Development Practices
 
 ### File Organization
-- PHP files for pages
-- Includes in `/includes/` (header, footer, navigation)
-- Assets in `/assets/` (css, js, images)
-- Projects in `/projects/{project-slug}/`
-- CSS unified in `wds-unified.css`
+- **Main pages**: PHP files at root (`index.php`, `projects.php`, `contact.php`, etc.)
+- **Includes**: `/includes/` - header, footer, navigation, config, database functions
+- **Assets**: `/assets/` organized by type - `css/`, `js/`, `images/`, `fonts/`
+- **Projects**: `/projects/{project-slug}/` with `index.php` and `project.json`
+- **CSS**: Unified in `wds-unified.css` - single source of truth for all styling
+
+### Authentication & Database
+- **Database**: PDO connection to external OGP gaming panel database
+- **Authentication**: Functions in `db-config.php` - `verifyAdminLogin()`, `isLoggedInAdmin()`
+- **Sessions**: `$_SESSION['wds_admin_user']` for logged-in state, role-based access
+- **Protection**: Define `WDS_SYSTEM` constant to prevent direct access to includes
+
+### JavaScript Patterns
+- **Project loading**: `showProject(slug, title, category)` via XMLHttpRequest
+- **Sub-file loading**: `loadProjectFile(filename)` maintains project context
+- **DOM parsing**: Extract content from AJAX responses using DOMParser
+- **Navigation**: Smart path detection for both XAMPP local and production environments
 
 ### CSS Best Practices
 - All styles should be in `wds-unified.css` for consistency
@@ -113,17 +146,47 @@ World Domination Software (WDS) is a worker co-op focused on game development, s
 - Staff-only content should be hidden from public users
 - Session management handled via PHP sessions
 
-## Common Issues to Avoid
-1. **Text Shadows**: Never use text shadows
-2. **Inconsistent Colors**: Always use the defined color palette
-3. **Selected Button States**: Buttons should not look "selected" by default
-4. **Black Hover Backgrounds**: Avoid harsh black backgrounds on hover (use rust instead)
-5. **Separate Page Loads**: Project sub-files should load in-page, not as separate pages
-6. **Unreadable Text**: Always ensure sufficient contrast on all backgrounds
-7. **Phone Numbers in Forms**: Only include when absolutely necessary
+## Critical Implementation Patterns
 
-## Deployment
-- Production site at worlddomination.dev
-- Test changes thoroughly before deployment
-- Maintain backwards compatibility
-- Keep documentation updated
+### Project System Workflow
+1. **Discovery**: `projects.php` scans `/projects/` directories for `project.json` files
+2. **Cards**: Generate project cards with metadata (title, category, description, icon)
+3. **Loading**: AJAX calls to `projects/{slug}/index.php` load content in-place
+4. **Context**: All project files use `loadProjectFile()` to stay within project view
+5. **Navigation**: Back button shows projects overview, maintains smooth transitions
+
+### Database Integration Example
+```php
+// Always define system constant first
+define('WDS_SYSTEM', true);
+require_once 'includes/db-config.php';
+
+// Check authentication
+if (!isLoggedInAdmin()) {
+    header('Location: /login.php?redirect=' . urlencode($_SERVER['REQUEST_URI']));
+    exit;
+}
+```
+
+### Path Detection Pattern (from `navigation.php`)
+```php
+// Universal path detection for XAMPP and production
+$current_url = $_SERVER['REQUEST_URI'];
+$is_in_projects = (strpos($current_url, '/projects/') !== false);
+$base_path = $is_in_projects ? '../' : '';
+```
+
+## Common Issues to Avoid
+1. **Text Shadows**: Never use text shadows - breaks Orwellian aesthetic
+2. **Direct Page Navigation**: Project sub-files must load via AJAX, not separate pages
+3. **Missing System Constant**: Always define `WDS_SYSTEM` before including db-config
+4. **Hardcoded Paths**: Use path detection pattern for XAMPP/production compatibility
+5. **Session Conflicts**: Use `wds_` prefix for all session variables
+6. **Inconsistent Colors**: Always use the defined Orwellian color palette
+7. **Selected Button States**: Buttons should not look "selected" by default
+
+## Deployment & Environment
+- **Production**: worlddomination.dev (shared hosting environment)
+- **Development**: XAMPP local server (different path structure)
+- **Database**: External MySQL connection to gaming panel database
+- **Sessions**: Namespace isolation from gaming panel sessions
