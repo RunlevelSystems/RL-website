@@ -223,7 +223,7 @@ nav,
 }
 
 /* Show mobile toggle button only on mobile */
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
     .navbar-nav > li {
         display: block !important;
         float: none !important;
@@ -679,10 +679,7 @@ a[style*="background: white"] {
 
 /* Keep rust colors as they match the Orwellian theme */
 *[style*="color: #8B7355"],
-*[style*="color:#8B7355"] {
-    color: #8B7355 !important;
-}
-
+*[style*="color:#8B7355"],
 *[style*="color: #D2B48C"],
 *[style*="color:#D2B48C"] {
     color: #8B7355 !important;
