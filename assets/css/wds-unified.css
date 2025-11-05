@@ -3,18 +3,20 @@
  * WORLD DOMINATION SOFTWARE - UNIFIED CSS
  * ============================================
  * 
- * SIMPLIFIED COLOR SCHEME:
- * - Background: #0f0f1e (Dark Navy - main content areas)
- * - Content Boxes: #1a1a2e (Slightly lighter navy)
- * - Text: #e0e0e0 (Light gray for readability)
- * - Headings: #64b5f6 (Sky Blue)
- * - Accent/Links: #81c784 (Soft Green)
- * - Buttons Primary: #64b5f6 (Sky Blue)
- * - Buttons Secondary: #4B4B4B (Dark Gray)
- * - Warning/Highlight: #ffb74d (Orange)
+ * ORWELLIAN COLOR SCHEME:
+ * - Header Background: #000000 (Pure Black - header/logo area)
+ * - Main Content Background: #E8E4D8 (Off-white/tan for readability)
+ * - Content Boxes: #D4CFC0 (Lighter tan)
+ * - Text on Light: #1a1a1a (Dark gray for readability on tan)
+ * - Headings: #4a4a4a (Dark gray)
+ * - Accent/Links: #8B4513 (Rust/brown - Orwellian accent)
+ * - Secondary Links: #6B3410 (Darker brown)
+ * - Buttons Primary: #8B4513 (Rust brown)
+ * - Buttons Secondary: #3a3a3a (Dark Gray)
+ * - Logo Color: #B8621B (Rusty orange-brown)
  * 
  * NO TEXT SHADOWS - EVER!
- * ALL BUTTONS HAVE DARK BACKGROUNDS
+ * ORWELLIAN AESTHETIC: BROWNS, GRAYS, TANS
  * CONSISTENT ACROSS ALL PAGES
  */
 
@@ -33,8 +35,8 @@
 }
 
 body {
-    background: #0f0f1e !important;
-    color: #e0e0e0 !important;
+    background: #E8E4D8 !important;
+    color: #1a1a1a !important;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
     line-height: 1.6 !important;
     margin: 0;
@@ -53,7 +55,7 @@ body {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-    color: #64b5f6 !important;
+    color: #4a4a4a !important;
     font-weight: 600 !important;
     text-shadow: none !important;
     margin-top: 20px !important;
@@ -68,20 +70,20 @@ h5, .h5 { font-size: 1.2em !important; }
 h6, .h6 { font-size: 1em !important; }
 
 p {
-    color: #e0e0e0 !important;
+    color: #1a1a1a !important;
     line-height: 1.8 !important;
     margin-bottom: 15px !important;
     text-shadow: none !important;
 }
 
 strong, b {
-    color: #81c784 !important;
+    color: #8B4513 !important;
     font-weight: 700 !important;
     text-shadow: none !important;
 }
 
 a {
-    color: #81c784 !important;
+    color: #8B4513 !important;
     text-decoration: none !important;
     text-shadow: none !important;
     transition: color 0.3s ease !important;
@@ -89,17 +91,17 @@ a {
 
 a:hover,
 a:focus {
-    color: #64b5f6 !important;
+    color: #6B3410 !important;
     text-decoration: underline !important;
 }
 
 ul, ol {
-    color: #e0e0e0 !important;
+    color: #1a1a1a !important;
     padding-left: 30px !important;
 }
 
 li {
-    color: #e0e0e0 !important;
+    color: #1a1a1a !important;
     padding: 5px 0 !important;
     text-shadow: none !important;
 }
@@ -117,9 +119,9 @@ a[class*="btn"],
 .btn-primary,
 .btn-robot,
 .btn-wds {
-    background: #64b5f6 !important;
-    color: #0f0f1e !important;
-    border: 1px solid #5aa3e0 !important;
+    background: #8B4513 !important;
+    color: #E8E4D8 !important;
+    border: 1px solid #6B3410 !important;
     padding: 12px 24px !important;
     font-weight: 600 !important;
     border-radius: 5px !important;
@@ -134,9 +136,9 @@ button:hover,
 input[type="submit"]:hover,
 input[type="button"]:hover,
 a[class*="btn"]:hover {
-    background: #81c784 !important;
-    color: #0f0f1e !important;
-    border-color: #6fb07a !important;
+    background: #6B3410 !important;
+    color: #E8E4D8 !important;
+    border-color: #4a2510 !important;
     transform: translateY(-2px) !important;
     text-decoration: none !important;
 }
@@ -145,22 +147,22 @@ a[class*="btn"]:hover {
 .btn-secondary,
 a[style*="background: transparent"][style*="border"] {
     background: transparent !important;
-    color: #64b5f6 !important;
-    border: 2px solid #64b5f6 !important;
+    color: #8B4513 !important;
+    border: 2px solid #8B4513 !important;
 }
 
 .btn-secondary:hover,
 a[style*="background: transparent"][style*="border"]:hover {
-    background: #64b5f6 !important;
-    color: #0f0f1e !important;
+    background: #8B4513 !important;
+    color: #E8E4D8 !important;
 }
 
 /* Warning/Alert buttons */
 .btn-warning,
 .btn-danger {
-    background: #ffb74d !important;
-    color: #0f0f1e !important;
-    border-color: #f5a63d !important;
+    background: #B8621B !important;
+    color: #E8E4D8 !important;
+    border-color: #8B4513 !important;
 }
 
 /* ============================================
@@ -171,15 +173,32 @@ a[style*="background: transparent"][style*="border"]:hover {
 .navbar-default,
 header,
 .site-header-bg,
-nav {
-    background: #16213e !important;
+nav,
+#header,
+.main-header {
+    background: #000000 !important;
     border: none !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
 }
 
+/* Center navigation on desktop */
+.navbar-nav {
+    float: none !important;
+    text-align: center !important;
+}
+
+.navbar-nav > li {
+    display: inline-block !important;
+    float: none !important;
+}
+
+.navbar-collapse {
+    text-align: center !important;
+}
+
 .navbar-nav > li > a,
 .nav > li > a {
-    color: #e0e0e0 !important;
+    color: #E8E4D8 !important;
     text-shadow: none !important;
     padding: 15px 20px !important;
 }
@@ -187,13 +206,38 @@ nav {
 .navbar-nav > li > a:hover,
 .navbar-nav > li > a:focus,
 .nav > li > a:hover {
-    background: rgba(100, 181, 246, 0.2) !important;
-    color: #64b5f6 !important;
+    background: rgba(139, 69, 19, 0.3) !important;
+    color: #B8621B !important;
 }
 
 .navbar-nav > li.active > a {
-    background: #64b5f6 !important;
-    color: #0f0f1e !important;
+    background: #8B4513 !important;
+    color: #E8E4D8 !important;
+}
+
+/* Hide mobile toggle button on desktop */
+@media (min-width: 768px) {
+    .navbar-toggle {
+        display: none !important;
+    }
+}
+
+/* Show mobile toggle button only on mobile */
+@media (max-width: 767.98px) {
+    .navbar-nav > li {
+        display: block !important;
+        float: none !important;
+    }
+    
+    .navbar-toggle {
+        display: block !important;
+        background: #8B4513 !important;
+        border-color: #6B3410 !important;
+    }
+    
+    .navbar-toggle .icon-bar {
+        background-color: #E8E4D8 !important;
+    }
 }
 
 /* ============================================
@@ -201,8 +245,16 @@ nav {
    ============================================ */
 
 section {
-    background: #0f0f1e !important;
+    background: #E8E4D8 !important;
     padding: 60px 0 !important;
+}
+
+/* Keep header and footer sections black */
+section#header,
+section.main-header,
+section#footer-widget,
+section.footer-widget {
+    background: #000000 !important;
 }
 
 /* Content boxes with slight contrast */
@@ -212,8 +264,8 @@ div[style*="background: #1a1a2e"],
 .boxed,
 .panel,
 .card {
-    background: rgba(26, 26, 46, 0.8) !important;
-    border: 1px solid rgba(100, 181, 246, 0.2) !important;
+    background: rgba(212, 207, 192, 0.8) !important;
+    border: 1px solid rgba(139, 69, 19, 0.3) !important;
     border-radius: 8px !important;
     padding: 30px !important;
     margin-bottom: 30px !important;
@@ -223,8 +275,8 @@ div[style*="background: #1a1a2e"],
 .feature-card,
 .service-box,
 .project-card {
-    background: rgba(26, 26, 46, 0.6) !important;
-    border: 1px solid rgba(100, 181, 246, 0.3) !important;
+    background: rgba(212, 207, 192, 0.6) !important;
+    border: 1px solid rgba(139, 69, 19, 0.3) !important;
     border-radius: 10px !important;
     padding: 25px !important;
     transition: all 0.3s ease !important;
@@ -233,8 +285,8 @@ div[style*="background: #1a1a2e"],
 .feature-card:hover,
 .service-box:hover,
 .project-card:hover {
-    background: rgba(100, 181, 246, 0.1) !important;
-    border-color: #64b5f6 !important;
+    background: rgba(139, 69, 19, 0.1) !important;
+    border-color: #8B4513 !important;
     transform: translateY(-5px) !important;
 }
 
@@ -244,8 +296,8 @@ div[style*="background: #1a1a2e"],
 
 .info-box,
 .alert-info {
-    background: rgba(100, 181, 246, 0.1) !important;
-    border-left: 4px solid #64b5f6 !important;
+    background: rgba(139, 69, 19, 0.1) !important;
+    border-left: 4px solid #8B4513 !important;
     padding: 15px !important;
     margin: 15px 0 !important;
     border-radius: 5px !important;
@@ -253,8 +305,8 @@ div[style*="background: #1a1a2e"],
 
 .warning-box,
 .alert-warning {
-    background: rgba(255, 183, 77, 0.1) !important;
-    border-left: 4px solid #ffb74d !important;
+    background: rgba(184, 98, 27, 0.1) !important;
+    border-left: 4px solid #B8621B !important;
     padding: 15px !important;
     margin: 15px 0 !important;
     border-radius: 5px !important;
@@ -262,8 +314,8 @@ div[style*="background: #1a1a2e"],
 
 .success-box,
 .alert-success {
-    background: rgba(129, 199, 132, 0.1) !important;
-    border-left: 4px solid #81c784 !important;
+    background: rgba(139, 69, 19, 0.1) !important;
+    border-left: 4px solid #8B4513 !important;
     padding: 15px !important;
     margin: 15px 0 !important;
     border-radius: 5px !important;
@@ -277,12 +329,12 @@ table {
     width: 100% !important;
     border-collapse: collapse !important;
     margin: 20px 0 !important;
-    background: rgba(0, 0, 0, 0.3) !important;
+    background: rgba(212, 207, 192, 0.5) !important;
 }
 
 th {
-    background: rgba(100, 181, 246, 0.3) !important;
-    color: #64b5f6 !important;
+    background: rgba(139, 69, 19, 0.3) !important;
+    color: #8B4513 !important;
     padding: 12px !important;
     text-align: left !important;
     font-weight: bold !important;
@@ -291,13 +343,13 @@ th {
 
 td {
     padding: 10px 12px !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-    color: #e0e0e0 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    color: #1a1a1a !important;
     text-shadow: none !important;
 }
 
 tr:hover {
-    background: rgba(100, 181, 246, 0.1) !important;
+    background: rgba(139, 69, 19, 0.1) !important;
 }
 
 /* ============================================
@@ -310,9 +362,9 @@ input[type="password"],
 input[type="search"],
 textarea,
 select {
-    background: #1a1a2e !important;
-    color: #e0e0e0 !important;
-    border: 1px solid rgba(100, 181, 246, 0.3) !important;
+    background: #FFFFFF !important;
+    color: #1a1a1a !important;
+    border: 1px solid rgba(139, 69, 19, 0.3) !important;
     padding: 10px 15px !important;
     border-radius: 5px !important;
     font-size: 14px !important;
@@ -322,8 +374,8 @@ input:focus,
 textarea:focus,
 select:focus {
     outline: none !important;
-    border-color: #64b5f6 !important;
-    box-shadow: 0 0 5px rgba(100, 181, 246, 0.3) !important;
+    border-color: #8B4513 !important;
+    box-shadow: 0 0 5px rgba(139, 69, 19, 0.3) !important;
 }
 
 /* ============================================
@@ -333,8 +385,8 @@ select:focus {
 code,
 pre,
 .code-block {
-    background: rgba(0, 0, 0, 0.5) !important;
-    color: #ffb74d !important;
+    background: rgba(0, 0, 0, 0.1) !important;
+    color: #8B4513 !important;
     padding: 3px 8px !important;
     border-radius: 4px !important;
     font-family: 'Courier New', monospace !important;
@@ -358,23 +410,23 @@ pre {
 }
 
 .stat-card {
-    background: rgba(129, 199, 132, 0.1) !important;
+    background: rgba(139, 69, 19, 0.1) !important;
     padding: 20px !important;
     border-radius: 8px !important;
-    border: 1px solid rgba(129, 199, 132, 0.3) !important;
+    border: 1px solid rgba(139, 69, 19, 0.3) !important;
     text-align: center !important;
 }
 
 .stat-value {
     font-size: 2em !important;
-    color: #81c784 !important;
+    color: #8B4513 !important;
     font-weight: bold !important;
     text-shadow: none !important;
 }
 
 .stat-label {
     font-size: 0.9em !important;
-    color: #aaa !important;
+    color: #666 !important;
     text-shadow: none !important;
 }
 
@@ -386,15 +438,15 @@ pre {
 .wds-hero,
 .hero-hook,
 .project-hero {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
-    color: #e0e0e0 !important;
+    background: linear-gradient(135deg, #D4CFC0 0%, #C8C3B4 100%) !important;
+    color: #1a1a1a !important;
     padding: 80px 20px !important;
     text-align: center !important;
 }
 
 .hero h1,
 .hero h2 {
-    color: #64b5f6 !important;
+    color: #4a4a4a !important;
     text-shadow: none !important;
 }
 
@@ -404,15 +456,15 @@ pre {
 
 .breadcrumb,
 .breadcrumbs {
-    background: #16213e !important;
-    color: #e0e0e0 !important;
+    background: #D4CFC0 !important;
+    color: #1a1a1a !important;
     padding: 10px 20px !important;
     border-radius: 0 !important;
 }
 
 .breadcrumb a,
 .breadcrumbs a {
-    color: #81c784 !important;
+    color: #8B4513 !important;
     text-shadow: none !important;
 }
 
@@ -424,20 +476,20 @@ footer,
 .footer,
 .footer-widget,
 section.footer-widget {
-    background: #16213e !important;
-    color: #e0e0e0 !important;
+    background: #000000 !important;
+    color: #E8E4D8 !important;
     padding: 40px 0 !important;
-    border-top: 2px solid #64b5f6 !important;
+    border-top: 2px solid #8B4513 !important;
 }
 
 footer a,
 .footer a {
-    color: #81c784 !important;
+    color: #B8621B !important;
 }
 
 footer h1, footer h2, footer h3, footer h4,
 .footer h1, .footer h2, .footer h3, .footer h4 {
-    color: #64b5f6 !important;
+    color: #B8621B !important;
 }
 
 /* ============================================
@@ -453,13 +505,13 @@ footer h1, footer h2, footer h3, footer h4,
 
 .feature-icon {
     font-size: 48px !important;
-    color: #64b5f6 !important;
+    color: #8B4513 !important;
     margin-bottom: 20px !important;
     text-shadow: none !important;
 }
 
 .tech-stack {
-    background: #1a1a2e !important;
+    background: #D4CFC0 !important;
     border-radius: 8px !important;
     padding: 20px !important;
     margin: 20px 0 !important;
@@ -467,9 +519,9 @@ footer h1, footer h2, footer h3, footer h4,
 
 .tech-badge {
     display: inline-block !important;
-    background: #1a1a2e !important;
-    color: #81c784 !important;
-    border: 1px solid rgba(129, 199, 132, 0.3) !important;
+    background: #E8E4D8 !important;
+    color: #8B4513 !important;
+    border: 1px solid rgba(139, 69, 19, 0.3) !important;
     padding: 8px 15px !important;
     border-radius: 20px !important;
     font-size: 14px !important;
@@ -480,10 +532,10 @@ footer h1, footer h2, footer h3, footer h4,
 }
 
 .tech-badge:hover {
-    background: rgba(129, 199, 132, 0.2) !important;
-    color: #64b5f6 !important;
+    background: rgba(139, 69, 19, 0.2) !important;
+    color: #6B3410 !important;
     transform: translateY(-2px) !important;
-    border-color: #64b5f6 !important;
+    border-color: #8B4513 !important;
 }
 
 /* ============================================
@@ -491,8 +543,8 @@ footer h1, footer h2, footer h3, footer h4,
    ============================================ */
 
 .cta-section {
-    background: rgba(26, 26, 46, 0.5) !important;
-    border: 2px solid rgba(100, 181, 246, 0.3) !important;
+    background: rgba(212, 207, 192, 0.5) !important;
+    border: 2px solid rgba(139, 69, 19, 0.3) !important;
     border-radius: 12px !important;
     padding: 40px !important;
     text-align: center !important;
@@ -516,12 +568,12 @@ footer h1, footer h2, footer h3, footer h4,
 }
 
 .highlight {
-    color: #ffb74d !important;
+    color: #B8621B !important;
     font-weight: bold !important;
 }
 
 .muted {
-    color: #aaa !important;
+    color: #666 !important;
 }
 
 /* ============================================
@@ -558,6 +610,56 @@ footer h1, footer h2, footer h3, footer h4,
 }
 
 /* ============================================
+   HEADER/INTRO SECTION SPECIFICS
+   ============================================ */
+
+.intro,
+.intro-fixed-height {
+    background: #000000 !important;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.5) !important;
+}
+
+.section-bg {
+    background: #E8E4D8 !important;
+}
+
+/* History section specific styling */
+#history,
+.history {
+    background: #E8E4D8 !important;
+}
+
+#history .container-fluid,
+.history .container-fluid {
+    background: #E8E4D8 !important;
+}
+
+#history .title-box p,
+#history .title-box h2,
+.history .title-box p,
+.history .title-box h2 {
+    color: #4a4a4a !important;
+}
+
+/* Ensure dropdown menus are readable */
+.dropdown-menu {
+    background: #E8E4D8 !important;
+    border: 1px solid #8B4513 !important;
+}
+
+.dropdown-menu > li > a {
+    color: #1a1a1a !important;
+}
+
+.dropdown-menu > li > a:hover {
+    background: rgba(139, 69, 19, 0.2) !important;
+    color: #8B4513 !important;
+}
+
+/* ============================================
    OVERRIDE ALL INLINE STYLES THAT CONFLICT
    ============================================ */
 
@@ -571,22 +673,22 @@ button[style*="background:white"],
 a[style*="background: #fff"],
 a[style*="background:#fff"],
 a[style*="background: white"] {
-    background: #64b5f6 !important;
-    color: #0f0f1e !important;
+    background: #8B4513 !important;
+    color: #E8E4D8 !important;
 }
 
-/* Fix any remaining light text on light backgrounds */
+/* Keep rust colors as they match the Orwellian theme */
 *[style*="color: #8B7355"],
 *[style*="color:#8B7355"],
 *[style*="color: #D2B48C"],
 *[style*="color:#D2B48C"] {
-    color: #e0e0e0 !important;
+    color: #8B7355 !important;
 }
 
-/* Fix any remaining rust backgrounds to dark theme */
+/* Keep rust/brown backgrounds as they match the theme */
 *[style*="background: #8B4513"],
 *[style*="background:#8B4513"] {
-    background: #1a1a2e !important;
+    background: #8B4513 !important;
 }
 
 /* ============================================

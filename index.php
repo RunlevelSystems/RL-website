@@ -46,55 +46,56 @@
 <section class="wds-hero" aria-label="Company Overview">
   <style>
     .wds-hero { 
-      /* Higher contrast for black page backgrounds */
-      --wds-primary: #B8621B;   /* brighter rust accent for better contrast */
-      --wds-bg-top: #0f1419;    /* lighter than pure black for separation */
-      --wds-bg-btm: #141b22;
-      --wds-text: #E6D3B7;      /* brighter tan for better readability */
-      --wds-muted: #C4A676;     /* much brighter muted text for better contrast */
-      --wds-card: #0f1620;      /* cards stand out from section bg */
-      --wds-border: #334155;    /* stronger border for definition */
+      /* Orwellian color palette - tan/off-white with rust accents */
+      --wds-primary: #8B4513;   /* rust brown accent */
+      --wds-bg-top: #E8E4D8;    /* off-white tan background */
+      --wds-bg-btm: #D4CFC0;    /* slightly darker tan */
+      --wds-text: #1a1a1a;      /* dark text for readability */
+      --wds-muted: #666666;     /* muted gray text */
+      --wds-card: #D4CFC0;      /* lighter tan for cards */
+      --wds-border: #B8A996;    /* tan border */
 
       isolation: isolate;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
       color: var(--wds-text);
       background: linear-gradient(180deg, var(--wds-bg-top), var(--wds-bg-btm));
-      border: 1px solid rgba(255,255,255,.08);
+      border: 1px solid var(--wds-border);
       border-radius: 16px; padding: 36px; margin: 24px auto; max-width: 1100px;
-      box-shadow: 0 16px 40px rgba(0,0,0,.55);
+      box-shadow: 0 8px 20px rgba(0,0,0,.15);
       overflow: hidden; position: relative;
     }
     .wds-hero:before {
       content: ""; position: absolute; inset: -25% -10% auto -10%; height: 220px;
-      background: radial-gradient(60% 100% at 10% 50%, rgba(34,197,94,.35), transparent 60%);
+      background: radial-gradient(60% 100% at 10% 50%, rgba(139,69,19,.15), transparent 60%);
       filter: blur(24px); pointer-events: none;
     }
     .wds-wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: start; }
     @media (max-width: 900px){ .wds-wrap { grid-template-columns: 1fr; } }
     .wds-eyebrow { color: var(--wds-muted); letter-spacing: .08em; text-transform: uppercase; font-size: 12px; margin-bottom: 10px; }
     /* EDIT THIS LINE if you want a different headline */
-    .wds-title { font-size: clamp(30px, 4vw, 44px); line-height: 1.05; margin: 0 0 12px; }
-    .wds-tagline { font-size: clamp(16px, 2.4vw, 19px); color: #e2e8f0; margin: 0 0 18px; }
+    .wds-title { font-size: clamp(30px, 4vw, 44px); line-height: 1.05; margin: 0 0 12px; color: var(--wds-text); }
+    .wds-tagline { font-size: clamp(16px, 2.4vw, 19px); color: #4a4a4a; margin: 0 0 18px; }
     .wds-motto { font-size: 15px; color: var(--wds-muted); margin: 0 0 22px; }
     .wds-cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0 26px; }  
     .wds-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 16px; border-radius: 999px; text-decoration: none; border: 1px solid var(--wds-border); font-weight: 700; }
-    .wds-btn--primary { background: var(--wds-primary); color: #07210f; border-color: transparent; }
-    .wds-btn--ghost { background: rgba(255,255,255,.02); color: #e8fff3; }
-    .wds-btn:hover { filter: brightness(1.05); transform: translateY(-1px); transition: .15s ease; }
+    .wds-btn--primary { background: var(--wds-primary); color: #E8E4D8; border-color: transparent; }
+    .wds-btn--ghost { background: rgba(139,69,19,.08); color: var(--wds-text); border-color: var(--wds-primary); }
+    .wds-btn:hover { filter: brightness(0.95); transform: translateY(-1px); transition: .15s ease; }
     .wds-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
     @media (max-width: 900px){ .wds-cards { grid-template-columns: 1fr; } }
-    .wds-card { background: linear-gradient(180deg, var(--wds-card), #111a26); border: 1px solid var(--wds-border); border-radius: 14px; padding: 16px; box-shadow: inset 0 1px 0 rgba(255,255,255,.03); }
-    .wds-card h3 { font-size: 16px; margin: 0 0 8px; }
-    .wds-card p { font-size: 14px; color: #e5edf6; margin: 0; }
+    .wds-card { background: linear-gradient(180deg, var(--wds-card), #C8C3B4); border: 1px solid var(--wds-border); border-radius: 14px; padding: 16px; box-shadow: inset 0 1px 0 rgba(255,255,255,.5); }
+    .wds-card h3 { font-size: 16px; margin: 0 0 8px; color: var(--wds-text); }
+    .wds-card p { font-size: 14px; color: #3a3a3a; margin: 0; }
+    .wds-card a { color: var(--wds-primary); text-decoration: underline; }
     .wds-bullets { display: grid; gap: 9px; margin-top: 12px; }
-    .wds-bullet { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; font-size: 14px; color: #e2e8f0; }
-    .wds-check { width: 18px; height: 18px; border-radius: 999px; background: rgba(34,197,94,.15); border: 1px solid rgba(34,197,94,.45); display: inline-grid; place-items: center; font-size: 12px; color: var(--wds-primary); }
+    .wds-bullet { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; font-size: 14px; color: var(--wds-text); }
+    .wds-check { width: 18px; height: 18px; border-radius: 999px; background: rgba(139,69,19,.15); border: 1px solid rgba(139,69,19,.45); display: inline-grid; place-items: center; font-size: 12px; color: var(--wds-primary); }
     .wds-meta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; color: var(--wds-muted); font-size: 13px; }
-    .wds-meta a { color: #a7f3d0; text-decoration: none; }
+    .wds-meta a { color: var(--wds-primary); text-decoration: none; }
     .wds-meta a:hover { text-decoration: underline; }
     .wds-divider { height: 1px; background: var(--wds-border); margin: 20px 0; }
     .wds-small { font-size: 12px; color: var(--wds-muted); }
-    .wds-hero:after { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 28px 28px; opacity: .08; pointer-events: none; }
+    .wds-hero:after { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(0,0,0,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.03) 1px, transparent 1px); background-size: 28px 28px; opacity: .3; pointer-events: none; }
   </style>
 
   <div class="wds-wrap">
