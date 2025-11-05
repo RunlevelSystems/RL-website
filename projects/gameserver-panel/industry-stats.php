@@ -179,10 +179,10 @@
     ?>
 
     <!-- Include Site Header -->
-    <?php include '../includes/header.html'; ?>
+    <?php include '../../includes/header.html'; ?>
     
     <!-- Include Navigation Header -->
-    <?php include '../includes/navigation.php'; ?>
+    <?php include '../../includes/navigation.php'; ?>
 
     <section class="stats-hero">
         <div class="container">
@@ -422,7 +422,7 @@
     </section>
 
     <!-- Include Footer -->
-    <?php include '../includes/footer.php'; ?>
+    <?php include '../../includes/footer.php'; ?>
 
     <script>
         const wdsTheme = {

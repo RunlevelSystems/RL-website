@@ -10,13 +10,13 @@
         <!-- CSS -->
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
-        <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-        <link href="../assets/css/magnific-popup.css" rel="stylesheet">
-        <link href="../assets/css/owl.carousel.css" rel="stylesheet">
-        <link href="../assets/css/owl.carousel.theme.min.css" rel="stylesheet">
-        <link href="../assets/css/ionicons.css" rel="stylesheet">
-        <link href="../assets/css/main.css" rel="stylesheet">
-        <link href="../assets/css/readability-improvements.css" rel="stylesheet">
+        <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../assets/css/magnific-popup.css" rel="stylesheet">
+        <link href="../../assets/css/owl.carousel.css" rel="stylesheet">
+        <link href="../../assets/css/owl.carousel.theme.min.css" rel="stylesheet">
+        <link href="../../assets/css/ionicons.css" rel="stylesheet">
+        <link href="../../assets/css/main.css" rel="stylesheet">
+        <link href="../../assets/css/readability-improvements.css" rel="stylesheet">
     </head>
     <body>
         <?php 
@@ -27,8 +27,8 @@
         $current_project_slug = 'space5x';
         ?>
 
-    <?php include '../includes/header.html'; ?>
-    <?php include '../includes/navigation.php'; ?>
+    <?php include '../../includes/header.html'; ?>
+    <?php include '../../includes/navigation.php'; ?>
 
     <section class="about">
         <div class="container page-bgc">
@@ -307,13 +307,13 @@
         </div>
     </section>
 
-    <?php include '../includes/footer.php'; ?>
+    <?php include '../../includes/footer.php'; ?>
 
     <!-- JavaScript -->
-    <script src="../assets/js/jquery-1.12.3.min.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
-    <script src="../assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="../assets/js/owl.carousel.min.js"></script>
-    <script src="../assets/js/script.js"></script>
+    <script src="../../assets/js/jquery-1.12.3.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="../../assets/js/owl.carousel.min.js"></script>
+    <script src="../../assets/js/script.js"></script>
 </body>
 </html>
