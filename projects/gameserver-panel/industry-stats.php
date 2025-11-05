@@ -380,11 +380,11 @@
                     GameServer Panel provides the tools you need to build a successful game hosting business 
                     in this expanding market. Professional features, commercial billing, and enterprise support included.
                 </p>
-                <a href="../gameserver-panel-admin-guide/index.php" class="back-link" style="margin-right: 20px;">
+                <a href="admin-guide.php" class="back-link" style="margin-right: 20px;">
                     <i class="fas fa-book" style="margin-right: 8px;"></i>
                     View Admin Guide
                 </a>
-                <a href="../contact.php" class="back-link">
+                <a href="../../contact.php" class="back-link">
                     <i class="fas fa-envelope" style="margin-right: 8px;"></i>
                     Contact Us
                 </a>

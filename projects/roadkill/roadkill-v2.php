@@ -116,10 +116,10 @@
                             <p style="color: #8B7355; font-size: 16px; margin-bottom: 30px;">
                                 Join the legion of Roadkill veterans and newcomers preparing for the ultimate vehicular combat experience.
                             </p>
-                            <a href="/contact" style="display: inline-block; background: #8B4513; color: #0f1419; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; margin-right: 15px;">
+                            <a href="../../contact.php" style="display: inline-block; background: #8B4513; color: #0f1419; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; margin-right: 15px;">
                                 Join Alpha Testing
                             </a>
-                            <a href="/projects/roadkill" style="display: inline-block; background: transparent; color: #8B4513; border: 1px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold;">
+                            <a href="index.php" style="display: inline-block; background: transparent; color: #8B4513; border: 1px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold;">
                                 Original Roadkill
                             </a>
                         </div>
