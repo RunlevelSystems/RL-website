@@ -174,7 +174,6 @@ a:hover {
 [style*="rgba(255,255,255,0.9)"] {
     color: #D9D9D9 !important; /* Accessible light gray */
     font-weight: 500 !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
 }
 
 /* Improve muted text colors for Orwellian readability */
@@ -183,7 +182,6 @@ a:hover {
 [style*="color: #8B7355"] {
     color: #B0B0B0 !important; /* Shadowed Desolation for subtle text */
     font-weight: 500 !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
 }
 
 /* Keep rust headings but make them authoritarian red for critical elements */
@@ -192,7 +190,6 @@ a:hover {
 [style*="color: #8B4513"] {
     color: #8B4513 !important; /* Keep original rust for headings - not critical actions */
     font-weight: 600 !important;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.4) !important;
 }
 
 /* Enhanced transparent backgrounds with Orwellian concrete feel */
@@ -246,7 +243,6 @@ button,
     color: #D2B48C !important;
     border: 2px solid #A0522D !important;
     font-weight: 600 !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
 }
 
 button:hover,
@@ -265,12 +261,17 @@ a {
 
 a:hover {
     color: #A0522D !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
 }
 
 /* Header and title improvements - Orwellian styling */
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h4, h5, h6 {
     color: #8B4513 !important; /* Keep rust for non-critical headings */
+    font-weight: 600 !important;
+}
+
+/* h3 keeps text-shadow for readability */
+h3 {
+    color: #8B4513 !important;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.4) !important;
     font-weight: 600 !important;
 }
@@ -279,7 +280,6 @@ h1, h2, h3, h4, h5, h6 {
 p {
     color: #D9D9D9 !important; /* Accessible light gray for body text */
     line-height: 1.6 !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
 }
 
 /* Ensure all subtle text colors are Orwellian compliant */
@@ -293,7 +293,6 @@ li[style*="#8B7355"] {
 /* List improvements - accessible gray */
 ul li, ol li {
     color: #D9D9D9 !important; /* Accessible light gray */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
 }
 
 /* Border improvements for Orwellian concrete feel */
@@ -323,7 +322,6 @@ table {
 th, td {
     color: #D2B48C !important;
     border: 1px solid #2F4F4F !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
 }
 
 /* Card and panel improvements */
@@ -382,7 +380,6 @@ th, td {
 [style*="color: #aaa"],
 [style*="color: #555"] {
     color: #E6D3B7 !important; /* Brighter tan for better contrast */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
 }
 
 /* Fix specific low-contrast colors found in pages */
@@ -408,7 +405,6 @@ th, td {
 *[style*="color: rgba(255,255,255,0.7)"],
 *[style*="color: rgba(255,255,255,0.8)"] {
     color: #E6D3B7 !important; /* Brighter tan for better readability */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
 }
 
 /* Global rust text color improvements for better contrast */
@@ -416,13 +412,11 @@ th, td {
 *[style*="color:#8B7355"],
 *[style*="color: #8B7355"] {
     color: #C4A676 !important; /* Brighter rust */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.6) !important;
 }
 
 *[style*="color:#8B4513"],
 *[style*="color: #8B4513"] {
     color: #B8621B !important; /* Brighter main rust */
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
 }
 
 /* Improve D2B48C tan color for even better contrast */
@@ -449,7 +443,6 @@ small,
 .small-text,
 *[style*="font-size: 14px"] {
     color: #E6D3B7 !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.7) !important;
 }
 
 /* CRITICAL: Fix all rust background elements for proper contrast */
@@ -462,7 +455,6 @@ small,
 button[style*="background: #8B4513"],
 a[style*="background: #8B4513"] {
     color: #FFFFFF !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
 }
 
 /* Critical action buttons - Authoritarian Red for CTAs */
@@ -470,7 +462,6 @@ a[style*="background: #8B4513"] {
 *[class*="btn-wds"] {
     background: #BA3F3F !important; /* Authoritarian red for critical actions */
     color: #F5F5F5 !important; /* Off-white text for maximum contrast */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.4) !important;
     border: 1px solid #943333 !important; /* Darker red border */
     font-weight: 600 !important;
 }
@@ -479,7 +470,6 @@ a[style*="background: #8B4513"] {
 *[class*="btn-wds"]:hover {
     background: #D14545 !important; /* Slightly brighter red on hover */
     color: #FFFFFF !important; /* Pure white on hover for emphasis */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.6) !important;
     transform: translateY(-1px) !important; /* Slight lift for menacing effect */
 }
 
@@ -489,7 +479,6 @@ input[type="submit"][style*="background: #8B4513"],
 a[style*="background: #8B4513"] {
     background: #4B4B4B !important; /* Gritty Urban surface for regular buttons */
     color: #D9D9D9 !important; /* Accessible light gray text */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
     border: 1px solid #7A7A7A !important;
 }
 
@@ -500,7 +489,6 @@ span[style*="background: #8B4513"],
 span[style*="background-color: #8B4513"] {
     background: #4B4B4B !important; /* Gritty Urban surface */
     color: #D9D9D9 !important; /* Accessible light gray text */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
 }
 
 /* Progress bars and indicators with rust backgrounds */
