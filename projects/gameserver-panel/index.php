@@ -405,7 +405,7 @@
                         </p>
                     </div>
                     
-                    <a href="gameserver-panel-industry-stats.php" class="btn-wds">
+                    <a href="../gameserver-panel-industry-stats/index.php" class="btn-wds">
                         <i class="fas fa-chart-bar" style="margin-right: 8px;"></i>
                         View Industry Statistics
                     </a>
@@ -433,7 +433,7 @@
                                     Comprehensive interactive guide covering installation, configuration, 
                                     and advanced XML game definitions.
                                 </p>
-                                <a href="gameserver-panel-admin-guide.php" class="btn-wds">
+                                <a href="../gameserver-panel-admin-guide/index.php" class="btn-wds">
                                     <i class="fas fa-book-open" style="margin-right: 8px;"></i>
                                     View Guide
                                 </a>
@@ -450,7 +450,7 @@
                                     2025 gaming market analysis with hosting opportunities, 
                                     platform distribution, and growth trends.
                                 </p>
-                                <a href="gameserver-panel-industry-stats.php" class="btn-wds">
+                                <a href="../gameserver-panel-industry-stats/index.php" class="btn-wds">
                                     <i class="fas fa-chart-bar" style="margin-right: 8px;"></i>
                                     View Statistics
                                 </a>
@@ -664,7 +664,7 @@
                             Professional game server hosting services with global infrastructure 
                             and enterprise-grade support.
                         </p>
-                        <a href="gameservers-world.php" class="btn-wds">
+                        <a href="../gameservers-world/index.php" class="btn-wds">
                             <i class="fas fa-server" style="margin-right: 8px;"></i>
                             View Project
                         </a>
@@ -681,7 +681,7 @@
                             Modern bulletin board system bringing classic community 
                             features to contemporary gaming environments.
                         </p>
-                        <a href="bbs-revival.php" class="btn-wds">
+                        <a href="../bbs-revival/index.php" class="btn-wds">
                             <i class="fas fa-terminal" style="margin-right: 8px;"></i>
                             View Project
                         </a>
@@ -698,7 +698,7 @@
                             Strategic space exploration game featuring multiplayer 
                             campaigns and advanced diplomacy systems.
                         </p>
-                        <a href="space-4x.php" class="btn-wds">
+                        <a href="../space-4x/index.php" class="btn-wds">
                             <i class="fas fa-satellite" style="margin-right: 8px;"></i>
                             View Project
                         </a>

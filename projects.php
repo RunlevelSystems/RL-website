@@ -44,6 +44,44 @@
     <!-- Include Navigation Header -->
     <?php include 'includes/navigation.php'; ?>
 
+    <?php
+    // Scan projects directory and load project metadata
+    $projectsDir = __DIR__ . '/projects';
+    $projects = [];
+    
+    if (is_dir($projectsDir)) {
+        $directories = array_diff(scandir($projectsDir), ['.', '..']);
+        
+        foreach ($directories as $dir) {
+            $dirPath = $projectsDir . '/' . $dir;
+            if (is_dir($dirPath)) {
+                $metadataFile = $dirPath . '/project.json';
+                if (file_exists($metadataFile)) {
+                    $metadata = json_decode(file_get_contents($metadataFile), true);
+                    if ($metadata && !isset($metadata['hidden'])) {
+                        $metadata['slug'] = $dir;
+                        $projects[] = $metadata;
+                    }
+                }
+            }
+        }
+    }
+    
+    // Group projects by category
+    $categorizedProjects = [
+        'Current Project' => [],
+        'Legacy Project' => [],
+        'Upcoming Project' => []
+    ];
+    
+    foreach ($projects as $project) {
+        $category = $project['category'] ?? 'Current Project';
+        if (isset($categorizedProjects[$category])) {
+            $categorizedProjects[$category][] = $project;
+        }
+    }
+    ?>
+
     <!-- Projects -->
         <section class="about">
             <div class="container page-bgc">
@@ -98,157 +136,99 @@
                     </div>
                 </div>
 
-            <!-- Current Projects -->
-                <div class="service">
-                    <div class="row">
-                        <div class="boxed">
-                            <div class="col-sm-6" style="margin-bottom: 30px;">
-                                <div class="project-card" onclick="loadProject('neverwards', 'Neverwards', 'Current Project')" style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 20px; height: 200px; transition: all 0.3s ease; cursor: pointer; position: relative;">
-                                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
-                                        <h3 style="color: #8B4513; margin: 0; font-size: 18px;">Neverwards</h3>
-                                        <img src="assets/images/neverwards-icon.png" alt="Neverwards" style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;" onerror="this.style.display='none'">
-                                    </div>
-                                    <p style="color: #8B7355; line-height: 1.6; margin: 0; font-size: 14px;">
-                                        An immersive multiplayer open-world adventure game featuring dynamic storytelling, cooperative gameplay, and endless exploration in a beautifully crafted fantasy universe.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-sm-6" style="margin-bottom: 30px;">
-                                <div class="project-card" onclick="loadProject('gameservers-world', 'Gameservers.world', 'Current Project')" style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 20px; height: 200px; transition: all 0.3s ease; cursor: pointer; position: relative;">
-                                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
-                                        <h3 style="color: #8B4513; margin: 0; font-size: 18px;">Gameservers.world</h3>
-                                        <img src="assets/images/gameservers-icon.png" alt="Gameservers.world" style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;" onerror="this.style.display='none'">
-                                    </div>
-                                    <p style="color: #8B7355; line-height: 1.6; margin: 0; font-size: 14px;">
-                                        Global game server hosting platform providing the most affordable and reliable hosting solutions across multiple world locations with 24/7 uptime monitoring.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-sm-6" style="margin-bottom: 30px;">
-                                <div class="project-card" onclick="loadProject('worlddomination-dev', 'Worlddomination.dev', 'Current Project')" style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 20px; height: 200px; transition: all 0.3s ease; cursor: pointer; position: relative;">
-                                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
-                                        <h3 style="color: #8B4513; margin: 0; font-size: 18px;">Worlddomination.dev</h3>
-                                        <img src="assets/images/worlddomination-icon.png" alt="Worlddomination.dev" style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;" onerror="this.style.display='none'">
-                                    </div>
-                                    <p style="color: #8B7355; line-height: 1.6; margin: 0; font-size: 14px;">
-                                        Our corporate development platform showcasing enterprise-grade web applications, custom business solutions, and professional consulting services for Fortune 500 companies.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-sm-6" style="margin-bottom: 30px;">
-                                <div class="project-card" onclick="loadProject('pureops', 'PureOps', 'Current Project')" style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 20px; height: 200px; transition: all 0.3s ease; cursor: pointer; position: relative;">
-                                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
-                                        <h3 style="color: #8B4513; margin: 0; font-size: 18px;">PureOps</h3>
-                                        <img src="assets/images/pureops-icon.png" alt="PureOps" style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;" onerror="this.style.display='none'">
-                                    </div>
-                                    <p style="color: #8B7355; line-height: 1.6; margin: 0; font-size: 14px;">
-                                        Advanced DevOps automation platform streamlining deployment pipelines, infrastructure management, and continuous integration for scalable software operations.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-sm-6" style="margin-bottom: 30px;">
-                                <div class="project-card" onclick="loadProject('gameserver-panel', 'GameServer Panel', 'Current Project')" style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 20px; height: 200px; transition: all 0.3s ease; cursor: pointer; position: relative;">
-                                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
-                                        <h3 style="color: #8B4513; margin: 0; font-size: 18px;">GameServer Panel</h3>
-                                        <div style="width: 40px; height: 40px; background: #8B4513; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
-                                            <i class="fas fa-server" style="color: #D2B48C; font-size: 20px;"></i>
-                                        </div>
-                                    </div>
-                                    <p style="color: #8B7355; line-height: 1.6; margin: 0; font-size: 14px;">
-                                        Enhanced OpenGamePanel fork with commercial billing, professional support, and multi-location management. Open source game server control panel for hosting providers.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            <!-- Legacy Projects Section -->
-            <div class="row" style="margin-top: 60px;">
-                <div class="col-sm-12">
-                    <div class="title-box">
-                        <p>Our legacy</p>
-                        <h2 class="title mt0">Legacy Projects</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="service">
-                <div class="row">
-                    <div class="boxed">
-                        <div class="col-sm-6" style="margin-bottom: 30px;">
-                            <div class="project-card" onclick="loadProject('roadkill', 'Roadkill', 'Legacy Project')" style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 20px; height: 200px; transition: all 0.3s ease; cursor: pointer; position: relative;">
-                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
-                                    <h3 style="color: #8B4513; margin: 0; font-size: 18px;">Roadkill</h3>
-                                    <img src="assets/images/roadkill-icon.png" alt="Roadkill" style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;" onerror="this.style.display='none'">
-                                </div>
-                                <p style="color: #8B7355; line-height: 1.6; margin: 0; font-size: 14px;">
-                                    Classic vehicular combat game that defined an era. Fast-paced multiplayer racing with destructible environments, weapon pickups, and intense PvP battles across diverse arenas.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Upcoming Projects Section -->
-            <div class="row" style="margin-top: 60px;">
-                <div class="col-sm-12">
-                    <div class="title-box">
-                        <p>Coming soon</p>
-                        <h2 class="title mt0">Upcoming Projects</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="service">
-                <div class="row">
-                    <div class="boxed">
-                        <div class="col-sm-6" style="margin-bottom: 30px;">
-                            <div class="project-card upcoming" onclick="loadProject('space-4x', 'Space-4X', 'Upcoming Project')" style="background: #1a1a1a; border: 1px solid #444; border-radius: 8px; padding: 20px; height: 200px; transition: all 0.3s ease; cursor: pointer; position: relative; opacity: 0.9;">
-                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
-                                    <h3 style="color: #8B4513; margin: 0; font-size: 18px;">Space-4X</h3>
-                                    <img src="assets/images/space4x-icon.png" alt="Space-4X" style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;" onerror="this.style.display='none'">
-                                </div>
-                                <p style="color: #8B7355; line-height: 1.6; margin: 0; font-size: 14px;">
-                                    Strategic space empire game combining the depth of VGA Planets with the economic complexity of TradeWars 2002. Build fleets, colonize worlds, and dominate the galaxy.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-sm-6" style="margin-bottom: 30px;">
-                            <div class="project-card upcoming" onclick="loadProject('alien-apocalypse', 'Alien Apocalypse', 'Upcoming Project')" style="background: #1a1a1a; border: 1px solid #444; border-radius: 8px; padding: 20px; height: 200px; transition: all 0.3s ease; cursor: pointer; position: relative; opacity: 0.9;">
-                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
-                                    <h3 style="color: #8B4513; margin: 0; font-size: 18px;">Alien Apocalypse</h3>
-                                    <img src="assets/images/alien-apocalypse-icon.png" alt="Alien Apocalypse" style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;" onerror="this.style.display='none'">
-                                </div>
-                                <p style="color: #8B7355; line-height: 1.6; margin: 0; font-size: 14px;">
-                                    Intense survival shooter where humanity's last stand meets crafting and base-building. Fight alien hordes, scavenge resources, and build fortified settlements to survive.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-sm-6" style="margin-bottom: 30px;">
-                            <div class="project-card upcoming" onclick="loadProject('bbs-revival', 'BBS Revival', 'Upcoming Project')" style="background: #1a1a1a; border: 1px solid #444; border-radius: 8px; padding: 20px; height: 200px; transition: all 0.3s ease; cursor: pointer; position: relative; opacity: 0.9;">
-                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
-                                    <h3 style="color: #8B4513; margin: 0; font-size: 18px;">BBS Revival</h3>
-                                    <img src="assets/images/bbs-icon.png" alt="BBS Revival" style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;" onerror="this.style.display='none'">
-                                </div>
-                                <p style="color: #8B7355; line-height: 1.6; margin: 0; font-size: 14px;">
-                                    Nostalgic tribute to classic bulletin board systems. ASCII art, door games, message boards, and file trading in a modern multiplayer environment that captures the 80s/90s spirit.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-sm-6" style="margin-bottom: 30px;">
-                            <div class="project-card upcoming" onclick="loadProject('roadkill-v2', 'Roadkill v2', 'Upcoming Project')" style="background: #1a1a1a; border: 1px solid #444; border-radius: 8px; padding: 20px; height: 200px; transition: all 0.3s ease; cursor: pointer; position: relative; opacity: 0.9;">
-                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
-                                    <h3 style="color: #8B4513; margin: 0; font-size: 18px;">Roadkill v2</h3>
-                                    <img src="assets/images/roadkill-v2-icon.png" alt="Roadkill v2" style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;" onerror="this.style.display='none'">
-                                </div>
-                                <p style="color: #8B7355; line-height: 1.6; margin: 0; font-size: 14px;">
-                                    Complete remake of the classic with modern graphics, enhanced physics, expanded arenas, and new game modes. Everything you loved about the original, evolved for today's players.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php
+            // Function to render project card
+            function renderProjectCard($project, $isUpcoming = false) {
+                $slug = htmlspecialchars($project['slug']);
+                $title = htmlspecialchars($project['title']);
+                $category = htmlspecialchars($project['category']);
+                $description = htmlspecialchars($project['description']);
+                
+                $cardClass = $isUpcoming ? 'project-card upcoming' : 'project-card';
+                $borderColor = $isUpcoming ? '#444' : '#333';
+                $opacity = $isUpcoming ? 'opacity: 0.9;' : '';
+                
+                echo '<div class="col-sm-6" style="margin-bottom: 30px;">';
+                echo '<div class="' . $cardClass . '" onclick="loadProject(\'' . $slug . '\', \'' . $title . '\', \'' . $category . '\')" style="background: #1a1a1a; border: 1px solid ' . $borderColor . '; border-radius: 8px; padding: 20px; height: 200px; transition: all 0.3s ease; cursor: pointer; position: relative; ' . $opacity . '">';
+                echo '<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">';
+                echo '<h3 style="color: #8B4513; margin: 0; font-size: 18px;">' . $title . '</h3>';
+                
+                // Handle icon rendering
+                if (isset($project['iconType']) && $project['iconType'] === 'fontawesome') {
+                    echo '<div style="width: 40px; height: 40px; background: #8B4513; border-radius: 4px; display: flex; align-items: center; justify-content: center;">';
+                    echo '<i class="fas ' . htmlspecialchars($project['icon']) . '" style="color: #D2B48C; font-size: 20px;"></i>';
+                    echo '</div>';
+                } else {
+                    $icon = htmlspecialchars($project['icon'] ?? '');
+                    echo '<img src="' . $icon . '" alt="' . $title . '" style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;" onerror="this.style.display=\'none\'">';
+                }
+                
+                echo '</div>';
+                echo '<p style="color: #8B7355; line-height: 1.6; margin: 0; font-size: 14px;">';
+                echo $description;
+                echo '</p>';
+                echo '</div>';
+                echo '</div>';
+            }
+            
+            // Render Current Projects
+            if (!empty($categorizedProjects['Current Project'])) {
+                echo '<!-- Current Projects -->';
+                echo '<div class="service">';
+                echo '<div class="row">';
+                echo '<div class="boxed">';
+                foreach ($categorizedProjects['Current Project'] as $project) {
+                    renderProjectCard($project, false);
+                }
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+            }
+            
+            // Render Legacy Projects
+            if (!empty($categorizedProjects['Legacy Project'])) {
+                echo '<!-- Legacy Projects Section -->';
+                echo '<div class="row" style="margin-top: 60px;">';
+                echo '<div class="col-sm-12">';
+                echo '<div class="title-box">';
+                echo '<p>Our legacy</p>';
+                echo '<h2 class="title mt0">Legacy Projects</h2>';
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+                echo '<div class="service">';
+                echo '<div class="row">';
+                echo '<div class="boxed">';
+                foreach ($categorizedProjects['Legacy Project'] as $project) {
+                    renderProjectCard($project, false);
+                }
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+            }
+            
+            // Render Upcoming Projects
+            if (!empty($categorizedProjects['Upcoming Project'])) {
+                echo '<!-- Upcoming Projects Section -->';
+                echo '<div class="row" style="margin-top: 60px;">';
+                echo '<div class="col-sm-12">';
+                echo '<div class="title-box">';
+                echo '<p>Coming soon</p>';
+                echo '<h2 class="title mt0">Upcoming Projects</h2>';
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+                echo '<div class="service">';
+                echo '<div class="row">';
+                echo '<div class="boxed">';
+                foreach ($categorizedProjects['Upcoming Project'] as $project) {
+                    renderProjectCard($project, true);
+                }
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+            }
+            ?>
 
                 <!-- Project Card Styles -->
                 <style>
@@ -286,7 +266,7 @@
         function loadProject(slug, title, category) {
             // Special handling for GameServer Panel - redirect to full page
             if (slug === 'gameserver-panel') {
-                window.location.href = 'projects/gameserver-panel.php';
+                window.location.href = 'projects/gameserver-panel/index.php';
                 return;
             }
             
@@ -305,7 +285,7 @@
             
             // Load the project content via AJAX
             var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'projects/' + slug + '.php', true);
+            xhr.open('GET', 'projects/' + slug + '/index.php', true);
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
