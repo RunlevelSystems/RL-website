@@ -10,107 +10,14 @@
     <!-- CSS -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/css/magnific-popup.css" rel="stylesheet">
-    <link href="../assets/css/owl.carousel.css" rel="stylesheet">
-    <link href="../assets/css/owl.carousel.theme.min.css" rel="stylesheet">
-    <link href="../assets/css/ionicons.css" rel="stylesheet">
-    <link href="../assets/css/main.css" rel="stylesheet">
-    <link href="../assets/css/readability-improvements.css" rel="stylesheet">
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/css/magnific-popup.css" rel="stylesheet">
+    <link href="../../assets/css/owl.carousel.css" rel="stylesheet">
+    <link href="../../assets/css/owl.carousel.theme.min.css" rel="stylesheet">
+    <link href="../../assets/css/ionicons.css" rel="stylesheet">
+    <!-- WDS Unified CSS - Simplified & Clean -->
+    <link href="../../assets/css/wds-unified.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        .project-hero {
-            background: linear-gradient(135deg, #1C1C1C 0%, #2a2a2a 100%);
-            color: #D2B48C;
-            padding: 80px 0;
-        }
-        
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .feature-card {
-            background: #3A3A3A;
-            border: 1px solid #777777;
-            border-radius: 8px;
-            padding: 30px;
-            transition: all 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            background: #4A4A4A;
-            border-color: #D2B48C;
-            transform: translateY(-5px);
-        }
-        
-        .feature-icon {
-            font-size: 48px;
-            color: #8B4513;
-            margin-bottom: 20px;
-        }
-        
-        .cta-section {
-            background: rgba(120, 120, 120, 0.2);
-            border: 2px solid #777777;
-            border-radius: 12px;
-            padding: 40px;
-            text-align: center;
-            margin: 60px 0;
-        }
-        
-        .btn-wds {
-            background: #777777;
-            color: #B8621B !important; /* Bright rust text on lighter grey background */
-            border: none;
-            padding: 15px 30px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 6px;
-            text-decoration: none;
-            display: inline-block;
-            margin: 10px;
-            transition: all 0.3s ease;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-        }
-        
-        .btn-wds:hover {
-            background: #B8621B; /* Brighter rust on hover */
-            color: #FFFFFF !important;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.9);
-        }
-        
-        .tech-stack {
-            background: #0f1419;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-        
-        .tech-badge {
-            display: inline-block;
-            background: #4A4A4A; /* Brighter background for better visibility */
-            color: #E6D3B7; /* Bright tan text for excellent readability */
-            border: 1px solid #777777; /* Lighter grey border */
-            padding: 8px 15px; /* Slightly larger padding */
-            border-radius: 20px; /* More rounded for better appearance */
-            font-size: 14px;
-            margin: 5px;
-            font-weight: 500;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Lighter shadow */
-            transition: all 0.3s ease;
-        }
-        
-        .tech-badge:hover {
-            background: #777777; /* Brighter grey background on hover */
-            color: #F0E68C; /* Bright khaki text on hover */
-            transform: translateY(-1px); /* Slight lift effect */
-            box-shadow: 0 2px 8px rgba(139, 69, 19, 0.3);
-        }
-    </style>
 </head>
 
 <body>

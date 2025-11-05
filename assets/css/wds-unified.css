@@ -1,0 +1,594 @@
+/*
+ * ============================================
+ * WORLD DOMINATION SOFTWARE - UNIFIED CSS
+ * ============================================
+ * 
+ * SIMPLIFIED COLOR SCHEME:
+ * - Background: #0f0f1e (Dark Navy - main content areas)
+ * - Content Boxes: #1a1a2e (Slightly lighter navy)
+ * - Text: #e0e0e0 (Light gray for readability)
+ * - Headings: #64b5f6 (Sky Blue)
+ * - Accent/Links: #81c784 (Soft Green)
+ * - Buttons Primary: #64b5f6 (Sky Blue)
+ * - Buttons Secondary: #4B4B4B (Dark Gray)
+ * - Warning/Highlight: #ffb74d (Orange)
+ * 
+ * NO TEXT SHADOWS - EVER!
+ * ALL BUTTONS HAVE DARK BACKGROUNDS
+ * CONSISTENT ACROSS ALL PAGES
+ */
+
+/* ============================================
+   GLOBAL RESETS & BASE STYLES
+   ============================================ */
+
+* {
+    text-shadow: none !important;
+    box-sizing: border-box;
+}
+
+*:before,
+*:after {
+    text-shadow: none !important;
+}
+
+body {
+    background: #0f0f1e !important;
+    color: #e0e0e0 !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    line-height: 1.6 !important;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+    padding: 20px !important;
+}
+
+/* ============================================
+   TYPOGRAPHY - NO SHADOWS!
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    color: #64b5f6 !important;
+    font-weight: 600 !important;
+    text-shadow: none !important;
+    margin-top: 20px !important;
+    margin-bottom: 15px !important;
+}
+
+h1, .h1 { font-size: 2.5em !important; }
+h2, .h2 { font-size: 2.2em !important; }
+h3, .h3 { font-size: 1.8em !important; }
+h4, .h4 { font-size: 1.4em !important; }
+h5, .h5 { font-size: 1.2em !important; }
+h6, .h6 { font-size: 1em !important; }
+
+p {
+    color: #e0e0e0 !important;
+    line-height: 1.8 !important;
+    margin-bottom: 15px !important;
+    text-shadow: none !important;
+}
+
+strong, b {
+    color: #81c784 !important;
+    font-weight: 700 !important;
+    text-shadow: none !important;
+}
+
+a {
+    color: #81c784 !important;
+    text-decoration: none !important;
+    text-shadow: none !important;
+    transition: color 0.3s ease !important;
+}
+
+a:hover,
+a:focus {
+    color: #64b5f6 !important;
+    text-decoration: underline !important;
+}
+
+ul, ol {
+    color: #e0e0e0 !important;
+    padding-left: 30px !important;
+}
+
+li {
+    color: #e0e0e0 !important;
+    padding: 5px 0 !important;
+    text-shadow: none !important;
+}
+
+/* ============================================
+   BUTTONS - ALL DARK BACKGROUNDS
+   ============================================ */
+
+.btn,
+button,
+input[type="submit"],
+input[type="button"],
+a[class*="btn"],
+.btn-default,
+.btn-primary,
+.btn-robot,
+.btn-wds {
+    background: #64b5f6 !important;
+    color: #0f0f1e !important;
+    border: 1px solid #5aa3e0 !important;
+    padding: 12px 24px !important;
+    font-weight: 600 !important;
+    border-radius: 5px !important;
+    text-shadow: none !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    display: inline-block !important;
+}
+
+.btn:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover,
+a[class*="btn"]:hover {
+    background: #81c784 !important;
+    color: #0f0f1e !important;
+    border-color: #6fb07a !important;
+    transform: translateY(-2px) !important;
+    text-decoration: none !important;
+}
+
+/* Secondary buttons (outlined style) */
+.btn-secondary,
+a[style*="background: transparent"][style*="border"] {
+    background: transparent !important;
+    color: #64b5f6 !important;
+    border: 2px solid #64b5f6 !important;
+}
+
+.btn-secondary:hover,
+a[style*="background: transparent"][style*="border"]:hover {
+    background: #64b5f6 !important;
+    color: #0f0f1e !important;
+}
+
+/* Warning/Alert buttons */
+.btn-warning,
+.btn-danger {
+    background: #ffb74d !important;
+    color: #0f0f1e !important;
+    border-color: #f5a63d !important;
+}
+
+/* ============================================
+   NAVIGATION & HEADER
+   ============================================ */
+
+.navbar,
+.navbar-default,
+header,
+.site-header-bg,
+nav {
+    background: #16213e !important;
+    border: none !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+.navbar-nav > li > a,
+.nav > li > a {
+    color: #e0e0e0 !important;
+    text-shadow: none !important;
+    padding: 15px 20px !important;
+}
+
+.navbar-nav > li > a:hover,
+.navbar-nav > li > a:focus,
+.nav > li > a:hover {
+    background: rgba(100, 181, 246, 0.2) !important;
+    color: #64b5f6 !important;
+}
+
+.navbar-nav > li.active > a {
+    background: #64b5f6 !important;
+    color: #0f0f1e !important;
+}
+
+/* ============================================
+   CONTENT SECTIONS & BOXES
+   ============================================ */
+
+section {
+    background: #0f0f1e !important;
+    padding: 60px 0 !important;
+}
+
+/* Content boxes with slight contrast */
+.content-box,
+div[style*="background: #1a1a1a"],
+div[style*="background: #1a1a2e"],
+.boxed,
+.panel,
+.card {
+    background: rgba(26, 26, 46, 0.8) !important;
+    border: 1px solid rgba(100, 181, 246, 0.2) !important;
+    border-radius: 8px !important;
+    padding: 30px !important;
+    margin-bottom: 30px !important;
+}
+
+/* Feature cards */
+.feature-card,
+.service-box,
+.project-card {
+    background: rgba(26, 26, 46, 0.6) !important;
+    border: 1px solid rgba(100, 181, 246, 0.3) !important;
+    border-radius: 10px !important;
+    padding: 25px !important;
+    transition: all 0.3s ease !important;
+}
+
+.feature-card:hover,
+.service-box:hover,
+.project-card:hover {
+    background: rgba(100, 181, 246, 0.1) !important;
+    border-color: #64b5f6 !important;
+    transform: translateY(-5px) !important;
+}
+
+/* ============================================
+   INFO BOXES & ALERTS
+   ============================================ */
+
+.info-box,
+.alert-info {
+    background: rgba(100, 181, 246, 0.1) !important;
+    border-left: 4px solid #64b5f6 !important;
+    padding: 15px !important;
+    margin: 15px 0 !important;
+    border-radius: 5px !important;
+}
+
+.warning-box,
+.alert-warning {
+    background: rgba(255, 183, 77, 0.1) !important;
+    border-left: 4px solid #ffb74d !important;
+    padding: 15px !important;
+    margin: 15px 0 !important;
+    border-radius: 5px !important;
+}
+
+.success-box,
+.alert-success {
+    background: rgba(129, 199, 132, 0.1) !important;
+    border-left: 4px solid #81c784 !important;
+    padding: 15px !important;
+    margin: 15px 0 !important;
+    border-radius: 5px !important;
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 20px 0 !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+}
+
+th {
+    background: rgba(100, 181, 246, 0.3) !important;
+    color: #64b5f6 !important;
+    padding: 12px !important;
+    text-align: left !important;
+    font-weight: bold !important;
+    text-shadow: none !important;
+}
+
+td {
+    padding: 10px 12px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #e0e0e0 !important;
+    text-shadow: none !important;
+}
+
+tr:hover {
+    background: rgba(100, 181, 246, 0.1) !important;
+}
+
+/* ============================================
+   FORMS & INPUTS
+   ============================================ */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+textarea,
+select {
+    background: #1a1a2e !important;
+    color: #e0e0e0 !important;
+    border: 1px solid rgba(100, 181, 246, 0.3) !important;
+    padding: 10px 15px !important;
+    border-radius: 5px !important;
+    font-size: 14px !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none !important;
+    border-color: #64b5f6 !important;
+    box-shadow: 0 0 5px rgba(100, 181, 246, 0.3) !important;
+}
+
+/* ============================================
+   CODE BLOCKS
+   ============================================ */
+
+code,
+pre,
+.code-block {
+    background: rgba(0, 0, 0, 0.5) !important;
+    color: #ffb74d !important;
+    padding: 3px 8px !important;
+    border-radius: 4px !important;
+    font-family: 'Courier New', monospace !important;
+    text-shadow: none !important;
+}
+
+pre {
+    padding: 15px !important;
+    overflow-x: auto !important;
+}
+
+/* ============================================
+   STAT GRIDS & CARDS
+   ============================================ */
+
+.stat-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+    gap: 15px !important;
+    margin: 20px 0 !important;
+}
+
+.stat-card {
+    background: rgba(129, 199, 132, 0.1) !important;
+    padding: 20px !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(129, 199, 132, 0.3) !important;
+    text-align: center !important;
+}
+
+.stat-value {
+    font-size: 2em !important;
+    color: #81c784 !important;
+    font-weight: bold !important;
+    text-shadow: none !important;
+}
+
+.stat-label {
+    font-size: 0.9em !important;
+    color: #aaa !important;
+    text-shadow: none !important;
+}
+
+/* ============================================
+   HERO SECTIONS
+   ============================================ */
+
+.hero,
+.wds-hero,
+.hero-hook,
+.project-hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+    color: #e0e0e0 !important;
+    padding: 80px 20px !important;
+    text-align: center !important;
+}
+
+.hero h1,
+.hero h2 {
+    color: #64b5f6 !important;
+    text-shadow: none !important;
+}
+
+/* ============================================
+   BREADCRUMBS
+   ============================================ */
+
+.breadcrumb,
+.breadcrumbs {
+    background: #16213e !important;
+    color: #e0e0e0 !important;
+    padding: 10px 20px !important;
+    border-radius: 0 !important;
+}
+
+.breadcrumb a,
+.breadcrumbs a {
+    color: #81c784 !important;
+    text-shadow: none !important;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+footer,
+.footer,
+.footer-widget,
+section.footer-widget {
+    background: #16213e !important;
+    color: #e0e0e0 !important;
+    padding: 40px 0 !important;
+    border-top: 2px solid #64b5f6 !important;
+}
+
+footer a,
+.footer a {
+    color: #81c784 !important;
+}
+
+footer h1, footer h2, footer h3, footer h4,
+.footer h1, .footer h2, .footer h3, .footer h4 {
+    color: #64b5f6 !important;
+}
+
+/* ============================================
+   FEATURE GRIDS & TECH BADGES
+   ============================================ */
+
+.feature-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: 30px !important;
+    margin-top: 40px !important;
+}
+
+.feature-icon {
+    font-size: 48px !important;
+    color: #64b5f6 !important;
+    margin-bottom: 20px !important;
+    text-shadow: none !important;
+}
+
+.tech-stack {
+    background: #1a1a2e !important;
+    border-radius: 8px !important;
+    padding: 20px !important;
+    margin: 20px 0 !important;
+}
+
+.tech-badge {
+    display: inline-block !important;
+    background: #1a1a2e !important;
+    color: #81c784 !important;
+    border: 1px solid rgba(129, 199, 132, 0.3) !important;
+    padding: 8px 15px !important;
+    border-radius: 20px !important;
+    font-size: 14px !important;
+    margin: 5px !important;
+    font-weight: 500 !important;
+    text-shadow: none !important;
+    transition: all 0.3s ease !important;
+}
+
+.tech-badge:hover {
+    background: rgba(129, 199, 132, 0.2) !important;
+    color: #64b5f6 !important;
+    transform: translateY(-2px) !important;
+    border-color: #64b5f6 !important;
+}
+
+/* ============================================
+   CTA SECTIONS
+   ============================================ */
+
+.cta-section {
+    background: rgba(26, 26, 46, 0.5) !important;
+    border: 2px solid rgba(100, 181, 246, 0.3) !important;
+    border-radius: 12px !important;
+    padding: 40px !important;
+    text-align: center !important;
+    margin: 60px 0 !important;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.highlight {
+    color: #ffb74d !important;
+    font-weight: bold !important;
+}
+
+.muted {
+    color: #aaa !important;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px !important;
+    }
+    
+    h1, .h1 { font-size: 2em !important; }
+    h2, .h2 { font-size: 1.8em !important; }
+    h3, .h3 { font-size: 1.5em !important; }
+    
+    .btn {
+        padding: 10px 20px !important;
+        font-size: 14px !important;
+    }
+    
+    section {
+        padding: 40px 0 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px !important;
+    }
+    
+    .stat-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* ============================================
+   OVERRIDE ALL INLINE STYLES THAT CONFLICT
+   ============================================ */
+
+/* Remove any white backgrounds on buttons */
+button[style*="background: #fff"],
+button[style*="background:#fff"],
+button[style*="background: #FFF"],
+button[style*="background:#FFF"],
+button[style*="background: white"],
+button[style*="background:white"],
+a[style*="background: #fff"],
+a[style*="background:#fff"],
+a[style*="background: white"] {
+    background: #64b5f6 !important;
+    color: #0f0f1e !important;
+}
+
+/* Fix any remaining light text on light backgrounds */
+*[style*="color: #8B7355"],
+*[style*="color:#8B7355"],
+*[style*="color: #D2B48C"],
+*[style*="color:#D2B48C"] {
+    color: #e0e0e0 !important;
+}
+
+/* Fix any remaining rust backgrounds to dark theme */
+*[style*="background: #8B4513"],
+*[style*="background:#8B4513"] {
+    background: #1a1a2e !important;
+}
+
+/* ============================================
+   END OF UNIFIED CSS
+   ============================================ */

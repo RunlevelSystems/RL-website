@@ -13,8 +13,8 @@
     <link href="assets/css/owl.carousel.css" rel="stylesheet">
     <link href="assets/css/owl.carousel.theme.min.css" rel="stylesheet">
     <link href="assets/css/ionicons.css" rel="stylesheet">
-    <link href="assets/css/main.css" rel="stylesheet">
-    <link href="assets/css/readability-improvements.css" rel="stylesheet">
+    <link href="<!-- main.css removed -->" rel="stylesheet">
+    <link href="assets/css/wds-unified.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -647,3 +647,5 @@
     <script src="assets/js/script.js"></script>
 </body>
 </html>
+
+

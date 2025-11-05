@@ -19,8 +19,8 @@
         <link href="assets/css/owl.carousel.css" rel="stylesheet">
         <link href="assets/css/owl.carousel.theme.min.css" rel="stylesheet">
         <link href="assets/css/ionicons.css" rel="stylesheet">
-        <link href="assets/css/main.css" rel="stylesheet">
-        <link href="assets/css/readability-improvements.css" rel="stylesheet">
+        <!-- WDS Unified CSS - Simplified & Clean -->
+        <link href="assets/css/wds-unified.css" rel="stylesheet">
         <!-- Font Awesome for GameServer Panel icons -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
