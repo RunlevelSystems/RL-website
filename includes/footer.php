@@ -72,9 +72,9 @@
                 </p>
                 <p style="color: #E8E4D8; margin: 0; font-size: 14px;">
                     Building the future, one line of code at a time. | 
-                    <a href="https://gameservers.world" target="_blank" style="color: #B8621B;">Gameservers.world</a> | 
-                    <a href="https://github.com/World-Domination-Software" target="_blank" style="color: #B8621B;">GitHub</a> | 
-                    <a href="https://discord.gg/XPFnNdWGyW" target="_blank" style="color: #B8621B;">Discord</a>
+                    <a href="https://gameservers.world" target="_blank" style="color: #E8E4D8;">Gameservers.world</a> | 
+                    <a href="https://github.com/World-Domination-Software" target="_blank" style="color: #E8E4D8;">GitHub</a> | 
+                    <a href="https://discord.gg/XPFnNdWGyW" target="_blank" style="color: #E8E4D8;">Discord</a>
                 </p>
             </div>
         </footer>

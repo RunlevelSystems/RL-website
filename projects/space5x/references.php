@@ -149,16 +149,16 @@
                             </ul>
                         </div>
 
-                        <!-- Economic System -->
+                        <!-- eXconomy System -->
                         <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
-                            <h3 style="color: #8B4513; margin-bottom: 20px;">Economic Simulation</h3>
-                            
+                            <h3 style="color: #8B4513; margin-bottom: 20px;">eXconomy Simulation</h3>
+
                             <h4 style="color: #D2B48C; margin-bottom: 15px;">Supply & Demand Model</h4>
                             <p style="color: #8B7355; font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
-                                The economy uses a dynamic supply-demand model with regional markets. Prices fluctuate based on local availability, 
+                                The eXconomy uses a dynamic supply–demand model with regional markets. Prices fluctuate based on local availability,
                                 trade routes, and player activities. Each commodity has elasticity parameters that determine price responsiveness.
                             </p>
-                            
+
                             <div style="background: #0f1419; padding: 20px; border-radius: 8px;">
                                 <p style="color: #D2B48C; font-family: 'Courier New', monospace; font-size: 13px; margin: 0;">
                                     // Price calculation<br>

@@ -4,10 +4,18 @@
                         <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">The Ultimate Space Empire Experience</h3>
                             <p style="color: #8B7355; font-size: 18px; line-height: 1.8; margin-bottom: 20px;">
-                                Space5X combines the strategic depth of VGA Planets with the economic complexity of TradeWars 2002, creating the definitive space empire simulation. This isn't just another 4X game—it's a living universe where every decision ripples across space and time.
+                                Space5X combines the strategic depth of VGA Planets with the eXconomy complexity of TradeWars 2002, creating the definitive space empire simulation. This isn't just another 4X game—it's a living universe where every decision ripples across space and time.
                             </p>
                             <p style="color: #8B7355; font-size: 16px; line-height: 1.6;">
                                 Drawing inspiration from classic space strategy games while leveraging modern technology, Space5X will offer unprecedented depth, scale, and player interaction in a persistent universe spanning thousands of star systems.
+                            </p>
+                        </div>
+
+                        <!-- The Fifth X -->
+                        <div style="background: #111214; border: 1px solid #222; border-radius: 8px; padding: 20px; margin: 10px 0 30px 0;">
+                            <h4 style="color: #D2B48C; margin-bottom: 8px;"><i class="fas fa-coins" aria-hidden="true" style="margin-right:8px;"></i> The Fifth X — eXconomy <small style="color:#8B7355; font-weight:normal;">(the "eXtra" X)</small></h4>
+                            <p style="color: #8B7355; font-size: 14px; line-height: 1.6; margin: 0;">
+                                eXconomy represents the trading and market layer of Space5X: a player-driven market system with supply & demand, trade routes, corporate tariffs and markets that react to player actions. Trade is first-class — it powers empires, funds fleets, and creates strategic opportunities beyond conquest.
                             </p>
                         </div>
 
@@ -17,16 +25,16 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <ul style="color: #8B7355; line-height: 2;">
-                                        <li><strong style="color: #8B4513;">eXplore:</strong> Procedural galaxies with hidden artifacts and ancient mysteries</li>
-                                        <li><strong style="color: #8B4513;">eXpand:</strong> Colonize worlds, build stargates, establish trade routes</li>
-                                        <li><strong style="color: #8B4513;">eXploit:</strong> Mine asteroids, terraform planets, harness exotic matter</li>
-                                        <li><strong style="color: #8B4513;">eXterminate:</strong> Strategic fleet combat with tactical depth</li>
+                                        <li><strong style="color: #8B4513;"><i class="fas fa-compass" aria-hidden="true" style="margin-right:8px;"></i> eXplore:</strong> Procedural galaxies with hidden artifacts and ancient mysteries</li>
+                                        <li><strong style="color: #8B4513;"><i class="fas fa-rocket" aria-hidden="true" style="margin-right:8px;"></i> eXpand:</strong> Colonize worlds, build stargates, establish trade routes</li>
+                                        <li><strong style="color: #8B4513;"><i class="fas fa-industry" aria-hidden="true" style="margin-right:8px;"></i> eXploit:</strong> Mine asteroids, terraform planets, harness exotic matter</li>
+                                        <li><strong style="color: #8B4513;"><i class="fas fa-bullseye" aria-hidden="true" style="margin-right:8px;"></i> eXterminate:</strong> Strategic fleet combat with tactical depth</li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-6">
                                     <ul style="color: #8B7355; line-height: 2;">
                                         <li><strong style="color: #8B4513;">Persistent Universe:</strong> Your empire continues to evolve even offline</li>
-                                        <li><strong style="color: #8B4513;">Player Economy:</strong> Complex trade networks between empires</li>
+                                        <li><strong style="color: #8B4513;"><i class="fas fa-coins" aria-hidden="true" style="margin-right:8px;"></i> eXconomy:</strong> Complex trade networks between empires</li>
                                         <li><strong style="color: #8B4513;">Diplomatic Intrigue:</strong> Alliances, betrayals, and galactic politics</li>
                                         <li><strong style="color: #8B4513;">Technology Trees:</strong> Research paths that define your civilization</li>
                                     </ul>
@@ -51,7 +59,7 @@
                                 <div class="col-sm-6">
                                     <h4 style="color: #D2B48C; margin-bottom: 15px;">From TradeWars 2002</h4>
                                     <p style="color: #8B7355; font-size: 14px; line-height: 1.8;">
-                                        • Dynamic player-driven economy with supply and demand<br>
+                                        • Dynamic player-driven eXconomy with supply & demand<br>
                                         • Corporate gameplay and trading corporations<br>
                                         • Persistent universe that runs 24/7<br>
                                         • Player interaction through trade and conflict<br>
@@ -105,7 +113,7 @@
                                     <ul style="color: #8B7355; line-height: 1.8;">
                                         <li><strong>Unity (C#):</strong> Primary engine for client and server builds; code lives in C# projects and Unity assemblies (see /Assets/ and .csproj files in repo).</li>
                                         <li><strong>Mirror / Netcode patterns:</strong> Server-authoritative networking with deterministic server host loops and RPCs for reliable state.</li>
-                                        <li><strong>JSON fixtures & schemas:</strong> Game data (items, economy curves, contracts) are declarative JSON files under data/fixtures and validated at load time.</li>
+                                        <li><strong>JSON fixtures & schemas:</strong> Game data (items, eXconomy curves, contracts) are declarative JSON files under data/fixtures and validated at load time.</li>
                                     </ul>
                                 </div>
 
