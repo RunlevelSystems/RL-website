@@ -32,8 +32,7 @@
         // Page-specific variables
         $current_page = 'joinus';
         $header_class = 'joinus-header inner-header';
-        $show_breadcrumb = true;
-        $page_breadcrumb = 'Join Us';
+        $page_subtitle = 'Design. Debug. Deploy.';
         ?>
 
     <!-- Include Site Header -->
@@ -713,136 +712,35 @@
         </div>
     </section>
 
-    <!-- Application Form Section -->
+    <!-- Contact Us Section -->
     <section id="apply-form" class="application-form">
         <div class="container page-bgc">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="title-box">
-                        <p>Interested in joining?</p>
-                        <h2 class="title mt0" style="color: #8B4513;">Application Form</h2>
+                        <p>Ready to join?</p>
+                        <h2 class="title mt0" style="color: #8B4513;">Get in Touch</h2>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="boxed">
                     <div class="col-sm-8 col-sm-offset-2">
-                        <div class="application-form-container" style="background: rgba(255,255,255,0.15); padding: 40px; border-radius: 12px;">
-                            <?php
-                            $form_submitted = false;
-                            $error_message = '';
+                        <div style="background: rgba(255,255,255,0.15); padding: 60px 40px; border-radius: 12px; text-align: center;">
+                            <div style="margin-bottom: 30px;">
+                                <i class="ion-chatbubbles" style="font-size: 64px; color: #8B4513; margin-bottom: 20px; display: block;"></i>
+                                <h3 style="color: #8B4513; font-size: 28px; margin-bottom: 20px;">Contact Us on Discord or Email</h3>
+                                <p style="color: #D2B48C; font-size: 18px; line-height: 1.6; max-width: 600px; margin: 0 auto 30px;">
+                                    We use Discord for all communications. Visit our contact page to join our Discord server or send us an email with your questions and interest in joining the co-op.
+                                </p>
+                            </div>
                             
-                            if ($_POST && isset($_POST['application_form'])) {
-                                $name = $_POST['name'] ?? '';
-                                $email = $_POST['email'] ?? '';
-                                $discord = $_POST['discord'] ?? '';
-                                $experience = $_POST['experience'] ?? '';
-                                $interests = $_POST['interests'] ?? '';
-                                $portfolio = $_POST['portfolio'] ?? '';
-                                $motivation = $_POST['motivation'] ?? '';
-                                
-                                if (!empty($name) && !empty($email) && !empty($motivation)) {
-                                    // Here you would normally process/email the application
-                                    $form_submitted = true;
-                                } else {
-                                    $error_message = 'Please fill in all required fields (Name, Email, and Motivation).';
-                                }
-                            }
-                            ?>
-                            
-                            <?php if ($form_submitted): ?>
-                                <div style="background-color: #8B4513; color: #0f1419; padding: 20px; border-radius: 8px; margin-bottom: 20px; text-align: center;">
-                                    <h3 style="margin: 0 0 10px; color: #0f1419;">Application Received!</h3>
-                                    <p style="margin: 0; color: #0f1419;">Thanks for applying! We'll review your application and get back to you soon via email or Discord.</p>
-                                </div>
-                            <?php elseif ($error_message): ?>
-                                <div style="background-color: #f87171; color: #D2B48C; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-                                    <strong>Error:</strong> <?php echo htmlspecialchars($error_message); ?>
-                                </div>
-                            <?php endif; ?>
-                            
-                            <form action="joinus.php#apply-form" method="post" class="coop-application-form">
-                                <input type="hidden" name="application_form" value="1">
-                                
-                                <div style="margin-bottom: 25px;">
-                                    <label style="display: block; color: #8B4513; margin-bottom: 8px; font-weight: bold;">Name *</label>
-                                    <input type="text" name="name" required 
-                                           style="width: 100%; padding: 12px; border-radius: 6px; background: rgba(255,255,255,0.1); color: #D2B48C; font-size: 16px;"
-                                           placeholder="Your full name">
-                                </div>
-                                
-                                <div style="margin-bottom: 25px;">
-                                    <label style="display: block; color: #8B4513; margin-bottom: 8px; font-weight: bold;">Email *</label>
-                                    <input type="email" name="email" required 
-                                           style="width: 100%; padding: 12px; border-radius: 6px; background: rgba(255,255,255,0.1); color: #D2B48C; font-size: 16px;"
-                                           placeholder="your@email.com">
-                                </div>
-                                
-                                <div style="margin-bottom: 25px;">
-                                    <label style="display: block; color: #8B4513; margin-bottom: 8px; font-weight: bold;">Discord Username</label>
-                                    <input type="text" name="discord" 
-                                           style="width: 100%; padding: 12px; border-radius: 6px; background: rgba(255,255,255,0.1); color: #D2B48C; font-size: 16px;"
-                                           placeholder="username#1234 or @username">
-                                </div>
-                                
-                                <div style="margin-bottom: 25px;">
-                                    <label style="display: block; color: #8B4513; margin-bottom: 8px; font-weight: bold;">Experience & Skills</label>
-                                    <textarea name="experience" rows="4" 
-                                              style="width: 100%; padding: 12px; border-radius: 6px; background: rgba(255,255,255,0.1); color: #D2B48C; font-size: 16px; resize: vertical;"
-                                              placeholder="Tell us about your experience with coding, gaming, server admin, Unity/Unreal, or any relevant skills..."></textarea>
-                                </div>
-                                
-                                <div style="margin-bottom: 25px;">
-                                    <label style="display: block; color: #8B4513; margin-bottom: 8px; font-weight: bold;">Areas of Interest</label>
-                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; color: #8B7355;">
-                                        <label style="display: flex; align-items: center; margin-bottom: 0;">
-                                            <input type="checkbox" name="interests[]" value="game-hosting" style="margin-right: 8px;">
-                                            Game Server Hosting
-                                        </label>
-                                        <label style="display: flex; align-items: center; margin-bottom: 0;">
-                                            <input type="checkbox" name="interests[]" value="game-dev" style="margin-right: 8px;">
-                                            Game Development
-                                        </label>
-                                        <label style="display: flex; align-items: center; margin-bottom: 0;">
-                                            <input type="checkbox" name="interests[]" value="testing-qa" style="margin-right: 8px;">
-                                            Testing & QA
-                                        </label>
-                                        <label style="display: flex; align-items: center; margin-bottom: 0;">
-                                            <input type="checkbox" name="interests[]" value="customer-support" style="margin-right: 8px;">
-                                            Customer Support
-                                        </label>
-                                        <label style="display: flex; align-items: center; margin-bottom: 0;">
-                                            <input type="checkbox" name="interests[]" value="web-dev" style="margin-right: 8px;">
-                                            Web Development
-                                        </label>
-                                        <label style="display: flex; align-items: center; margin-bottom: 0;">
-                                            <input type="checkbox" name="interests[]" value="sysadmin" style="margin-right: 8px;">
-                                            System Administration
-                                        </label>
-                                    </div>
-                                </div>
-                                
-                                <div style="margin-bottom: 25px;">
-                                    <label style="display: block; color: #8B4513; margin-bottom: 8px; font-weight: bold;">Portfolio / GitHub / Projects</label>
-                                    <input type="url" name="portfolio" 
-                                           style="width: 100%; padding: 12px; border-radius: 6px; background: rgba(255,255,255,0.1); color: #D2B48C; font-size: 16px;"
-                                           placeholder="https://github.com/yourname or link to your work">
-                                </div>
-                                
-                                <div style="margin-bottom: 30px;">
-                                    <label style="display: block; color: #8B4513; margin-bottom: 8px; font-weight: bold;">Why do you want to join our co-op? *</label>
-                                    <textarea name="motivation" rows="5" required 
-                                              style="width: 100%; padding: 12px; border-radius: 6px; background: rgba(255,255,255,0.1); color: #D2B48C; font-size: 16px; resize: vertical;"
-                                              placeholder="Tell us what excites you about this opportunity, what you hope to learn/build, and why profit-sharing appeals to you..."></textarea>
-                                </div>
-                                
-                                <div style="text-align: center;">
-                                    <button type="submit" 
-                                            style="background: #8B4513; color: #0f1419; border: none; padding: 15px 30px; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: all 0.3s ease;">
-                                        Submit Application
-                                    </button>
-                                </div>
-                            </form>
+                            <div style="margin-top: 40px;">
+                                <a href="contact.php" 
+                                   style="display: inline-block; background: #8B4513; color: #E8E4D8; padding: 18px 40px; text-decoration: none; font-weight: bold; border-radius: 8px; font-size: 20px; transition: all 0.3s ease; border: 2px solid #8B4513;">
+                                    Go to Contact Page
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

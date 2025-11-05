@@ -22,8 +22,7 @@
         <?php 
         $current_page = 'projects';
         $header_class = 'projects-header inner-header';
-        $show_breadcrumb = true;
-        $page_breadcrumb = 'Projects / Alien Apocalypse';
+        $page_subtitle = 'Design. Debug. Deploy.';
         $current_project_slug = 'alien-apocalypse';
         ?>
 
@@ -90,7 +89,7 @@
                             <p style="color: #8B7355; font-size: 16px; margin-bottom: 30px;">
                                 Join our mailing list for exclusive development updates and early access opportunities.
                             </p>
-                            <a href="/contact" style="display: inline-block; background: #8B4513; color: #0f1419; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold;">
+                            <a href="/contact.php" style="display: inline-block; background: #8B4513; color: #0f1419; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold;">
                                 Stay Updated
                             </a>
                         </div>

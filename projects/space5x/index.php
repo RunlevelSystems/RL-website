@@ -178,13 +178,13 @@
                             <p style="color: #8B7355; font-size: 16px; margin-bottom: 30px;">
                                 Be part of creating the next generation of space strategy gaming. Early supporters will help shape the universe and receive exclusive access to development builds.
                             </p>
-                            <a href="/project-contact.php" class="space5x-btn space5x-btn-primary" style="display: inline-block; background: transparent; color: #8B4513; border: 2px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; margin-right: 15px;">
+                            <a href="/contact.php" class="space5x-btn space5x-btn-primary" style="display: inline-block; background: transparent; color: #8B4513; border: 2px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; margin-right: 15px;">
                                 Join Alpha Program
                             </a>
                             <a href="#" onclick="loadProjectFile('references.php'); return false;" class="space5x-btn space5x-btn-secondary" style="display: inline-block; background: transparent; color: #8B4513; border: 2px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; margin-right: 15px;">
                                 Technical Details for Nerds
                             </a>
-                            <a href="/project-contact.php" class="space5x-btn space5x-btn-secondary" style="display: inline-block; background: transparent; color: #8B4513; border: 2px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease;">
+                            <a href="/contact.php" class="space5x-btn space5x-btn-secondary" style="display: inline-block; background: transparent; color: #8B4513; border: 2px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease;">
                                 Follow Development
                             </a>
                         </div>

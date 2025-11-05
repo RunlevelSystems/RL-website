@@ -34,8 +34,7 @@
         // Page-specific variables
         $current_page = 'projects';
         $header_class = 'projects-header inner-header';
-        $show_breadcrumb = true;
-        $page_breadcrumb = 'Projects';
+        $page_subtitle = 'Design. Debug. Deploy.';
         ?>
 
     <!-- Include Site Header -->

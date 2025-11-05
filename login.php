@@ -45,8 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_form'])) {
 // Page-specific variables
 $current_page = 'login';
 $header_class = 'login-header inner-header';
-$show_breadcrumb = true;
-$page_breadcrumb = 'Staff Login';
+$page_subtitle = 'Design. Debug. Deploy.';
 ?>
 
 <!DOCTYPE html>

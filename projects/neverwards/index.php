@@ -91,7 +91,7 @@
                             <p style="color: #8B7355; font-size: 16px; margin-bottom: 30px;">
                                 Join our community to get early access and help shape the future of Neverwards.
                             </p>
-                            <a href="/contact" style="display: inline-block; background: #8B4513; color: #0f1419; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease;">
+                            <a href="/contact.php" style="display: inline-block; background: #8B4513; color: #0f1419; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease;">
                                 Join Beta Program
                             </a>
                         </div>
