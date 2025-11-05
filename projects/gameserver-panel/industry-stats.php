@@ -8,9 +8,9 @@
     <!-- CSS -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/css/main.css" rel="stylesheet">
-    <link href="../assets/css/readability-improvements.css" rel="stylesheet">
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/css/main.css" rel="stylesheet">
+    <link href="../../assets/css/readability-improvements.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
@@ -179,10 +179,10 @@
     ?>
 
     <!-- Include Site Header -->
-    <?php include '../includes/header.html'; ?>
+    <?php include '../../includes/header.html'; ?>
     
     <!-- Include Navigation Header -->
-    <?php include '../includes/navigation.php'; ?>
+    <?php include '../../includes/navigation.php'; ?>
 
     <section class="stats-hero">
         <div class="container">
@@ -202,7 +202,7 @@
 
     <div class="stats-container">
         <div class="container">
-            <a href="../gameserver-panel/index.php" class="back-link">
+            <a href="index.php" class="back-link">
                 <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
                 Back to GameServer Panel
             </a>
@@ -380,11 +380,11 @@
                     GameServer Panel provides the tools you need to build a successful game hosting business 
                     in this expanding market. Professional features, commercial billing, and enterprise support included.
                 </p>
-                <a href="../gameserver-panel-admin-guide/index.php" class="back-link" style="margin-right: 20px;">
+                <a href="admin-guide.php" class="back-link" style="margin-right: 20px;">
                     <i class="fas fa-book" style="margin-right: 8px;"></i>
                     View Admin Guide
                 </a>
-                <a href="../contact.php" class="back-link">
+                <a href="../../contact.php" class="back-link">
                     <i class="fas fa-envelope" style="margin-right: 8px;"></i>
                     Contact Us
                 </a>
@@ -399,19 +399,19 @@
                 <div class="col-md-12 text-center">
                     <h3 style="color: #8B4513; margin-bottom: 25px;">Explore GameServer Panel</h3>
                     <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                        <a href="../gameserver-panel/index.php" class="btn-wds">
+                        <a href="index.php" class="btn-wds">
                             <i class="fas fa-home" style="margin-right: 8px;"></i>
                             Project Overview
                         </a>
-                        <a href="../gameserver-panel-admin-guide/index.php" class="btn-wds">
+                        <a href="admin-guide.php" class="btn-wds">
                             <i class="fas fa-book" style="margin-right: 8px;"></i>
                             Admin Guide
                         </a>
-                        <a href="../contact.php" class="btn-wds">
+                        <a href="../../contact.php" class="btn-wds">
                             <i class="fas fa-envelope" style="margin-right: 8px;"></i>
                             Contact Us
                         </a>
-                        <a href="../joinus.php" class="btn-wds">
+                        <a href="../../joinus.php" class="btn-wds">
                             <i class="fas fa-users" style="margin-right: 8px;"></i>
                             Join Team
                         </a>
@@ -422,7 +422,7 @@
     </section>
 
     <!-- Include Footer -->
-    <?php include '../includes/footer.php'; ?>
+    <?php include '../../includes/footer.php'; ?>
 
     <script>
         const wdsTheme = {

@@ -8,9 +8,9 @@
     <!-- CSS -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/css/main.css" rel="stylesheet">
-    <link href="../assets/css/readability-improvements.css" rel="stylesheet">
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/css/main.css" rel="stylesheet">
+    <link href="../../assets/css/readability-improvements.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href='https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap' rel='stylesheet'>
     
@@ -316,10 +316,10 @@
     ?>
 
     <!-- Include Site Header -->
-    <?php include '../includes/header.html'; ?>
+    <?php include '../../includes/header.html'; ?>
     
     <!-- Include Navigation Header -->
-    <?php include '../includes/navigation.php'; ?>
+    <?php include '../../includes/navigation.php'; ?>
 
     <div class="guide-container">
         <aside class="sidebar">
@@ -353,15 +353,15 @@
                 <div class="quick-links" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #444;">
                     <h4 style="color: #8B4513; margin-bottom: 15px; font-size: 14px;">Related Resources</h4>
                     <div style="display: flex; flex-direction: column; gap: 8px;">
-                        <a href="../gameserver-panel/index.php" class="btn-wds" style="font-size: 11px; padding: 6px 12px; text-decoration: none;">
+                        <a href="index.php" class="btn-wds" style="font-size: 11px; padding: 6px 12px; text-decoration: none;">
                             <i class="fas fa-home" style="margin-right: 5px;"></i>
                             Project Overview
                         </a>
-                        <a href="../gameserver-panel-industry-stats/index.php" class="btn-wds" style="font-size: 11px; padding: 6px 12px; text-decoration: none;">
+                        <a href="industry-stats.php" class="btn-wds" style="font-size: 11px; padding: 6px 12px; text-decoration: none;">
                             <i class="fas fa-chart-line" style="margin-right: 5px;"></i>
                             Industry Stats
                         </a>
-                        <a href="../contact.php" class="btn-wds" style="font-size: 11px; padding: 6px 12px; text-decoration: none;">
+                        <a href="../../contact.php" class="btn-wds" style="font-size: 11px; padding: 6px 12px; text-decoration: none;">
                             <i class="fas fa-envelope" style="margin-right: 5px;"></i>
                             Get Support
                         </a>

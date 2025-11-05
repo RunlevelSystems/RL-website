@@ -71,7 +71,8 @@
     $categorizedProjects = [
         'Current Project' => [],
         'Legacy Project' => [],
-        'Upcoming Project' => []
+        'Upcoming Project' => [],
+        'Idea Board' => []
     ];
     
     foreach ($projects as $project) {

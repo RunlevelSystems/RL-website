@@ -10,13 +10,13 @@
         <!-- CSS -->
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
-        <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-        <link href="../assets/css/magnific-popup.css" rel="stylesheet">
-        <link href="../assets/css/owl.carousel.css" rel="stylesheet">
-        <link href="../assets/css/owl.carousel.theme.min.css" rel="stylesheet">
-        <link href="../assets/css/ionicons.css" rel="stylesheet">
-        <link href="../assets/css/main.css" rel="stylesheet">
-        <link href="../assets/css/readability-improvements.css" rel="stylesheet">
+        <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../assets/css/magnific-popup.css" rel="stylesheet">
+        <link href="../../assets/css/owl.carousel.css" rel="stylesheet">
+        <link href="../../assets/css/owl.carousel.theme.min.css" rel="stylesheet">
+        <link href="../../assets/css/ionicons.css" rel="stylesheet">
+        <link href="../../assets/css/main.css" rel="stylesheet">
+        <link href="../../assets/css/readability-improvements.css" rel="stylesheet">
     </head>
     <body>
         <?php 
@@ -27,8 +27,8 @@
         $current_project_slug = 'roadkill-v2';
         ?>
 
-    <?php include '../includes/header.html'; ?>
-    <?php include '../includes/navigation.php'; ?>
+    <?php include '../../includes/header.html'; ?>
+    <?php include '../../includes/navigation.php'; ?>
 
     <section class="about">
         <div class="container page-bgc">
@@ -116,10 +116,10 @@
                             <p style="color: #8B7355; font-size: 16px; margin-bottom: 30px;">
                                 Join the legion of Roadkill veterans and newcomers preparing for the ultimate vehicular combat experience.
                             </p>
-                            <a href="/contact" style="display: inline-block; background: #8B4513; color: #0f1419; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; margin-right: 15px;">
+                            <a href="../../contact.php" style="display: inline-block; background: #8B4513; color: #0f1419; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; margin-right: 15px;">
                                 Join Alpha Testing
                             </a>
-                            <a href="/projects/roadkill" style="display: inline-block; background: transparent; color: #8B4513; border: 1px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold;">
+                            <a href="index.php" style="display: inline-block; background: transparent; color: #8B4513; border: 1px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold;">
                                 Original Roadkill
                             </a>
                         </div>
@@ -130,13 +130,13 @@
         </div>
     </section>
 
-    <?php include '../includes/project-navigation.php'; ?>
-    <?php include '../includes/footer.html'; ?>
+    <?php include '../../includes/project-navigation.php'; ?>
+    <?php include '../../includes/footer.php'; ?>
 
-    <script src="../assets/js/jquery-1.12.3.min.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
-    <script src="../assets/js/owl.carousel.min.js"></script>
-    <script src="../assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="../assets/js/script.js"></script>
+    <script src="../../assets/js/jquery-1.12.3.min.js"></script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/owl.carousel.min.js"></script>
+    <script src="../../assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="../../assets/js/script.js"></script>
     </body>
 </html>
