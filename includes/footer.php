@@ -59,7 +59,7 @@
                                 Join Our Team
                             </a>
                         </div>
-                        <p style="color: #8B7355; font-size: 14px; line-height: 1.5;">
+                        <p style="color: #E8E4D8; font-size: 14px; line-height: 1.5;">
                             Building games, hosting servers, and creating solutions since 1996. 
                             Join our co-op and share in the profits!
                         </p>
@@ -69,14 +69,14 @@
         </section>
         <footer class="footer text-center" style="background: #000000; color: #E8E8E8;">
             <div style="padding: 20px 0; border-top: 1px solid rgba(255,255,255,0.1);">
-                <p style="color: #8B7355; margin-bottom: 10px; font-size: 16px;">
+                <p style="color: #E8E4D8; margin-bottom: 10px; font-size: 16px;">
                     &copy; 2025 World Domination Software. All rights reserved.
                 </p>
-                <p style="color: #64748b; margin: 0; font-size: 14px;">
+                <p style="color: #E8E4D8; margin: 0; font-size: 14px;">
                     Building the future, one line of code at a time. | 
-                    <a href="https://gameservers.world" target="_blank" style="color: #8B4513;">Gameservers.world</a> | 
-                    <a href="https://github.com/World-Domination-Software" target="_blank" style="color: #8B4513;">GitHub</a> | 
-                    <a href="https://discord.gg/XPFnNdWGyW" target="_blank" style="color: #8B4513;">Discord</a>
+                    <a href="https://gameservers.world" target="_blank" style="color: #B8621B;">Gameservers.world</a> | 
+                    <a href="https://github.com/World-Domination-Software" target="_blank" style="color: #B8621B;">GitHub</a> | 
+                    <a href="https://discord.gg/XPFnNdWGyW" target="_blank" style="color: #B8621B;">Discord</a>
                 </p>
             </div>
         </footer>

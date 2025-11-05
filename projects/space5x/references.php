@@ -293,12 +293,26 @@
                                 We welcome technical contributions from experienced developers. Check out our GitHub repository 
                                 or join our Discord server to discuss implementation details with the dev team.
                             </p>
-                            <a href="/contact" style="display: inline-block; background: #8B4513; color: #0f1419; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; margin-right: 15px;">
+                            <a href="/project-contact.php" class="space5x-btn" style="display: inline-block; background: transparent; color: #8B4513; border: 2px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; margin-right: 15px;">
                                 Join Dev Team
                             </a>
-                            <a href="index.php" style="display: inline-block; background: transparent; color: #8B4513; border: 1px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease;">
+                            <a href="index.php" class="space5x-btn" style="display: inline-block; background: transparent; color: #8B4513; border: 2px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease;">
                                 Back to Space5X
                             </a>
+                        </div>
+                        
+                        <!-- Button Styles -->
+                        <style>
+                            .space5x-btn:hover {
+                                background: #8B4513 !important;
+                                color: #E8E4D8 !important;
+                                text-decoration: none !important;
+                                transform: translateY(-2px);
+                                box-shadow: 0 4px 12px rgba(139, 69, 19, 0.4);
+                            }
+                        </style>
+                        
+                        <div>
                         </div>
 
                     </div>

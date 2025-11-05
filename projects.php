@@ -233,15 +233,37 @@
 
                 <!-- Project Card Styles -->
                 <style>
+                    .project-card {
+                        background: #1a1a1a;
+                        border: 1px solid #333;
+                        border-radius: 8px;
+                        padding: 20px;
+                        height: 200px;
+                        transition: all 0.3s ease;
+                        cursor: pointer;
+                        position: relative;
+                    }
                     .project-card:hover {
-                        background: #2a2a2a !important;
-                        border-color: #8B4513 !important;
+                        background: #8B4513 !important;
+                        border-color: #6B3410 !important;
                         transform: translateY(-2px);
-                        box-shadow: 0 8px 25px rgba(0, 200, 81, 0.15);
+                        box-shadow: 0 8px 25px rgba(139, 69, 19, 0.5);
+                    }
+                    .project-card:hover h3,
+                    .project-card:hover p {
+                        color: #E8E4D8 !important;
+                    }
+                    .project-card.upcoming {
+                        opacity: 0.9;
                     }
                     .project-card.upcoming:hover {
-                        border-color: #8B4513 !important;
+                        background: #8B4513 !important;
+                        border-color: #6B3410 !important;
                         opacity: 1 !important;
+                    }
+                    .project-card.upcoming:hover h3,
+                    .project-card.upcoming:hover p {
+                        color: #E8E4D8 !important;
                     }
                 </style>
 
@@ -315,6 +337,61 @@
             
             // Scroll back to projects overview
             document.getElementById('projects-overview').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Function to load project sub-files within the same view
+        function loadProjectFile(filename) {
+            // Get the current project slug from the URL or context
+            var currentSlug = getCurrentProjectSlug();
+            
+            if (!currentSlug) {
+                console.error('Cannot determine current project');
+                return;
+            }
+            
+            // Show loading message
+            document.getElementById('project-content').innerHTML = '<div style="text-align: center; padding: 40px; color: #8B7355;">Loading...</div>';
+            
+            // Load the project file via AJAX
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'projects/' + currentSlug + '/' + filename, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        // Extract just the content from the response
+                        var parser = new DOMParser();
+                        var doc = parser.parseFromString(xhr.responseText, 'text/html');
+                        var content = doc.querySelector('.boxed') || doc.querySelector('body');
+                        
+                        if (content) {
+                            document.getElementById('project-content').innerHTML = content.innerHTML;
+                        } else {
+                            document.getElementById('project-content').innerHTML = xhr.responseText;
+                        }
+                    } else {
+                        document.getElementById('project-content').innerHTML = '<div style="text-align: center; padding: 40px;"><p style="color: #8B7355;">Error loading content. Please try again.</p></div>';
+                    }
+                    
+                    // Scroll to the top of the project detail
+                    document.getElementById('project-detail').scrollIntoView({ behavior: 'smooth' });
+                }
+            };
+            xhr.send();
+        }
+        
+        // Helper function to get current project slug
+        function getCurrentProjectSlug() {
+            // Try to extract from the project title or URL
+            var titleElement = document.getElementById('project-title');
+            if (titleElement) {
+                var title = titleElement.textContent.toLowerCase();
+                // Map known titles to slugs
+                if (title.includes('space5x') || title.includes('space 5x')) return 'space5x';
+                if (title.includes('roadkill')) return 'roadkill';
+                if (title.includes('gameserver')) return 'gameserver-panel';
+                // Add more mappings as needed
+            }
+            return null;
         }
     </script>
 

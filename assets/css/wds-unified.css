@@ -482,14 +482,26 @@ section.footer-widget {
     border-top: 2px solid #8B4513 !important;
 }
 
+footer,
+footer *,
+.footer,
+.footer * {
+    color: #E8E4D8 !important;
+}
+
 footer a,
 .footer a {
     color: #B8621B !important;
 }
 
+footer a:hover,
+.footer a:hover {
+    color: #D2B48C !important;
+}
+
 footer h1, footer h2, footer h3, footer h4,
 .footer h1, .footer h2, .footer h3, .footer h4 {
-    color: #B8621B !important;
+    color: #E8E4D8 !important;
 }
 
 /* ============================================
