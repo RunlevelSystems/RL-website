@@ -178,13 +178,37 @@
                             <p style="color: #8B7355; font-size: 16px; margin-bottom: 30px;">
                                 Be part of creating the next generation of space strategy gaming. Early supporters will help shape the universe and receive exclusive access to development builds.
                             </p>
-                            <a href="/contact" style="display: inline-block; background: #8B4513; color: #0f1419; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; margin-right: 15px;">
+                            <a href="/project-contact.php" class="space5x-btn space5x-btn-primary" style="display: inline-block; background: transparent; color: #8B4513; border: 2px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; margin-right: 15px;">
                                 Join Alpha Program
                             </a>
-                            <a href="references.php" style="display: inline-block; background: transparent; color: #8B4513; border: 1px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; margin-right: 15px;">
+                            <a href="#" onclick="loadProjectFile('references.php'); return false;" class="space5x-btn space5x-btn-secondary" style="display: inline-block; background: transparent; color: #8B4513; border: 2px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; margin-right: 15px;">
                                 Technical Details for Nerds
                             </a>
-                            <a href="/contact" style="display: inline-block; background: transparent; color: #8B4513; border: 1px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease;">
+                            <a href="/project-contact.php" class="space5x-btn space5x-btn-secondary" style="display: inline-block; background: transparent; color: #8B4513; border: 2px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease;">
                                 Follow Development
                             </a>
                         </div>
+                        
+                        <!-- Button Styles for Space5X -->
+                        <style>
+                            .space5x-btn {
+                                display: inline-block;
+                                background: transparent;
+                                color: #8B4513;
+                                border: 2px solid #8B4513;
+                                padding: 15px 30px;
+                                text-decoration: none;
+                                border-radius: 8px;
+                                font-weight: bold;
+                                transition: all 0.3s ease;
+                                margin-right: 15px;
+                            }
+                            
+                            .space5x-btn:hover {
+                                background: #8B4513 !important;
+                                color: #E8E4D8 !important;
+                                text-decoration: none !important;
+                                transform: translateY(-2px);
+                                box-shadow: 0 4px 12px rgba(139, 69, 19, 0.4);
+                            }
+                        </style>
