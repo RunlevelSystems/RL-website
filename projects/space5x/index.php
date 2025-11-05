@@ -29,12 +29,12 @@
                                         <li><strong style="color: #8B4513;"><i class="fas fa-rocket" aria-hidden="true" style="margin-right:8px;"></i> eXpand:</strong> Colonize worlds, build stargates, establish trade routes</li>
                                         <li><strong style="color: #8B4513;"><i class="fas fa-industry" aria-hidden="true" style="margin-right:8px;"></i> eXploit:</strong> Mine asteroids, terraform planets, harness exotic matter</li>
                                         <li><strong style="color: #8B4513;"><i class="fas fa-bullseye" aria-hidden="true" style="margin-right:8px;"></i> eXterminate:</strong> Strategic fleet combat with tactical depth</li>
+                                        <li><strong style="color: #8B4513;"><i class="fas fa-coins" aria-hidden="true" style="margin-right:8px;"></i> eXconomy:</strong> Complex trade networks between empires</li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-6">
                                     <ul style="color: #8B7355; line-height: 2;">
                                         <li><strong style="color: #8B4513;">Persistent Universe:</strong> Your empire continues to evolve even offline</li>
-                                        <li><strong style="color: #8B4513;"><i class="fas fa-coins" aria-hidden="true" style="margin-right:8px;"></i> eXconomy:</strong> Complex trade networks between empires</li>
                                         <li><strong style="color: #8B4513;">Diplomatic Intrigue:</strong> Alliances, betrayals, and galactic politics</li>
                                         <li><strong style="color: #8B4513;">Technology Trees:</strong> Research paths that define your civilization</li>
                                     </ul>
