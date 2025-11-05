@@ -10,8 +10,7 @@ requireAdminLogin();
 // Page-specific variables
 $current_page = 'staff-info';
 $header_class = 'staff-info-header inner-header';
-$show_breadcrumb = true;
-$page_breadcrumb = 'Staff Information';
+$page_subtitle = 'Design. Debug. Deploy.';
 
 // Learning platform credentials (these should ideally be stored in a secure database)
 $learning_platforms = [

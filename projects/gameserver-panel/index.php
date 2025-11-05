@@ -29,8 +29,6 @@
     $page_title = 'GameServer';
     $page_title_thin = 'Panel';
     $header_class = 'projects-header inner-header';
-    $show_breadcrumb = true;
-    $page_breadcrumb = 'GameServer Panel';
     ?>
 
     <!-- Include Site Header -->
@@ -38,17 +36,6 @@
     
     <!-- Include Navigation Header -->
     <?php include '../includes/navigation.php'; ?>
-
-    <!-- Breadcrumb Navigation -->
-    <nav style="background-color: #0f1419; padding: 15px 0; border-bottom: 1px solid #555555;">
-        <div class="container">
-            <ol style="margin: 0; padding: 0; list-style: none; display: flex; align-items: center; font-size: 14px;">
-                <li><a href="../projects.php" style="color: #8B7355; text-decoration: none;">Projects</a></li>
-                <li style="margin: 0 10px; color: #8B7355;"><i class="fas fa-chevron-right"></i></li>
-                <li style="color: #D2B48C; font-weight: 500;">GameServer Panel</li>
-            </ol>
-        </div>
-    </nav>
 
     <section class="project-hero">
         <div class="container">

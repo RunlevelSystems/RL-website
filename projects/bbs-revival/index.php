@@ -22,8 +22,7 @@
         <?php 
         $current_page = 'projects';
         $header_class = 'projects-header inner-header';
-        $show_breadcrumb = true;
-        $page_breadcrumb = 'Projects / BBS Revival';
+        $page_subtitle = 'Design. Debug. Deploy.';
         $current_project_slug = 'bbs-revival';
         ?>
 
