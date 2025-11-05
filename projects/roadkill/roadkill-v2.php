@@ -131,7 +131,7 @@
     </section>
 
     <?php include '../includes/project-navigation.php'; ?>
-    <?php include '../includes/footer.html'; ?>
+    <?php include '../includes/footer.php'; ?>
 
     <script src="../assets/js/jquery-1.12.3.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>

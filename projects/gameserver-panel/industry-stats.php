@@ -399,11 +399,11 @@
                 <div class="col-md-12 text-center">
                     <h3 style="color: #8B4513; margin-bottom: 25px;">Explore GameServer Panel</h3>
                     <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                        <a href="../gameserver-panel/index.php" class="btn-wds">
+                        <a href="index.php" class="btn-wds">
                             <i class="fas fa-home" style="margin-right: 8px;"></i>
                             Project Overview
                         </a>
-                        <a href="../gameserver-panel-admin-guide/index.php" class="btn-wds">
+                        <a href="admin-guide.php" class="btn-wds">
                             <i class="fas fa-book" style="margin-right: 8px;"></i>
                             Admin Guide
                         </a>

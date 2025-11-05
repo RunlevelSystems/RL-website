@@ -353,11 +353,11 @@
                 <div class="quick-links" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #444;">
                     <h4 style="color: #8B4513; margin-bottom: 15px; font-size: 14px;">Related Resources</h4>
                     <div style="display: flex; flex-direction: column; gap: 8px;">
-                        <a href="../gameserver-panel/index.php" class="btn-wds" style="font-size: 11px; padding: 6px 12px; text-decoration: none;">
+                        <a href="index.php" class="btn-wds" style="font-size: 11px; padding: 6px 12px; text-decoration: none;">
                             <i class="fas fa-home" style="margin-right: 5px;"></i>
                             Project Overview
                         </a>
-                        <a href="../gameserver-panel-industry-stats/index.php" class="btn-wds" style="font-size: 11px; padding: 6px 12px; text-decoration: none;">
+                        <a href="industry-stats.php" class="btn-wds" style="font-size: 11px; padding: 6px 12px; text-decoration: none;">
                             <i class="fas fa-chart-line" style="margin-right: 5px;"></i>
                             Industry Stats
                         </a>
