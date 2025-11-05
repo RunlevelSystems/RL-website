@@ -405,7 +405,7 @@
                         </p>
                     </div>
                     
-                    <a href="../gameserver-panel-industry-stats/index.php" class="btn-wds">
+                    <a href="industry-stats.php" class="btn-wds">
                         <i class="fas fa-chart-bar" style="margin-right: 8px;"></i>
                         View Industry Statistics
                     </a>
@@ -433,7 +433,7 @@
                                     Comprehensive interactive guide covering installation, configuration, 
                                     and advanced XML game definitions.
                                 </p>
-                                <a href="../gameserver-panel-admin-guide/index.php" class="btn-wds">
+                                <a href="admin-guide.php" class="btn-wds">
                                     <i class="fas fa-book-open" style="margin-right: 8px;"></i>
                                     View Guide
                                 </a>
@@ -450,7 +450,7 @@
                                     2025 gaming market analysis with hosting opportunities, 
                                     platform distribution, and growth trends.
                                 </p>
-                                <a href="../gameserver-panel-industry-stats/index.php" class="btn-wds">
+                                <a href="industry-stats.php" class="btn-wds">
                                     <i class="fas fa-chart-bar" style="margin-right: 8px;"></i>
                                     View Statistics
                                 </a>

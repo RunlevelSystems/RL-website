@@ -144,7 +144,7 @@
                             <p style="color: #8B7355; font-size: 16px; margin-bottom: 30px;">
                                 While the original Roadkill servers are no longer active, the spirit lives on in Roadkill v2—a complete remake with modern graphics and enhanced gameplay.
                             </p>
-                            <a href="/projects/roadkill-v2" style="display: inline-block; background: #8B4513; color: #0f1419; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; margin-right: 15px;">
+                            <a href="roadkill-v2.php" style="display: inline-block; background: #8B4513; color: #0f1419; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; margin-right: 15px;">
                                 Discover Roadkill v2
                             </a>
                             <a href="/contact" style="display: inline-block; background: transparent; color: #8B4513; border: 1px solid #8B4513; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease;">
