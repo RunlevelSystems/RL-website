@@ -17,7 +17,7 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #1C1C1C;
+            background-color: #D4CFC0;
             color: #D2B48C;
             margin: 0;
             padding: 0;
@@ -122,7 +122,7 @@
         .content-section p {
             font-size: 16px;
             line-height: 1.7;
-            color: #8B7355;
+            color: #4a4a4a;
             margin-bottom: 20px;
         }
         
@@ -161,7 +161,7 @@
         
         .flow-arrow {
             font-size: 32px;
-            color: #8B7355;
+            color: #4a4a4a;
             margin: 0 20px;
         }
         
@@ -274,7 +274,7 @@
             padding-top: 20px;
             border-top: 1px solid #555555;
             font-size: 12px;
-            color: #8B7355;
+            color: #4a4a4a;
             text-align: center;
         }
         
@@ -399,11 +399,11 @@
                         <i class="fas fa-download" style="margin-right: 10px;"></i>
                         Quick Installation
                     </h3>
-                    <p style="color: #8B7355; margin-bottom: 20px;">
+                    <p style="color: #4a4a4a; margin-bottom: 20px;">
                         Get started with GameServer Panel using our automated installation script:
                     </p>
                     <div style="background-color: #0f1419; padding: 20px; border-radius: 4px; border-left: 4px solid #555555; margin-bottom: 20px;">
-                        <div style="color: #8B7355; margin-bottom: 8px; font-family: 'Courier New', monospace;"># One-line installer for Ubuntu/Debian/CentOS</div>
+                        <div style="color: #4a4a4a; margin-bottom: 8px; font-family: 'Courier New', monospace;"># One-line installer for Ubuntu/Debian/CentOS</div>
                         <div style="color: #D2B48C; font-family: 'Courier New', monospace; font-size: 14px;">curl -fsSL https://install.gameserver-panel.org | sudo bash</div>
                     </div>
                     <div style="display: flex; gap: 15px; flex-wrap: wrap;">
@@ -594,7 +594,7 @@ BILLING_API="https://yourpanel.example.com/api/billing"</code>
 &lt;/game_config&gt;</code>
                         </div>
                         
-                        <div style="background: #2A2A2A; padding: 20px; border-radius: 8px; border-left: 4px solid #555555;">
+                        <div style="background: #E8E4D8; padding: 20px; border-radius: 8px; border-left: 4px solid #555555;">
                             <strong style="color: #C4A676;">Important Notes:</strong>
                             <ul style="margin: 10px 0 0 20px; color: #E6D3B7;">
                                 <li>The <code>game_key</code> must include OS suffix (_linux64, _win32, _win64)</li>
@@ -656,7 +656,7 @@ BILLING_API="https://yourpanel.example.com/api/billing"</code>
                         <p style="margin-bottom: 20px;">Use these variables in your <code>cli_template</code> - they will be replaced with actual values:</p>
                         
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                            <div style="background: #2A2A2A; padding: 15px; border-radius: 6px; border: 1px solid #444;">
+                            <div style="background: #E8E4D8; padding: 15px; border-radius: 6px; border: 1px solid #444;">
                                 <h6 style="color: #C4A676; margin-bottom: 10px;">System Variables</h6>
                                 <ul style="font-size: 13px; line-height: 1.5; color: #E6D3B7;">
                                     <li><code>%SERVER_EXEC_NAME%</code> - Executable name</li>
@@ -666,7 +666,7 @@ BILLING_API="https://yourpanel.example.com/api/billing"</code>
                                 </ul>
                             </div>
                             
-                            <div style="background: #2A2A2A; padding: 15px; border-radius: 6px; border: 1px solid #444;">
+                            <div style="background: #E8E4D8; padding: 15px; border-radius: 6px; border: 1px solid #444;">
                                 <h6 style="color: #C4A676; margin-bottom: 10px;">Game Variables</h6>
                                 <ul style="font-size: 13px; line-height: 1.5; color: #E6D3B7;">
                                     <li><code>%MAP%</code> - Starting map</li>
@@ -676,7 +676,7 @@ BILLING_API="https://yourpanel.example.com/api/billing"</code>
                                 </ul>
                             </div>
                             
-                            <div style="background: #2A2A2A; padding: 15px; border-radius: 6px; border: 1px solid #444;">
+                            <div style="background: #E8E4D8; padding: 15px; border-radius: 6px; border: 1px solid #444;">
                                 <h6 style="color: #C4A676; margin-bottom: 10px;">Custom Variables</h6>
                                 <ul style="font-size: 13px; line-height: 1.5; color: #E6D3B7;">
                                     <li>Define with <code>cli_param</code> elements</li>
@@ -710,15 +710,15 @@ BILLING_API="https://yourpanel.example.com/api/billing"</code>
                         </div>
                         
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-                            <div style="background: #2A2A2A; padding: 15px; border-radius: 6px; border: 1px solid #444;">
+                            <div style="background: #E8E4D8; padding: 15px; border-radius: 6px; border: 1px solid #444;">
                                 <code style="color: #C4A676; font-weight: bold;">s</code>
                                 <p style="margin: 8px 0 0 0; font-size: 13px; color: #E6D3B7;">Add space between flag and value</p>
                             </div>
-                            <div style="background: #2A2A2A; padding: 15px; border-radius: 6px; border: 1px solid #444;">
+                            <div style="background: #E8E4D8; padding: 15px; border-radius: 6px; border: 1px solid #444;">
                                 <code style="color: #C4A676; font-weight: bold;">q</code>
                                 <p style="margin: 8px 0 0 0; font-size: 13px; color: #E6D3B7;">Wrap value in quotes</p>
                             </div>
-                            <div style="background: #2A2A2A; padding: 15px; border-radius: 6px; border: 1px solid #444;">
+                            <div style="background: #E8E4D8; padding: 15px; border-radius: 6px; border: 1px solid #444;">
                                 <code style="color: #C4A676; font-weight: bold;">sq</code>
                                 <p style="margin: 8px 0 0 0; font-size: 13px; color: #E6D3B7;">Space + quotes combined</p>
                             </div>
@@ -769,7 +769,7 @@ BILLING_API="https://yourpanel.example.com/api/billing"</code>
                     </button>
                     <div class="accordion-content">
                         <p>Before writing any XML, you need to know how to run the game server from the command line. Find out:</p>
-                        <ul style="color: #8B7355; margin-left: 20px;">
+                        <ul style="color: #4a4a4a; margin-left: 20px;">
                             <li>The name of the executable (e.g., srcds_run, arma3server_x64.exe)</li>
                             <li>The command-line arguments it accepts (e.g., -port, +map, -config)</li>
                             <li>Which arguments are required and which are optional</li>
@@ -801,7 +801,7 @@ BILLING_API="https://yourpanel.example.com/api/billing"</code>
                     </button>
                     <div class="accordion-content">
                         <p>For each command-line argument you want to control from the panel, create a var block. This defines the UI element that will appear in the panel.</p>
-                        <ul style="color: #8B7355; margin-left: 20px;">
+                        <ul style="color: #4a4a4a; margin-left: 20px;">
                             <li>&lt;name&gt;: The label shown in the panel (e.g., "Game Map")</li>
                             <li>&lt;option&gt;: The command-line flag (e.g., +map)</li>
                             <li>&lt;type&gt;: The input type (e.g., text, dropdown, checkbox)</li>
@@ -834,7 +834,7 @@ BILLING_API="https://yourpanel.example.com/api/billing"</code>
                     </button>
                     <div class="accordion-content">
                         <p>Upload your XML file and test it thoroughly:</p>
-                        <ul style="color: #8B7355; margin-left: 20px;">
+                        <ul style="color: #4a4a4a; margin-left: 20px;">
                             <li>Go to the "Games" section in your panel and click "Update Games List"</li>
                             <li>Create a test server instance with your new game</li>
                             <li>Check the agent logs for any startup errors</li>
@@ -852,7 +852,7 @@ BILLING_API="https://yourpanel.example.com/api/billing"</code>
                 <div class="card">
                     <h3>What does it do?</h3>
                     <p>The panelStart script acts as a wrapper for your game server executable. Its primary jobs are:</p>
-                    <ul style="color: #8B7355; margin-left: 20px; margin-top: 15px;">
+                    <ul style="color: #4a4a4a; margin-left: 20px; margin-top: 15px;">
                         <li><strong>Process ID (PID) Tracking:</strong> Determines the Process ID of the launched game server and writes it to a .pid file. The Agent reads this file to manage the process.</li>
                         <li><strong>Environment Setup:</strong> Sets up necessary environment variables and changes directories before launching the main executable.</li>
                         <li><strong>Logging:</strong> Redirects the server's output streams to a log file (console.log) viewable from the web panel.</li>
@@ -985,7 +985,7 @@ BILLING_API="https://yourpanel.example.com/api/billing"</code>
                     const doc = xmlDocs[tagKey];
                     xmlExplanation.innerHTML = `
                         <h3 style="color: #8B4513; font-family: 'Fira Code', monospace;">${doc.title}</h3>
-                        <p style="color: #8B7355;">${doc.desc}</p>
+                        <p style="color: #4a4a4a;">${doc.desc}</p>
                     `;
                 }
             });

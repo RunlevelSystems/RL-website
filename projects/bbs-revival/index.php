@@ -46,22 +46,22 @@
                     <div class="col-sm-12">
                         
                         <!-- Project Overview -->
-                        <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">Nostalgia Meets Modern Technology</h3>
-                            <p style="color: #8B7355; font-size: 18px; line-height: 1.8; margin-bottom: 20px;">
+                            <p style="color: #4a4a4a; font-size: 18px; line-height: 1.8; margin-bottom: 20px;">
                                 Remember the golden days of dial-up BBSes? ASCII art, door games, message boards, and file trading in tight-knit communities? BBS Revival brings back that authentic 80s/90s spirit in a modern multiplayer environment that captures the magic of the early internet.
                             </p>
-                            <p style="color: #8B7355; font-size: 16px; line-height: 1.6;">
+                            <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6;">
                                 This isn't just nostalgia—it's a celebration of the community-driven, text-based culture that shaped early online interaction, reimagined for today's connected world.
                             </p>
                         </div>
 
                         <!-- Features -->
-                        <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 30px;">Classic BBS Experience</h3>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <ul style="color: #8B7355; line-height: 2;">
+                                    <ul style="color: #4a4a4a; line-height: 2;">
                                         <li><strong style="color: #8B4513;">ASCII Art Galleries:</strong> Create and share terminal art masterpieces</li>
                                         <li><strong style="color: #8B4513;">Door Games:</strong> Classic text adventures and strategy games</li>
                                         <li><strong style="color: #8B4513;">Message Boards:</strong> Threaded discussions across interest groups</li>
@@ -69,7 +69,7 @@
                                     </ul>
                                 </div>
                                 <div class="col-sm-6">
-                                    <ul style="color: #8B7355; line-height: 2;">
+                                    <ul style="color: #4a4a4a; line-height: 2;">
                                         <li><strong style="color: #8B4513;">Terminal Emulation:</strong> Authentic text-mode experience</li>
                                         <li><strong style="color: #8B4513;">SysOp Tools:</strong> Run your own BBS node</li>
                                         <li><strong style="color: #8B4513;">Retro Games:</strong> Trade Wars, Legend of the Red Dragon revival</li>
@@ -82,7 +82,7 @@
                         <!-- Call to Action -->
                         <div style="text-align: center; padding: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">Coming 2027</h3>
-                            <p style="color: #8B7355; font-size: 16px; margin-bottom: 30px;">
+                            <p style="color: #4a4a4a; font-size: 16px; margin-bottom: 30px;">
                                 Dial into the past. Connect to the future. Be part of the BBS renaissance.
                             </p>
                             <a href="/contact.php" class="btn btn-wds">
@@ -106,3 +106,4 @@
     <script src="../assets/js/script.js"></script>
     </body>
 </html>
+

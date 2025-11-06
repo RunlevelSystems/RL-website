@@ -49,20 +49,20 @@
                     <div class="col-sm-12">
                         
                         <!-- Introduction -->
-                        <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">Technical Deep Dive</h3>
-                            <p style="color: #8B7355; font-size: 16px; line-height: 1.8;">
+                            <p style="color: #4a4a4a; font-size: 16px; line-height: 1.8;">
                                 This page contains detailed technical information about Space5X's architecture, algorithms, and implementation details. 
                                 If you're interested in the nitty-gritty of how we're building a massive-scale space empire simulation, you've come to the right place.
                             </p>
                         </div>
 
                         <!-- Architecture Overview -->
-                        <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 30px;">System Architecture</h3>
                             
                             <h4 style="color: #D2B48C; margin-bottom: 15px;">Backend Infrastructure</h4>
-                            <ul style="color: #8B7355; line-height: 2; margin-bottom: 30px;">
+                            <ul style="color: #4a4a4a; line-height: 2; margin-bottom: 30px;">
                                 <li><strong style="color: #8B4513;">Game Engine:</strong> Custom C++ engine with multi-threaded processing</li>
                                 <li><strong style="color: #8B4513;">Database:</strong> PostgreSQL with CitusDB for horizontal sharding</li>
                                 <li><strong style="color: #8B4513;">Caching Layer:</strong> Redis cluster for session management and real-time data</li>
@@ -71,7 +71,7 @@
                             </ul>
 
                             <h4 style="color: #D2B48C; margin-bottom: 15px;">Client Architecture</h4>
-                            <ul style="color: #8B7355; line-height: 2;">
+                            <ul style="color: #4a4a4a; line-height: 2;">
                                 <li><strong style="color: #8B4513;">Frontend:</strong> WebGL-based rendering using Three.js</li>
                                 <li><strong style="color: #8B4513;">State Management:</strong> Redux for predictable state containers</li>
                                 <li><strong style="color: #8B4513;">Real-time Communication:</strong> WebSocket connections with fallback to long-polling</li>
@@ -80,16 +80,16 @@
                         </div>
 
                         <!-- Galaxy Generation -->
-                        <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">Procedural Galaxy Generation</h3>
-                            <p style="color: #8B7355; font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
+                            <p style="color: #4a4a4a; font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
                                 Space5X uses a deterministic procedural generation algorithm to create galaxies with thousands of star systems. 
                                 The algorithm ensures reproducibility while allowing for rich diversity in planet types, resources, and anomalies.
                             </p>
                             
                             <div style="background: #0f1419; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
                                 <h4 style="color: #D2B48C; margin-bottom: 15px;">Generation Parameters</h4>
-                                <ul style="color: #8B7355; line-height: 2; font-family: 'Courier New', monospace; font-size: 14px;">
+                                <ul style="color: #4a4a4a; line-height: 2; font-family: 'Courier New', monospace; font-size: 14px;">
                                     <li>Seed: 64-bit integer for reproducible generation</li>
                                     <li>Galaxy Size: 2,000 - 10,000 star systems</li>
                                     <li>Star Density: Variable using Perlin noise for spiral arms</li>
@@ -99,10 +99,10 @@
                             </div>
 
                             <h4 style="color: #D2B48C; margin-bottom: 15px;">Star Classification</h4>
-                            <p style="color: #8B7355; font-size: 14px; line-height: 1.8;">
+                            <p style="color: #4a4a4a; font-size: 14px; line-height: 1.8;">
                                 We implement a simplified stellar classification based on the Harvard spectral classification:
                             </p>
-                            <ul style="color: #8B7355; line-height: 2; margin-bottom: 20px;">
+                            <ul style="color: #4a4a4a; line-height: 2; margin-bottom: 20px;">
                                 <li><strong style="color: #8B4513;">O-Type:</strong> Blue giants, rare (0.003%), high-energy output</li>
                                 <li><strong style="color: #8B4513;">B-Type:</strong> Blue-white, uncommon (0.13%), few habitable planets</li>
                                 <li><strong style="color: #8B4513;">A-Type:</strong> White, moderate (0.6%), potential for exotic resources</li>
@@ -114,11 +114,11 @@
                         </div>
 
                         <!-- Physics Engine -->
-                        <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">Physics and Movement</h3>
                             
                             <h4 style="color: #D2B48C; margin-bottom: 15px;">Orbital Mechanics</h4>
-                            <p style="color: #8B7355; font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
+                            <p style="color: #4a4a4a; font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
                                 Space5X implements simplified Keplerian orbital mechanics for predictable but realistic ship movement. 
                                 We use a time-step simulation with velocity Verlet integration for numerical stability.
                             </p>
@@ -138,11 +138,11 @@
                             </div>
 
                             <h4 style="color: #D2B48C; margin-bottom: 15px;">FTL Travel</h4>
-                            <p style="color: #8B7355; font-size: 14px; line-height: 1.8;">
+                            <p style="color: #4a4a4a; font-size: 14px; line-height: 1.8;">
                                 FTL uses a point-to-point warp system rather than continuous superluminal travel. 
                                 Travel time is calculated based on distance, ship engine rating, and navigational hazards:
                             </p>
-                            <ul style="color: #8B7355; line-height: 2;">
+                            <ul style="color: #4a4a4a; line-height: 2;">
                                 <li>Base travel time: distance / (engine_rating × warp_factor)</li>
                                 <li>Fuel consumption: proportional to mass and distance</li>
                                 <li>Navigation checks: discrete probability of encountering anomalies</li>
@@ -150,11 +150,11 @@
                         </div>
 
                         <!-- eXconomy System -->
-                        <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">eXconomy Simulation</h3>
 
                             <h4 style="color: #D2B48C; margin-bottom: 15px;">Supply & Demand Model</h4>
-                            <p style="color: #8B7355; font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
+                            <p style="color: #4a4a4a; font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
                                 The eXconomy uses a dynamic supply–demand model with regional markets. Prices fluctuate based on local availability,
                                 trade routes, and player activities. Each commodity has elasticity parameters that determine price responsiveness.
                             </p>
@@ -175,16 +175,16 @@
                         </div>
 
                         <!-- Combat Mechanics -->
-                        <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">Combat System</h3>
                             
                             <h4 style="color: #D2B48C; margin-bottom: 15px;">Damage Calculation</h4>
-                            <p style="color: #8B7355; font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
+                            <p style="color: #4a4a4a; font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
                                 Combat uses a deterministic system with random variance to ensure fair outcomes while maintaining excitement. 
                                 Multiple factors influence combat effectiveness including ship design, crew experience, and tactical positioning.
                             </p>
                             
-                            <ul style="color: #8B7355; line-height: 2; margin-bottom: 20px;">
+                            <ul style="color: #4a4a4a; line-height: 2; margin-bottom: 20px;">
                                 <li><strong style="color: #8B4513;">Hit Probability:</strong> Based on attacker accuracy vs defender evasion</li>
                                 <li><strong style="color: #8B4513;">Damage Mitigation:</strong> Shields absorb percentage, then armor reduces remainder</li>
                                 <li><strong style="color: #8B4513;">Critical Hits:</strong> 5% chance for 2x damage, affected by crew skill</li>
@@ -192,23 +192,23 @@
                             </ul>
 
                             <h4 style="color: #D2B48C; margin-bottom: 15px;">Fleet Tactics</h4>
-                            <p style="color: #8B7355; font-size: 14px; line-height: 1.8;">
+                            <p style="color: #4a4a4a; font-size: 14px; line-height: 1.8;">
                                 Large-scale fleet combat uses formation bonuses and command hierarchy. Fleet commanders provide tactical bonuses 
                                 based on their leadership skill, and coordinated attacks can overwhelm individual ships' defenses.
                             </p>
                         </div>
 
                         <!-- Network Protocol -->
-                        <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">Network Architecture</h3>
                             
                             <h4 style="color: #D2B48C; margin-bottom: 15px;">Communication Protocol</h4>
-                            <p style="color: #8B7355; font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
+                            <p style="color: #4a4a4a; font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
                                 Space5X uses a hybrid protocol combining WebSocket for real-time updates and REST API for state queries. 
                                 All messages use MessagePack for efficient binary serialization.
                             </p>
                             
-                            <ul style="color: #8B7355; line-height: 2; margin-bottom: 20px;">
+                            <ul style="color: #4a4a4a; line-height: 2; margin-bottom: 20px;">
                                 <li><strong style="color: #8B4513;">Heartbeat:</strong> Client pings every 30 seconds</li>
                                 <li><strong style="color: #8B4513;">State Sync:</strong> Delta updates sent only for changed game state</li>
                                 <li><strong style="color: #8B4513;">Command Queue:</strong> Player actions queued and executed in order</li>
@@ -216,7 +216,7 @@
                             </ul>
 
                             <h4 style="color: #D2B48C; margin-bottom: 15px;">Scalability</h4>
-                            <p style="color: #8B7355; font-size: 14px; line-height: 1.8;">
+                            <p style="color: #4a4a4a; font-size: 14px; line-height: 1.8;">
                                 The game is designed to scale horizontally using Kubernetes for orchestration. Each star system can run on 
                                 a separate game server instance, with player connections routed through a load balancer based on their 
                                 current location in the galaxy.
@@ -224,7 +224,7 @@
                         </div>
 
                         <!-- Database Schema -->
-                        <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">Data Storage</h3>
                             
                             <h4 style="color: #D2B48C; margin-bottom: 15px;">Core Tables</h4>
@@ -242,7 +242,7 @@
                             </div>
 
                             <h4 style="color: #D2B48C; margin-bottom: 15px;">Optimization Strategies</h4>
-                            <ul style="color: #8B7355; line-height: 2;">
+                            <ul style="color: #4a4a4a; line-height: 2;">
                                 <li><strong style="color: #8B4513;">Partitioning:</strong> Data partitioned by galaxy region for faster queries</li>
                                 <li><strong style="color: #8B4513;">Indexing:</strong> Spatial indexes for coordinate-based lookups</li>
                                 <li><strong style="color: #8B4513;">Caching:</strong> Hot data kept in Redis with 5-minute TTL</li>
@@ -251,13 +251,13 @@
                         </div>
 
                         <!-- Performance Metrics -->
-                        <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">Performance Targets</h3>
                             
                             <div class="row">
                                 <div class="col-sm-4">
                                     <h4 style="color: #D2B48C; margin-bottom: 15px;">Response Time</h4>
-                                    <ul style="color: #8B7355; line-height: 2; font-size: 14px;">
+                                    <ul style="color: #4a4a4a; line-height: 2; font-size: 14px;">
                                         <li>API calls: &lt;100ms p99</li>
                                         <li>State updates: &lt;50ms</li>
                                         <li>Combat resolution: &lt;200ms</li>
@@ -266,7 +266,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <h4 style="color: #D2B48C; margin-bottom: 15px;">Capacity</h4>
-                                    <ul style="color: #8B7355; line-height: 2; font-size: 14px;">
+                                    <ul style="color: #4a4a4a; line-height: 2; font-size: 14px;">
                                         <li>100,000 concurrent players</li>
                                         <li>1,000,000 active empires</li>
                                         <li>10,000 star systems per galaxy</li>
@@ -275,7 +275,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <h4 style="color: #D2B48C; margin-bottom: 15px;">Reliability</h4>
-                                    <ul style="color: #8B7355; line-height: 2; font-size: 14px;">
+                                    <ul style="color: #4a4a4a; line-height: 2; font-size: 14px;">
                                         <li>99.9% uptime SLA</li>
                                         <li>Zero data loss</li>
                                         <li>Auto-failover &lt;30s</li>
@@ -288,7 +288,7 @@
                         <!-- Contributing -->
                         <div style="text-align: center; padding: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">Want to Contribute?</h3>
-                            <p style="color: #8B7355; font-size: 16px; margin-bottom: 30px;">
+                            <p style="color: #4a4a4a; font-size: 16px; margin-bottom: 30px;">
                                 We welcome technical contributions from experienced developers. Check out our GitHub repository 
                                 or join our Discord server to discuss implementation details with the dev team.
                             </p>
@@ -330,3 +330,4 @@
     <script src="../../assets/js/script.js"></script>
 </body>
 </html>
+

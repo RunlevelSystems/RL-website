@@ -59,6 +59,23 @@
                     $metadata = json_decode(file_get_contents($metadataFile), true);
                     if ($metadata && !isset($metadata['hidden'])) {
                         $metadata['slug'] = $dir;
+                        
+                        // Check for project icon files (projecticon.png or projecticon.jpg)
+                        $iconFound = false;
+                        if (file_exists($dirPath . '/projecticon.png')) {
+                            $metadata['projectIcon'] = 'projects/' . $dir . '/projecticon.png';
+                            $iconFound = true;
+                        } elseif (file_exists($dirPath . '/projecticon.jpg')) {
+                            $metadata['projectIcon'] = 'projects/' . $dir . '/projecticon.jpg';
+                            $iconFound = true;
+                        }
+                        
+                        // If no project icon file exists, use FA icon fallback
+                        if (!$iconFound) {
+                            $metadata['projectIcon'] = null;
+                            $metadata['iconFallback'] = 'fa-code'; // Default FA icon
+                        }
+                        
                         $projects[] = $metadata;
                     }
                 }
@@ -66,7 +83,7 @@
         }
     }
     
-    // Group projects by category
+    // Group projects by category - order determines section display order
     $categorizedProjects = [
         'Current Project' => [],
         'Legacy Project' => [],
@@ -153,14 +170,24 @@
                 echo '<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">';
                 echo '<h3 style="color: #8B4513; margin: 0; font-size: 18px;">' . $title . '</h3>';
                 
-                // Handle icon rendering
-                if (isset($project['iconType']) && $project['iconType'] === 'fontawesome') {
+                // Handle icon rendering - prefer projecticon.png/jpg, fallback to FA icon
+                if (isset($project['projectIcon']) && $project['projectIcon']) {
+                    // Use projecticon.png or projecticon.jpg from project folder
+                    echo '<img src="' . htmlspecialchars($project['projectIcon']) . '" alt="' . $title . '" style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;" onerror="this.onerror=null; this.style.display=\'none\'; var fallback=document.createElement(\'div\'); fallback.innerHTML=\'<div style=\\\'width:40px;height:40px;background:#8B4513;border-radius:4px;display:flex;align-items:center;justify-content:center;\\\'><i class=\\\'fas fa-code\\\' style=\\\'color:#D2B48C;font-size:20px;\\\'></i></div>\'; this.parentNode.appendChild(fallback.firstChild);">';
+                } elseif (isset($project['iconType']) && $project['iconType'] === 'fontawesome') {
+                    // Use FA icon from project.json
                     echo '<div style="width: 40px; height: 40px; background: #8B4513; border-radius: 4px; display: flex; align-items: center; justify-content: center;">';
                     echo '<i class="fas ' . htmlspecialchars($project['icon']) . '" style="color: #D2B48C; font-size: 20px;"></i>';
                     echo '</div>';
+                } elseif (isset($project['icon']) && !empty($project['icon'])) {
+                    // Legacy: use icon path from project.json
+                    echo '<img src="' . htmlspecialchars($project['icon']) . '" alt="' . $title . '" style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;" onerror="this.onerror=null; this.style.display=\'none\'; var fallback=document.createElement(\'div\'); fallback.innerHTML=\'<div style=\\\'width:40px;height:40px;background:#8B4513;border-radius:4px;display:flex;align-items:center;justify-content:center;\\\'><i class=\\\'fas fa-code\\\' style=\\\'color:#D2B48C;font-size:20px;\\\'></i></div>\'; this.parentNode.appendChild(fallback.firstChild);">';
                 } else {
-                    $icon = htmlspecialchars($project['icon'] ?? '');
-                    echo '<img src="' . $icon . '" alt="' . $title . '" style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;" onerror="this.style.display=\'none\'">';
+                    // Default FA icon fallback
+                    $fallbackIcon = $project['iconFallback'] ?? 'fa-code';
+                    echo '<div style="width: 40px; height: 40px; background: #8B4513; border-radius: 4px; display: flex; align-items: center; justify-content: center;">';
+                    echo '<i class="fas ' . htmlspecialchars($fallbackIcon) . '" style="color: #D2B48C; font-size: 20px;"></i>';
+                    echo '</div>';
                 }
                 
                 echo '</div>';
@@ -171,7 +198,7 @@
                 echo '</div>';
             }
             
-            // Render Current Projects
+            // Render Current Projects (first section - uses the overview header above)
             if (!empty($categorizedProjects['Current Project'])) {
                 echo '<!-- Current Projects -->';
                 echo '<div class="service">';
@@ -191,7 +218,7 @@
                 echo '<div class="row" style="margin-top: 60px;">';
                 echo '<div class="col-sm-12">';
                 echo '<div class="title-box">';
-                echo '<p>Our legacy</p>';
+                echo '<p>Proven solutions</p>';
                 echo '<h2 class="title mt0">Legacy Projects</h2>';
                 echo '</div>';
                 echo '</div>';
@@ -213,7 +240,7 @@
                 echo '<div class="row" style="margin-top: 60px;">';
                 echo '<div class="col-sm-12">';
                 echo '<div class="title-box">';
-                echo '<p>Coming soon</p>';
+                echo '<p>In development</p>';
                 echo '<h2 class="title mt0">Upcoming Projects</h2>';
                 echo '</div>';
                 echo '</div>';
@@ -222,6 +249,28 @@
                 echo '<div class="row">';
                 echo '<div class="boxed">';
                 foreach ($categorizedProjects['Upcoming Project'] as $project) {
+                    renderProjectCard($project, true);
+                }
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+            }
+            
+            // Render Idea Board
+            if (!empty($categorizedProjects['Idea Board'])) {
+                echo '<!-- Idea Board Section -->';
+                echo '<div class="row" style="margin-top: 60px;">';
+                echo '<div class="col-sm-12">';
+                echo '<div class="title-box">';
+                echo '<p>Future concepts</p>';
+                echo '<h2 class="title mt0">Idea Board</h2>';
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+                echo '<div class="service">';
+                echo '<div class="row">';
+                echo '<div class="boxed">';
+                foreach ($categorizedProjects['Idea Board'] as $project) {
                     renderProjectCard($project, true);
                 }
                 echo '</div>';

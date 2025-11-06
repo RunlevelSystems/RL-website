@@ -46,23 +46,23 @@
                     <div class="col-sm-12">
                         
                         <!-- Project Overview -->
-                        <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">Survival Against the Impossible</h3>
-                            <p style="color: #8B7355; font-size: 18px; line-height: 1.8; margin-bottom: 20px;">
+                            <p style="color: #4a4a4a; font-size: 18px; line-height: 1.8; margin-bottom: 20px;">
                                 When the invasion began, humanity wasn't ready. Alien Apocalypse throws you into humanity's darkest hour, where survival means more than just staying alive—it means rebuilding civilization from the ashes while fighting an enemy beyond comprehension.
                             </p>
-                            <p style="color: #8B7355; font-size: 16px; line-height: 1.6;">
+                            <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6;">
                                 Combining intense survival shooter mechanics with deep base-building and crafting systems, this isn't just another zombie game with aliens. Every bullet counts, every resource matters, and every decision could mean the difference between extinction and hope.
                             </p>
                         </div>
 
                         <!-- Core Gameplay -->
-                        <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 30px;">Dual-Layer Survival</h3>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <h4 style="color: #D2B48C; margin-bottom: 15px;">Combat & Scavenging</h4>
-                                    <ul style="color: #8B7355; line-height: 1.8;">
+                                    <ul style="color: #4a4a4a; line-height: 1.8;">
                                         <li>Tactical shooter mechanics with realistic weapon handling</li>
                                         <li>Alien AI that learns and adapts to player behavior</li>
                                         <li>Scavenging in dangerous territories for rare resources</li>
@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <h4 style="color: #D2B48C; margin-bottom: 15px;">Base Building & Survival</h4>
-                                    <ul style="color: #8B7355; line-height: 1.8;">
+                                    <ul style="color: #4a4a4a; line-height: 1.8;">
                                         <li>Fortified settlement construction and management</li>
                                         <li>Resource production, food cultivation, and water purification</li>
                                         <li>Survivor recruitment and community management</li>
@@ -86,10 +86,10 @@
                         <!-- Call to Action -->
                         <div style="text-align: center; padding: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">Coming 2026</h3>
-                            <p style="color: #8B7355; font-size: 16px; margin-bottom: 20px;">
+                            <p style="color: #4a4a4a; font-size: 16px; margin-bottom: 20px;">
                                 Join our mailing list for exclusive development updates and early access opportunities.
                             </p>
-                            <p style="color: #8B7355; font-size: 14px; margin-bottom: 16px;">
+                            <p style="color: #4a4a4a; font-size: 14px; margin-bottom: 16px;">
                                 Technical foundation: Unity (C#) client builds, headless Linux servers for multiplayer sessions, and containerized tooling for reproducible server deployments.
                             </p>
                             <a href="/contact.php" class="btn btn-wds">
@@ -113,3 +113,4 @@
     <script src="../assets/js/script.js"></script>
     </body>
 </html>
+

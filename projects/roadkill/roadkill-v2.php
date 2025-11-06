@@ -46,30 +46,30 @@
                     <div class="col-sm-12">
                         
                         <!-- Project Overview -->
-                        <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">The Legend Reborn</h3>
-                            <p style="color: #8B7355; font-size: 18px; line-height: 1.8; margin-bottom: 20px;">
+                            <p style="color: #4a4a4a; font-size: 18px; line-height: 1.8; margin-bottom: 20px;">
                                 Roadkill v2 is the complete remake of our classic vehicular combat masterpiece, rebuilt from the ground up with modern graphics, enhanced physics, expanded arenas, and new game modes. Everything you loved about the original, evolved for today's players while maintaining the pure adrenaline rush that made Roadkill legendary.
                             </p>
-                            <p style="color: #8B7355; font-size: 16px; line-height: 1.6;">
+                            <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6;">
                                 This isn't just a remaster—it's a reimagining that honors the past while embracing the future of competitive vehicular combat.
                             </p>
                         </div>
 
                         <!-- Modern Features -->
-                        <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 30px;">Next-Generation Combat</h3>
                             <div class="row">
                                 <div class="col-sm-6">
                                         <h4 style="color: #D2B48C; margin-bottom: 12px;">Core Tech</h4>
-                                        <ul style="color: #8B7355; line-height: 1.8;">
+                                        <ul style="color: #4a4a4a; line-height: 1.8;">
                                             <li><strong>Unity (C#):</strong> Project sources under /Assets and managed with the Unity Editor and solution files.</li>
                                             <li><strong>Visual Studio:</strong> Primary IDE for script editing, debugging and build orchestration.</li>
                                         </ul>
                                 </div>
                                 <div class="col-sm-6">
                                         <h4 style="color: #D2B48C; margin-bottom: 12px;">Multiplayer & Builds</h4>
-                                        <ul style="color: #8B7355; line-height: 1.8;">
+                                        <ul style="color: #4a4a4a; line-height: 1.8;">
                                             <li><strong>Server-authoritative instances:</strong> Headless server builds host authoritative game state and match logic.</li>
                                             <li><strong>Netcode & prediction:</strong> Reconciliation and interpolation keep gameplay responsive under latency.</li>
                                         </ul>
@@ -78,11 +78,11 @@
                         </div>
 
                         <!-- Development Status -->
-                        <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">Development Progress</h3>
                             <div style="margin-bottom: 20px;">
                                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                                    <span style="color: #8B7355; font-weight: bold;">Core Engine & Physics</span>
+                                    <span style="color: #4a4a4a; font-weight: bold;">Core Engine & Physics</span>
                                     <span style="color: #8B4513; font-weight: bold;">40%</span>
                                 </div>
                                 <div style="background: #333; height: 8px; border-radius: 4px;">
@@ -91,14 +91,14 @@
                             </div>
                             <div style="margin-bottom: 20px;">
                                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                                    <span style="color: #8B7355; font-weight: bold;">Vehicle Systems</span>
+                                    <span style="color: #4a4a4a; font-weight: bold;">Vehicle Systems</span>
                                     <span style="color: #8B4513; font-weight: bold;">30%</span>
                                 </div>
                                 <div style="background: #333; height: 8px; border-radius: 4px;">
                                     <div style="background: #8B4513; height: 100%; width: 30%; border-radius: 4px;"></div>
                                 </div>
                             </div>
-                            <p style="color: #8B7355; margin-top: 20px;">
+                            <p style="color: #4a4a4a; margin-top: 20px;">
                                 <strong>Target Release:</strong> Q3 2028 • <strong>Platform:</strong> PC, PlayStation 5, Xbox Series X/S
                             </p>
                         </div>
@@ -106,7 +106,7 @@
                         <!-- Call to Action -->
                         <div style="text-align: center; padding: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">The Road to Glory</h3>
-                            <p style="color: #8B7355; font-size: 16px; margin-bottom: 30px;">
+                            <p style="color: #4a4a4a; font-size: 16px; margin-bottom: 30px;">
                                 Join the legion of Roadkill veterans and newcomers preparing for the ultimate vehicular combat experience.
                             </p>
                             <a href="../../contact.php" class="btn btn-wds" style="margin-right: 15px;">
@@ -133,3 +133,4 @@
     <script src="../../assets/js/script.js"></script>
     </body>
 </html>
+

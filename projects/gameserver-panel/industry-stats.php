@@ -17,7 +17,7 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #1C1C1C;
+            background-color: #D4CFC0;
             color: #D2B48C;
         }
         
@@ -29,7 +29,7 @@
         }
         
         .stats-container {
-            background-color: #1C1C1C;
+            background-color: #D4CFC0;
             padding: 60px 0;
         }
         
@@ -72,7 +72,7 @@
         }
         
         .chart-description {
-            color: #8B7355;
+            color: #4a4a4a;
             margin-bottom: 25px;
             text-align: center;
             font-size: 16px;
@@ -114,7 +114,7 @@
         }
         
         .trend-description {
-            color: #8B7355;
+            color: #4a4a4a;
             font-size: 16px;
             line-height: 1.6;
         }
@@ -192,7 +192,7 @@
                         <i class="fas fa-chart-line" style="margin-right: 15px;"></i>
                         The State of Gaming Industry 2025
                     </h1>
-                    <p style="font-size: 20px; color: #8B7355; margin-bottom: 0;">
+                    <p style="font-size: 20px; color: #4a4a4a; margin-bottom: 0;">
                         Market insights driving the future of game server hosting
                     </p>
                 </div>
@@ -210,11 +210,11 @@
             <!-- Market Size Section -->
             <section class="stats-section text-center">
                 <h2 style="color: #8B4513; font-size: 32px; margin-bottom: 20px;">Global Gaming Market Revenue</h2>
-                <p style="color: #8B7355; font-size: 18px; margin-bottom: 30px;">
+                <p style="color: #4a4a4a; font-size: 18px; margin-bottom: 30px;">
                     The gaming industry continues its explosive growth trajectory, establishing itself as the dominant entertainment sector worldwide.
                 </p>
                 <div class="market-size-display">$268 Billion</div>
-                <p style="color: #8B7355; max-width: 700px; margin: 0 auto;">
+                <p style="color: #4a4a4a; max-width: 700px; margin: 0 auto;">
                     Projected 2025 revenue driven by innovation in mobile gaming, cloud platforms, 
                     and immersive technologies, creating unprecedented opportunities for hosting providers.
                 </p>
@@ -284,7 +284,7 @@
                         <i class="fas fa-server" style="margin-right: 10px;"></i>
                         Hosting Market Implications
                     </h4>
-                    <p style="color: #8B7355; margin-bottom: 0;">
+                    <p style="color: #4a4a4a; margin-bottom: 0;">
                         This growth translates directly to increased demand for reliable game server infrastructure. 
                         GameServer Panel's commercial features position hosting providers to capitalize on this 
                         expanding market with professional-grade management tools and integrated billing systems.
@@ -376,7 +376,7 @@
             <!-- Call to Action -->
             <section class="stats-section text-center">
                 <h2 style="color: #8B4513; margin-bottom: 30px;">Ready to Capitalize on Gaming Growth?</h2>
-                <p style="color: #8B7355; font-size: 18px; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                <p style="color: #4a4a4a; font-size: 18px; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
                     GameServer Panel provides the tools you need to build a successful game hosting business 
                     in this expanding market. Professional features, commercial billing, and enterprise support included.
                 </p>
