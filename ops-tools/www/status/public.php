@@ -3,7 +3,7 @@
  * Public Server Status Display
  * 
  * Shows a customer-facing view of server health without exposing
- * specific hardware details. Reads from the server_status MySQL database.
+ * specific hardware details. Reads from the peer_status MySQL database.
  * 
  * Deploy to: /var/www/html/status/ on each gameserver
  * Configure: Update config.php with database credentials

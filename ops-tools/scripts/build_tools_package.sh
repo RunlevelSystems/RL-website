@@ -33,9 +33,8 @@ fi
 cd "${OPS_TOOLS_DIR}"
 zip -r "${OUTPUT_ZIP}" \
     scripts/*.sh \
-    tools/INSTRUCTIONS.txt \
-    tools/servers.txt \
-    www/status/*.php \
+    INSTRUCTIONS.txt \
+    servers.txt \
     Bootstrap-GameServerHost.ps1 \
     -x "*.git*" \
     -x "*__pycache__*"
