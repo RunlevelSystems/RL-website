@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# =============================================================================
+# DEPRECATED: Use backup.sh instead
+# This script is kept for backward compatibility only.
+# =============================================================================
 set -euo pipefail
 HOST="$(hostname -s)"
 NOW="$(date +%F_%H%M)"

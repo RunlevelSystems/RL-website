@@ -40,7 +40,7 @@ $page_description = 'Download scripts and deploy to servers via wget or manual c
     </style>
 </head>
 <body>
-<?php include '../includes/header.html'; ?>
+<?php include '../includes/header.php'; ?>
 <?php include '../includes/navigation.php'; ?>
 <section class="staff-login">
     <div class="container page-bgc">

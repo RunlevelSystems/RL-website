@@ -30,7 +30,7 @@ shopt -s nullglob
 
 # Find backup files
 CONFIG_TARS=( "$BACKUP_DIR"/mysql_config_*.tar.gz )
-ALLDB_DUMPS( "$BACKUP_DIR"/all-databases_*.sql.gz )
+ALLDB_DUMPS=( "$BACKUP_DIR"/all-databases_*.sql.gz )
 GRANTS_FILES=( "$BACKUP_DIR"/mysql_user_grants_*.sql )
 
 if [[ ${#CONFIG_TARS[@]} -eq 0 ]]; then

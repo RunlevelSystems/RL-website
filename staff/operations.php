@@ -28,7 +28,7 @@ $page_description = 'Ubuntu 24.04 baselines, PHP 7.4 requirement, MySQL 5.7 Dock
     </style>
 </head>
 <body>
-<?php include '../includes/header.html'; ?>
+<?php include '../includes/header.php'; ?>
 <?php include '../includes/navigation.php'; ?>
 <section class="staff-login">
     <div class="container page-bgc">

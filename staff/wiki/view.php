@@ -37,7 +37,7 @@ $page_subtitle = 'Wiki Viewer';
     </style>
 </head>
 <body>
-<?php include '../../includes/header.html'; ?>
+<?php include '../../includes/header.php'; ?>
 <?php include '../../includes/navigation.php'; ?>
 <section class="staff-login">
     <div class="container page-bgc">

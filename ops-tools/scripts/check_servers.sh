@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# =============================================================================
+# DEPRECATED: Use change_passwd.sh for password rotation, status.sh for reporting
+# This script is kept for backward compatibility only.
+# =============================================================================
 set -euo pipefail
 # CONFIG
 TOOLS_DIR="/home/gameserver/tools"; PASSFILE="${TOOLS_DIR}/.password"; SERVERS_FILE="${TOOLS_DIR}/servers.txt"
