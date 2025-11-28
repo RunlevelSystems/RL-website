@@ -58,7 +58,7 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
                         }
                         
                         // Check if we're on any staff page
-                        $is_staff_page = in_array($current_page, ['staff-info', 'staff-ops', 'staff-tools', 'staff-wiki']);
+                        $is_staff_page = in_array($current_page, ['staff-info', 'staff-ops', 'staff-tools', 'staff-wiki', 'staff-status']);
                         ?>
                         <li <?php echo ($current_page == 'index') ? 'class="active"' : ''; ?>><a href="<?php echo $base_path; ?>index.php">Home</a></li>
                         <li <?php echo ($current_page == 'projects') ? 'class="active"' : ''; ?>><a href="<?php echo $base_path; ?>projects.php">Projects</a></li>
@@ -74,6 +74,7 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
                                     <li><a href="<?php echo $base_path; ?>staff-info.php" style="color: #8B7355;"><i class="ion-home"></i> Staff Home</a></li>
                                     <li><a href="<?php echo $base_path; ?>staff/operations.php" style="color: #8B7355;"><i class="ion-android-desktop"></i> Operations</a></li>
                                     <li><a href="<?php echo $base_path; ?>staff/tools.php" style="color: #8B7355;"><i class="ion-wrench"></i> Toolbox</a></li>
+                                    <li><a href="<?php echo $base_path; ?>staff/server-status.php" style="color: #8B7355;"><i class="ion-ios-pulse"></i> Server Status</a></li>
                                     <li><a href="<?php echo $base_path; ?>staff/wiki/index.php" style="color: #8B7355;"><i class="ion-document"></i> Wiki</a></li>
                                 </ul>
                             </li>
@@ -91,6 +92,7 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
                                     <li><a href="<?php echo $base_path; ?>staff-info.php" style="color: #8B7355;"><i class="ion-information-circled"></i> Staff Home</a></li>
                                     <li><a href="<?php echo $base_path; ?>staff/operations.php" style="color: #8B7355;"><i class="ion-android-desktop"></i> Operations</a></li>
                                     <li><a href="<?php echo $base_path; ?>staff/tools.php" style="color: #8B7355;"><i class="ion-wrench"></i> Toolbox</a></li>
+                                    <li><a href="<?php echo $base_path; ?>staff/server-status.php" style="color: #8B7355;"><i class="ion-ios-pulse"></i> Server Status</a></li>
                                     <li><a href="<?php echo $base_path; ?>staff/wiki/index.php" style="color: #8B7355;"><i class="ion-document"></i> Wiki</a></li>
                                     <li role="separator" class="divider" style="background: #333;"></li>
                                     <li><a href="<?php echo $base_path; ?>logout.php" style="color: #f87171;"><i class="ion-log-out"></i> Logout</a></li>

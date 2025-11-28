@@ -101,6 +101,13 @@ function staff_core_servers() {
 function staff_tool_catalog() {
     return [
         [
+            'name' => 'report_server_status.sh',
+            'path' => 'ops-tools/scripts/report_server_status.sh',
+            'summary' => 'Reports server CPU, memory, disk usage and top 5 processes to the MySQL server_status database.',
+            'usage' => './report_server_status.sh [--mysql-host core.iaregamer.com] [--mysql-port 3306]',
+            'notes' => 'Auto-creates database and tables on first run. Add to cron for regular reporting: */5 * * * *'
+        ],
+        [
             'name' => 'check_servers.sh',
             'path' => 'ops-tools/scripts/check_servers.sh',
             'summary' => 'Rotates the gameserver Linux password across all hosts in servers.txt and updates MySQL credentials.',

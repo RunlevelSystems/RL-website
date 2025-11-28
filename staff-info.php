@@ -35,9 +35,10 @@ $page_description = 'Centralize every password, host, tool and operating procedu
         .staff-card h3 { margin-top: 0; color: #FFD699; }
         .cred-table td { padding: 4px 0; color: #F0E3D0; }
         .tag { display: inline-block; padding: 3px 8px; border-radius: 10px; margin: 2px; color: #8B4513; background: rgba(0,200,81,0.2); border: 1px solid rgba(0,200,81,0.2); font-size: 11px; }
-        .link-tile { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.08); border-radius: 10px; padding: 16px 20px; margin-bottom: 12px; border: 1px solid rgba(139,69,19,0.3); }
-        .link-tile a { color: #FFD699; font-weight: 600; text-decoration: none; }
+        .link-tile { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.08); border-radius: 10px; padding: 16px 20px; margin-bottom: 12px; border: 1px solid rgba(139,69,19,0.3); color: #FFD699; cursor: pointer; transition: background 0.2s; }
+        .link-tile span { color: #FFD699; font-weight: 600; }
         .link-tile:hover { background: rgba(255,255,255,0.15); }
+        a.link-tile { text-decoration: none; }
         pre.inline { background: rgba(0,0,0,0.65); padding: 10px; border-radius: 8px; color: #9ae6b4; }
     </style>
 </head>
@@ -80,11 +81,12 @@ $page_description = 'Centralize every password, host, tool and operating procedu
             <div class="col-sm-4">
                 <div class="staff-card" style="background:rgba(0,0,0,0.65);">
                     <h3><i class="ion-flash"></i> Quick Links</h3>
-                    <div class="link-tile"><span>Infrastructure / Install Guides</span><a href="staff/operations.php"><i class="ion-ios-arrow-right"></i></a></div>
-                    <div class="link-tile"><span>Toolbox & Downloads</span><a href="staff/tools.php"><i class="ion-ios-arrow-right"></i></a></div>
-                    <div class="link-tile"><span>Processes Wiki</span><a href="staff/wiki/index.php"><i class="ion-ios-arrow-right"></i></a></div>
-                    <div class="link-tile"><span>Raw Tools Folder (GitHub)</span><a href="ops-tools/" target="_blank"><i class="ion-social-github"></i></a></div>
-                    <div class="link-tile"><span>Migration Tracker</span><a href="content/docs/gsp/install-ubuntu-panel.md" target="_blank"><i class="ion-document"></i></a></div>
+                    <a href="staff/server-status.php" class="link-tile" style="text-decoration:none;"><span>Server Fleet Status</span><i class="ion-ios-pulse" style="color:#FFD699;"></i></a>
+                    <a href="staff/operations.php" class="link-tile" style="text-decoration:none;"><span>Infrastructure / Install Guides</span><i class="ion-ios-arrow-right" style="color:#FFD699;"></i></a>
+                    <a href="staff/tools.php" class="link-tile" style="text-decoration:none;"><span>Toolbox & Downloads</span><i class="ion-ios-arrow-right" style="color:#FFD699;"></i></a>
+                    <a href="staff/wiki/index.php" class="link-tile" style="text-decoration:none;"><span>Processes Wiki</span><i class="ion-ios-arrow-right" style="color:#FFD699;"></i></a>
+                    <a href="ops-tools/" target="_blank" class="link-tile" style="text-decoration:none;"><span>Raw Tools Folder (GitHub)</span><i class="ion-social-github" style="color:#FFD699;"></i></a>
+                    <a href="content/docs/gsp/install-ubuntu-panel.md" target="_blank" class="link-tile" style="text-decoration:none;"><span>Migration Tracker</span><i class="ion-document" style="color:#FFD699;"></i></a>
                 </div>
                 <div class="staff-card">
                     <h3><i class="ion-shuffle"></i> Password Rotation</h3>
