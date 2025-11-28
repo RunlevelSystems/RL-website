@@ -12,7 +12,7 @@ $otherServers = staff_other_servers();
 $toolCatalog = staff_tool_catalog();
 
 $current_page = 'staff-info';
-$header_class = 'staff-info-header inner-header';
+$header_class = 'login-header inner-header';
 $page_subtitle = 'Staff Control Room';
 $page_description = 'Centralize every password, host, tool and operating procedure in one place.';
 ?>
