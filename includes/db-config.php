@@ -76,8 +76,9 @@ function getDatabaseConnection() {
 }
 
 /**
- * Verify admin user credentials against gsp_users table
- * Follows the same authentication approach as GSP billing module
+ * Verify admin user credentials against panel database users table
+ * Uses resolveUsersTable() to find gsp_users or ogp_users table dynamically.
+ * Follows the same authentication approach as GSP billing module.
  * @param string $username The username to check
  * @param string $password The plain text password
  * @return array|false User data array or false on failure
@@ -112,7 +113,9 @@ function verifyAdminLogin($username, $password) {
             $passwordOk = password_verify($password, $user['users_pass_hash']);
         }
         if (!$passwordOk && !empty($user['users_passwd'])) {
-            // Legacy MD5 password check (same as GSP billing)
+            // Legacy MD5 password check - required for GSP/OGP compatibility
+            // Note: MD5 is weak, but necessary for legacy systems. Modern logins
+            // should use users_pass_hash with password_verify() instead.
             $passwordOk = (md5($password) === $user['users_passwd']);
         }
         if (!$passwordOk) {
