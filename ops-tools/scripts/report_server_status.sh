@@ -162,8 +162,20 @@ insert_metrics(){
         top_json="[]"
     fi
     
-    # Escape JSON for MySQL
-    esc_json="$(printf "%s" "${top_json}" | sed "s/'/''/g")"
+    # Validate numeric values to prevent injection
+    [[ "$cpu" =~ ^[0-9.]+$ ]] || cpu="0"
+    [[ "$mem_used" =~ ^[0-9]+$ ]] || mem_used="0"
+    [[ "$mem_total" =~ ^[0-9]+$ ]] || mem_total="0"
+    [[ "$disk_used" =~ ^[0-9]+$ ]] || disk_used="0"
+    [[ "$disk_total" =~ ^[0-9]+$ ]] || disk_total="0"
+    
+    # Sanitize hostname and IP (alphanumeric, dots, hyphens only)
+    hn="$(printf '%s' "$hn" | sed 's/[^a-zA-Z0-9._-]//g')"
+    ip="$(printf '%s' "$ip" | sed 's/[^0-9.]//g')"
+    
+    # Escape JSON for MySQL - handle single quotes and backslashes
+    # First escape backslashes, then single quotes
+    esc_json="$(printf '%s' "${top_json}" | sed -e 's/\\/\\\\/g' -e "s/'/''/g")"
     
     # Insert into database
     mysql -h "$host" -P "$port" -u "${MYSQL_USER}" "-p${pass}" --protocol=TCP <<SQL

@@ -85,10 +85,11 @@ $executableTools = [
                     <a href="../ops-tools/wds-tools.zip" class="btn-download-all" download><i class="ion-ios-cloud-download"></i> Download wds-tools.zip</a>
                     <div class="wget-command">
                         <strong style="color:#FDE68A;">Quick Deploy via wget:</strong><br>
-                        <code>wget -O /tmp/wds-tools.zip https://core.iaregamer.com/ops-tools/wds-tools.zip && unzip -o /tmp/wds-tools.zip -d /home/gameserver/tools/</code>
+                        <code>cd /tmp && wget -q https://core.iaregamer.com/ops-tools/wds-tools.zip && unzip -o wds-tools.zip -d /home/gameserver/tools/ && rm wds-tools.zip</code>
                     </div>
                     <p style="color:#9CA3AF; font-size:0.9rem; margin-top:15px;">
-                        For DR failover, change <code>core.iaregamer.com</code> to <code>core-dr.iaregamer.com</code>
+                        For DR failover, change <code>core.iaregamer.com</code> to <code>core-dr.iaregamer.com</code>. 
+                        Always verify the source is trusted before deploying scripts.
                     </p>
                 </div>
             </div>

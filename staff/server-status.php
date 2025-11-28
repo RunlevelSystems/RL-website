@@ -17,11 +17,12 @@ $page_subtitle = 'Server Fleet Status';
 $page_description = 'Real-time monitoring of all servers in the fleet with detailed metrics.';
 
 // Database configuration for server_status
+// Uses the same credentials as panel DB but connects to server_status database
 $STATUS_DB_HOST = 'core.iaregamer.com';
 $STATUS_DB_PORT = 3306;
 $STATUS_DB_NAME = 'server_status';
-$STATUS_DB_USER = 'remoteuser';
-$STATUS_DB_PASS = 'Pkloyn7yvpht!'; // From staff-data.php
+$STATUS_DB_USER = DB_USER;     // From db-config.php
+$STATUS_DB_PASS = DB_PASS;     // From db-config.php
 
 $servers = [];
 $errorMessage = null;

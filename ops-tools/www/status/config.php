@@ -17,7 +17,18 @@ $DB_HOST = 'core.iaregamer.com';  // Primary: core.iaregamer.com | DR: core-dr.i
 $DB_PORT = 3306;
 $DB_NAME = 'server_status';       // New unified database name
 $DB_USER = 'remoteuser';          // Use 'localuser' for localhost, 'remoteuser' for remote access
-$DB_PASS = 'CHANGE_ME_TO_.password_CONTENTS';  // Copy from /home/gameserver/tools/.password
+
+// SECURITY: Read password from file instead of hardcoding
+// On deployment, create /home/gameserver/tools/.password with the MySQL password
+$DB_PASS = '';
+$passwordFile = '/home/gameserver/tools/.password';
+if (file_exists($passwordFile) && is_readable($passwordFile)) {
+    $DB_PASS = trim(file_get_contents($passwordFile));
+}
+if (empty($DB_PASS)) {
+    // Fallback for development - CHANGE IN PRODUCTION
+    $DB_PASS = 'PLACEHOLDER_CONFIGURE_PASSWORD_FILE';
+}
 
 // Optional: Override hostname detection for public.php
 // define('SERVER_HOSTNAME', 'core');
@@ -26,6 +37,10 @@ $DB_PASS = 'CHANGE_ME_TO_.password_CONTENTS';  // Copy from /home/gameserver/too
 
 function db() {
     global $DB_HOST, $DB_PORT, $DB_NAME, $DB_USER, $DB_PASS;
+    
+    if ($DB_PASS === 'PLACEHOLDER_CONFIGURE_PASSWORD_FILE') {
+        throw new Exception('Database password not configured. Create /home/gameserver/tools/.password with the MySQL password.');
+    }
     
     $dsn = "mysql:host=$DB_HOST;port=$DB_PORT;dbname=$DB_NAME;charset=utf8mb4";
     $options = [

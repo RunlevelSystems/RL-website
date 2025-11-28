@@ -16,16 +16,20 @@ set -euo pipefail
 #   Create /home/gameserver/tools/.discord_webhook with webhook URL
 # =============================================================================
 
+# CONFIG
+DEFAULT_SSH_PORT=12322
+STATE_DIR="/var/lib/dr-monitor"
+TOOLS_DIR="/home/gameserver/tools"
+WEBHOOK_FILE="${TOOLS_DIR}/.discord_webhook"
+# END CONFIG
+
 if [ $# -lt 1 ]; then
   echo "Usage: $0 <PEER_HOST> [SSH_PORT]" >&2; exit 1
 fi
 
 PEER="$1"
-SSH_PORT="${2:-12322}"
-STATE_DIR="/var/lib/dr-monitor"
+SSH_PORT="${2:-${DEFAULT_SSH_PORT}}"
 STATE_FILE="${STATE_DIR}/last_${PEER}.state"
-TOOLS_DIR="/home/gameserver/tools"
-WEBHOOK_FILE="${TOOLS_DIR}/.discord_webhook"
 
 mkdir -p "${STATE_DIR}"
 [ -s "${WEBHOOK_FILE}" ] || { echo "WARN: ${WEBHOOK_FILE} missing; cannot notify Discord." >&2; }
