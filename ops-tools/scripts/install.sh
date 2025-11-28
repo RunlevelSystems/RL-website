@@ -234,10 +234,11 @@ setup_user() {
         say "User ${GAMESERVER_USER} already exists"
     fi
     
-    # Set password if provided
+    # Set password if provided (using chpasswd with stdin to avoid process list exposure)
     if [[ -n "${GAMESERVER_PASS}" ]]; then
         if [[ "$DRY_RUN" != "true" ]]; then
-            echo "${GAMESERVER_USER}:${GAMESERVER_PASS}" | chpasswd
+            # Use printf to avoid password in process list
+            printf '%s:%s\n' "${GAMESERVER_USER}" "${GAMESERVER_PASS}" | chpasswd
             say "Password set for ${GAMESERVER_USER}"
         else
             say "[DRY-RUN] Would set password for ${GAMESERVER_USER}"

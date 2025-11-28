@@ -112,6 +112,20 @@ if [[ ${#NEW_PASSWORD} -lt 8 ]]; then
     die "Password must be at least 8 characters long"
 fi
 
+# Warn about weak passwords (but don't enforce - user may have specific requirements)
+has_upper=false
+has_lower=false
+has_digit=false
+has_special=false
+[[ "$NEW_PASSWORD" =~ [A-Z] ]] && has_upper=true
+[[ "$NEW_PASSWORD" =~ [a-z] ]] && has_lower=true
+[[ "$NEW_PASSWORD" =~ [0-9] ]] && has_digit=true
+[[ "$NEW_PASSWORD" =~ [^a-zA-Z0-9] ]] && has_special=true
+
+if ! $has_upper || ! $has_lower || ! $has_digit || ! $has_special; then
+    warn "Password may be weak. Consider using uppercase, lowercase, numbers, and special characters."
+fi
+
 # =============================================================================
 # Verify Core Identity
 # =============================================================================

@@ -63,6 +63,7 @@ SSH_OPTS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o BatchMo
 # =============================================================================
 die() { echo "ERROR: $*" >&2; exit 1; }
 say() { printf '\n[%s] %s\n' "$(date '+%F %T')" "$*"; }
+warn() { echo "WARNING: $*" >&2; }
 
 # =============================================================================
 # Parse Arguments
@@ -83,7 +84,14 @@ RSYNC_SSH="ssh -p $SSH_PORT $SSH_OPTS"
 RSYNC_OPTS="-aHAX --numeric-ids --delete --delete-excluded --info=stats2,progress2 --rsync-path='sudo rsync'"
 
 if command -v sshpass >/dev/null 2>&1 && [ -s "${PASSFILE}" ]; then
-    SSHPRE=(sshpass -f "${PASSFILE}")
+    # Validate password file contains non-empty content
+    PASS_CONTENT="$(tr -d '[:space:]' < "${PASSFILE}")"
+    if [[ -n "$PASS_CONTENT" ]]; then
+        SSHPRE=(sshpass -f "${PASSFILE}")
+    else
+        warn "Password file exists but is empty or contains only whitespace"
+        SSHPRE=()
+    fi
 else
     SSHPRE=()
 fi

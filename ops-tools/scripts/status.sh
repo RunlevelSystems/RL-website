@@ -260,7 +260,7 @@ try:
     procs = json.load(sys.stdin)
     for p in procs:
         print(f\"   {p['name']:<20} PID:{p['pid']:<8} CPU:{p['cpu']:.1f}%  MEM:{p['mem']:.1f}%\")
-except:
+except Exception:
     print('   (Unable to parse process list)')
 " 2>/dev/null || echo "   (Unable to parse process list)"
         echo ""

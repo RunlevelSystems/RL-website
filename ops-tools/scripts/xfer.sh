@@ -163,7 +163,8 @@ build_rsync_cmd() {
     
     # Ensure source path ends with / for directory contents
     local src="$SOURCE_PATH"
-    if [[ -d "$SOURCE_PATH" ]] && [[ "${SOURCE_PATH: -1}" != "/" ]]; then
+    local last_char="${SOURCE_PATH: -1:1}"
+    if [[ -d "$SOURCE_PATH" ]] && [[ "$last_char" != "/" ]]; then
         src="${SOURCE_PATH}/"
     fi
     
