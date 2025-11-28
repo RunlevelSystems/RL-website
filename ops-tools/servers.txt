@@ -1,0 +1,3 @@
+core.iaregamer.com:12322
+core-dr.iaregamer.com:12322
+kc.iaregamer.com:12322

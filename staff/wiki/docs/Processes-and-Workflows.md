@@ -1,0 +1,2 @@
+## Windows Recovery ##
+in the tools code section is an installer that will retrieve the files from our file server at files.iaregamer.com/dev/Bootstrap-GameServerHost.zip and install all the VC runtimes, Filezilla, etc and configure the firewall.  It outputs a log file of what it did and didnt do.  If the files are not available it will try to download from the internet.

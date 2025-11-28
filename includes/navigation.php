@@ -55,7 +55,10 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
                         <li <?php echo ($current_page == 'contact') ? 'class="active"' : ''; ?>><a href="<?php echo $base_path; ?>contact.php">Contact</a></li>
                         
                         <?php if ($is_logged_in): ?>
-                            <li <?php echo ($current_page == 'staff-info') ? 'class="active"' : ''; ?>><a href="<?php echo $base_path; ?>staff-info.php" style="color: #8B4513;"><i class="ion-locked"></i> Staff Info</a></li>
+                            <li <?php echo ($current_page == 'staff-info') ? 'class="active"' : ''; ?>><a href="<?php echo $base_path; ?>staff-info.php" style="color: #8B4513;"><i class="ion-locked"></i> Staff Home</a></li>
+                            <li <?php echo ($current_page == 'staff-ops') ? 'class="active"' : ''; ?>><a href="<?php echo $base_path; ?>staff/operations.php" style="color: #8B4513;">Operations</a></li>
+                            <li <?php echo ($current_page == 'staff-tools') ? 'class="active"' : ''; ?>><a href="<?php echo $base_path; ?>staff/tools.php" style="color: #8B4513;">Tools</a></li>
+                            <li <?php echo ($current_page == 'staff-wiki') ? 'class="active"' : ''; ?>><a href="<?php echo $base_path; ?>staff/wiki/index.php" style="color: #8B4513;">Wiki</a></li>
                         <?php endif; ?>
                     </ul>
                     
@@ -67,7 +70,10 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
                                     <i class="ion-person"></i> <?php echo isset($_SESSION['wds_admin_user']) ? htmlspecialchars($_SESSION['wds_admin_user']) : 'Staff'; ?> <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" style="background: #1a1a1a; border: 1px solid #8B4513;">
-                                    <li><a href="<?php echo $base_path; ?>staff-info.php" style="color: #8B7355;"><i class="ion-information-circled"></i> Staff Resources</a></li>
+                                    <li><a href="<?php echo $base_path; ?>staff-info.php" style="color: #8B7355;"><i class="ion-information-circled"></i> Staff Home</a></li>
+                                    <li><a href="<?php echo $base_path; ?>staff/operations.php" style="color: #8B7355;"><i class="ion-android-desktop"></i> Operations</a></li>
+                                    <li><a href="<?php echo $base_path; ?>staff/tools.php" style="color: #8B7355;"><i class="ion-wrench"></i> Toolbox</a></li>
+                                    <li><a href="<?php echo $base_path; ?>staff/wiki/index.php" style="color: #8B7355;"><i class="ion-document"></i> Wiki</a></li>
                                     <li role="separator" class="divider" style="background: #333;"></li>
                                     <li><a href="<?php echo $base_path; ?>logout.php" style="color: #f87171;"><i class="ion-log-out"></i> Logout</a></li>
                                 </ul>

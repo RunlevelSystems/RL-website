@@ -1,0 +1,10 @@
+===============================
+Disaster Recovery (DR) Toolkit — v3
+===============================
+Generated: 2025-11-25
+
+What’s new in v3
+----------------
+• MySQL users standardized: localuser (localhost only) and remoteuser (per-reporting-server IP) using the password in .password.
+• check_servers.sh --password NEW now rotates Linux password, updates .password across peers, and rotates MySQL passwords for localuser and remoteuser accounts on this host.
+• Added setup_mysql_users.sh to (re)create users & grants based on servers.txt and .password.
