@@ -80,11 +80,11 @@ $page_description = 'Centralize every password, host, tool and operating procedu
             <div class="col-sm-4">
                 <div class="staff-card" style="background:rgba(0,0,0,0.65);">
                     <h3><i class="ion-flash"></i> Quick Links</h3>
-                    <div class="link-tile"><span>Infrastructure / Install Guides</span><a href="staff/operations.php"><i class="ion-ios-arrow-right"></i></a></div>
-                    <div class="link-tile"><span>Toolbox & Downloads</span><a href="staff/tools.php"><i class="ion-ios-arrow-right"></i></a></div>
-                    <div class="link-tile"><span>Processes Wiki</span><a href="staff/wiki/index.php"><i class="ion-ios-arrow-right"></i></a></div>
-                    <div class="link-tile"><span>Raw Tools Folder (GitHub)</span><a href="ops-tools/" target="_blank"><i class="ion-social-github"></i></a></div>
-                    <div class="link-tile"><span>Migration Tracker</span><a href="content/docs/gsp/install-ubuntu-panel.md" target="_blank"><i class="ion-document"></i></a></div>
+                    <a href="staff/operations.php" class="link-tile" style="text-decoration:none;"><span>Infrastructure / Install Guides</span><i class="ion-ios-arrow-right" style="color:#FFD699;"></i></a>
+                    <a href="staff/tools.php" class="link-tile" style="text-decoration:none;"><span>Toolbox & Downloads</span><i class="ion-ios-arrow-right" style="color:#FFD699;"></i></a>
+                    <a href="staff/wiki/index.php" class="link-tile" style="text-decoration:none;"><span>Processes Wiki</span><i class="ion-ios-arrow-right" style="color:#FFD699;"></i></a>
+                    <a href="ops-tools/" target="_blank" class="link-tile" style="text-decoration:none;"><span>Raw Tools Folder (GitHub)</span><i class="ion-social-github" style="color:#FFD699;"></i></a>
+                    <a href="content/docs/gsp/install-ubuntu-panel.md" target="_blank" class="link-tile" style="text-decoration:none;"><span>Migration Tracker</span><i class="ion-document" style="color:#FFD699;"></i></a>
                 </div>
                 <div class="staff-card">
                     <h3><i class="ion-shuffle"></i> Password Rotation</h3>
