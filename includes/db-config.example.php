@@ -4,6 +4,7 @@
  * 
  * Copy this file to db-config.php and update with your actual credentials
  * DO NOT commit db-config.php to version control!
+ * Uses mysqli for database operations
  */
 
 // Prevent direct access
@@ -20,23 +21,25 @@ define('DB_PASS', 'your_database_pass');   // Strong password
 define('DB_CHARSET', 'utf8mb4');           // Character set (usually utf8mb4)
 
 /**
- * Create PDO database connection
- * @return PDO|false Database connection or false on failure
+ * Create mysqli database connection
+ * @return mysqli|false Database connection or false on failure
  */
 function getDatabaseConnection() {
+    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+    
     try {
-        $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
-        $options = [
-            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES   => false,
-            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES " . DB_CHARSET
-        ];
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
         
-        $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
-        return $pdo;
-    } catch (PDOException $e) {
-        // Log error in production, show for development
+        if (!$conn) {
+            error_log("Database connection failed: " . mysqli_connect_error());
+            return false;
+        }
+        
+        // Set charset
+        mysqli_set_charset($conn, DB_CHARSET);
+        
+        return $conn;
+    } catch (mysqli_sql_exception $e) {
         error_log("Database connection failed: " . $e->getMessage());
         return false;
     }
@@ -58,16 +61,24 @@ function verifyAdminLogin($username, $password) {
         // Hash the password using MD5 as required by the existing system
         $hashedPassword = md5($password);
         
-        $stmt = $db->prepare("
-            SELECT users_login, users_password, users_role 
-            FROM ogp_users 
-            WHERE users_login = ? 
-            AND users_password = ? 
-            AND users_role = 'admin'
-        ");
+        $query = "SELECT users_login, users_passwd, users_role 
+                  FROM ogp_users 
+                  WHERE users_login = ? 
+                  AND users_passwd = ? 
+                  AND users_role = 'admin'
+                  LIMIT 1";
         
-        $stmt->execute([$username, $hashedPassword]);
-        $user = $stmt->fetch();
+        $stmt = mysqli_prepare($db, $query);
+        if (!$stmt) {
+            error_log("Login verification failed: " . mysqli_error($db));
+            return false;
+        }
+        
+        mysqli_stmt_bind_param($stmt, "ss", $username, $hashedPassword);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $user = mysqli_fetch_assoc($result);
+        mysqli_stmt_close($stmt);
         
         if ($user) {
             return [
@@ -78,7 +89,7 @@ function verifyAdminLogin($username, $password) {
         }
         
         return false;
-    } catch (PDOException $e) {
+    } catch (mysqli_sql_exception $e) {
         error_log("Login verification failed: " . $e->getMessage());
         return false;
     }
