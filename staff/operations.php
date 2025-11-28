@@ -49,7 +49,7 @@ $page_description = 'Ubuntu 24.04 baselines, PHP 7.4 requirement, MySQL 5.7 Dock
 add-apt-repository ppa:ondrej/php -y
 apt install -y php7.4 php7.4-{mysql,xml,gd,mbstring,zip,curl} libapache2-mod-php7.4
 systemctl enable --now docker</pre>
-                    <p>Deploy MySQL 5.7 in Docker and pin the password to <code>.password</code>:</p>
+                    <p>Deploy MySQL 5.7 in Docker with the standard password:</p>
 <pre>mkdir -p /srv/mysql57/{data,conf}
 cat >/srv/mysql57/docker-compose.yml <<'YML'
 version: '3.8'
@@ -58,7 +58,7 @@ services:
     image: mysql:5.7
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: $(cat /home/gameserver/tools/.password)
+      MYSQL_ROOT_PASSWORD: Pkloyn7yvpht!
       MYSQL_DATABASE: panel
     ports:
       - "3306:3306"

@@ -23,7 +23,7 @@ function staff_credentials() {
                 'Port' => '3306',
                 'Database' => 'panel',
                 'Username' => 'localuser',
-                'Password' => 'Contents of /home/gameserver/tools/.password',
+                'Password' => 'Pkloyn7yvpht!',
             ],
             'notes' => 'Login through Adminer (`https://panel-host/adminer.php`) or the MySQL socket. Password is rotated via check_servers.sh.'
         ],
@@ -32,9 +32,43 @@ function staff_credentials() {
             'details' => [
                 'Username' => 'gameserver',
                 'SSH Port' => '12322 on every host',
-                'Password' => '/home/gameserver/tools/.password',
+                'Password' => 'Inc0rrect!',
             ],
-            'notes' => 'Works on every core + DR node listed in servers.txt. Prefer SSH keys; keep `.password` synced with the rotation script.'
+            'notes' => 'Works on every core + DR node listed in servers.txt. Prefer SSH keys; keep password synced with the rotation script.'
+        ],
+        [
+            'name' => 'Windows Servers',
+            'details' => [
+                'Username' => 'cyg_server / gameserver',
+                'Password' => 'C37p7wzkkhcn!',
+                'RDP Port' => '13389',
+                'SSH Port' => '12322',
+            ],
+            'notes' => 'Administrator is assigned by the server host. Use these credentials for cyg_server/gameserver access.'
+        ],
+        [
+            'name' => 'Gmail Account',
+            'details' => [
+                'Email' => 'iaregamer.com@gmail.com',
+                'Password' => 'Inc0rrect',
+            ],
+            'notes' => 'Team email account for official correspondence.'
+        ],
+        [
+            'name' => 'Gameservers World Panel',
+            'details' => [
+                'Username' => 'iaregamer',
+                'Password' => 'Inc0rrect',
+            ],
+            'notes' => 'Game server control panel login.'
+        ],
+        [
+            'name' => 'cPanel Webhost and Email',
+            'details' => [
+                'Username' => 'domainpl',
+                'Password' => 'Inc0rrect',
+            ],
+            'notes' => 'cPanel access for website hosting and email management.'
         ],
         [
             'name' => 'WDS Staff Portal',
@@ -51,7 +85,7 @@ function staff_credentials() {
                 'Mammoth Interactive' => 'wds_coop_login / MammothDev2024#',
                 'Udemy Business' => 'worlddomsoftware@business.udemy.com / UdemyBiz2024$'
             ],
-            'notes' => 'Credentials mirror the legacy staff-info page. Update here when rotated.'
+            'notes' => 'Shared learning platform accounts. Update here when rotated.'
         ]
     ];
 }
@@ -69,14 +103,14 @@ function staff_tool_catalog() {
         [
             'name' => 'check_servers.sh',
             'path' => 'ops-tools/scripts/check_servers.sh',
-            'summary' => 'Rotates the gameserver Linux password, propagates /home/gameserver/tools/.password to each host in servers.txt, and updates MySQL `localuser`/`remoteuser` credentials on the current machine.',
+            'summary' => 'Rotates the gameserver Linux password across all hosts in servers.txt and updates MySQL credentials.',
             'usage' => './check_servers.sh --password "NewSuperSecret!" (run on core host only)',
             'notes' => 'Requires passwordless sudo on the core node plus sshpass if keys are missing.'
         ],
         [
             'name' => 'setup_mysql_users.sh',
             'path' => 'ops-tools/scripts/setup_mysql_users.sh',
-            'summary' => 'Recreates MySQL accounts for every monitoring IP listed in servers.txt using the password stored in .password.',
+            'summary' => 'Recreates MySQL accounts for every monitoring IP listed in servers.txt.',
             'usage' => 'sudo ./setup_mysql_users.sh (run on the MySQL host after rotations)',
             'notes' => 'Also seeds the peer_status database used by /ops-tools/www/status.'
         ],
@@ -113,7 +147,7 @@ function staff_tool_catalog() {
             'path' => 'ops-tools/scripts/dr_rsync_push.sh',
             'summary' => 'Pushes the latest tarballs + peer_status data from core to the DR node using rsync/ssh.',
             'usage' => './dr_rsync_push.sh --target core-dr.iaregamer.com --path /sdb1/backups',
-            'notes' => 'Respects ssh keys if present; otherwise reads the .password file.'
+            'notes' => 'Respects ssh keys if present; otherwise uses password: Inc0rrect!'
         ]
     ];
 }
