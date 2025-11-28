@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# =============================================================================
+# DEPRECATED: Use backup.sh instead
+# This script is kept for backward compatibility only.
+# =============================================================================
 set -euo pipefail
 # CONFIG
 BACKUP_ROOT="/sdb1/backups"; MYSQL_LOCAL_DEFAULTS="/root/.my.cnf"; MYSQL_EXCLUDE_REGEX='^(information_schema|performance_schema|mysql|sys)$'

@@ -58,67 +58,60 @@ function staff_all_servers() {
 function staff_tool_catalog() {
     return [
         [
-            'name' => 'report_server_status.sh',
-            'path' => 'ops-tools/scripts/report_server_status.sh',
-            'summary' => 'Reports server CPU, memory, disk usage and top 5 processes to the MySQL peer_status database.',
-            'usage' => './report_server_status.sh [--mysql-host core.iaregamer.com] [--mysql-port 3306]',
-            'notes' => 'Auto-creates database and tables on first run. Add to cron for regular reporting: */5 * * * *'
+            'name' => 'install.sh',
+            'path' => 'ops-tools/scripts/install.sh',
+            'summary' => 'Unified prerequisites installer for Linux (Debian/Ubuntu, RHEL), Cygwin, and Windows game server hosts.',
+            'usage' => 'sudo ./install.sh [--ssh-port 12322] [--minimal] [--dry-run]',
+            'notes' => 'Installs packages, creates gameserver user, configures SSH/firewall, and sets up tools directory.'
         ],
         [
-            'name' => 'check_servers.sh',
-            'path' => 'ops-tools/scripts/check_servers.sh',
-            'summary' => 'Rotates the gameserver Linux password across all hosts in servers.txt and updates MySQL credentials.',
-            'usage' => './check_servers.sh --password "NewSuperSecret!" (run on core host only)',
-            'notes' => 'Requires passwordless sudo on the core node plus sshpass if keys are missing.'
+            'name' => 'backup.sh',
+            'path' => 'ops-tools/scripts/backup.sh',
+            'summary' => 'Creates local backups of game data, web files, MySQL databases, and configs on each server.',
+            'usage' => './backup.sh [--backup-root /sdb1/backups] [--keep-days 7] [--no-mysql]',
+            'notes' => 'Run via cron on each game server. Creates timestamped tarballs with automatic cleanup.'
         ],
         [
-            'name' => 'setup_mysql_users.sh',
-            'path' => 'ops-tools/scripts/setup_mysql_users.sh',
-            'summary' => 'Recreates MySQL accounts for every monitoring IP listed in servers.txt.',
-            'usage' => 'sudo ./setup_mysql_users.sh (run on the MySQL host after rotations)',
-            'notes' => 'Also seeds the peer_status database used by /ops-tools/www/status.'
+            'name' => 'status.sh',
+            'path' => 'ops-tools/scripts/status.sh',
+            'summary' => 'Displays local server CPU, memory, disk usage and top processes. Can report to MySQL.',
+            'usage' => './status.sh [--report] [--mysql-host core.iaregamer.com] [--json]',
+            'notes' => 'Use --report to send metrics to peer_status database. Add to cron: */5 * * * *'
         ],
         [
-            'name' => 'deploy_gsp.sh',
-            'path' => 'ops-tools/scripts/deploy_gsp.sh',
-            'summary' => 'Stages the GSP repo, rsyncs it into the live panel directory, and fixes permissions.',
-            'usage' => 'WEB_ROOT=/var/www/gsp OWNER=www-data GROUP=www-data ./deploy_gsp.sh',
-            'notes' => 'Respects includes/config.inc.php and modules/billing/includes/config.inc.php (never overwrites them). Use DRY_RUN=1 to verify before releasing.'
+            'name' => 'status_all.sh',
+            'path' => 'ops-tools/scripts/status_all.sh',
+            'summary' => 'Displays fleet-wide status by querying peer_status MySQL database. Run on core host.',
+            'usage' => './status_all.sh [--json] [--summary] [--offline-only]',
+            'notes' => 'Shows aggregate totals and individual server metrics from all reporting hosts.'
         ],
         [
-            'name' => 'hourly_backups.sh + mysql_backup.sh',
-            'path' => 'ops-tools/scripts/hourly_backups.sh',
-            'summary' => 'Tar/gzip snapshots of /etc, /var/www, tools/, and MySQL dumps per host.',
-            'usage' => 'Triggered from cron on core + DR. Edit vars inside the scripts for destination paths.',
-            'notes' => 'Produces /sdb1/backups/<host>/<timestamp>.tgz ready for rsync to DR.'
+            'name' => 'change_passwd.sh',
+            'path' => 'ops-tools/scripts/change_passwd.sh',
+            'summary' => 'Rotates Linux gameserver password and MySQL credentials across all infrastructure hosts.',
+            'usage' => './change_passwd.sh "NewPassword!" [--core-only] [--mysql-only] [--dry-run]',
+            'notes' => 'Must run from core host. Updates .password file on all servers in servers.txt.'
         ],
         [
-            'name' => 'peer_watch.sh + www/status',
-            'path' => 'ops-tools/scripts/peer_watch.sh',
-            'summary' => 'Feeds the lightweight /status dashboard so we can see which hosts are online and when backups last ran.',
-            'usage' => 'Configure /ops-tools/www/status/config.php then host the PHP files on any Apache/PHP box.',
-            'notes' => 'The status site reads the peer_status database created by setup_mysql_users.sh.'
+            'name' => 'xfer.sh',
+            'path' => 'ops-tools/scripts/xfer.sh',
+            'summary' => 'Simple folder transfer between servers using rsync over SSH.',
+            'usage' => './xfer.sh /path/to/folder hostname [--port 12322] [--delete] [--background]',
+            'notes' => 'Use --check to monitor background transfers. Uses SSH keys or .password file.'
+        ],
+        [
+            'name' => 'dr_rsync_push.sh',
+            'path' => 'ops-tools/scripts/dr_rsync_push.sh',
+            'summary' => 'Syncs data directories, configs, and MySQL databases from core to DR host.',
+            'usage' => './dr_rsync_push.sh core-dr.iaregamer.com [SSH_PORT]',
+            'notes' => 'Run from core host after password rotation or major changes.'
         ],
         [
             'name' => 'Bootstrap-GameServerHost.ps1',
             'path' => 'ops-tools/Bootstrap-GameServerHost.ps1',
-            'summary' => 'Windows Server bootstrapper for installing dependencies, Cygwin, and the Windows agent.',
-            'usage' => 'Run in elevated PowerShell on a fresh Windows Server 2019 host.',
-            'notes' => 'Pairs with the installation steps documented on the Staff Operations page.'
-        ],
-        [
-            'name' => 'bootstrap-gameserverhost.sh',
-            'path' => 'ops-tools/bootstrap-gameserverhost.sh',
-            'summary' => 'Linux/Cygwin bootstrapper for installing packages, creating gameserver user, and configuring SSH/firewall.',
-            'usage' => 'sudo ./bootstrap-gameserverhost.sh [--ssh-port 12322] [--dry-run]',
-            'notes' => 'Supports Ubuntu/Debian, RHEL/CentOS, and Cygwin environments.'
-        ],
-        [
-            'name' => 'dr_rsync_push.sh / xfer.sh',
-            'path' => 'ops-tools/scripts/dr_rsync_push.sh',
-            'summary' => 'Pushes the latest tarballs + peer_status data from core to the DR node using rsync/ssh.',
-            'usage' => './dr_rsync_push.sh --target core-dr.iaregamer.com --path /sdb1/backups',
-            'notes' => 'Respects ssh keys if present; otherwise uses password: Inc0rrect!'
+            'summary' => 'Windows Server bootstrapper for installing VC++ runtimes, DirectX, .NET, OpenSSH, and FileZilla.',
+            'usage' => 'powershell -ExecutionPolicy Bypass -File Bootstrap-GameServerHost.ps1',
+            'notes' => 'Run in elevated PowerShell on a fresh Windows Server 2019/2022 host.'
         ]
     ];
 }

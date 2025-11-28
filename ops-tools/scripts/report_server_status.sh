@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 # =============================================================================
+# DEPRECATED: Use status.sh --report instead
+# This script is kept for backward compatibility only.
+# =============================================================================
 # report_server_status.sh - Server Resource Status Reporter
 # =============================================================================
 # Collects CPU, memory, disk usage, and top 5 processes from this server

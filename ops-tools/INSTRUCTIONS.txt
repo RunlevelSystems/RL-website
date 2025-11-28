@@ -1,54 +1,153 @@
 ===============================
-Disaster Recovery (DR) Toolkit — v4
+WDS Operations Toolkit — v5
 ===============================
 Generated: 2025-11-28
 
-What's new in v4
+What's new in v5
 ----------------
-• Added bootstrap-gameserverhost.sh for Linux and Cygwin host setup.
-• Staff credentials and server info are now stored in content/staff-credentials.json
-  for easy editing. The staff-info.php page reads from this file.
-
-What's new in v3
-----------------
-• MySQL users standardized: localuser (localhost only) and remoteuser (per-reporting-server IP) using the password in .password.
-• check_servers.sh --password NEW now rotates Linux password, updates .password across peers, and rotates MySQL passwords for localuser and remoteuser accounts on this host.
-• Added setup_mysql_users.sh to (re)create users & grants based on servers.txt and .password.
-
-===============================
-Bootstrap Scripts
-===============================
-
-For Windows:
-  Bootstrap-GameServerHost.ps1
-  - Run in elevated PowerShell on a fresh Windows Server host
-  - Installs VC++ runtimes, DirectX, .NET, OpenSSH, and optionally FileZilla
-  - Usage: powershell -ExecutionPolicy Bypass -File .\Bootstrap-GameServerHost.ps1
-
-For Linux and Cygwin:
-  bootstrap-gameserverhost.sh
-  - Run with sudo on Linux or in Cygwin terminal
-  - Installs packages, creates gameserver user, configures SSH and firewall
-  - Usage: sudo ./bootstrap-gameserverhost.sh [--ssh-port 12322] [--dry-run]
+• Completely rewritten tools to reduce redundancy and provide fewer, purpose-driven scripts.
+• New unified scripts:
+  - install.sh: Single installer for Linux, Cygwin, and Windows prerequisites
+  - backup.sh: Unified backup script to run on each game server
+  - status.sh: Display local server status OR report to MySQL (replaces report_server_status.sh)
+  - status_all.sh: Display fleet-wide status from MySQL (run on core)
+  - change_passwd.sh: Unified password rotation for MySQL and Linux accounts
+  - xfer.sh: Simplified folder transfer with reduced security prompts
+• Fixed staff pages to use consistent headers with navigation.php path detection.
+• Removed redundant scripts: backup_hourly.sh, hourly_backups.sh, check_servers.sh (functionality merged).
 
 ===============================
-Staff Credentials File
+Quick Reference
 ===============================
 
-File: content/staff-credentials.json
+INSTALLATION (run once per host)
+--------------------------------
+Linux/Cygwin:
+  sudo ./install.sh [--ssh-port 12322] [--minimal] [--dry-run]
 
-This JSON file contains all credentials, server lists, and sensitive information
-displayed on the Staff Control Room page (staff-info.php). To update credentials:
+Windows (PowerShell as Admin):
+  powershell -ExecutionPolicy Bypass -File Bootstrap-GameServerHost.ps1
 
-1. Edit content/staff-credentials.json
-2. Commit and push changes
-3. The staff-info.php page will automatically reflect the updates
+BACKUPS (run via cron on each game server)
+------------------------------------------
+./backup.sh [--backup-root /sdb1/backups] [--keep-days 7]
 
-Structure:
-  - credentials: Array of credential objects (name, details, notes)
-  - core_servers: Array of core server objects (hostname, role, ssh)
-  - other_servers: Array of additional server objects
+Cron example (hourly):
+  0 * * * * /home/gameserver/tools/scripts/backup.sh >> /var/log/backup.log 2>&1
 
-Security: This file is protected by staff authentication and should never be
-served directly to clients. Only authenticated staff can view the data via
-the Staff Control Room page.
+STATUS MONITORING
+-----------------
+Display local status:
+  ./status.sh [--json]
+
+Report to MySQL (run every 5 minutes via cron):
+  */5 * * * * /home/gameserver/tools/scripts/status.sh --report
+
+Display fleet-wide status (run on core):
+  ./status_all.sh [--json] [--summary] [--offline-only]
+
+PASSWORD ROTATION (run on core only)
+------------------------------------
+./change_passwd.sh "NewPassword!" [--core-only] [--mysql-only] [--dry-run]
+
+After running:
+  1. Update content/staff-credentials.json
+  2. Run: ./dr_rsync_push.sh core-dr.iaregamer.com
+  3. Commit and push changes
+
+FILE TRANSFER
+-------------
+./xfer.sh /path/to/folder hostname [--port 12322] [--delete] [--background]
+./xfer.sh --check  # Monitor background transfer
+
+DISASTER RECOVERY
+-----------------
+./dr_rsync_push.sh core-dr.iaregamer.com [SSH_PORT]
+
+Syncs:
+  - /home/gameserver/tools
+  - /var/www/html/panel
+  - /var/www/html/adminer
+  - /var/www/files/backup
+  - /var/www/files/installers
+  - /etc (excluding host-specific files)
+  - MySQL databases and grants
+
+===============================
+Directory Structure
+===============================
+
+/home/gameserver/tools/
+├── .password           # Shared password (chmod 600)
+├── servers.txt         # List of hosts (hostname:port format)
+├── scripts/
+│   ├── install.sh      # Unified installer
+│   ├── backup.sh       # Local backup script
+│   ├── status.sh       # Status display/reporting
+│   ├── status_all.sh   # Fleet-wide status (core only)
+│   ├── change_passwd.sh# Password rotation (core only)
+│   ├── xfer.sh         # File transfer
+│   ├── dr_rsync_push.sh# DR sync script
+│   ├── deploy_gsp.sh   # GSP panel deployment
+│   ├── mysql_backup.sh # Standalone MySQL backup
+│   ├── mysql_restore.sh# MySQL restore
+│   ├── peer_watch.sh   # DR peer monitoring
+│   └── setup_mysql_users.sh # MySQL user setup
+├── backups/            # Local backup storage
+└── logs/               # Log files
+
+===============================
+Configuration Files
+===============================
+
+servers.txt format:
+  # Comments start with #
+  core.iaregamer.com:12322
+  core-dr.iaregamer.com:12322
+  kc.iaregamer.com:12322
+
+.password:
+  Single line with the shared password (no trailing newline)
+  chmod 600 /home/gameserver/tools/.password
+
+Staff Credentials:
+  Edit content/staff-credentials.json and commit changes.
+  The staff-info.php page reads from this file.
+
+===============================
+MySQL Database: peer_status
+===============================
+
+Tables:
+  nodes   - hostname, ip, first_seen, last_seen
+  metrics - hostname, ts, cpu_used_pct, mem_used/total, disk_used/total, top_procs
+
+Users:
+  localuser@localhost     - Full access on local MySQL
+  remoteuser@<server_ip>  - INSERT/UPDATE on peer_status from remote hosts
+
+Created automatically by:
+  - status.sh --report (creates tables on first run)
+  - setup_mysql_users.sh (creates users/grants)
+
+===============================
+Troubleshooting
+===============================
+
+"MySQL client not found":
+  Run: sudo apt install mysql-client (Debian/Ubuntu)
+  Or:  sudo dnf install mysql (RHEL/CentOS)
+
+"Password file missing":
+  Create: echo 'YourPassword' > /home/gameserver/tools/.password
+  Then:   chmod 600 /home/gameserver/tools/.password
+
+"Permission denied (SSH)":
+  Ensure sshpass is installed: sudo apt install sshpass
+  Or configure SSH key authentication
+
+"Cannot resolve hostname":
+  Check servers.txt format and DNS resolution
+  Test: getent hosts hostname.example.com
+
+For more help: https://worlddomination.software/staff/wiki/
