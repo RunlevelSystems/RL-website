@@ -36,6 +36,7 @@ zip -r "${OUTPUT_ZIP}" \
     INSTRUCTIONS.txt \
     servers.txt \
     Bootstrap-GameServerHost.ps1 \
+    bootstrap-gameserverhost.sh \
     -x "*.git*" \
     -x "*__pycache__*"
 
