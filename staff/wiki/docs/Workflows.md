@@ -42,6 +42,6 @@ This page outlines the key processes and workflows followed by the team.
 ## 🚀 Deployment
 
 1. **Pre-Deployment**: Ensure all tasks are completed and tested.
-2. **Deploy**: Follow runbooks on the [Operations](/staff/operations.php) page.
+2. **Deploy**: Follow runbooks on the Operations page (accessible from the Staff Area menu).
 3. **Verify**: Test all features and fixes are working.
 4. **Monitor**: Watch for any post-deployment issues.

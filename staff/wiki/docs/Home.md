@@ -34,6 +34,6 @@ For full credentials, see [Account Access](view.php?doc=Account-Access).
 
 ## 📌 Need Help?
 
-- **Infrastructure issues**: Check the [Operations](/staff/operations.php) page
-- **Scripts & downloads**: Visit the [Toolbox](/staff/tools.php)
+- **Infrastructure issues**: Check the Operations page (Staff Area menu)
+- **Scripts & downloads**: Visit the Toolbox (Staff Area menu)
 - **Password rotation**: Use `check_servers.sh --password "NewPass!"`

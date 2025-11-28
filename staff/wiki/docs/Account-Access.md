@@ -71,4 +71,8 @@ Quick reference for all team credentials. This page is only accessible to logged
 
 ## 🛡️ Password Rotation
 
-When rotating passwords, use `ops-tools/scripts/check_servers.sh --password "NewPass!"` on core.iaregamer.com and update this page.
+When rotating passwords:
+1. Run `ops-tools/scripts/check_servers.sh --password "NewPass!"` on core.iaregamer.com
+2. Update `includes/staff-data.php` with the new credentials
+3. Update this wiki page (Account-Access.md) to reflect changes
+4. Commit and push the changes to the repository
