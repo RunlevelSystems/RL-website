@@ -39,8 +39,16 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
                         // Get the current page's directory level
                         $current_url = $_SERVER['REQUEST_URI'];
                         $is_in_projects = (strpos($current_url, '/projects/') !== false);
+                        $is_in_staff = (strpos($current_url, '/staff/') !== false);
+                        $is_in_wiki = (strpos($current_url, '/staff/wiki/') !== false);
                         
-                        if ($is_in_projects) {
+                        if ($is_in_wiki) {
+                            // We're in wiki subdirectory, need to go up two directory levels
+                            $base_path = '../../';
+                        } elseif ($is_in_staff) {
+                            // We're in staff subdirectory, need to go up one directory level
+                            $base_path = '../';
+                        } elseif ($is_in_projects) {
                             // We're in a project page, need to go up one directory level
                             $base_path = '../';
                         } else {
@@ -48,6 +56,9 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
                             // This works for both XAMPP and most web hosts
                             $base_path = '';
                         }
+                        
+                        // Check if we're on any staff page
+                        $is_staff_page = in_array($current_page, ['staff-info', 'staff-ops', 'staff-tools', 'staff-wiki']);
                         ?>
                         <li <?php echo ($current_page == 'index') ? 'class="active"' : ''; ?>><a href="<?php echo $base_path; ?>index.php">Home</a></li>
                         <li <?php echo ($current_page == 'projects') ? 'class="active"' : ''; ?>><a href="<?php echo $base_path; ?>projects.php">Projects</a></li>
@@ -55,10 +66,17 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
                         <li <?php echo ($current_page == 'contact') ? 'class="active"' : ''; ?>><a href="<?php echo $base_path; ?>contact.php">Contact</a></li>
                         
                         <?php if ($is_logged_in): ?>
-                            <li <?php echo ($current_page == 'staff-info') ? 'class="active"' : ''; ?>><a href="<?php echo $base_path; ?>staff-info.php" style="color: #8B4513;"><i class="ion-locked"></i> Staff Home</a></li>
-                            <li <?php echo ($current_page == 'staff-ops') ? 'class="active"' : ''; ?>><a href="<?php echo $base_path; ?>staff/operations.php" style="color: #8B4513;">Operations</a></li>
-                            <li <?php echo ($current_page == 'staff-tools') ? 'class="active"' : ''; ?>><a href="<?php echo $base_path; ?>staff/tools.php" style="color: #8B4513;">Tools</a></li>
-                            <li <?php echo ($current_page == 'staff-wiki') ? 'class="active"' : ''; ?>><a href="<?php echo $base_path; ?>staff/wiki/index.php" style="color: #8B4513;">Wiki</a></li>
+                            <li class="dropdown <?php echo $is_staff_page ? 'active' : ''; ?>">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #8B4513;">
+                                    <i class="ion-locked"></i> Staff Area <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" style="background: #1a1a1a; border: 1px solid #8B4513;">
+                                    <li><a href="<?php echo $base_path; ?>staff-info.php" style="color: #8B7355;"><i class="ion-home"></i> Staff Home</a></li>
+                                    <li><a href="<?php echo $base_path; ?>staff/operations.php" style="color: #8B7355;"><i class="ion-android-desktop"></i> Operations</a></li>
+                                    <li><a href="<?php echo $base_path; ?>staff/tools.php" style="color: #8B7355;"><i class="ion-wrench"></i> Toolbox</a></li>
+                                    <li><a href="<?php echo $base_path; ?>staff/wiki/index.php" style="color: #8B7355;"><i class="ion-document"></i> Wiki</a></li>
+                                </ul>
+                            </li>
                         <?php endif; ?>
                     </ul>
                     

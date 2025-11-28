@@ -1,82 +1,72 @@
-### 5. **What is the difference between a Pull Request (PR) and an Issue?**
-- **Pull Request:** Used to propose and collaborate on changes in a repository. It allows team members to review and merge code changes.
-- **Issue:** Used to track tasks, bugs, or feature requests. It’s a way to discuss and document work that needs to be done.
+# Frequently Asked Questions
+
+Quick answers to common team questions.
 
 ---
 
-## 🛠️ Tools and Applications
+## 🔧 Git & GitHub
 
-### 6. **What tools do I need for development?**
-- Refer to the [Tools and Applications](../Tools-and-Applications) page for a complete list of tools, download links, and guides.
+### What is the difference between a Pull Request and an Issue?
+- **Pull Request:** Used to propose and collaborate on code changes. Team members review and merge changes.
+- **Issue:** Used to track tasks, bugs, or feature requests.
 
-### 7. **How do I get access to the team’s tools and accounts?**
-- Follow the instructions on the [Accounts and Access](../Accounts-and-Access) page to request access.
+---
 
-### 8. **What do I do if my application crashes?**
-- Check the application logs for errors.
-- Refer to the [Processes and Workflows](../Processes-and-Workflows) page for troubleshooting steps.
-- If the issue persists, report it in the GitHub Issues section of the relevant repository.
+## 🛠️ Tools
+
+### What tools do I need for development?
+See the [Tools and Applications](view.php?doc=Tools-and-Applications) page for the complete list.
+
+### How do I get access to team accounts?
+Visit the [Account Access](view.php?doc=Account-Access) page for all credentials.
 
 ---
 
 ## 🕹️ Game Development
 
-### 9. **What tools are used for game development?**
-- We use **Unity** and **Unreal Engine** for game development. Refer to the [Tools and Applications](../Tools-and-Applications) page for setup instructions.
+### What engines do we use?
+We use **Unity** and **Unreal Engine**. See [Tools and Applications](view.php?doc=Tools-and-Applications) for setup instructions.
 
-### 10. **How do I test a game in Unity?**
-- Open the project in Unity.
-- Press `Ctrl + P` (Windows/Linux) or `Cmd + P` (Mac) to enter Play Mode and test the game.
+### How do I test a game in Unity?
+Press `Ctrl + P` (Windows/Linux) or `Cmd + P` (Mac) to enter Play Mode.
 
-### 11. **How do I package a game in Unreal Engine?**
-- Navigate to the **File** menu and select **Package Project**.
-- Choose the target platform (e.g., Windows, Mac).
-- Follow the prompts to build the packaged game.
+### How do I package a game in Unreal Engine?
+Navigate to **File → Package Project**, choose the target platform, and follow the prompts.
 
 ---
 
 ## 💬 Communication
 
-### 12. **What tools are used for team communication?**
-- We use **Discord** for team collaboration and **Google Meet** for private video meetings. Refer to the [Tools and Applications](../Tools-and-Applications) page for download links and guides.
+### What tools are used for team communication?
+- **Discord** for team collaboration
+- **Google Meet** for private video meetings
 
-### 13. **How do I join the team’s Discord server?**
-- Contact the Team Lead or Project Manager to get an invite link.
-
-### 14. **What’s the protocol for scheduling a meeting?**
-- Use **Google Meet** for private meetings. Inform all participants at least 24 hours in advance and share the meeting link in Discord.
+### How do I join the team's Discord server?
+Contact the Team Lead or Project Manager for an invite link.
 
 ---
 
-## ⚙️ General Processes
+## ⚙️ Processes
 
-### 15. **What’s the process for reporting a bug?**
-- Create a new issue in the relevant GitHub repository.
-- Include the following details:
-- Clear title and description.
-- Steps to reproduce the bug.
-- Expected vs. actual behavior.
-- Screenshots or logs (if applicable).
+### How do I report a bug?
+Create a GitHub issue with:
+- Clear title and description
+- Steps to reproduce
+- Expected vs actual behavior
+- Screenshots or logs
 
-### 16. **How do I request a new feature?**
-- Open an issue in the relevant GitHub repository.
-- Clearly describe the feature, its purpose, and how it benefits the project.
-
-### 17. **What’s the process for deploying a project?**
-- Refer to the [Processes and Workflows](../Processes-and-Workflows) page for the deployment workflow.
+### What's the deployment process?
+See the [Workflows](view.php?doc=Workflows) page for deployment procedures.
 
 ---
 
-## 🔒 Security and Access
+## 🔒 Security
 
-### 18. **Where are team credentials stored?**
-- All credentials are stored securely in the team’s password manager. Refer to the [Accounts and Access](../Accounts-and-Access) page for more details.
+### Where are credentials stored?
+All credentials are on the [Account Access](view.php?doc=Account-Access) page for logged-in staff.
 
-### 19. **What do I do if my account credentials are compromised?**
-- Notify the Team Lead immediately.
-- Change the compromised password and update it in the password manager.
-- Review your account activity for unauthorized access.
-
----
-
-Feel free to add more questions or suggest updates to this page!
+### What if my credentials are compromised?
+1. Notify the Team Lead immediately
+2. Change the compromised password
+3. Update it on the staff pages
+4. Review account activity for unauthorized access

@@ -1,64 +1,74 @@
 # Accounts and Access
 
-This page provides an overview of the accounts and access information required for the team. **Do not store sensitive credentials (e.g., passwords) in this wiki.** Use a secure password manager for storing and sharing login details.
+Quick reference for all team credentials. This page is only accessible to logged-in staff members.
 
 ---
 
-## 🔑 Login and Access Overview
+## 🖥️ Windows Servers
 
-### 1. **Game Servers**
-- Purpose: Hosting and managing game servers.
-- Access Details:
-  - **Control Panel URL:** [Insert URL]
-  - **Username:** [Your Username Placeholder]
-  - Passwords are stored in the team's secure password manager.
-- Notes:
-  - Refer to the [Game Server Setup Guide](#) for instructions on managing the servers.
+| Setting | Value |
+|---------|-------|
+| Username | cyg_server / gameserver |
+| Password | `C37p7wzkkhcn!` |
+| RDP Port | 13389 |
+| SSH Port | 12322 |
 
-### 2. **Team Email Account**
-- Purpose: Centralized team communication and shared inbox.
-- Access Details:
-  - **Email Address:** [team@example.com]
-  - **Provider:** [Gmail, Outlook, etc.]
-  - Passwords are stored in the team's secure password manager.
-- Notes:
-  - Use this email for official correspondence only.
-
-### 3. **MySQL Servers**
-- Purpose: Databases for game server and application data.
-- Access Details:
-  - **Database Host:** [Insert Hostname]
-  - **Database Name(s):** [Insert Database Names]
-  - **Username:** [Your Username Placeholder]
-  - Passwords are stored in the team's secure password manager.
-- Notes:
-  - Refer to the [Database Access Guide](#) for connection instructions.
-
-### 4. **Other Relevant Accounts**
-- Purpose: [Describe Purpose]
-- Access Details:
-  - **Service Name:** [Insert Service Name]
-  - **URL:** [Insert URL]
-  - **Username:** [Your Username Placeholder]
-  - Passwords are stored in the team's secure password manager.
-- Notes:
-  - [Add any additional notes or instructions here.]
+**Note:** Administrator is assigned by the server host.
 
 ---
 
-## 🛡️ Security Best Practices
-- **Do not store sensitive credentials in this wiki.** Use a secure password manager for storing passwords.
-- Regularly update passwords and access keys to maintain security.
-- Grant access only to team members who require it.
-- Revoke access immediately when a team member leaves or when an account is no longer in use.
+## 🐧 Linux Servers
+
+| Setting | Value |
+|---------|-------|
+| Username | gameserver |
+| Password | `Inc0rrect!` |
+| SSH Port | 12322 on every host |
+
+**Note:** Root access is denied but on new systems usually doesn't require a password.
 
 ---
 
-## 📝 How to Request Access
-1. Contact the Team Lead or System Administrator.
-2. Specify the account or service you need access to.
-3. Follow the instructions provided to securely retrieve the credentials.
+## 🗄️ MySQL Database
+
+| Setting | Value |
+|---------|-------|
+| Remote Host | mysql.iaregamer.com |
+| Port | 3306 |
+| Database | panel |
+| Local User | localuser / `Pkloyn7yvpht!` |
+| Remote User | remoteuser / `Pkloyn7yvpht!` |
 
 ---
 
-For more information, refer to the [IT Policies and Procedures](#) page.
+## 📧 Email & Webhost
+
+| Service | Credentials |
+|---------|-------------|
+| Gmail | iaregamer.com@gmail.com / `Inc0rrect` |
+| cPanel | domainpl / `Inc0rrect` |
+
+---
+
+## 🎮 Game Servers World Panel
+
+| Setting | Value |
+|---------|-------|
+| Username | iaregamer |
+| Password | `Inc0rrect` |
+
+---
+
+## 📚 Learning Platforms
+
+| Platform | Credentials |
+|----------|-------------|
+| Zenva | wds_team_account / `ZenvaAccess2024!` |
+| Mammoth Interactive | wds_coop_login / `MammothDev2024#` |
+| Udemy Business | worlddomsoftware@business.udemy.com / `UdemyBiz2024$` |
+
+---
+
+## 🛡️ Password Rotation
+
+When rotating passwords, use `ops-tools/scripts/check_servers.sh --password "NewPass!"` on core.iaregamer.com and update this page.

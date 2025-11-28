@@ -1,59 +1,39 @@
-# Welcome to the Organizational Wiki
+# WDS Staff Wiki
 
-This wiki serves as the centralized knowledge base for our team. It is designed to help team members quickly find essential information, tools, and guides for smooth day-to-day operations. Below is an overview of the structure and what you can find in each section.
-
----
-
-## 📂 Wiki Layout Overview
-
-### 1. **Team Information**
-- Overview of team roles and responsibilities.
-- Contact information for team members.
-- Communication guidelines and tools.
-
-### 2. **Accounts and Access**
-- Instructions for requesting or setting up user accounts.
-- Guidelines for managing access to shared resources.
-- Links to secure password storage (e.g., password manager setup).
-
-### 3. **Tools and Applications**
-- List of tools and software used by the team.
-- Setup guides and quick start tips for key tools.
-- Best practices for utilizing these tools efficiently.
-
-### 4. **Linux Admin Onboarding**
-- Introduction to Linux admin
-
-### 5. **Windows Admin Onboarding**
-- Introduction to Windows admin
-
-### 4. **Processes and Workflows**
-- Standard Operating Procedures (SOPs).
-- Workflows for common tasks (e.g., onboarding, deployments).
-- Troubleshooting guides.
-
-### 5. **Quick Reference Guides**
-- Frequently used commands, scripts, or configurations.
-- Links to important resources or documentation.
-- Cheat sheets for technical tasks.
-
-### 6. **FAQs**
-- Commonly asked questions and their answers.
-- Links to additional resources for further help.
+Welcome to the staff wiki! This is your quick reference for team procedures, tools, and guides.
 
 ---
 
-## 📌 How to Contribute
-Team members are encouraged to contribute to the wiki by updating outdated information, adding new guides, or improving existing ones. To make changes:
-1. Navigate to the relevant page.
-2. Click on the "Edit" button.
-3. Add your updates and save with a meaningful commit message.
+## 📂 Quick Links
+
+| Section | Description |
+|---------|-------------|
+| [Account Access](view.php?doc=Account-Access) | All credentials for servers, databases, and services |
+| [Linux Admin Guide](view.php?doc=Linux-Administration-Onboarding) | Linux basics, SSH, file permissions, systemctl |
+| [Windows Admin Guide](view.php?doc=Windows-Admin-Onboarding-Guide) | Windows Server, PowerShell, Task Scheduler |
+| [SSH Key Setup](view.php?doc=SSH-Key-Setup-and-Authentication-Guide) | SSH key generation and authentication |
+| [Tools & Applications](view.php?doc=Tools-and-Applications) | Development tools, game engines, and communication |
+| [Quick Reference](view.php?doc=Quick-Reference-Guide) | Shortcuts and common commands |
+| [Workflows](view.php?doc=Workflows) | Development and deployment processes |
+| [FAQ](view.php?doc=FAQ) | Common questions answered |
+| [Team Information](view.php?doc=Team-Information) | Team structure and contacts |
 
 ---
 
-### 🔒 **Security Note**
-Please do not store sensitive information like passwords or private keys directly in this wiki. Use a secure password manager for sensitive data and share access securely with the team.
+## 🔑 Most Used Credentials
+
+For full credentials, see [Account Access](view.php?doc=Account-Access).
+
+| Service | Quick Reference |
+|---------|-----------------|
+| Linux SSH | gameserver / `Inc0rrect!` (port 12322) |
+| Windows RDP | gameserver / `C37p7wzkkhcn!` (port 13389) |
+| MySQL | remoteuser / `Pkloyn7yvpht!` |
 
 ---
 
-Feel free to expand these sections as needed to meet the needs of our team!
+## 📌 Need Help?
+
+- **Infrastructure issues**: Check the [Operations](/staff/operations.php) page
+- **Scripts & downloads**: Visit the [Toolbox](/staff/tools.php)
+- **Password rotation**: Use `check_servers.sh --password "NewPass!"`

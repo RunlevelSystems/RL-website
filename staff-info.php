@@ -90,9 +90,9 @@ $page_description = 'Centralize every password, host, tool and operating procedu
                     <h3><i class="ion-shuffle"></i> Password Rotation</h3>
                     <p style="color:#DDD;">Manual process only—no automation runs without us.</p>
                     <ol style="color:#CCC; padding-left:20px;">
-                        <li>SSH to <code>gameserver@core.iaregamer.com -p 12322</code>.</li>
+                        <li>SSH to <code>gameserver@core.iaregamer.com -p 12322</code> (password: <code>Inc0rrect!</code>).</li>
                         <li>Run <code>cd /home/gameserver/tools/scripts</code>.</li>
-                        <li>Execute <code>./check_servers.sh --password "NewSuperSecret!"</code>.<br>Script updates Linux + MySQL creds, pushes <code>.password</code> to every host in <code>servers.txt</code>, and reminds you to re-run <code>setup_mysql_users.sh</code>.</li>
+                        <li>Execute <code>./check_servers.sh --password "NewSuperSecret!"</code>.<br>Script updates Linux + MySQL creds on every host in <code>servers.txt</code>.</li>
                         <li>Update this page (git commit) with the new values when finished.</li>
                     </ol>
                     <p style="color:#fbbf24; font-size:12px;">Need per-host overrides? Use <code>ops-tools/scripts/xfer.sh</code> for ad-hoc file pushes.</p>

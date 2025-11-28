@@ -50,7 +50,7 @@ $page_description = 'Everything from password rotation to DR rsync lives here.';
             <div class="col-sm-12">
                 <div class="dir-notice">
                     <p><strong>Repo location:</strong> <code>/ops-tools</code> (bundled with this website). Clone/update from GitHub or download individual files below.</p>
-                    <p style="margin:0;">Always run scripts from <code>/home/gameserver/tools</code> on the appropriate host to inherit the expected paths (<code>servers.txt</code>, <code>.password</code>, etc.).</p>
+                    <p style="margin:0;">Always run scripts from <code>/home/gameserver/tools</code> on the appropriate host to inherit the expected paths (<code>servers.txt</code>, etc.).</p>
                 </div>
             </div>
         </div>
