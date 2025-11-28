@@ -76,7 +76,9 @@ function getDatabaseConnection() {
 }
 
 /**
- * Verify admin user credentials against ogp_users table
+ * Verify admin user credentials against panel database users table
+ * Uses resolveUsersTable() to find gsp_users or ogp_users table dynamically.
+ * Follows the same authentication approach as GSP billing module.
  * @param string $username The username to check
  * @param string $password The plain text password
  * @return array|false User data array or false on failure
@@ -84,12 +86,13 @@ function getDatabaseConnection() {
 function verifyAdminLogin($username, $password) {
     $db = getDatabaseConnection();
     if (!$db) {
+        error_log("WDS Login: Database connection failed");
         return false;
     }
 
     try {
         $table = resolveUsersTable($db);
-        $columnList = "user_id, users_login, users_passwd, users_role, users_group";
+        $columnList = "user_id, users_login, users_passwd, users_role";
         $hasPassHash = tableHasPassHash($db, $table);
         if ($hasPassHash) {
             $columnList .= ", users_pass_hash";
@@ -99,27 +102,34 @@ function verifyAdminLogin($username, $password) {
         $stmt->execute([$username]);
         $user = $stmt->fetch();
         if (!$user) {
+            error_log("WDS Login: User not found: " . $username);
             return false;
         }
 
-        $isAdmin = false;
-        if (isset($user['users_role']) && strtolower($user['users_role']) === 'admin') {
-            $isAdmin = true;
-        } elseif (!empty($user['users_group']) && stripos($user['users_group'], 'admin') !== false) {
-            $isAdmin = true;
-        }
-        if (!$isAdmin) {
-            return false;
-        }
-
+        // Password verification - same logic as GSP billing module
+        // Try modern password_hash first, then fall back to legacy md5
         $passwordOk = false;
         if ($hasPassHash && !empty($user['users_pass_hash'])) {
             $passwordOk = password_verify($password, $user['users_pass_hash']);
         }
-        if (!$passwordOk) {
-            $passwordOk = hash_equals($user['users_passwd'], md5($password));
+        if (!$passwordOk && !empty($user['users_passwd'])) {
+            // Legacy MD5 password check - required for GSP/OGP compatibility
+            // Note: MD5 is weak, but necessary for legacy systems. Modern logins
+            // should use users_pass_hash with password_verify() instead.
+            $passwordOk = (md5($password) === $user['users_passwd']);
         }
         if (!$passwordOk) {
+            error_log("WDS Login: Password verification failed for: " . $username);
+            return false;
+        }
+
+        // Determine role - use users_role if available, default to 'user'
+        $userRole = !empty($user['users_role']) ? strtolower($user['users_role']) : 'user';
+        
+        // For WDS staff login, require admin role
+        // GSP uses 'admin' role for admin users
+        if ($userRole !== 'admin') {
+            error_log("WDS Login: User " . $username . " does not have admin role (role: " . $userRole . ")");
             return false;
         }
 
@@ -129,7 +139,7 @@ function verifyAdminLogin($username, $password) {
             'login_time' => time()
         ];
     } catch (Throwable $e) {
-        error_log("Login verification failed: " . $e->getMessage());
+        error_log("WDS Login verification failed: " . $e->getMessage());
         return false;
     }
 }
