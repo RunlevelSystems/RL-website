@@ -95,13 +95,27 @@ get_pkg_manager() {
     fi
 }
 
+# Convert colon-separated port range to iptables format (start:end)
+port_range_to_iptables() {
+    local range="$1"
+    # If range contains colon, use as-is; otherwise it's a single port
+    if [[ "$range" == *:* ]]; then
+        echo "${range}"
+    else
+        echo "${range}"
+    fi
+}
+
 run_cmd() {
     if [[ "$DRY_RUN" == "true" ]]; then
         log "[DRY-RUN] Would run: $*"
         return 0
     fi
     log "Running: $*"
-    "$@" 2>&1 | tee -a "${LOG_FILE}" || return $?
+    # Use PIPESTATUS to properly propagate exit code through pipeline
+    "$@" 2>&1 | tee -a "${LOG_FILE}"
+    local exit_code=${PIPESTATUS[0]}
+    return $exit_code
 }
 
 # =============================================================================
@@ -435,15 +449,15 @@ configure_ssh() {
         # Backup original config
         cp "${sshd_config}" "${sshd_config}.bak.$(date '+%Y%m%d')" 2>/dev/null || true
         
-        # Update port
+        # Update port - use consistent quoting with double quotes for variable expansion
         if grep -qE '^\s*#?\s*Port\s+' "${sshd_config}"; then
-            sed -i "s/^\s*#\?\s*Port\s\+.*/Port ${SSH_PORT}/" "${sshd_config}"
+            sed -i "s/^[[:space:]]*#*[[:space:]]*Port[[:space:]]\+.*/Port ${SSH_PORT}/" "${sshd_config}"
         else
             echo "Port ${SSH_PORT}" >> "${sshd_config}"
         fi
         
-        # Enable password authentication (for initial setup)
-        sed -i 's/^\s*#\?\s*PasswordAuthentication\s\+no/PasswordAuthentication yes/' "${sshd_config}"
+        # Enable password authentication (for initial setup) - consistent quoting
+        sed -i "s/^[[:space:]]*#*[[:space:]]*PasswordAuthentication[[:space:]]\+no/PasswordAuthentication yes/" "${sshd_config}"
         
         # Restart SSH service
         if command -v systemctl >/dev/null 2>&1; then
@@ -507,11 +521,11 @@ configure_firewall() {
     if command -v iptables >/dev/null 2>&1; then
         log "Configuring iptables..."
         run_cmd iptables -A INPUT -p tcp --dport "${SSH_PORT}" -j ACCEPT
-        run_cmd iptables -A INPUT -p tcp --dport "${GAME_PORTS_TCP%%:*}:${GAME_PORTS_TCP##*:}" -j ACCEPT
-        run_cmd iptables -A INPUT -p udp --dport "${GAME_PORTS_UDP%%:*}:${GAME_PORTS_UDP##*:}" -j ACCEPT
+        run_cmd iptables -A INPUT -p tcp --dport "$(port_range_to_iptables "${GAME_PORTS_TCP}")" -j ACCEPT
+        run_cmd iptables -A INPUT -p udp --dport "$(port_range_to_iptables "${GAME_PORTS_UDP}")" -j ACCEPT
         run_cmd iptables -A INPUT -p tcp --dport "${GSP_PORT}" -j ACCEPT
         run_cmd iptables -A INPUT -p tcp --dport "${FTP_PORT}" -j ACCEPT
-        run_cmd iptables -A INPUT -p tcp --dport "${FTP_PASSIVE_PORTS%%:*}:${FTP_PASSIVE_PORTS##*:}" -j ACCEPT
+        run_cmd iptables -A INPUT -p tcp --dport "$(port_range_to_iptables "${FTP_PASSIVE_PORTS}")" -j ACCEPT
         
         # Save rules
         if command -v iptables-save >/dev/null 2>&1; then
