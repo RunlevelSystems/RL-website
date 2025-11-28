@@ -1,10 +1,54 @@
 ===============================
-Disaster Recovery (DR) Toolkit — v3
+Disaster Recovery (DR) Toolkit — v4
 ===============================
-Generated: 2025-11-25
+Generated: 2025-11-28
 
-What’s new in v3
+What's new in v4
+----------------
+• Added bootstrap-gameserverhost.sh for Linux and Cygwin host setup.
+• Staff credentials and server info are now stored in content/staff-credentials.json
+  for easy editing. The staff-info.php page reads from this file.
+
+What's new in v3
 ----------------
 • MySQL users standardized: localuser (localhost only) and remoteuser (per-reporting-server IP) using the password in .password.
 • check_servers.sh --password NEW now rotates Linux password, updates .password across peers, and rotates MySQL passwords for localuser and remoteuser accounts on this host.
 • Added setup_mysql_users.sh to (re)create users & grants based on servers.txt and .password.
+
+===============================
+Bootstrap Scripts
+===============================
+
+For Windows:
+  Bootstrap-GameServerHost.ps1
+  - Run in elevated PowerShell on a fresh Windows Server host
+  - Installs VC++ runtimes, DirectX, .NET, OpenSSH, and optionally FileZilla
+  - Usage: powershell -ExecutionPolicy Bypass -File .\Bootstrap-GameServerHost.ps1
+
+For Linux and Cygwin:
+  bootstrap-gameserverhost.sh
+  - Run with sudo on Linux or in Cygwin terminal
+  - Installs packages, creates gameserver user, configures SSH and firewall
+  - Usage: sudo ./bootstrap-gameserverhost.sh [--ssh-port 12322] [--dry-run]
+
+===============================
+Staff Credentials File
+===============================
+
+File: content/staff-credentials.json
+
+This JSON file contains all credentials, server lists, and sensitive information
+displayed on the Staff Control Room page (staff-info.php). To update credentials:
+
+1. Edit content/staff-credentials.json
+2. Commit and push changes
+3. The staff-info.php page will automatically reflect the updates
+
+Structure:
+  - credentials: Array of credential objects (name, details, notes)
+  - core_servers: Array of core server objects (hostname, role, ssh)
+  - other_servers: Array of additional server objects
+
+Security: This file is protected by staff authentication and should never be
+served directly to clients. Only authenticated staff can view the data via
+the Staff Control Room page.

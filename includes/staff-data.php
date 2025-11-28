@@ -107,6 +107,13 @@ function staff_tool_catalog() {
             'notes' => 'Pairs with the installation steps documented on the Staff Operations page.'
         ],
         [
+            'name' => 'bootstrap-gameserverhost.sh',
+            'path' => 'ops-tools/bootstrap-gameserverhost.sh',
+            'summary' => 'Linux/Cygwin bootstrapper for installing packages, creating gameserver user, and configuring SSH/firewall.',
+            'usage' => 'sudo ./bootstrap-gameserverhost.sh [--ssh-port 12322] [--dry-run]',
+            'notes' => 'Supports Ubuntu/Debian, RHEL/CentOS, and Cygwin environments.'
+        ],
+        [
             'name' => 'dr_rsync_push.sh / xfer.sh',
             'path' => 'ops-tools/scripts/dr_rsync_push.sh',
             'summary' => 'Pushes the latest tarballs + peer_status data from core to the DR node using rsync/ssh.',
