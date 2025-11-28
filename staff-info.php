@@ -7,7 +7,8 @@ require_once 'includes/staff-data.php';
 requireAdminLogin();
 
 $credentials = staff_credentials();
-$servers = staff_core_servers();
+$coreServers = staff_core_servers();
+$otherServers = staff_other_servers();
 $toolCatalog = staff_tool_catalog();
 
 $current_page = 'staff-info';
@@ -75,7 +76,7 @@ $page_description = 'Centralize every password, host, tool and operating procedu
                             <p style="color:#B2BAC5; font-size:13px;"><?php echo htmlspecialchars($cred['notes']); ?></p>
                         </div>
                     <?php endforeach; ?>
-                    <p style="color:#fcd34d; font-size:12px;">Need to update a password? Run <code>ops-tools/scripts/check_servers.sh --password &lt;NewPass!&gt;</code> on <strong>core.iaregamer.com</strong> and log the change below.</p>
+                    <p style="color:#fcd34d; font-size:12px;">Need to update credentials? Edit <code>content/staff-credentials.json</code> and commit. Run <code>ops-tools/scripts/check_servers.sh --password &lt;NewPass!&gt;</code> on <strong>core</strong> to rotate server passwords.</p>
                 </div>
             </div>
             <div class="col-sm-4">
@@ -92,10 +93,10 @@ $page_description = 'Centralize every password, host, tool and operating procedu
                     <h3><i class="ion-shuffle"></i> Password Rotation</h3>
                     <p style="color:#DDD;">Manual process only—no automation runs without us.</p>
                     <ol style="color:#CCC; padding-left:20px;">
-                        <li>SSH to <code>gameserver@core.iaregamer.com -p 12322</code> (password: <code>Inc0rrect!</code>).</li>
+                        <li>SSH to <code>gameserver@core.iaregamer.com -p 12322</code>.</li>
                         <li>Run <code>cd /home/gameserver/tools/scripts</code>.</li>
                         <li>Execute <code>./check_servers.sh --password "NewSuperSecret!"</code>.<br>Script updates Linux + MySQL creds on every host in <code>servers.txt</code>.</li>
-                        <li>Update this page (git commit) with the new values when finished.</li>
+                        <li>Update <code>content/staff-credentials.json</code> with the new values and commit.</li>
                     </ol>
                     <p style="color:#fbbf24; font-size:12px;">Need per-host overrides? Use <code>ops-tools/scripts/xfer.sh</code> for ad-hoc file pushes.</p>
                 </div>
@@ -110,7 +111,7 @@ $page_description = 'Centralize every password, host, tool and operating procedu
                         <table class="table" style="color:#E5E7EB;">
                             <thead><tr><th>Hostname</th><th>Role</th><th>SSH / Console</th></tr></thead>
                             <tbody>
-                                <?php foreach ($servers as $srv): ?>
+                                <?php foreach ($coreServers as $srv): ?>
                                     <tr>
                                         <td><?php echo htmlspecialchars($srv['hostname']); ?></td>
                                         <td><?php echo htmlspecialchars($srv['role']); ?></td>
@@ -120,10 +121,34 @@ $page_description = 'Centralize every password, host, tool and operating procedu
                             </tbody>
                         </table>
                     </div>
-                    <p style="color:#94a3b8; font-size:13px;">Need to add a node? Update <code>ops-tools/servers.txt</code> (and re-run git) so every script knows about it.</p>
                 </div>
             </div>
         </div>
+
+        <?php if (!empty($otherServers)): ?>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="staff-card">
+                    <h3><i class="ion-ios-cloud"></i> Other Servers</h3>
+                    <div class="table-responsive">
+                        <table class="table" style="color:#E5E7EB;">
+                            <thead><tr><th>Hostname</th><th>Role</th><th>SSH / Console</th></tr></thead>
+                            <tbody>
+                                <?php foreach ($otherServers as $srv): ?>
+                                    <tr>
+                                        <td><?php echo htmlspecialchars($srv['hostname']); ?></td>
+                                        <td><?php echo htmlspecialchars($srv['role']); ?></td>
+                                        <td><code><?php echo htmlspecialchars($srv['ssh']); ?></code></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="color:#94a3b8; font-size:13px;">Need to add a node? Update <code>content/staff-credentials.json</code> and commit changes.</p>
+                </div>
+            </div>
+        </div>
+        <?php endif; ?>
 
         <div class="row">
             <div class="col-sm-12">

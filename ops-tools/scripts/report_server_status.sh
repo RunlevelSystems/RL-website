@@ -3,7 +3,7 @@
 # report_server_status.sh - Server Resource Status Reporter
 # =============================================================================
 # Collects CPU, memory, disk usage, and top 5 processes from this server
-# and uploads to the MySQL server_status database on core.iaregamer.com.
+# and uploads to the MySQL peer_status database on core.iaregamer.com.
 # Creates DB/tables on first run if they don't exist.
 #
 # Usage:
@@ -26,7 +26,7 @@ PASSFILE="${TOOLS_DIR}/.password"
 MYSQL_HOST="${MYSQL_HOST:-core.iaregamer.com}"
 MYSQL_PORT="${MYSQL_PORT:-3306}"
 MYSQL_USER="remoteuser"
-MYSQL_DB="server_status"
+MYSQL_DB="peer_status"
 # END CONFIG
 
 die(){ echo "ERROR: $*" >&2; exit 1; }
@@ -40,7 +40,7 @@ while [[ $# -gt 0 ]]; do
         --mysql-port) MYSQL_PORT="$2"; shift 2 ;;
         --help|-h)
             echo "Usage: $0 [--mysql-host HOST] [--mysql-port PORT]"
-            echo "  Collects server stats and uploads to MySQL server_status database"
+            echo "  Collects server stats and uploads to MySQL peer_status database"
             echo "  Defaults: --mysql-host core.iaregamer.com --mysql-port 3306"
             exit 0
             ;;

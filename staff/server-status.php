@@ -3,7 +3,7 @@
  * Staff Server Status - Detailed Fleet Overview
  * 
  * Shows detailed server metrics including top processes for staff members.
- * Reads from the server_status MySQL database on core.iaregamer.com
+ * Reads from the peer_status MySQL database on core.iaregamer.com
  */
 session_start();
 define('WDS_SYSTEM', true);
@@ -16,11 +16,11 @@ $header_class = 'login-header inner-header';
 $page_subtitle = 'Server Fleet Status';
 $page_description = 'Real-time monitoring of all servers in the fleet with detailed metrics.';
 
-// Database configuration for server_status
-// Uses the same credentials as panel DB but connects to server_status database
+// Database configuration for peer_status
+// Uses the same credentials as panel DB but connects to peer_status database
 $STATUS_DB_HOST = 'core.iaregamer.com';
 $STATUS_DB_PORT = 3306;
-$STATUS_DB_NAME = 'server_status';
+$STATUS_DB_NAME = 'peer_status';
 $STATUS_DB_USER = DB_USER;     // From db-config.php
 $STATUS_DB_PASS = DB_PASS;     // From db-config.php
 
@@ -52,7 +52,7 @@ try {
     $servers = $pdo->query($sql)->fetchAll();
     
 } catch (Exception $e) {
-    $errorMessage = 'Unable to connect to server_status database: ' . $e->getMessage();
+    $errorMessage = 'Unable to connect to peer_status database: ' . $e->getMessage();
 }
 
 function getStatusInfo($server) {
@@ -156,7 +156,7 @@ $totalCount = count($servers);
                 <div class="title-box">
                     <p>Live Monitoring</p>
                     <h2 class="title mt0" style="color:#8B4513;">Server Fleet Status</h2>
-                    <p style="color:#9CA3AF;">Data from <code>server_status</code> database on core.iaregamer.com • Auto-refreshes every 60 seconds</p>
+                    <p style="color:#9CA3AF;">Data from <code>peer_status</code> database on core.iaregamer.com • Auto-refreshes every 60 seconds</p>
                 </div>
             </div>
         </div>
@@ -167,7 +167,7 @@ $totalCount = count($servers);
                 <div class="error-box">
                     <i class="ion-alert-circled" style="font-size: 2rem;"></i>
                     <p style="margin-top: 10px;"><?php echo htmlspecialchars($errorMessage); ?></p>
-                    <p style="margin-top: 10px; color: #F87171;">Make sure the server_status database exists and the report_server_status.sh script has been run on each server.</p>
+                    <p style="margin-top: 10px; color: #F87171;">Make sure the peer_status database exists and the report_server_status.sh script has been run on each server.</p>
                 </div>
             </div>
         </div>

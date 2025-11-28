@@ -5,7 +5,7 @@
  * Shows a public-facing overview of all servers in the fleet.
  * Deployed on core.iaregamer.com and core-dr.iaregamer.com
  * 
- * Reads from the server_status MySQL database.
+ * Reads from the peer_status MySQL database.
  */
 
 require __DIR__ . '/config.php';

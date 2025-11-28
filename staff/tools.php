@@ -10,30 +10,7 @@ $toolCatalog = staff_tool_catalog();
 $current_page = 'staff-tools';
 $header_class = 'login-header inner-header';
 $page_subtitle = 'Toolbox + Downloads';
-$page_description = 'Everything from password rotation to DR rsync lives here.';
-
-// Tools that can be executed remotely (on core/core-dr)
-$executableTools = [
-    'report_server_status.sh' => [
-        'description' => 'Report server status to database',
-        'params' => [],
-        'requires_server' => false
-    ],
-    'check_servers.sh' => [
-        'description' => 'Check/rotate server passwords',
-        'params' => [
-            'password' => ['label' => 'New Password', 'type' => 'password', 'required' => false]
-        ],
-        'requires_server' => false
-    ],
-    'peer_watch.sh' => [
-        'description' => 'Check peer connectivity',
-        'params' => [
-            'host' => ['label' => 'Peer Host', 'type' => 'text', 'required' => true, 'placeholder' => 'core-dr.iaregamer.com']
-        ],
-        'requires_server' => false
-    ]
-];
+$page_description = 'Download scripts and deploy to servers via wget or manual copy.';
 ?>
 <!DOCTYPE html>
 <html lang="en">

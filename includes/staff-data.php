@@ -3,99 +3,40 @@ if (!defined('WDS_SYSTEM')) {
     die('Access denied');
 }
 
+/**
+ * Load staff credentials and server data from JSON file for easy editing
+ */
+function load_staff_data() {
+    static $data = null;
+    if ($data === null) {
+        $jsonPath = __DIR__ . '/../content/staff-credentials.json';
+        if (file_exists($jsonPath)) {
+            $json = file_get_contents($jsonPath);
+            $data = json_decode($json, true);
+        } else {
+            $data = ['credentials' => [], 'core_servers' => [], 'other_servers' => []];
+        }
+    }
+    return $data;
+}
+
 function staff_credentials() {
-    return [
-        [
-            'name' => 'Panel Database (remote access)',
-            'details' => [
-                'Host' => 'mysql.iaregamer.com',
-                'Port' => '3306 (MySQL 5.7 Docker)',
-                'Database' => 'panel',
-                'Username' => 'remoteuser',
-                'Password' => 'Pkloyn7yvpht!',
-            ],
-            'notes' => 'Used by the WDS website, reporting jobs, and any off-panel tooling. Read/write; restrict access to WDS systems only.'
-        ],
-        [
-            'name' => 'Panel Database (local Adminer/CLI)',
-            'details' => [
-                'Host' => '127.0.0.1',
-                'Port' => '3306',
-                'Database' => 'panel',
-                'Username' => 'localuser',
-                'Password' => 'Pkloyn7yvpht!',
-            ],
-            'notes' => 'Login through Adminer (`https://panel-host/adminer.php`) or the MySQL socket. Password is rotated via check_servers.sh.'
-        ],
-        [
-            'name' => 'Shared Linux / SFTP login',
-            'details' => [
-                'Username' => 'gameserver',
-                'SSH Port' => '12322 on every host',
-                'Password' => 'Inc0rrect!',
-            ],
-            'notes' => 'Works on every core + DR node listed in servers.txt. Prefer SSH keys; keep password synced with the rotation script.'
-        ],
-        [
-            'name' => 'Windows Servers',
-            'details' => [
-                'Username' => 'cyg_server / gameserver',
-                'Password' => 'C37p7wzkkhcn!',
-                'RDP Port' => '13389',
-                'SSH Port' => '12322',
-            ],
-            'notes' => 'Administrator is assigned by the server host. Use these credentials for cyg_server/gameserver access.'
-        ],
-        [
-            'name' => 'Gmail Account',
-            'details' => [
-                'Email' => 'iaregamer.com@gmail.com',
-                'Password' => 'Inc0rrect',
-            ],
-            'notes' => 'Team email account for official correspondence.'
-        ],
-        [
-            'name' => 'Gameservers World Panel',
-            'details' => [
-                'Username' => 'iaregamer',
-                'Password' => 'Inc0rrect',
-            ],
-            'notes' => 'Game server control panel login.'
-        ],
-        [
-            'name' => 'cPanel Webhost and Email',
-            'details' => [
-                'Username' => 'domainpl',
-                'Password' => 'Inc0rrect',
-            ],
-            'notes' => 'cPanel access for website hosting and email management.'
-        ],
-        [
-            'name' => 'WDS Staff Portal',
-            'details' => [
-                'URL' => 'https://worlddomination.software/login.php',
-                'Auth source' => 'gsp_users / ogp_users admin records',
-            ],
-            'notes' => 'Any panel admin can sign in. Promote/demote users inside the panel admin module.'
-        ],
-        [
-            'name' => 'Learning Platforms',
-            'details' => [
-                'Zenva' => 'wds_team_account / ZenvaAccess2024!',
-                'Mammoth Interactive' => 'wds_coop_login / MammothDev2024#',
-                'Udemy Business' => 'worlddomsoftware@business.udemy.com / UdemyBiz2024$'
-            ],
-            'notes' => 'Shared learning platform accounts. Update here when rotated.'
-        ]
-    ];
+    $data = load_staff_data();
+    return $data['credentials'] ?? [];
 }
 
 function staff_core_servers() {
-    return [
-        ['hostname' => 'core.iaregamer.com', 'role' => 'Primary panel + cron', 'ssh' => 'gameserver@core.iaregamer.com:12322'],
-        ['hostname' => 'core-dr.iaregamer.com', 'role' => 'Disaster-recovery replica + peer status DB', 'ssh' => 'gameserver@core-dr.iaregamer.com:12322'],
-        ['hostname' => 'kc.iaregamer.com', 'role' => 'Kansas City agent / backup node', 'ssh' => 'gameserver@kc.iaregamer.com:12322'],
-    ];
+    $data = load_staff_data();
+    return $data['core_servers'] ?? [];
+}
+
+function staff_other_servers() {
+    $data = load_staff_data();
+    return $data['other_servers'] ?? [];
+}
+
+function staff_all_servers() {
+    return array_merge(staff_core_servers(), staff_other_servers());
 }
 
 function staff_tool_catalog() {
@@ -103,7 +44,7 @@ function staff_tool_catalog() {
         [
             'name' => 'report_server_status.sh',
             'path' => 'ops-tools/scripts/report_server_status.sh',
-            'summary' => 'Reports server CPU, memory, disk usage and top 5 processes to the MySQL server_status database.',
+            'summary' => 'Reports server CPU, memory, disk usage and top 5 processes to the MySQL peer_status database.',
             'usage' => './report_server_status.sh [--mysql-host core.iaregamer.com] [--mysql-port 3306]',
             'notes' => 'Auto-creates database and tables on first run. Add to cron for regular reporting: */5 * * * *'
         ],

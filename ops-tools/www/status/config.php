@@ -2,7 +2,7 @@
 /**
  * Status Pages Configuration
  * 
- * Database: server_status (for new pages) or peer_status (legacy)
+ * Database: peer_status (unified status database)
  * 
  * To switch between core and core-dr for DR failover:
  *   1. Change DB_HOST to core.iaregamer.com or core-dr.iaregamer.com
@@ -15,7 +15,7 @@
 // CONFIG - Update these values for your environment
 $DB_HOST = 'core.iaregamer.com';  // Primary: core.iaregamer.com | DR: core-dr.iaregamer.com
 $DB_PORT = 3306;
-$DB_NAME = 'server_status';       // New unified database name
+$DB_NAME = 'peer_status';       // Unified database name
 $DB_USER = 'remoteuser';          // Use 'localuser' for localhost, 'remoteuser' for remote access
 
 // SECURITY: Read password from file instead of hardcoding
