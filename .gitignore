@@ -47,3 +47,6 @@ desktop.ini
 *.tar
 *.gz
 projects.zip
+
+# Exception: Keep wds-tools.zip for wget downloads
+!ops-tools/wds-tools.zip

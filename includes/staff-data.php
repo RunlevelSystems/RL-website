@@ -5,16 +5,32 @@ if (!defined('WDS_SYSTEM')) {
 
 /**
  * Load staff credentials and server data from JSON file for easy editing
+ * 
+ * Note: The JSON file contains sensitive credentials and should only be
+ * accessible to authenticated staff members through the protected pages.
  */
 function load_staff_data() {
     static $data = null;
     if ($data === null) {
         $jsonPath = __DIR__ . '/../content/staff-credentials.json';
-        if (file_exists($jsonPath)) {
-            $json = file_get_contents($jsonPath);
-            $data = json_decode($json, true);
-        } else {
+        if (!file_exists($jsonPath)) {
+            error_log("Staff credentials file not found: $jsonPath");
             $data = ['credentials' => [], 'core_servers' => [], 'other_servers' => []];
+            return $data;
+        }
+        
+        $json = file_get_contents($jsonPath);
+        if ($json === false) {
+            error_log("Failed to read staff credentials file: $jsonPath");
+            $data = ['credentials' => [], 'core_servers' => [], 'other_servers' => []];
+            return $data;
+        }
+        
+        $data = json_decode($json, true);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            error_log("Failed to parse staff credentials JSON: " . json_last_error_msg());
+            $data = ['credentials' => [], 'core_servers' => [], 'other_servers' => []];
+            return $data;
         }
     }
     return $data;
