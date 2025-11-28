@@ -2,6 +2,7 @@
 /**
  * Database Configuration for Staff Authentication
  * Connects to the OGP Users database for admin login verification
+ * Uses mysqli for database operations
  */
 
 // Prevent direct access
@@ -16,24 +17,38 @@ define('DB_USER', 'remoteuser');
 define('DB_PASS', 'Pkloyn7yvpht!');
 define('DB_CHARSET', 'utf8mb4');
 
+// Allowed table names for security validation
+define('ALLOWED_USER_TABLES', ['gsp_users', 'ogp_users']);
+
+/**
+ * Validate that a table name is in the allowed list
+ * @param string $table Table name to validate
+ * @return bool True if valid, false otherwise
+ */
+function isValidUserTable($table) {
+    return in_array($table, ALLOWED_USER_TABLES, true);
+}
+
 /**
  * Resolve which users table is available (gsp_users preferred, ogp_users fallback)
- * @param PDO $db
+ * @param mysqli $db
  * @return string Table name
  */
-function resolveUsersTable(PDO $db) {
+function resolveUsersTable(mysqli $db) {
     static $tableName = null;
     if ($tableName !== null) {
         return $tableName;
     }
 
-    $candidates = ['gsp_users', 'ogp_users'];
-    foreach ($candidates as $candidate) {
-        $stmt = $db->prepare("SHOW TABLES LIKE ?");
-        $stmt->execute([$candidate]);
-        if ($stmt->fetchColumn()) {
+    foreach (ALLOWED_USER_TABLES as $candidate) {
+        $result = mysqli_query($db, "SHOW TABLES LIKE '" . $candidate . "'");
+        if ($result && mysqli_num_rows($result) > 0) {
+            mysqli_free_result($result);
             $tableName = $candidate;
             return $tableName;
+        }
+        if ($result) {
+            mysqli_free_result($result);
         }
     }
 
@@ -42,34 +57,42 @@ function resolveUsersTable(PDO $db) {
 
 /**
  * Determine whether the users table supports the modern password hash column
- * @param PDO $db
+ * @param mysqli $db
  * @param string $table
  * @return bool
  */
-function tableHasPassHash(PDO $db, $table) {
-    $stmt = $db->prepare("SHOW COLUMNS FROM {$table} LIKE 'users_pass_hash'");
-    $stmt->execute();
-    return (bool) $stmt->fetchColumn();
+function tableHasPassHash(mysqli $db, $table) {
+    if (!isValidUserTable($table)) {
+        throw new RuntimeException('Invalid table name provided');
+    }
+    $result = mysqli_query($db, "SHOW COLUMNS FROM `" . $table . "` LIKE 'users_pass_hash'");
+    $hasColumn = ($result && mysqli_num_rows($result) > 0);
+    if ($result) {
+        mysqli_free_result($result);
+    }
+    return $hasColumn;
 }
 
 /**
- * Create PDO database connection
- * @return PDO|false Database connection or false on failure
+ * Create mysqli database connection
+ * @return mysqli|false Database connection or false on failure
  */
 function getDatabaseConnection() {
+    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+    
     try {
-        $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
-        $options = [
-            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES   => false,
-            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES " . DB_CHARSET
-        ];
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
         
-        $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
-        return $pdo;
-    } catch (PDOException $e) {
-        // Log error in production, show for development
+        if (!$conn) {
+            error_log("Database connection failed: " . mysqli_connect_error());
+            return false;
+        }
+        
+        // Set charset
+        mysqli_set_charset($conn, DB_CHARSET);
+        
+        return $conn;
+    } catch (mysqli_sql_exception $e) {
         error_log("Database connection failed: " . $e->getMessage());
         return false;
     }
@@ -136,6 +159,11 @@ function verifyAdminLogin($username, $password) {
         $table = resolveUsersTable($db);
         addLoginDebug("Users table resolved", $table);
         
+        // Validate table name for security (defense in depth)
+        if (!isValidUserTable($table)) {
+            throw new RuntimeException('Invalid table name resolved');
+        }
+        
         $columnList = "user_id, users_login, users_passwd, users_role";
         $hasPassHash = tableHasPassHash($db, $table);
         addLoginDebug("Table has users_pass_hash column", $hasPassHash ? "YES" : "NO");
@@ -145,13 +173,19 @@ function verifyAdminLogin($username, $password) {
         }
         addLoginDebug("Column list for query", $columnList);
 
-        $query = "SELECT {$columnList} FROM {$table} WHERE users_login = ? LIMIT 1";
+        $query = "SELECT {$columnList} FROM `{$table}` WHERE users_login = ? LIMIT 1";
         addLoginDebug("SQL Query", $query);
         addLoginDebug("Query parameter (username)", $username);
         
-        $stmt = $db->prepare($query);
-        $stmt->execute([$username]);
-        $user = $stmt->fetch();
+        $stmt = mysqli_prepare($db, $query);
+        if (!$stmt) {
+            throw new RuntimeException("Failed to prepare statement: " . mysqli_error($db));
+        }
+        mysqli_stmt_bind_param($stmt, "s", $username);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $user = mysqli_fetch_assoc($result);
+        mysqli_stmt_close($stmt);
         
         addLoginDebug("Query executed successfully");
         addLoginDebug("User found", $user ? "YES" : "NO");
