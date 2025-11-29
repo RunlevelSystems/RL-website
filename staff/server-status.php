@@ -112,6 +112,7 @@ $totalCount = count($servers);
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/css/ionicons.css" rel="stylesheet">
     <link href="../assets/css/main.css" rel="stylesheet">
+    <link href="../assets/css/wds-unified.css" rel="stylesheet">
     <link href="../assets/css/readability-improvements.css" rel="stylesheet">
     <style>
         .status-card { background: rgba(0,0,0,0.55); border: 1px solid rgba(139,69,19,0.3); border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 6px 18px rgba(0,0,0,0.35); }

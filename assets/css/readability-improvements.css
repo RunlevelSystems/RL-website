@@ -98,7 +98,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Regular text - Dark on light background */
-p, span, div, td, th, li {
+p, td, th, li {
     color: #333333 !important; /* Dark text for readability */
 }
 
@@ -138,6 +138,98 @@ a:hover {
 
 .breadcrumb > li {
     font-size: 12px !important; /* Ensure all breadcrumb elements are small */
+}
+
+/* High-contrast rust cards used across staff + wiki pages */
+.staff-card,
+.tool-card,
+.wiki-card,
+.wiki-content,
+.download-all-box,
+.dir-notice,
+.ops-card,
+.rust-panel {
+    background: linear-gradient(135deg, #8B4513 0%, #6B3410 100%) !important;
+    border: 1px solid rgba(0, 0, 0, 0.35) !important;
+    border-radius: 14px !important;
+    color: #FDF8E4 !important;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45) !important;
+}
+
+:is(.staff-card,
+.tool-card,
+.wiki-card,
+.wiki-content,
+.download-all-box,
+.dir-notice,
+.ops-card,
+.rust-panel) {
+    color: #FDF8E4 !important;
+}
+
+:is(.staff-card,
+.tool-card,
+.wiki-card,
+.wiki-content,
+.download-all-box,
+.dir-notice,
+.ops-card,
+.rust-panel) :is(p, li, span, td, th, h1, h2, h3, h4, h5, h6, label, small, strong, em, ul, ol) {
+    color: #FDF8E4 !important;
+}
+
+.staff-card code,
+.tool-card code,
+.wiki-card code,
+.wiki-content code,
+.dir-notice code,
+.ops-card code,
+.rust-panel code {
+    background: rgba(0, 0, 0, 0.35) !important;
+    color: #FDE68A !important;
+    border-radius: 6px !important;
+    padding: 3px 6px !important;
+}
+
+.staff-card table td,
+.staff-card table th,
+.tool-card table td,
+.tool-card table th,
+.rust-panel table td,
+.rust-panel table th {
+    color: #FDF8E4 !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.link-tile {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: rgba(255, 255, 255, 0.16) !important;
+}
+
+.link-tile:hover {
+    background: rgba(255, 255, 255, 0.18) !important;
+}
+
+.staff-card a,
+.tool-card a,
+.wiki-card a,
+.wiki-content a,
+.download-all-box a,
+.dir-notice a,
+.ops-card a,
+.rust-panel a {
+    color: #FCD34D !important;
+}
+
+.staff-card a:hover,
+.tool-card a:hover,
+.wiki-card a:hover,
+.wiki-content a:hover,
+.download-all-box a:hover,
+.dir-notice a:hover,
+.ops-card a:hover,
+.rust-panel a:hover {
+    color: #FFFFFF !important;
 }
 
 /* Header quote and title styling for consistent appearance */
@@ -1481,4 +1573,3 @@ div[style*="background-color: #8B4513"] a:hover {
     background-color: #654321 !important; /* Even darker rust on hover */
     color: #FFFFFF !important;
 }
-

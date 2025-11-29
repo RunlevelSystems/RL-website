@@ -28,6 +28,7 @@ $page_subtitle = 'Wiki Viewer';
     <title>WDS | Wiki - <?php echo htmlspecialchars($requested); ?></title>
     <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../assets/css/main.css" rel="stylesheet">
+    <link href="../../assets/css/wds-unified.css" rel="stylesheet">
     <link href="../../assets/css/readability-improvements.css" rel="stylesheet">
     <style>
         .wiki-content { background: rgba(0,0,0,0.55); border-radius: 12px; padding: 25px; color:#E5E7EB; }

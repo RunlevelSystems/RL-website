@@ -34,9 +34,8 @@
         $header_class = 'joinus-header inner-header';
         $page_subtitle = 'Design. Debug. Deploy.';
         ?>
-
     <!-- Include Site Header -->
-    <?php include 'includes/header.html'; ?>
+    <?php include 'includes/header.php'; ?>
         
     <!-- Include Navigation Header -->
     <?php include 'includes/navigation.php'; ?>
@@ -915,5 +914,4 @@
 
     </body>
 </html>
-
 

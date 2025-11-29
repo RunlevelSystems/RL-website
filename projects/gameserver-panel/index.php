@@ -141,6 +141,7 @@ if (file_exists($projectDir . '/projecticon.png')) {
         <div style="margin-top:15px;">
             <button class="btn btn-wds" onclick="loadProjectFile('admin-guide.php')"><i class="fas fa-book" style="margin-right:8px;"></i>Admin Guide</button>
             <button class="btn btn-wds" onclick="loadProjectFile('industry-stats.php')"><i class="fas fa-chart-line" style="margin-right:8px;"></i>Industry Stats</button>
+            <button class="btn btn-wds" onclick="loadProjectFile('wiki.php?doc=overview')"><i class="fas fa-book-open" style="margin-right:8px;"></i>GSP Wiki</button>
         </div>
     </div>
 </div>

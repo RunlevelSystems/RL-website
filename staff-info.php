@@ -6,7 +6,7 @@ require_once 'includes/db-config.php';
 require_once 'includes/staff-data.php';
 requireAdminLogin();
 
-$credentials = staff_credentials();
+$passwordEntries = staff_passwords();
 $coreServers = staff_core_servers();
 $otherServers = staff_other_servers();
 $toolCatalog = staff_tool_catalog();
@@ -29,12 +29,21 @@ $page_description = 'Centralize every password, host, tool and operating procedu
     <link href="assets/css/owl.carousel.theme.min.css" rel="stylesheet">
     <link href="assets/css/ionicons.css" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/css/wds-unified.css" rel="stylesheet">
     <link href="assets/css/readability-improvements.css" rel="stylesheet">
     <style>
         .staff-grid { display: flex; flex-wrap: wrap; gap: 20px; }
         .staff-card { flex: 1 1 320px; background: rgba(0,0,0,0.5); border: 1px solid rgba(139,69,19,0.4); border-radius: 14px; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.35); }
         .staff-card h3 { margin-top: 0; color: #FFD699; }
-        .cred-table td { padding: 4px 0; color: #F0E3D0; }
+        .staff-credentials-table th {
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            border-color: rgba(255,255,255,0.2);
+        }
+        .staff-credentials-table td {
+            border-color: rgba(255,255,255,0.1);
+        }
         .tag { display: inline-block; padding: 3px 8px; border-radius: 10px; margin: 2px; color: #8B4513; background: rgba(0,200,81,0.2); border: 1px solid rgba(0,200,81,0.2); font-size: 11px; }
         .link-tile { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.08); border-radius: 10px; padding: 16px 20px; margin-bottom: 12px; border: 1px solid rgba(139,69,19,0.3); color: #FFD699; cursor: pointer; transition: background 0.2s; }
         .link-tile span { color: #FFD699; font-weight: 600; }
@@ -62,21 +71,33 @@ $page_description = 'Centralize every password, host, tool and operating procedu
             <div class="col-sm-8">
                 <div class="staff-card">
                     <h3><i class="ion-key"></i> Critical Credentials</h3>
-                    <?php foreach ($credentials as $cred): ?>
-                        <div class="credential-box">
-                            <h4 style="color:#FDEBD0;"><?php echo htmlspecialchars($cred['name']); ?></h4>
-                            <table class="cred-table">
-                                <?php foreach ($cred['details'] as $label => $value): ?>
+                    <?php if (!empty($passwordEntries)): ?>
+                        <div class="table-responsive">
+                            <table class="table staff-credentials-table">
+                                <thead>
                                     <tr>
-                                        <td style="width:160px; color:#9CA3AF;"><?php echo htmlspecialchars($label); ?></td>
-                                        <td><code><?php echo htmlspecialchars($value); ?></code></td>
+                                        <th>Service</th>
+                                        <th>Username</th>
+                                        <th>Password</th>
+                                        <th>Notes</th>
                                     </tr>
-                                <?php endforeach; ?>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($passwordEntries as $entry): ?>
+                                        <tr>
+                                            <td><strong><?php echo htmlspecialchars($entry['service']); ?></strong></td>
+                                            <td><code><?php echo htmlspecialchars($entry['username']); ?></code></td>
+                                            <td><code><?php echo htmlspecialchars($entry['password']); ?></code></td>
+                                            <td><?php echo htmlspecialchars($entry['note']); ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
                             </table>
-                            <p style="color:#B2BAC5; font-size:13px;"><?php echo htmlspecialchars($cred['notes']); ?></p>
                         </div>
-                    <?php endforeach; ?>
-                    <p style="color:#fcd34d; font-size:12px;">Need to update credentials? Edit <code>content/staff-credentials.json</code> and commit. Run <code>ops-tools/scripts/check_servers.sh --password &lt;NewPass!&gt;</code> on <strong>core</strong> to rotate server passwords.</p>
+                    <?php else: ?>
+                        <p style="margin-bottom: 0;">No credentials found. Add entries to <code>content/staff-passwords.txt</code> using <code>service username password notes</code>.</p>
+                    <?php endif; ?>
+                    <p style="color:#fcd34d; font-size:12px;">Need to update credentials? Edit <code>content/staff-passwords.txt</code> and commit. Run <code>ops-tools/scripts/check_servers.sh --password &lt;NewPass!&gt;</code> on <strong>core</strong> to rotate server passwords.</p>
                 </div>
             </div>
             <div class="col-sm-4">
@@ -96,7 +117,7 @@ $page_description = 'Centralize every password, host, tool and operating procedu
                         <li>SSH to <code>gameserver@core.iaregamer.com -p 12322</code>.</li>
                         <li>Run <code>cd /home/gameserver/tools/scripts</code>.</li>
                         <li>Execute <code>./check_servers.sh --password "NewSuperSecret!"</code>.<br>Script updates Linux + MySQL creds on every host in <code>servers.txt</code>.</li>
-                        <li>Update <code>content/staff-credentials.json</code> with the new values and commit.</li>
+                        <li>Update <code>content/staff-passwords.txt</code> with the new values and commit.</li>
                     </ol>
                     <p style="color:#fbbf24; font-size:12px;">Need per-host overrides? Use <code>ops-tools/scripts/xfer.sh</code> for ad-hoc file pushes.</p>
                 </div>

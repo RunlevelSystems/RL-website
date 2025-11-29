@@ -1,0 +1,11 @@
+Options -Indexes
+
+# Block direct access to sensitive data files
+<FilesMatch "(staff-credentials\.json|staff-passwords\.txt)">
+    Require all denied
+</FilesMatch>
+
+# Prevent direct browsing of content/ (docs are served via PHP)
+<IfModule mod_alias.c>
+    RedirectMatch 403 ^/content/(.*)$
+</IfModule>

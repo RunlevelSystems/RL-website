@@ -316,7 +316,7 @@
     ?>
 
     <!-- Include Site Header -->
-    <?php include '../../includes/header.html'; ?>
+    <?php include '../../includes/header.php'; ?>
     
     <!-- Include Navigation Header -->
     <?php include '../../includes/navigation.php'; ?>
@@ -326,22 +326,22 @@
             <h1><i class="fas fa-server"></i> OGP Admin Guide</h1>
             <nav>
                 <ul class="sidebar-nav">
-                    <li><a href="#" class="sidebar-link active" data-target="home">
+                    <li><a href="#home" class="sidebar-link active" data-target="home">
                         <i class="fas fa-home"></i> Home
                     </a></li>
-                    <li><a href="#" class="sidebar-link" data-target="core-concepts">
+                    <li><a href="#core-concepts" class="sidebar-link" data-target="core-concepts">
                         <i class="fas fa-cogs"></i> Core Concepts
                     </a></li>
-                    <li><a href="#" class="sidebar-link" data-target="agent-management">
+                    <li><a href="#agent-management" class="sidebar-link" data-target="agent-management">
                         <i class="fas fa-rocket" aria-hidden="true"></i> Agent Management
                     </a></li>
-                    <li><a href="#" class="sidebar-link" data-target="xml-deep-dive">
+                    <li><a href="#xml-deep-dive" class="sidebar-link" data-target="xml-deep-dive">
                         <i class="fas fa-code"></i> Game XML Deep Dive
                     </a></li>
-                    <li><a href="#" class="sidebar-link" data-target="add-new-game">
+                    <li><a href="#add-new-game" class="sidebar-link" data-target="add-new-game">
                         <i class="fas fa-plus-circle"></i> Add a New Game
                     </a></li>
-                    <li><a href="#" class="sidebar-link" data-target="panelstart">
+                    <li><a href="#panelstart" class="sidebar-link" data-target="panelstart">
                         <i class="fas fa-rocket"></i> The panelStart Script
                     </a></li>
                 </ul>
@@ -703,7 +703,7 @@ BILLING_API="https://yourpanel.example.com/api/billing"</code>
 &lt;!-- Result: -map de_dust2 --&gt;
 
 &lt;cli_param id="CONFIG" cli_string="-config" options="q" /&gt;
-&lt;!-- Result: -config"server.cfg" --&gt;
+&lt;!-- Result: -config "server.cfg" --&gt;
 
 &lt;cli_param id="NAME" cli_string="-hostname" options="sq" /&gt;
 &lt;!-- Result: -hostname "My Server" --&gt;</code>

@@ -20,6 +20,7 @@ $page_description = 'Ubuntu 24.04 baselines, PHP 7.4 requirement, MySQL 5.7 Dock
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/css/ionicons.css" rel="stylesheet">
     <link href="../assets/css/main.css" rel="stylesheet">
+    <link href="../assets/css/wds-unified.css" rel="stylesheet">
     <link href="../assets/css/readability-improvements.css" rel="stylesheet">
     <style>
         .ops-card { background: rgba(0,0,0,0.55); border-radius: 12px; border: 1px solid rgba(139,69,19,0.3); padding: 25px; margin-bottom: 25px; }

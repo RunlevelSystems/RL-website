@@ -55,6 +55,49 @@ function staff_all_servers() {
     return array_merge(staff_core_servers(), staff_other_servers());
 }
 
+function staff_passwords() {
+    static $entries = null;
+    if ($entries !== null) {
+        return $entries;
+    }
+
+    $filePath = __DIR__ . '/../content/staff-passwords.txt';
+    if (!file_exists($filePath) || !is_readable($filePath)) {
+        error_log("Staff password file missing or unreadable: {$filePath}");
+        $entries = [];
+        return $entries;
+    }
+
+    $lines = @file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    if ($lines === false) {
+        error_log("Unable to read staff password file: {$filePath}");
+        $entries = [];
+        return $entries;
+    }
+    $parsed = [];
+    foreach ($lines as $line) {
+        $trimmed = trim($line);
+        if ($trimmed === '' || $trimmed[0] === '#') {
+            continue;
+        }
+
+        $parts = preg_split('/\s+/', $trimmed, 4);
+        if (count($parts) < 3) {
+            continue;
+        }
+
+        $parsed[] = [
+            'service' => $parts[0],
+            'username' => $parts[1],
+            'password' => $parts[2],
+            'note' => isset($parts[3]) ? trim($parts[3]) : ''
+        ];
+    }
+
+    $entries = $parsed;
+    return $entries;
+}
+
 function staff_tool_catalog() {
     return [
         [

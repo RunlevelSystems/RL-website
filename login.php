@@ -69,6 +69,7 @@ $page_subtitle = 'Design. Debug. Deploy.';
         <link href="assets/css/owl.carousel.theme.min.css" rel="stylesheet">
         <link href="assets/css/ionicons.css" rel="stylesheet">
         <link href="assets/css/main.css" rel="stylesheet">
+        <link href="assets/css/wds-unified.css" rel="stylesheet">
         <link href="assets/css/readability-improvements.css" rel="stylesheet">
 
         <!--[if lt IE 9]>
@@ -78,7 +79,7 @@ $page_subtitle = 'Design. Debug. Deploy.';
     </head>
     <body>
         <!-- Include Site Header -->
-        <?php include 'includes/header.html'; ?>
+        <?php include 'includes/header.php'; ?>
         
         <!-- Include Navigation Header -->
         <?php include 'includes/navigation.php'; ?>

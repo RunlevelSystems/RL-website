@@ -36,9 +36,8 @@
         $header_class = 'projects-header inner-header';
         $page_subtitle = 'Design. Debug. Deploy.';
         ?>
-
     <!-- Include Site Header -->
-    <?php include 'includes/header.html'; ?>
+    <?php include 'includes/header.php'; ?>
         
     <!-- Include Navigation Header -->
     <?php include 'includes/navigation.php'; ?>
@@ -364,8 +363,10 @@
                 if (xhr.readyState === 4) {
                     console.info('loadProject:', slug, 'status=', xhr.status, 'responseLength=', xhr.responseText ? xhr.responseText.length : 0);
                     if (xhr.status === 200) {
-                        // Since project files will now only contain content, directly insert the response
-                        document.getElementById('project-content').innerHTML = xhr.responseText;
+                        var parsed = parseProjectDocument(xhr.responseText);
+                        var projectContainer = document.getElementById('project-content');
+                        projectContainer.innerHTML = parsed.html;
+                        executeProjectScripts(projectContainer);
                     } else {
                         document.getElementById('project-content').innerHTML = '<div style="text-align: center; padding: 40px;"><p style="color: #8B7355;">Error loading project content. Please try again.</p></div>';
                     }
@@ -411,16 +412,10 @@
                 if (xhr.readyState === 4) {
                     console.info('loadProjectFile:', currentSlug + '/' + filename, 'status=', xhr.status, 'responseLength=', xhr.responseText ? xhr.responseText.length : 0);
                     if (xhr.status === 200) {
-                        // Extract just the content from the response
-                        var parser = new DOMParser();
-                        var doc = parser.parseFromString(xhr.responseText, 'text/html');
-                        var content = doc.querySelector('.boxed') || doc.querySelector('body');
-                        
-                        if (content) {
-                            document.getElementById('project-content').innerHTML = content.innerHTML;
-                        } else {
-                            document.getElementById('project-content').innerHTML = xhr.responseText;
-                        }
+                        var parsed = parseProjectDocument(xhr.responseText, ['.boxed']);
+                        var projectContainer = document.getElementById('project-content');
+                        projectContainer.innerHTML = parsed.html;
+                        executeProjectScripts(projectContainer);
                     } else {
                         document.getElementById('project-content').innerHTML = '<div style="text-align: center; padding: 40px;"><p style="color: #8B7355;">Error loading content. Please try again.</p></div>';
                     }
@@ -445,6 +440,57 @@
                 // Add more mappings as needed
             }
             return null;
+        }
+
+        function parseProjectDocument(htmlString, selectors) {
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(htmlString, 'text/html');
+            var styleHtml = '';
+            doc.querySelectorAll('style').forEach(function(style) {
+                styleHtml += style.outerHTML;
+            });
+
+            var target = null;
+            if (Array.isArray(selectors)) {
+                for (var i = 0; i < selectors.length; i++) {
+                    target = doc.querySelector(selectors[i]);
+                    if (target) break;
+                }
+            } else if (selectors) {
+                target = doc.querySelector(selectors);
+            }
+
+            var contentHtml = '';
+            if (target) {
+                contentHtml = target.innerHTML;
+            } else if (doc.body) {
+                contentHtml = doc.body.innerHTML;
+            } else {
+                contentHtml = htmlString;
+            }
+
+            return {
+                html: styleHtml + contentHtml
+            };
+        }
+
+        function executeProjectScripts(container) {
+            if (!container) return;
+            var scripts = Array.prototype.slice.call(container.querySelectorAll('script'));
+            scripts.forEach(function(script) {
+                var newScript = document.createElement('script');
+                if (script.type) {
+                    newScript.type = script.type;
+                }
+                if (script.src) {
+                    newScript.src = script.src;
+                } else {
+                    newScript.textContent = script.textContent;
+                }
+                document.head.appendChild(newScript);
+                document.head.removeChild(newScript);
+                script.parentNode.removeChild(script);
+            });
         }
     </script>
 

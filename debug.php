@@ -19,7 +19,7 @@ $files_to_check = [
     'assets/css/main.css',
     'assets/css/readability-improvements.css',
     'includes/navigation.php',
-    'includes/header.html'
+    'includes/header.php'
 ];
 
 foreach ($files_to_check as $file) {

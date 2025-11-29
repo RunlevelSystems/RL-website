@@ -179,7 +179,7 @@
     ?>
 
     <!-- Include Site Header -->
-    <?php include '../../includes/header.html'; ?>
+    <?php include '../../includes/header.php'; ?>
     
     <!-- Include Navigation Header -->
     <?php include '../../includes/navigation.php'; ?>

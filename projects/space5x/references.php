@@ -25,8 +25,7 @@
         $page_subtitle = 'Design. Debug. Deploy.';
         $current_project_slug = 'space5x';
         ?>
-
-    <?php include '../../includes/header.html'; ?>
+    <?php include '../../includes/header.php'; ?>
     <?php include '../../includes/navigation.php'; ?>
 
     <section class="about">
@@ -330,4 +329,3 @@
     <script src="../../assets/js/script.js"></script>
 </body>
 </html>
-
