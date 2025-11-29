@@ -1,131 +1,142 @@
+<?php
+session_start();
+define('WDS_SYSTEM', true);
+
+$current_page = 'projects';
+$header_class = 'projects-header inner-header';
+$page_subtitle = 'OGP Admin Guide';
+$page_description = 'Comprehensive GameServer Panel administration guide';
+$page_title = 'Admin';
+$page_title_thin = 'Guide';
+
+$isEmbedded = (
+    (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') ||
+    (isset($_SERVER['HTTP_SEC_FETCH_MODE']) && $_SERVER['HTTP_SEC_FETCH_MODE'] !== 'navigate') ||
+    (isset($_GET['partial']) && $_GET['partial'] === '1')
+);
+?>
+<?php if (!$isEmbedded): ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameServer Panel - OGP Admin Guide</title>
-    
-    <!-- CSS -->
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
-    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../assets/css/main.css" rel="stylesheet">
-    <link href="../../assets/css/readability-improvements.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href='https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap' rel='stylesheet'>
-    
+</head>
+<body>
+    <?php include '../../includes/header.php'; ?>
+    <?php include '../../includes/navigation.php'; ?>
+<?php endif; ?>
+
+<div class="project-doc project-admin-guide">
     <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto:400,300,500,700&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Oswald:400,300,700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #D4CFC0;
-            color: #D2B48C;
+            color: #E6D3B7;
             margin: 0;
             padding: 0;
         }
-        
+
         .guide-container {
             display: flex;
             min-height: 100vh;
         }
-        
+
         .sidebar {
             width: 280px;
-            background-color: #2C2C2C; /* Concrete background */
-            color: #D9D9D9; /* Accessible light gray */
+            background-color: #2C2C2C;
+            color: #D9D9D9;
             padding: 30px 20px;
-            position: fixed;
-            height: 100vh;
-            overflow-y: auto;
-            border-right: 2px solid #4B4B4B; /* Gritty Urban border */
+            position: relative;
+            min-height: 100vh;
+            border-right: 2px solid #4B4B4B;
         }
-        
+
         .sidebar h1 {
-            color: #8B4513; /* Keep rust for non-critical headings */
+            color: #8B4513;
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 30px;
             text-align: center;
-            border-bottom: 2px solid #4B4B4B; /* Gritty Urban border */
+            border-bottom: 2px solid #4B4B4B;
             padding-bottom: 15px;
         }
-        
+
         .sidebar-nav {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-        
+
         .sidebar-link {
             display: block;
             padding: 15px;
-            color: #B0B0B0; /* Shadowed Desolation for subtle navigation */
+            color: #B0B0B0;
             text-decoration: none;
             border-radius: 6px;
             margin-bottom: 8px;
             transition: all 0.3s ease;
             border: 1px solid transparent;
         }
-        
-        .sidebar-link:hover {
-            background-color: #4B4B4B; /* Gritty Urban surface */
-            color: #F5F5F5; /* Off-white on hover */
+
+        .sidebar-link:hover,
+        .sidebar-link.active {
+            background-color: #4B4B4B;
+            color: #F5F5F5;
             border-color: #7A7A7A;
             text-decoration: none;
         }
-        
-        .sidebar-link.active {
-            background-color: #4B4B4B; /* Gritty Urban surface */
-            color: #F5F5F5; /* Off-white for active */
-            font-weight: 500;
-        }
-        
+
         .sidebar-link i {
             margin-right: 12px;
             width: 20px;
         }
-        
+
         .main-content {
-            margin-left: 280px;
+            flex: 1 1 auto;
             padding: 40px;
-            background-color: #2C2C2C; /* Concrete background */
-            min-height: 100vh;
-            width: calc(100% - 280px);
+            background-color: #2C2C2C;
         }
-        
+
         .content-section {
             display: none;
             animation: fadeIn 0.3s ease-in;
         }
-        
+
         .content-section.active {
             display: block;
         }
-        
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+
         .content-section h2 {
             color: #8B4513;
             font-size: 32px;
             font-weight: bold;
             margin-bottom: 20px;
         }
-        
-        .content-section h3 {
+
+        .content-section h3,
+        .content-section h4,
+        .content-section h5 {
             color: #8B4513;
-            font-size: 24px;
-            margin-bottom: 15px;
         }
-        
-        .content-section p {
+
+        .content-section p,
+        .content-section li {
             font-size: 16px;
             line-height: 1.7;
-            color: #4a4a4a;
-            margin-bottom: 20px;
+            color: #E6D3B7;
         }
-        
+
         .card {
             background-color: #2a2a2a;
             border: 1px solid #8B4513;
@@ -133,12 +144,14 @@
             padding: 30px;
             margin-bottom: 20px;
         }
-        
-        .card h3 {
-            color: #8B4513;
-            margin-bottom: 15px;
+
+        .home-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
-        
+
         .architecture-flow {
             display: flex;
             flex-wrap: wrap;
@@ -146,79 +159,103 @@
             align-items: center;
             margin: 40px 0;
         }
-        
+
         .flow-item {
             text-align: center;
             margin: 20px;
-            max-width: 200px;
+            max-width: 220px;
         }
-        
+
         .flow-item .icon {
             font-size: 48px;
             color: #8B4513;
             margin-bottom: 15px;
         }
-        
+
         .flow-arrow {
             font-size: 32px;
-            color: #4a4a4a;
+            color: #8B4513;
             margin: 0 20px;
         }
-        
+
         .code-block {
-            background: transparent; /* No background color */
+            background-color: #101010;
             border: 1px solid #555555;
             border-radius: 6px;
-            padding: 25px;
+            padding: 20px;
             margin: 20px 0;
             font-family: 'Fira Code', monospace;
             font-size: 15px;
-            line-height: 1.9;
+            line-height: 1.8;
             overflow-x: auto;
+            color: #F5F1E6;
         }
-        
+
         .code-block code {
-            color: #E6D3B7; /* Normal text color - brighter tan */
             background: transparent;
+            color: inherit;
+            white-space: pre;
+            display: block;
         }
-        
+
+        .quick-install-callout {
+            background-color: #8B4513;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 30px 0;
+            border-left: 4px solid #C08040;
+            color: #FFFFFF;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .quick-install-meta {
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+
+        .quick-install-note {
+            margin-top: 15px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            color: #F9E4C6;
+        }
+
+        .quick-install-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
         .xml-explorer {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
             margin-top: 30px;
         }
-        
-        .xml-code {
-            background: transparent; /* No background color */
-            border: 1px solid #555555;
-            border-radius: 8px;
-            padding: 25px;
+
+        .xml-tag {
+            cursor: pointer;
+            color: #B8621B;
+            font-weight: 600;
+            transition: color 0.3s ease;
         }
-        
+
+        .xml-tag:hover {
+            color: #D2691E;
+            text-decoration: underline;
+        }
+
         .xml-explanation {
             background-color: #2a2a2a;
             border: 1px solid #555555;
             border-radius: 8px;
             padding: 25px;
         }
-        
-        .xml-tag {
-            cursor: pointer;
-            color: #B8621B; /* Rust highlight color for tags */
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-        
-        .xml-tag:hover {
-            color: #D2691E; /* Brighter rust on hover */
-            text-decoration: underline;
-        }
-        
+
         .accordion-item {
             margin-bottom: 15px;
         }
-        
+
         .accordion-button {
             width: 100%;
             text-align: left;
@@ -234,11 +271,11 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .accordion-button:hover {
             background-color: #777777;
         }
-        
+
         .accordion-content {
             max-height: 0;
             overflow: hidden;
@@ -248,108 +285,70 @@
             border-top: none;
             border-radius: 0 0 8px 8px;
         }
-        
+
         .accordion-content.active {
-            max-height: 1000px;
+            max-height: 1200px;
             padding: 20px;
         }
-        
+
         .accordion-arrow {
             transition: transform 0.3s ease;
         }
-        
+
         .accordion-button.active .accordion-arrow {
             transform: rotate(180deg);
         }
-        
-        .home-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
+
         .footer-info {
             margin-top: 40px;
             padding-top: 20px;
             border-top: 1px solid #555555;
             font-size: 12px;
-            color: #4a4a4a;
+            color: #B0B0B0;
             text-align: center;
         }
-        
+
+        @media (max-width: 1024px) {
+            .xml-explorer {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
+            .guide-container {
+                flex-direction: column;
+            }
+
             .sidebar {
                 width: 100%;
                 height: auto;
                 position: relative;
             }
-            
+
             .main-content {
                 margin-left: 0;
                 width: 100%;
                 padding: 20px;
             }
-            
-            .xml-explorer {
-                grid-template-columns: 1fr;
-            }
-            
-            .architecture-flow {
-                flex-direction: column;
-            }
-            
-            .flow-arrow {
-                transform: rotate(90deg);
-            }
         }
     </style>
-</head>
-<body>
-    <?php 
-    // Page-specific variables
-    $current_page = 'projects';
-    $page_subtitle = 'OGP Admin Guide';
-    $page_description = 'Comprehensive GameServer Panel administration guide';
-    $page_title = 'Admin';
-    $page_title_thin = 'Guide';
-    ?>
-
-    <!-- Include Site Header -->
-    <?php include '../../includes/header.php'; ?>
-    
-    <!-- Include Navigation Header -->
-    <?php include '../../includes/navigation.php'; ?>
 
     <div class="guide-container">
         <aside class="sidebar">
             <h1><i class="fas fa-server"></i> OGP Admin Guide</h1>
             <nav>
                 <ul class="sidebar-nav">
-                    <li><a href="#home" class="sidebar-link active" data-target="home">
-                        <i class="fas fa-home"></i> Home
-                    </a></li>
-                    <li><a href="#core-concepts" class="sidebar-link" data-target="core-concepts">
-                        <i class="fas fa-cogs"></i> Core Concepts
-                    </a></li>
-                    <li><a href="#agent-management" class="sidebar-link" data-target="agent-management">
-                        <i class="fas fa-rocket" aria-hidden="true"></i> Agent Management
-                    </a></li>
-                    <li><a href="#xml-deep-dive" class="sidebar-link" data-target="xml-deep-dive">
-                        <i class="fas fa-code"></i> Game XML Deep Dive
-                    </a></li>
-                    <li><a href="#add-new-game" class="sidebar-link" data-target="add-new-game">
-                        <i class="fas fa-plus-circle"></i> Add a New Game
-                    </a></li>
-                    <li><a href="#panelstart" class="sidebar-link" data-target="panelstart">
-                        <i class="fas fa-rocket"></i> The panelStart Script
-                    </a></li>
+                    <li><a href="#guide-home" class="sidebar-link active" data-target="guide-home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#guide-core-concepts" class="sidebar-link" data-target="guide-core-concepts"><i class="fas fa-cogs"></i> Core Concepts</a></li>
+                    <li><a href="#guide-agent-management" class="sidebar-link" data-target="guide-agent-management"><i class="fas fa-rocket"></i> Agent Management</a></li>
+                    <li><a href="#guide-xml-deep-dive" class="sidebar-link" data-target="guide-xml-deep-dive"><i class="fas fa-code"></i> Game XML Deep Dive</a></li>
+                    <li><a href="#guide-add-new-game" class="sidebar-link" data-target="guide-add-new-game"><i class="fas fa-plus-circle"></i> Add a New Game</a></li>
+                    <li><a href="#agent-startup" class="sidebar-link" data-target="agent-startup"><i class="fas fa-plug"></i> Agent Start Workflow</a></li>
                 </ul>
             </nav>
             <div class="footer-info">
                 <p>Interactive guide for GameServer Panel (OGP Fork)</p>
                 <p>&copy; 2025 World Domination Software</p>
-                
                 <div class="quick-links" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #444;">
                     <h4 style="color: #8B4513; margin-bottom: 15px; font-size: 14px;">Related Resources</h4>
                     <div style="display: flex; flex-direction: column; gap: 8px;">
@@ -371,335 +370,180 @@
         </aside>
 
         <main class="main-content">
-            <div id="home" class="content-section active">
+            <section id="guide-home" class="content-section">
                 <h2>Welcome to the GameServer Panel Interactive Guide</h2>
-                <p>This comprehensive guide covers everything you need to know about managing a GameServer Panel instance, from basic concepts to advanced XML configuration. Use the navigation on the left to explore different topics.</p>
-                
+                <p>This guide distills the practices we follow while maintaining the GameServer Panel fork of Open Game Panel. Use the navigation on the left to jump to architecture notes, agent installation tips, detailed XML references, and a complete walkthrough for adding new games.</p>
+
                 <div class="home-grid">
                     <div class="card">
                         <h3>What is GameServer Panel?</h3>
-                        <p>GameServer Panel is our enhanced fork of Open Game Panel (OGP), a powerful open-source game server control panel. It allows you to manage game servers through a user-friendly web interface, with added commercial billing, support systems, and multi-location management.</p>
+                        <p>GameServer Panel is our enhanced fork of OGP. It layers commercial billing, automated provisioning, and professional support tooling on top of the battle-tested panel and agent model.</p>
                     </div>
                     <div class="card">
                         <h3>Key Architecture</h3>
-                        <p>GameServer Panel operates on a distributed model: a central <strong>Web Panel</strong> that sends commands to one or more <strong>Agents</strong> installed on your server machines. The Agents execute these commands to manage the actual <strong>Game Server</strong> processes.</p>
+                        <p>A central PHP web panel issues signed RPC calls to lightweight Agents. Those agents run on every machine that actually hosts games, handle SteamCMD installs, and report monitoring data back to the panel.</p>
                     </div>
                     <div class="card">
                         <h3>Commercial Features</h3>
-                        <p>Unlike standard OGP, our fork includes integrated billing systems, automated provisioning, professional support ticketing, and enterprise-grade security features designed for hosting providers.</p>
+                        <p>Integrated PayPal billing, coupon support, customer portal enhancements, and inventory reporting make the fork ready for production hosting providers.</p>
                     </div>
                     <div class="card">
                         <h3>Multi-Location Support</h3>
-                        <p>Manage game servers across multiple data centers and regions from a single interface. Load balancing, failover capabilities, and centralized monitoring included.</p>
+                        <p>Register as many agents as you need. The panel keeps firewall reservations, reserved ports, and monitoring information grouped per location.</p>
                     </div>
                 </div>
 
-                <div style="background-color: #2A2A2A; padding: 30px; border-radius: 8px; margin-top: 40px; border: 1px solid #555555;">
-                    <h3 style="color: #8B4513; margin-bottom: 25px;">
-                        <i class="fas fa-download" style="margin-right: 10px;"></i>
-                        Quick Installation
-                    </h3>
-                    <p style="color: #4a4a4a; margin-bottom: 20px;">
-                        Get started with GameServer Panel using our automated installation script:
-                    </p>
-                    <div style="background-color: #0f1419; padding: 20px; border-radius: 4px; border-left: 4px solid #555555; margin-bottom: 20px;">
-                        <div style="color: #4a4a4a; margin-bottom: 8px; font-family: 'Courier New', monospace;"># One-line installer for Ubuntu/Debian/CentOS</div>
-                        <div style="color: #D2B48C; font-family: 'Courier New', monospace; font-size: 14px;">curl -fsSL https://install.gameserver-panel.org | sudo bash</div>
+                <div class="quick-install-callout">
+                    <div class="quick-install-meta"># Deploy the panel straight from GitHub</div>
+                    <div class="code-block" style="background: transparent; border: none; padding: 0; margin: 0; color: #FFFFFF;">
+                        <code>curl -fsSL https://raw.githubusercontent.com/GameServerPanel/GSP/main/deploy_gsp.sh -o /tmp/deploy_gsp.sh
+bash /tmp/deploy_gsp.sh</code>
                     </div>
-                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                        <a href="https://github.com/World-Domination-Software/GameServer-Panel" class="btn-wds" target="_blank">
-                            <i class="fab fa-github" style="margin-right: 8px;"></i>
-                            View Source
-                        </a>
-                        <a href="https://github.com/World-Domination-Software/GameServer-Panel/releases/latest" class="btn-wds" target="_blank">
-                            <i class="fas fa-download" style="margin-right: 8px;"></i>
-                            Download Release
-                        </a>
-                        <a href="https://docs.gameserver-panel.org/installation" class="btn-wds" target="_blank">
-                            <i class="fas fa-book" style="margin-right: 8px;"></i>
-                            Full Install Guide
-                        </a>
-                    </div>
+                    <p class="quick-install-note">Always review <code>deploy_gsp.sh</code> before running it. The script clones <code>GameServerPanel/GSP</code>, syncs it to <code>/var/www/html/panel</code> (configurable), and preserves sensitive files such as <code>includes/config.inc.php</code>.</p>
                 </div>
-            </div>
 
-            <div id="core-concepts" class="content-section">
-                <h2>Core Concepts: Panel & Agent Architecture</h2>
-                <p>Understanding the relationship between the Web Panel and the Agent is crucial for managing and troubleshooting GameServer Panel. The entire system is built on this remote-command architecture.</p>
-                
+                <div class="quick-install-links">
+                    <a href="https://github.com/GameServerPanel/GSP" class="btn-wds" target="_blank"><i class="fab fa-github" style="margin-right: 8px;"></i>Panel Source</a>
+                    <a href="https://github.com/GameServerPanel/GSP/releases/latest" class="btn-wds" target="_blank"><i class="fas fa-download" style="margin-right: 8px;"></i>Panel Release</a>
+                    <a href="https://github.com/GameServerPanel/GSP_Agent_Linux/releases/latest" class="btn-wds" target="_blank"><i class="fab fa-linux" style="margin-right: 8px;"></i>Linux Agent Release</a>
+                    <a href="https://github.com/GameServerPanel/GSP-Agent-Windows/releases/latest" class="btn-wds" target="_blank"><i class="fab fa-windows" style="margin-right: 8px;"></i>Windows Agent Release</a>
+                </div>
+            </section>
+
+            <section id="guide-core-concepts" class="content-section">
+                <h2>Core Concepts: Panel &amp; Agent Architecture</h2>
+                <p>The entire platform hinges on the relationship between the PHP panel and the Perl-based agents. Understanding the request flow helps when you debug installations or add new features.</p>
+
                 <div class="card">
                     <div class="architecture-flow">
                         <div class="flow-item">
                             <div class="icon"><i class="fas fa-desktop"></i></div>
                             <h3>Web Panel</h3>
-                            <p>The user interface where you and your customers manage servers, users, and games. Includes billing and support systems.</p>
+                            <p>Hosts the UI, billing, provisioning logic, and XML-driven server definitions. It calls the agent RPC endpoint that you configure under Administration → Game Servers.</p>
                         </div>
                         <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
                         <div class="flow-item">
-                            <div class="icon"><i class="fas fa-rocket" aria-hidden="true"></i></div>
-                            <h3>GameServer Agent</h3>
-                            <p>A daemon running on your game server machine(s). It listens for encrypted commands from the Panel.</p>
+                            <div class="icon"><i class="fas fa-rocket"></i></div>
+                            <h3>Agent</h3>
+                            <p>Runs <code>ogp_agent.pl</code> on every machine that actually launches games. It validates the shared key from <code>Cfg/Config.pm</code> before executing commands.</p>
                         </div>
                         <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
                         <div class="flow-item">
                             <div class="icon"><i class="fas fa-gamepad"></i></div>
                             <h3>Game Server</h3>
-                            <p>The actual game process (e.g., srcds_run, bedrock_server) managed by the Agent.</p>
+                            <p>Any binary defined in <code>modules/config_games/server_configs</code>. The agent starts it inside a screen session, captures the PID, and streams console output back to the panel.</p>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div id="agent-management" class="content-section">
+            <section id="guide-agent-management" class="content-section">
                 <h2>Agent Management</h2>
-                <p>The Agent is the workhorse of GameServer Panel. It must be installed and running on every machine where you want to host game servers. Configuration differs between Linux and Windows.</p>
-                
+                <p>The Linux and Windows agents share the same configuration expectations: they must call home on TCP 12679 (default), use a matching encryption key, and know where your panel API lives. Below are the supported installation paths pulled directly from the active repositories.</p>
+
                 <div class="card">
                     <h3>Linux Agent Installation</h3>
-                    <p>The Linux agent is typically installed via our enhanced installer script. Key steps include downloading, making it executable, and running the installer with commercial features enabled.</p>
+                    <p>The Linux agent lives in the <code>GameServerPanel/GSP_Agent_Linux</code> repository. Use the included <code>install.sh</code> and <code>agent_conf.sh</code> scripts, then keep <code>/home/ogp_agent/Cfg/Config.pm</code> in sync with your panel.</p>
                     <div class="code-block">
-                        <code># Download the GameServer Panel installer
-wget -N https://github.com/World-Domination-Software/GameServer-Panel/raw/master/gsp-agent-latest.deb
+                        <code># Install the Linux agent
+sudo apt-get install git curl rsync -y
+cd /opt && sudo git clone https://github.com/GameServerPanel/GSP_Agent_Linux.git
+cd GSP_Agent_Linux
+sudo bash install.sh
+# agent_conf.sh still expects the -s flag on Linux
+sudo bash agent_conf.sh -s "yourRootPassword" -u ogp_agent
 
-# Install it
-sudo dpkg -i gsp-agent-latest.deb
-
-# Run the enhanced configurator
-sudo /usr/share/gsp_agent/gsp_agent_config.sh --commercial</code>
+# Cfg/Config.pm controls the handshake
+%Cfg::Config = (
+    listen_ip    => '0.0.0.0',
+    listen_port  => '12679',
+    key          => 'shared-secret-from-panel',
+    web_api_url  => 'https://panel.example.com/ogp_api.php',
+    web_admin_api_key => '{optional_api_key}'
+);</code>
                     </div>
+                    <p>Re-run <code>agent_conf.sh</code> or edit <code>Cfg/Config.pm</code> any time you rotate the key inside the panel. The file is documented in <code>GSP/modules/config_games/schema_server_config.xml</code> and matches what our live agents run today.</p>
                 </div>
-                
+
                 <div class="card">
-                    <h3>Windows Agent (via Cygwin)</h3>
-                    <p>The Windows Agent uses Cygwin to provide a Unix-like environment. After installation, configure it by editing the gsp_agent.conf file with your panel details and encryption key.</p>
+                    <h3>Windows Agent (Cygwin)</h3>
+                    <p>The Windows files are in <code>GameServerPanel/GSP-Agent-Windows</code>. Launch <code>Install\onceinstall_agent.bat</code> as Administrator to install Cygwin, create the <code>gameserver</code> service user, and copy the agent files.</p>
                     <div class="code-block">
-                        <code># Example gsp_agent.conf
-PANEL_URL="https://yourpanel.example.com"
-AGENT_IP="0.0.0.0"
-AGENT_PORT="12679"
-ENCRYPTION_KEY="your_secret_key_from_panel"
-COMMERCIAL_MODE="true"
-BILLING_API="https://yourpanel.example.com/api/billing"</code>
-                    </div>
-                </div>
-            </div>
+                        <code># After the installer finishes, open the bundled Cygwin terminal
+cd /OGP
+bash agent_conf.sh -p "gameserverPassword"
 
-            <div id="xml-deep-dive" class="content-section">
+# Configuration lives here
+C:\OGP\Cfg\Config.pm</code>
+                    </div>
+                    <p><code>agent_conf.sh</code> writes the same structure shown above. Keep <code>key</code>, <code>listen_port</code>, and <code>web_api_url</code> aligned with the panel or the RPC handshake will fail with an “Unauthorized request” error.</p>
+                </div>
+            </section>
+
+            <section id="guide-xml-deep-dive" class="content-section">
                 <h2>Game XML Deep Dive</h2>
-                <p>Game configurations are the heart of GameServer Panel's flexibility. They are defined in XML files located in the modules directory. Click on any colored XML tag below to see a detailed explanation.</p>
+                <p>Every game definition shipped with the panel lives under <code>modules/config_games/server_configs</code>. They all conform to <code>modules/config_games/schema_server_config.xml</code> and the notes maintained in <code>OGP-Website.wiki/XML-Notes.md</code>. Click a tag to see what the schema expects.</p>
 
                 <div class="xml-explorer">
                     <div class="xml-code">
                         <h3>Interactive XML Explorer</h3>
-                        <div class="code-block">
-                            <code><span class="xml-tag" data-tag="game_config">&lt;game_config&gt;</span>
-
-    <span class="xml-tag" data-tag="game_key">&lt;game_key&gt;</span>my_custom_game_linux64<span class="xml-tag" data-tag="game_key">&lt;/game_key&gt;</span>
-
+                        <pre class="code-block"><code><span class="xml-tag" data-tag="game_config">&lt;game_config&gt;</span>
+    <span class="xml-tag" data-tag="game_key">&lt;game_key&gt;</span>valheim_linux64<span class="xml-tag" data-tag="game_key">&lt;/game_key&gt;</span>
     <span class="xml-tag" data-tag="protocol">&lt;protocol&gt;</span>lgsl<span class="xml-tag" data-tag="protocol">&lt;/protocol&gt;</span>
-
-    <span class="xml-tag" data-tag="lgsl_query_name">&lt;lgsl_query_name&gt;</span>unreal2<span class="xml-tag" data-tag="lgsl_query_name">&lt;/lgsl_query_name&gt;</span>
-
+    <span class="xml-tag" data-tag="lgsl_query_name">&lt;lgsl_query_name&gt;</span>valheim<span class="xml-tag" data-tag="lgsl_query_name">&lt;/lgsl_query_name&gt;</span>
     <span class="xml-tag" data-tag="installer">&lt;installer&gt;</span>steamcmd<span class="xml-tag" data-tag="installer">&lt;/installer&gt;</span>
-
-    <span class="xml-tag" data-tag="game_name">&lt;game_name&gt;</span>My Custom Game Server<span class="xml-tag" data-tag="game_name">&lt;/game_name&gt;</span>
-
-    <span class="xml-tag" data-tag="server_exec_name">&lt;server_exec_name&gt;</span>MyGameServer<span class="xml-tag" data-tag="server_exec_name">&lt;/server_exec_name&gt;</span>
-
-    <span class="xml-tag" data-tag="query_port" data-attributes='type="add"'>&lt;query_port type="add"&gt;</span>1<span class="xml-tag" data-tag="query_port">&lt;/query_port&gt;</span>
-
-
-    <span class="xml-tag" data-tag="cli_template">&lt;cli_template&gt;</span>
-        %IP% %PORT% %MAP% %PLAYERS%
-    <span class="xml-tag" data-tag="cli_template">&lt;/cli_template&gt;</span>
-
-
+    <span class="xml-tag" data-tag="game_name">&lt;game_name&gt;</span>Valheim<span class="xml-tag" data-tag="game_name">&lt;/game_name&gt;</span>
+    <span class="xml-tag" data-tag="server_exec_name">&lt;server_exec_name&gt;</span>start_server.sh<span class="xml-tag" data-tag="server_exec_name">&lt;/server_exec_name&gt;</span>
+    <span class="xml-tag" data-tag="query_port">&lt;query_port type="add"&gt;</span>1<span class="xml-tag" data-tag="query_port">&lt;/query_port&gt;</span>
+    <span class="xml-tag" data-tag="cli_template">&lt;cli_template&gt;</span>%HOME_PATH%/start_server.sh -name "%HOSTNAME%" -port %PORT% -world %MAP% %VAR_ALL%<span class="xml-tag" data-tag="cli_template">&lt;/cli_template&gt;</span>
     <span class="xml-tag" data-tag="cli_params">&lt;cli_params&gt;</span>
-
-        <span class="xml-tag" data-tag="cli_param" data-attributes='id="MAP" cli_string="-map=" options="q"'>&lt;cli_param id="MAP" cli_string="-map=" options="q" /&gt;</span>
-
-        <span class="xml-tag" data-tag="cli_param" data-attributes='id="IP" cli_string="-ip=" options="q"'>&lt;cli_param id="IP" cli_string="-ip=" options="q" /&gt;</span>
-
-        <span class="xml-tag" data-tag="cli_param" data-attributes='id="PORT" cli_string="-port=" options="sq"'>&lt;cli_param id="PORT" cli_string="-port=" options="sq" /&gt;</span>
-
-        <span class="xml-tag" data-tag="cli_param" data-attributes='id="PLAYERS" cli_string="-maxplayers=" options="s"'>&lt;cli_param id="PLAYERS" cli_string="-maxplayers=" options="s" /&gt;</span>
-
+        <span class="xml-tag" data-tag="cli_param">&lt;cli_param id="HOSTNAME" cli_string="-name=" options="q" /&gt;</span>
+        <span class="xml-tag" data-tag="cli_param">&lt;cli_param id="PORT" cli_string="-port=" options="sq" /&gt;</span>
+        <span class="xml-tag" data-tag="cli_param">&lt;cli_param id="MAP" cli_string="-world=" options="q" /&gt;</span>
     <span class="xml-tag" data-tag="cli_params">&lt;/cli_params&gt;</span>
-
-
-    <span class="xml-tag" data-tag="maps_location">&lt;maps_location&gt;</span>Maps<span class="xml-tag" data-tag="maps_location">&lt;/maps_location&gt;</span>
-
-    <span class="xml-tag" data-tag="max_user_amount">&lt;max_user_amount&gt;</span>32<span class="xml-tag" data-tag="max_user_amount">&lt;/max_user_amount&gt;</span>
-
+    <span class="xml-tag" data-tag="reserve_ports">&lt;reserve_ports&gt;</span>
+        <span class="xml-tag" data-tag="port">&lt;port type="add" id="QUERY_PORT"&gt;</span>1<span class="xml-tag" data-tag="port">&lt;/port&gt;</span>
+        <span class="xml-tag" data-tag="port">&lt;port type="add" id="RCON_PORT" cli_string="+rcon.port" options="sq"&gt;</span>10<span class="xml-tag" data-tag="port">&lt;/port&gt;</span>
+    <span class="xml-tag" data-tag="reserve_ports">&lt;/reserve_ports&gt;</span>
+    <span class="xml-tag" data-tag="cli_allow_chars">&lt;cli_allow_chars&gt;</span>;-_/\<span class="xml-tag" data-tag="cli_allow_chars">&lt;/cli_allow_chars&gt;</span>
+    <span class="xml-tag" data-tag="maps_location">&lt;maps_location&gt;</span>saves/worlds<span class="xml-tag" data-tag="maps_location">&lt;/maps_location&gt;</span>
+    <span class="xml-tag" data-tag="max_user_amount">&lt;max_user_amount&gt;</span>10<span class="xml-tag" data-tag="max_user_amount">&lt;/max_user_amount&gt;</span>
     <span class="xml-tag" data-tag="control_protocol">&lt;control_protocol&gt;</span>rcon2<span class="xml-tag" data-tag="control_protocol">&lt;/control_protocol&gt;</span>
-
-
     <span class="xml-tag" data-tag="mods">&lt;mods&gt;</span>
-
-        <span class="xml-tag" data-tag="mod" data-attributes='key="base_game"'>&lt;mod key="base_game"&gt;</span>
-
-            <span class="xml-tag" data-tag="name">&lt;name&gt;</span>Base Game<span class="xml-tag" data-tag="name">&lt;/name&gt;</span>
-
-            <span class="xml-tag" data-tag="installer_name">&lt;installer_name&gt;</span>123456<span class="xml-tag" data-tag="installer_name">&lt;/installer_name&gt;</span>
-
+        <span class="xml-tag" data-tag="mod">&lt;mod key="default"&gt;</span>
+            <span class="xml-tag" data-tag="name">&lt;name&gt;</span>Dedicated<span class="xml-tag" data-tag="name">&lt;/name&gt;</span>
+            <span class="xml-tag" data-tag="installer_name">&lt;installer_name&gt;</span>896660<span class="xml-tag" data-tag="installer_name">&lt;/installer_name&gt;</span>
         <span class="xml-tag" data-tag="mod">&lt;/mod&gt;</span>
-
     <span class="xml-tag" data-tag="mods">&lt;/mods&gt;</span>
-
-<span class="xml-tag" data-tag="game_config">&lt;/game_config&gt;</span></code>
-                        </div>
+<span class="xml-tag" data-tag="game_config">&lt;/game_config&gt;</span></code></pre>
                     </div>
-
                     <div id="xml-explanation" class="xml-explanation">
                         <h3>Tag Explanation</h3>
-                        <p>Select a tag from the XML example to learn more about its function and usage in GameServer Panel configurations.</p>
+                        <p>Select a tag to pull the description straight from <code>XML-Notes.md</code> and the current <code>schema_server_config.xml</code>.</p>
                     </div>
                 </div>
 
-                <!-- Comprehensive XML Structure Documentation -->
                 <div style="margin-top: 50px;">
                     <h3 style="color: #8B4513; font-size: 28px; margin-bottom: 30px;">
                         <i class="fas fa-book-open" style="margin-right: 15px;"></i>
                         Complete XML Structure Guide
                     </h3>
 
-                    <!-- Core Structure Section -->
-                    <div class="card" style="margin-bottom: 30px;">
-                        <h4 style="color: #8B4513; margin-bottom: 20px;">
-                            <i class="fas fa-sitemap" style="margin-right: 10px;"></i>
-                            Core XML Structure
-                        </h4>
-                        <p style="margin-bottom: 20px;">Every OGP game configuration follows this essential structure:</p>
-                        
-                        <div class="code-block" style="margin-bottom: 20px;">
-                            <code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;game_config&gt;
-    &lt;!-- Basic Game Information --&gt;
-    &lt;game_key&gt;unique_game_identifier_os&lt;/game_key&gt;
-    &lt;game_name&gt;Display Name&lt;/game_name&gt;
-    &lt;server_exec_name&gt;executable_name&lt;/server_exec_name&gt;
-    
-    &lt;!-- Installation & Protocol --&gt;
-    &lt;installer&gt;steamcmd&lt;/installer&gt;
-    &lt;protocol&gt;lgsl&lt;/protocol&gt;
-    
-    &lt;!-- Command Line Configuration --&gt;
-    &lt;cli_template&gt;%SERVER_EXEC_NAME% [parameters]&lt;/cli_template&gt;
-    &lt;cli_params&gt;
-        &lt;!-- Parameter definitions --&gt;
-    &lt;/cli_params&gt;
-    
-    &lt;!-- Optional Elements --&gt;
-    &lt;mods&gt;...&lt;/mods&gt;
-&lt;/game_config&gt;</code>
-                        </div>
-                        
-                        <div style="background: #E8E4D8; padding: 20px; border-radius: 8px; border-left: 4px solid #555555;">
-                            <strong style="color: #C4A676;">Important Notes:</strong>
-                            <ul style="margin: 10px 0 0 20px; color: #E6D3B7;">
-                                <li>The <code>game_key</code> must include OS suffix (_linux64, _win32, _win64)</li>
-                                <li>All elements are case-sensitive</li>
-                                <li>Order of elements matters for proper parsing</li>
-                                <li>Use proper XML encoding for special characters</li>
-                            </ul>
-                        </div>
+                    <div class="card">
+                        <h4><i class="fas fa-sitemap" style="margin-right: 10px;"></i>Reference Files</h4>
+                        <p>Cross-check every change against two canonical sources:</p>
+                        <ul>
+                            <li><code>modules/config_games/schema_server_config.xml</code> &mdash; validates element order, attributes, and enumerations.</li>
+                            <li><code>../OGP-Website.wiki/XML-Notes.md</code> &mdash; human-readable explanations maintained by the OGP/GSP teams.</li>
+                            <li><code>modules/config_games/server_configs/</code> &mdash; real game definitions to mimic.</li>
+                        </ul>
                     </div>
 
-                    <!-- Required vs Optional Elements -->
-                    <div class="card" style="margin-bottom: 30px;">
-                        <h4 style="color: #8B4513; margin-bottom: 20px;">
-                            <i class="fas fa-list-check" style="margin-right: 10px;"></i>
-                            Required vs Optional Elements
-                        </h4>
-                        
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
-                            <div>
-                                <h5 style="color: #C4A676; margin-bottom: 15px;">
-                                    <i class="fas fa-exclamation-triangle" style="margin-right: 8px;"></i>
-                                    Required Elements
-                                </h5>
-                                <ul style="color: #E6D3B7; line-height: 1.6;">
-                                    <li><code>game_config</code> - Root container</li>
-                                    <li><code>game_key</code> - Unique identifier</li>
-                                    <li><code>game_name</code> - Display name</li>
-                                    <li><code>server_exec_name</code> - Executable</li>
-                                    <li><code>installer</code> - Installation method</li>
-                                    <li><code>cli_template</code> - Start command</li>
-                                </ul>
-                            </div>
-                            
-                            <div>
-                                <h5 style="color: #C4A676; margin-bottom: 15px;">
-                                    <i class="fas fa-plus-circle" style="margin-right: 8px;"></i>
-                                    Optional Elements
-                                </h5>
-                                <ul style="color: #E6D3B7; line-height: 1.6;">
-                                    <li><code>protocol</code> - Query protocol</li>
-                                    <li><code>query_port</code> - Port calculation</li>
-                                    <li><code>cli_params</code> - Parameter formatting</li>
-                                    <li><code>maps_location</code> - Maps directory</li>
-                                    <li><code>max_user_amount</code> - Player limit</li>
-                                    <li><code>control_protocol</code> - Management protocol</li>
-                                    <li><code>mods</code> - Multiple versions</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- CLI Template Variables -->
-                    <div class="card" style="margin-bottom: 30px;">
-                        <h4 style="color: #8B4513; margin-bottom: 20px;">
-                            <i class="fas fa-terminal" style="margin-right: 10px;"></i>
-                            CLI Template Variables
-                        </h4>
-                        
-                        <p style="margin-bottom: 20px;">Use these variables in your <code>cli_template</code> - they will be replaced with actual values:</p>
-                        
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                            <div style="background: #E8E4D8; padding: 15px; border-radius: 6px; border: 1px solid #444;">
-                                <h6 style="color: #C4A676; margin-bottom: 10px;">System Variables</h6>
-                                <ul style="font-size: 13px; line-height: 1.5; color: #E6D3B7;">
-                                    <li><code>%SERVER_EXEC_NAME%</code> - Executable name</li>
-                                    <li><code>%IP%</code> - Server IP address</li>
-                                    <li><code>%PORT%</code> - Main server port</li>
-                                    <li><code>%HOME_PATH%</code> - Server directory</li>
-                                </ul>
-                            </div>
-                            
-                            <div style="background: #E8E4D8; padding: 15px; border-radius: 6px; border: 1px solid #444;">
-                                <h6 style="color: #C4A676; margin-bottom: 10px;">Game Variables</h6>
-                                <ul style="font-size: 13px; line-height: 1.5; color: #E6D3B7;">
-                                    <li><code>%MAP%</code> - Starting map</li>
-                                    <li><code>%PLAYERS%</code> - Max players</li>
-                                    <li><code>%HOSTNAME%</code> - Server name</li>
-                                    <li><code>%RCON_PASS%</code> - RCON password</li>
-                                </ul>
-                            </div>
-                            
-                            <div style="background: #E8E4D8; padding: 15px; border-radius: 6px; border: 1px solid #444;">
-                                <h6 style="color: #C4A676; margin-bottom: 10px;">Custom Variables</h6>
-                                <ul style="font-size: 13px; line-height: 1.5; color: #E6D3B7;">
-                                    <li>Define with <code>cli_param</code> elements</li>
-                                    <li>Reference as <code>%YOUR_VAR%</code></li>
-                                    <li>Set formatting with <code>options</code></li>
-                                    <li>Control spacing and quotes</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- CLI Parameter Options -->
-                    <div class="card" style="margin-bottom: 30px;">
-                        <h4 style="color: #8B4513; margin-bottom: 20px;">
-                            <i class="fas fa-cog" style="margin-right: 10px;"></i>
-                            CLI Parameter Formatting Options
-                        </h4>
-                        
-                        <p style="margin-bottom: 20px;">The <code>options</code> attribute in <code>cli_param</code> controls how values are formatted:</p>
-                        
-                        <div class="code-block" style="margin-bottom: 20px;">
-                            <code>&lt;!-- Examples of different formatting options --&gt;
-&lt;cli_param id="MAP" cli_string="-map" options="s" /&gt;
+                    <div class="card">
+                        <h4><i class="fas fa-terminal" style="margin-right: 10px;"></i>CLI Template &amp; Parameters</h4>
+                        <p><code>&lt;cli_template&gt;</code> must reference variables that have either built-in meaning (see the schema enumeration) or custom entries defined under <code>&lt;cli_params&gt;</code>. Formatting flags follow the same rules explained in <code>XML-Notes.md</code>.</p>
+                        <div class="code-block">
+                            <code>&lt;cli_param id="MAP" cli_string="-map" options="s" /&gt;
 &lt;!-- Result: -map de_dust2 --&gt;
 
 &lt;cli_param id="CONFIG" cli_string="-config" options="q" /&gt;
@@ -708,59 +552,53 @@ BILLING_API="https://yourpanel.example.com/api/billing"</code>
 &lt;cli_param id="NAME" cli_string="-hostname" options="sq" /&gt;
 &lt;!-- Result: -hostname "My Server" --&gt;</code>
                         </div>
-                        
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-                            <div style="background: #E8E4D8; padding: 15px; border-radius: 6px; border: 1px solid #444;">
-                                <code style="color: #C4A676; font-weight: bold;">s</code>
-                                <p style="margin: 8px 0 0 0; font-size: 13px; color: #E6D3B7;">Add space between flag and value</p>
-                            </div>
-                            <div style="background: #E8E4D8; padding: 15px; border-radius: 6px; border: 1px solid #444;">
-                                <code style="color: #C4A676; font-weight: bold;">q</code>
-                                <p style="margin: 8px 0 0 0; font-size: 13px; color: #E6D3B7;">Wrap value in quotes</p>
-                            </div>
-                            <div style="background: #E8E4D8; padding: 15px; border-radius: 6px; border: 1px solid #444;">
-                                <code style="color: #C4A676; font-weight: bold;">sq</code>
-                                <p style="margin: 8px 0 0 0; font-size: 13px; color: #E6D3B7;">Space + quotes combined</p>
-                            </div>
+                    </div>
+
+                    <div class="card">
+                        <h4><i class="fas fa-network-wired" style="margin-right: 10px;"></i>Reserve Ports &amp; Allowed Characters</h4>
+                        <p>Use <code>&lt;reserve_ports&gt;</code> to define offsets relative to %PORT%. <code>&lt;cli_allow_chars&gt;</code> loosens the command-line sanitizer when a game needs characters like semicolons.</p>
+                        <div class="code-block">
+                            <code>&lt;reserve_ports&gt;
+    &lt;port type="add" id="WEB_ADMIN_PORT" cli_string="-webadminport=" options="sq"&gt;5&lt;/port&gt;
+    &lt;port type="add" id="STEAM_PORT"&gt;19238&lt;/port&gt;
+&lt;/reserve_ports&gt;
+&lt;cli_allow_chars&gt;:;-_\&lt;/cli_allow_chars&gt;</code>
                         </div>
                     </div>
 
-                    <!-- Common Patterns -->
                     <div class="card">
-                        <h4 style="color: #8B4513; margin-bottom: 20px;">
-                            <i class="fas fa-puzzle-piece" style="margin-right: 10px;"></i>
-                            Common Game Server Patterns
-                        </h4>
-                        
-                        <div style="display: grid; grid-template-columns: 1fr; gap: 25px;">
-                            <div>
-                                <h5 style="color: #C4A676; margin-bottom: 15px;">Source Engine Games</h5>
-                                <div class="code-block">
-                                    <code>&lt;cli_template&gt;./srcds_run -game %GAME% +map %MAP% -port %PORT% +maxplayers %PLAYERS%&lt;/cli_template&gt;</code>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <h5 style="color: #C4A676; margin-bottom: 15px;">Minecraft Servers</h5>
-                                <div class="code-block">
-                                    <code>&lt;cli_template&gt;java -Xmx%MEMORY%M -jar %SERVER_EXEC_NAME% --port %PORT% --world %WORLD%&lt;/cli_template&gt;</code>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <h5 style="color: #C4A676; margin-bottom: 15px;">Unreal Engine Games</h5>
-                                <div class="code-block">
-                                    <code>&lt;cli_template&gt;%SERVER_EXEC_NAME% %MAP%?MaxPlayers=%PLAYERS%?Port=%PORT% -log&lt;/cli_template&gt;</code>
-                                </div>
-                            </div>
+                        <h4><i class="fas fa-sliders-h" style="margin-right: 10px;"></i>Server Parameters &amp; Config Replacement</h4>
+                        <p><code>&lt;server_params&gt;</code> drives the UI form fields in the panel. Each <code>&lt;param&gt;</code> or <code>&lt;group&gt;</code> entry maps to CLI options or configuration replacements. Combine them with <code>&lt;replace_texts&gt;</code> to inject variables into config files.</p>
+                        <div class="code-block">
+                            <code>&lt;server_params&gt;
+    &lt;param key="+server.identity" type="text" id="IDENTITY"&gt;
+        &lt;default&gt;my_server_identity&lt;/default&gt;
+        &lt;desc&gt;Sets the Rust identity folder.&lt;/desc&gt;
+    &lt;/param&gt;
+    &lt;group key="network" name="Networking"&gt;
+        &lt;param key="-ip" id="IP" type="text"&gt;
+            &lt;caption&gt;Bind Address&lt;/caption&gt;
+            &lt;default&gt;0.0.0.0&lt;/default&gt;
+        &lt;/param&gt;
+    &lt;/group&gt;
+&lt;/server_params&gt;</code>
+                        </div>
+                        <div class="code-block">
+                            <code>&lt;replace_texts&gt;
+    &lt;text key="server.cfg"&gt;
+        &lt;filepath&gt;cfg/server.cfg&lt;/filepath&gt;
+        &lt;var&gt;{IP}&lt;/var&gt;
+        &lt;options&gt;replace_first&lt;/options&gt;
+    &lt;/text&gt;
+&lt;/replace_texts&gt;</code>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div id="add-new-game" class="content-section">
+            <section id="guide-add-new-game" class="content-section">
                 <h2>Adding a New Game: Step-by-Step</h2>
-                <p>Follow these steps to create a new game configuration XML. This process involves gathering information about the game server, creating the XML file, and testing it in the panel.</p>
+                <p>The process always follows the schema: gather command-line knowledge, create the XML, validate it, and test on a staging agent. These steps mirror the workflow we use before committing new files under <code>modules/config_games/server_configs</code>.</p>
 
                 <div class="accordion-item">
                     <button class="accordion-button">
@@ -768,250 +606,267 @@ BILLING_API="https://yourpanel.example.com/api/billing"</code>
                         <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
                     </button>
                     <div class="accordion-content">
-                        <p>Before writing any XML, you need to know how to run the game server from the command line. Find out:</p>
-                        <ul style="color: #4a4a4a; margin-left: 20px;">
-                            <li>The name of the executable (e.g., srcds_run, arma3server_x64.exe)</li>
-                            <li>The command-line arguments it accepts (e.g., -port, +map, -config)</li>
-                            <li>Which arguments are required and which are optional</li>
-                            <li>The server's working directory and file structure</li>
-                        </ul>
+                        <p>Identify the executable, required flags, and supported parameters. Capture the exact command line you would run manually along with any config files that need templating.</p>
                     </div>
                 </div>
-                
+
                 <div class="accordion-item">
                     <button class="accordion-button">
                         <span>Step 2: Create the Basic XML File</span>
                         <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
                     </button>
                     <div class="accordion-content">
-                        <p>Create a new file, for example mygame.xml, inside the modules/ directory of your GameServer Panel installation. Start with the basic structure:</p>
+                        <p>Place the file inside <code>modules/config_games/server_configs</code>. Stick to the order enforced by <code>schema_server_config.xml</code>.</p>
                         <div class="code-block">
-                            <code>&lt;game&gt;
-  &lt;name&gt;My Awesome Game&lt;/name&gt;
-  ... your variables and commands here ...
-&lt;/game&gt;</code>
+                            <code>&lt;game_config&gt;
+  &lt;game_key&gt;mygame_linux64&lt;/game_key&gt;
+  &lt;protocol&gt;lgsl&lt;/protocol&gt;
+  &lt;installer&gt;steamcmd&lt;/installer&gt;
+  &lt;game_name&gt;My Game&lt;/game_name&gt;
+  &lt;server_exec_name&gt;run_mygame.sh&lt;/server_exec_name&gt;
+  &lt;cli_template&gt;%HOME_PATH%/run_mygame.sh %VAR_ALL%&lt;/cli_template&gt;
+  &lt;cli_params&gt;
+      &lt;cli_param id="PORT" cli_string="-port=" options="sq" /&gt;
+  &lt;/cli_params&gt;
+&lt;/game_config&gt;</code>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="accordion-item">
                     <button class="accordion-button">
-                        <span>Step 3: Define Variables (&lt;var&gt;)</span>
+                        <span>Step 3: Define Variables (&lt;param&gt;)</span>
                         <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
                     </button>
                     <div class="accordion-content">
-                        <p>For each command-line argument you want to control from the panel, create a var block. This defines the UI element that will appear in the panel.</p>
-                        <ul style="color: #4a4a4a; margin-left: 20px;">
-                            <li>&lt;name&gt;: The label shown in the panel (e.g., "Game Map")</li>
-                            <li>&lt;option&gt;: The command-line flag (e.g., +map)</li>
-                            <li>&lt;type&gt;: The input type (e.g., text, dropdown, checkbox)</li>
-                            <li>&lt;default&gt;: The default value for this variable</li>
-                        </ul>
+                        <p>Each <code>&lt;param&gt;</code> becomes a form field in the panel. Use <code>type="select"</code> and <code>&lt;option&gt;</code> elements when you want to restrict input to a controlled list.</p>
                     </div>
                 </div>
-                
+
                 <div class="accordion-item">
                     <button class="accordion-button">
                         <span>Step 4: Define Commands (&lt;command&gt;)</span>
                         <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
                     </button>
                     <div class="accordion-content">
-                        <p>The command block tells the agent how to start the server. The execute tag contains the actual command.</p>
+                        <p>The <code>&lt;command&gt;</code> block wraps the executable call. The agent already runs it under screen, so you only provide the actual binary and parameters.</p>
                         <div class="code-block">
                             <code>&lt;command&gt;
   &lt;name&gt;Start&lt;/name&gt;
-  &lt;execute&gt;./panelStart.sh ./game_binary -port {PORT} -ip {IP} {VAR_ALL}&lt;/execute&gt;
+  &lt;execute&gt;./MyGameServer -port {PORT} -ip {IP} {VAR_ALL}&lt;/execute&gt;
 &lt;/command&gt;</code>
                         </div>
-                        <p>Use GameServer Panel variables like {PORT}, {IP}, and {VAR_ALL}. {VAR_ALL} automatically includes all defined variables.</p>
+                        <p><code>{VAR_ALL}</code> expands to every <code>&lt;param&gt;</code> value you defined in <code>&lt;server_params&gt;</code>. Use specific placeholders like <code>{PORT}</code>, <code>{IP}</code>, and <code>{MAP}</code> when you want to control ordering.</p>
                     </div>
                 </div>
-                
+
                 <div class="accordion-item">
                     <button class="accordion-button">
                         <span>Step 5: Test and Deploy</span>
                         <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
                     </button>
                     <div class="accordion-content">
-                        <p>Upload your XML file and test it thoroughly:</p>
-                        <ul style="color: #4a4a4a; margin-left: 20px;">
-                            <li>Go to the "Games" section in your panel and click "Update Games List"</li>
-                            <li>Create a test server instance with your new game</li>
-                            <li>Check the agent logs for any startup errors</li>
-                            <li>Verify the server responds on the configured ports</li>
-                            <li>Test all variable configurations work correctly</li>
+                        <ul>
+                            <li>Run <code>xmllint --schema schema_server_config.xml mygame.xml --noout</code> to catch ordering mistakes.</li>
+                            <li>Upload to a staging panel, click “Update Games List”, and provision a test server.</li>
+                            <li>Validate firewall reservations and reserved ports inside the agent logs.</li>
+                            <li>Commit only after the server starts/stops cleanly and all variables appear in the UI.</li>
                         </ul>
                     </div>
                 </div>
-            </div>
-            
-            <div id="panelstart" class="content-section">
-                <h2>The panelStart Script</h2>
-                <p>You will see panelStart.sh (Linux) or panelStart.bat (Windows) used in almost every game's start command. This script is essential for GameServer Panel to correctly track and manage game server processes.</p>
-                
+            </section>
+
+            <section id="agent-startup" class="content-section">
+                <h2>Agent Start Workflow</h2>
+                <p>There is no extra <em>panelStart</em> wrapper in this project. Instead, <code>ogp_agent_run</code> builds the final command, writes PID files, and launches it inside a dedicated screen session. Your XML only needs to describe the real command-line.</p>
+
                 <div class="card">
-                    <h3>What does it do?</h3>
-                    <p>The panelStart script acts as a wrapper for your game server executable. Its primary jobs are:</p>
-                    <ul style="color: #4a4a4a; margin-left: 20px; margin-top: 15px;">
-                        <li><strong>Process ID (PID) Tracking:</strong> Determines the Process ID of the launched game server and writes it to a .pid file. The Agent reads this file to manage the process.</li>
-                        <li><strong>Environment Setup:</strong> Sets up necessary environment variables and changes directories before launching the main executable.</li>
-                        <li><strong>Logging:</strong> Redirects the server's output streams to a log file (console.log) viewable from the web panel.</li>
-                        <li><strong>Commercial Integration:</strong> In our fork, it also handles billing events and usage tracking.</li>
+                    <h3>What happens when you click “Start”?</h3>
+                    <ul>
+                        <li>The panel validates the agent key and sends the <code>&lt;command&gt;</code> block via RPC.</li>
+                        <li><code>ogp_agent_run</code> sets up environment variables (see <code>&lt;environment_variables&gt;</code>), spawns a screen session, and logs STDOUT/STDERR to <code>console.log</code>.</li>
+                        <li>PID tracking happens automatically; the agent writes <code>ogp_agent.pid</code> and <code>ogp_agent_run.pid</code> files for later stop/restart calls.</li>
                     </ul>
                 </div>
-                
-                <div class="card">
-                    <h3>How to Use It</h3>
-                    <p>Always prepend your actual game server command with panelStart. The script takes the command you want to run as its arguments.</p>
-                    <div class="code-block">
-                        <code># Correct Usage in XML execute tag
-./panelStart.sh ./srcds_run -game cstrike +map de_dust2
 
-# Incorrect Usage (GameServer Panel cannot track the process)
-./srcds_run -game cstrike +map de_dust2</code>
+                <div class="card">
+                    <h3>Sample Execute Block</h3>
+                    <div class="code-block">
+                        <code>&lt;command&gt;
+  &lt;name&gt;Start&lt;/name&gt;
+  &lt;execute&gt;./RustDedicated -batchmode +server.port {PORT} +server.ip {IP} {VAR_ALL}&lt;/execute&gt;
+&lt;/command&gt;</code>
                     </div>
+                    <p>Keep commands shell-safe and rely on <code>&lt;cli_allow_chars&gt;</code> or <code>options</code> flags if a game needs unusual punctuation. The agent will prepend <code>cd %HOME_PATH%</code> and launch the binary from the correct directory.</p>
                 </div>
-            </div>
+            </section>
         </main>
     </div>
+</div>
 
-    <script>
-        const sidebarLinks = document.querySelectorAll('.sidebar-link');
-        const contentSections = document.querySelectorAll('.content-section');
-        const xmlTags = document.querySelectorAll('.xml-tag');
-        const xmlExplanation = document.getElementById('xml-explanation');
-        const accordionButtons = document.querySelectorAll('.accordion-button');
+<script>
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+    const contentSections = document.querySelectorAll('.content-section');
+    const xmlTags = document.querySelectorAll('.xml-tag');
+    const xmlExplanation = document.getElementById('xml-explanation');
+    const accordionButtons = document.querySelectorAll('.accordion-button');
 
-        const xmlDocs = {
-            game_config: {
-                title: '&lt;game_config&gt;',
-                desc: 'The root element for the entire OGP game configuration. All other elements must be contained within this tag. There can only be one game_config element per XML file.'
-            },
-            game_key: {
-                title: '&lt;game_key&gt;',
-                desc: 'A unique identifier for this game server in OGP. Should contain only alphanumeric characters and underscores. Must include OS suffix like _linux64, _win32, _win64 to indicate compatibility.'
-            },
-            protocol: {
-                title: '&lt;protocol&gt;',
-                desc: 'Defines the query protocol used by OGP to communicate with the game server. Available protocols are: lgsl, gameq, rcon, rcon2, lcon.'
-            },
-            lgsl_query_name: {
-                title: '&lt;lgsl_query_name&gt;',
-                desc: 'The unique key referencing this game server in the LGSL protocol file. Used when protocol is set to "lgsl" for server querying and status monitoring.'
-            },
-            gameq_query_name: {
-                title: '&lt;gameq_query_name&gt;',
-                desc: 'The unique key referencing this game server in GameQ protocol files. Used when protocol is set to "gameq" for server querying and player information.'
-            },
-            installer: {
-                title: '&lt;installer&gt;',
-                desc: 'Defines the installation method for the game server. "steamcmd" is the most common value for Steam-based game servers. Other options include "rsync" for custom installations.'
-            },
-            game_name: {
-                title: '&lt;game_name&gt;',
-                desc: 'The display name for this game server that appears in the OGP interface when users are selecting which game to install. This should be user-friendly and descriptive.'
-            },
-            server_exec_name: {
-                title: '&lt;server_exec_name&gt;',
-                desc: 'The name of the server executable file that will be launched. This is the actual binary/script name (e.g., "srcds_run", "MyGameServer.exe") used in the start command.'
-            },
-            query_port: {
-                title: '&lt;query_port&gt;',
-                desc: 'Defines the relationship between server port and query port. Type="add" means query port = server port + value. Type="subtract" means query port = server port - value.'
-            },
-            cli_template: {
-                title: '&lt;cli_template&gt;',
-                desc: 'The command line template used to start the server. Variables like %PORT%, %IP%, %MAP%, %PLAYERS% will be replaced with actual values. Custom variables can also be defined.'
-            },
-            cli_params: {
-                title: '&lt;cli_params&gt;',
-                desc: 'Container for cli_param elements that define how variables in cli_template are formatted. Each cli_param specifies the command-line syntax for a variable.'
-            },
-            cli_param: {
-                title: '&lt;cli_param&gt;',
-                desc: 'Defines formatting for a variable used in cli_template. Attributes: id (variable name), cli_string (prefix), options (formatting: s=space, q=quotes, sq=space+quotes).'
-            },
-            maps_location: {
-                title: '&lt;maps_location&gt;',
-                desc: 'Path to the maps folder relative to server root. OGP will scan this directory to generate a selectable map list for server startup. Can contain map files or subdirectories.'
-            },
-            max_user_amount: {
-                title: '&lt;max_user_amount&gt;',
-                desc: 'Maximum number of players that can be set when creating this game server. This defines the upper limit for player slots in the OGP interface.'
-            },
-            control_protocol: {
-                title: '&lt;control_protocol&gt;',
-                desc: 'Protocol used for server control commands like player management. Options: rcon, rcon2, lcon. May require additional control_protocol_type for legacy compatibility.'
-            },
-            mods: {
-                title: '&lt;mods&gt;',
-                desc: 'Container for mod definitions. Each mod represents a different version or modification of the game server that can be installed and managed separately.'
-            },
-            mod: {
-                title: '&lt;mod&gt;',
-                desc: 'Defines a specific mod/version of the game server. Contains name for display and installer_name (usually Steam AppID) for installation via SteamCMD.'
-            },
-            name: {
-                title: '&lt;name&gt;',
-                desc: 'Display name used in various contexts - for mods, server parameters, or other named elements. This text appears in the OGP user interface.'
-            },
-            installer_name: {
-                title: '&lt;installer_name&gt;',
-                desc: 'The Steam AppID or identifier used by the installer to download/update the game server files. For SteamCMD, this is the numerical Steam application ID.'
-            }
-        };
-
-        function showSection(targetId) {
-            contentSections.forEach(section => {
-                section.classList.toggle('active', section.id === targetId);
-            });
-            sidebarLinks.forEach(link => {
-                link.classList.toggle('active', link.dataset.target === targetId);
-            });
+    const xmlDocs = {
+        game_config: {
+            title: '&lt;game_config&gt;',
+            desc: 'Root element for every file. schema_server_config.xml enforces a single instance per XML.'
+        },
+        game_key: {
+            title: '&lt;game_key&gt;',
+            desc: 'Unique identifier plus OS suffix (e.g., `_linux64`, `_win32`). Referenced when the panel filters games per agent platform.'
+        },
+        protocol: {
+            title: '&lt;protocol&gt;',
+            desc: 'Query protocol used for live stats. XML-Notes lists supported values: lgsl, gameq, rcon, rcon2, lcon.'
+        },
+        lgsl_query_name: {
+            title: '&lt;lgsl_query_name&gt;',
+            desc: 'Key inside LGSL protocol files. Required when protocol=lgsl so the panel knows which status template to load.'
+        },
+        gameq_query_name: {
+            title: '&lt;gameq_query_name&gt;',
+            desc: 'Alternate query library selector. Only include when protocol=gameq.'
+        },
+        installer: {
+            title: '&lt;installer&gt;',
+            desc: 'Defines how the agent fetches files: steamcmd, manual, rsync, or custom. See XML-Notes for valid keywords.'
+        },
+        game_name: {
+            title: '&lt;game_name&gt;',
+            desc: 'Friendly name shown in the panel when customers pick a game.'
+        },
+        server_exec_name: {
+            title: '&lt;server_exec_name&gt;',
+            desc: 'Binary or script launched by the agent. Used for process detection on Linux and Windows.'
+        },
+        query_port: {
+            title: '&lt;query_port&gt;',
+            desc: 'Adjusts %QUERY_PORT% relative to %PORT%. Attribute `type` supports add/subtract per schema.'
+        },
+        cli_template: {
+            title: '&lt;cli_template&gt;',
+            desc: 'Base command appended to the executable. Supports built-in variables plus any custom values defined under &lt;cli_params&gt;.'
+        },
+        cli_params: {
+            title: '&lt;cli_params&gt;',
+            desc: 'Collection of &lt;cli_param&gt; entries describing how to format each variable. Options: s (space), q (quote), sq (space+quote), n (omit if empty).'
+        },
+        cli_param: {
+            title: '&lt;cli_param&gt;',
+            desc: 'Single variable formatter. Attributes: id (must match schema enumeration), cli_string (prefix), options (format flags).'
+        },
+        reserve_ports: {
+            title: '&lt;reserve_ports&gt;',
+            desc: 'Optional list of derived ports (Steam, query, web admin). Offsets help the agent open firewall rules automatically.'
+        },
+        port: {
+            title: '&lt;port&gt;',
+            desc: 'Child element used inside &lt;reserve_ports&gt;. Attributes map offsets to a new variable id.'
+        },
+        cli_allow_chars: {
+            title: '&lt;cli_allow_chars&gt;',
+            desc: 'Adds extra characters to the whitelist so the sanitizer permits symbols like `;` or `$`.'
+        },
+        maps_location: {
+            title: '&lt;maps_location&gt;',
+            desc: 'Directory scanned for maps so the panel can build a dropdown list.'
+        },
+        map_list: {
+            title: '&lt;map_list&gt;',
+            desc: 'Alternate approach when maps_location does not work. Points to a text file that lists maps line-by-line.'
+        },
+        max_user_amount: {
+            title: '&lt;max_user_amount&gt;',
+            desc: 'Upper limit enforced when customers request player slots.'
+        },
+        control_protocol: {
+            title: '&lt;control_protocol&gt;',
+            desc: 'Sets the RCON/LGSL control implementation. Allowed values per schema: rcon, rcon2, lcon, armabe.'
+        },
+        mods: {
+            title: '&lt;mods&gt;',
+            desc: 'Wraps one or more &lt;mod&gt; entries so customers can pick variants (Steam app IDs, DLC, etc.).'
+        },
+        mod: {
+            title: '&lt;mod&gt;',
+            desc: 'Each mod contains a key plus child elements like &lt;name&gt; and &lt;installer_name&gt; to override download targets.'
+        },
+        name: {
+            title: '&lt;name&gt;',
+            desc: 'Human-friendly label used inside mods and params.'
+        },
+        installer_name: {
+            title: '&lt;installer_name&gt;',
+            desc: 'Steam AppID or package identifier consumed by the installer.'
         }
+    };
 
+    function showSection(targetId, updateHash = true) {
+        contentSections.forEach(section => {
+            section.classList.toggle('active', section.id === targetId);
+        });
         sidebarLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = e.currentTarget.dataset.target;
-                showSection(targetId);
-            });
+            link.classList.toggle('active', link.dataset.target === targetId);
         });
+        const target = document.getElementById(targetId);
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        if (updateHash && window.history && window.history.replaceState) {
+            window.history.replaceState(null, '', '#' + targetId);
+        }
+    }
 
-        xmlTags.forEach(tag => {
-            tag.addEventListener('click', (e) => {
-                const tagKey = e.currentTarget.dataset.tag;
-                if (xmlDocs[tagKey]) {
-                    const doc = xmlDocs[tagKey];
-                    xmlExplanation.innerHTML = `
-                        <h3 style="color: #8B4513; font-family: 'Fira Code', monospace;">${doc.title}</h3>
-                        <p style="color: #4a4a4a;">${doc.desc}</p>
-                    `;
-                }
-            });
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = e.currentTarget.dataset.target;
+            showSection(targetId);
         });
-        
-        accordionButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const content = button.nextElementSibling;
-                const isActive = button.classList.contains('active');
-                
-                // Close all accordions
-                accordionButtons.forEach(btn => {
-                    btn.classList.remove('active');
-                    btn.nextElementSibling.classList.remove('active');
-                });
-                
-                // Open this accordion if it wasn't active
-                if (!isActive) {
-                    button.classList.add('active');
-                    content.classList.add('active');
-                }
-            });
-        });
+    });
 
-        // Initialize
-        showSection('home');
-    </script>
+    xmlTags.forEach(tag => {
+        tag.addEventListener('click', (e) => {
+            const tagKey = e.currentTarget.dataset.tag;
+            if (xmlDocs[tagKey]) {
+                const doc = xmlDocs[tagKey];
+                xmlExplanation.innerHTML = `
+                    <h3 style="color: #8B4513; font-family: 'Fira Code', monospace;">${doc.title}</h3>
+                    <p style="color: #E6D3B7;">${doc.desc}</p>
+                `;
+            }
+        });
+    });
+
+    accordionButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const content = button.nextElementSibling;
+            const isActive = button.classList.contains('active');
+            accordionButtons.forEach(btn => {
+                btn.classList.remove('active');
+                btn.nextElementSibling.classList.remove('active');
+            });
+            if (!isActive) {
+                button.classList.add('active');
+                content.classList.add('active');
+            }
+        });
+    });
+
+    const initialHash = window.location.hash.replace('#', '');
+    if (initialHash && document.getElementById(initialHash)) {
+        showSection(initialHash, false);
+    } else {
+        showSection('guide-home', false);
+    }
+</script>
+
+<?php if (!$isEmbedded): ?>
 </body>
 </html>
+<?php endif; ?>
