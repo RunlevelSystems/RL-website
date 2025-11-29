@@ -1,39 +1,39 @@
-# WDS Staff Wiki
+# Staff Wiki
 
-Welcome to the staff wiki! This is your quick reference for team procedures, tools, and guides.
-
----
-
-## 📂 Quick Links
-
-| Section | Description |
-|---------|-------------|
-| [Account Access](view.php?doc=Account-Access) | All credentials for servers, databases, and services |
-| [Linux Admin Guide](view.php?doc=Linux-Administration-Onboarding) | Linux basics, SSH, file permissions, systemctl |
-| [Windows Admin Guide](view.php?doc=Windows-Admin-Onboarding-Guide) | Windows Server, PowerShell, Task Scheduler |
-| [SSH Key Setup](view.php?doc=SSH-Key-Setup-and-Authentication-Guide) | SSH key generation and authentication |
-| [Tools & Applications](view.php?doc=Tools-and-Applications) | Development tools, game engines, and communication |
-| [Quick Reference](view.php?doc=Quick-Reference-Guide) | Shortcuts and common commands |
-| [Workflows](view.php?doc=Workflows) | Development and deployment processes |
-| [FAQ](view.php?doc=FAQ) | Common questions answered |
-| [Team Information](view.php?doc=Team-Information) | Team structure and contacts |
+Welcome! This is your quick reference for team information and guides.
 
 ---
 
-## 🔑 Most Used Credentials
+## Pages
 
-For full credentials, see [Account Access](view.php?doc=Account-Access).
-
-| Service | Quick Reference |
-|---------|-----------------|
-| Linux SSH | gameserver / `Inc0rrect!` (port 12322) |
-| Windows RDP | gameserver / `C37p7wzkkhcn!` (port 13389) |
-| MySQL | remoteuser / `Pkloyn7yvpht!` |
+| Page | What it covers |
+|------|----------------|
+| [Account Access](view.php?doc=Account-Access) | Logins for servers and services |
+| [Linux Basics](view.php?doc=Linux-Administration-Onboarding) | Managing Linux servers |
+| [Windows Basics](view.php?doc=Windows-Admin-Onboarding-Guide) | Managing Windows servers |
+| [SSH Key Setup](view.php?doc=SSH-Key-Setup-and-Authentication-Guide) | Password-free server login |
+| [Tools](view.php?doc=Tools-and-Applications) | Software we use |
+| [Quick Reference](view.php?doc=Quick-Reference-Guide) | Shortcuts and commands |
+| [Workflows](view.php?doc=Workflows) | How we work together |
+| [FAQ](view.php?doc=FAQ) | Common questions |
+| [Team Info](view.php?doc=Team-Information) | Who does what |
 
 ---
 
-## 📌 Need Help?
+## Quick Credentials
 
-- **Infrastructure issues**: Check the Operations page (Staff Area menu)
-- **Scripts & downloads**: Visit the Toolbox (Staff Area menu)
-- **Password rotation**: Use `check_servers.sh --password "NewPass!"`
+See [Account Access](view.php?doc=Account-Access) for full details.
+
+| Service | Quick Info |
+|---------|------------|
+| Linux SSH | gameserver / port 12322 |
+| Windows RDP | gameserver / port 13389 |
+| MySQL | remoteuser |
+
+---
+
+## Need Help?
+
+- **Infrastructure issues** - Check the Operations page
+- **Scripts & tools** - Visit the Toolbox
+- **Questions** - Ask in Discord

@@ -1,47 +1,43 @@
-# Processes and Workflows
+# Workflows
 
-This page outlines the key processes and workflows followed by the team.
-
----
-
-## 🆕 Onboarding Process
-
-1. **Account Setup**
-   - Request access to all necessary tools and applications (e.g., GitHub, Discord, Unity, etc.).
-   - See [Account Access](view.php?doc=Account-Access) for credentials.
-
-2. **System Preparation**
-   - Install required tools from [Tools and Applications](view.php?doc=Tools-and-Applications).
-   - Set up your development environment based on project requirements.
-
-3. **Training**
-   - Review [Team Information](view.php?doc=Team-Information) to understand our structure.
-   - For server administration, see the [Linux](view.php?doc=Linux-Administration-Onboarding) or [Windows](view.php?doc=Windows-Admin-Onboarding-Guide) guides.
+How we work together as a team.
 
 ---
 
-## 🔄 Development Workflow
+## Starting Out (Onboarding)
 
-1. **Planning** - Review tasks in GitHub Issues or the Project Board.
-2. **Branching** - Create a branch: `feature/<task-name>` or `bugfix/<task-name>`
-3. **Development** - Write clean, well-documented, and tested code.
-4. **Code Review** - Open a Pull Request with a summary and testing instructions.
-5. **Merge** - Incorporate feedback and merge when approved.
-6. **Deploy** - Test changes and deploy following the operations runbooks.
+1. Get access to tools - see [Account Access](view.php?doc=Account-Access)
+2. Install software - see [Tools and Applications](view.php?doc=Tools-and-Applications)
+3. Join the Discord server
+4. Meet the team
 
 ---
 
-## 🐛 Issue Tracking
+## Development Process
 
-1. **Reporting**: Use GitHub Issues with clear title, description, and steps to reproduce.
-2. **Prioritization**: Project Manager triages and assigns based on expertise.
-3. **Resolution**: Follow the development workflow and reference issue numbers in commits.
+1. **Pick a task** from GitHub Issues
+2. **Create a branch** - Name it `feature/your-task` or `bugfix/your-task`
+3. **Write your code** - Keep it clean and tested
+4. **Open a Pull Request** - Describe what you changed
+5. **Get a review** - Someone will check your work
+6. **Merge** - Once approved, merge your changes
+7. **Deploy** - Follow the operations runbooks
 
 ---
 
-## 🚀 Deployment
+## Reporting Bugs
 
-1. **Pre-Deployment**: Ensure all tasks are completed and tested.
-2. **Deploy**: Follow runbooks on the Operations page (accessible from the Staff Area menu).
-3. **Verify**: Test all features and fixes are working.
-4. **Monitor**: Watch for any post-deployment issues.
+When you find a bug, create a GitHub Issue with:
+- A clear title
+- Steps to reproduce the problem
+- What you expected vs. what happened
+- Screenshots if helpful
+
+---
+
+## Deployments
+
+1. Make sure all tasks are done and tested
+2. Follow the runbooks on the Operations page
+3. Verify everything works after deploying
+4. Watch for any issues

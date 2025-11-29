@@ -113,8 +113,8 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
                     <img src="<?php echo $base_path; ?>assets/images/wds-logo.png" alt="WDS Logo" class="header-logo" style="max-width: 90%; max-height: 90%; object-fit: contain;">
                 </a>
             </div>
-            <div class="col-sm-6">
-                <div style="padding: 15px 0; text-align: center;">
+            <div class="col-sm-6 header-right-column">
+                <div>
                     <h2 class="header-quote" style="color: #F5F5F5; margin-bottom: 5px;">
                         <?php echo isset($page_subtitle) ? $page_subtitle : 'Design. Debug. Deploy.'; ?>
                     </h2>
