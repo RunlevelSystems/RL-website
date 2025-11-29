@@ -785,3 +785,17 @@ body{
     justify-content: center;
     height: 100%;
 }
+
+/* Header right column - vertically centered content */
+.header-right-column {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    z-index: 3;
+}
+
+.header-right-column > div {
+    width: 100%;
+    text-align: center;
+}

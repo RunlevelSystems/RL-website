@@ -59,7 +59,10 @@ You should connect without entering a password!
 ### Linux
 
 - Keys are stored in `~/.ssh/`
-- Set proper permissions: `chmod 700 ~/.ssh`
+- Set proper permissions:
+  - `chmod 700 ~/.ssh` (folder)
+  - `chmod 600 ~/.ssh/id_ed25519` (private key - important!)
+  - `chmod 644 ~/.ssh/id_ed25519.pub` (public key)
 
 ---
 
