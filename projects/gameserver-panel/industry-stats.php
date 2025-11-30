@@ -76,15 +76,17 @@ $page_title_thin = 'Stats';
             <div class="chart-container">
                 <div class="chart-title">Global Games Revenue (Actual vs Forecast)</div>
                 <div class="chart-description">Newzoo Global Games Market Report 2024</div>
-                <canvas id="globalRevenueChart"></canvas>
+                
+                <p style="color:#4a4a4a; margin-top:-10px;">After a temporary pullback in 2022, spending returned to growth in 2023 and is projected to add roughly $18B more by 2025. The sustained climb reflects how live-service titles keep players engaged (and subscribed) for half a decade or longer.</p>
             </div>
-            <p style="color:#4a4a4a; margin-top:-10px;">After a temporary pullback in 2022, spending returned to growth in 2023 and is projected to add roughly $18B more by 2025. The sustained climb reflects how live-service titles keep players engaged (and subscribed) for half a decade or longer.</p>
+            
             <div class="chart-container">
                 <div class="chart-title">Platform Mix Driving Hosting Workloads (2024)</div>
                 <div class="chart-description">PC and console releases still account for over half of spending, while mobile titles introduce API-first provisioning requirements.</div>
-                <canvas id="platformChart"></canvas>
-            </div>
+                
             <p style="color:#4a4a4a; margin-top:-10px;">Mobile remains the largest revenue slice at 49%, yet PC and console together capture 51% and continue to demand custom mod support, dedicated slots, and low-latency infrastructure—exactly the workloads GSP automates.</p>
+
+            </div>
         </div>
 
         <div class="stats-section">
