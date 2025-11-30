@@ -82,9 +82,11 @@ $page_title_thin = 'Stats';
             
             <div class="chart-container">
                 <div class="chart-title">Platform Mix Driving Hosting Workloads (2024)</div>
-                <div class="chart-description">PC and console releases still account for over half of spending, while mobile titles introduce API-first provisioning requirements.</div>
-                
-            <p style="color:#4a4a4a; margin-top:-10px;">Mobile remains the largest revenue slice at 49%, yet PC and console together capture 51% and continue to demand custom mod support, dedicated slots, and low-latency infrastructure—exactly the workloads GSP automates.</p>
+                 <div class="chart-description">Newzoo Global Games Market Report 2024</div>
+                                
+            <p style="color:#4a4a4a; margin-top:-10px;">
+                PC and console releases still account for over half of spending, while mobile titles introduce API-first provisioning requirements.</br>
+                Mobile remains the largest revenue slice at 49%, yet PC and console together capture 51% and continue to demand custom mod support, dedicated slots, and low-latency infrastructure—exactly the workloads GSP automates.</p>
 
             </div>
         </div>
