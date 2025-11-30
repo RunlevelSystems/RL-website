@@ -30,8 +30,19 @@
         .trend-item { border:1px solid #E0D4C3; border-radius:8px; padding:20px; background:#fff; }
         .trend-item h3 { color:#8B4513; margin-top:0; }
         .sources { font-size:13px; color:#5c5c5c; margin-top:20px; }
-        .cta-box { background:#3a1d0a; color:#FCEFD7; border-radius:10px; padding:30px; text-align:center; border:1px solid #8B4513; }
+        .cta-box { background:#8B4513; color:#FCEFD7; border-radius:10px; padding:30px; text-align:center; border:1px solid #6B3410; }
         .cta-box p { color:#FCEFD7; }
+        .cta-box .btn-wds,
+        .cta-box .btn-secondary {
+            background:#FCEFD7 !important;
+            color:#8B4513 !important;
+            border:1px solid #8B4513 !important;
+        }
+        .cta-box .btn-wds:hover,
+        .cta-box .btn-secondary:hover {
+            background:#E7CDA5 !important;
+            color:#6B3410 !important;
+        }
         @media(max-width:768px){ .market-size-display{font-size:46px;} }
     </style>
 </head>
