@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gaming Industry 2025 - GameServer Panel Statistics</title>
-    
-    <!-- CSS -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
     <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
@@ -13,596 +11,193 @@
     <link href="../../assets/css/readability-improvements.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #D4CFC0;
-            color: #D2B48C;
-        }
-        
-        .stats-hero {
-            background: linear-gradient(135deg, #0f1419 0%, #1C1C1C 50%, #2a2a2a 100%);
-            padding: 80px 0;
-            text-align: center;
-            border-bottom: 2px solid #8B4513;
-        }
-        
-        .stats-container {
-            background-color: #D4CFC0;
-            padding: 60px 0;
-        }
-        
-        .stats-section {
-            background-color: #2a2a2a;
-            border: 1px solid #8B4513;
-            border-radius: 12px;
-            padding: 40px;
-            margin: 40px 0;
-            color: #F3E7D3;
-        }
-        
-        .stats-section h2,
-        .stats-section h3,
-        .stats-section p,
-        .stats-section li {
-            color: #F3E7D3;
-        }
-        
-        .market-size-display {
-            background: linear-gradient(135deg, #8B4513 0%, #D2B48C 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-size: 72px;
-            font-weight: bold;
-            margin: 30px 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        
-        .chart-container {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            margin: 30px 0;
-            background-color: #1a1a1a;
-            border: 1px solid #8B4513;
-            border-radius: 8px;
-            padding: 20px;
-        }
-        
-        .chart-title {
-            color: #8B4513;
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .chart-description {
-            color: #E4D7C4;
-            margin-bottom: 25px;
-            text-align: center;
-            font-size: 16px;
-        }
-        
-        .trends-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .trend-card {
-            background-color: #1a1a1a;
-            border: 1px solid #8B4513;
-            border-radius: 8px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .trend-card:hover {
-            background-color: #2a2a2a;
-            border-color: #D2B48C;
-            transform: translateY(-5px);
-        }
-        
-        .trend-icon {
-            font-size: 48px;
-            color: #8B4513;
-            margin-bottom: 20px;
-        }
-        
-        .trend-title {
-            color: #8B4513;
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        
-        .trend-description {
-            color: #E4D7C4;
-            font-size: 16px;
-            line-height: 1.6;
-        }
-        
-        .stats-highlight {
-            background: rgba(139, 69, 19, 0.35);
-            border-left: 4px solid #D2B48C;
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 0 8px 8px 0;
-            color: #FDEDD3;
-        }
-        
-        .demographic-split {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 30px;
-        }
-        
-        .back-link {
-            background: #8B4513;
-            color: #D2B48C;
-            padding: 15px 30px;
-            border-radius: 6px;
-            text-decoration: none;
-            display: inline-block;
-            margin: 20px 0;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-        
-        .back-link:hover {
-            background: #D2B48C;
-            color: #1C1C1C;
-            text-decoration: none;
-        }
-        
-        @media (max-width: 768px) {
-            .market-size-display {
-                font-size: 48px;
-            }
-            
-            .demographic-split {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .chart-container {
-                height: 300px;
-            }
-        }
+        body { font-family: 'Roboto', sans-serif; background-color: #E8E4D8; color: #1C1C1C; }
+        .stats-hero { background: linear-gradient(120deg,#0f0f0f 0%,#1d1d1d 65%,#2c2c2c 100%); color:#FCEFD7; padding:80px 0; text-align:center; border-bottom:2px solid #8B4513; }
+        .stats-hero h1 { letter-spacing:0.25em; text-transform:uppercase; margin-bottom:20px; }
+        .stats-hero p { max-width:720px; margin:0 auto; line-height:1.8; }
+        .market-size-display { font-size:64px; margin:25px 0 5px; font-weight:700; color:#F8D8AC; }
+        .stats-container { padding:60px 0; }
+        .stats-section { background:#fff; border:1px solid #D7C8B4; border-radius:10px; padding:30px; margin-bottom:40px; box-shadow:0 12px 30px rgba(0,0,0,0.05); }
+        .stats-section h2 { color:#8B4513; margin-bottom:20px; }
+        .stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
+        .stat-card { background:#F7F0E5; border:1px solid #DCC9B3; border-radius:8px; padding:20px; }
+        .stat-card span { display:block; font-size:28px; font-weight:700; color:#8B4513; margin-bottom:8px; }
+        .chart-container { background:#F7F0E5; border:1px solid #DCC9B3; border-radius:8px; padding:20px; margin-bottom:25px; }
+        .chart-title { text-align:center; color:#8B4513; font-size:20px; margin-bottom:5px; }
+        .chart-description { text-align:center; color:#4a4a4a; margin-bottom:15px; }
+        .trend-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; }
+        .trend-item { border:1px solid #E0D4C3; border-radius:8px; padding:20px; background:#fff; }
+        .trend-item h3 { color:#8B4513; margin-top:0; }
+        .sources { font-size:13px; color:#5c5c5c; margin-top:20px; }
+        .cta-box { background:#2c2c2c; color:#FCEFD7; border-radius:10px; padding:30px; text-align:center; border:1px solid #8B4513; }
+        @media(max-width:768px){ .market-size-display{font-size:46px;} }
     </style>
 </head>
 <body>
-    <?php 
-    // Page-specific variables
-    $current_page = 'projects';
-    $page_subtitle = 'Gaming Industry 2025';
-    $page_description = 'Market statistics and trends for game server hosting';
-    $page_title = 'Industry';
-    $page_title_thin = 'Stats';
-    ?>
+<?php 
+$current_page = 'projects';
+$page_subtitle = 'Gaming Industry 2025';
+$page_description = 'Market statistics and trends for game server hosting';
+$page_title = 'Industry';
+$page_title_thin = 'Stats';
+?>
+<?php include '../../includes/header.php'; ?>
+<?php include '../../includes/navigation.php'; ?>
 
-    <!-- Include Site Header -->
-    <?php include '../../includes/header.php'; ?>
-    
-    <!-- Include Navigation Header -->
-    <?php include '../../includes/navigation.php'; ?>
+<section class="stats-hero">
+    <div class="container">
+        <h1>Game Hosting Outlook 2025</h1>
+        <p>The global games market keeps expanding, and every revenue milestone depends on resilient, multi-location server infrastructure.</p>
+        <div class="market-size-display">$205B</div>
+        <p>Projected worldwide games revenue in 2025 (Newzoo Global Games Market Report 2024)</p>
+    </div>
+</section>
 
-    <section class="stats-hero">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    <h1 style="color: #8B4513; font-size: 48px; margin-bottom: 20px;">
-                        <i class="fas fa-chart-line" style="margin-right: 15px;"></i>
-                        The State of Gaming Industry 2025
-                    </h1>
-                    <p style="font-size: 20px; color: #4a4a4a; margin-bottom: 0;">
-                        Market insights driving the future of game server hosting
-                    </p>
+<section class="stats-container">
+    <div class="container">
+        <a href="index.php" class="back-link" style="display:inline-block;margin-bottom:20px;">
+            <i class="fas fa-arrow-left" style="margin-right:8px;"></i>Back to GameServer Panel
+        </a>
+
+        <div class="stats-section">
+            <h2>Market Snapshot</h2>
+            <p>The data points below combine the latest findings from Newzoo, Grand View Research, and Statista. They highlight why providers continue investing in automation, billing, and geographic expansion.</p>
+            <div class="stat-grid">
+                <div class="stat-card"><span>$187B → $205B</span>Global games revenue climbs from $187B in 2023 to $205B by 2025 (Newzoo) as live-service titles extend their lifespans.</div>
+                <div class="stat-card"><span>$3.5B</span>The dedicated game server hosting market surpassed $3.5B in 2023 with a projected 10.8% CAGR through 2030 (Grand View Research).</div>
+                <div class="stat-card"><span>$2.1B</span>Esports media, ticketing, and merch revenue will crack $2.1B in 2025 (Statista), driving bursts of low-latency hosting demand.</div>
+                <div class="stat-card"><span>$8.2B</span>Cloud gaming services are headed toward $8.2B by 2025 (Newzoo), blending hyperscale bursts with managed bare-metal fleets.</div>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <h2>Revenue & Platform Trends</h2>
+            <div class="chart-container">
+                <div class="chart-title">Global Games Revenue (Actual vs Forecast)</div>
+                <div class="chart-description">Newzoo Global Games Market Report 2024</div>
+                <canvas id="globalRevenueChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <div class="chart-title">Platform Mix Driving Hosting Workloads (2024)</div>
+                <div class="chart-description">PC and console releases still account for over half of spending, while mobile titles introduce API-first provisioning requirements.</div>
+                <canvas id="platformChart"></canvas>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <h2>Hosting Demand Drivers</h2>
+            <div class="trend-list">
+                <div class="trend-item">
+                    <h3>Live Service Longevity</h3>
+                    <p>Top earners now run 5+ years with seasonal battle passes, forcing providers to automate patching, billing, and scheduled upgrades.</p>
+                </div>
+                <div class="trend-item">
+                    <h3>Esports & Creator Economies</h3>
+                    <p>Tournament organizers and streamers rent private shards on demand, generating recurring revenue beyond publisher-operated fleets.</p>
+                </div>
+                <div class="trend-item">
+                    <h3>Regional Compliance</h3>
+                    <p>EU, LATAM, and APAC data residency rules require mirrored deployments. Control panels must keep configuration identical across regions.</p>
+                </div>
+                <div class="trend-item">
+                    <h3>Hybrid Infrastructure</h3>
+                    <p>Studios mix colocated bare metal for base loads with cloud bursts for beta launches. Operators need tooling that abstracts both worlds.</p>
                 </div>
             </div>
         </div>
-    </section>
 
-    <div class="stats-container">
-        <div class="container">
-            <a href="index.php" class="back-link">
-                <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
-                Back to GameServer Panel
-            </a>
+        <div class="stats-section">
+            <h2>Opportunities for Providers</h2>
+            <div class="trend-list">
+                <div class="trend-item">
+                    <h3>Automated Commerce</h3>
+                    <p>Expose self-service ordering, invoicing, coupons, and renewals. GSP ships PayPal billing and customer portals ready for production.</p>
+                </div>
+                <div class="trend-item">
+                    <h3>Multi-Region Footprints</h3>
+                    <p>Launch PoPs near Dallas, Frankfurt, Singapore, and São Paulo to keep esports and survival communities below 60 ms.</p>
+                </div>
+                <div class="trend-item">
+                    <h3>Mod & Add-on Marketplaces</h3>
+                    <p>Use GSP's XML schema to expose CLI params, mod packs, and one-click Workshop installs while keeping processes tracked.</p>
+                </div>
+                <div class="trend-item">
+                    <h3>Insight & Reporting</h3>
+                    <p>Customers expect dashboards showing slot usage, regional spend, and alerts. GSP agents feed resource stats straight into MySQL.</p>
+                </div>
+            </div>
+            <p class="sources">Sources: Newzoo Global Games Market Report 2024, Grand View Research "Game Server Hosting Market" 2024, Statista Esports Outlook 2024.</p>
+        </div>
 
-            <!-- Market Size Section -->
-            <section class="stats-section text-center">
-                <h2 style="color: #8B4513; font-size: 32px; margin-bottom: 20px;">Global Gaming Market Revenue</h2>
-                <p style="color: #4a4a4a; font-size: 18px; margin-bottom: 30px;">
-                    The gaming industry continues its explosive growth trajectory, establishing itself as the dominant entertainment sector worldwide.
-                </p>
-                <div class="market-size-display">$268 Billion</div>
-                <p style="color: #4a4a4a; max-width: 700px; margin: 0 auto;">
-                    Projected 2025 revenue driven by innovation in mobile gaming, cloud platforms, 
-                    and immersive technologies, creating unprecedented opportunities for hosting providers.
-                </p>
-            </section>
-
-            <!-- Platform Distribution -->
-            <section class="stats-section">
-                <div class="chart-title">Gaming Platform Market Share</div>
-                <div class="chart-description">
-                    Mobile gaming dominates the market, but console and PC platforms maintain dedicated, 
-                    high-spending user bases that drive game server hosting demand.
-                </div>
-                <div class="chart-container">
-                    <canvas id="platformChart"></canvas>
-                </div>
-            </section>
-
-            <!-- Genre Popularity -->
-            <section class="stats-section">
-                <div class="chart-title">Most Popular Game Genres</div>
-                <div class="chart-description">
-                    Understanding genre popularity helps hosting providers optimize their server 
-                    configurations and resource allocation for maximum customer satisfaction.
-                </div>
-                <div class="chart-container">
-                    <canvas id="genreChart"></canvas>
-                </div>
-            </section>
-
-            <!-- Demographics -->
-            <section class="stats-section">
-                <div class="chart-title">Gaming Demographics: Who's Playing?</div>
-                <div class="chart-description">
-                    The modern gaming audience is diverse, dispelling outdated stereotypes and 
-                    revealing opportunities across all demographic segments.
-                </div>
-                
-                <div class="demographic-split">
-                    <div>
-                        <h4 style="color: #8B4513; text-align: center; margin-bottom: 20px;">Gender Distribution</h4>
-                        <div class="chart-container" style="height: 300px;">
-                            <canvas id="genderChart"></canvas>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 style="color: #8B4513; text-align: center; margin-bottom: 20px;">Age Distribution</h4>
-                        <div class="chart-container" style="height: 300px;">
-                            <canvas id="ageChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Market Growth -->
-            <section class="stats-section">
-                <div class="chart-title">Gaming Market Growth Trajectory</div>
-                <div class="chart-description">
-                    Consistent year-over-year growth demonstrates the industry's resilience and 
-                    the expanding market opportunity for game server hosting services.
-                </div>
-                <div class="chart-container">
-                    <canvas id="growthChart"></canvas>
-                </div>
-                
-                <div class="stats-highlight">
-                    <h4 style="color: #8B4513; margin-bottom: 15px;">
-                        <i class="fas fa-server" style="margin-right: 10px;"></i>
-                        Hosting Market Implications
-                    </h4>
-                    <p style="color: #4a4a4a; margin-bottom: 0;">
-                        This growth translates directly to increased demand for reliable game server infrastructure. 
-                        GameServer Panel's commercial features position hosting providers to capitalize on this 
-                        expanding market with professional-grade management tools and integrated billing systems.
-                    </p>
-                </div>
-            </section>
-
-            <!-- Future Trends -->
-            <section class="stats-section">
-                <h2 style="color: #8B4513; font-size: 32px; text-align: center; margin-bottom: 40px;">
-                    Future Trends Shaping Game Hosting
-                </h2>
-                
-                <div class="trends-grid">
-                    <div class="trend-card">
-                        <div class="trend-icon">
-                            <i class="fas fa-cloud"></i>
-                        </div>
-                        <div class="trend-title">Cloud Gaming Revolution</div>
-                        <div class="trend-description">
-                            Services like Xbox Cloud Gaming and GeForce NOW are making high-end gaming 
-                            accessible on any device, driving demand for scalable server infrastructure 
-                            and edge computing solutions.
-                        </div>
-                    </div>
-                    
-                    <div class="trend-card">
-                        <div class="trend-icon">
-                            <i class="fas fa-rocket" aria-hidden="true"></i>
-                        </div>
-                        <div class="trend-title">AI Integration</div>
-                        <div class="trend-description">
-                            AI is revolutionizing game development with more realistic NPCs, dynamic worlds, 
-                            and personalized experiences. This increases computational requirements and 
-                            creates new hosting opportunities.
-                        </div>
-                    </div>
-                    
-                    <div class="trend-card">
-                        <div class="trend-icon">
-                            <i class="fas fa-vr-cardboard"></i>
-                        </div>
-                        <div class="trend-title">VR & AR Growth</div>
-                        <div class="trend-description">
-                            As VR/AR hardware becomes more affordable and compelling applications emerge, 
-                            the demand for low-latency, high-performance server infrastructure will 
-                            grow exponentially.
-                        </div>
-                    </div>
-                    
-                    <div class="trend-card">
-                        <div class="trend-icon">
-                            <i class="fas fa-globe-americas"></i>
-                        </div>
-                        <div class="trend-title">Global Expansion</div>
-                        <div class="trend-description">
-                            Gaming markets in developing regions are experiencing rapid growth, 
-                            requiring hosting providers to expand their geographic presence and 
-                            optimize for diverse network conditions.
-                        </div>
-                    </div>
-                    
-                    <div class="trend-card">
-                        <div class="trend-icon">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <div class="trend-title">Mobile Dominance</div>
-                        <div class="trend-description">
-                            Mobile gaming's 55% market share continues to grow, driving demand for 
-                            mobile-optimized server configurations and cross-platform compatibility 
-                            in hosting solutions.
-                        </div>
-                    </div>
-                    
-                    <div class="trend-card">
-                        <div class="trend-icon">
-                            <i class="fas fa-coins"></i>
-                        </div>
-                        <div class="trend-title">Monetization Evolution</div>
-                        <div class="trend-description">
-                            Free-to-play models, battle passes, and live services require robust, 
-                            scalable server infrastructure with integrated billing and analytics 
-                            capabilities for successful operation.
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Call to Action -->
-            <section class="stats-section text-center">
-                <h2 style="color: #8B4513; margin-bottom: 30px;">Ready to Capitalize on Gaming Growth?</h2>
-                <p style="color: #4a4a4a; font-size: 18px; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
-                    GameServer Panel provides the tools you need to build a successful game hosting business 
-                    in this expanding market. Professional features, commercial billing, and enterprise support included.
-                </p>
-                <a href="https://github.com/GameServerPanel/GSP/tree/main/documentation" class="back-link" style="margin-right: 20px;" target="_blank" rel="noopener">
-                    <i class="fas fa-book" style="margin-right: 8px;"></i>
-                    View Panel Docs
-                </a>
-                <a href="../../contact.php" class="back-link">
-                    <i class="fas fa-envelope" style="margin-right: 8px;"></i>
-                    Contact Us
-                </a>
-            </section>
+        <div class="cta-box">
+            <h3 style="margin-top:0;">Ready to capture this growth?</h3>
+            <p>GameServer Panel provides commercial billing, automation, and Linux/Windows agents so you can deploy new regions faster.</p>
+            <a href="https://github.com/GameServerPanel/GSP/tree/Panel-stable/documentation" class="btn-wds" target="_blank" rel="noopener" style="margin:10px;">View Panel Docs</a>
+            <a href="../../contact.php" class="btn btn-secondary" style="margin:10px;">Contact Us</a>
         </div>
     </div>
+</section>
 
-    <!-- Quick Navigation Section -->
-    <section style="background-color: #2a2a2a; padding: 40px 0; border-top: 1px solid #444;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h3 style="color: #8B4513; margin-bottom: 25px;">Explore GameServer Panel</h3>
-                    <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                        <a href="index.php" class="btn-wds">
-                            <i class="fas fa-home" style="margin-right: 8px;"></i>
-                            Project Overview
-                        </a>
-                        <a href="https://github.com/GameServerPanel/GSP/tree/main/documentation" class="btn-wds" target="_blank" rel="noopener">
-                            <i class="fas fa-book" style="margin-right: 8px;"></i>
-                            Panel Docs
-                        </a>
-                        <a href="../../contact.php" class="btn-wds">
-                            <i class="fas fa-envelope" style="margin-right: 8px;"></i>
-                            Contact Us
-                        </a>
-                        <a href="../../joinus.php" class="btn-wds">
-                            <i class="fas fa-users" style="margin-right: 8px;"></i>
-                            Join Team
-                        </a>
-                    </div>
+<section style="background-color:#2a2a2a;padding:40px 0;border-top:1px solid #444;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3 style="color:#8B4513;margin-bottom:25px;">Explore GameServer Panel</h3>
+                <div style="display:flex;justify-content:center;gap:15px;flex-wrap:wrap;">
+                    <a href="index.php" class="btn-wds"><i class="fas fa-home" style="margin-right:8px;"></i>Project Overview</a>
+                    <a href="https://github.com/GameServerPanel/GSP/tree/Panel-stable/documentation" class="btn-wds" target="_blank" rel="noopener"><i class="fas fa-book" style="margin-right:8px;"></i>Panel Docs</a>
+                    <a href="../../contact.php" class="btn-wds"><i class="fas fa-envelope" style="margin-right:8px;"></i>Contact Us</a>
+                    <a href="../../joinus.php" class="btn-wds"><i class="fas fa-users" style="margin-right:8px;"></i>Join Team</a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Include Footer -->
-    <?php include '../../includes/footer.php'; ?>
+<?php include '../../includes/footer.php'; ?>
 
-    <script>
-        const wdsTheme = {
-            primary: '#8B4513',
-            secondary: '#D2B48C',
-            accent: '#8B7355',
-            background: '#1C1C1C',
-            surface: '#2a2a2a',
-            text: '#D2B48C'
-        };
+<script>
+const revenueCtx = document.getElementById('globalRevenueChart').getContext('2d');
+new Chart(revenueCtx, {
+    type: 'line',
+    data: {
+        labels: ['2019','2020','2021','2022','2023','2024*','2025*'],
+        datasets: [{
+            label: 'Revenue (USD Billions)',
+            data: [152, 177, 192, 184, 187, 196, 205],
+            borderColor: '#8B4513',
+            backgroundColor: 'rgba(139,69,19,0.2)',
+            tension: 0.4,
+            fill: true,
+            pointRadius: 4,
+            pointBackgroundColor: '#8B4513'
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+            y: { beginAtZero: false, ticks: { color: '#4a4a4a' } },
+            x: { ticks: { color: '#4a4a4a' } }
+        }
+    }
+});
 
-        Chart.defaults.color = wdsTheme.text;
-        Chart.defaults.borderColor = wdsTheme.accent;
-        Chart.defaults.backgroundColor = wdsTheme.surface;
-
-        const chartOptions = {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    labels: {
-                        color: wdsTheme.text,
-                        font: {
-                            size: 14
-                        }
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    ticks: { color: wdsTheme.text },
-                    grid: { color: wdsTheme.accent + '40' }
-                },
-                y: {
-                    ticks: { color: wdsTheme.text },
-                    grid: { color: wdsTheme.accent + '40' }
-                }
-            }
-        };
-
-        document.addEventListener('DOMContentLoaded', () => {
-            // Platform Share Chart
-            new Chart(document.getElementById('platformChart'), {
-                type: 'doughnut',
-                data: {
-                    labels: ['Mobile Gaming', 'Console Gaming', 'PC Gaming'],
-                    datasets: [{
-                        data: [55, 28, 17],
-                        backgroundColor: [wdsTheme.primary, wdsTheme.secondary, wdsTheme.accent],
-                        borderColor: wdsTheme.background,
-                        borderWidth: 3
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: { color: wdsTheme.text, padding: 20 }
-                        }
-                    }
-                }
-            });
-
-            // Genre Popularity Chart
-            new Chart(document.getElementById('genreChart'), {
-                type: 'bar',
-                data: {
-                    labels: ['Action', 'RPG', 'Strategy', 'Adventure', 'Shooter', 'Puzzle'],
-                    datasets: [{
-                        label: 'Popularity (%)',
-                        data: [28, 22, 15, 13, 12, 10],
-                        backgroundColor: wdsTheme.primary,
-                        borderColor: wdsTheme.secondary,
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    ...chartOptions,
-                    indexAxis: 'y',
-                    plugins: {
-                        legend: { display: false }
-                    }
-                }
-            });
-
-            // Gender Distribution Chart
-            new Chart(document.getElementById('genderChart'), {
-                type: 'pie',
-                data: {
-                    labels: ['Male', 'Female'],
-                    datasets: [{
-                        data: [52, 48],
-                        backgroundColor: [wdsTheme.primary, wdsTheme.secondary],
-                        borderColor: wdsTheme.background,
-                        borderWidth: 3
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: { color: wdsTheme.text }
-                        }
-                    }
-                }
-            });
-
-            // Age Distribution Chart
-            new Chart(document.getElementById('ageChart'), {
-                type: 'bar',
-                data: {
-                    labels: ['Under 18', '18-24', '25-34', '35-44', '45+'],
-                    datasets: [{
-                        label: 'Percentage',
-                        data: [18, 25, 30, 17, 10],
-                        backgroundColor: wdsTheme.secondary,
-                        borderColor: wdsTheme.primary,
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    ...chartOptions,
-                    plugins: {
-                        legend: { display: false }
-                    }
-                }
-            });
-
-            // Market Growth Chart
-            new Chart(document.getElementById('growthChart'), {
-                type: 'line',
-                data: {
-                    labels: ['2021', '2022', '2023', '2024', '2025 (Proj.)'],
-                    datasets: [{
-                        label: 'Global Revenue (Billions USD)',
-                        data: [180, 196, 221, 245, 268],
-                        fill: true,
-                        backgroundColor: wdsTheme.primary + '40',
-                        borderColor: wdsTheme.primary,
-                        tension: 0.4,
-                        pointBackgroundColor: wdsTheme.secondary,
-                        pointBorderColor: wdsTheme.primary,
-                        pointRadius: 6
-                    }]
-                },
-                options: {
-                    ...chartOptions,
-                    plugins: {
-                        legend: {
-                            labels: { color: wdsTheme.text }
-                        }
-                    },
-                    scales: {
-                        ...chartOptions.scales,
-                        y: {
-                            ...chartOptions.scales.y,
-                            ticks: {
-                                color: wdsTheme.text,
-                                callback: function(value) {
-                                    return '$' + value + 'B';
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        });
-    </script>
+const platformCtx = document.getElementById('platformChart').getContext('2d');
+new Chart(platformCtx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Mobile','Console','PC'],
+        datasets: [{
+            data: [49, 31, 20],
+            backgroundColor: ['#D2B48C','#8B4513','#4a4a4a'],
+            borderColor: '#FFFFFF',
+            borderWidth: 2
+        }]
+    },
+    options: { plugins: { legend: { position: 'bottom' } } }
+});
+</script>
 </body>
 </html>
