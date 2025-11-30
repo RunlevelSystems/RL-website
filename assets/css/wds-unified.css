@@ -107,33 +107,72 @@ li {
 }
 
 /* ============================================
+   HEADER / HERO TEXT
+   ============================================ */
+
+.header-right-column .header-quote,
+.intro .header-quote {
+    color: #8B4513 !important;
+    letter-spacing: 0.25em !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+}
+
+.header-title {
+    color: #8B4513 !important;
+    text-transform: uppercase !important;
+}
+
+/* ============================================
    NAVIGATION LAYOUT
    ============================================ */
 
 @media (min-width: 992px) {
-    #site-nav-bar {
-        display: flex !important;
-        justify-content: flex-end !important;
-        gap: 30px !important;
-        width: 100% !important;
-    }
+	.navbar.navbar-default,
+	#site-nav-bar {
+		background: transparent !important;
+		border: none !important;
+	}
 
-    #site-nav-bar .navbar-nav {
-        float: none !important;
-        display: flex !important;
-        flex-wrap: nowrap !important;
-        align-items: center !important;
-        gap: 20px !important;
-        margin: 0 !important;
-    }
+	#site-nav-bar {
+		display: flex !important;
+		align-items: center !important;
+		justify-content: flex-end !important;
+		gap: 35px !important;
+		width: 100% !important;
+	}
 
-    #site-nav-bar .navbar-nav > li {
-        float: none !important;
-    }
+	#site-nav-bar .navbar-nav {
+		float: none !important;
+		display: flex !important;
+		flex-wrap: nowrap !important;
+		align-items: center !important;
+		gap: 22px !important;
+		margin: 0 !important;
+	}
 
-    #site-nav-bar .navbar-nav.navbar-right {
-        margin-left: auto !important;
-    }
+	#site-nav-bar .navbar-nav > li {
+		float: none !important;
+	}
+
+	#site-nav-bar .navbar-nav.navbar-right {
+		margin-left: auto !important;
+	}
+
+	#site-nav-bar .navbar-nav > li > a {
+		color: #D2B48C !important;
+		font-weight: 600 !important;
+		letter-spacing: 0.2em !important;
+		text-transform: uppercase !important;
+		font-size: 13px !important;
+		padding: 20px 0 !important;
+	}
+
+	#site-nav-bar .navbar-nav > li.active > a,
+	#site-nav-bar .navbar-nav > li > a:hover {
+		color: #FFFFFF !important;
+		background: transparent !important;
+	}
 }
 
 /* ============================================

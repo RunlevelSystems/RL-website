@@ -65,20 +65,6 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
                         <li <?php echo ($current_page == 'joinus') ? 'class="active"' : ''; ?>><a href="<?php echo $base_path; ?>joinus.php">Join Us</a></li>
                         <li <?php echo ($current_page == 'contact') ? 'class="active"' : ''; ?>><a href="<?php echo $base_path; ?>contact.php">Contact</a></li>
                         
-                        <?php if ($is_logged_in): ?>
-                            <li class="dropdown <?php echo $is_staff_page ? 'active' : ''; ?>">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #8B4513;">
-                                    <i class="ion-locked"></i> Staff Area <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu" style="background: #1a1a1a; border: 1px solid #8B4513;">
-                                    <li><a href="<?php echo $base_path; ?>staff-info.php" style="color: #8B7355;"><i class="ion-home"></i> Staff Home</a></li>
-                                    <li><a href="<?php echo $base_path; ?>staff/operations.php" style="color: #8B7355;"><i class="ion-android-desktop"></i> Operations</a></li>
-                                    <li><a href="<?php echo $base_path; ?>staff/tools.php" style="color: #8B7355;"><i class="ion-wrench"></i> Toolbox</a></li>
-                                    <li><a href="<?php echo $base_path; ?>staff/server-status.php" style="color: #8B7355;"><i class="ion-ios-pulse"></i> Server Status</a></li>
-                                    <li><a href="<?php echo $base_path; ?>staff/wiki/index.php" style="color: #8B7355;"><i class="ion-document"></i> Wiki</a></li>
-                                </ul>
-                            </li>
-                        <?php endif; ?>
                     </ul>
                     
                     <!-- Login/Logout Section -->
