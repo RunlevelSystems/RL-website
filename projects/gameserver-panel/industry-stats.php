@@ -42,8 +42,7 @@ $page_description = 'Market statistics and trends for game server hosting';
 $page_title = 'Industry';
 $page_title_thin = 'Stats';
 ?>
-<?php include '../../includes/header.php'; ?>
-<?php include '../../includes/navigation.php'; ?>
+
 
 <section class="stats-hero">
     <div class="container">
