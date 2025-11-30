@@ -8,7 +8,7 @@ requireAdminLogin();
 
 $toolCatalog = staff_tool_catalog();
 $current_page = 'staff-tools';
-$header_class = 'login-header inner-header';
+$header_class = 'projects-header inner-header';
 $page_subtitle = 'Toolbox + Downloads';
 $page_description = 'Download scripts and deploy to servers via wget or manual copy.';
 ?>

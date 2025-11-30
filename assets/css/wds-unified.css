@@ -107,6 +107,36 @@ li {
 }
 
 /* ============================================
+   NAVIGATION LAYOUT
+   ============================================ */
+
+@media (min-width: 992px) {
+    #site-nav-bar {
+        display: flex !important;
+        justify-content: flex-end !important;
+        gap: 30px !important;
+        width: 100% !important;
+    }
+
+    #site-nav-bar .navbar-nav {
+        float: none !important;
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        gap: 20px !important;
+        margin: 0 !important;
+    }
+
+    #site-nav-bar .navbar-nav > li {
+        float: none !important;
+    }
+
+    #site-nav-bar .navbar-nav.navbar-right {
+        margin-left: auto !important;
+    }
+}
+
+/* ============================================
    BUTTONS - ALL DARK BACKGROUNDS
    ============================================ */
 

@@ -16,7 +16,7 @@ if (!file_exists($file)) {
 }
 $content = file_get_contents($file);
 $current_page = 'staff-wiki';
-$header_class = 'login-header inner-header';
+$header_class = 'projects-header inner-header';
 $page_subtitle = 'Wiki Viewer';
 ?>
 <!DOCTYPE html>

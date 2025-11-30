@@ -39,6 +39,14 @@
             border-radius: 12px;
             padding: 40px;
             margin: 40px 0;
+            color: #F3E7D3;
+        }
+        
+        .stats-section h2,
+        .stats-section h3,
+        .stats-section p,
+        .stats-section li {
+            color: #F3E7D3;
         }
         
         .market-size-display {
@@ -72,7 +80,7 @@
         }
         
         .chart-description {
-            color: #4a4a4a;
+            color: #E4D7C4;
             margin-bottom: 25px;
             text-align: center;
             font-size: 16px;
@@ -114,17 +122,18 @@
         }
         
         .trend-description {
-            color: #4a4a4a;
+            color: #E4D7C4;
             font-size: 16px;
             line-height: 1.6;
         }
         
         .stats-highlight {
-            background: rgba(139, 69, 19, 0.2);
-            border-left: 4px solid #8B4513;
+            background: rgba(139, 69, 19, 0.35);
+            border-left: 4px solid #D2B48C;
             padding: 20px;
             margin: 30px 0;
             border-radius: 0 8px 8px 0;
+            color: #FDEDD3;
         }
         
         .demographic-split {

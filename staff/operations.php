@@ -6,7 +6,7 @@ require_once '../includes/db-config.php';
 requireAdminLogin();
 
 $current_page = 'staff-ops';
-$header_class = 'login-header inner-header';
+$header_class = 'projects-header inner-header';
 $page_subtitle = 'Infra Runbooks';
 $page_description = 'Ubuntu 24.04 baselines, PHP 7.4 requirement, MySQL 5.7 Docker, and agent installs.';
 ?>

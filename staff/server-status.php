@@ -12,7 +12,7 @@ require_once '../includes/db-config.php';
 requireAdminLogin();
 
 $current_page = 'staff-status';
-$header_class = 'login-header inner-header';
+$header_class = 'projects-header inner-header';
 $page_subtitle = 'Server Fleet Status';
 $page_description = 'Real-time monitoring of all servers in the fleet with detailed metrics.';
 

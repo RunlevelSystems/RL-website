@@ -12,7 +12,7 @@ $files = array_values(array_filter(scandir($docsDir), function ($file) {
     return substr($file, -3) === '.md';
 }));
 $current_page = 'staff-wiki';
-$header_class = 'login-header inner-header';
+$header_class = 'projects-header inner-header';
 $page_subtitle = 'Procedures & Process';
 ?>
 <!DOCTYPE html>
