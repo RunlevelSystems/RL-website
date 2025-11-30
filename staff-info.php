@@ -111,6 +111,42 @@ $page_description = 'Centralize every password, host, tool and operating procedu
                     <a href="content/docs/gsp/install-ubuntu-panel.md" target="_blank" class="link-tile" style="text-decoration:none;"><span>Migration Tracker</span><i class="ion-document" style="color:#FFD699;"></i></a>
                 </div>
                 <div class="staff-card">
+                    <h3><i class="ion-email"></i> Shared Admin Mailbox</h3>
+                    <p style="color:#DDD;">Use <strong>team@worlddomination.dev</strong> whenever a vendor, registrar, or platform needs a single administrative contact. Everyone on the ops roster can authenticate to clear login challenges and receive 2FA resets.</p>
+                    <div class="table-responsive">
+                        <table class="table staff-credentials-table">
+                            <tbody>
+                                <tr>
+                                    <th scope="row" style="width:35%;">Username</th>
+                                    <td><code>team@worlddomination.dev</code></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Password</th>
+                                    <td><code>Inc0rrect!</code> &mdash; rotate it in <code>content/staff-passwords.txt</code> and update cPanel when changed.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Incoming IMAP</th>
+                                    <td><code>mail.worlddomination.dev</code> &middot; port <code>993</code> &middot; SSL/TLS required.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Incoming POP3</th>
+                                    <td><code>mail.worlddomination.dev</code> &middot; port <code>995</code> &middot; SSL/TLS required (IMAP preferred).</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Outgoing SMTP</th>
+                                    <td><code>mail.worlddomination.dev</code> &middot; port <code>465</code> &middot; SSL/TLS required with authentication.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <ul style="color:#DDD; padding-left:18px; margin-bottom:12px;">
+                        <li>Keep it on IMAP so read/deleted flags stay synced across devices.</li>
+                        <li>Label vendor threads before archiving so the next person knows the context.</li>
+                        <li>If you add a new client, use manual setup with the ports above and ensure SMTP auth is ON.</li>
+                    </ul>
+                    <p style="font-size:12px;color:#fcd34d;">Need screenshots or auto-config files? Download the sanitized guide: <a href="staff/team-mail-client-setup.pdf" target="_blank" style="color:#fcd34d;text-decoration:underline;">team-mail-client-setup.pdf</a>.</p>
+                </div>
+                <div class="staff-card">
                     <h3><i class="ion-shuffle"></i> Password Rotation</h3>
                     <p style="color:#DDD;">Manual process only—no automation runs without us.</p>
                     <ol style="color:#CCC; padding-left:20px;">

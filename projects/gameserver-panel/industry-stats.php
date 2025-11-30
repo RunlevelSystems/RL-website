@@ -380,9 +380,9 @@
                     GameServer Panel provides the tools you need to build a successful game hosting business 
                     in this expanding market. Professional features, commercial billing, and enterprise support included.
                 </p>
-                <a href="admin-guide.php" class="back-link" style="margin-right: 20px;">
+                <a href="https://github.com/GameServerPanel/GSP/tree/main/documentation" class="back-link" style="margin-right: 20px;" target="_blank" rel="noopener">
                     <i class="fas fa-book" style="margin-right: 8px;"></i>
-                    View Admin Guide
+                    View Panel Docs
                 </a>
                 <a href="../../contact.php" class="back-link">
                     <i class="fas fa-envelope" style="margin-right: 8px;"></i>
@@ -403,9 +403,9 @@
                             <i class="fas fa-home" style="margin-right: 8px;"></i>
                             Project Overview
                         </a>
-                        <a href="admin-guide.php" class="btn-wds">
+                        <a href="https://github.com/GameServerPanel/GSP/tree/main/documentation" class="btn-wds" target="_blank" rel="noopener">
                             <i class="fas fa-book" style="margin-right: 8px;"></i>
-                            Admin Guide
+                            Panel Docs
                         </a>
                         <a href="../../contact.php" class="btn-wds">
                             <i class="fas fa-envelope" style="margin-right: 8px;"></i>

@@ -107,11 +107,6 @@ function searchWebsiteContent($query) {
             'description' => 'Enhanced fork of Open Game Panel (OGP) with commercial billing, multi-location management, and enterprise features for game hosting providers.',
             'keywords' => 'gameserver, panel, ogp, open, game, hosting, billing, commercial, enterprise, server, management'
         ],
-        'projects/gameserver-panel-admin-guide.php' => [
-            'title' => 'GameServer Panel Admin Guide - Interactive Documentation',
-            'description' => 'Comprehensive interactive administration guide for GameServer Panel including installation, configuration, XML game definitions, and troubleshooting.',
-            'keywords' => 'admin, guide, documentation, installation, configuration, xml, games, troubleshooting, panel, management'
-        ],
         'projects/gameserver-panel-industry-stats.php' => [
             'title' => 'Gaming Industry Statistics 2025 - Market Analysis',
             'description' => '2025 gaming industry market analysis with interactive charts showing $268B market size, platform distribution, demographics, and hosting opportunities.',

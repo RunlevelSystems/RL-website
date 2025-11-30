@@ -137,11 +137,13 @@ if (file_exists($projectDir . '/projecticon.png')) {
     </ol>
 
     <div style="margin-top:30px;padding:20px;background:#E8E4D8;border-left:4px solid #8B4513;border-radius:4px;">
-        <p style="color:#4a4a4a;margin:0;"><i class="fas fa-info-circle" style="color:#8B4513;margin-right:10px;"></i><strong>Documentation:</strong> Comprehensive setup guides and documentation are included in each repository. Join our Discord community for support and updates.</p>
-        <div style="margin-top:15px;">
-            <button class="btn btn-wds" onclick="loadProjectFile('admin-guide.php')"><i class="fas fa-book" style="margin-right:8px;"></i>Admin Guide</button>
-            <button class="btn btn-wds" onclick="loadProjectFile('industry-stats.php')"><i class="fas fa-chart-line" style="margin-right:8px;"></i>Industry Stats</button>
-            <button class="btn btn-wds" onclick="loadProjectFile('wiki.php?doc=overview')"><i class="fas fa-book-open" style="margin-right:8px;"></i>GSP Wiki</button>
+        <p style="color:#4a4a4a;margin:0;"><i class="fas fa-info-circle" style="color:#8B4513;margin-right:10px;"></i><strong>Documentation:</strong> Every repository now ships a <code>documentation/</code> folder with Markdown guides you can read offline or mirror into a wiki. Use the quick links below.</p>
+        <div style="margin-top:15px;display:flex;flex-wrap:wrap;gap:10px;">
+            <a href="https://github.com/GameServerPanel/GSP/tree/main/documentation" target="_blank" class="btn btn-wds"><i class="fas fa-server" style="margin-right:8px;"></i>Panel Docs</a>
+            <a href="https://github.com/GameServerPanel/GSP_Agent_Linux/tree/main/documentation" target="_blank" class="btn btn-wds"><i class="fab fa-linux" style="margin-right:8px;"></i>Linux Agent Docs</a>
+            <a href="https://github.com/GameServerPanel/GSP-Agent-Windows/tree/main/documentation" target="_blank" class="btn btn-wds"><i class="fab fa-windows" style="margin-right:8px;"></i>Windows Agent Docs</a>
+            <a href="#" onclick="loadProjectFile('industry-stats.php'); return false;" class="btn btn-wds"><i class="fas fa-chart-line" style="margin-right:8px;"></i>Industry Stats</a>
+            <a href="#" onclick="loadProjectFile('wiki.php?doc=overview'); return false;" class="btn btn-wds"><i class="fas fa-book-open" style="margin-right:8px;"></i>Project Wiki</a>
         </div>
     </div>
 </div>
@@ -152,9 +154,9 @@ if (file_exists($projectDir . '/projecticon.png')) {
     <div class="row">
         <div class="col-sm-6" style="margin-bottom:20px;">
             <div style="background:#E8E4D8;border:1px solid #C4C0B4;border-radius:6px;padding:25px;height:100%;">
-                <h4 style="color:#8B4513;margin-bottom:15px;"><i class="fas fa-book" style="margin-right:10px;"></i>Administrator Guide</h4>
-                <p style="color:#4a4a4a;margin-bottom:20px;">Comprehensive administration documentation covering setup, configuration, and day-to-day operations.</p>
-                <a href="#" onclick="loadProjectFile('admin-guide.php'); return false;" class="btn btn-secondary">View Admin Guide</a>
+                <h4 style="color:#8B4513;margin-bottom:15px;"><i class="fas fa-code-branch" style="margin-right:10px;"></i>Repositories &amp; Docs</h4>
+                <p style="color:#4a4a4a;margin-bottom:20px;">Browse the source code plus the new <code>documentation/</code> folders for offline Markdown guides covering deployment, XML authoring, and runbooks.</p>
+                <a href="https://github.com/GameServerPanel" target="_blank" class="btn btn-secondary"><i class="fab fa-github" style="margin-right:8px;"></i>GitHub Org</a>
             </div>
         </div>
         <div class="col-sm-6" style="margin-bottom:20px;">
