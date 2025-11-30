@@ -13,7 +13,7 @@ GSP (GameServer Panel) is WDS's production control panel and storefront that pow
 | | |
 | --- | --- |
 | **Primary customer** | [Gameservers World](https://gameservers.world) |
-| **Code repos** | `GSP/`, `GSP_Agent_Linux/`, `GSP-Agent-Windows/`, `WDS-Team/` |
+| **Code repos** | `GSP/`, `GSP-Agent-Linux/`, `GSP-Agent-Windows/`, `WDS-Team/` |
 | **Security defaults** | SSH port 12322, MySQL `localuser@localhost` / `remoteuser@&lt;reporter-ip&gt;`, shared secret in `/home/gameserver/tools/.password` |
 | **Install targets** | Ubuntu 24.04+ (panel + agents), Windows Server 2019 via Cygwin (agents) |
 

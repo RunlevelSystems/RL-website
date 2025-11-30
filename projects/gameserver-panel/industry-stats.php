@@ -155,7 +155,7 @@ $page_title_thin = 'Stats';
     </div>
 </section>
 
-<?php include '../../includes/footer.php'; ?>
+
 
 <script>
 const revenueCtx = document.getElementById('globalRevenueChart').getContext('2d');

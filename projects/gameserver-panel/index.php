@@ -70,7 +70,7 @@ if (file_exists($projectDir . '/projecticon.png')) {
                 <i class="fab fa-linux" style="color:#8B4513;font-size:48px;margin-bottom:15px;"></i>
                 <h4 style="color:#8B4513;margin-bottom:15px;">Linux Agent</h4>
                 <p style="color:#4a4a4a;font-size:14px;margin-bottom:20px;">Agent software for Linux game server hosts</p>
-                <a href="https://github.com/GameServerPanel/GSP_Agent_Linux" target="_blank" class="btn btn-wds"><i class="fab fa-github" style="margin-right:8px;"></i>View Repository</a>
+                <a href="https://github.com/GameServerPanel/GSP-Agent-Linux" target="_blank" class="btn btn-wds"><i class="fab fa-github" style="margin-right:8px;"></i>View Repository</a>
             </div>
         </div>
 
@@ -140,10 +140,10 @@ if (file_exists($projectDir . '/projecticon.png')) {
         <p style="color:#4a4a4a;margin:0;"><i class="fas fa-info-circle" style="color:#8B4513;margin-right:10px;"></i><strong>Documentation:</strong> Every repository now ships a <code>documentation/</code> folder with Markdown guides you can read offline or mirror into a wiki. Use the quick links below.</p>
         <div style="margin-top:15px;display:flex;flex-wrap:wrap;gap:10px;">
             <a href="https://github.com/GameServerPanel/GSP/tree/Panel-stable/documentation" target="_blank" class="btn btn-wds"><i class="fas fa-server" style="margin-right:8px;"></i>Panel Docs</a>
-            <a href="https://github.com/GameServerPanel/GSP_Agent_Linux/tree/Panel-stable/documentation" target="_blank" class="btn btn-wds"><i class="fab fa-linux" style="margin-right:8px;"></i>Linux Agent Docs</a>
+            <a href="https://github.com/GameServerPanel/GSP-Agent-Linux/tree/Panel-stable/documentation" target="_blank" class="btn btn-wds"><i class="fab fa-linux" style="margin-right:8px;"></i>Linux Agent Docs</a>
             <a href="https://github.com/GameServerPanel/GSP-Agent-Windows/tree/Panel-stable/documentation" target="_blank" class="btn btn-wds"><i class="fab fa-windows" style="margin-right:8px;"></i>Windows Agent Docs</a>
             <a href="#" onclick="loadProjectFile('industry-stats.php'); return false;" class="btn btn-wds"><i class="fas fa-chart-line" style="margin-right:8px;"></i>Industry Stats</a>
-            <a href="#" onclick="loadProjectFile('wiki.php?doc=overview'); return false;" class="btn btn-wds"><i class="fas fa-book-open" style="margin-right:8px;"></i>Project Wiki</a>
+           <a href="#" onclick="loadProjectFile('wiki.php?doc=overview'); return false;" class="btn btn-wds"><i class="fas fa-book-open" style="margin-right:8px;"></i>Project Wiki</a>
         </div>
     </div>
 </div>

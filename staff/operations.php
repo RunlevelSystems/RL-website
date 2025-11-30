@@ -79,13 +79,13 @@ cd /opt/gsp/bootstrap/ubuntu-24.04
                     <h3><i class="ion-android-desktop"></i> Linux Agent Install (Ubuntu 24.04)</h3>
                     <ol style="color:#E5E7EB;">
                         <li><code>apt update && apt install -y perl libssl-dev libxml2-utils screen rsync</code></li>
-                        <li>Clone <code>https://github.com/GameServerPanel/GSP_Agent_Linux.git</code> to <code>/opt/gsp-agent</code>.</li>
+                        <li>Clone <code>https://github.com/GameServerPanel/GSP-Agent-Linux.git</code> to <code>/opt/gsp-agent</code>.</li>
                         <li>Run <code>cd /opt/gsp-agent && ./install.sh</code> to build dependencies.</li>
                         <li>Edit <code>/usr/local/etc/ogp_agent.conf</code>: set <code>remote_host</code>, <code>remote_port</code>, and <code>encryption_key</code> (match panel entry).</li>
                         <li>Install systemd service:<br><code>cp systemd/ogp_agent.service /etc/systemd/system/ && systemctl enable --now ogp_agent</code></li>
                         <li>Add host to the panel (Administration → Servers) and confirm heartbeat.</li>
                     </ol>
-                    <p>Ubuntu 24.04 ships Perl 5.38+; the agent scripts are compatible (tested against the latest <code>main</code> branch of <code>GSP_Agent_Linux</code>).</p>
+                    <p>Ubuntu 24.04 ships Perl 5.38+; the agent scripts are compatible (tested against the latest <code>main</code> branch of <code>GSP-Agent-Linux</code>).</p>
                 </div>
             </div>
             <div class="col-sm-12">
