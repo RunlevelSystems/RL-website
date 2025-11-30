@@ -30,7 +30,8 @@
         .trend-item { border:1px solid #E0D4C3; border-radius:8px; padding:20px; background:#fff; }
         .trend-item h3 { color:#8B4513; margin-top:0; }
         .sources { font-size:13px; color:#5c5c5c; margin-top:20px; }
-        .cta-box { background:#2c2c2c; color:#FCEFD7; border-radius:10px; padding:30px; text-align:center; border:1px solid #8B4513; }
+        .cta-box { background:#3a1d0a; color:#FCEFD7; border-radius:10px; padding:30px; text-align:center; border:1px solid #8B4513; }
+        .cta-box p { color:#FCEFD7; }
         @media(max-width:768px){ .market-size-display{font-size:46px;} }
     </style>
 </head>
@@ -77,11 +78,13 @@ $page_title_thin = 'Stats';
                 <div class="chart-description">Newzoo Global Games Market Report 2024</div>
                 <canvas id="globalRevenueChart"></canvas>
             </div>
+            <p style="color:#4a4a4a; margin-top:-10px;">After a temporary pullback in 2022, spending returned to growth in 2023 and is projected to add roughly $18B more by 2025. The sustained climb reflects how live-service titles keep players engaged (and subscribed) for half a decade or longer.</p>
             <div class="chart-container">
                 <div class="chart-title">Platform Mix Driving Hosting Workloads (2024)</div>
                 <div class="chart-description">PC and console releases still account for over half of spending, while mobile titles introduce API-first provisioning requirements.</div>
                 <canvas id="platformChart"></canvas>
             </div>
+            <p style="color:#4a4a4a; margin-top:-10px;">Mobile remains the largest revenue slice at 49%, yet PC and console together capture 51% and continue to demand custom mod support, dedicated slots, and low-latency infrastructure—exactly the workloads GSP automates.</p>
         </div>
 
         <div class="stats-section">
