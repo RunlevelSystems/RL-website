@@ -1,5 +1,34 @@
 
                         
+                        <!-- Documentation TOC -->
+                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                            <h3 style="color: #8B4513; margin-bottom: 20px;">Atavism Reference Library</h3>
+                            <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
+                                Internal documentation for Mystical Islands lives in the project folder so Copilot and designers stay aligned.
+                                Use the links below to open each admin-only guide without leaving the project view.
+                            </p>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <ul style="list-style: none; padding: 0; margin: 0;">
+                                        <li style="margin-bottom: 12px;"><a href="#" onclick="loadProjectFile('docs.php?doc=overview'); return false;" style="color: #8B4513; font-weight: 600;">Overview</a><br><span style="color: #4a4a4a; font-size: 13px;">Library map, scope, and maintenance expectations.</span></li>
+                                        <li style="margin-bottom: 12px;"><a href="#" onclick="loadProjectFile('docs.php?doc=getting-started'); return false;" style="color: #8B4513; font-weight: 600;">Getting Started</a><br><span style="color: #4a4a4a; font-size: 13px;">Workstation prerequisites and first database sync.</span></li>
+                                        <li style="margin-bottom: 12px;"><a href="#" onclick="loadProjectFile('docs.php?doc=setting-up-atavism'); return false;" style="color: #8B4513; font-weight: 600;">Setting Up Atavism</a><br><span style="color: #4a4a4a; font-size: 13px;">Provisioning runbook for new shards.</span></li>
+                                        <li style="margin-bottom: 12px;"><a href="#" onclick="loadProjectFile('docs.php?doc=creating-item-templates'); return false;" style="color: #8B4513; font-weight: 600;">Creating Item Templates</a><br><span style="color: #4a4a4a; font-size: 13px;">Data requirements and publishing workflow.</span></li>
+                                        <li style="margin-bottom: 12px;"><a href="#" onclick="loadProjectFile('docs.php?doc=advanced-editing'); return false;" style="color: #8B4513; font-weight: 600;">Advanced Editing</a><br><span style="color: #4a4a4a; font-size: 13px;">UMA, scripting hooks, and conditional states.</span></li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ul style="list-style: none; padding: 0; margin: 0;">
+                                        <li style="margin-bottom: 12px;"><a href="#" onclick="loadProjectFile('docs.php?doc=atavism-client-unity-installation'); return false;" style="color: #8B4513; font-weight: 600;">Unity Client Installation</a><br><span style="color: #4a4a4a; font-size: 13px;">Unity+Atavism import path for Mystical Islands.</span></li>
+                                        <li style="margin-bottom: 12px;"><a href="#" onclick="loadProjectFile('docs.php?doc=atavism-windows-manager'); return false;" style="color: #8B4513; font-weight: 600;">Atavism Windows Manager</a><br><span style="color: #4a4a4a; font-size: 13px;">QA launcher configuration and automation hooks.</span></li>
+                                        <li style="margin-bottom: 12px;"><a href="#" onclick="loadProjectFile('docs.php?doc=external-packages'); return false;" style="color: #8B4513; font-weight: 600;">External Packages</a><br><span style="color: #4a4a4a; font-size: 13px;">Third-party assets and licensing notes.</span></li>
+                                        <li style="margin-bottom: 12px;"><a href="#" onclick="loadProjectFile('docs.php?doc=game-settings-plugin'); return false;" style="color: #8B4513; font-weight: 600;">Game Settings Plugin</a><br><span style="color: #4a4a4a; font-size: 13px;">Live tuning knobs and change management.</span></li>
+                                        <li style="margin-bottom: 12px;"><a href="#" onclick="loadProjectFile('docs.php?doc=troubleshooting'); return false;" style="color: #8B4513; font-weight: 600;">Troubleshooting</a><br><span style="color: #4a4a4a; font-size: 13px;">Common failure modes and escalation paths.</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Project Overview -->
                         <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">An Archipelago of Endless Adventure</h3>
