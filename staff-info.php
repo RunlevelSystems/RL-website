@@ -111,6 +111,18 @@ $page_description = 'Centralize every password, host, tool and operating procedu
                     <a href="content/docs/gsp/install-ubuntu-panel.md" target="_blank" class="link-tile" style="text-decoration:none;"><span>Migration Tracker</span><i class="ion-document" style="color:#FFD699;"></i></a>
                 </div>
                 <div class="staff-card">
+                    <h3><i class="ion-android-cart"></i> External Storefront Accounts</h3>
+                    <a href="https://play.google.com/console" target="_blank" rel="noopener noreferrer" class="link-tile" style="text-decoration:none;"><span>Google Play Console</span><i class="ion-android-open" style="color:#FFD699;"></i></a>
+                    <a href="https://partner.steampowered.com/" target="_blank" rel="noopener noreferrer" class="link-tile" style="text-decoration:none;"><span>Steamworks Partner Portal</span><i class="ion-android-open" style="color:#FFD699;"></i></a>
+                    <p style="color:#DDD; margin-top:15px;">Use <code>team@worlddomination.dev</code> for invites and access requests; it already satisfies Google Play and Steam contact requirements.</p>
+                    <ul style="color:#cbd5f5; padding-left:18px; font-size:13px;">
+                        <li>Google Play: send an Admin invite from the Console &rarr; Users &amp; permissions page. Ask ops to approve within 24h.</li>
+                        <li>Steamworks: create a new partner account invite via Users &rarr; Manage Users. Assign publishing and marketing roles as needed.</li>
+                        <li>Expect MFA: add your authenticator before first login; do <strong>not</strong> store backup codes on shared drives.</li>
+                    </ul>
+                    <p style="color:#fcd34d; font-size:12px;">Need storefront screenshots or listing assets? Ping <strong>#ops-production</strong> in Discord so we upload sanitized copies to the wiki.</p>
+                </div>
+                <div class="staff-card">
                     <h3><i class="ion-email"></i> Shared Admin Mailbox</h3>
                     <p style="color:#DDD;">Use <strong>team@worlddomination.dev</strong> whenever a vendor, registrar, or platform needs a single administrative contact. Everyone on the ops roster can authenticate to clear login challenges and receive 2FA resets.</p>
                     <div class="table-responsive">

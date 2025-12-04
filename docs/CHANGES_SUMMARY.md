@@ -1,5 +1,12 @@
 # WDS Website Refactoring - Changes Summary
 
+## Date: 2025-12-04
+
+### Staff Control Room storefront access
+- Added an “External Storefront Accounts” card on `staff-info.php` with quick links to the Google Play Console and Steamworks Partner Portal.
+- Documented invite workflow expectations (team mailbox usage, role assignments, MFA reminders) without exposing credentials.
+- Ensured storefront guidance keeps Discord handoff for asset requests.
+
 ## Date: 2025-11-05
 
 This document summarizes all changes made to the World Domination Software website as part of the refactoring effort.
