@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>World Domination Software | Alien Apocalypse</title>
+        <title>World Domination Software | Alien Plague</title>
 
         <!-- CSS -->
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
@@ -34,7 +34,7 @@
                 <div class="col-sm-12">
                     <div class="title-box">
                         <p>Upcoming Project</p>
-                        <h2 class="title mt0">Alien Apocalypse</h2>
+                        <h2 class="title mt0">Alien Plague</h2>
                     </div>
                 </div>
             </div>
@@ -46,53 +46,134 @@
                         
                         <!-- Project Overview -->
                         <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
-                            <h3 style="color: #8B4513; margin-bottom: 20px;">Survival Against the Impossible</h3>
+                            <h3 style="color: #8B4513; margin-bottom: 20px;">Persistent Survival in a Distrustful World</h3>
                             <p style="color: #4a4a4a; font-size: 18px; line-height: 1.8; margin-bottom: 20px;">
-                                When the invasion began, humanity wasn't ready. Alien Apocalypse throws you into humanity's darkest hour, where survival means more than just staying alive—it means rebuilding civilization from the ashes while fighting an enemy beyond comprehension.
+                                <strong>Alien Plague</strong> is a persistent open-world survival RPG about leadership, paranoia, infection, and rebuilding meaning after an alien-engineered catastrophe has made most of humanity irrelevant – but left the world’s infrastructure largely intact.
                             </p>
                             <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6;">
-                                Combining intense survival shooter mechanics with deep base-building and crafting systems, this isn't just another zombie game with aliens. Every bullet counts, every resource matters, and every decision could mean the difference between extinction and hope.
+                                This is not a zombie shooter and not a reset-heavy survival sandbox. The focus is on <strong>people, towns, and trust</strong>. History accumulates, towns remember what you do, and leadership is fragile, contested, and earned.
                             </p>
                         </div>
 
-                        <!-- Core Gameplay -->
+                        <!-- Core Fantasy & Pillars -->
                         <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
-                            <h3 style="color: #8B4513; margin-bottom: 30px;">Dual-Layer Survival</h3>
+                            <h3 style="color: #8B4513; margin-bottom: 30px;">Core Fantasy & Design Pillars</h3>
+                            <p style="color: #4a4a4a; font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
+                                <em>"You are not trying to survive the apocalypse. You are trying to rebuild meaning in a world that no longer trusts anyone."</em>
+                            </p>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <h4 style="color: #D2B48C; margin-bottom: 15px;">Combat & Scavenging</h4>
+                                    <h4 style="color: #D2B48C; margin-bottom: 10px;">Core Fantasy</h4>
                                     <ul style="color: #4a4a4a; line-height: 1.8;">
-                                        <li>Tactical shooter mechanics with realistic weapon handling</li>
-                                        <li>Alien AI that learns and adapts to player behavior</li>
-                                        <li>Scavenging in dangerous territories for rare resources</li>
-                                        <li>Day/night cycle affecting alien behavior and visibility</li>
-                                        <li>Stealth mechanics for avoiding overwhelming encounters</li>
+                                        <li>Lead fragile communities in the shadow of an alien harvesting operation.</li>
+                                        <li>Navigate a world where infection hides in plain sight and anyone could turn.</li>
+                                        <li>Earn trust through hard choices rather than gear or stats.</li>
+                                        <li>See the long-term consequences of your decisions in a world that does not reset.</li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-6">
-                                    <h4 style="color: #D2B48C; margin-bottom: 15px;">Base Building & Survival</h4>
+                                    <h4 style="color: #D2B48C; margin-bottom: 10px;">Gameplay Pillars</h4>
                                     <ul style="color: #4a4a4a; line-height: 1.8;">
-                                        <li>Fortified settlement construction and management</li>
-                                        <li>Resource production, food cultivation, and water purification</li>
-                                        <li>Survivor recruitment and community management</li>
-                                        <li>Research trees unlocking advanced technologies</li>
-                                        <li>Defense systems and automated turret placement</li>
+                                        <li><strong>Paranoia as a mechanic</strong> – trust is scarce, accusations are lethal.</li>
+                                        <li><strong>NPCs are the economy</strong> – skills and people matter more than loot.</li>
+                                        <li><strong>Leadership over gear</strong> – progression is influence, territory, and stability.</li>
+                                        <li><strong>Persistent world</strong> – no wipes, towns and ruins carry real history.</li>
+                                        <li><strong>Investigation-driven exploration</strong> – locations explain what happened, not just dispense loot.</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Infection & Social Tension -->
+                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                            <h3 style="color: #8B4513; margin-bottom: 20px;">The Alien Plague</h3>
+                            <p style="color: #4a4a4a; font-size: 16px; line-height: 1.7; margin-bottom: 20px;">
+                                The alien species behind the collapse does not directly rule or negotiate. Instead, they deployed a tailored bioweapon designed to thin the population without destroying infrastructure. Around 80% of humanity died. Governments and militaries failed. Power plants, hospitals, and cities remain, but are poorly understood and barely maintained.
+                            </p>
+                            <ul style="color: #4a4a4a; line-height: 1.8; margin-bottom: 10px;">
+                                <li>The infection does <strong>not</strong> always kill – many hosts remain asymptomatic for long periods.</li>
+                                <li>Late-stage infection causes violent psychosis, impulsive aggression, and unpredictable "snapping" episodes.</li>
+                                <li>Infected NPCs (and players) can pass as normal until they lose control.</li>
+                                <li>Transmission is driven by close contact, shared spaces, and prolonged proximity.</li>
+                            </ul>
+                            <p style="color: #4a4a4a; font-size: 15px; line-height: 1.7;">
+                                Infected players experience subtle UI glitches, audio distortion, and involuntary actions long before anyone can be sure what is happening – turning <strong>paranoia into a core gameplay loop</strong> rather than just a narrative device.
+                            </p>
+                        </div>
+
+                        <!-- World, Map & Key Locations -->
+                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                            <h3 style="color: #8B4513; margin-bottom: 20px;">World, Map & Key Locations</h3>
+                            <p style="color: #4a4a4a; font-size: 16px; line-height: 1.7; margin-bottom: 20px;">
+                                Alien Plague is anchored around a <strong>4 km x 4 km island</strong> with a dense, hand-crafted layout built for foot travel, convoys, and long-term settlement play. The map is divided into distinct regions and locations that support investigation, conflict, and political storytelling.
+                            </p>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h4 style="color: #D2B48C; margin-bottom: 8px;">Urban & Civilian Hubs</h4>
+                                    <ul style="color: #4a4a4a; line-height: 1.8;">
+                                        <li><strong>Harbor City</strong> – fortified trade hub and main urban center.</li>
+                                        <li><strong>Old Town Residential</strong> – barricaded neighborhoods hiding old outbreaks.</li>
+                                        <li><strong>University Research Campus</strong> – clues to the origin of the plague and partial cures.</li>
+                                        <li><strong>Hospital Complex</strong> – medical NPCs, triage, and infection flashpoints.</li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <h4 style="color: #D2B48C; margin-bottom: 8px;">Infrastructure, Factions & Mystery</h4>
+                                    <ul style="color: #4a4a4a; line-height: 1.8;">
+                                        <li><strong>Power Plant</strong> &amp; <strong>Water Treatment</strong> – control electricity and clean water for entire regions.</li>
+                                        <li><strong>Abandoned Military Base</strong> – records of failed resistance and lost hardware.</li>
+                                        <li><strong>Harvest Scar Zone</strong> – areas visibly ruined by alien extraction.</li>
+                                        <li><strong>Cult Settlement</strong> &amp; <strong>Quarantine Fortress</strong> – human factions that interpret the plague in radically different ways.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Towns, NPCs & Leadership -->
+                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                            <h3 style="color: #8B4513; margin-bottom: 20px;">Towns, NPCs & Leadership</h3>
+                            <p style="color: #4a4a4a; font-size: 16px; line-height: 1.7; margin-bottom: 20px;">
+                                Towns are living entities that track population, food, power, stability, paranoia, and faction alignment. NPCs are not background dressing – they <strong>are</strong> the economy.
+                            </p>
+                            <ul style="color: #4a4a4a; line-height: 1.8; margin-bottom: 10px;">
+                                <li>Specialist NPCs (medics, farmers, engineers, guards) keep settlements functioning.</li>
+                                <li>Deaths, exile, or infection in key roles can collapse an entire region.</li>
+                                <li>Towns can lock gates, revolt against leaders, or fail permanently.</li>
+                                <li>Player progression is measured in <strong>loyalty, stability, and territory</strong>, not just character level.</li>
+                            </ul>
+                            <p style="color: #4a4a4a; font-size: 15px; line-height: 1.7;">
+                                Leadership makes you powerful – but also makes you visible. In a world built on paranoia, that is as dangerous as any alien.
+                            </p>
+                        </div>
+
+                        <!-- Technology & Modern RPG Framework -->
+                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                            <h3 style="color: #8B4513; margin-bottom: 20px;">Technology & Systems Framework</h3>
+                            <p style="color: #4a4a4a; font-size: 16px; line-height: 1.7; margin-bottom: 16px;">
+                                Alien Plague is planned as an <strong>Unreal Engine 5</strong> title built on the <strong>Modern RPG</strong> framework as the authoritative source of truth for characters, factions, and persistence.
+                            </p>
+                            <ul style="color: #4a4a4a; line-height: 1.8; margin-bottom: 10px;">
+                                <li>Modern RPG drives character data, NPCs, factions, reputation, and world state.</li>
+                                <li>Custom systems (infection, paranoia, town stability) extend rather than replace the framework.</li>
+                                <li>Core logic in C++ with Blueprint-driven tuning and mission scripting.</li>
+                                <li>Data assets define locations, factions, and progression for rapid iteration.</li>
+                            </ul>
+                            <p style="color: #4a4a4a; font-size: 15px; line-height: 1.7;">
+                                Internally, this project serves as a flagship example of how WDS uses Modern RPG to support <strong>persistent, systemic worlds</strong> that can grow over years instead of resets.
+                            </p>
+                        </div>
+
                         <!-- Call to Action -->
                         <div style="text-align: center; padding: 40px;">
-                            <h3 style="color: #8B4513; margin-bottom: 20px;">Coming 2026</h3>
+                            <h3 style="color: #8B4513; margin-bottom: 20px;">In Pre‑Production</h3>
                             <p style="color: #4a4a4a; font-size: 16px; margin-bottom: 20px;">
-                                Join our mailing list for exclusive development updates and early access opportunities.
+                                Alien Plague is currently in pre-production while we validate core systems – infection, towns, and leadership – using Modern RPG and Unreal Engine 5.
                             </p>
                             <p style="color: #4a4a4a; font-size: 14px; margin-bottom: 16px;">
-                                Technical foundation: Unity (C#) client builds, headless Linux servers for multiplayer sessions, and containerized tooling for reproducible server deployments.
+                                If you&apos;re interested in collaborating, investing, or following development, reach out and mention <strong>Alien Plague</strong> in your message.
                             </p>
-                            <a href="/contact.php" class="btn btn-wds">
-                                Stay Updated
+                            <a href="/project-contact.php?project=alien-plague" class="btn btn-wds">
+                                Talk to the Team
                             </a>
                         </div>
 
