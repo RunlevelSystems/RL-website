@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>World Domination Software | Alien Plague</title>
+        <title>World Domination Software | Infestation Control: Earth</title>
 
         <!-- CSS -->
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
@@ -34,7 +34,7 @@
                 <div class="col-sm-12">
                     <div class="title-box">
                         <p>Upcoming Project</p>
-                        <h2 class="title mt0">Alien Plague</h2>
+                        <h2 class="title mt0">Infestation Control: Earth</h2>
                     </div>
                 </div>
             </div>
@@ -46,12 +46,12 @@
                         
                         <!-- Project Overview -->
                         <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
-                            <h3 style="color: #8B4513; margin-bottom: 20px;">Persistent Survival in a Distrustful World</h3>
+                            <h3 style="color: #8B4513; margin-bottom: 20px;">Humanity Under Planetary Containment</h3>
                             <p style="color: #4a4a4a; font-size: 18px; line-height: 1.8; margin-bottom: 20px;">
-                                <strong>Alien Plague</strong> is a persistent open-world survival RPG about leadership, paranoia, infection, and rebuilding meaning after an alien-engineered catastrophe has made most of humanity irrelevant – but left the world’s infrastructure largely intact.
+                                <strong>Infestation Control: Earth</strong> is a persistent open-world survival RPG where humanity lives inside an ongoing alien containment operation. The aliens have not "invaded" in the classic sense – they are simply <strong>harvesting an overpopulated world</strong> from orbit.
                             </p>
                             <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6;">
-                                This is not a zombie shooter and not a reset-heavy survival sandbox. The focus is on <strong>people, towns, and trust</strong>. History accumulates, towns remember what you do, and leadership is fragile, contested, and earned.
+                                Civilization survives in scattered, fortified towns beneath silent harvesting vessels that cross the sky. The game is about <strong>fear spreading faster than disease</strong>, people turning on each other under pressure, and leadership being as dangerous as any weapon.
                             </p>
                         </div>
 
@@ -59,26 +59,26 @@
                         <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 30px;">Core Fantasy & Design Pillars</h3>
                             <p style="color: #4a4a4a; font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
-                                <em>"You are not trying to survive the apocalypse. You are trying to rebuild meaning in a world that no longer trusts anyone."</em>
+                                <em>"You are not surviving an apocalypse. You are living inside an ongoing containment operation."</em>
                             </p>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <h4 style="color: #D2B48C; margin-bottom: 10px;">Core Fantasy</h4>
                                     <ul style="color: #4a4a4a; line-height: 1.8;">
-                                        <li>Lead fragile communities in the shadow of an alien harvesting operation.</li>
-                                        <li>Navigate a world where infection hides in plain sight and anyone could turn.</li>
-                                        <li>Earn trust through hard choices rather than gear or stats.</li>
-                                        <li>See the long-term consequences of your decisions in a world that does not reset.</li>
+                                        <li>Lead fragile communities under an alien-run planetary population control system.</li>
+                                        <li>Navigate a world where infestation hides in plain sight and anyone could snap.</li>
+                                        <li>Earn trust through hard choices rather than grind, levels, or gear.</li>
+                                        <li>See the long-term consequences of collapse, betrayal, and hard calls in a world that does not reset.</li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-6">
                                     <h4 style="color: #D2B48C; margin-bottom: 10px;">Gameplay Pillars</h4>
                                     <ul style="color: #4a4a4a; line-height: 1.8;">
-                                        <li><strong>Paranoia as a mechanic</strong> – trust is scarce, accusations are lethal.</li>
-                                        <li><strong>NPCs are the economy</strong> – skills and people matter more than loot.</li>
-                                        <li><strong>Leadership over gear</strong> – progression is influence, territory, and stability.</li>
-                                        <li><strong>Persistent world</strong> – no wipes, towns and ruins carry real history.</li>
-                                        <li><strong>Investigation-driven exploration</strong> – locations explain what happened, not just dispense loot.</li>
+                                        <li><strong>Fear as a system</strong> – fear radiates from events and reshapes behavior in entire regions.</li>
+                                        <li><strong>NPCs are the economy</strong> – skills, professions, and individual lives matter more than items.</li>
+                                        <li><strong>Leadership over loot</strong> – progression is territory, policies, and loyalty.</li>
+                                        <li><strong>Persistent world</strong> – there are no wipes; towns can fracture, lock down, or vanish for good.</li>
+                                        <li><strong>Investigation-driven exploration</strong> – locations reveal why some areas survive, fail, or attract harvests.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -86,26 +86,48 @@
 
                         <!-- Infection & Social Tension -->
                         <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
-                            <h3 style="color: #8B4513; margin-bottom: 20px;">The Alien Plague</h3>
-                            <p style="color: #4a4a4a; font-size: 16px; line-height: 1.7; margin-bottom: 20px;">
-                                The alien species behind the collapse does not directly rule or negotiate. Instead, they deployed a tailored bioweapon designed to thin the population without destroying infrastructure. Around 80% of humanity died. Governments and militaries failed. Power plants, hospitals, and cities remain, but are poorly understood and barely maintained.
-                            </p>
-                            <ul style="color: #4a4a4a; line-height: 1.8; margin-bottom: 10px;">
-                                <li>The infection does <strong>not</strong> always kill – many hosts remain asymptomatic for long periods.</li>
-                                <li>Late-stage infection causes violent psychosis, impulsive aggression, and unpredictable "snapping" episodes.</li>
-                                <li>Infected NPCs (and players) can pass as normal until they lose control.</li>
-                                <li>Transmission is driven by close contact, shared spaces, and prolonged proximity.</li>
-                            </ul>
-                            <p style="color: #4a4a4a; font-size: 15px; line-height: 1.7;">
-                                Infected players experience subtle UI glitches, audio distortion, and involuntary actions long before anyone can be sure what is happening – turning <strong>paranoia into a core gameplay loop</strong> rather than just a narrative device.
-                            </p>
+                            <h3 style="color: #8B4513; margin-bottom: 20px;">The Infestation</h3>
+                            <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; margin-bottom: 20px;">
+                                <div style="flex: 1 1 220px;">
+                                    <p style="color: #4a4a4a; font-size: 16px; line-height: 1.7; margin-bottom: 20px;">
+                                        The infestation is an alien-introduced biological control mechanism. Rather than glass the surface, unseen operators released a tailored organism that thinned the population while leaving infrastructure intact. Around 80% of humanity died. Militaries failed, governments collapsed, and power plants, hospitals, and cities were left running on borrowed time.
+                                    </p>
+                                    <ul style="color: #4a4a4a; line-height: 1.8; margin-bottom: 10px;">
+                                        <li>The infection does <strong>not</strong> always kill – many hosts remain asymptomatic for long periods.</li>
+                                        <li>Late-stage infection causes violent psychosis, hyper-aggression, and unpredictable "snapping" episodes.</li>
+                                        <li>Infected NPCs (and players) can pass as normal until they lose control.</li>
+                                        <li>Transmission is driven by close contact, shared spaces, and prolonged proximity.</li>
+                                    </ul>
+                                    <p style="color: #4a4a4a; font-size: 15px; line-height: 1.7;">
+                                        Infected players experience subtle UI glitches, audio distortion, and involuntary actions long before anyone can be sure what is happening – turning <strong>paranoia into a core gameplay loop</strong> rather than just a narrative device.
+                                    </p>
+                                </div>
+                                <div style="flex: 0 0 220px; text-align: center;">
+                                    <img src="alien-cartoon.svg" alt="Sinister grey alien silhouette" style="max-width: 100%; height: auto; border-radius: 6px; border: 1px solid #333;" />
+                                    <p style="color: #4a4a4a; font-size: 12px; margin-top: 8px;">Cartoon concept of the distant, indifferent overseers behind planetary containment.</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start;">
+                                <div style="flex: 0 0 220px; text-align: center;">
+                                    <img src="infected-human-cartoon.svg" alt="Rabid infected human in cartoon style" style="max-width: 100%; height: auto; border-radius: 6px; border: 1px solid #333;" />
+                                    <p style="color: #4a4a4a; font-size: 12px; margin-top: 8px;">Cartoon representation of a late-stage infected human – fast, unstable, and still recognizably human.</p>
+                                </div>
+                                <div style="flex: 1 1 220px;">
+                                    <p style="color: #4a4a4a; font-size: 15px; line-height: 1.7; margin-bottom: 10px;">
+                                        This is <strong>not</strong> a zombie game. The infected remain human, fast, and capable of passing as normal for long stretches of time. Fear comes from not knowing who is safe – and from understanding that simple proximity, shelter, or trade can spread the infestation.
+                                    </p>
+                                    <p style="color: #4a4a4a; font-size: 15px; line-height: 1.7;">
+                                        During latent phases, the experience is about suspicion and doubt: small visual ticks, off-kilter animation timings, and minor control anomalies hint at deeper problems long before obvious symptoms appear.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- World, Map & Key Locations -->
                         <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">World, Map & Key Locations</h3>
                             <p style="color: #4a4a4a; font-size: 16px; line-height: 1.7; margin-bottom: 20px;">
-                                Alien Plague is anchored around a <strong>4 km x 4 km island</strong> with a dense, hand-crafted layout built for foot travel, convoys, and long-term settlement play. The map is divided into distinct regions and locations that support investigation, conflict, and political storytelling.
+                                Infestation Control: Earth is anchored around a <strong>4 km × 4 km modern island</strong> with a dense, hand-crafted layout built for foot travel, convoys, and long-term settlement play. Roads, infrastructure, and pockets of civilization still exist – but logistics are broken and every journey between towns is dangerous.
                             </p>
                             <div class="row">
                                 <div class="col-sm-6">
@@ -150,7 +172,7 @@
                         <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">Technology & Systems Framework</h3>
                             <p style="color: #4a4a4a; font-size: 16px; line-height: 1.7; margin-bottom: 16px;">
-                                Alien Plague is planned as an <strong>Unreal Engine 5</strong> title built on the <strong>Modern RPG</strong> framework as the authoritative source of truth for characters, factions, and persistence.
+                                Infestation Control: Earth is planned as an <strong>Unreal Engine 5</strong> title built on the <strong>Modern RPG</strong> framework as the authoritative source of truth for characters, factions, and persistence.
                             </p>
                             <ul style="color: #4a4a4a; line-height: 1.8; margin-bottom: 10px;">
                                 <li>Modern RPG drives character data, NPCs, factions, reputation, and world state.</li>
@@ -167,12 +189,12 @@
                         <div style="text-align: center; padding: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">In Pre‑Production</h3>
                             <p style="color: #4a4a4a; font-size: 16px; margin-bottom: 20px;">
-                                Alien Plague is currently in pre-production while we validate core systems – infection, towns, and leadership – using Modern RPG and Unreal Engine 5.
+                                Infestation Control: Earth is currently in pre-production while we validate core systems – fear, infestation, towns, and leadership – using Modern RPG and Unreal Engine 5.
                             </p>
                             <p style="color: #4a4a4a; font-size: 14px; margin-bottom: 16px;">
-                                If you&apos;re interested in collaborating, investing, or following development, reach out and mention <strong>Alien Plague</strong> in your message.
+                                If you&apos;re interested in collaborating, investing, or following development, reach out and mention <strong>Infestation Control: Earth</strong> in your message.
                             </p>
-                            <a href="/project-contact.php?project=alien-plague" class="btn btn-wds">
+                            <a href="/project-contact.php?project=infestation-control-earth" class="btn btn-wds">
                                 Talk to the Team
                             </a>
                         </div>
