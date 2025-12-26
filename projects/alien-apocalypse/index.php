@@ -48,22 +48,22 @@
                         <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">Humanity Under Planetary Containment</h3>
                             <p style="color: #4a4a4a; font-size: 18px; line-height: 1.8; margin-bottom: 20px;">
-                                <strong>Infestation Control: Earth</strong> is a persistent open-world survival RPG where humanity lives inside an ongoing alien containment operation. The aliens have not "invaded" in the classic sense – they are simply <strong>harvesting an overpopulated world</strong> from orbit.
+                                <strong>Infestation Control: Earth</strong> is a persistent open-world survival RPG where the primary enemy is an alien-engineered virus that kills people or twists them into rabid, mindlessly violent attackers before death. Humanity lives inside an ongoing containment operation while distant alien harvesters quietly extract Earth&apos;s resources.
                             </p>
                             <p style="color: #4a4a4a; font-size: 16px; line-height: 1.6;">
-                                Civilization survives in scattered, fortified towns beneath silent harvesting vessels that cross the sky. The game is about <strong>fear spreading faster than disease</strong>, people turning on each other under pressure, and leadership being as dangerous as any weapon.
+                                Civilization survives in scattered, fortified towns beneath silent harvesting vessels that cross the sky. The game is about <strong>avoiding infection</strong> so intensely that players become afraid to interact, <strong>distrustful of new players and NPCs</strong>, while knowing that aliens may occasionally snatch the unwary who linger out in the open.
                             </p>
                         </div>
 
-                        <!-- Core Fantasy & Pillars -->
+                        <!-- Core Experience & Pillars -->
                         <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
-                            <h3 style="color: #8B4513; margin-bottom: 30px;">Core Fantasy & Design Pillars</h3>
+                            <h3 style="color: #8B4513; margin-bottom: 30px;">Core Experience & Design Pillars</h3>
                             <p style="color: #4a4a4a; font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
                                 <em>"You are not surviving an apocalypse. You are living inside an ongoing containment operation."</em>
                             </p>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <h4 style="color: #D2B48C; margin-bottom: 10px;">Core Fantasy</h4>
+                                    <h4 style="color: #D2B48C; margin-bottom: 10px;">Core Survival Experience</h4>
                                     <ul style="color: #4a4a4a; line-height: 1.8;">
                                         <li>Lead fragile communities under an alien-run planetary population control system.</li>
                                         <li>Navigate a world where infestation hides in plain sight and anyone could snap.</li>
@@ -74,7 +74,7 @@
                                 <div class="col-sm-6">
                                     <h4 style="color: #D2B48C; margin-bottom: 10px;">Gameplay Pillars</h4>
                                     <ul style="color: #4a4a4a; line-height: 1.8;">
-                                        <li><strong>Fear as a system</strong> – fear radiates from events and reshapes behavior in entire regions.</li>
+                                        <li><strong>Infection and fear as systems</strong> – avoiding the disease and managing fear radiating from events reshapes behavior in entire regions.</li>
                                         <li><strong>NPCs are the economy</strong> – skills, professions, and individual lives matter more than items.</li>
                                         <li><strong>Leadership over loot</strong> – progression is territory, policies, and loyalty.</li>
                                         <li><strong>Persistent world</strong> – there are no wipes; towns can fracture, lock down, or vanish for good.</li>
@@ -90,7 +90,7 @@
                             <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; margin-bottom: 20px;">
                                 <div style="flex: 1 1 220px;">
                                     <p style="color: #4a4a4a; font-size: 16px; line-height: 1.7; margin-bottom: 20px;">
-                                        The infestation is an alien-introduced biological control mechanism. Rather than glass the surface, unseen operators released a tailored organism that thinned the population while leaving infrastructure intact. Around 80% of humanity died. Militaries failed, governments collapsed, and power plants, hospitals, and cities were left running on borrowed time.
+                                        The infestation is an alien-introduced biological control mechanism and the <strong>central enemy</strong> of the game. Rather than glass the surface, unseen operators released a tailored organism that thinned the population while leaving infrastructure intact. Around 80% of humanity died. Militaries failed, governments collapsed, and power plants, hospitals, and cities were left running on borrowed time.
                                     </p>
                                     <ul style="color: #4a4a4a; line-height: 1.8; margin-bottom: 10px;">
                                         <li>The infection does <strong>not</strong> always kill – many hosts remain asymptomatic for long periods.</li>
@@ -114,7 +114,7 @@
                                 </div>
                                 <div style="flex: 1 1 220px;">
                                     <p style="color: #4a4a4a; font-size: 15px; line-height: 1.7; margin-bottom: 10px;">
-                                        This is <strong>not</strong> a zombie game. The infected remain human, fast, and capable of passing as normal for long stretches of time. Fear comes from not knowing who is safe – and from understanding that simple proximity, shelter, or trade can spread the infestation.
+                                        This is <strong>not</strong> a zombie game. The infected remain human, fast, and capable of passing as normal for long stretches of time. Fear comes from not knowing who is safe – and from understanding that simple proximity, shelter, or trade can spread the infestation, making players hesitant to get close to strangers, new arrivals, or even helpful-looking NPCs.
                                     </p>
                                     <p style="color: #4a4a4a; font-size: 15px; line-height: 1.7;">
                                         During latent phases, the experience is about suspicion and doubt: small visual ticks, off-kilter animation timings, and minor control anomalies hint at deeper problems long before obvious symptoms appear.
@@ -128,6 +128,9 @@
                             <h3 style="color: #8B4513; margin-bottom: 20px;">World, Map & Key Locations</h3>
                             <p style="color: #4a4a4a; font-size: 16px; line-height: 1.7; margin-bottom: 20px;">
                                 Infestation Control: Earth is anchored around a <strong>4 km × 4 km modern island</strong> with a dense, hand-crafted layout built for foot travel, convoys, and long-term settlement play. Roads, infrastructure, and pockets of civilization still exist – but logistics are broken and every journey between towns is dangerous.
+                            </p>
+                            <p style="color: #4a4a4a; font-size: 15px; line-height: 1.7; margin-bottom: 20px;">
+                                High above, alien harvesting vessels periodically pass overhead. They do not dogfight or besiege towns, but anyone caught unaware and out in the open during flyovers risks being silently taken – a constant, low-frequency threat layered on top of the ever-present danger of infection.
                             </p>
                             <div class="row">
                                 <div class="col-sm-6">
