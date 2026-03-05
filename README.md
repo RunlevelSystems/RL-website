@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 # World Domination Software Website
 
 A professional corporate website showcasing game development, server hosting, and business application services. Built with PHP and modern responsive design principles.

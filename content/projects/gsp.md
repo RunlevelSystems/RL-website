@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 ---
 title: "GSP (GameServer Panel)"
 description: "World Domination Software's unified control panel and storefront for GameServers World"

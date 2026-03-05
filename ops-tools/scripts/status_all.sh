@@ -1,3 +1,4 @@
+# Developed by World Domination Software LLC
 #!/usr/bin/env bash
 # =============================================================================
 # status_all.sh - Display Fleet-Wide Server Status

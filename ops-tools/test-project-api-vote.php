@@ -1,3 +1,4 @@
+// Developed by World Domination Software LLC
 <?php
 // Simple CLI test harness for project-api vote action
 

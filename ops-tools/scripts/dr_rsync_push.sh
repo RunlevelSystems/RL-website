@@ -1,3 +1,4 @@
+# Developed by World Domination Software LLC
 #!/usr/bin/env bash
 # =============================================================================
 # dr_rsync_push.sh - Disaster Recovery Sync Script

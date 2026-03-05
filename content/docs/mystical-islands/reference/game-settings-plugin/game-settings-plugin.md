@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 ---
 title: "Game Settings Plugin"
 description: "Atavism reference import"

@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 ---
 title: "External Packages"
 description: "Atavism reference import"

@@ -1,3 +1,4 @@
+// Developed by World Domination Software LLC
 <?php
 // Start session and define system constant
 session_start();

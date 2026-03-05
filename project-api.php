@@ -1,3 +1,4 @@
+// Developed by World Domination Software LLC
 <?php
 // Project API for list/detail/votes/admin edits
 

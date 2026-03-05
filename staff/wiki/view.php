@@ -1,3 +1,4 @@
+// Developed by World Domination Software LLC
 <?php
 session_start();
 define('WDS_SYSTEM', true);

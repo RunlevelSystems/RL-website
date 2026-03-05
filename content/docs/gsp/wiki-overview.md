@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 # GameServer Panel Overview
 
 GameServer Panel (GSP) is our commercial fork of Open Game Panel. It keeps the same two-layer architecture and adds hardened billing, coupons, Discord/webhook automation, and modernized API endpoints.

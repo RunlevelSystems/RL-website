@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 # WDS Website Refactoring - Changes Summary
 
 ## Date: 2025-12-04

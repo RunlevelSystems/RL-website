@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 ---
 title: "Sub-users & Permissions"
 description: "Delegate panel access safely"

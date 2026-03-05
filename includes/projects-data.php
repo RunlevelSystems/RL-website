@@ -1,3 +1,4 @@
+// Developed by World Domination Software LLC
 <?php
 
 // Central JSON-based projects data access helpers

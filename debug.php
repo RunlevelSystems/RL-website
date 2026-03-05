@@ -1,3 +1,4 @@
+// Developed by World Domination Software LLC
 <?php
 // Include the universal config
 require_once 'includes/config.php';

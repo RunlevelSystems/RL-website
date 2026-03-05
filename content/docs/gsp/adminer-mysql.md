@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 ---
 title: "MySQL via Adminer"
 description: "Secure database access patterns for GSP"

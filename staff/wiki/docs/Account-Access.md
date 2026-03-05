@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 # Accounts and Access
 
 Quick reference for all team credentials. This page is only accessible to logged-in staff members.

@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 ---
 title: "Advanced Editing"
 description: "Atavism reference import"

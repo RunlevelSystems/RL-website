@@ -1,3 +1,4 @@
+# Developed by World Domination Software LLC
 #!/usr/bin/env bash
 # =============================================================================
 # xfer.sh - Simple Folder Transfer Script

@@ -1,3 +1,4 @@
+// Developed by World Domination Software LLC
 <?php
 /**
  * Status Pages Configuration

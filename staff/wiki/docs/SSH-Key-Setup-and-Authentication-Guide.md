@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 # SSH Key Setup Guide
 
 This guide helps you set up secure login to servers without typing passwords every time.

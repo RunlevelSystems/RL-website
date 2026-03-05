@@ -1,3 +1,4 @@
+// Developed by World Domination Software LLC
 <?php
 if (!defined('WDS_SYSTEM')) {
     die('Access denied');

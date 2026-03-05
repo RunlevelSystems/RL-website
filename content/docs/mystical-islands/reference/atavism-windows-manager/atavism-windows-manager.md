@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 ---
 title: "Atavism Windows Manager"
 description: "Atavism reference import"

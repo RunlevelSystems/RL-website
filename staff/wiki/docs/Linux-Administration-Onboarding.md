@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 # Linux Server Basics
 
 A simple guide to managing Linux servers for new team members.

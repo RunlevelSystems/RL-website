@@ -1,3 +1,4 @@
+// Developed by World Domination Software LLC
 <?php
 // Page-specific variables
 $current_page = 'search';

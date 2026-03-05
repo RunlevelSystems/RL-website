@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 # Team Information
 
 An overview of how our team is organized.

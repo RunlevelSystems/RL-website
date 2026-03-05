@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 # Quick Reference
 
 Commonly used shortcuts and commands for our tools.

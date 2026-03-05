@@ -1,3 +1,4 @@
+# Developed by World Domination Software LLC
 #!/usr/bin/env bash
 # =============================================================================
 # backup.sh - Unified Backup Script for Game Servers

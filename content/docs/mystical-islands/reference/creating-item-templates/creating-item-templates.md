@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 ---
 title: "Creating Item Templates"
 description: "Atavism reference import"

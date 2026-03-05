@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 ---
 title: "Install: Ubuntu 24.04 Panel"
 description: "Bootstrap the GSP panel stack on Ubuntu 24.04 LTS"

@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 ---
 title: "GSP Admin Docs"
 description: "Internal runbooks for installing and operating the WDS GameServer Panel"

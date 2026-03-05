@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 ---
 title: "Task Scheduler"
 description: "Managing cron-style jobs inside GSP"

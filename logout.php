@@ -1,3 +1,4 @@
+// Developed by World Domination Software LLC
 <?php
 // Start session to access session variables
 session_start();

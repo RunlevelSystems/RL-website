@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 # Auto-Update Framework for Project Status
 
 ## Overview

@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 # Frequently Asked Questions
 
 Quick answers to common questions.

@@ -1,3 +1,4 @@
+# Developed by World Domination Software LLC
 #!/usr/bin/env bash
 # =============================================================================
 # DEPRECATED: Use change_passwd.sh for password rotation, status.sh for reporting

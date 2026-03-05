@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 # Staff Wiki
 
 Welcome! This is your quick reference for team information and guides.

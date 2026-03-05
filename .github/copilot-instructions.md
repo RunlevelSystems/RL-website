@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 # World Domination Software - Website Development Guidelines
 
 ## Site Overview

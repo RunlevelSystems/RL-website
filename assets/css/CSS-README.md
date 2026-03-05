@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 # WDS Website CSS Guide
 
 ## SIMPLIFIED CSS STRUCTURE

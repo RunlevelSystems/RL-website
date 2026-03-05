@@ -1,3 +1,4 @@
+// Developed by World Domination Software LLC
 <?php
 // Simple Markdown renderer tailored for staff content
 if (!defined('WDS_SYSTEM')) {

@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 # Tools and Applications
 
 Software we use for development and communication.

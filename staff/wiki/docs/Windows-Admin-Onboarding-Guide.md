@@ -1,3 +1,4 @@
+<!-- Developed by World Domination Software LLC -->
 # Windows Server Basics
 
 A simple guide to managing Windows servers for new team members.
