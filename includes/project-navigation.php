@@ -1,4 +1,3 @@
-// Developed by World Domination Software LLC
 <?php
 // Project navigation order - matches the order on projects.php page
 $project_order = [

@@ -1,4 +1,3 @@
-// Developed by World Domination Software LLC
 <!DOCTYPE html>
 <html lang="en">
     <head>

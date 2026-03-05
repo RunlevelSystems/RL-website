@@ -1,4 +1,3 @@
-// Developed by World Domination Software LLC
 <?php
 /**
  * Public Server Status Display

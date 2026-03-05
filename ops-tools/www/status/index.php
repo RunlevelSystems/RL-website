@@ -1,4 +1,3 @@
-// Developed by World Domination Software LLC
 <?php
 require __DIR__ . '/config.php'; $pdo = db();
 $sql = "SELECT m.hostname, n.ip, m.ts, m.cpu_used_pct, m.mem_used_bytes, m.mem_total_bytes, m.disk_used_bytes, m.disk_total_bytes

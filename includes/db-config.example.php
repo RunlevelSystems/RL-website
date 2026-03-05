@@ -1,4 +1,3 @@
-// Developed by World Domination Software LLC
 <?php
 /**
  * Database Configuration for Staff Authentication - EXAMPLE FILE

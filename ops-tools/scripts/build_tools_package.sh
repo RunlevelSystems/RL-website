@@ -1,4 +1,3 @@
-# Developed by World Domination Software LLC
 #!/usr/bin/env bash
 # =============================================================================
 # build_tools_package.sh - Create downloadable tools package

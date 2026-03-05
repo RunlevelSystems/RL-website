@@ -1,4 +1,3 @@
-// Developed by World Domination Software LLC
 <?php
 /**
  * Staff Server Status - Detailed Fleet Overview

@@ -1,4 +1,3 @@
-// Developed by World Domination Software LLC
 <?php
 // Site Header - PHP version with dynamic path detection
 // This replaces header.html for better subdirectory support

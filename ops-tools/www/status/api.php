@@ -1,4 +1,3 @@
-// Developed by World Domination Software LLC
 <?php
 require __DIR__ . '/config.php'; $pdo = db();
 $host = $_GET['host'] ?? ''; $range = $_GET['range'] ?? '60min';

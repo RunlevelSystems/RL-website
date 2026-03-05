@@ -1,4 +1,3 @@
-// Developed by World Domination Software LLC
 $(document).ready(function(){
 
     // Partner slider

@@ -1,4 +1,3 @@
-# Developed by World Domination Software LLC
 #!/usr/bin/env bash
 # =============================================================================
 # DEPRECATED: Use status.sh --report instead

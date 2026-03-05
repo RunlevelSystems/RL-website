@@ -1,4 +1,3 @@
-// Developed by World Domination Software LLC
 <?php
 require __DIR__ . '/config.php'; $host = $_GET['host'] ?? ''; $range = $_GET['range'] ?? '60min';
 $valid=['60min','24h','30d','6mo']; if(!in_array($range,$valid)) $range='60min'; ?>

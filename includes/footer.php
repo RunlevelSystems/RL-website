@@ -1,4 +1,3 @@
-// Developed by World Domination Software LLC
     <!-- Footer -->
 <?php
 // Path detection for footer links (mirrors header/navigation behaviour)

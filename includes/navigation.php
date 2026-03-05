@@ -1,4 +1,3 @@
-// Developed by World Domination Software LLC
 <?php 
 // Initialize session and check login status if not already done
 if (!isset($_SESSION)) {
