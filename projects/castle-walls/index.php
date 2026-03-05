@@ -191,7 +191,7 @@
                             <a href="https://discord.gg/XPFnNdWGyW" class="btn btn-wds" style="margin-right: 15px;">
                                 Join Discord Community
                             </a>
-                            <a href="/contact.php" class="btn btn-secondary">
+                            <a href="contact.php" class="btn btn-secondary">
                                 Share Your Ideas
                             </a>
                         </div>

@@ -1,3 +1,4 @@
+                            <a href="contact.php" class="btn btn-secondary">
 
                         
                         <!-- Project Overview -->
@@ -121,7 +122,7 @@
                             <a href="https://gameservers.world" target="_blank" class="btn btn-wds" style="margin-right: 15px;">
                                 Visit Gameservers.world
                             </a>
-                            <a href="/contact.php" class="btn btn-secondary">
+                            <a href="contact.php" class="btn btn-secondary">
                                 Enterprise Solutions
                             </a>
                         </div>

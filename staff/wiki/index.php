@@ -26,11 +26,30 @@ $page_subtitle = 'Procedures & Process';
     <link href="../../assets/css/ionicons.css" rel="stylesheet">
     <link href="../../assets/css/main.css" rel="stylesheet">
     <link href="../../assets/css/wds-unified.css" rel="stylesheet">
-    <link href="../../assets/css/readability-improvements.css" rel="stylesheet">
     <style>
-        .wiki-card { background: rgba(0,0,0,0.55); border-radius: 10px; border: 1px solid rgba(139,69,19,0.3); padding: 20px; margin-bottom: 15px; }
-        .wiki-card a { color:#FDE68A; font-weight:600; text-decoration:none; }
-        .wiki-card a:hover { text-decoration:underline; }
+        .staff-login .page-bgc {
+            background-color: #E8E4D8 !important;
+        }
+
+        /* Override rust gradient cards from readability-improvements.css */
+        .staff-login .wiki-card {
+            background: #D4CFC0 !important;
+            border-radius: 10px !important;
+            border: 1px solid #B8A996 !important;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.18) !important;
+            color: #1a1a1a !important;
+        }
+
+        .staff-login .wiki-card a {
+            font-weight: 600;
+            color: #8B4513 !important;
+        }
+
+        .staff-login .wiki-card p {
+            color: #4a4a4a !important;
+        }
     </style>
 </head>
 <body>

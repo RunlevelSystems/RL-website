@@ -10,6 +10,9 @@ if (!defined('WDS_SYSTEM')) {
     die('Access denied');
 }
 
+// Base path + URL helpers
+require_once __DIR__ . '/config.php';
+
 // Database Configuration (pulls from the panel DB)
 define('DB_HOST', 'mysql.iaregamer.com');
 define('DB_NAME', 'panel');
@@ -287,7 +290,9 @@ function isLoggedInAdmin() {
  */
 function requireAdminLogin() {
     if (!isLoggedInAdmin()) {
-        header('Location: /login.php?redirect=' . urlencode($_SERVER['REQUEST_URI']));
+        $basePath = function_exists('getBasePath') ? getBasePath() : '';
+        $redirect = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : 'staff-info.php';
+        header('Location: ' . $basePath . 'login.php?redirect=' . urlencode($redirect));
         exit;
     }
 }

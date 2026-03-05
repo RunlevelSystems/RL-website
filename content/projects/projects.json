@@ -1,0 +1,112 @@
+[
+    {
+        "id": "alien-apocalypse",
+        "slug": "alien-apocalypse",
+        "title": "Optimization Protocol",
+        "category": "Upcoming Projects",
+        "shortDescription": "AI was given the task to optimize the world's automated systems and human civilization was the part that needed the most optimization which creates a dystopian, survival sandbox in a chaotic world.",
+        "fullDescription": "AI was given the task to optimize the world's automated systems and human civilization was the part that needed the most optimization which creates a dystopian, survival sandbox in a chaotic world.",
+        "votes": 0,
+        "images": []
+    },
+    {
+        "id": "bbs-revival",
+        "slug": "bbs-revival",
+        "title": "BBS Revival",
+        "category": "Upcoming Projects",
+        "shortDescription": "Nostalgic tribute to classic bulletin board systems. ASCII art, door games, message boards, and file trading in a modern multiplayer environment that captures the 80s\/90s spirit.",
+        "fullDescription": "Nostalgic tribute to classic bulletin board systems. ASCII art, door games, message boards, and file trading in a modern multiplayer environment that captures the 80s\/90s spirit.",
+        "votes": 0,
+        "images": []
+    },
+    {
+        "id": "castle-walls",
+        "slug": "castle-walls",
+        "title": "Castle Walls",
+        "category": "Upcoming Projects",
+        "shortDescription": "Fast-paced multiplayer siege warfare where players fire catapults at enemy castle walls. Knock down their defenses, then send in your troops to capture the flag. Inspired by the classic Atari Warlords.",
+        "fullDescription": "Fast-paced multiplayer siege warfare where players fire catapults at enemy castle walls. Knock down their defenses, then send in your troops to capture the flag. Inspired by the classic Atari Warlords.",
+        "votes": 0,
+        "images": []
+    },
+    {
+        "id": "gameserver-panel",
+        "slug": "gameserver-panel",
+        "title": "GameServer Panel",
+        "category": "Current Projects",
+        "shortDescription": "Enhanced OpenGamePanel fork with commercial billing, professional support, and multi-location management. Open source game server control panel for hosting providers.",
+        "fullDescription": "Enhanced OpenGamePanel fork with commercial billing, professional support, and multi-location management. Open source game server control panel for hosting providers.",
+        "votes": 2,
+        "images": []
+    },
+    {
+        "id": "gameservers-world",
+        "slug": "gameservers-world",
+        "title": "Gameservers World",
+        "category": "Current Projects",
+        "shortDescription": "Global game server hosting platform providing the most affordable and reliable hosting solutions across multiple world locations with 24\/7 uptime monitoring.",
+        "fullDescription": "Global game server hosting platform providing the most affordable and reliable hosting solutions across multiple world locations with 24\/7 uptime monitoring.",
+        "votes": 0,
+        "images": []
+    },
+    {
+        "id": "mystical-islands",
+        "slug": "mystical-islands",
+        "title": "Mystical Islands",
+        "category": "Upcoming Projects",
+        "shortDescription": "Explore a vast Unity MMORPG archipelago where each island offers unique quests, distinct biomes, and mysterious secrets. Sail between magical realms and forge your legend across countless adventures.",
+        "fullDescription": "Explore a vast Unity MMORPG archipelago where each island offers unique quests, distinct biomes, and mysterious secrets. Sail between magical realms and forge your legend across countless adventures.",
+        "votes": 0,
+        "images": []
+    },
+    {
+        "id": "neverwards",
+        "slug": "neverwards",
+        "title": "Neverwards",
+        "category": "Current Projects",
+        "shortDescription": "An immersive multiplayer open-world adventure game featuring dynamic storytelling, cooperative gameplay, and endless exploration in a beautifully crafted fantasy universe.",
+        "fullDescription": "An immersive multiplayer open-world adventure game featuring dynamic storytelling, cooperative gameplay, and endless exploration in a beautifully crafted fantasy universe.",
+        "votes": 0,
+        "images": []
+    },
+    {
+        "id": "pureops",
+        "slug": "pureops",
+        "title": "PureOps",
+        "category": "Current Projects",
+        "shortDescription": "Advanced DevOps automation platform streamlining deployment pipelines, infrastructure management, and continuous integration for scalable software operations.",
+        "fullDescription": "Advanced DevOps automation platform streamlining deployment pipelines, infrastructure management, and continuous integration for scalable software operations.",
+        "votes": 0,
+        "images": []
+    },
+    {
+        "id": "retro-space-blaster",
+        "slug": "retro-space-blaster",
+        "title": "Retro Space Blaster",
+        "category": "Upcoming Projects",
+        "shortDescription": "Neon twin-stick shooter built from the Neon Space Fighter template. Fast arcade sessions, upgrade-driven roguelite loops, and monetizable live-ops hooks for mobile & PC.",
+        "fullDescription": "Neon twin-stick shooter built from the Neon Space Fighter template. Fast arcade sessions, upgrade-driven roguelite loops, and monetizable live-ops hooks for mobile & PC.",
+        "votes": 0,
+        "images": []
+    },
+    {
+        "id": "roadkill",
+        "slug": "roadkill",
+        "title": "Roadkill v2",
+        "category": "Current Projects",
+        "shortDescription": "Fast-paced, cross-platform multiplayer vehicular combat game blending Twisted Metal carnage with Death Race 2000 dark humor. Drive armed cars through chaotic arenas with cartoony low-poly violence across PC, iOS, and Android.",
+        "fullDescription": "Fast-paced, cross-platform multiplayer vehicular combat game blending Twisted Metal carnage with Death Race 2000 dark humor. Drive armed cars through chaotic arenas with cartoony low-poly violence across PC, iOS, and Android.",
+        "votes": 0,
+        "images": []
+    },
+    {
+        "id": "space5x",
+        "slug": "space5x",
+        "title": "Space5X",
+        "category": "Upcoming Projects",
+        "shortDescription": "Strategic space empire game combining the depth of VGA Planets with the economic complexity of TradeWars 2002. Build fleets, colonize worlds, and dominate the galaxy.",
+        "fullDescription": "Strategic space empire game combining the depth of VGA Planets with the economic complexity of TradeWars 2002. Build fleets, colonize worlds, and dominate the galaxy.",
+        "votes": 0,
+        "images": []
+    }
+]

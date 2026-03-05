@@ -30,33 +30,70 @@ $page_description = 'Centralize every password, host, tool and operating procedu
     <link href="assets/css/ionicons.css" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet">
     <link href="assets/css/wds-unified.css" rel="stylesheet">
-    <link href="assets/css/readability-improvements.css" rel="stylesheet">
     <style>
         .staff-grid { display: flex; flex-wrap: wrap; gap: 20px; }
-        .staff-card { flex: 1 1 320px; background: rgba(0,0,0,0.5); border: 1px solid rgba(139,69,19,0.4); border-radius: 14px; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.35); }
-        .staff-card h3 { margin-top: 0; color: #FFD699; }
+
         .staff-credentials-table th {
             text-transform: uppercase;
             font-size: 12px;
             letter-spacing: 0.08em;
-            border-color: rgba(255,255,255,0.2);
         }
+
         .staff-credentials-table td {
-            border-color: rgba(255,255,255,0.1);
+            border-color: #D6C8B3;
         }
-        .tag { display: inline-block; padding: 3px 8px; border-radius: 10px; margin: 2px; color: #8B4513; background: rgba(0,200,81,0.2); border: 1px solid rgba(0,200,81,0.2); font-size: 11px; }
-        .link-tile { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.08); border-radius: 10px; padding: 16px 20px; margin-bottom: 12px; border: 1px solid rgba(139,69,19,0.3); color: #FFD699; cursor: pointer; transition: background 0.2s; }
-        .link-tile span { color: #FFD699; font-weight: 600; }
-        .link-tile:hover { background: rgba(255,255,255,0.15); }
+
+        /* Code and inline pre blocks: dark background for contrast */
+        .staff-information .staff-card code,
+        pre.inline {
+            background: #111827 !important;
+            padding: 10px;
+            border-radius: 8px;
+            color: #E5E7EB !important;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 10px;
+            margin: 2px;
+            color: #8B4513;
+            background: rgba(0,200,81,0.2);
+            border: 1px solid rgba(0,200,81,0.2);
+            font-size: 11px;
+        }
+
+        .staff-information .link-tile {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #E8E4D8 !important;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border: 1px solid #B8A996 !important;
+            color: #1a1a1a !important;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .staff-information .link-tile span {
+            color: #4a4a4a !important;
+            font-weight: 600;
+        }
+
+        .staff-information .link-tile:hover {
+            background: #ddd5c4 !important;
+        }
+
         a.link-tile { text-decoration: none; }
-        pre.inline { background: rgba(0,0,0,0.65); padding: 10px; border-radius: 8px; color: #9ae6b4; }
     </style>
 </head>
 <body>
 <?php include 'includes/header.php'; ?>
 <?php include 'includes/navigation.php'; ?>
 <section class="staff-information">
-    <div class="container page-bgc">
+    <div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <div class="title-box">
@@ -101,12 +138,13 @@ $page_description = 'Centralize every password, host, tool and operating procedu
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="staff-card" style="background:rgba(0,0,0,0.65);">
+                <div class="staff-card">
                     <h3><i class="ion-flash"></i> Quick Links</h3>
                     <a href="staff/server-status.php" class="link-tile" style="text-decoration:none;"><span>Server Fleet Status</span><i class="ion-ios-pulse" style="color:#FFD699;"></i></a>
                     <a href="staff/operations.php" class="link-tile" style="text-decoration:none;"><span>Infrastructure / Install Guides</span><i class="ion-ios-arrow-right" style="color:#FFD699;"></i></a>
                     <a href="staff/tools.php" class="link-tile" style="text-decoration:none;"><span>Toolbox & Downloads</span><i class="ion-ios-arrow-right" style="color:#FFD699;"></i></a>
                     <a href="staff/wiki/index.php" class="link-tile" style="text-decoration:none;"><span>Processes Wiki</span><i class="ion-ios-arrow-right" style="color:#FFD699;"></i></a>
+                    <a href="staff/projects-links.php" class="link-tile" style="text-decoration:none;"><span>Project GitHub Links</span><i class="ion-social-github" style="color:#FFD699;"></i></a>
                     <a href="ops-tools/" target="_blank" class="link-tile" style="text-decoration:none;"><span>Raw Tools Folder (GitHub)</span><i class="ion-social-github" style="color:#FFD699;"></i></a>
                     <a href="content/docs/gsp/install-ubuntu-panel.md" target="_blank" class="link-tile" style="text-decoration:none;"><span>Migration Tracker</span><i class="ion-document" style="color:#FFD699;"></i></a>
                 </div>

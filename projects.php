@@ -31,11 +31,11 @@
     </head>
     <body>
         <?php 
-        // Page-specific variables
-        $current_page = 'projects';
-        $header_class = 'projects-header inner-header';
-        $page_subtitle = 'Design. Debug. Deploy.';
-        ?>
+            // Page-specific variables
+            $current_page = 'projects';
+            $header_class = 'projects-header inner-header';
+            $page_subtitle = 'Design. Debug. Deploy.';
+            ?>
     <!-- Include Site Header -->
     <?php include 'includes/header.php'; ?>
         
@@ -43,58 +43,107 @@
     <?php include 'includes/navigation.php'; ?>
 
     <?php
-    // Scan projects directory and load project metadata
-    $projectsDir = __DIR__ . '/projects';
-    $projects = [];
-    
-    if (is_dir($projectsDir)) {
-        $directories = array_diff(scandir($projectsDir), ['.', '..']);
-        
-        foreach ($directories as $dir) {
-            $dirPath = $projectsDir . '/' . $dir;
-            if (is_dir($dirPath)) {
-                $metadataFile = $dirPath . '/project.json';
-                if (file_exists($metadataFile)) {
-                    $metadata = json_decode(file_get_contents($metadataFile), true);
-                    if ($metadata && !isset($metadata['hidden'])) {
-                        $metadata['slug'] = $dir;
-                        
-                        // Check for project icon files (projecticon.png or projecticon.jpg)
-                        $iconFound = false;
-                        if (file_exists($dirPath . '/projecticon.png')) {
-                            $metadata['projectIcon'] = 'projects/' . $dir . '/projecticon.png';
-                            $iconFound = true;
-                        } elseif (file_exists($dirPath . '/projecticon.jpg')) {
-                            $metadata['projectIcon'] = 'projects/' . $dir . '/projecticon.jpg';
-                            $iconFound = true;
-                        }
-                        
-                        // If no project icon file exists, use FA icon fallback
-                        if (!$iconFound) {
-                            $metadata['projectIcon'] = null;
-                            $metadata['iconFallback'] = 'fa-code'; // Default FA icon
-                        }
-                        
-                        $projects[] = $metadata;
-                    }
-                }
-            }
+    // Central JSON-based projects data
+    require_once __DIR__ . '/includes/projects-data.php';
+
+    $allProjects = loadAllProjects();
+
+    // One more safety pass to ensure Optimization Protocol rename if legacy title exists
+    $renamePerformed = false;
+    foreach ($allProjects as &$p) {
+        if (isset($p['title']) && stripos($p['title'], 'Infestation Control') !== false) {
+            $p['title'] = 'Optimization Protocol';
+            $p['shortDescription'] = 'AI was given the task to optimize the world\'s automated systems and human civilization was the part that needed the most optimization which creates a dystopian, survival sandbox in a chaotic world.';
+            $p['fullDescription'] = $p['shortDescription'];
+            $renamePerformed = true;
         }
     }
-    
-    // Group projects by category - order determines section display order
-    $categorizedProjects = [
-        'Current Project' => [],
-        'Legacy Project' => [],
-        'Upcoming Project' => [],
-        'Idea Board' => []
-    ];
-    
-    foreach ($projects as $project) {
-        $category = $project['category'] ?? 'Current Project';
-        if (isset($categorizedProjects[$category])) {
-            $categorizedProjects[$category][] = $project;
+    unset($p);
+    if ($renamePerformed) {
+        saveAllProjects($allProjects);
+    }
+
+    // Normalize and group projects by category for display
+    $groupedProjects = [];
+    foreach ($allProjects as $project) {
+        if (!isset($project['slug'])) {
+            continue;
         }
+        $category = isset($project['category']) && $project['category'] !== ''
+            ? $project['category']
+            : 'Current Projects';
+        if (!isset($groupedProjects[$category])) {
+            $groupedProjects[$category] = [];
+        }
+        // Ensure defaults
+        if (!isset($project['votes'])) {
+            $project['votes'] = 0;
+        }
+        $groupedProjects[$category][] = $project;
+    }
+
+    // Sort projects within each category by votes (descending)
+    foreach ($groupedProjects as $cat => &$projectsInCat) {
+        usort($projectsInCat, function ($a, $b) {
+            $va = isset($a['votes']) ? (int)$a['votes'] : 0;
+            $vb = isset($b['votes']) ? (int)$b['votes'] : 0;
+            if ($va === $vb) {
+                return 0;
+            }
+            return ($va > $vb) ? -1 : 1;
+        });
+    }
+    unset($projectsInCat);
+
+    // Sort categories so key ones appear first (configurable order)
+    $preferredOrder = getCategoryOrder();
+    uksort($groupedProjects, function ($a, $b) use ($preferredOrder) {
+        $ia = array_search($a, $preferredOrder, true);
+        $ib = array_search($b, $preferredOrder, true);
+        if ($ia === false && $ib === false) {
+            return strcasecmp($a, $b);
+        }
+        if ($ia === false) return 1;
+        if ($ib === false) return -1;
+        return $ia - $ib;
+    });
+
+    // Helper to safely output HTML attributes
+    function h($value) {
+        return htmlspecialchars((string)$value, ENT_QUOTES, 'UTF-8');
+    }
+
+    // Render a single project row (list item) with voting controls
+    function renderProjectRow($project) {
+        $slug = h($project['slug']);
+        $title = h($project['title'] ?? $project['name'] ?? $slug);
+        $short = h($project['shortDescription'] ?? $project['description'] ?? '');
+        $votes = isset($project['votes']) ? (int)$project['votes'] : 0;
+
+        // Per-project links with sensible defaults
+        $defaultRead = 'https://github.com/World-Domination-Software/Projects/wiki';
+        $defaultDisc = 'https://github.com/World-Domination-Software/Projects/discussions';
+        $defaultIssue = 'https://github.com/World-Domination-Software/Projects/issues';
+
+        // Preserve older githubUrl/wikiUrl as a fallback for Read more
+        $readUrl = !empty($project['readMoreUrl'])
+            ? $project['readMoreUrl']
+            : (!empty($project['githubUrl']) ? $project['githubUrl'] : (!empty($project['wikiUrl']) ? $project['wikiUrl'] : $defaultRead));
+        $discUrl = !empty($project['discussionUrl']) ? $project['discussionUrl'] : $defaultDisc;
+        $issueUrl = !empty($project['issueUrl']) ? $project['issueUrl'] : $defaultIssue;
+
+        echo '<li class="project-row" data-slug="' . $slug . '">';
+        echo '  <button type="button" class="vote-button vote-up" onclick="voteProject(\'' . $slug . '\', 1); event.stopPropagation();" aria-label="Upvote ' . $title . '"><i class="fa-solid fa-thumbs-up"></i></button>';
+        echo '  <button type="button" class="vote-button vote-down" onclick="voteProject(\'' . $slug . '\', -1); event.stopPropagation();" aria-label="Downvote ' . $title . '"><i class="fa-solid fa-thumbs-down"></i></button>';
+        echo '  <span class="vote-count" id="vote-count-' . $slug . '">' . $votes . '</span>';
+        echo '  <div class="project-main">';
+        echo '      <div class="project-title-text">' . $title . '</div>';
+        echo '      <div class="project-short">' . $short . '</div>';
+        echo '      <div class="project-links-block"><a href="' . h($readUrl) . '" target="_blank" rel="noopener noreferrer">Read more</a></div>';
+        echo '      <div class="project-links-block"><a href="' . h($discUrl) . '" target="_blank" rel="noopener noreferrer">Discussion</a></div>';
+        echo '      <div class="project-links-block"><a href="' . h($issueUrl) . '" target="_blank" rel="noopener noreferrer">Report Issue</a></div>';
+        echo '  </div>';
+        echo '</li>';
     }
     ?>
 
@@ -129,9 +178,10 @@
                     <!-- Orange HR after project content -->
                     <hr style="border: none; height: 3px; background: linear-gradient(to right, #8B4513, #A0522D, #8B4513); margin: 30px 0; border-radius: 2px;">
                 </div>
-
                 <!-- Projects Overview Section -->
                 <div id="projects-overview">
+                    <!-- Projects Overview Section -->
+                    <div id="projects-overview">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="title-box">
@@ -143,175 +193,124 @@
                     <div class="row">
                         <div class="boxed">
                             <div class="col-sm-12">
-                                <p class="inner-p">
-                                    Discover our innovative projects and cutting-edge solutions in game development and technology.
-                                    Each project represents our commitment to excellence and innovation.
-                                </p>
+                                    <p class="inner-p">
+                                        Discover our innovative projects and cutting-edge solutions in game development and technology.
+                                        Each project represents our commitment to excellence and innovation.
+                                    </p>
+                                    <p class="inner-p" style="margin-top:15px;">
+                                        You can explore detailed design documents, roadmaps, and community feedback on our public GitHub project hub.
+                                        Visit
+                                        <a href="https://github.com/World-Domination-Software/Projects" target="_blank" rel="noopener noreferrer" style="color:#8B4513; text-decoration:underline;">WDS Projects on GitHub</a>,
+                                        join the discussion at
+                                        <a href="https://github.com/World-Domination-Software/Projects/discussions" target="_blank" rel="noopener noreferrer" style="color:#8B4513; text-decoration:underline;">Projects Discussions</a>,
+                                        or share new concepts in our
+                                        <a href="https://github.com/World-Domination-Software/Projects/discussions/categories/ideas" target="_blank" rel="noopener noreferrer" style="color:#8B4513; text-decoration:underline;">Ideas</a>
+                                        category.
+                                    </p>
                             </div>
                         </div>
                     </div>
                 </div>
 
             <?php
-            // Function to render project card
-            function renderProjectCard($project, $isUpcoming = false) {
-                $slug = htmlspecialchars($project['slug']);
-                $title = htmlspecialchars($project['title']);
-                $category = htmlspecialchars($project['category']);
-                $description = htmlspecialchars($project['description']);
-                
-                $cardClass = $isUpcoming ? 'project-card upcoming' : 'project-card';
-                $borderColor = $isUpcoming ? '#444' : '#333';
-                $opacity = $isUpcoming ? 'opacity: 0.9;' : '';
-                
-                echo '<div class="col-sm-6" style="margin-bottom: 30px;">';
-                echo '<div class="' . $cardClass . '" onclick="loadProject(\'' . $slug . '\', \'' . $title . '\', \'' . $category . '\')" style="background: #1a1a1a; border: 1px solid ' . $borderColor . '; border-radius: 8px; padding: 20px; height: 200px; transition: all 0.3s ease; cursor: pointer; position: relative; ' . $opacity . '">';
-                echo '<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">';
-                echo '<h3 style="color: #8B4513; margin: 0; font-size: 18px;">' . $title . '</h3>';
-                
-                // Handle icon rendering - prefer projecticon.png/jpg, fallback to FA icon
-                if (isset($project['projectIcon']) && $project['projectIcon']) {
-                    // Use projecticon.png or projecticon.jpg from project folder
-                    echo '<img src="' . htmlspecialchars($project['projectIcon']) . '" alt="' . $title . '" style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;" onerror="this.onerror=null; this.style.display=\'none\'; var fallback=document.createElement(\'div\'); fallback.innerHTML=\'<div style=\\\'width:40px;height:40px;background:#8B4513;border-radius:4px;display:flex;align-items:center;justify-content:center;\\\'><i class=\\\'fas fa-code\\\' style=\\\'color:#D2B48C;font-size:20px;\\\'></i></div>\'; this.parentNode.appendChild(fallback.firstChild);">';
-                } elseif (isset($project['iconType']) && $project['iconType'] === 'fontawesome') {
-                    // Use FA icon from project.json
-                    echo '<div style="width: 40px; height: 40px; background: #8B4513; border-radius: 4px; display: flex; align-items: center; justify-content: center;">';
-                    echo '<i class="fas ' . htmlspecialchars($project['icon']) . '" style="color: #D2B48C; font-size: 20px;"></i>';
-                    echo '</div>';
-                } elseif (isset($project['icon']) && !empty($project['icon'])) {
-                    // Legacy: use icon path from project.json
-                    echo '<img src="' . htmlspecialchars($project['icon']) . '" alt="' . $title . '" style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;" onerror="this.onerror=null; this.style.display=\'none\'; var fallback=document.createElement(\'div\'); fallback.innerHTML=\'<div style=\\\'width:40px;height:40px;background:#8B4513;border-radius:4px;display:flex;align-items:center;justify-content:center;\\\'><i class=\\\'fas fa-code\\\' style=\\\'color:#D2B48C;font-size:20px;\\\'></i></div>\'; this.parentNode.appendChild(fallback.firstChild);">';
-                } else {
-                    // Default FA icon fallback
-                    $fallbackIcon = $project['iconFallback'] ?? 'fa-code';
-                    echo '<div style="width: 40px; height: 40px; background: #8B4513; border-radius: 4px; display: flex; align-items: center; justify-content: center;">';
-                    echo '<i class="fas ' . htmlspecialchars($fallbackIcon) . '" style="color: #D2B48C; font-size: 20px;"></i>';
-                    echo '</div>';
-                }
-                
+            // Render each category section as a list of projects
+            foreach ($groupedProjects as $categoryName => $projectsInCategory) {
+                echo '<div class="row" style="margin-top: 40px;">';
+                echo '  <div class="col-sm-12">';
+                echo '      <div class="title-box">';
+                echo '          <p>' . h($categoryName) . '</p>';
+                echo '          <h2 class="title mt0">' . h($categoryName) . '</h2>';
+                echo '      </div>';
+                echo '  </div>';
                 echo '</div>';
-                echo '<p style="color: #8B7355; line-height: 1.6; margin: 0; font-size: 14px;">';
-                echo $description;
-                echo '</p>';
-                echo '</div>';
-                echo '</div>';
-            }
-            
-            // Render Current Projects (first section - uses the overview header above)
-            if (!empty($categorizedProjects['Current Project'])) {
-                echo '<!-- Current Projects -->';
+
                 echo '<div class="service">';
-                echo '<div class="row">';
-                echo '<div class="boxed">';
-                foreach ($categorizedProjects['Current Project'] as $project) {
-                    renderProjectCard($project, false);
+                echo '  <div class="row">';
+                echo '      <div class="boxed">';
+                echo '          <ul class="project-list">';
+                foreach ($projectsInCategory as $project) {
+                    renderProjectRow($project);
                 }
-                echo '</div>';
-                echo '</div>';
-                echo '</div>';
-            }
-            
-            // Render Legacy Projects
-            if (!empty($categorizedProjects['Legacy Project'])) {
-                echo '<!-- Legacy Projects Section -->';
-                echo '<div class="row" style="margin-top: 60px;">';
-                echo '<div class="col-sm-12">';
-                echo '<div class="title-box">';
-                echo '<p>Proven solutions</p>';
-                echo '<h2 class="title mt0">Legacy Projects</h2>';
-                echo '</div>';
-                echo '</div>';
-                echo '</div>';
-                echo '<div class="service">';
-                echo '<div class="row">';
-                echo '<div class="boxed">';
-                foreach ($categorizedProjects['Legacy Project'] as $project) {
-                    renderProjectCard($project, false);
-                }
-                echo '</div>';
-                echo '</div>';
-                echo '</div>';
-            }
-            
-            // Render Upcoming Projects
-            if (!empty($categorizedProjects['Upcoming Project'])) {
-                echo '<!-- Upcoming Projects Section -->';
-                echo '<div class="row" style="margin-top: 60px;">';
-                echo '<div class="col-sm-12">';
-                echo '<div class="title-box">';
-                echo '<p>In development</p>';
-                echo '<h2 class="title mt0">Upcoming Projects</h2>';
-                echo '</div>';
-                echo '</div>';
-                echo '</div>';
-                echo '<div class="service">';
-                echo '<div class="row">';
-                echo '<div class="boxed">';
-                foreach ($categorizedProjects['Upcoming Project'] as $project) {
-                    renderProjectCard($project, true);
-                }
-                echo '</div>';
-                echo '</div>';
-                echo '</div>';
-            }
-            
-            // Render Idea Board
-            if (!empty($categorizedProjects['Idea Board'])) {
-                echo '<!-- Idea Board Section -->';
-                echo '<div class="row" style="margin-top: 60px;">';
-                echo '<div class="col-sm-12">';
-                echo '<div class="title-box">';
-                echo '<p>Future concepts</p>';
-                echo '<h2 class="title mt0">Idea Board</h2>';
-                echo '</div>';
-                echo '</div>';
-                echo '</div>';
-                echo '<div class="service">';
-                echo '<div class="row">';
-                echo '<div class="boxed">';
-                foreach ($categorizedProjects['Idea Board'] as $project) {
-                    renderProjectCard($project, true);
-                }
-                echo '</div>';
-                echo '</div>';
+                echo '          </ul>';
+                echo '      </div>';
+                echo '  </div>';
                 echo '</div>';
             }
             ?>
 
-                <!-- Project Card Styles -->
+                <!-- Project List Styles -->
                 <style>
-                    .project-card {
-                        background: #1a1a1a;
-                        border: 1px solid #333;
-                        border-radius: 8px;
-                        padding: 20px;
-                        height: 200px;
-                        transition: all 0.3s ease;
-                        cursor: pointer;
-                        position: relative;
+                    .project-list {
+                        list-style: none;
+                        padding: 0;
+                        margin: 0;
                     }
-                    .project-card:hover {
-                        background: #8B4513 !important;
-                        border-color: #6B3410 !important;
-                        transform: translateY(-2px);
-                        box-shadow: 0 8px 25px rgba(139, 69, 19, 0.5);
+                    .project-row {
+                        display: flex;
+                        align-items: flex-start;
+                        padding: 10px 15px;
+                        margin-bottom: 5px;
+                        background-color: #D4CFC0;
+                        border-radius: 4px;
+                        border: 1px solid #B8B19F;
                     }
-                    .project-card:hover h3,
-                    .project-card:hover p {
-                        color: #E8E4D8 !important;
+                    .project-row:hover {
+                        background-color: #C5BEAE;
                     }
-                    .project-card.upcoming {
-                        opacity: 0.9;
+                    .vote-button {
+                        background: #000000;
+                        color: #E8E4D8;
+                        border: none;
+                        width: 28px;
+                        height: 28px;
+                        margin-right: 6px;
+                        border-radius: 3px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        transition: background-color 0.2s ease;
                     }
-                    .project-card.upcoming:hover {
-                        background: #8B4513 !important;
-                        border-color: #6B3410 !important;
-                        opacity: 1 !important;
+                    .vote-button:hover {
+                        background-color: #8B4513;
+                        color: #E8E4D8;
                     }
-                    .project-card.upcoming:hover h3,
-                    .project-card.upcoming:hover p {
-                        color: #E8E4D8 !important;
+                    .vote-count {
+                        min-width: 36px;
+                        text-align: center;
+                        margin-right: 12px;
+                        color: #1a1a1a;
+                        font-weight: 500;
                     }
+                    .project-main {
+                        display: flex;
+                        flex-direction: column;
+                        flex: 1;
+                    }
+                    .project-title-text {
+                        color: #8B4513;
+                        font-weight: 600;
+                        margin-right: 10px;
+                        margin-bottom: 2px;
+                    }
+                    .project-short {
+                        color: #1a1a1a;
+                        font-size: 14px;
+                        line-height: 1.6;
+                        margin-top: 2px;
+                    }
+                    .project-links-block {
+                        margin-top: 2px;
+                        font-size: 13px;
+                    }
+                    .project-links-block a {
+                        color: #8B4513;
+                        text-decoration: none;
+                    }
+                    .project-links-block a:hover {
+                        color: #6B3410;
+                        text-decoration: underline;
+                    }
+                    /* Old detail/admin styles removed now that details live on GitHub */
                 </style>
 
 
@@ -331,166 +330,62 @@
         <script src="assets/js/owl.carousel.min.js"></script>
         <script src="assets/js/script.js"></script>
 
-    <!-- Project Loading JavaScript -->
+    <!-- Voting JavaScript (details now live on GitHub) -->
     <script>
-        // Keep track of the currently loaded project slug for sub-file loading
-        var currentProjectSlug = null;
 
-        function loadProject(slug, title, category) {
-            // remember slug for subsequent file loads
-            currentProjectSlug = slug;
+        function voteProject(slug, delta) {
+            // simple cookie-based throttle per project
+            var now = Date.now();
+            var cookieKey = 'wds_vote_' + slug;
+            var last = parseInt(getCookie(cookieKey) || '0', 10) || 0;
+            if (now - last < 5000) {
+                return; // too soon
+            }
 
-            // set the browser title to help with navigation and bookmarking
-            try { document.title = title + ' | WDS'; } catch (e) { /* ignore */ }
-
-            // Show the project detail container
-            document.getElementById('project-detail').style.display = 'block';
-            
-            // Update the dynamic title and category
-            document.getElementById('project-title').textContent = title;
-            document.getElementById('project-category').textContent = category;
-            
-            // Hide the projects overview
-            document.getElementById('projects-overview').style.display = 'none';
-            
-            // Show loading message
-            document.getElementById('project-content').innerHTML = '<div style="text-align: center; padding: 40px; color: #8B7355;">Loading project details...</div>';
-            
-            // Load the project content via AJAX
             var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'projects/' + slug + '/index.php', true);
+            xhr.open('POST', 'project-api.php?action=vote', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4) {
-                    console.info('loadProject:', slug, 'status=', xhr.status, 'responseLength=', xhr.responseText ? xhr.responseText.length : 0);
                     if (xhr.status === 200) {
-                        var parsed = parseProjectDocument(xhr.responseText);
-                        var projectContainer = document.getElementById('project-content');
-                        projectContainer.innerHTML = parsed.html;
-                        executeProjectScripts(projectContainer);
+                        try {
+                            var data = JSON.parse(xhr.responseText);
+                            if (data && data.ok) {
+                                var countEl = document.getElementById('vote-count-' + slug);
+                                if (countEl) {
+                                    countEl.textContent = data.votes;
+                                }
+                                setCookie(cookieKey, String(now), 365);
+                            } else {
+                                console.error('Vote failed', data && data.error ? data.error : xhr.responseText);
+                            }
+                        } catch (e) {
+                            console.error('Error parsing vote response', e);
+                        }
                     } else {
-                        document.getElementById('project-content').innerHTML = '<div style="text-align: center; padding: 40px;"><p style="color: #8B7355;">Error loading project content. Please try again.</p></div>';
+                        console.error('Vote request failed with status', xhr.status);
                     }
-                    
-                    // Scroll to the top of the project detail
-                    document.getElementById('project-detail').scrollIntoView({ behavior: 'smooth' });
                 }
             };
-            xhr.send();
+            xhr.send('slug=' + encodeURIComponent(slug) + '&delta=' + encodeURIComponent(delta));
         }
-        
-        function hideProject() {
-            // Hide the project detail container
-            document.getElementById('project-detail').style.display = 'none';
-            
-            // Show the projects overview
-            document.getElementById('projects-overview').style.display = 'block';
-            
-            // Clear the project content to prevent any lingering styles
-            document.getElementById('project-content').innerHTML = '';
-            
-            // Scroll back to projects overview
-            document.getElementById('projects-overview').scrollIntoView({ behavior: 'smooth' });
-        }
-        
-        // Function to load project sub-files within the same view
-        function loadProjectFile(filename) {
-            // Use the slug remembered when loadProject() was called
-            var currentSlug = currentProjectSlug || getCurrentProjectSlug();
 
-            if (!currentSlug) {
-                console.error('Cannot determine current project');
-                return;
-            }
-            
-            // Show loading message
-            document.getElementById('project-content').innerHTML = '<div style="text-align: center; padding: 40px; color: #8B7355;">Loading...</div>';
-            
-            // Load the project file via AJAX
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'projects/' + currentSlug + '/' + filename, true);
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4) {
-                    console.info('loadProjectFile:', currentSlug + '/' + filename, 'status=', xhr.status, 'responseLength=', xhr.responseText ? xhr.responseText.length : 0);
-                    if (xhr.status === 200) {
-                        var parsed = parseProjectDocument(xhr.responseText, ['.boxed']);
-                        var projectContainer = document.getElementById('project-content');
-                        projectContainer.innerHTML = parsed.html;
-                        executeProjectScripts(projectContainer);
-                    } else {
-                        document.getElementById('project-content').innerHTML = '<div style="text-align: center; padding: 40px;"><p style="color: #8B7355;">Error loading content. Please try again.</p></div>';
-                    }
-                    
-                    // Scroll to the top of the project detail
-                    document.getElementById('project-detail').scrollIntoView({ behavior: 'smooth' });
-                }
-            };
-            xhr.send();
-        }
-        
-        // Helper function to get current project slug
-        function getCurrentProjectSlug() {
-            // Try to extract from the project title or URL
-            var titleElement = document.getElementById('project-title');
-            if (titleElement) {
-                var title = titleElement.textContent.toLowerCase();
-                // Map known titles to slugs
-                if (title.includes('space5x') || title.includes('space 5x')) return 'space5x';
-                if (title.includes('roadkill')) return 'roadkill';
-                if (title.includes('gameserver')) return 'gameserver-panel';
-                // Add more mappings as needed
-            }
+
+        function getCookie(name) {
+            var value = '; ' + document.cookie;
+            var parts = value.split('; ' + name + '=');
+            if (parts.length === 2) return parts.pop().split(';').shift();
             return null;
         }
 
-        function parseProjectDocument(htmlString, selectors) {
-            var parser = new DOMParser();
-            var doc = parser.parseFromString(htmlString, 'text/html');
-            var styleHtml = '';
-            doc.querySelectorAll('style').forEach(function(style) {
-                styleHtml += style.outerHTML;
-            });
-
-            var target = null;
-            if (Array.isArray(selectors)) {
-                for (var i = 0; i < selectors.length; i++) {
-                    target = doc.querySelector(selectors[i]);
-                    if (target) break;
-                }
-            } else if (selectors) {
-                target = doc.querySelector(selectors);
+        function setCookie(name, value, days) {
+            var expires = '';
+            if (typeof days === 'number') {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = '; expires=' + date.toUTCString();
             }
-
-            var contentHtml = '';
-            if (target) {
-                contentHtml = target.innerHTML;
-            } else if (doc.body) {
-                contentHtml = doc.body.innerHTML;
-            } else {
-                contentHtml = htmlString;
-            }
-
-            return {
-                html: styleHtml + contentHtml
-            };
-        }
-
-        function executeProjectScripts(container) {
-            if (!container) return;
-            var scripts = Array.prototype.slice.call(container.querySelectorAll('script'));
-            scripts.forEach(function(script) {
-                var newScript = document.createElement('script');
-                if (script.type) {
-                    newScript.type = script.type;
-                }
-                if (script.src) {
-                    newScript.src = script.src;
-                } else {
-                    newScript.textContent = script.textContent;
-                }
-                document.head.appendChild(newScript);
-                document.head.removeChild(newScript);
-                script.parentNode.removeChild(script);
-            });
+            document.cookie = name + '=' + (value || '') + expires + '; path=/';
         }
     </script>
 

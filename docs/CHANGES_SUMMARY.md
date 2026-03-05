@@ -73,7 +73,7 @@ Provides in-depth technical information for developers and technical enthusiasts
 ## 3. CSS Improvements
 
 ### Text Shadow Removal
-**Files Modified:** `assets/css/readability-improvements.css`
+**Files Modified:** `assets/css/wds-unified.css`
 
 **Changes:**
 - Removed `text-shadow` from all text elements
@@ -86,7 +86,7 @@ Provides in-depth technical information for developers and technical enthusiasts
 Text shadows were making content hard to read. H3 elements retain shadow for visual hierarchy while maintaining readability.
 
 ### Button Color Consistency
-**Current State:** Already implemented in `readability-improvements.css`
+**Current State:** Now implemented in `wds-unified.css` (readability-improvements.css removed)
 
 **Button Styles:**
 - Primary buttons: `#8B4513` (rust) background with `#D2B48C` (tan) text

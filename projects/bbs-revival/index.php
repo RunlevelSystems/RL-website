@@ -1,3 +1,4 @@
+                            <a href="contact.php" class="btn btn-wds">
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,7 +17,6 @@
         <link href="../assets/css/owl.carousel.theme.min.css" rel="stylesheet">
         <link href="../assets/css/ionicons.css" rel="stylesheet">
         <link href="../assets/css/main.css" rel="stylesheet">
-        <link href="../assets/css/readability-improvements.css" rel="stylesheet">
     </head>
     <body>
         <?php 
@@ -84,7 +84,7 @@
                             <p style="color: #4a4a4a; font-size: 16px; margin-bottom: 30px;">
                                 Dial into the past. Connect to the future. Be part of the BBS renaissance.
                             </p>
-                            <a href="/contact.php" class="btn btn-wds">
+                            <a href="contact.php" class="btn btn-wds">
                                 Reserve SysOp Slot
                             </a>
                         </div>

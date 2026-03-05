@@ -113,34 +113,173 @@ $totalCount = count($servers);
     <link href="../assets/css/ionicons.css" rel="stylesheet">
     <link href="../assets/css/main.css" rel="stylesheet">
     <link href="../assets/css/wds-unified.css" rel="stylesheet">
-    <link href="../assets/css/readability-improvements.css" rel="stylesheet">
     <style>
-        .status-card { background: rgba(0,0,0,0.55); border: 1px solid rgba(139,69,19,0.3); border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
-        .status-card h3 { margin-top: 0; color: #FDE68A; }
-        .summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px; }
-        .summary-box { background: rgba(0,0,0,0.4); border-radius: 12px; padding: 20px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
-        .summary-value { font-size: 2.5rem; font-weight: 700; }
-        .summary-label { color: #9CA3AF; font-size: 0.9rem; margin-top: 5px; }
-        .server-row { background: rgba(255,255,255,0.03); border-radius: 10px; padding: 20px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05); }
-        .server-row:hover { background: rgba(255,255,255,0.06); }
-        .server-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .server-name { font-size: 1.25rem; font-weight: 600; color: #fff; }
-        .server-ip { color: #9CA3AF; font-size: 0.9rem; }
-        .status-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; }
-        .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .metric-box { text-align: center; }
-        .metric-value { font-size: 1.5rem; font-weight: 600; color: #fff; }
-        .metric-label { color: #9CA3AF; font-size: 0.8rem; margin-top: 4px; }
-        .progress-bar { height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; margin-top: 8px; overflow: hidden; }
-        .progress-fill { height: 100%; border-radius: 3px; }
-        .top-procs { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); }
-        .top-procs h5 { color: #9CA3AF; font-size: 0.85rem; margin-bottom: 10px; }
-        .proc-table { width: 100%; font-size: 0.85rem; }
-        .proc-table th { color: #6B7280; font-weight: 500; padding: 5px 0; text-align: left; }
-        .proc-table td { color: #D1D5DB; padding: 4px 0; }
-        .proc-table td:first-child { color: #F9FAFB; }
-        .last-update { color: #6B7280; font-size: 0.8rem; text-align: right; margin-top: 10px; }
-        .error-box { background: rgba(239,68,68,0.2); border: 1px solid rgba(239,68,68,0.5); border-radius: 10px; padding: 20px; color: #FCA5A5; text-align: center; }
+        .staff-login .page-bgc {
+            background-color: #E8E4D8 !important;
+        }
+
+        .status-card {
+            background: #D4CFC0;
+            border: 1px solid #B8A996;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+        }
+
+        .status-card h3 {
+            margin-top: 0;
+            color: #8B4513 !important;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .summary-box {
+            background: #E8E4D8;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #B8A996;
+        }
+
+        .summary-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .summary-label {
+            color: #4a4a4a;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .server-row {
+            background: #E8E4D8;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid #B8A996;
+        }
+
+        .server-row:hover {
+            background: #ddd5c4;
+        }
+
+        .server-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .server-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #4a4a4a;
+        }
+
+        .server-ip {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .metric-box {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .metric-label {
+            color: #6b7280;
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: rgba(0,0,0,0.08);
+            border-radius: 3px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 3px;
+        }
+
+        .top-procs {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .top-procs h5 {
+            color: #6b7280;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        .proc-table {
+            width: 100%;
+            font-size: 0.85rem;
+        }
+
+        .proc-table th {
+            color: #6b7280;
+            font-weight: 500;
+            padding: 5px 0;
+            text-align: left;
+        }
+
+        .proc-table td {
+            color: #1f2933;
+            padding: 4px 0;
+        }
+
+        .proc-table td:first-child {
+            color: #111827;
+        }
+
+        .last-update {
+            color: #6b7280;
+            font-size: 0.8rem;
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        .error-box {
+            background: rgba(239,68,68,0.08);
+            border: 1px solid rgba(239,68,68,0.4);
+            border-radius: 10px;
+            padding: 20px;
+            color: #7f1d1d;
+            text-align: center;
+        }
         @media (max-width: 768px) {
             .summary-grid { grid-template-columns: repeat(2, 1fr); }
             .metrics-grid { grid-template-columns: 1fr; }

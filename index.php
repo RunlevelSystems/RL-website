@@ -108,7 +108,7 @@
       <p class="wds-motto">We build resilient software and scalable game infrastructure.</p>
 
       <div class="wds-cta">
-        <a class="wds-btn wds-btn--primary" href="/contact">Request a consultation</a>
+        <a class="wds-btn wds-btn--primary" href="contact.php">Request a consultation</a>
         <a class="wds-btn wds-btn--ghost" href="/portal">Client portal</a>
         <a class="wds-btn wds-btn--ghost" href="https://gameservers.world" target="_blank" rel="noopener">Game servers</a>
       </div>

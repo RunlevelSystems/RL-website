@@ -23,28 +23,120 @@ $page_description = 'Download scripts and deploy to servers via wget or manual c
     <link href="../assets/css/ionicons.css" rel="stylesheet">
     <link href="../assets/css/main.css" rel="stylesheet">
     <link href="../assets/css/wds-unified.css" rel="stylesheet">
-    <link href="../assets/css/readability-improvements.css" rel="stylesheet">
     <style>
-        .tool-card { background: rgba(0,0,0,0.55); border: 1px solid rgba(139,69,19,0.3); border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
-        .tool-card h3 { margin-top: 0; color: #FDE68A; }
-        .tool-meta { color:#9CA3AF; font-size:13px; }
-        .tool-meta code { background: rgba(15,23,42,0.7); padding: 2px 6px; border-radius: 6px; }
-        .tool-card a.btn-download { margin-top: 15px; display: inline-block; background: #8B4513; color: #F1E3C8; padding: 8px 18px; border-radius: 6px; text-decoration: none; margin-right: 10px; }
-        .tool-card a.btn-download:hover { background: #A0522D; }
-        .dir-notice { background: rgba(255,255,255,0.08); padding: 18px; border-radius: 10px; border-left: 4px solid #8B4513; color:#E5E7EB; }
-        .download-all-box { background: linear-gradient(135deg, rgba(139,69,19,0.3) 0%, rgba(0,0,0,0.5) 100%); border: 2px solid #8B4513; border-radius: 14px; padding: 30px; margin-bottom: 30px; text-align: center; }
-        .download-all-box h3 { color: #FFD699; margin-top: 0; }
-        .download-all-box .btn-download-all { background: #8B4513; color: #F1E3C8; padding: 15px 40px; border-radius: 8px; text-decoration: none; font-size: 1.1rem; display: inline-block; margin-top: 10px; border: none; cursor: pointer; }
-        .download-all-box .btn-download-all:hover { background: #A0522D; }
-        .wget-command { background: rgba(0,0,0,0.6); padding: 15px; border-radius: 8px; font-family: monospace; color: #9AE6B4; margin-top: 15px; word-break: break-all; }
-        .wget-command code { background: transparent; padding: 0; }
+        /* Toolbox cards use unified light tan palette */
+        .staff-login .download-all-box {
+            background: #D4CFC0 !important;
+            border: 2px solid #B8A996 !important;
+            border-radius: 14px !important;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.18) !important;
+            color: #1a1a1a !important;
+        }
+
+        .staff-login .download-all-box h3 {
+            margin-top: 0;
+            color: #8B4513 !important;
+        }
+
+        .staff-login .download-all-box p {
+            color: #1a1a1a !important;
+        }
+
+        .staff-login .download-all-box .btn-download-all {
+            background: #8B4513 !important;
+            color: #E8E4D8 !important;
+        }
+
+        .staff-login .tool-card {
+            background: #D4CFC0 !important;
+            border: 1px solid #B8A996 !important;
+            border-radius: 12px !important;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.18) !important;
+            color: #1a1a1a !important;
+        }
+
+        .staff-login .tool-card h3 {
+            margin-top: 0;
+            color: #8B4513 !important;
+        }
+
+        .staff-login .tool-card :is(p, li, span, td, th, label, small, strong, em, ul, ol) {
+            color: #1a1a1a !important;
+        }
+
+        .staff-login .tool-card a:not(.btn-download) {
+            color: #8B4513 !important;
+        }
+
+        .tool-card a.btn-download {
+            color: #E8E4D8 !important;
+        }
+
+        .tool-meta code {
+            background: #E8E4D8;
+            padding: 2px 6px;
+            border-radius: 6px;
+        }
+
+        .tool-card a.btn-download {
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+        .staff-login .dir-notice {
+            background: #D4CFC0 !important;
+            padding: 18px;
+            border-radius: 10px;
+            border-left: 4px solid #8B4513 !important;
+            color: #1a1a1a !important;
+        }
+
+        .staff-login .dir-notice :is(p, li, span, strong, code) {
+            color: #1a1a1a !important;
+        }
+
+        .wget-command {
+            background: #111827 !important;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            color: #E5E7EB !important;
+            margin-top: 15px;
+            word-break: break-all;
+        }
+
+        .wget-command code {
+            background: transparent;
+            padding: 0;
+        }
+
+        /* Align tool cards in a flexible grid so blocks line up cleanly */
+        .tool-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .tool-grid > [class*="col-sm-6"] {
+            display: flex;
+        }
+
+        .tool-grid .tool-card {
+            flex: 1 1 auto;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
 <?php include '../includes/header.php'; ?>
 <?php include '../includes/navigation.php'; ?>
 <section class="staff-login">
-    <div class="container page-bgc">
+    <div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <div class="title-box">
@@ -81,7 +173,7 @@ $page_description = 'Download scripts and deploy to servers via wget or manual c
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row tool-grid">
             <?php foreach ($toolCatalog as $tool): ?>
                 <div class="col-sm-6">
                     <div class="tool-card">

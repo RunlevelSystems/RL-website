@@ -1,3 +1,4 @@
+                            <a href="contact.php" class="btn btn-secondary" style="margin-right: 15px;">
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,7 +17,6 @@
         <link href="../../assets/css/owl.carousel.theme.min.css" rel="stylesheet">
         <link href="../../assets/css/ionicons.css" rel="stylesheet">
         <link href="../../assets/css/main.css" rel="stylesheet">
-        <link href="../../assets/css/readability-improvements.css" rel="stylesheet">
     </head>
     <body>
         <?php 
@@ -291,7 +291,7 @@
                                 We welcome technical contributions from experienced developers. Check out our GitHub repository 
                                 or join our Discord server to discuss implementation details with the dev team.
                             </p>
-                            <a href="/contact.php" class="btn btn-secondary" style="margin-right: 15px;">
+                            <a href="contact.php" class="btn btn-secondary" style="margin-right: 15px;">
                                 Join Dev Team
                             </a>
                             <a href="index.php" class="btn btn-secondary">

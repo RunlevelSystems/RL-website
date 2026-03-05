@@ -1,3 +1,4 @@
+                                                <a href="contact.php" class="btn btn-wds">
                     <div class="col-sm-12">
                         
                         <!-- Project Overview -->
@@ -91,7 +92,7 @@
                             <p style="color: #4a4a4a; font-size: 16px; margin-bottom: 30px;">
                                 Join our community to get early access and help shape the future of Neverwards.
                             </p>
-                            <a href="/contact.php" class="btn btn-wds">
+                            <a href="contact.php" class="btn btn-wds">
                                 Join Beta Program
                             </a>
                         </div>

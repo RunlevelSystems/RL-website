@@ -1,3 +1,5 @@
+                            <a href="contact.php" class="btn btn-wds" style="margin-right: 15px;">
+                            <a href="contact.php" class="btn btn-secondary">
 
                         
                         <!-- Project Overview -->
@@ -177,10 +179,10 @@
                             <p style="color: #4a4a4a; font-size: 16px; margin-bottom: 30px;">
                                 Join our beta program to experience enterprise-grade automation without the complexity.
                             </p>
-                            <a href="/contact.php" class="btn btn-wds" style="margin-right: 15px;">
+                            <a href="contact.php" class="btn btn-wds" style="margin-right: 15px;">
                                 Join Beta Program
                             </a>
-                            <a href="/contact.php" class="btn btn-secondary">
+                            <a href="contact.php" class="btn btn-secondary">
                                 Enterprise Demo
                             </a>
                         </div>

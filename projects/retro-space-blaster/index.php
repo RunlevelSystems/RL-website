@@ -1,3 +1,4 @@
+                                                    <a href="project-contact.php?project=retro-space-blaster" class="btn btn-secondary">Volunteer for Flight Tests</a>
                         <!-- Retro Space Blaster Overview -->
                         <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">Retro Space Blaster - High-Tempo Neon Dogfights</h3>
@@ -195,6 +196,6 @@
                             </ul>
                             <div style="text-align: center; margin-top: 30px;">
                                 <a href="https://discord.gg/XPFnNdWGyW" class="btn btn-wds" style="margin-right: 15px;">Discuss on Discord</a>
-                                <a href="/project-contact.php?project=retro-space-blaster" class="btn btn-secondary">Volunteer for Flight Tests</a>
+                                <a href="project-contact.php?project=retro-space-blaster" class="btn btn-secondary">Volunteer for Flight Tests</a>
                             </div>
                         </div>

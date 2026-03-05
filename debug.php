@@ -17,7 +17,6 @@ $files_to_check = [
     'assets/images/wds-logo.png',
     'assets/images/code.png', 
     'assets/css/main.css',
-    'assets/css/readability-improvements.css',
     'includes/navigation.php',
     'includes/header.php'
 ];

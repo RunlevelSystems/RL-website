@@ -21,18 +21,22 @@ $page_description = 'Ubuntu 24.04 baselines, PHP 7.4 requirement, MySQL 5.7 Dock
     <link href="../assets/css/ionicons.css" rel="stylesheet">
     <link href="../assets/css/main.css" rel="stylesheet">
     <link href="../assets/css/wds-unified.css" rel="stylesheet">
-    <link href="../assets/css/readability-improvements.css" rel="stylesheet">
     <style>
-        .ops-card { background: rgba(0,0,0,0.55); border-radius: 12px; border: 1px solid rgba(139,69,19,0.3); padding: 25px; margin-bottom: 25px; }
-        .ops-card h3 { color: #FDE68A; margin-top: 0; }
-        pre { background: rgba(15,15,20,0.85); color:#D1FAE5; padding: 12px; border-radius: 8px; overflow-x:auto; }
+        /* Ops page keeps dark code blocks for shell readability; card styling lives in wds-unified.css */
+        pre {
+            background: #111827 !important;
+            color: #E5E7EB !important;
+            padding: 12px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
     </style>
 </head>
 <body>
 <?php include '../includes/header.php'; ?>
 <?php include '../includes/navigation.php'; ?>
 <section class="staff-login">
-    <div class="container page-bgc">
+    <div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <div class="title-box">

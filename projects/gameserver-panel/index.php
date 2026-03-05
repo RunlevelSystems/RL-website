@@ -1,3 +1,4 @@
+    <a href="contact.php" class="btn btn-secondary"><i class="fas fa-envelope" style="margin-right:8px;"></i>Contact Us</a>
 <?php
 // Simple fragment for the GameServer Panel project.
 // Only PHP used here is for project icon detection; the rest is static HTML.
@@ -175,5 +176,5 @@ if (file_exists($projectDir . '/projecticon.png')) {
     <p style="color:#4a4a4a;font-size:16px;margin-bottom:30px;">Download the source code and start your commercial game server hosting company today.</p>
     <a href="https://github.com/GameServerPanel/GSP" target="_blank" class="btn btn-wds" style="margin-right:15px;"><i class="fab fa-github" style="margin-right:8px;"></i>View on GitHub</a>
     <a href="https://discord.gg/XPFnNdWGyW" target="_blank" class="btn btn-secondary" style="margin-right:15px;"><i class="fab fa-discord" style="margin-right:8px;"></i>Join Discord</a>
-    <a href="/contact.php" class="btn btn-secondary"><i class="fas fa-envelope" style="margin-right:8px;"></i>Contact Us</a>
+    <a href="contact.php" class="btn btn-secondary"><i class="fas fa-envelope" style="margin-right:8px;"></i>Contact Us</a>
 </div>

@@ -1,3 +1,4 @@
+                            <a href="contact.php?project=roadkill-v2" class="btn btn-secondary" style="margin-right: 15px;">
 
                         
                         <!-- Project Overview -->
@@ -429,7 +430,7 @@
                             <a href="https://discord.gg/XPFnNdWGyW" class="btn btn-wds" style="margin-right: 15px;">
                                 Join Discord Community
                             </a>
-                            <a href="/contact.php?project=roadkill-v2" class="btn btn-secondary" style="margin-right: 15px;">
+                            <a href="contact.php?project=roadkill-v2" class="btn btn-secondary" style="margin-right: 15px;">
                                 Get Alpha Access
                             </a>
                             <a href="https://github.com/World-Domination-Software" class="btn btn-secondary">

@@ -202,29 +202,28 @@ if (!empty($search_query)) {
     <link href="assets/css/owl.carousel.theme.min.css" rel="stylesheet">
     <link href="assets/css/ionicons.css" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet">
-    <link href="assets/css/readability-improvements.css" rel="stylesheet">
+    <link href="assets/css/wds-unified.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         .search-results {
-            background-color: #2a2a2a;
-            color: #e0e0e0;
+            background-color: #E8E4D8;
+            color: #1a1a1a;
             padding: 40px 0;
             min-height: 500px;
         }
         
         .search-result-item {
-            background-color: #1a1a1a;
-            border: 1px solid #8B4513;
-            border-radius: 5px;
+            background-color: transparent;
+            border: none;
+            border-radius: 0;
             padding: 20px;
             margin-bottom: 20px;
             transition: all 0.3s ease;
         }
         
         .search-result-item:hover {
-            background-color: #333;
-            border-color: #D2B48C;
+            transform: translateY(-2px);
         }
         
         .search-result-title {
@@ -245,7 +244,7 @@ if (!empty($search_query)) {
         }
         
         .search-result-snippet {
-            color: #D2B48C;
+            color: #1a1a1a;
             line-height: 1.6;
             font-size: 14px;
         }
@@ -257,22 +256,22 @@ if (!empty($search_query)) {
         }
         
         .search-stats {
-            color: #8B7355;
+            color: #6B3410;
             margin-bottom: 30px;
             font-size: 14px;
         }
         
         .no-results {
             text-align: center;
-            color: #D2B48C;
+            color: #4a4a4a;
             font-size: 16px;
             padding: 50px 0;
         }
         
         .search-form-page {
-            background-color: #333;
+            background-color: transparent;
             padding: 20px;
-            border-radius: 5px;
+            border-radius: 0;
             margin-bottom: 30px;
         }
         
@@ -297,7 +296,7 @@ if (!empty($search_query)) {
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <!-- Search Form -->
-                    <div class="search-form-page">
+                    <div class="search-form-page wds-card">
                         <form method="GET" action="search.php">
                             <div class="input-group">
                                 <input type="text" name="q" class="form-control" placeholder="Search World Domination Software..." value="<?php echo htmlspecialchars($search_query); ?>">
@@ -319,7 +318,7 @@ if (!empty($search_query)) {
                         <?php if ($total_results > 0): ?>
                             <!-- Search Results -->
                             <?php foreach ($search_results as $result): ?>
-                                <div class="search-result-item">
+                                <div class="search-result-item wds-card">
                                     <div class="search-result-title">
                                         <a href="<?php echo htmlspecialchars($result['url']); ?>">
                                             <?php echo htmlspecialchars($result['title']); ?>

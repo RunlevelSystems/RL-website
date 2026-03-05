@@ -1,7 +1,10 @@
+                            <a href="contact.php" class="btn btn-wds" style="margin-right: 15px;">
+                            <a href="#" onclick="loadProjectFile('references.php'); return false;" class="btn btn-secondary" style="margin-right: 15px;">
+                            <a href="contact.php" class="btn btn-secondary">
 
                         
                         <!-- Project Vision -->
-                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                        <div class="wds-card" style="padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">The Ultimate Space Empire Experience</h3>
                             <p style="color: #4a4a4a; font-size: 18px; line-height: 1.8; margin-bottom: 20px;">
                                 Space5X combines the strategic depth of VGA Planets with the eXconomy complexity of TradeWars 2002, creating the definitive space empire simulation. This isn't just another 4X game—it's a living universe where every decision ripples across space and time.
@@ -12,7 +15,7 @@
                         </div>
 
                         <!-- The Fifth X -->
-                        <div style="background: #D4CFC0; border: 1px solid #222; border-radius: 8px; padding: 20px; margin: 10px 0 30px 0;">
+                        <div class="wds-card" style="padding: 20px; margin: 10px 0 30px 0;">
                             <h4 style="color: #D2B48C; margin-bottom: 8px;"><i class="fas fa-coins" aria-hidden="true" style="margin-right:8px;"></i> The Fifth X — eXconomy <small style="color: #4a4a4a; font-weight:normal;">(the "eXtra" X)</small></h4>
                             <p style="color: #4a4a4a; font-size: 14px; line-height: 1.6; margin: 0;">
                                 eXconomy represents the trading and market layer of Space5X: a player-driven market system with supply & demand, trade routes, corporate tariffs and markets that react to player actions. Trade is first-class — it powers empires, funds fleets, and creates strategic opportunities beyond conquest.
@@ -20,7 +23,7 @@
                         </div>
 
                         <!-- Core Gameplay Pillars -->
-                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                        <div class="wds-card" style="padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 30px;">The Four X's Reimagined</h3>
                             <div class="row">
                                 <div class="col-sm-6">
@@ -43,7 +46,7 @@
                         </div>
 
                         <!-- Inspired By Legends -->
-                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                        <div class="wds-card" style="padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 30px;">Standing on the Shoulders of Giants</h3>
                             <div class="row">
                                 <div class="col-sm-6">
@@ -70,7 +73,7 @@
                         </div>
 
                         <!-- Unique Features -->
-                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                        <div class="wds-card" style="padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 30px;">Modern Innovations</h3>
                             <div class="row">
                                 <div class="col-sm-6">
@@ -101,7 +104,7 @@
                         </div>
 
                         <!-- Technology Preview (accurate) -->
-                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                        <div class="wds-card" style="padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">Technology Stack</h3>
                             <p style="color: #4a4a4a; font-size: 15px; line-height: 1.6; margin-bottom: 18px;">
                                 Space5X is developed as a server-authoritative Unity project with a C# server runtime for authoritative simulation, JSON fixtures for data-driven content, and standard game tooling for builds and testing.
@@ -130,7 +133,7 @@
                         </div>
 
                         <!-- Development Roadmap -->
-                        <div style="background: #D4CFC0; border: 1px solid #333; border-radius: 8px; padding: 40px; margin-bottom: 40px;">
+                        <div class="wds-card" style="padding: 40px; margin-bottom: 40px;">
                             <h3 style="color: #8B4513; margin-bottom: 20px;">Development Timeline</h3>
                             <div style="margin-bottom: 30px;">
                                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
@@ -178,13 +181,13 @@
                             <p style="color: #4a4a4a; font-size: 16px; margin-bottom: 30px;">
                                 Be part of creating the next generation of space strategy gaming. Early supporters will help shape the universe and receive exclusive access to development builds.
                             </p>
-                            <a href="/contact.php" class="btn btn-wds" style="margin-right: 15px;">
+                            <a href="contact.php" class="btn btn-wds" style="margin-right: 15px;">
                                 Join Alpha Program
                             </a>
                             <a href="#" onclick="loadProjectFile('references.php'); return false;" class="btn btn-secondary" style="margin-right: 15px;">
                                 Technical Details for Nerds
                             </a>
-                            <a href="/contact.php" class="btn btn-secondary">
+                            <a href="contact.php" class="btn btn-secondary">
                                 Follow Development
                             </a>
                         </div>

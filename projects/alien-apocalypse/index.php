@@ -1,3 +1,4 @@
+                        <a href="project-contact.php?project=infestation-control-earth" class="btn btn-wds">
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,7 +17,6 @@
         <link href="../assets/css/owl.carousel.theme.min.css" rel="stylesheet">
         <link href="../assets/css/ionicons.css" rel="stylesheet">
         <link href="../assets/css/main.css" rel="stylesheet">
-        <link href="../assets/css/readability-improvements.css" rel="stylesheet">
     </head>
     <body>
         <?php 
@@ -197,7 +197,7 @@
                             <p style="color: #4a4a4a; font-size: 14px; margin-bottom: 16px;">
                                 If you&apos;re interested in collaborating, investing, or following development, reach out and mention <strong>Infestation Control: Earth</strong> in your message.
                             </p>
-                            <a href="/project-contact.php?project=infestation-control-earth" class="btn btn-wds">
+                            <a href="project-contact.php?project=infestation-control-earth" class="btn btn-wds">
                                 Talk to the Team
                             </a>
                         </div>

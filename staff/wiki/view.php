@@ -29,12 +29,41 @@ $page_subtitle = 'Wiki Viewer';
     <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../assets/css/main.css" rel="stylesheet">
     <link href="../../assets/css/wds-unified.css" rel="stylesheet">
-    <link href="../../assets/css/readability-improvements.css" rel="stylesheet">
     <style>
-        .wiki-content { background: rgba(0,0,0,0.55); border-radius: 12px; padding: 25px; color:#E5E7EB; }
-        .wiki-content h1,.wiki-content h2,.wiki-content h3 { color:#FDE68A; }
-        .wiki-content pre { background: rgba(15,23,42,0.85); padding:12px; border-radius:8px; }
-        .wiki-content a { color:#93C5FD; text-decoration:underline; }
+        .staff-login .page-bgc {
+            background-color: #E8E4D8 !important;
+        }
+
+        /* Override rust gradient wiki content from readability-improvements.css */
+        .staff-login .wiki-content {
+            background: #D4CFC0 !important;
+            border-radius: 12px !important;
+            padding: 25px;
+            color: #1a1a1a !important;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.18) !important;
+        }
+
+        .staff-login .wiki-content :is(p, li, span, td, th, label, small, strong, em, ul, ol) {
+            color: #1a1a1a !important;
+        }
+
+        .staff-login .wiki-content h1,
+        .staff-login .wiki-content h2,
+        .staff-login .wiki-content h3 {
+            color: #8B4513 !important;
+        }
+
+        .staff-login .wiki-content pre {
+            background: #111827 !important;
+            padding: 12px;
+            border-radius: 8px;
+            color: #E5E7EB !important;
+        }
+
+        .staff-login .wiki-content a {
+            text-decoration: underline;
+            color: #8B4513 !important;
+        }
     </style>
 </head>
 <body>

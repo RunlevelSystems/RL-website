@@ -19,7 +19,6 @@
         <link href="assets/css/owl.carousel.css" rel="stylesheet">
         <link href="assets/css/owl.carousel.theme.min.css" rel="stylesheet">
         <link href="assets/css/ionicons.css" rel="stylesheet">
-        <link href="<!-- main.css removed -->" rel="stylesheet">
         <link href="assets/css/wds-unified.css" rel="stylesheet">
 
         <!--[if lt IE 9]>
@@ -85,7 +84,7 @@
                     <div class="boxed">
                         <!-- Email Form Section - Left Side -->
                         <div class="col-sm-6">
-                            <div style="background: rgba(212, 207, 192, 0.8); padding: 40px; border-radius: 12px; border: 1px solid rgba(139, 69, 19, 0.3);">
+                            <div class="wds-card">
                                 <h3 style="color: #8B4513; margin-bottom: 20px; font-size: 28px;">Get in Touch</h3>
                                 <p style="color: #1a1a1a; margin-bottom: 30px; font-size: 16px; line-height: 1.6;">
                                     Have a question or want to collaborate? Fill out the form below and we'll get back to you as soon as possible.
@@ -146,7 +145,7 @@
                         
                         <!-- Discord Section - Right Side -->
                         <div class="col-sm-6">
-                            <div style="background: rgba(212, 207, 192, 0.8); padding: 40px; border-radius: 12px; border: 1px solid rgba(139, 69, 19, 0.3);">
+                            <div class="wds-card">
                                 <h3 style="color: #8B4513; margin-bottom: 20px; font-size: 28px;">Join Our Community</h3>
                                 <p style="color: #1a1a1a; margin-bottom: 30px; font-size: 16px; line-height: 1.6;">
                                     <i class="ion-chatbubbles" style="margin-right: 8px; color: #8B4513;"></i>
@@ -154,7 +153,7 @@
                                 </p>
                                 
                                 <!-- Discord Widget -->
-                                <div style="background: rgba(139, 69, 19, 0.15); border: 2px solid #8B4513; padding: 30px; border-radius: 10px; margin: 20px 0; text-align: center;">
+                                <div class="wds-card" style="margin: 20px 0; text-align: center;">
                                     <div style="margin-bottom: 20px;">
                                         <i class="ion-social-discord" style="font-size: 48px; color: #8B4513;"></i>
                                     </div>

@@ -54,7 +54,7 @@
             <div class="row">
                 <div class="boxed">
                     <div class="col-sm-12">
-                        <div class="why-work-for-us" style="color: #D2B48C; max-width: 900px; margin: 0 auto; padding: 20px;">
+                        <div class="why-work-for-us wds-card" style="max-width: 900px; margin: 0 auto; padding: 20px;">
                             <h2 style="color: #8B4513; margin-bottom: 20px;">About Our Co-op</h2>
                             <p style="font-size: 18px; line-height: 1.6; margin-bottom: 30px;">
                                 We're a co-op. That means instead of just collecting a paycheck, 
@@ -99,67 +99,43 @@
     </section>
 
     <!-- New Career-Focused Infographic Section -->
-    <section class="career-focused-infographic" style="background: #1C1C1C; padding: 60px 0;">
+    <section class="career-focused-infographic" style="padding: 60px 0;">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <style>
             .career-infographic-container {
                 max-width: 1200px;
                 margin: 0 auto;
                 padding: 20px;
-                background: rgba(0,0,0,0.3);
-                border-radius: 20px;
-                backdrop-filter: blur(10px);
+                background: #D4CFC0;
+                border-radius: 14px;
             }
             
             /* Hero Section */
             .career-hero {
                 text-align: center;
-                padding: 60px 40px;
-                background: linear-gradient(135deg, #8B4513 0%, #654321 50%, #2F2F2F 100%);
-                border-radius: 20px;
+                padding: 40px 30px;
+                background: #D4CFC0;
+                border-radius: 14px;
                 margin-bottom: 40px;
                 position: relative;
-                overflow: hidden;
-            }
-            .career-hero::before {
-                content: '';
-                position: absolute;
-                top: -50%;
-                left: -50%;
-                width: 200%;
-                height: 200%;
-                background: repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 10px,
-                    rgba(255,255,255,0.05) 10px,
-                    rgba(255,255,255,0.05) 20px
-                );
-                animation: shimmer 8s linear infinite;
-            }
-            @keyframes shimmer {
-                0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-                100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
             }
             .career-hero h2 {
-                color: #FFFFFF;
-                font-size: 48px;
+                color: #8B4513;
+                font-size: 36px;
                 font-weight: 900;
                 margin-bottom: 20px;
-                text-shadow: 3px 3px 6px rgba(0,0,0,0.6);
                 position: relative;
                 z-index: 1;
             }
             .career-hero p {
-                color: #F5F5F5;
-                font-size: 24px;
+                color: #4a4a4a;
+                font-size: 20px;
                 font-weight: 600;
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
                 position: relative;
                 z-index: 1;
                 max-width: 800px;
                 margin: 0 auto;
-                line-height: 1.4;
+                line-height: 1.6;
             }
             
             /* Timeline Section */
@@ -172,7 +148,6 @@
                 font-weight: bold;
                 text-align: center;
                 margin-bottom: 40px;
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
             }
             .career-timeline {
                 position: relative;
@@ -246,10 +221,9 @@
                 font-size: 24px;
                 font-weight: bold;
                 margin-bottom: 10px;
-                text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
             }
             .timeline-desc {
-                color: #D2B48C;
+                color: #4a4a4a;
                 font-size: 16px;
                 line-height: 1.6;
                 font-weight: 500;
@@ -263,10 +237,10 @@
                 margin: 50px 0;
             }
             .mission-card {
-                background: linear-gradient(135deg, rgba(0,200,81,0.15), rgba(0,160,67,0.15));
-                border: 3px solid rgba(0,200,81,0.3);
-                border-radius: 20px;
-                padding: 40px;
+                background: #D4CFC0;
+                border: 1px solid #B8A996;
+                border-radius: 14px;
+                padding: 30px;
                 text-align: center;
                 transition: all 0.4s ease;
                 position: relative;
@@ -302,7 +276,6 @@
                 margin-bottom: 20px;
                 display: block;
                 color: #8B4513;
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
                 position: relative;
                 z-index: 1;
             }
@@ -311,12 +284,11 @@
                 font-size: 28px;
                 font-weight: bold;
                 margin-bottom: 15px;
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
                 position: relative;
                 z-index: 1;
             }
             .mission-desc {
-                color: #D2B48C;
+                color: #4a4a4a;
                 font-size: 18px;
                 line-height: 1.7;
                 font-weight: 500;
@@ -326,10 +298,10 @@
             
             /* Skills Chart */
             .skills-chart-section {
-                background: rgba(255,255,255,0.08);
-                border: 2px solid rgba(0,200,81,0.2);
-                border-radius: 20px;
-                padding: 50px;
+                background: #D4CFC0;
+                border: 1px solid #B8A996;
+                border-radius: 14px;
+                padding: 40px;
                 margin: 50px 0;
                 text-align: center;
             }
@@ -338,10 +310,9 @@
                 font-size: 36px;
                 font-weight: bold;
                 margin-bottom: 20px;
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
             }
             .skills-chart-section p {
-                color: #D2B48C;
+                color: #4a4a4a;
                 font-size: 20px;
                 margin-bottom: 40px;
                 font-weight: 500;
@@ -360,44 +331,25 @@
             
             /* CTA Section */
             .career-cta {
-                background: linear-gradient(135deg, #8B4513, #654321);
-                border-radius: 20px;
-                padding: 60px 40px;
+                background: #D4CFC0;
+                border-radius: 14px;
+                padding: 40px 30px;
                 text-align: center;
                 margin-top: 50px;
-                position: relative;
-                overflow: hidden;
-            }
-            .career-cta::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-                animation: slide 3s ease-in-out infinite;
-            }
-            @keyframes slide {
-                0% { left: -100%; }
-                50% { left: 100%; }
-                100% { left: 100%; }
             }
             .career-cta h3 {
-                color: #D2B48C;
+                color: #8B4513;
                 font-size: 42px;
                 font-weight: 900;
                 margin-bottom: 20px;
-                text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
                 position: relative;
                 z-index: 1;
             }
             .career-cta p {
-                color: #D2B48C;
+                color: #4a4a4a;
                 font-size: 22px;
                 margin-bottom: 40px;
                 font-weight: 600;
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
                 position: relative;
                 z-index: 1;
                 max-width: 600px;

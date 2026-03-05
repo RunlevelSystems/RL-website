@@ -1,4 +1,20 @@
     <!-- Footer -->
+<?php
+// Path detection for footer links (mirrors header/navigation behaviour)
+$current_url = $_SERVER['REQUEST_URI'];
+$is_in_wiki = (strpos($current_url, '/staff/wiki/') !== false);
+$is_in_staff = (strpos($current_url, '/staff/') !== false);
+$is_in_projects = (strpos($current_url, '/projects/') !== false);
+
+if ($is_in_wiki) {
+    $footer_base_path = '../../';
+} elseif ($is_in_staff || $is_in_projects) {
+    $footer_base_path = '../';
+} else {
+    $footer_base_path = '';
+}
+?>
+    <!-- Footer -->
         <section id="footer-widget" class="footer-widget" style="background: #000000; color: #E8E4D8; padding: 40px 0;">
             <div class="container">
                 <div class="row">
@@ -25,8 +41,8 @@
                             <li><a href="https://discord.gg/Ktxc9jT2sF" target="_blank">
                                 <i class="ion-social-discord" style="margin-right: 8px;"></i>Gameservers.world Discord
                             </a></li>
-                            <li><a href="/joinus.php">Join Our Co-op</a></li>
-                            <li><a href="/contact.php">Contact Us</a></li>
+                            <li><a href="<?php echo $footer_base_path; ?>joinus.php">Join Our Co-op</a></li>
+                            <li><a href="<?php echo $footer_base_path; ?>contact.php">Contact Us</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-4">

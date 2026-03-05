@@ -8,7 +8,7 @@ require_once 'includes/db-config.php';
 
 // Check if already logged in
 if (isLoggedInAdmin()) {
-    $redirect = $_GET['redirect'] ?? '/staff-info.php';
+    $redirect = $_GET['redirect'] ?? 'staff-info.php';
     header('Location: ' . $redirect);
     exit;
 }
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_form'])) {
             $_SESSION['wds_login_time'] = $user['login_time'];
             
             // Redirect to requested page or staff info
-            $redirect = $_GET['redirect'] ?? '/staff-info.php';
+            $redirect = $_GET['redirect'] ?? 'staff-info.php';
             header('Location: ' . $redirect);
             exit;
         } else {
@@ -70,7 +70,25 @@ $page_subtitle = 'Design. Debug. Deploy.';
         <link href="assets/css/ionicons.css" rel="stylesheet">
         <link href="assets/css/main.css" rel="stylesheet">
         <link href="assets/css/wds-unified.css" rel="stylesheet">
-        <link href="assets/css/readability-improvements.css" rel="stylesheet">
+
+        <style>
+            /* Keep login page aligned with the Orwellian tan theme */
+            .staff-login .title-box p {
+                color: #4a4a4a;
+            }
+
+            .login-container.staff-card {
+                margin-bottom: 30px;
+            }
+
+            .staff-login-form label {
+                color: #8B4513;
+            }
+
+            .staff-login-form .form-control {
+                font-size: 16px;
+            }
+        </style>
 
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -86,7 +104,7 @@ $page_subtitle = 'Design. Debug. Deploy.';
 
         <!-- Login Section -->
         <section class="staff-login">
-            <div class="container page-bgc">
+            <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="title-box">
@@ -97,15 +115,15 @@ $page_subtitle = 'Design. Debug. Deploy.';
                 </div>
                 <div class="row">
                     <div class="col-sm-6 col-sm-offset-3">
-                        <div class="login-container" style="background: rgba(255,255,255,0.1); padding: 40px; border-radius: 15px; backdrop-filter: blur(10px);">
+                        <div class="staff-card login-container">
                             
                             <!-- Security Notice -->
-                            <div style="background: rgba(0,200,81,0.2); padding: 20px; border-radius: 10px; margin-bottom: 30px; border-left: 4px solid #8B4513;">
-                                <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                                    <i class="ion-locked" style="font-size: 24px; color: #8B4513; margin-right: 10px;"></i>
-                                    <h4 style="color: #8B4513; margin: 0;">Secure Staff Area</h4>
+                            <div class="info-box" style="margin-bottom: 25px;">
+                                <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                                    <i class="ion-locked" style="font-size: 22px; color: #8B4513; margin-right: 10px;"></i>
+                                    <h4 style="color: #8B4513; margin: 0; font-size: 16px; text-transform: none;">Secure Staff Area</h4>
                                 </div>
-                                <p style="color: #8B7355; margin: 0; font-size: 14px; line-height: 1.5;">
+                                <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #4a4a4a;">
                                     This area is restricted to authorized co-op staff members only. 
                                     Login credentials are verified against our secure admin database.
                                 </p>
@@ -156,50 +174,43 @@ $page_subtitle = 'Design. Debug. Deploy.';
                                 <input type="hidden" name="login_form" value="1">
                                 
                                 <div style="margin-bottom: 25px;">
-                                    <label style="display: block; color: #8B4513; margin-bottom: 8px; font-weight: bold; font-size: 16px;">
+                                    <label style="display: block; margin-bottom: 8px; font-weight: bold; font-size: 16px;">
                                         <i class="ion-person" style="margin-right: 8px;"></i>Username
                                     </label>
                                     <input type="text" name="username" required 
+                                           class="form-control"
                                            value="<?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''; ?>"
-                                           style="width: 100%; padding: 15px; border: 2px solid rgba(0,200,81,0.3); border-radius: 8px; background: rgba(255,255,255,0.1); color: #D2B48C; font-size: 16px; transition: all 0.3s ease;"
-                                           placeholder="Enter your admin username"
-                                           onfocus="this.style.borderColor='#8B4513'; this.style.background='rgba(255,255,255,0.15)';"
-                                           onblur="this.style.borderColor='rgba(0,200,81,0.3)'; this.style.background='rgba(255,255,255,0.1)';">
+                                           placeholder="Enter your admin username">
                                 </div>
                                 
                                 <div style="margin-bottom: 30px;">
-                                    <label style="display: block; color: #8B4513; margin-bottom: 8px; font-weight: bold; font-size: 16px;">
+                                    <label style="display: block; margin-bottom: 8px; font-weight: bold; font-size: 16px;">
                                         <i class="ion-locked" style="margin-right: 8px;"></i>Password
                                     </label>
                                     <input type="password" name="password" required 
-                                           style="width: 100%; padding: 15px; border: 2px solid rgba(0,200,81,0.3); border-radius: 8px; background: rgba(255,255,255,0.1); color: #D2B48C; font-size: 16px; transition: all 0.3s ease;"
-                                           placeholder="Enter your password"
-                                           onfocus="this.style.borderColor='#8B4513'; this.style.background='rgba(255,255,255,0.15)';"
-                                           onblur="this.style.borderColor='rgba(0,200,81,0.3)'; this.style.background='rgba(255,255,255,0.1)';">
+                                           class="form-control"
+                                           placeholder="Enter your password">
                                 </div>
                                 
                                 <div style="text-align: center;">
-                                    <button type="submit" 
-                                            style="background: linear-gradient(135deg, #8B4513, #A0522D); color: #D2B48C; border: none; padding: 15px 40px; font-size: 18px; font-weight: bold; border-radius: 10px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,200,81,0.3);"
-                                            onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0,200,81,0.4)';"
-                                            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,200,81,0.3)';">
+                                    <button type="submit" class="btn btn-primary">
                                         <i class="ion-log-in" style="margin-right: 10px;"></i>Login to Staff Area
                                     </button>
                                 </div>
                             </form>
 
                             <!-- Access Information -->
-                            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1);">
-                                <h5 style="color: #8B4513; margin-bottom: 15px; font-weight: bold;">
+                            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid #C6B8A0;">
+                                <h5 style="color: #8B4513; margin-bottom: 15px; font-weight: bold; text-transform: none;">
                                     <i class="ion-information-circled" style="margin-right: 8px;"></i>Staff Access Information
                                 </h5>
-                                <ul style="color: #8B7355; font-size: 14px; line-height: 1.6; margin: 0; padding-left: 20px;">
+                                <ul style="color: #1a1a1a; font-size: 14px; line-height: 1.6; margin: 0; padding-left: 20px;">
                                     <li>Access to learning platform credentials (Zenva, Mammoth Interactive, Udemy)</li>
                                     <li>Partner hosting resources and cPanel access</li>
                                     <li>Development tools and co-op resource sharing</li>
                                     <li>Private staff communication channels</li>
                                 </ul>
-                                <p style="color: #64748b; font-size: 12px; margin-top: 20px; font-style: italic;">
+                                <p style="color: #666666; font-size: 12px; margin-top: 20px; font-style: italic;">
                                     Need access? Contact the co-op manager to get admin privileges added to your account.
                                 </p>
                             </div>
