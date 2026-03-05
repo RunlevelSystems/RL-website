@@ -1,8 +1,19 @@
-<!-- Developed by World Domination Software LLC -->
 # World Domination Software - Website Development Guidelines
 
 ## Site Overview
 World Domination Software (WDS) is a worker co-op focused on game development, server hosting, and business applications. The website showcases our projects, facilitates community engagement, and provides information about joining our co-op.
+
+## Multi-Repo Architecture (Important for AIs)
+
+- This repository (`WDS_Website`) is the public marketing and information site at worlddomination.dev.
+- The separate GitHub repository `World-Domination-Software/Projects` is the customer-facing hub for **all project details and interactions** (wiki pages, discussions, ideas, and issues).
+- The `projects.php` page in this repo lists projects and links out to the `Projects` repo for:
+  - Detailed project descriptions and design docs (GitHub Wiki)
+  - Future project ideas and feature discussions (GitHub Discussions → Ideas category)
+  - Bug reports and support (GitHub Issues)
+  - General project conversations (GitHub Discussions)
+- When changing how projects are displayed here, **do not duplicate long-form content**; instead, link to or align with structures and categories defined in the `Projects` repo.
+- Other internal repos (GSP server / agents) may be referenced from both this site and the `Projects` hub, but **customer interaction lives in the `Projects` repo**, not directly in those service repos.
 
 ## Architecture Overview
 
