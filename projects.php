@@ -76,22 +76,15 @@
         if (!isset($groupedProjects[$category])) {
             $groupedProjects[$category] = [];
         }
-        // Ensure defaults
-        if (!isset($project['votes'])) {
-            $project['votes'] = 0;
-        }
         $groupedProjects[$category][] = $project;
     }
 
-    // Sort projects within each category by votes (descending)
+    // Sort projects within each category by title (alphabetical)
     foreach ($groupedProjects as $cat => &$projectsInCat) {
         usort($projectsInCat, function ($a, $b) {
-            $va = isset($a['votes']) ? (int)$a['votes'] : 0;
-            $vb = isset($b['votes']) ? (int)$b['votes'] : 0;
-            if ($va === $vb) {
-                return 0;
-            }
-            return ($va > $vb) ? -1 : 1;
+            $ta = isset($a['title']) ? $a['title'] : (isset($a['name']) ? $a['name'] : '');
+            $tb = isset($b['title']) ? $b['title'] : (isset($b['name']) ? $b['name'] : '');
+            return strcasecmp($ta, $tb);
         });
     }
     unset($projectsInCat);
@@ -114,12 +107,11 @@
         return htmlspecialchars((string)$value, ENT_QUOTES, 'UTF-8');
     }
 
-    // Render a single project row (list item) with voting controls
+    // Render a single project row (list item)
     function renderProjectRow($project) {
         $slug = h($project['slug']);
         $title = h($project['title'] ?? $project['name'] ?? $slug);
         $short = h($project['shortDescription'] ?? $project['description'] ?? '');
-        $votes = isset($project['votes']) ? (int)$project['votes'] : 0;
 
         // Per-project links with sensible defaults
         $defaultRead = 'https://github.com/World-Domination-Software/Projects/wiki';
@@ -134,9 +126,6 @@
         $issueUrl = !empty($project['issueUrl']) ? $project['issueUrl'] : $defaultIssue;
 
         echo '<li class="project-row" data-slug="' . $slug . '">';
-        echo '  <button type="button" class="vote-button vote-up" onclick="voteProject(\'' . $slug . '\', 1); event.stopPropagation();" aria-label="Upvote ' . $title . '"><i class="fa-solid fa-thumbs-up"></i></button>';
-        echo '  <button type="button" class="vote-button vote-down" onclick="voteProject(\'' . $slug . '\', -1); event.stopPropagation();" aria-label="Downvote ' . $title . '"><i class="fa-solid fa-thumbs-down"></i></button>';
-        echo '  <span class="vote-count" id="vote-count-' . $slug . '">' . $votes . '</span>';
         echo '  <div class="project-main">';
         echo '      <div class="project-title-text">' . $title . '</div>';
         echo '      <div class="project-short">' . $short . '</div>';
@@ -199,14 +188,16 @@
                                         Each project represents our commitment to excellence and innovation.
                                     </p>
                                     <p class="inner-p" style="margin-top:15px;">
-                                        You can explore detailed design documents, roadmaps, and community feedback on our public GitHub project hub.
-                                        Visit
-                                        <a href="https://github.com/World-Domination-Software/Projects" target="_blank" rel="noopener noreferrer" style="color:#8B4513; text-decoration:underline;">WDS Projects on GitHub</a>,
-                                        join the discussion at
-                                        <a href="https://github.com/World-Domination-Software/Projects/discussions" target="_blank" rel="noopener noreferrer" style="color:#8B4513; text-decoration:underline;">Projects Discussions</a>,
-                                        or share new concepts in our
-                                        <a href="https://github.com/World-Domination-Software/Projects/discussions/categories/ideas" target="_blank" rel="noopener noreferrer" style="color:#8B4513; text-decoration:underline;">Ideas</a>
-                                        category.
+                                        For deeper details, every project on this page links to our public GitHub project hub, where we track design documents, roadmaps,
+                                        future project ideas, bug reports, and community discussions.
+                                    </p>
+                                    <p class="inner-p" style="margin-top:10px;">
+                                        Key GitHub resources for our projects:
+                                        <br>
+                                        • <a href="https://github.com/World-Domination-Software/Projects/wiki" target="_blank" rel="noopener noreferrer" style="color:#8B4513; text-decoration:underline;">Project descriptions &amp; design documents (Wiki)</a><br>
+                                        • <a href="https://github.com/World-Domination-Software/Projects/discussions/categories/ideas" target="_blank" rel="noopener noreferrer" style="color:#8B4513; text-decoration:underline;">Future project ideas &amp; feature discussions (Ideas)</a><br>
+                                        • <a href="https://github.com/World-Domination-Software/Projects/issues" target="_blank" rel="noopener noreferrer" style="color:#8B4513; text-decoration:underline;">Bug reports &amp; support issues (Issues)</a><br>
+                                        • <a href="https://github.com/World-Domination-Software/Projects/discussions" target="_blank" rel="noopener noreferrer" style="color:#8B4513; text-decoration:underline;">General project discussions</a>
                                     </p>
                             </div>
                         </div>
@@ -258,30 +249,6 @@
                     .project-row:hover {
                         background-color: #C5BEAE;
                     }
-                    .vote-button {
-                        background: #000000;
-                        color: #E8E4D8;
-                        border: none;
-                        width: 28px;
-                        height: 28px;
-                        margin-right: 6px;
-                        border-radius: 3px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        transition: background-color 0.2s ease;
-                    }
-                    .vote-button:hover {
-                        background-color: #8B4513;
-                        color: #E8E4D8;
-                    }
-                    .vote-count {
-                        min-width: 36px;
-                        text-align: center;
-                        margin-right: 12px;
-                        color: #1a1a1a;
-                        font-weight: 500;
-                    }
                     .project-main {
                         display: flex;
                         flex-direction: column;
@@ -330,65 +297,6 @@
         <script src="assets/js/jquery.magnific-popup.min.js"></script>
         <script src="assets/js/owl.carousel.min.js"></script>
         <script src="assets/js/script.js"></script>
-
-    <!-- Voting JavaScript (details now live on GitHub) -->
-    <script>
-
-        function voteProject(slug, delta) {
-            // simple cookie-based throttle per project
-            var now = Date.now();
-            var cookieKey = 'wds_vote_' + slug;
-            var last = parseInt(getCookie(cookieKey) || '0', 10) || 0;
-            if (now - last < 5000) {
-                return; // too soon
-            }
-
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'project-api.php?action=vote', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        try {
-                            var data = JSON.parse(xhr.responseText);
-                            if (data && data.ok) {
-                                var countEl = document.getElementById('vote-count-' + slug);
-                                if (countEl) {
-                                    countEl.textContent = data.votes;
-                                }
-                                setCookie(cookieKey, String(now), 365);
-                            } else {
-                                console.error('Vote failed', data && data.error ? data.error : xhr.responseText);
-                            }
-                        } catch (e) {
-                            console.error('Error parsing vote response', e);
-                        }
-                    } else {
-                        console.error('Vote request failed with status', xhr.status);
-                    }
-                }
-            };
-            xhr.send('slug=' + encodeURIComponent(slug) + '&delta=' + encodeURIComponent(delta));
-        }
-
-
-        function getCookie(name) {
-            var value = '; ' + document.cookie;
-            var parts = value.split('; ' + name + '=');
-            if (parts.length === 2) return parts.pop().split(';').shift();
-            return null;
-        }
-
-        function setCookie(name, value, days) {
-            var expires = '';
-            if (typeof days === 'number') {
-                var date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = '; expires=' + date.toUTCString();
-            }
-            document.cookie = name + '=' + (value || '') + expires + '; path=/';
-        }
-    </script>
 
     </body>
 </html>
