@@ -43,6 +43,7 @@ if ($is_in_wiki) {
                             </a></li>
                             <li><a href="<?php echo $footer_base_path; ?>joinus.php">Join Our Co-op</a></li>
                             <li><a href="<?php echo $footer_base_path; ?>contact.php">Contact Us</a></li>
+                            <li><a href="<?php echo $footer_base_path; ?>privacy.php">Privacy Policy</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-4">
