@@ -7,6 +7,16 @@ A professional corporate website showcasing game development, server hosting, an
 
 This is the corporate website for World Domination Software (WDS), a company specializing in indie game development, game server hosting, and custom business applications. The site presents a professional, modern dark-themed interface that reflects the company's technical expertise and gaming industry focus.
 
+## Roadmap & Documentation
+
+Public roadmap and documentation for WDS projects are managed in the separate **Projects** hub on GitHub:
+
+- **Roadmap (Discussions category):** https://github.com/World-Domination-Software/Projects/discussions/categories/roadmap
+- **Projects hub repository:** https://github.com/World-Domination-Software/Projects
+- **Projects wiki (documentation hub):** https://github.com/World-Domination-Software/Projects/wiki
+
+The website `projects.php` page links out to this hub for detailed project information, roadmap updates, and community interaction.
+
 ## Site Structure
 
 ### Main Pages
