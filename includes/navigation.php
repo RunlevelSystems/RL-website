@@ -71,21 +71,21 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
                     <ul class="nav navbar-nav navbar-right">
                         <?php if ($is_logged_in): ?>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #00a8ff;">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: var(--wds-primary-soft);">
                                     <i class="ion-person"></i> <?php echo isset($_SESSION['wds_admin_user']) ? htmlspecialchars($_SESSION['wds_admin_user']) : 'Staff'; ?> <span class="caret"></span>
                                 </a>
-                                <ul class="dropdown-menu" style="background: #132b44; border: 1px solid rgba(255,255,255,0.14);">
+                                <ul class="dropdown-menu">
                                     <li><a href="<?php echo $base_path; ?>staff-info.php" style="color: #f5f7fa;"><i class="ion-information-circled"></i> Staff Home</a></li>
                                     <li><a href="<?php echo $base_path; ?>staff/operations.php" style="color: #f5f7fa;"><i class="ion-android-desktop"></i> Operations</a></li>
                                     <li><a href="<?php echo $base_path; ?>staff/tools.php" style="color: #f5f7fa;"><i class="ion-wrench"></i> Toolbox</a></li>
                                     <li><a href="<?php echo $base_path; ?>staff/server-status.php" style="color: #f5f7fa;"><i class="ion-ios-pulse"></i> Server Status</a></li>
                                     <li><a href="<?php echo $base_path; ?>staff/wiki/index.php" style="color: #f5f7fa;"><i class="ion-document"></i> Wiki</a></li>
-                                    <li role="separator" class="divider" style="background: rgba(255,255,255,0.14);"></li>
+                                    <li role="separator" class="divider" style="background: rgba(255,255,255,0.18);"></li>
                                     <li><a href="<?php echo $base_path; ?>logout.php" style="color: #f87171;"><i class="ion-log-out"></i> Logout</a></li>
                                 </ul>
                             </li>
                         <?php else: ?>
-                            <li><a href="<?php echo $base_path; ?>login.php" style="color: #00a8ff;"><i class="ion-log-in"></i> Staff Login</a></li>
+                            <li><a href="<?php echo $base_path; ?>login.php" style="color: var(--wds-primary-soft);"><i class="ion-log-in"></i> Staff Login</a></li>
                         <?php endif; ?>
                     </ul>
                 </div><!-- /.navbar-collapse -->
