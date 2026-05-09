@@ -31,7 +31,7 @@ function searchWebsiteContent($query) {
         'index.php' => [
             'title' => 'Home - Core Loop Development',
             'description' => 'Main homepage featuring our company overview, services, and development philosophy.',
-            'keywords' => 'home, main, company, overview, development, software, world domination'
+            'keywords' => 'home, main, company, overview, development, software, core loop'
         ],
         'projects.php' => [
             'title' => 'Projects - Development Portfolio', 
