@@ -132,7 +132,7 @@
       </div>
 
       <div class="lx-meta">
-        <span>⚡ <a href="mailto:hello@worlddomination.dev">hello@worlddomination.dev</a></span>
+        <span>⚡ <a href="mailto:hello@coreloop.dev">hello@coreloop.dev</a></span>
         <span>🔒 Private portal available for clients</span>
       </div>
     </div>
@@ -170,7 +170,7 @@
     "contactPoint": [{
       "@type": "ContactPoint",
       "contactType": "customer support",
-      "email": "hello@worlddomination.dev"
+      "email": "hello@coreloop.dev"
     }]
   }
   </script>

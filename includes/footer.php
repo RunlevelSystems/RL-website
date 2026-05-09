@@ -25,7 +25,7 @@ if ($is_in_wiki) {
                         </p>
                         <ul>
                             <li><a href="https://store.steampowered.com/curator/45805039/" target="_blank">
-                                <i class="ion-social-steam" style="margin-right: 8px;"></i>Core Loop on Steam
+                                <i class="ion-social-steam" style="margin-right: 8px;"></i>Our Steam Curator
                             </a></li>
                             <li><a href="https://github.com/World-Domination-Software" target="_blank">
                                 <i class="ion-social-github" style="margin-right: 8px;"></i>GitHub

@@ -1081,7 +1081,7 @@ hr {
 @media (max-width: 768px) {
     body::after {
         font-size: clamp(90px, 16vw, 150px);
-        opacity: 0.45;
+        opacity: 0.22;
         right: 2vw;
     }
 }

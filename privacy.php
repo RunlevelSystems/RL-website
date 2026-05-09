@@ -211,7 +211,7 @@
                                 <p style="color: #a8bedc; font-size: 16px; line-height: 1.8;">
                                     <strong>Core Loop Development</strong><br>
                                     Website: <a href="https://worlddomination.dev" style="color: #ffd166;">https://worlddomination.dev</a><br>
-                                    Email: <a href="mailto:info@worlddomination.dev" style="color: #ffd166;">info@worlddomination.dev</a>
+                                    Email: <a href="mailto:info@coreloop.dev" style="color: #ffd166;">info@coreloop.dev</a>
                                 </p>
                             </div>
                         </div>
