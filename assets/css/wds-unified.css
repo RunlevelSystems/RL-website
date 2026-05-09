@@ -1078,6 +1078,14 @@ hr {
     .stat-grid { grid-template-columns: 1fr !important; }
 }
 
+@media (max-width: 768px) {
+    body::after {
+        font-size: clamp(90px, 16vw, 150px);
+        opacity: 0.45;
+        right: 2vw;
+    }
+}
+
 /* ============================================
    HEADER / INTRO SECTION SPECIFICS
    ============================================ */
