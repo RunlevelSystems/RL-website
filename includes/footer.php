@@ -19,7 +19,9 @@ if ($is_in_wiki) {
             <div class="container">
                 <div class="row">
                     <div class="col-sm-4">
-                        <img src="<?php echo $footer_base_path; ?>assets/images/logo.png" alt="Core Loop Development" class="footer-logo">
+                        <a href="<?php echo $footer_base_path; ?>index.php" aria-label="Core Loop Development home">
+                            <img src="<?php echo $footer_base_path; ?>assets/images/logo.png" alt="Core Loop Development" class="footer-logo">
+                        </a>
                         <h3>Core Loop Development</h3>
                         <p style="color: var(--core-text-light); font-size: 14px; line-height: 1.6; margin-bottom: 14px;">
                             Developer-first software engineering, multiplayer infrastructure, and platform delivery.
