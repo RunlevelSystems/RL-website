@@ -88,7 +88,7 @@
                         <!-- Email Form Section - Left Side -->
                         <div class="col-sm-6">
                             <div class="wds-card">
-                                <h3 style="color: #8B4513; margin-bottom: 20px; font-size: 28px;">Get in Touch</h3>
+                                <h3 style="color: #00d4ff; margin-bottom: 20px; font-size: 28px;">Get in Touch</h3>
                                 <p style="color: #1a1a1a; margin-bottom: 30px; font-size: 16px; line-height: 1.6;">
                                     Have a question or want to collaborate? Fill out the form below and we'll get back to you as soon as possible.
                                 </p>
@@ -97,7 +97,7 @@
                                 </p>
                                 
                                 <?php if ($message_sent): ?>
-                                    <div style="background-color: rgba(139, 69, 19, 0.2); color: #1a1a1a; padding: 20px; border-radius: 8px; margin-bottom: 20px; text-align: center; border: 2px solid #8B4513;">
+                                    <div style="background-color: rgba(0, 212, 255, 0.06); color: #e2e8f0; padding: 20px; border-radius: 8px; margin-bottom: 20px; text-align: center; border: 1px solid rgba(0,212,255,0.25);">
                                         <strong>Thank you!</strong> Your message has been sent successfully. We'll get back to you soon!
                                     </div>
                                 <?php elseif ($error_message): ?>
@@ -108,28 +108,28 @@
                                 
                                 <form action="contact.php" class="contact-form" id="contactForm" method="post">
                                     <div style="margin-bottom: 25px;">
-                                        <label style="display: block; color: #8B4513; margin-bottom: 8px; font-weight: bold; font-size: 16px;">Name *</label>
+                                        <label style="display: block; color: #00d4ff; margin-bottom: 8px; font-weight: bold; font-size: 16px;">Name *</label>
                                         <input type="text" name="fname" required 
                                                style="width: 100%; padding: 14px; border-radius: 8px; background: #FFFFFF; color: #1a1a1a; font-size: 16px; border: 1px solid rgba(139, 69, 19, 0.3);"
                                                placeholder="Your name">
                                     </div>
                                     
                                     <div style="margin-bottom: 25px;">
-                                        <label style="display: block; color: #8B4513; margin-bottom: 8px; font-weight: bold; font-size: 16px;">Discord UserID <span style="color: #666; font-weight: normal;">(optional)</span></label>
+                                        <label style="display: block; color: #00d4ff; margin-bottom: 8px; font-weight: bold; font-size: 16px;">Discord UserID <span style="color: #666; font-weight: normal;">(optional)</span></label>
                                         <input type="text" name="discord_id" 
                                                style="width: 100%; padding: 14px; border-radius: 8px; background: #FFFFFF; color: #1a1a1a; font-size: 16px; border: 1px solid rgba(139, 69, 19, 0.3);"
                                                placeholder="YourDiscordName#1234">
                                     </div>
                                     
                                     <div style="margin-bottom: 25px;">
-                                        <label style="display: block; color: #8B4513; margin-bottom: 8px; font-weight: bold; font-size: 16px;">Email *</label>
+                                        <label style="display: block; color: #00d4ff; margin-bottom: 8px; font-weight: bold; font-size: 16px;">Email *</label>
                                         <input type="email" name="email" required 
                                                style="width: 100%; padding: 14px; border-radius: 8px; background: #FFFFFF; color: #1a1a1a; font-size: 16px; border: 1px solid rgba(139, 69, 19, 0.3);"
                                                placeholder="your@email.com">
                                     </div>
                                     
                                     <div style="margin-bottom: 30px;">
-                                        <label style="display: block; color: #8B4513; margin-bottom: 8px; font-weight: bold; font-size: 16px;">Question / Comment *</label>
+                                        <label style="display: block; color: #00d4ff; margin-bottom: 8px; font-weight: bold; font-size: 16px;">Question / Comment *</label>
                                         <textarea name="message" rows="6" required 
                                                   style="width: 100%; padding: 14px; border-radius: 8px; background: #FFFFFF; color: #1a1a1a; font-size: 16px; resize: vertical; border: 1px solid rgba(139, 69, 19, 0.3);"
                                                   placeholder="Tell us about your project, question, or how we can help..."></textarea>
@@ -137,7 +137,7 @@
                                     
                                     <div style="text-align: center;">
                                         <button type="submit" class="contact-submit-btn"
-                                                style="background: transparent; color: #8B4513; border: 2px solid #8B4513; padding: 15px 40px; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: all 0.3s ease;">
+                                                style="background: transparent; color: #00d4ff; border: 1px solid rgba(0,212,255,0.25); padding: 15px 40px; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: all 0.3s ease;">
                                             Send Message
                                         </button>
                                     </div>
@@ -149,25 +149,25 @@
                         <!-- Discord Section - Right Side -->
                         <div class="col-sm-6">
                             <div class="wds-card">
-                                <h3 style="color: #8B4513; margin-bottom: 20px; font-size: 28px;">Join Our Community</h3>
+                                <h3 style="color: #00d4ff; margin-bottom: 20px; font-size: 28px;">Join Our Community</h3>
                                 <p style="color: #1a1a1a; margin-bottom: 30px; font-size: 16px; line-height: 1.6;">
-                                    <i class="ion-chatbubbles" style="margin-right: 8px; color: #8B4513;"></i>
+                                    <i class="ion-chatbubbles" style="margin-right: 8px; color: #00d4ff;"></i>
                                     Chat with us directly on Discord! Ask questions, share ideas, and collaborate in real-time.
                                 </p>
                                 
                                 <!-- Discord Widget -->
                                 <div class="wds-card" style="margin: 20px 0; text-align: center;">
                                     <div style="margin-bottom: 20px;">
-                                        <i class="ion-social-discord" style="font-size: 48px; color: #8B4513;"></i>
+                                        <i class="ion-social-discord" style="font-size: 48px; color: #00d4ff;"></i>
                                     </div>
-                                    <h4 style="margin-bottom: 15px; color: #8B4513; font-size: 22px;">
+                                    <h4 style="margin-bottom: 15px; color: #00d4ff; font-size: 22px;">
                                         Level X Development
                                     </h4>
                                     <p style="margin-bottom: 25px; color: #1a1a1a; font-size: 15px; line-height: 1.6;">
                                         Join our Discord community for real-time discussions, project updates, and collaboration opportunities!
                                     </p>
                                     <a href="https://discord.gg/XPFnNdWGyW" target="_blank" class="discord-join-btn"
-                                       style="background: transparent; color: #8B4513; border: 2px solid #8B4513; padding: 14px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block; transition: all 0.3s ease; font-size: 16px;">
+                                       style="background: transparent; color: #00d4ff; border: 1px solid rgba(0,212,255,0.25); padding: 14px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block; transition: all 0.3s ease; font-size: 16px;">
                                         Join Discord Server
                                     </a>
                                 </div>
@@ -189,8 +189,8 @@
     <style>
         .contact-submit-btn:hover,
         .discord-join-btn:hover {
-            background: #8B4513 !important;
-            color: #E8E4D8 !important;
+            background: #00d4ff !important;
+            color: #0a0a0f !important;
             text-decoration: none !important;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(139, 69, 19, 0.4);

@@ -207,7 +207,7 @@ if (!empty($search_query)) {
     
     <style>
         .search-results {
-            background-color: #E8E4D8;
+            background-color: #e2e8f0;
             color: #1a1a1a;
             padding: 40px 0;
             min-height: 500px;
@@ -227,14 +227,14 @@ if (!empty($search_query)) {
         }
         
         .search-result-title {
-            color: #8B4513;
+            color: #00d4ff;
             font-size: 18px;
             font-weight: bold;
             margin-bottom: 10px;
         }
         
         .search-result-title a {
-            color: #8B4513;
+            color: #00d4ff;
             text-decoration: none;
         }
         
@@ -276,7 +276,7 @@ if (!empty($search_query)) {
         }
         
         mark {
-            background-color: #8B4513;
+            background-color: #00d4ff;
             color: white;
             padding: 2px 4px;
             border-radius: 2px;
