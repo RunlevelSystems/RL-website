@@ -68,7 +68,7 @@ if (strpos($proj_nav_url, '/projects/') !== false) {
 
                     <!-- Back to Projects -->
                     <div style="text-align: center;">
-                        <a href="<?php echo $proj_nav_base; ?>projects.php" style="text-decoration: none; color: #ffd166; display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: rgba(54,243,255, 0.1); border: 1px solid #ffd166; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;">
+                        <a href="<?php echo $proj_nav_base; ?>projects.php" style="text-decoration: none; color: #ffd166; display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: rgba(54,243,255,0.1); border: 1px solid #ffd166; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;">
                             <span class="ion-ios-grid-view"></span>
                             All Projects
                         </a>
@@ -104,7 +104,7 @@ section a[href*="/projects/"]:hover {
 }
 
 section a[href="/projects.php"]:hover {
-    background: rgba(54,243,255, 0.2) !important;
+    background: rgba(54,243,255,0.2) !important;
     transform: translateY(-1px);
 }
 

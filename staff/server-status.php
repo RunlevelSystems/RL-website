@@ -321,7 +321,7 @@ $totalCount = count($servers);
             <div class="col-sm-12">
                 <div class="summary-grid">
                     <div class="summary-box">
-                        <div class="summary-value" style="color: #eaf3ff;"><?php echo $totalCount; ?></div>
+                        <div class="summary-value" style="color: var(--lx-text);"><?php echo $totalCount; ?></div>
                         <div class="summary-label">Total Servers</div>
                     </div>
                     <div class="summary-box">
