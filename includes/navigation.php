@@ -96,9 +96,9 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
             <div class="overlay"></div>
             <div class="col-sm-6" style="display: flex; align-items: center; height: 100%; position: relative; z-index: 3;">
                 <a href="<?php echo $base_path; ?>index.php" class="lx-logo" style="height: 100%; width: 100%; display: flex; align-items: center; justify-content: flex-start; padding-left: 30px; text-decoration: none;">
-                    <div class="lx-logo-mark" style="width: 60px; height: 60px; font-size: 28px;">LX</div>
+                    <img src="<?php echo $base_path; ?>assets/images/logo.png" alt="Core Loop Development" class="lx-logo-banner">
                     <div class="lx-logo-text" style="margin-left: 14px;">
-                        <span class="lx-logo-name" style="font-size: 26px;">LEVEL <span>X</span></span>
+                        <span class="lx-logo-name" style="font-size: 26px;">Core Loop</span>
                         <span class="lx-logo-sub" style="font-size: 12px; margin-top: 4px; display: block;">Development</span>
                     </div>
                 </a>
@@ -106,7 +106,7 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
             <div class="col-sm-6 header-right-column">
                 <div>
                     <h2 class="header-quote" style="color: #00a8ff; margin-bottom: 5px;">
-                        <?php echo isset($page_subtitle) ? $page_subtitle : 'Design • Debug • Deploy'; ?>
+                        <?php echo isset($page_subtitle) ? $page_subtitle : 'Engineer • Ship • Scale'; ?>
                     </h2>
                     <?php if(isset($page_description) && $page_description): ?>
                         <p style="color: #b8c7d9; margin-bottom: 10px;">

@@ -4,12 +4,13 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="/assets/images/icon.png">
 
-        <title>Level X Development | Contact</title>
+        <title>Core Loop Development | Contact</title>
 
         <!-- CSS -->
 
-        <!-- Level X Development Fonts -->
+        <!-- Core Loop Development Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">        <!-- google fonts -->
@@ -34,7 +35,7 @@
         // Page-specific variables
         $current_page = 'contact';
         $header_class = 'contact-header inner-header';
-        $page_subtitle = 'Design • Debug • Deploy';
+        $page_subtitle = 'Engineer • Ship • Scale';
         
         // Handle form submission
         $message_sent = false;
@@ -161,7 +162,7 @@
                                         <i class="ion-social-discord" style="font-size: 48px; color: #00a8ff;"></i>
                                     </div>
                                     <h4 style="margin-bottom: 15px; color: #00a8ff; font-size: 22px;">
-                                        Level X Development
+                                        Core Loop Development
                                     </h4>
                                     <p style="margin-bottom: 25px; color: var(--wds-muted); font-size: 15px; line-height: 1.6;">
                                         Join our Discord community for real-time discussions, project updates, and collaboration opportunities!

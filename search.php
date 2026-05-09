@@ -29,9 +29,9 @@ function searchWebsiteContent($query) {
     // Define searchable pages with better descriptions
     $static_pages = [
         'index.php' => [
-            'title' => 'Home - Level X Development',
+            'title' => 'Home - Core Loop Development',
             'description' => 'Main homepage featuring our company overview, services, and development philosophy.',
-            'keywords' => 'home, main, company, overview, development, software, world domination'
+            'keywords' => 'home, main, company, overview, development, software, core loop'
         ],
         'projects.php' => [
             'title' => 'Projects - Development Portfolio', 
@@ -190,8 +190,9 @@ if (!empty($search_query)) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="/assets/images/icon.png">
 
-    <title>Search Results - Level X Development</title>
+    <title>Search Results - Core Loop Development</title>
 
     <!-- CSS -->
     
@@ -299,7 +300,7 @@ if (!empty($search_query)) {
                     <div class="search-form-page wds-card">
                         <form method="GET" action="search.php">
                             <div class="input-group">
-                                <input type="text" name="q" class="form-control" placeholder="Search Level X Development..." value="<?php echo htmlspecialchars($search_query); ?>">
+                                <input type="text" name="q" class="form-control" placeholder="Search Core Loop Development..." value="<?php echo htmlspecialchars($search_query); ?>">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default btn-wds" type="submit">
                                         <i class="ion-search" aria-hidden="true"></i> Search
@@ -341,7 +342,7 @@ if (!empty($search_query)) {
                         <?php endif; ?>
                     <?php else: ?>
                         <div class="no-results">
-                            <h3>Search Level X Development</h3>
+                            <h3>Search Core Loop Development</h3>
                             <p>Enter your search terms above to find content across our website.</p>
                         </div>
                     <?php endif; ?>

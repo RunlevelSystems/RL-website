@@ -24,18 +24,18 @@
    ============================================ */
 
 :root {
-    /* Borland/Cobalt-inspired core theme variables for global site branding. */
-    --wds-bg: #08111f;
-    --wds-bg-2: #0f1e2e;
-    --wds-panel: #132b44;
-    --wds-panel-2: #1b3a5a;
-    --wds-text: #f5f7fa;
-    --wds-muted: #b8c7d9;
-    --wds-primary: #00a8ff;
-    --wds-primary-soft: #4cc9ff;
-    --wds-accent: #ffc600;
-    --wds-border: rgba(255, 255, 255, 0.14);
-    --wds-shadow: rgba(0, 0, 0, 0.35);
+    /* Core Loop Development global theme variables (cobalt + gold). */
+    --wds-bg: #0a0b0f;
+    --wds-bg-2: #151922;
+    --wds-panel: #ffffff;
+    --wds-panel-2: #f5f7fb;
+    --wds-text: #172033;
+    --wds-muted: #4b5a73;
+    --wds-primary: #145de8;
+    --wds-primary-soft: #2f86ff;
+    --wds-accent: #f6c84f;
+    --wds-border: rgba(20, 93, 232, 0.16);
+    --wds-shadow: rgba(16, 30, 52, 0.12);
 
     --lx-bg: var(--wds-bg);
     --lx-bg-alt: var(--wds-bg-2);
@@ -47,20 +47,20 @@
 
     --lx-text: var(--wds-text);
     --lx-text-muted: var(--wds-muted);
-    --lx-text-dim: #91a9c0;
+    --lx-text-dim: #687998;
 
     --lx-accent: var(--wds-primary);
-    --lx-accent-dim: rgba(0, 168, 255, 0.1);
-    --lx-accent-glow: rgba(0, 168, 255, 0.28);
+    --lx-accent-dim: rgba(20, 93, 232, 0.1);
+    --lx-accent-glow: rgba(20, 93, 232, 0.28);
     --lx-blue: var(--wds-primary-soft);
     --lx-blue-dim: rgba(76, 201, 255, 0.16);
     --lx-gold: var(--wds-accent);
-    --lx-gold-dim: rgba(255, 198, 0, 0.16);
-    --lx-gold-glow: rgba(255, 198, 0, 0.24);
+    --lx-gold-dim: rgba(246, 200, 79, 0.18);
+    --lx-gold-glow: rgba(246, 200, 79, 0.28);
 
-    --lx-glow-sm:  0 0 12px rgba(54, 243, 255, 0.24);
-    --lx-glow-md:  0 0 22px rgba(54, 243, 255, 0.32);
-    --lx-glow-lg:  0 0 40px rgba(45, 127, 255, 0.25);
+    --lx-glow-sm:  0 0 12px rgba(47, 134, 255, 0.22);
+    --lx-glow-md:  0 0 22px rgba(47, 134, 255, 0.3);
+    --lx-glow-lg:  0 0 40px rgba(20, 93, 232, 0.28);
 
     --lx-font-head: 'Exo 2', 'Rajdhani', 'Segoe UI', sans-serif;
     --lx-font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
@@ -93,10 +93,7 @@ html {
 }
 
 body {
-    background:
-        radial-gradient(circle at 12% 0%, rgba(76, 201, 255, 0.18), transparent 45%),
-        radial-gradient(circle at 92% 12%, rgba(0, 168, 255, 0.12), transparent 38%),
-        linear-gradient(180deg, var(--wds-bg-2) 0%, var(--wds-bg) 100%) !important;
+    background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%) !important;
     color: var(--lx-text) !important;
     font-family: var(--lx-font-body) !important;
     line-height: 1.6 !important;
@@ -112,16 +109,14 @@ body::before {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    background-image:
-        linear-gradient(rgba(54, 243, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(54, 243, 255, 0.04) 1px, transparent 1px);
-    background-size: 38px 38px;
-    opacity: 0.24;
+    background-image: linear-gradient(rgba(20, 93, 232, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(20, 93, 232, 0.04) 1px, transparent 1px);
+    background-size: 44px 44px;
+    opacity: 0.2;
     z-index: 0;
 }
 
 body::after {
-    content: "X";
+    content: "CL";
     position: fixed;
     right: 3vw;
     bottom: -20px;
@@ -129,8 +124,8 @@ body::after {
     font-size: clamp(120px, 22vw, 320px);
     line-height: 1;
     font-weight: 900;
-    color: rgba(255, 209, 102, 0.06);
-    text-shadow: 0 0 40px rgba(45, 127, 255, 0.25);
+    color: rgba(246, 200, 79, 0.08);
+    text-shadow: 0 0 40px rgba(20, 93, 232, 0.2);
     pointer-events: none;
     z-index: 0;
 }
@@ -336,7 +331,7 @@ li {
 }
 
 /* ============================================
-   LEVEL X LOGO (CSS Text Logo)
+   CORE LOOP LOGO
    ============================================ */
 
 .lx-logo {
@@ -347,23 +342,28 @@ li {
     padding: 10px 0 !important;
 }
 
-.lx-logo-mark {
+.lx-logo-icon {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     width: 44px !important;
     height: 44px !important;
-    background: linear-gradient(135deg, var(--wds-primary), var(--wds-primary-soft)) !important;
-    border-radius: 8px !important;
-    font-family: 'Exo 2', sans-serif !important;
-    font-weight: 900 !important;
-    font-size: 22px !important;
-    color: #041224 !important;
-    letter-spacing: -1px !important;
-    border: 1px solid rgba(76, 201, 255, 0.45) !important;
-    box-shadow: 0 0 14px rgba(76, 201, 255, 0.35) !important;
+    object-fit: contain !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(47, 134, 255, 0.5) !important;
+    box-shadow: 0 0 16px rgba(47, 134, 255, 0.35) !important;
     flex-shrink: 0 !important;
     text-shadow: none !important;
+}
+
+.lx-logo-banner {
+    width: 64px !important;
+    height: 64px !important;
+    object-fit: contain !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(47, 134, 255, 0.5) !important;
+    box-shadow: 0 0 18px rgba(47, 134, 255, 0.35) !important;
+    flex-shrink: 0 !important;
 }
 
 .lx-logo-text {
@@ -377,21 +377,16 @@ li {
     font-family: 'Exo 2', sans-serif !important;
     font-weight: 800 !important;
     font-size: 20px !important;
-    color: var(--lx-text) !important;
+    color: #edf3ff !important;
     letter-spacing: 0.05em !important;
     text-transform: uppercase !important;
     text-shadow: none !important;
     line-height: 1 !important;
 }
 
-.lx-logo-name span {
-    color: var(--wds-primary-soft) !important;
-    text-shadow: none !important;
-}
-
 .lx-logo-sub {
     font-size: 10px !important;
-    color: var(--lx-text-dim) !important;
+    color: #f6c84f !important;
     letter-spacing: 0.15em !important;
     text-transform: uppercase !important;
     font-weight: 500 !important;
@@ -409,9 +404,9 @@ header,
 nav,
 #header,
 .main-header {
-    background: linear-gradient(180deg, rgba(8, 17, 31, 0.98), rgba(15, 30, 46, 0.94)) !important;
+    background: linear-gradient(180deg, rgba(10, 11, 15, 0.98), rgba(21, 25, 34, 0.95)) !important;
     border: none !important;
-    box-shadow: 0 1px 0 var(--wds-border), 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+    box-shadow: 0 1px 0 rgba(47, 134, 255, 0.3), 0 8px 22px rgba(0, 0, 0, 0.5) !important;
 }
 
 .navbar-nav {
@@ -430,7 +425,7 @@ nav,
 
 .navbar-nav > li > a,
 .nav > li > a {
-    color: var(--lx-text-muted) !important;
+    color: #d7e4ff !important;
     text-shadow: none !important;
     padding: 15px 20px !important;
     font-family: 'Exo 2', sans-serif !important;
@@ -445,7 +440,7 @@ nav,
 .navbar-nav > li > a:focus,
 .nav > li > a:hover {
     background: transparent !important;
-    color: var(--wds-primary-soft) !important;
+    color: var(--wds-accent) !important;
 }
 
 .navbar-nav > li.active > a {
@@ -557,15 +552,15 @@ nav,
 }
 
 .dropdown-menu > li > a {
-    color: var(--wds-text) !important;
+    color: #e9f0ff !important;
     font-size: 13px !important;
     padding: 9px 16px !important;
     transition: all 0.2s ease !important;
 }
 
 .dropdown-menu > li > a:hover {
-    background: rgba(0, 168, 255, 0.12) !important;
-    color: var(--wds-primary-soft) !important;
+    background: rgba(47, 134, 255, 0.14) !important;
+    color: var(--wds-accent) !important;
 }
 
 /* ============================================
@@ -650,7 +645,7 @@ a[class*="btn"]:hover {
    ============================================ */
 
 section {
-    background: linear-gradient(180deg, var(--wds-bg) 0%, var(--wds-bg-2) 100%) !important;
+    background: transparent !important;
     padding: 60px 0 !important;
 }
 
@@ -665,7 +660,7 @@ section.footer-widget {
 .boxed,
 .panel,
 .card {
-    background: rgba(19, 43, 68, 0.92) !important;
+    background: var(--wds-panel) !important;
     border: 1px solid var(--wds-border) !important;
     border-radius: 10px !important;
     padding: 30px !important;
@@ -675,7 +670,7 @@ section.footer-widget {
 .feature-card,
 .service-box,
 .project-card {
-    background: rgba(19, 43, 68, 0.92) !important;
+    background: var(--wds-panel) !important;
     border: 1px solid var(--wds-border) !important;
     border-radius: 10px !important;
     padding: 25px !important;
@@ -685,21 +680,21 @@ section.footer-widget {
 .feature-card:hover,
 .service-box:hover,
 .project-card:hover {
-    background: rgba(27, 58, 90, 0.98) !important;
-    border-color: rgba(76, 201, 255, 0.55) !important;
+    background: #f0f5ff !important;
+    border-color: rgba(20, 93, 232, 0.5) !important;
     transform: translateY(-5px) !important;
-    box-shadow: 0 0 10px rgba(0, 212, 255, 0.2) !important;
+    box-shadow: 0 0 10px rgba(20, 93, 232, 0.16) !important;
 }
 
 .staff-card,
 .ops-card {
-    background: rgba(19, 43, 68, 0.92) !important;
+    background: var(--wds-panel) !important;
     border: 1px solid var(--wds-border) !important;
     border-radius: 16px !important;
     padding: 25px !important;
     margin-bottom: 25px !important;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
-    color: #e2e8f0 !important;
+    box-shadow: 0 8px 26px rgba(16, 30, 52, 0.12) !important;
+    color: var(--wds-text) !important;
 }
 
 .staff-card h3,
@@ -710,12 +705,12 @@ section.footer-widget {
 
 .staff-card :is(p, li, span, td, th, label, small, strong, em, ul, ol),
 .ops-card :is(p, li, span, td, th, label, small, strong, em, ul, ol) {
-    color: #e2e8f0 !important;
+    color: var(--wds-text) !important;
 }
 
 .staff-card table,
 .ops-card table {
-    color: #e2e8f0 !important;
+    color: var(--wds-text) !important;
 }
 
 .staff-card table td,
@@ -897,7 +892,7 @@ pre {
 .wds-hero,
 .hero-hook,
 .project-hero {
-    background: linear-gradient(135deg, var(--wds-bg) 0%, var(--wds-bg-2) 100%) !important;
+    background: linear-gradient(135deg, #ffffff 0%, #f2f6ff 100%) !important;
     color: var(--wds-text) !important;
     padding: 80px 20px !important;
     text-align: center !important;
@@ -906,7 +901,7 @@ pre {
 
 .hero h1,
 .hero h2 {
-    color: var(--wds-text) !important;
+    color: #111b2e !important;
     text-shadow: none !important;
     font-family: 'Exo 2', sans-serif !important;
 }
@@ -937,8 +932,8 @@ footer,
 .footer,
 .footer-widget,
 section.footer-widget {
-    background: linear-gradient(180deg, var(--wds-bg) 0%, var(--wds-bg-2) 100%) !important;
-    color: var(--wds-muted) !important;
+    background: linear-gradient(180deg, #0a0b0f 0%, #151922 100%) !important;
+    color: #d7e4ff !important;
     padding: 40px 0 !important;
     border-top: 1px solid var(--wds-border) !important;
 }
@@ -947,7 +942,7 @@ footer,
 footer *,
 .footer,
 .footer * {
-    color: var(--wds-muted) !important;
+    color: #d7e4ff !important;
 }
 
 footer a,
@@ -958,12 +953,12 @@ footer a,
 
 footer a:hover,
 .footer a:hover {
-    color: var(--wds-primary) !important;
+    color: var(--wds-accent) !important;
 }
 
 footer h1, footer h2, footer h3, footer h4,
 .footer h1, .footer h2, .footer h3, .footer h4 {
-    color: #e2e8f0 !important;
+    color: #f6c84f !important;
     font-family: 'Exo 2', sans-serif !important;
     font-size: 13px !important;
     letter-spacing: 0.12em !important;
@@ -1083,6 +1078,14 @@ hr {
     .stat-grid { grid-template-columns: 1fr !important; }
 }
 
+@media (max-width: 768px) {
+    body::after {
+        font-size: clamp(90px, 16vw, 150px);
+        opacity: 0.22;
+        right: 2vw;
+    }
+}
+
 /* ============================================
    HEADER / INTRO SECTION SPECIFICS
    ============================================ */
@@ -1095,32 +1098,32 @@ hr {
 }
 
 .overlay {
-    background: linear-gradient(180deg, rgba(8, 17, 31, 0.1), rgba(8, 17, 31, 0.3)) !important;
+    background: linear-gradient(180deg, rgba(20, 93, 232, 0.08), rgba(10, 11, 15, 0.24)) !important;
 }
 
 .section-bg {
-    background: var(--wds-bg-2) !important;
+    background: transparent !important;
 }
 
 #history,
 .history {
-    background: var(--wds-bg-2) !important;
+    background: transparent !important;
 }
 
 #history .container-fluid,
 .history .container-fluid {
-    background: var(--wds-bg-2) !important;
+    background: transparent !important;
 }
 
 #history .title-box p,
 #history .title-box h2,
 .history .title-box p,
 .history .title-box h2 {
-    color: #e2e8f0 !important;
+    color: #101828 !important;
 }
 
 .title-box p {
-    color: var(--wds-muted) !important;
+    color: #3b4e6e !important;
     letter-spacing: 0.1em !important;
     text-transform: uppercase !important;
     font-size: 12px !important;
@@ -1128,26 +1131,12 @@ hr {
 }
 
 .title-box h2 {
-    color: #e2e8f0 !important;
+    color: #101828 !important;
 }
 
 /* ============================================
-   OVERRIDE INLINE STYLES — DARK THEME
+   OVERRIDE INLINE STYLES — CORE LOOP THEME
    ============================================ */
-
-*[style*="background: #E8E4D8"],
-*[style*="background:#E8E4D8"],
-*[style*="background-color: #E8E4D8"],
-*[style*="background: #D4CFC0"],
-*[style*="background:#D4CFC0"],
-*[style*="background: #C8C3B4"],
-*[style*="background: #ffffff"],
-*[style*="background: white"],
-*[style*="background:#ffffff"],
-*[style*="background: #FFFFFF"],
-div[style*="background-color: #E8E4D8"] {
-    background: #0d1117 !important;
-}
 
 *[style*="color: #8B4513"],
 *[style*="color:#8B4513"],
@@ -1159,41 +1148,15 @@ div[style*="background-color: #E8E4D8"] {
 *[style*="color:#D2B48C"],
 *[style*="color: #A0522D"],
 *[style*="color:#A0522D"] {
-    color: var(--wds-primary-soft) !important;
-}
-
-*[style*="color: #1a1a1a"],
-*[style*="color:#1a1a1a"],
-*[style*="color: #3a3a3a"],
-*[style*="color:#3a3a3a"],
-*[style*="color: #4a4a4a"],
-*[style*="color:#4a4a4a"] {
-    color: var(--wds-muted) !important;
+    color: var(--wds-primary) !important;
 }
 
 *[style*="background: #8B4513"],
 *[style*="background:#8B4513"],
 *[style*="background-color: #8B4513"] {
     background: linear-gradient(135deg, var(--wds-primary), var(--wds-primary-soft)) !important;
-    color: var(--wds-text) !important;
-    border-color: rgba(76, 201, 255, 0.55) !important;
-}
-
-*[style*="color: #E8E4D8"],
-*[style*="color:#E8E4D8"],
-*[style*="color: #CCCCCC"],
-*[style*="color:#CCCCCC"],
-*[style*="color: #F5F5F5"],
-*[style*="color:#F5F5F5"],
-*[style*="color: #FFFFFF"],
-*[style*="color: #ffffff"] {
-    color: var(--wds-text) !important;
-}
-
-div[style*="background: #1a1a1a"],
-div[style*="background:#1a1a1a"],
-div[style*="background-color: #1a1a1a"] {
-    background: var(--wds-panel) !important;
+    color: #ffffff !important;
+    border-color: rgba(47, 134, 255, 0.55) !important;
 }
 
 .site-header-bg .container-fluid {

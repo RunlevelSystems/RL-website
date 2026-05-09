@@ -1,4 +1,4 @@
-<!-- Developed by Level X Development -->
+<!-- Developed by Core Loop Development -->
 # Windows Server Basics
 
 A simple guide to managing Windows servers for new team members.

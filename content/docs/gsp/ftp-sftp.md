@@ -1,4 +1,4 @@
-<!-- Developed by World Domination Software LLC -->
+<!-- Developed by Core Loop Development LLC -->
 ---
 title: "FTP & SFTP"
 description: "File transfer options for GSP customers"

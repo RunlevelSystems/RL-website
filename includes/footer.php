@@ -19,10 +19,13 @@ if ($is_in_wiki) {
             <div class="container">
                 <div class="row">
                     <div class="col-sm-4">
-                        <h3>Dev Links</h3>
+                        <h3>Core Loop Development</h3>
+                        <p style="color: var(--wds-muted); font-size: 14px; line-height: 1.6; margin-bottom: 14px;">
+                            Developer-first software engineering, multiplayer infrastructure, and platform delivery.
+                        </p>
                         <ul>
                             <li><a href="https://store.steampowered.com/curator/45805039/" target="_blank">
-                                <i class="ion-social-steam" style="margin-right: 8px;"></i>Level X on Steam
+                                <i class="ion-social-steam" style="margin-right: 8px;"></i>Core Loop Steam Curator
                             </a></li>
                             <li><a href="https://github.com/World-Domination-Software" target="_blank">
                                 <i class="ion-social-github" style="margin-right: 8px;"></i>GitHub
@@ -36,7 +39,7 @@ if ($is_in_wiki) {
                         <h3>Community</h3>
                         <ul>
                             <li><a href="https://discord.gg/XPFnNdWGyW" target="_blank">
-                                <i class="ion-social-discord" style="margin-right: 8px;"></i>Level X Discord
+                                <i class="ion-social-discord" style="margin-right: 8px;"></i>Core Loop Discord
                             </a></li>
                             <li><a href="https://discord.gg/Ktxc9jT2sF" target="_blank">
                                 <i class="ion-social-discord" style="margin-right: 8px;"></i>Gameservers.world Discord
@@ -54,7 +57,7 @@ if ($is_in_wiki) {
                             <li><a href="https://store.steampowered.com/app/1774030/Mystical_Islands/" target="_blank">Mystical Islands on Steam</a></li>
                         </ul>
                         <p style="color: #b8c7d9; font-size: 14px; line-height: 1.5; margin-top: 15px;">
-                            Design • Debug • Deploy — building the future of games and infrastructure.
+                            Engineer • Ship • Scale — building the future of games and infrastructure.
                         </p>
                     </div>
                 </div>
@@ -63,10 +66,10 @@ if ($is_in_wiki) {
     <footer class="footer text-center" style="background: linear-gradient(180deg, var(--wds-bg), var(--wds-bg-2)); color: var(--wds-muted);">
             <div style="padding: 20px 0; border-top: 1px solid var(--wds-border);">
                 <p style="color: var(--wds-muted); margin-bottom: 10px; font-size: 16px;">
-                    &copy; 2025 Level X Development. All rights reserved.
+                    &copy; 2025 Core Loop Development. All rights reserved.
                 </p>
                 <p style="color: var(--wds-muted); margin: 0; font-size: 14px;">
-                    Design • Debug • Deploy | 
+                    Engineer • Ship • Scale | 
                     <a href="https://gameservers.world" target="_blank" style="color: var(--wds-primary-soft);">Gameservers.world</a> | 
                     <a href="https://github.com/World-Domination-Software" target="_blank" style="color: var(--wds-primary-soft);">GitHub</a> | 
                     <a href="https://discord.gg/XPFnNdWGyW" target="_blank" style="color: var(--wds-primary-soft);">Discord</a>

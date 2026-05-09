@@ -1,12 +1,12 @@
-<!-- Developed by World Domination Software LLC -->
+<!-- Developed by Core Loop Development LLC -->
 ---
 title: "External Packages"
 description: "Atavism reference import"
 weight: 100
 ---
 
-> **Admin Documentation (not shown on public WDS site).**
-> GSP is a heavily customized fork of OGP maintained by WDS.
+> **Admin Documentation (not shown on public Core Loop site).**
+> GSP is a heavily customized fork of OGP maintained by Core Loop.
 
 ## Overview
 
@@ -23,7 +23,7 @@ Mystical Islands supplements core Atavism with a curated set of third-party pack
 
 ## Import Workflow
 
-1. Verify license status in the WDS asset ledger.
+1. Verify license status in the Core Loop asset ledger.
 2. Download from the official source (Unity Asset Store, vendor portal, or internal stash).
 3. Import into Unity per vendor instructions, usually via `.unitypackage`.
 4. Run `Mystical Islands → Validate External Packages` to ensure editor scripts apply our settings.

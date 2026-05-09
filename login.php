@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_form'])) {
 // Page-specific variables
 $current_page = 'login';
 $header_class = 'login-header inner-header';
-$page_subtitle = 'Design • Debug • Deploy';
+$page_subtitle = 'Engineer • Ship • Scale';
 ?>
 
 <!DOCTYPE html>
@@ -54,11 +54,12 @@ $page_subtitle = 'Design • Debug • Deploy';
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="/assets/images/icon.png">
 
-    <title>Staff Login | Level X Development</title>
+    <title>Staff Login | Core Loop Development</title>
 
         <!-- CSS -->
-        <!-- Level X Development Fonts -->
+        <!-- Core Loop Development Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">

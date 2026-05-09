@@ -1,4 +1,4 @@
-<!-- Developed by Level X Development -->
+<!-- Developed by Core Loop Development -->
 # Linux Server Basics
 
 A simple guide to managing Linux servers for new team members.

@@ -1,4 +1,4 @@
-<!-- Developed by Level X Development -->
+<!-- Developed by Core Loop Development -->
 # SSH Key Setup Guide
 
 This guide helps you set up secure login to servers without typing passwords every time.

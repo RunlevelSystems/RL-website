@@ -1,4 +1,4 @@
-<!-- Developed by Level X Development -->
+<!-- Developed by Core Loop Development -->
 # Team Information
 
 An overview of how our team is organized.

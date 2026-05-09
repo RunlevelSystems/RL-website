@@ -1,16 +1,16 @@
-<!-- Developed by World Domination Software LLC -->
+<!-- Developed by Core Loop Development LLC -->
 ---
 title: "Setting Up Atavism"
 description: "Atavism reference import"
 weight: 100
 ---
 
-> **Admin Documentation (not shown on public WDS site).**
-> GSP is a heavily customized fork of OGP maintained by WDS.
+> **Admin Documentation (not shown on public Core Loop site).**
+> GSP is a heavily customized fork of OGP maintained by Core Loop.
 
 ## Provisioning Overview
 
-Mystical Islands shards run on the standard Atavism cluster layout: **Master**, **World**, **Proxy**, and **Data** servers. WDS hosts these as Dockerized services orchestrated by the GSP provisioning pipeline.
+Mystical Islands shards run on the standard Atavism cluster layout: **Master**, **World**, **Proxy**, and **Data** servers. Core Loop hosts these as Dockerized services orchestrated by the GSP provisioning pipeline.
 
 1. **Panel Trigger** – Billing/Operations create a new Mystical Islands service in the GSP panel.
 2. **Provisioner** – `modules/billing/includes/provisioner.php` calls the Atavism template scripts.
@@ -21,7 +21,7 @@ Mystical Islands shards run on the standard Atavism cluster layout: **Master**, 
 
 - Atavism server bundle (`atavism_server_10.7_wds.tar.gz` stored in `ops-tools/atavism/`)
 - Mystical Islands configuration overlay (`config/mystical-islands/` inside the server bundle)
-- SSL certificates for Proxy → Client communication (issued via WDS internal CA)
+- SSL certificates for Proxy → Client communication (issued via Core Loop internal CA)
 
 ## Deployment Steps
 
@@ -43,7 +43,7 @@ Mystical Islands shards run on the standard Atavism cluster layout: **Master**, 
 	  - `MI_ENV=staging|production`
 	  - `MI_REALM_NAME` (display name in Atavism login)
 	  - `MI_PROXY_PUBLIC_HOST`
-	- Config files written to `/opt/atavism/server/config/` with WDS overrides.
+	- Config files written to `/opt/atavism/server/config/` with Core Loop overrides.
 
 5. **Start Services**
 	- `systemctl start atavism-master`

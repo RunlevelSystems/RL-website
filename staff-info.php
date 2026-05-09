@@ -22,7 +22,8 @@ $page_description = 'Centralize every password, host, tool and operating procedu
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Level X | Staff Control Room</title>
+        <link rel="icon" type="image/png" href="/assets/images/icon.png">
+    <title>Core Loop | Staff Control Room</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/magnific-popup.css" rel="stylesheet">
     <link href="assets/css/owl.carousel.css" rel="stylesheet">

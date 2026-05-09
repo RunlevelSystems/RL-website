@@ -107,8 +107,9 @@ $totalCount = count($servers);
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="/assets/images/icon.png">
     <meta http-equiv="refresh" content="60">
-    <title>Level X | Server Fleet Status</title>
+    <title>Core Loop | Server Fleet Status</title>
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/css/ionicons.css" rel="stylesheet">
     <link href="../assets/css/main.css" rel="stylesheet">

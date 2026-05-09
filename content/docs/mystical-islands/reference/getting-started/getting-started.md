@@ -1,17 +1,17 @@
-<!-- Developed by World Domination Software LLC -->
+<!-- Developed by Core Loop Development LLC -->
 ---
 title: "Getting Started"
 description: "Atavism reference import"
 weight: 100
 ---
 
-> **Admin Documentation (not shown on public WDS site).**
-> GSP is a heavily customized fork of OGP maintained by WDS.
+> **Admin Documentation (not shown on public Core Loop site).**
+> GSP is a heavily customized fork of OGP maintained by Core Loop.
 
 ## Prerequisites
 
 - **Unity Editor:** 2021.3 LTS (matching Atavism 10.7+). Install via Unity Hub with Android/iOS build modules unchecked to keep install size small.
-- **Atavism Package:** Download the licensed Atavism client/editor bundle from the WDS secure mirror (`ops-tools/atavism/`).
+- **Atavism Package:** Download the licensed Atavism client/editor bundle from the Core Loop secure mirror (`ops-tools/atavism/`).
 - **Database Access:** Read/write credentials for the shared `world_content` database (`atavism_admin@db.wds.internal`).
 - **Server Credentials:** SSH access to staging Atavism nodes (documented in `ops-tools/ssh-inventory.md`).
 - **Panel Integration:** Active account on the GSP panel with `Content Designer` role.
@@ -41,7 +41,7 @@ weight: 100
 
 1. Request a fresh dump from the DBA team (`world_content` + `master`).
 2. Restore locally using `mysql --host $MI_ATAVISM_DB_HOST --user $MI_ATAVISM_DB_USER -p world_content < path/to/world_content.sql`.
-3. Run the Mystical Islands delta script (`ops-tools/atavism/migrations/latest.sql`) to apply custom tables and enums introduced by WDS.
+3. Run the Mystical Islands delta script (`ops-tools/atavism/migrations/latest.sql`) to apply custom tables and enums introduced by Core Loop.
 4. Confirm new data with quick sanity checks:
 	- `SELECT COUNT(*) FROM abilities;`
 	- `SELECT COUNT(*) FROM item_templates WHERE category='MysticalIslands';`

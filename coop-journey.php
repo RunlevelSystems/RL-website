@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Level X Development — Join Our Team</title>
+    <title>Core Loop Development — Join Our Team</title>
     
     <!-- CSS -->
-    <!-- Level X Development Fonts -->
+    <!-- Core Loop Development Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -350,7 +350,7 @@
 
     <footer class="footer-dark" style="margin-top: 80px;">
         <div class="container-custom" style="padding: 32px 20px; text-align: center;">
-            <p style="margin: 0; color: #7894b9;">&copy; 2025 Level X Development. Building careers, together.</p>
+            <p style="margin: 0; color: #7894b9;">&copy; 2025 Core Loop Development. Building careers, together.</p>
             <p style="margin: 8px 0 0; font-size: 14px; color: #64748b;">
                 <a href="index.php" style="color: #00d4ff; text-decoration: none;">← Back to Main Site</a> | 
                 <a href="joinus.php" style="color: #00d4ff; text-decoration: none;">Apply Now</a>

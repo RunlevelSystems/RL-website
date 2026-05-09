@@ -1,4 +1,4 @@
-<!-- Developed by Level X Development -->
+<!-- Developed by Core Loop Development -->
 # Tools and Applications
 
 Software we use for development and communication.

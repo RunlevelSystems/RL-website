@@ -1,4 +1,4 @@
-<!-- Developed by World Domination Software LLC -->
+<!-- Developed by Core Loop Development LLC -->
 ---
 title: "File Browser"
 description: "Manage game files inside the GSP panel"

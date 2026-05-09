@@ -1,4 +1,4 @@
-<!-- Developed by World Domination Software LLC -->
+<!-- Developed by Core Loop Development LLC -->
 # Game XML Reference (GSP Fork)
 
 Order matters in every game definition. Place **exactly one** `<game_config>` element per file and keep the sections below in sequence.
