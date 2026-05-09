@@ -147,7 +147,7 @@
       </article>
       <article class="lx-card" aria-label="Game Development">
         <h3>Game Development</h3>
-        <p>Multiplayer and open-world game development. See our growing catalog on <a href="https://store.steampowered.com/curator/45805039/" target="_blank" rel="noopener">Steam</a> and explore what we're building next.</p>
+        <p>Multiplayer and open-world game development. See our growing catalog on <a href="https://store.steampowered.com/curator/45805039/" target="_blank" rel="noopener">Steam Curator</a> and explore what we're building next.</p>
       </article>
       <article class="lx-card" aria-label="Business Applications">
         <h3>Business Applications &amp; Websites</h3>
@@ -165,7 +165,7 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Core Loop Development",
-    "url": "https://worlddomination.dev",
+    "url": "https://coreloop.dev",
     "sameAs": ["https://gameservers.world"],
     "contactPoint": [{
       "@type": "ContactPoint",
