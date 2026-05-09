@@ -33,6 +33,10 @@
     --core-muted: #64748b;
     --core-bg: #f8fafc;
     --core-card: #ffffff;
+    --core-text-light: #d7e4ff;
+    --core-nav-text: #e5ecff;
+    --core-border-light: #cfd8e6;
+    --core-placeholder: #8a98ad;
 
     --wds-bg: var(--core-black);
     --wds-bg-2: var(--core-graphite);
@@ -515,7 +519,7 @@ nav,
     }
 
     #site-nav-bar .navbar-nav > li > a {
-        color: #e5ecff !important;
+        color: var(--core-nav-text) !important;
         font-weight: 600 !important;
         letter-spacing: 0.12em !important;
         text-transform: uppercase !important;
@@ -833,7 +837,7 @@ select,
 .form-control {
     background: #ffffff !important;
     color: var(--core-text) !important;
-    border: 1px solid #cfd8e6 !important;
+    border: 1px solid var(--core-border-light) !important;
     padding: 10px 15px !important;
     border-radius: 6px !important;
     font-size: 14px !important;
@@ -842,7 +846,7 @@ select,
 
 input::placeholder,
 textarea::placeholder {
-    color: #8a98ad !important;
+    color: var(--core-placeholder) !important;
 }
 
 input:focus,
