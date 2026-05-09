@@ -5,13 +5,16 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>WDS</title>
+        <title>Level X Development</title>
 
         <!-- CSS -->
 
-        <!-- google fonts -->
-        <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+        <!-- Level X Development Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">        <!-- google fonts -->
+        
+        
 
         <!-- files -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -32,7 +35,7 @@
         <?php 
         // Page-specific variables - customize these for each page
         $current_page = 'index';
-        $page_subtitle = 'Design. Debug. Deploy.';
+        $page_subtitle = 'Design • Debug • Deploy';
         $page_description = '';
         $page_title = '';
         $page_title_thin = '';
@@ -43,113 +46,116 @@
     <!-- Include Navigation Header -->
     <?php include 'includes/navigation.php'; ?>
 
-    <!-- World Domination Software — Overview Block (High-Contrast, HTML-only) -->
+    <!-- Level X Development — Overview Block -->
 <section class="wds-hero" aria-label="Company Overview">
   <style>
-    .wds-hero { 
-      /* Orwellian color palette - tan/off-white with rust accents */
-      --wds-primary: #8B4513;   /* rust brown accent */
-      --wds-bg-top: #E8E4D8;    /* off-white tan background */
-      --wds-bg-btm: #D4CFC0;    /* slightly darker tan */
-      --wds-text: #1a1a1a;      /* dark text for readability */
-      --wds-muted: #666666;     /* muted gray text */
-      --wds-card: #D4CFC0;      /* lighter tan for cards */
-      --wds-border: #B8A996;    /* tan border */
-
+    .wds-hero {
       isolation: isolate;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color: var(--wds-text);
-      background: linear-gradient(180deg, var(--wds-bg-top), var(--wds-bg-btm));
-      border: 1px solid var(--wds-border);
-      border-radius: 16px; padding: 36px; margin: 24px auto; max-width: 1100px;
-      box-shadow: 0 8px 20px rgba(0,0,0,.15);
-      overflow: hidden; position: relative;
+      background: linear-gradient(180deg, #0d1117, #0a0a0f);
+      border: 1px solid rgba(0,212,255,0.15);
+      border-radius: 16px;
+      padding: 48px 36px;
+      margin: 24px auto;
+      max-width: 1100px;
+      overflow: hidden;
+      position: relative;
     }
-    .wds-hero:before {
-      content: ""; position: absolute; inset: -25% -10% auto -10%; height: 220px;
-      background: radial-gradient(60% 100% at 10% 50%, rgba(139,69,19,.15), transparent 60%);
-      filter: blur(24px); pointer-events: none;
+    .wds-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 0%, rgba(0,212,255,0.07), transparent 60%);
+      pointer-events: none;
     }
-    .wds-wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: start; }
-    @media (max-width: 900px){ .wds-wrap { grid-template-columns: 1fr; } }
-    .wds-eyebrow { color: var(--wds-muted); letter-spacing: .08em; text-transform: uppercase; font-size: 12px; margin-bottom: 10px; }
-    /* EDIT THIS LINE if you want a different headline */
-    .wds-title { font-size: clamp(30px, 4vw, 44px); line-height: 1.05; margin: 0 0 12px; color: var(--wds-text); }
-    .wds-tagline { font-size: clamp(16px, 2.4vw, 19px); color: #4a4a4a; margin: 0 0 18px; }
-    .wds-motto { font-size: 15px; color: var(--wds-muted); margin: 0 0 22px; }
-    .wds-cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0 26px; }  
-    .wds-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 16px; border-radius: 999px; text-decoration: none; border: 1px solid var(--wds-border); font-weight: 700; }
-    .wds-btn--primary { background: var(--wds-primary); color: #E8E4D8; border-color: transparent; }
-    .wds-btn--ghost { background: rgba(139,69,19,.08); color: var(--wds-text); border-color: var(--wds-primary); }
-    .wds-btn:hover { filter: brightness(0.95); transform: translateY(-1px); transition: .15s ease; }
-    .wds-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    @media (max-width: 900px){ .wds-cards { grid-template-columns: 1fr; } }
-    .wds-card { background: linear-gradient(180deg, var(--wds-card), #C8C3B4); border: 1px solid var(--wds-border); border-radius: 14px; padding: 16px; box-shadow: inset 0 1px 0 rgba(255,255,255,.5); }
-    .wds-card h3 { font-size: 16px; margin: 0 0 8px; color: var(--wds-text); }
-    .wds-card p { font-size: 14px; color: #3a3a3a; margin: 0; }
-    .wds-card a { color: var(--wds-primary); text-decoration: underline; }
-    .wds-bullets { display: grid; gap: 9px; margin-top: 12px; }
-    .wds-bullet { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; font-size: 14px; color: var(--wds-text); }
-    .wds-check { width: 18px; height: 18px; border-radius: 999px; background: rgba(139,69,19,.15); border: 1px solid rgba(139,69,19,.45); display: inline-grid; place-items: center; font-size: 12px; color: var(--wds-primary); }
-    .wds-meta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; color: var(--wds-muted); font-size: 13px; }
-    .wds-meta a { color: var(--wds-primary); text-decoration: none; }
-    .wds-meta a:hover { text-decoration: underline; }
-    .wds-divider { height: 1px; background: var(--wds-border); margin: 20px 0; }
-    .wds-small { font-size: 12px; color: var(--wds-muted); }
-    .wds-hero:after { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(0,0,0,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.03) 1px, transparent 1px); background-size: 28px 28px; opacity: .3; pointer-events: none; }
+    .wds-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+    .lx-wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: start; position: relative; z-index: 1; }
+    @media (max-width: 900px){ .lx-wrap { grid-template-columns: 1fr; } }
+    .lx-eyebrow { color: #00d4ff; letter-spacing: .15em; text-transform: uppercase; font-size: 11px; margin-bottom: 10px; font-family: 'Exo 2', sans-serif; font-weight: 600; }
+    .lx-title { font-size: clamp(28px, 4vw, 44px); line-height: 1.05; margin: 0 0 12px; color: #e2e8f0; font-family: 'Exo 2', sans-serif; font-weight: 800; text-shadow: none !important; }
+    .lx-title span { color: #00d4ff; }
+    .lx-tagline { font-size: clamp(15px, 2.2vw, 18px); color: #94a3b8; margin: 0 0 18px; }
+    .lx-motto { font-size: 14px; color: #64748b; margin: 0 0 22px; }
+    .lx-cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0 26px; }
+    .lx-btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 6px; text-decoration: none; font-weight: 700; font-family: 'Exo 2', sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.2s ease; text-shadow: none !important; }
+    .lx-btn--primary { background: #00d4ff; color: #0a0a0f; border: 1px solid #00d4ff; }
+    .lx-btn--primary:hover { background: #40e0ff; color: #0a0a0f; box-shadow: 0 0 16px rgba(0,212,255,0.3); }
+    .lx-btn--ghost { background: transparent; color: #94a3b8; border: 1px solid rgba(0,212,255,0.25); }
+    .lx-btn--ghost:hover { background: rgba(0,212,255,0.08); color: #00d4ff; border-color: rgba(0,212,255,0.5); }
+    .lx-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    @media (max-width: 900px){ .lx-cards { grid-template-columns: 1fr; } }
+    .lx-card { background: rgba(0,212,255,0.04); border: 1px solid rgba(0,212,255,0.12); border-radius: 10px; padding: 18px; transition: border-color 0.2s ease; }
+    .lx-card:hover { border-color: rgba(0,212,255,0.35); }
+    .lx-card h3 { font-size: 15px; margin: 0 0 8px; color: #e2e8f0; font-family: 'Exo 2', sans-serif; text-shadow: none !important; }
+    .lx-card p { font-size: 13px; color: #64748b; margin: 0; text-shadow: none !important; }
+    .lx-card a { color: #00d4ff; text-decoration: none; }
+    .lx-bullets { display: grid; gap: 9px; margin-top: 12px; }
+    .lx-bullet { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; font-size: 14px; color: #94a3b8; text-shadow: none !important; }
+    .lx-check { width: 18px; height: 18px; border-radius: 4px; background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.35); display: inline-grid; place-items: center; font-size: 11px; color: #00d4ff; }
+    .lx-meta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; color: #64748b; font-size: 13px; }
+    .lx-meta a { color: #00d4ff; text-decoration: none; }
+    .lx-meta a:hover { text-decoration: underline; }
+    .lx-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(0,212,255,0.3), transparent); margin: 20px 0; border: none; }
+    .lx-small { font-size: 12px; color: #64748b; text-shadow: none !important; }
   </style>
 
-  <div class="wds-wrap">
+  <div class="lx-wrap">
     <div>
-      <div class="wds-eyebrow"></div>
-      <!-- NEW, neutral headline so your company name doesn't repeat -->
-      <h1 class="wds-title">Build • Launch • Scale</h1>
-      <p class="wds-tagline">Indie game dev • Game server hosting • Business applications</p>
-      <p class="wds-motto">We build resilient software and scalable game infrastructure.</p>
+      <div class="lx-eyebrow">Advanced Engineering Studio</div>
+      <h1 class="lx-title">Build <span>•</span> Launch <span>•</span> Scale</h1>
+      <p class="lx-tagline">Game development • Multiplayer infrastructure • Business applications</p>
+      <p class="lx-motto">We engineer resilient software and scalable game infrastructure.</p>
 
-      <div class="wds-cta">
-        <a class="wds-btn wds-btn--primary" href="contact.php">Request a consultation</a>
-        <a class="wds-btn wds-btn--ghost" href="/portal">Client portal</a>
-        <a class="wds-btn wds-btn--ghost" href="https://gameservers.world" target="_blank" rel="noopener">Game servers</a>
+      <div class="lx-cta">
+        <a class="lx-btn lx-btn--primary" href="contact.php">Request a consultation</a>
+        <a class="lx-btn lx-btn--ghost" href="/portal">Client portal</a>
+        <a class="lx-btn lx-btn--ghost" href="https://gameservers.world" target="_blank" rel="noopener">Game servers</a>
       </div>
 
-      <div class="wds-divider"></div>
+      <hr class="lx-divider">
 
-      <div class="wds-bullets" role="list">
-        <div class="wds-bullet"><span class="wds-check">✓</span><span>Indie studio shipping performant games and tools.</span></div>
-        <div class="wds-bullet"><span class="wds-check">✓</span><span>DevOps-minded hosting: monitoring, crash recovery, workshop updates, CI/CD.</span></div>
-        <div class="wds-bullet"><span class="wds-check">✓</span><span>Custom business apps and integrations—scoped clearly, delivered predictably.</span></div>
-        <div class="wds-bullet"><span class="wds-check">✓</span><span>Engagements: fixed-scope builds or flexible retainers.</span></div>
+      <div class="lx-bullets" role="list">
+        <div class="lx-bullet"><span class="lx-check">✓</span><span>Indie studio shipping performant games and tools.</span></div>
+        <div class="lx-bullet"><span class="lx-check">✓</span><span>DevOps-grade hosting: monitoring, crash recovery, CI/CD pipelines.</span></div>
+        <div class="lx-bullet"><span class="lx-check">✓</span><span>Custom business apps and integrations — scoped clearly, delivered predictably.</span></div>
+        <div class="lx-bullet"><span class="lx-check">✓</span><span>Flexible engagements: fixed-scope builds or ongoing retainers.</span></div>
       </div>
 
-      <div class="wds-meta">
-        <span>📧 <a href="mailto:hello@worlddomination.dev">hello@worlddomination.dev</a></span>
-        <span>🔒 Private side available for clients</span>
+      <div class="lx-meta">
+        <span>⚡ <a href="mailto:hello@levelx.dev">hello@levelx.dev</a></span>
+        <span>🔒 Private portal available for clients</span>
       </div>
     </div>
   </div>
 
   <!-- Service Cards Section -->
-  <div class="wds-wrap" style="margin-top: 40px; grid-template-columns: 1fr;">
-    <div>
-      <div class="wds-cards">
-        <article class="wds-card" aria-label="Game Server Hosting">
-          <h3>Game Server Hosting</h3>
-          <p>Global game server hosting across multiple world locations. We're the most affordable and reliable solution available. Experience premium hosting at <a href="http://gameservers.world" target="_blank" rel="noopener">gameservers.world</a>.</p>
-        </article>
-        <article class="wds-card" aria-label="Game Development">
-          <h3>Game Development</h3>
-          <p>Multiplayer and open-world game development. Check out our growing catalog on <a href="https://store.steampowered.com/search/?developer=WorldDominationSoftware" target="_blank" rel="noopener">Steam</a> and see what we're building next.</p>
-        </article>
-        <article class="wds-card" aria-label="Business Applications">
-          <h3>Business Applications & Websites</h3>
-          <p>Custom business applications and professional websites built with enterprise-grade security, scalability, and maintainability for companies of all sizes.</p>
-        </article>
-      </div>
-
-      <div class="wds-divider"></div>
-      <p class="wds-small">Prefer to talk scope first? We'll propose the smallest thing that works—then earn the right to build more.</p>
+  <div style="margin-top: 40px; position: relative; z-index: 1;">
+    <div class="lx-cards">
+      <article class="lx-card" aria-label="Game Server Hosting">
+        <h3>Game Server Hosting</h3>
+        <p>Global game server hosting across multiple regions. Affordable, reliable, and optimized for performance. Experience it at <a href="http://gameservers.world" target="_blank" rel="noopener">gameservers.world</a>.</p>
+      </article>
+      <article class="lx-card" aria-label="Game Development">
+        <h3>Game Development</h3>
+        <p>Multiplayer and open-world game development. See our growing catalog on <a href="https://store.steampowered.com/search/?developer=WorldDominationSoftware" target="_blank" rel="noopener">Steam</a> and explore what we're building next.</p>
+      </article>
+      <article class="lx-card" aria-label="Business Applications">
+        <h3>Business Applications &amp; Websites</h3>
+        <p>Custom business applications and professional websites built with enterprise-grade security, scalability, and maintainability.</p>
+      </article>
     </div>
+
+    <hr class="lx-divider" style="margin-top: 28px;">
+    <p class="lx-small">Prefer to talk scope first? We'll propose the smallest thing that works — then earn the right to build more.</p>
   </div>
 
   <!-- Structured data for better SEO -->
@@ -157,13 +163,13 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "World Domination Software",
+    "name": "Level X Development",
     "url": "https://worlddomination.dev",
     "sameAs": ["https://gameservers.world"],
     "contactPoint": [{
       "@type": "ContactPoint",
       "contactType": "customer support",
-      "email": "hello@worlddomination.dev"
+      "email": "hello@levelx.dev"
     }]
   }
   </script>
@@ -183,46 +189,46 @@
                 <div class="row">
                     <div class="boxed">
                         <div class="col-sm-10 col-sm-offset-1">
-                            <p style="font-size: 18px; line-height: 1.8; color: #8B7355; margin-bottom: 30px;">
-                                We are seasoned IT professionals with an unrelenting passion for development and innovation. Since 1996, we've been at the forefront of digital communities—from running bulletin board systems (BBS) and managing high-performance game servers to developing cutting-edge applications that push technological boundaries.
+                            <p style="font-size: 17px; line-height: 1.8; color: #94a3b8; margin-bottom: 30px;">
+                                We are seasoned IT professionals with an unrelenting passion for development and innovation. Since 1996, we've been at the forefront of digital communities — from running bulletin board systems (BBS) and managing high-performance game servers to developing cutting-edge applications that push technological boundaries.
                             </p>
-                            <p style="font-size: 18px; line-height: 1.8; color: #8B7355; margin-bottom: 30px;">
+                            <p style="font-size: 17px; line-height: 1.8; color: #94a3b8; margin-bottom: 30px;">
                                 In our professional careers, we architect and deliver enterprise-grade solutions for Fortune 500 companies across diverse industries. Our expertise spans cloud infrastructure, scalable web applications, cybersecurity implementations, and mission-critical system integrations that serve millions of users worldwide.
                             </p>
-                            <p style="font-size: 18px; line-height: 1.8; color: #8B7355;">
-                                <strong style="color: #8B4513;">Nearly three decades of experience</strong> have taught us that the most groundbreaking innovations come from passionate collaboration. That's why we're building World Domination Software—to channel our corporate expertise and entrepreneurial spirit into creating the next generation of gaming experiences.
+                            <p style="font-size: 17px; line-height: 1.8; color: #94a3b8;">
+                                <strong style="color: #00d4ff;">Nearly three decades of experience</strong> have taught us that the most groundbreaking innovations come from passionate collaboration. That's why we founded Level X Development — to channel our corporate expertise and entrepreneurial drive into creating the next generation of gaming experiences and infrastructure.
                             </p>
                         </div>
                         <div class="col-sm-12" style="text-align: center; margin: 40px 0;">
                             <div style="display: inline-flex; align-items: center; gap: 30px; flex-wrap: wrap; justify-content: center;">
-                                <div style="text-align: center; color: #8B4513;">
-                                    <i class="fas fa-calendar-alt" style="font-size: 48px; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);"></i>
-                                    <h4 style="color: #8B4513; margin: 5px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">1996</h4>
-                                    <p style="color: #D2B48C; font-size: 14px; font-weight: 500;">Started BBS</p>
+                                <div style="text-align: center; color: #00d4ff;">
+                                    <i class="fas fa-calendar-alt" style="font-size: 40px; margin-bottom: 10px;"></i>
+                                    <h4 style="color: #00d4ff; margin: 5px 0;">1996</h4>
+                                    <p style="color: #64748b; font-size: 13px; font-weight: 500;">Started BBS</p>
                                 </div>
-                                <div style="color: #475569;">
-                                    <i class="fas fa-arrow-right" style="font-size: 24px;"></i>
+                                <div style="color: #64748b;">
+                                    <i class="fas fa-arrow-right" style="font-size: 20px;"></i>
                                 </div>
-                                <div style="text-align: center; color: #8B4513;">
-                                    <i class="fas fa-server" style="font-size: 48px; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);"></i>
-                                    <h4 style="color: #8B4513; margin: 5px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">2000s</h4>
-                                    <p style="color: #D2B48C; font-size: 14px; font-weight: 500;">Game Servers</p>
+                                <div style="text-align: center; color: #00d4ff;">
+                                    <i class="fas fa-server" style="font-size: 40px; margin-bottom: 10px;"></i>
+                                    <h4 style="color: #00d4ff; margin: 5px 0;">2000s</h4>
+                                    <p style="color: #64748b; font-size: 13px; font-weight: 500;">Game Servers</p>
                                 </div>
-                                <div style="color: #475569;">
-                                    <i class="fas fa-arrow-right" style="font-size: 24px;"></i>
+                                <div style="color: #64748b;">
+                                    <i class="fas fa-arrow-right" style="font-size: 20px;"></i>
                                 </div>
-                                <div style="text-align: center; color: #8B4513;">
-                                    <i class="fas fa-building" style="font-size: 48px; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);"></i>
-                                    <h4 style="color: #8B4513; margin: 5px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">2010s</h4>
-                                    <p style="color: #D2B48C; font-size: 14px; font-weight: 500;">Enterprise</p>
+                                <div style="text-align: center; color: #00d4ff;">
+                                    <i class="fas fa-building" style="font-size: 40px; margin-bottom: 10px;"></i>
+                                    <h4 style="color: #00d4ff; margin: 5px 0;">2010s</h4>
+                                    <p style="color: #64748b; font-size: 13px; font-weight: 500;">Enterprise</p>
                                 </div>
-                                <div style="color: #475569;">
-                                    <i class="fas fa-arrow-right" style="font-size: 24px;"></i>
+                                <div style="color: #64748b;">
+                                    <i class="fas fa-arrow-right" style="font-size: 20px;"></i>
                                 </div>
-                                <div style="text-align: center; color: #8B4513;">
-                                    <i class="fas fa-rocket" style="font-size: 48px; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);"></i>
-                                    <h4 style="color: #8B4513; margin: 5px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">2025</h4>
-                                    <p style="color: #D2B48C; font-size: 14px; font-weight: 500;">WDS Co-op</p>
+                                <div style="text-align: center; color: #00d4ff;">
+                                    <i class="fas fa-rocket" style="font-size: 40px; margin-bottom: 10px;"></i>
+                                    <h4 style="color: #00d4ff; margin: 5px 0;">2025</h4>
+                                    <p style="color: #64748b; font-size: 13px; font-weight: 500;">Level X Dev</p>
                                 </div>
                             </div>
                         </div>
@@ -231,28 +237,41 @@
             </div>
         </section>
 
-    <!-- CTA: Minimal Hero -->
+    <!-- CTA: Join Us -->
 <section class="hero-hook">
   <style>
     .hero-hook {
-      padding: 64px 16px; text-align: center; color: #F5F5F5; background: #8B4513;
-      border-bottom: 1px solid #A0522D;
+      padding: 64px 16px;
+      text-align: center;
+      background: linear-gradient(135deg, #0d1117 0%, #0a0f1a 100%);
+      border-top: 1px solid rgba(0,212,255,0.15);
+      border-bottom: 1px solid rgba(0,212,255,0.15);
+      position: relative;
+      overflow: hidden;
     }
-    .hero-hook h1 { font-size: clamp(28px, 5vw, 46px); margin: 0 0 10px; color: #FFFFFF; }
-    .hero-hook p { margin: 0 auto 18px; max-width: 760px; color: #F5F5F5; font-size: 18px; }
-    .hero-hook .cta { display: inline-flex; gap: 10px; }
-    .hero-hook .btn {
-      appearance: none; border-radius: 9999px; padding: 12px 20px; font-weight: 700; text-decoration: none;
-      border: 1px solid #0000; display: inline-flex; align-items: center; justify-content: center;
+    .hero-hook::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(0,212,255,0.08), transparent 65%);
+      pointer-events: none;
     }
-    .hero-hook .primary { background: #FFFFFF; color: #8B4513; border: 2px solid #FFFFFF; }
-    .hero-hook .secondary { background: #A0522D; color: #FFFFFF; border-color: #A0522D; }
+    .hero-hook h1 { font-size: clamp(26px, 5vw, 44px); margin: 0 0 12px; color: #e2e8f0; font-family: 'Exo 2', sans-serif; font-weight: 800; text-shadow: none !important; position: relative; z-index: 1; }
+    .hero-hook p { margin: 0 auto 20px; max-width: 760px; color: #94a3b8; font-size: 17px; position: relative; z-index: 1; text-shadow: none !important; }
+    .hero-hook .lx-btn {
+      display: inline-flex; align-items: center; padding: 12px 28px;
+      border-radius: 6px; font-weight: 700; text-decoration: none;
+      font-family: 'Exo 2', sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+      background: #00d4ff; color: #0a0a0f; border: 1px solid #00d4ff;
+      transition: all 0.2s ease; position: relative; z-index: 1; text-shadow: none !important;
+    }
+    .hero-hook .lx-btn:hover { background: #40e0ff; box-shadow: 0 0 20px rgba(0,212,255,0.3); }
   </style>
 
-  <h1>Build games. Host worlds. Share profits.</h1>
-  <p style="color: #FFFFFF;">Real projects in Server Hosting, Game Dev, Modding, and Web Apps — using our tools and servers. <br>Launch your own side projects too (keep 100%).</p>
+  <h1>Build games. Host worlds. Ship faster.</h1>
+  <p>Real projects in Server Hosting, Game Dev, Modding, and Web Apps — using our tools and servers.<br>Launch your own side projects too (keep 100%).</p>
   <div>
-    <a class="btn primary" href="joinus.php" data-cta="hero-readmore">Read More</a>
+    <a class="lx-btn" href="joinus.php" data-cta="hero-readmore">Join the Team</a>
   </div>
 </section>
 

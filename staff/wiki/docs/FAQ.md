@@ -1,4 +1,4 @@
-<!-- Developed by World Domination Software LLC -->
+<!-- Developed by Level X Development -->
 # Frequently Asked Questions
 
 Quick answers to common questions.

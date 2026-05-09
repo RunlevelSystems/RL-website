@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_form'])) {
 // Page-specific variables
 $current_page = 'login';
 $header_class = 'login-header inner-header';
-$page_subtitle = 'Design. Debug. Deploy.';
+$page_subtitle = 'Design • Debug • Deploy';
 ?>
 
 <!DOCTYPE html>
@@ -55,12 +55,16 @@ $page_subtitle = 'Design. Debug. Deploy.';
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Staff Login | WDS</title>
+    <title>Staff Login | Level X Development</title>
 
         <!-- CSS -->
-        <!-- google fonts -->
-        <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+        <!-- Level X Development Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- google fonts -->
+        
+        
 
         <!-- files -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -72,9 +76,8 @@ $page_subtitle = 'Design. Debug. Deploy.';
         <link href="assets/css/wds-unified.css" rel="stylesheet">
 
         <style>
-            /* Keep login page aligned with the Orwellian tan theme */
             .staff-login .title-box p {
-                color: #4a4a4a;
+                color: #94a3b8;
             }
 
             .login-container.staff-card {
@@ -82,7 +85,7 @@ $page_subtitle = 'Design. Debug. Deploy.';
             }
 
             .staff-login-form label {
-                color: #8B4513;
+                color: #00d4ff;
             }
 
             .staff-login-form .form-control {
@@ -109,7 +112,7 @@ $page_subtitle = 'Design. Debug. Deploy.';
                     <div class="col-sm-12">
                         <div class="title-box">
                             <p>Admin Access</p>
-                            <h2 class="title mt0" style="color: #8B4513;">Staff Login</h2>
+                            <h2 class="title mt0" style="color: #00d4ff;">Staff Login</h2>
                         </div>
                     </div>
                 </div>
@@ -120,11 +123,11 @@ $page_subtitle = 'Design. Debug. Deploy.';
                             <!-- Security Notice -->
                             <div class="info-box" style="margin-bottom: 25px;">
                                 <div style="display: flex; align-items: center; margin-bottom: 8px;">
-                                    <i class="ion-locked" style="font-size: 22px; color: #8B4513; margin-right: 10px;"></i>
-                                    <h4 style="color: #8B4513; margin: 0; font-size: 16px; text-transform: none;">Secure Staff Area</h4>
+                                    <i class="ion-locked" style="font-size: 22px; color: #00d4ff; margin-right: 10px;"></i>
+                                    <h4 style="color: #00d4ff; margin: 0; font-size: 16px; text-transform: none;">Secure Staff Area</h4>
                                 </div>
-                                <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #4a4a4a;">
-                                    This area is restricted to authorized co-op staff members only. 
+                                <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #94a3b8;">
+                                    This area is restricted to authorized team members only. 
                                     Login credentials are verified against our secure admin database.
                                 </p>
                             </div>
@@ -200,18 +203,18 @@ $page_subtitle = 'Design. Debug. Deploy.';
                             </form>
 
                             <!-- Access Information -->
-                            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid #C6B8A0;">
-                                <h5 style="color: #8B4513; margin-bottom: 15px; font-weight: bold; text-transform: none;">
+                            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(0,212,255,0.15);">
+                                <h5 style="color: #00d4ff; margin-bottom: 15px; font-weight: bold; text-transform: none;">
                                     <i class="ion-information-circled" style="margin-right: 8px;"></i>Staff Access Information
                                 </h5>
-                                <ul style="color: #1a1a1a; font-size: 14px; line-height: 1.6; margin: 0; padding-left: 20px;">
+                                <ul style="color: #94a3b8; font-size: 14px; line-height: 1.6; margin: 0; padding-left: 20px;">
                                     <li>Access to learning platform credentials (Zenva, Mammoth Interactive, Udemy)</li>
                                     <li>Partner hosting resources and cPanel access</li>
-                                    <li>Development tools and co-op resource sharing</li>
+                                    <li>Development tools and team resource sharing</li>
                                     <li>Private staff communication channels</li>
                                 </ul>
-                                <p style="color: #666666; font-size: 12px; margin-top: 20px; font-style: italic;">
-                                    Need access? Contact the co-op manager to get admin privileges added to your account.
+                                <p style="color: #64748b; font-size: 12px; margin-top: 20px; font-style: italic;">
+                                    Need access? Contact the team manager to get admin privileges added to your account.
                                 </p>
                             </div>
                         </div>

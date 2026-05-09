@@ -19,17 +19,22 @@ if ($is_in_wiki) {
 }
 ?>
 <!-- Site Header -->
-<div class="site-header-bg" style="background-color: #000000; position: relative; z-index: 5;">
+<div class="site-header-bg" style="background-color: #0a0a0f; position: relative; z-index: 5; border-bottom: 1px solid rgba(0,212,255,0.1);">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-6">
-             <!--    <a href="<?php echo $header_base_path; ?>index.php"><img src="<?php echo $header_base_path; ?>assets/images/wds-hero.png" alt="logo"></a> -->
+        <div class="row" style="display: flex; align-items: center; padding: 8px 15px;">
+            <div class="col-sm-5">
+                <a href="<?php echo $header_base_path; ?>index.php" class="lx-logo" style="text-decoration: none;">
+                    <div class="lx-logo-mark">LX</div>
+                    <div class="lx-logo-text">
+                        <span class="lx-logo-name">LEVEL <span>X</span></span>
+                        <span class="lx-logo-sub">Development</span>
+                    </div>
+                </a>
             </div>
-            <div class="col-sm-3 col-sm-offset-3 text-right">
-                <!-- <span class="ion-android-cart"></span> 0 products -->
+            <div class="col-sm-4 col-sm-offset-3 text-right">
                 <form method="GET" action="<?php echo $header_base_path; ?>search.php">
                     <div class="input-group">
-                        <input type="text" name="q" class="form-control" placeholder="Search WDS...">
+                        <input type="text" name="q" class="form-control" placeholder="Search Level X...">
                         <span class="input-group-btn">
                             <button class="btn btn-default btn-wds" type="submit">
                                 <i class="ion-search" aria-hidden="true"></i> Search

@@ -5,13 +5,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>World Domination Software | Join Our Co-op</title>
+        <title>Level X Development | Join Our Team</title>
 
         <!-- CSS -->
 
-        <!-- google fonts -->
-        <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+        <!-- Level X Development Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 
         <!-- files -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -19,7 +20,7 @@
         <link href="assets/css/owl.carousel.css" rel="stylesheet">
         <link href="assets/css/owl.carousel.theme.min.css" rel="stylesheet">
         <link href="assets/css/ionicons.css" rel="stylesheet">
-        <link href="<!-- main.css removed -->" rel="stylesheet">
+        
         <link href="assets/css/wds-unified.css" rel="stylesheet">
 
         <!--[if lt IE 9]>
@@ -32,7 +33,7 @@
         // Page-specific variables
         $current_page = 'joinus';
         $header_class = 'joinus-header inner-header';
-        $page_subtitle = 'Design. Debug. Deploy.';
+        $page_subtitle = 'Design • Debug • Deploy';
         ?>
     <!-- Include Site Header -->
     <?php include 'includes/header.php'; ?>
@@ -55,7 +56,7 @@
                 <div class="boxed">
                     <div class="col-sm-12">
                         <div class="why-work-for-us wds-card" style="max-width: 900px; margin: 0 auto; padding: 20px;">
-                            <h2 style="color: #8B4513; margin-bottom: 20px;">About Our Co-op</h2>
+                            <h2 style="color: #00d4ff; margin-bottom: 20px;">About Our Co-op</h2>
                             <p style="font-size: 18px; line-height: 1.6; margin-bottom: 30px;">
                                 We're a co-op. That means instead of just collecting a paycheck, 
                                 you directly share in the <strong>profits</strong> of everything we build together. 
@@ -63,7 +64,7 @@
                                 while the founder covers all upfront costs for servers, tools, and AI.
                             </p>
 
-                            <h3 style="color: #8B4513; margin-bottom: 15px;">What We Do</h3>
+                            <h3 style="color: #00d4ff; margin-bottom: 15px;">What We Do</h3>
                             <ul style="font-size: 16px; line-height: 1.6; margin-bottom: 30px;">
                                 <li>Commercial <strong>game server hosting</strong> for classic and modern titles</li>
                                 <li><strong>Game testing</strong>, <strong>customer support</strong>, and <strong>mod development</strong></li>
@@ -72,7 +73,7 @@
                                 <li><strong>Business applications</strong> for real-world clients</li>
                             </ul>
 
-                            <h3 style="color: #8B4513; margin-bottom: 15px;">Why It's Worth It</h3>
+                            <h3 style="color: #00d4ff; margin-bottom: 15px;">Why It's Worth It</h3>
                             <ul style="font-size: 16px; line-height: 1.6; margin-bottom: 30px;">
                                 <li>It's genuinely <strong>fun to build games</strong> with a passionate team</li>
                                 <li>Hands-on Linux & Windows sysadmin experience</li>
@@ -82,7 +83,7 @@
                                 <li><strong>Use our tools for your own side projects</strong> — we'll even help where we can</li>
                             </ul>
 
-                            <h3 style="color: #8B4513; margin-bottom: 15px;">Who We're Looking For</h3>
+                            <h3 style="color: #00d4ff; margin-bottom: 15px;">Who We're Looking For</h3>
                             <p style="font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
                                 Gamers, coders, modders, and developers interested in real-world experience and 
                                 collaborative projects. If you're interested in game development, 
@@ -90,7 +91,7 @@
                                 we'd like to hear from you.
                             </p>
 
-                            <p style="font-size: 20px; font-weight: bold; text-align: center; color: #8B4513;"><strong>Collaborate. Build. Grow Together.</strong></p>
+                            <p style="font-size: 20px; font-weight: bold; text-align: center; color: #00d4ff;"><strong>Collaborate. Build. Grow Together.</strong></p>
                         </div>
                     </div>
                 </div>
@@ -106,7 +107,7 @@
                 max-width: 1200px;
                 margin: 0 auto;
                 padding: 20px;
-                background: #D4CFC0;
+                background: #13161f;
                 border-radius: 14px;
             }
             
@@ -114,13 +115,13 @@
             .career-hero {
                 text-align: center;
                 padding: 40px 30px;
-                background: #D4CFC0;
+                background: #13161f;
                 border-radius: 14px;
                 margin-bottom: 40px;
                 position: relative;
             }
             .career-hero h2 {
-                color: #8B4513;
+                color: #00d4ff;
                 font-size: 36px;
                 font-weight: 900;
                 margin-bottom: 20px;
@@ -128,7 +129,7 @@
                 z-index: 1;
             }
             .career-hero p {
-                color: #4a4a4a;
+                color: #e2e8f0;
                 font-size: 20px;
                 font-weight: 600;
                 position: relative;
@@ -143,7 +144,7 @@
                 margin: 50px 0;
             }
             .timeline-section h3 {
-                color: #8B4513;
+                color: #00d4ff;
                 font-size: 36px;
                 font-weight: bold;
                 text-align: center;
@@ -161,7 +162,7 @@
                 top: 0;
                 bottom: 0;
                 width: 4px;
-                background: linear-gradient(to bottom, #8B4513, #654321);
+                background: linear-gradient(to bottom, #00d4ff, #654321);
                 transform: translateX(-50%);
                 border-radius: 2px;
             }
@@ -184,11 +185,11 @@
                 position: absolute;
                 width: 20px;
                 height: 20px;
-                background: #8B4513;
+                background: #00d4ff;
                 border: 4px solid #fff;
                 border-radius: 50%;
                 top: 30px;
-                box-shadow: 0 0 0 4px #8B4513;
+                box-shadow: 0 0 0 4px #00d4ff;
             }
             .timeline-item:nth-child(odd)::before {
                 right: -50px;
@@ -206,7 +207,7 @@
             }
             .timeline-content:hover {
                 background: rgba(255,255,255,0.15);
-                border-color: #8B4513;
+                border-color: #00d4ff;
                 transform: translateY(-5px);
                 box-shadow: 0 10px 25px rgba(0,200,81,0.2);
             }
@@ -214,16 +215,16 @@
                 font-size: 36px;
                 margin-bottom: 15px;
                 display: block;
-                color: #8B4513;
+                color: #00d4ff;
             }
             .timeline-title {
-                color: #8B4513;
+                color: #00d4ff;
                 font-size: 24px;
                 font-weight: bold;
                 margin-bottom: 10px;
             }
             .timeline-desc {
-                color: #4a4a4a;
+                color: #e2e8f0;
                 font-size: 16px;
                 line-height: 1.6;
                 font-weight: 500;
@@ -237,8 +238,8 @@
                 margin: 50px 0;
             }
             .mission-card {
-                background: #D4CFC0;
-                border: 1px solid #B8A996;
+                background: #13161f;
+                border: 1px solid rgba(0,212,255,0.2);
                 border-radius: 14px;
                 padding: 30px;
                 text-align: center;
@@ -264,7 +265,7 @@
             .mission-card:hover {
                 transform: translateY(-10px) scale(1.02);
                 background: linear-gradient(135deg, rgba(0,200,81,0.25), rgba(0,160,67,0.25));
-                border-color: #8B4513;
+                border-color: #00d4ff;
                 box-shadow: 0 20px 40px rgba(0,200,81,0.3);
             }
             @keyframes rotate {
@@ -275,12 +276,12 @@
                 font-size: 64px;
                 margin-bottom: 20px;
                 display: block;
-                color: #8B4513;
+                color: #00d4ff;
                 position: relative;
                 z-index: 1;
             }
             .mission-title {
-                color: #8B4513;
+                color: #00d4ff;
                 font-size: 28px;
                 font-weight: bold;
                 margin-bottom: 15px;
@@ -288,7 +289,7 @@
                 z-index: 1;
             }
             .mission-desc {
-                color: #4a4a4a;
+                color: #e2e8f0;
                 font-size: 18px;
                 line-height: 1.7;
                 font-weight: 500;
@@ -298,21 +299,21 @@
             
             /* Skills Chart */
             .skills-chart-section {
-                background: #D4CFC0;
-                border: 1px solid #B8A996;
+                background: #13161f;
+                border: 1px solid rgba(0,212,255,0.2);
                 border-radius: 14px;
                 padding: 40px;
                 margin: 50px 0;
                 text-align: center;
             }
             .skills-chart-section h3 {
-                color: #8B4513;
+                color: #00d4ff;
                 font-size: 36px;
                 font-weight: bold;
                 margin-bottom: 20px;
             }
             .skills-chart-section p {
-                color: #4a4a4a;
+                color: #e2e8f0;
                 font-size: 20px;
                 margin-bottom: 40px;
                 font-weight: 500;
@@ -331,14 +332,14 @@
             
             /* CTA Section */
             .career-cta {
-                background: #D4CFC0;
+                background: #13161f;
                 border-radius: 14px;
                 padding: 40px 30px;
                 text-align: center;
                 margin-top: 50px;
             }
             .career-cta h3 {
-                color: #8B4513;
+                color: #00d4ff;
                 font-size: 42px;
                 font-weight: 900;
                 margin-bottom: 20px;
@@ -346,7 +347,7 @@
                 z-index: 1;
             }
             .career-cta p {
-                color: #4a4a4a;
+                color: #e2e8f0;
                 font-size: 22px;
                 margin-bottom: 40px;
                 font-weight: 600;
@@ -360,7 +361,7 @@
             .cta-button {
                 display: inline-block;
                 background: #fff;
-                color: #8B4513;
+                color: #00d4ff;
                 font-size: 24px;
                 font-weight: 900;
                 text-decoration: none;
@@ -376,7 +377,7 @@
             }
             .cta-button:hover {
                 background: transparent;
-                color: #D2B48C;
+                color: #94a3b8;
                 transform: translateY(-3px);
                 box-shadow: 0 15px 35px rgba(0,0,0,0.3);
             }
@@ -489,13 +490,13 @@
         <script>
             // Dystopian 1984 color palette for charts
             const careerColors = {
-                primary: '#8B4513',
+                primary: '#00d4ff',
                 secondary: '#A0522D',
                 accent: '#CD853F',
                 success: '#556B2F',
                 warning: '#8B7355',
                 danger: '#8B0000',
-                light: '#D2B48C'
+                light: '#94a3b8'
             };
 
             // Skills Growth Chart
@@ -623,11 +624,11 @@
                 <div class="col-sm-8 col-sm-offset-2">
                     <div style="background: rgba(255,255,255,0.08); padding: 40px; border-radius: 20px; text-align: center; backdrop-filter: blur(10px);">
                         <div style="margin-bottom: 30px;">
-                            <i class="fas fa-headphones" style="font-size: 48px; color: #8B4513; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);"></i>
-                            <h3 style="color: #8B4513; font-size: 32px; font-weight: bold; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                            <i class="fas fa-headphones" style="font-size: 48px; color: #00d4ff; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);"></i>
+                            <h3 style="color: #00d4ff; font-size: 32px; font-weight: bold; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
                                 🎧 Learn More (Audio)
                             </h3>
-                            <p style="color: #D2B48C; font-size: 18px; font-weight: 500; line-height: 1.6; max-width: 600px; margin: 0 auto 25px;">
+                            <p style="color: #94a3b8; font-size: 18px; font-weight: 500; line-height: 1.6; max-width: 600px; margin: 0 auto 25px;">
                                 An audio overview of our exit strategy and how the co-op structure benefits all members.
                             </p>
                         </div>
@@ -635,24 +636,24 @@
                         <div style="background: rgba(0,200,81,0.1); padding: 30px; border-radius: 15px; margin-bottom: 20px;">
                             <audio controls preload="metadata" style="width: 100%; max-width: 600px; height: 60px; border-radius: 10px;">
                                 <source src="assets/The Accelerated Exit Strategy.mp3" type="audio/mpeg">
-                                <p style="color: #D2B48C;">Your browser doesn't support audio playback. 
-                                   <a href="assets/The Accelerated Exit Strategy.mp3" download style="color: #8B4513;">Download the audio file</a>
+                                <p style="color: #94a3b8;">Your browser doesn't support audio playback. 
+                                   <a href="assets/The Accelerated Exit Strategy.mp3" download style="color: #00d4ff;">Download the audio file</a>
                                 </p>
                             </audio>
                         </div>
                         
                         <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
                             <div style="display: flex; align-items: center; gap: 8px; color: #8B7355; font-size: 14px;">
-                                <i class="fas fa-clock" style="color: #8B4513;"></i>
+                                <i class="fas fa-clock" style="color: #00d4ff;"></i>
                                 <span>Audio duration varies</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 8px; color: #8B7355; font-size: 14px;">
-                                <i class="fas fa-volume-up" style="color: #8B4513;"></i>
+                                <i class="fas fa-volume-up" style="color: #00d4ff;"></i>
                                 <span>Headphones recommended</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 8px; color: #8B7355; font-size: 14px;">
-                                <i class="fas fa-download" style="color: #8B4513;"></i>
-                                <a href="assets/The Accelerated Exit Strategy.mp3" download style="color: #8B4513; text-decoration: none;">
+                                <i class="fas fa-download" style="color: #00d4ff;"></i>
+                                <a href="assets/The Accelerated Exit Strategy.mp3" download style="color: #00d4ff; text-decoration: none;">
                                     Download MP3
                                 </a>
                             </div>
@@ -670,7 +671,7 @@
                 <div class="col-sm-12">
                     <div class="title-box">
                         <p>Ready to join?</p>
-                        <h2 class="title mt0" style="color: #8B4513;">Get in Touch</h2>
+                        <h2 class="title mt0" style="color: #00d4ff;">Get in Touch</h2>
                     </div>
                 </div>
             </div>
@@ -679,9 +680,9 @@
                     <div class="col-sm-8 col-sm-offset-2">
                         <div style="background: rgba(255,255,255,0.15); padding: 60px 40px; border-radius: 12px; text-align: center;">
                             <div style="margin-bottom: 30px;">
-                                <i class="ion-chatbubbles" style="font-size: 64px; color: #8B4513; margin-bottom: 20px; display: block;"></i>
-                                <h3 style="color: #8B4513; font-size: 28px; margin-bottom: 20px;">Contact Us on Discord or Email</h3>
-                                <p style="color: #D2B48C; font-size: 18px; line-height: 1.6; max-width: 600px; margin: 0 auto 30px;">
+                                <i class="ion-chatbubbles" style="font-size: 64px; color: #00d4ff; margin-bottom: 20px; display: block;"></i>
+                                <h3 style="color: #00d4ff; font-size: 28px; margin-bottom: 20px;">Contact Us on Discord or Email</h3>
+                                <p style="color: #94a3b8; font-size: 18px; line-height: 1.6; max-width: 600px; margin: 0 auto 30px;">
                                     We use Discord for all communications. Visit our contact page to join our Discord server or send us an email with your questions and interest in joining the co-op.
                                 </p>
                             </div>
@@ -705,7 +706,7 @@
                 <div class="col-sm-12">
                     <div class="title-box" style="margin-bottom: 40px;">
                         <p style="color: #8B7355;">Review the</p>
-                        <h2 class="title mt0" style="color: #8B4513;">Co-op Agreement</h2>
+                        <h2 class="title mt0" style="color: #00d4ff;">Team Agreement</h2>
                     </div>
                 </div>
             </div>
@@ -731,7 +732,7 @@
                         </div>
 
                         <p style="margin-bottom: 20px;">
-                            This Agreement is between World Domination Software / GameServers World ("The Co-Op"), 
+                            This Agreement is between Level X Development / GameServers World ("The Co-Op"), 
                             managed by __________________ ("Manager"), and __________________ ("Contributor").
                         </p>
 
@@ -827,7 +828,7 @@
                     <!-- Download Section -->
                     <div style="text-align: center; margin: 30px 0;">
                         <div style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 12px;">
-                            <h3 style="color: #8B4513; margin-bottom: 15px;">Download Contract Package</h3>
+                            <h3 style="color: #00d4ff; margin-bottom: 15px;">Download Contract Package</h3>
                             <p style="color: #8B7355; margin-bottom: 20px;">
                                 Get the complete contract documents including fillable forms and legal templates.
                             </p>
@@ -835,7 +836,7 @@
                                style="
                                    display: inline-flex; 
                                    align-items: center; 
-                                   background: #8B4513; 
+                                   background: #00d4ff; 
                                    color: #0f1419; 
                                    padding: 12px 24px; 
                                    text-decoration: none; 

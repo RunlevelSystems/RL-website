@@ -1,4 +1,4 @@
-<!-- Developed by World Domination Software LLC -->
+<!-- Developed by Level X Development -->
 # Accounts and Access
 
 Quick reference for all team credentials. This page is only accessible to logged-in staff members.

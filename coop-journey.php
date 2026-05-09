@@ -3,50 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Co-op Journey - Interactive Opportunity Hub</title>
+    <title>Level X Development — Join Our Team</title>
     
     <!-- CSS -->
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <!-- Level X Development Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/magnific-popup.css" rel="stylesheet">
     <link href="assets/css/owl.carousel.css" rel="stylesheet">
     <link href="assets/css/owl.carousel.theme.min.css" rel="stylesheet">
     <link href="assets/css/ionicons.css" rel="stylesheet">
-    <link href="<!-- main.css removed -->" rel="stylesheet">
+    
     <link href="assets/css/wds-unified.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     
     <style>
         body { 
-            font-family: 'Inter', 'Roboto', sans-serif; 
-            background-color: #1C1C1C; 
-            color: #D2B48C; 
+            font-family: 'Exo 2', 'Inter', sans-serif; 
+            background-color: #0a0a0f; 
+            color: #94a3b8; 
             line-height: 1.6;
         }
         
         /* Dark theme adaptations */
         .nav-link { 
             transition: color 0.3s, border-color 0.3s; 
-            color: #8B7355;
+            color: #94a3b8;
             text-decoration: none;
         }
-        .nav-link.active { color: #8B4513; border-bottom-color: #8B4513; }
-        .nav-link:hover { color: #8B4513; }
+        .nav-link.active { color: #00d4ff; border-bottom-color: #00d4ff; }
+        .nav-link:hover { color: #00d4ff; }
         
         .skill-card { 
             transition: transform 0.3s, box-shadow 0.3s; 
             background: rgba(255,255,255,0.08);
             border: 2px solid rgba(0,200,81,0.2);
-            color: #D2B48C;
+            color: #94a3b8;
         }
         .skill-card:hover { 
             transform: translateY(-5px); 
             box-shadow: 0 10px 25px rgba(0,200,81,0.2);
-            border-color: #8B4513;
+            border-color: #00d4ff;
             background: rgba(255,255,255,0.12);
         }
         
@@ -67,7 +68,7 @@
         
         /* Button styling */
         .btn-primary {
-            background: #8B4513;
+            background: #00d4ff;
             color: #080808;
             font-weight: 700;
             border: none;
@@ -78,7 +79,7 @@
             transition: all 0.3s ease;
         }
         .btn-primary:hover {
-            background: #A0522D;
+            background: #0ea5e9;
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(0,200,81,0.3);
             color: #080808;
@@ -87,7 +88,7 @@
         
         .btn-secondary {
             background: rgba(255,255,255,0.1);
-            color: #D2B48C;
+            color: #94a3b8;
             font-weight: 700;
             border: 2px solid rgba(0,200,81,0.3);
             padding: 10px 22px;
@@ -98,8 +99,8 @@
         }
         .btn-secondary:hover {
             background: rgba(0,200,81,0.1);
-            border-color: #8B4513;
-            color: #D2B48C;
+            border-color: #00d4ff;
+            color: #94a3b8;
             text-decoration: none;
         }
         
@@ -111,18 +112,18 @@
             padding: 32px;
         }
         .card-dark:hover {
-            border-color: #8B4513;
+            border-color: #00d4ff;
             background: rgba(255,255,255,0.12);
         }
         
         /* Text colors */
-        .text-primary { color: #8B4513 !important; }
-        .text-muted { color: #8B7355 !important; }
-        .text-light { color: #D2B48C !important; }
+        .text-primary { color: #00d4ff !important; }
+        .text-muted { color: #94a3b8 !important; }
+        .text-light { color: #94a3b8 !important; }
         
         /* Gradient backgrounds */
         .gradient-bg {
-            background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #654321 100%);
+            background: linear-gradient(135deg, #00d4ff 0%, #0ea5e9 50%, #0d1b2e 100%);
         }
         
         /* Process flow styling */
@@ -136,7 +137,7 @@
         }
         .process-step:hover {
             background: rgba(255,255,255,0.12);
-            border-color: #8B4513;
+            border-color: #00d4ff;
         }
         
         /* Footer styling */
@@ -168,7 +169,7 @@
             width: 20px;
             height: 20px;
             border-radius: 50%;
-            background: #8B4513;
+            background: #00d4ff;
             cursor: pointer;
             border: 2px solid #fff;
             box-shadow: 0 2px 8px rgba(0,200,81,0.3);
@@ -177,7 +178,7 @@
             width: 20px;
             height: 20px;
             border-radius: 50%;
-            background: #8B4513;
+            background: #00d4ff;
             cursor: pointer;
             border: 2px solid #fff;
             box-shadow: 0 2px 8px rgba(0,200,81,0.3);
@@ -193,7 +194,7 @@
         }
         .progress-bar-fill {
             height: 100%;
-            background: linear-gradient(90deg, #8B4513, #A0522D);
+            background: linear-gradient(90deg, #00d4ff, #0ea5e9);
             border-radius: 10px;
             transition: width 0.3s ease;
         }
@@ -211,8 +212,8 @@
         <nav class="container-custom py-4 flex justify-between items-center" style="display: flex; justify-content: space-between; align-items: center;">
             <div style="display: flex; align-items: center;">
                 <a href="index.php" style="text-decoration: none;">
-                    <span style="font-size: 24px; font-weight: 800; color: #8B4513;">WDS</span>
-                    <span style="color: #D2B48C; font-size: 18px; margin-left: 8px;">Co-op Journey</span>
+                    <span style="font-size: 24px; font-weight: 800; color: #00d4ff;">LEVEL X</span>
+                    <span style="color: #94a3b8; font-size: 16px; margin-left: 8px;">Team Journey</span>
                 </a>
             </div>
             <div style="display: none; gap: 32px;" class="nav-desktop">
@@ -231,8 +232,8 @@
     <main>
         <section id="hero" style="padding: 80px 0 120px 0;">
             <div class="container-custom" style="text-align: center;">
-                <h1 style="font-size: clamp(36px, 5vw, 64px); font-weight: 900; color: #D2B48C; line-height: 1.1; margin-bottom: 24px;">
-                    Build Projects <br><span style="color: #8B4513;">That Matter</span>
+                <h1 style="font-size: clamp(36px, 5vw, 64px); font-weight: 900; color: #94a3b8; line-height: 1.1; margin-bottom: 24px;">
+                    Build Projects <br><span style="color: #00d4ff;">That Matter</span>
                 </h1>
                 <p style="margin-top: 24px; font-size: clamp(18px, 2.5vw, 24px); max-width: 900px; margin-left: auto; margin-right: auto; color: #8B7355; line-height: 1.5;">
                     Our developer co-op offers real-world experience, collaborative projects, and a share of the profits. Work on meaningful projects while building your skills and portfolio.
@@ -247,7 +248,7 @@
         <section id="skills" style="padding: 80px 0; background: rgba(255,255,255,0.02);">
             <div class="container-custom">
                 <div style="text-align: center; margin-bottom: 48px;">
-                    <h2 style="font-size: clamp(32px, 4vw, 48px); font-weight: 900; color: #D2B48C; margin-bottom: 16px;">Skills You'll Develop</h2>
+                    <h2 style="font-size: clamp(32px, 4vw, 48px); font-weight: 900; color: #94a3b8; margin-bottom: 16px;">Skills You'll Develop</h2>
                     <p style="font-size: 20px; max-width: 800px; margin: 0 auto; color: #8B7355;">Gain hands-on experience with skills that are valued in the industry. Click each card to see how it can appear on your resume.</p>
                 </div>
                 <div id="skill-cards-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
@@ -258,7 +259,7 @@
         <section id="earnings" style="padding: 80px 0;">
             <div class="container-custom">
                 <div style="text-align: center; margin-bottom: 48px;">
-                    <h2 style="font-size: clamp(32px, 4vw, 48px); font-weight: 900; color: #D2B48C; margin-bottom: 16px;">Earnings Calculator</h2>
+                    <h2 style="font-size: clamp(32px, 4vw, 48px); font-weight: 900; color: #94a3b8; margin-bottom: 16px;">Earnings Calculator</h2>
                     <p style="font-size: 20px; max-width: 1000px; margin: 0 auto; color: #8B7355;">Our profit-sharing model is designed to be fair and transparent. As the co-op succeeds, contributor shares increase. Use the slider below to see how earnings scale at different profit levels.</p>
                 </div>
                 
@@ -266,10 +267,10 @@
                     <!-- Desktop: side by side, Mobile: stacked -->
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; align-items: center;">
                         <div class="card-dark" style="order: 2;">
-                            <h3 style="font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 16px; color: #8B4513;">Quarterly Profit</h3>
+                            <h3 style="font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 16px; color: #00d4ff;">Quarterly Profit</h3>
                             <input id="profit-slider" type="range" min="1000" max="300000" value="60000" step="1000" class="profit-slider">
                             <div style="text-align: center; margin-top: 16px;">
-                                <span style="font-size: 36px; font-weight: 900; color: #8B4513;" id="profit-label">$60,000</span>
+                                <span style="font-size: 36px; font-weight: 900; color: #00d4ff;" id="profit-label">$60,000</span>
                             </div>
                             <div style="margin-top: 32px; display: flex; flex-direction: column; gap: 24px;">
                                 <div>
@@ -285,7 +286,7 @@
                                 <div>
                                     <div style="display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 8px;">
                                         <span>Contributor Pool</span>
-                                        <span id="contributor-share-percent" style="color: #8B4513;"></span>
+                                        <span id="contributor-share-percent" style="color: #00d4ff;"></span>
                                     </div>
                                     <div class="progress-bar-bg">
                                         <div id="contributor-share-bar" class="progress-bar-fill" style="width: 52%"></div>
@@ -307,12 +308,12 @@
         <section id="model" style="padding: 80px 0; background: rgba(255,255,255,0.02);">
             <div class="container-custom">
                 <div style="text-align: center; margin-bottom: 48px;">
-                    <h2 style="font-size: clamp(32px, 4vw, 48px); font-weight: 900; color: #D2B48C; margin-bottom: 16px;">Our Revenue Model</h2>
+                    <h2 style="font-size: clamp(32px, 4vw, 48px); font-weight: 900; color: #94a3b8; margin-bottom: 16px;">Our Revenue Model</h2>
                     <p style="font-size: 20px; max-width: 1000px; margin: 0 auto; color: #8B7355;">We generate income through two streams: steady revenue from services that fund operations, and growth potential from our own products.</p>
                 </div>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 48px;">
                     <div style="text-align: center;">
-                        <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 24px; color: #8B4513;">🎮 Stream 1: Service Revenue</h3>
+                        <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 24px; color: #00d4ff;">🎮 Stream 1: Service Revenue</h3>
                         <div style="display: flex; flex-direction: column; gap: 16px;">
                             <div class="process-step">Host & Manage Game Servers</div>
                             <div style="font-weight: 700; font-size: 24px; color: #475569;">↓</div>
@@ -320,11 +321,11 @@
                             <div style="font-weight: 700; font-size: 24px; color: #475569;">↓</div>
                             <div class="process-step">Generate Monthly Recurring Revenue</div>
                             <div style="font-weight: 700; font-size: 24px; color: #475569;">↓</div>
-                            <div style="background: rgba(0,200,81,0.2); color: #8B4513; font-weight: 600; padding: 20px; border-radius: 12px; border: 2px solid #8B4513;">Shared Quarterly Profits</div>
+                            <div style="background: rgba(0,200,81,0.2); color: #00d4ff; font-weight: 600; padding: 20px; border-radius: 12px; border: 2px solid #00d4ff;">Shared Quarterly Profits</div>
                         </div>
                     </div>
                     <div style="text-align: center;">
-                        <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 24px; color: #8B4513;">🚀 Stream 2: Product Development</h3>
+                        <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 24px; color: #00d4ff;">🚀 Stream 2: Product Development</h3>
                         <div style="display: flex; flex-direction: column; gap: 16px;">
                             <div class="process-step">Collaborate on Indie Game Dev</div>
                             <div style="font-weight: 700; font-size: 24px; color: #475569;">↓</div>
@@ -332,12 +333,12 @@
                             <div style="font-weight: 700; font-size: 24px; color: #475569;">↓</div>
                             <div class="process-step">Game Sales & Revenue</div>
                             <div style="font-weight: 700; font-size: 24px; color: #475569;">↓</div>
-                            <div style="background: rgba(0,200,81,0.2); color: #8B4513; font-weight: 600; padding: 20px; border-radius: 12px; border: 2px solid #8B4513;">Additional Shared Profits</div>
+                            <div style="background: rgba(0,200,81,0.2); color: #00d4ff; font-weight: 600; padding: 20px; border-radius: 12px; border: 2px solid #00d4ff;">Additional Shared Profits</div>
                         </div>
                     </div>
                 </div>
                 <div style="text-align: center; margin-top: 64px;">
-                    <h3 style="font-size: 24px; font-weight: 700; color: #D2B48C; margin-bottom: 16px;">Tiered Profit Distribution</h3>
+                    <h3 style="font-size: 24px; font-weight: 700; color: #94a3b8; margin-bottom: 16px;">Tiered Profit Distribution</h3>
                     <p style="color: #8B7355; max-width: 800px; margin: 0 auto 32px; font-size: 16px;">The manager's share is higher on initial profits to reinvest in infrastructure, while the contributors' share increases significantly at higher profit levels.</p>
                     <div class="bar-chart-container">
                          <canvas id="tierBarChart"></canvas>
@@ -349,10 +350,10 @@
 
     <footer class="footer-dark" style="margin-top: 80px;">
         <div class="container-custom" style="padding: 32px 20px; text-align: center;">
-            <p style="margin: 0; color: #8B7355;">&copy; 2025 World Domination Software Co-op. Building careers, together.</p>
+            <p style="margin: 0; color: #8B7355;">&copy; 2025 Level X Development. Building careers, together.</p>
             <p style="margin: 8px 0 0; font-size: 14px; color: #64748b;">
-                <a href="index.php" style="color: #8B4513; text-decoration: none;">← Back to Main Site</a> | 
-                <a href="joinus.php" style="color: #8B4513; text-decoration: none;">Apply Now</a>
+                <a href="index.php" style="color: #00d4ff; text-decoration: none;">← Back to Main Site</a> | 
+                <a href="joinus.php" style="color: #00d4ff; text-decoration: none;">Apply Now</a>
             </p>
         </div>
     </footer>
@@ -374,9 +375,9 @@
                 card.style.cssText = 'border-radius: 16px; padding: 32px; cursor: pointer; text-align: center; transition: all 0.3s ease;';
                 card.innerHTML = `
                     <div style="font-size: 48px; margin-bottom: 16px;">${skill.icon}</div>
-                    <h3 style="font-size: 20px; font-weight: 700; color: #D2B48C; margin-bottom: 8px;">${skill.title}</h3>
+                    <h3 style="font-size: 20px; font-weight: 700; color: #94a3b8; margin-bottom: 8px;">${skill.title}</h3>
                     <p class="original-text" style="color: #8B7355;">Click to see a resume example</p>
-                    <p class="resume-text" style="color: #8B4513; font-weight: 600; display: none;"><strong>Resume:</strong> ${skill.resume}</p>
+                    <p class="resume-text" style="color: #00d4ff; font-weight: 600; display: none;"><strong>Resume:</strong> ${skill.resume}</p>
                 `;
                 skillCardsContainer.appendChild(card);
                 
@@ -445,7 +446,7 @@
                     labels: ['Contributor Pool', 'Manager Share'],
                     datasets: [{
                         data: [52, 48],
-                        backgroundColor: ['#8B4513', '#48CAE4'],
+                        backgroundColor: ['#00d4ff', '#48CAE4'],
                         borderColor: '#080808',
                         borderWidth: 4,
                         hoverOffset: 8
@@ -460,7 +461,7 @@
                             display: true,
                             position: 'bottom',
                             labels: {
-                                color: '#D2B48C',
+                                color: '#94a3b8',
                                 font: {
                                     size: 16,
                                     weight: 'bold'
@@ -472,7 +473,7 @@
                             backgroundColor: 'rgba(0,0,0,0.8)',
                             titleColor: '#fff',
                             bodyColor: '#fff',
-                            borderColor: '#8B4513',
+                            borderColor: '#00d4ff',
                             borderWidth: 2,
                             callbacks: {
                                 label: function(context) {
@@ -565,7 +566,7 @@
                     }, {
                         label: 'Contributor Pool',
                         data: [25, 60, 75, 85],
-                        backgroundColor: '#8B4513',
+                        backgroundColor: '#00d4ff',
                     }]
                 },
                 options: {
@@ -577,7 +578,7 @@
                             stacked: true, 
                             ticks: { 
                                 callback: value => `${value}%`,
-                                color: '#D2B48C',
+                                color: '#94a3b8',
                                 font: { weight: 'bold' }
                             },
                             grid: {
@@ -587,7 +588,7 @@
                         y: { 
                             stacked: true,
                             ticks: {
-                                color: '#D2B48C',
+                                color: '#94a3b8',
                                 font: { weight: 'bold' }
                             },
                             grid: {
@@ -598,7 +599,7 @@
                     plugins: {
                         legend: {
                             labels: {
-                                color: '#D2B48C',
+                                color: '#94a3b8',
                                 font: {
                                     size: 14,
                                     weight: 'bold'
@@ -609,7 +610,7 @@
                             backgroundColor: 'rgba(0,0,0,0.8)',
                             titleColor: '#fff',
                             bodyColor: '#fff',
-                            borderColor: '#8B4513',
+                            borderColor: '#00d4ff',
                             borderWidth: 2,
                             callbacks: {
                                 label: function(context) {
