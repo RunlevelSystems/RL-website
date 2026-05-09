@@ -325,7 +325,7 @@ $totalCount = count($servers);
                         <div class="summary-label">Total Servers</div>
                     </div>
                     <div class="summary-box">
-                        <div class="summary-value" style="color: #36f3ff;"><?php echo $healthyCount; ?></div>
+                        <div class="summary-value" style="color: var(--lx-accent);"><?php echo $healthyCount; ?></div>
                         <div class="summary-label">Operational</div>
                     </div>
                     <div class="summary-box">
