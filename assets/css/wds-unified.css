@@ -615,7 +615,7 @@ a[class*="btn"],
 .btn-robot,
 .btn-wds {
     background: var(--core-cobalt) !important;
-    color: #ffffff !important;
+    color: var(--core-card) !important;
     border: 1px solid var(--core-cobalt) !important;
     padding: 10px 24px !important;
     font-weight: 600 !important;
@@ -646,7 +646,7 @@ a[class*="btn"]:hover {
 .btn-primary,
 .btn-filled {
     background: var(--core-cobalt) !important;
-    color: #ffffff !important;
+    color: var(--core-card) !important;
     border-color: var(--core-cobalt) !important;
     font-weight: 700 !important;
 }
@@ -835,7 +835,7 @@ input[type="search"],
 textarea,
 select,
 .form-control {
-    background: #ffffff !important;
+    background: var(--core-card) !important;
     color: var(--core-text) !important;
     border: 1px solid var(--core-border-light) !important;
     padding: 10px 15px !important;
@@ -856,7 +856,7 @@ select:focus,
     outline: none !important;
     border-color: var(--core-cobalt) !important;
     box-shadow: 0 0 0 3px rgba(0, 170, 255, 0.16) !important;
-    background: #ffffff !important;
+    background: var(--core-card) !important;
 }
 
 label {

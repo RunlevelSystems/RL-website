@@ -19,7 +19,7 @@ if ($is_in_wiki) {
             <div class="container">
                 <div class="row">
                     <div class="col-sm-4">
-                        <a href="<?php echo $footer_base_path; ?>index.php" aria-label="Core Loop Development home">
+                        <a href="<?php echo $footer_base_path; ?>index.php">
                             <img src="<?php echo $footer_base_path; ?>assets/images/logo.png" alt="Core Loop Development" class="footer-logo">
                         </a>
                         <h3>Core Loop Development</h3>
