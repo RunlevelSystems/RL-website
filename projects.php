@@ -5,12 +5,13 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="/assets/images/icon.png">
 
-    <title>Projects | Level X Development</title>
+    <title>Projects | Core Loop Development</title>
 
         <!-- CSS -->
 
-        <!-- Level X Development Fonts -->
+        <!-- Core Loop Development Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -22,7 +23,7 @@
         <link href="assets/css/owl.carousel.css" rel="stylesheet">
         <link href="assets/css/owl.carousel.theme.min.css" rel="stylesheet">
         <link href="assets/css/ionicons.css" rel="stylesheet">
-        <!-- Level X Unified Theme -->
+        <!-- Core Loop Unified Theme -->
         <link href="assets/css/wds-unified.css" rel="stylesheet">
         <!-- Font Awesome for GameServer Panel icons -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -37,7 +38,7 @@
             // Page-specific variables
             $current_page = 'projects';
             $header_class = 'projects-header inner-header';
-            $page_subtitle = 'Design • Debug • Deploy';
+            $page_subtitle = 'Engineer • Ship • Scale';
             ?>
     <!-- Include Site Header -->
     <?php include 'includes/header.php'; ?>

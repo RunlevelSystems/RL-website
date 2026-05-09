@@ -1,18 +1,18 @@
-<!-- Developed by World Domination Software LLC -->
+<!-- Developed by Core Loop Development LLC -->
 ---
 title: "Overview"
 description: "Atavism reference import"
 weight: 100
 ---
 
-> **Admin Documentation (not shown on public WDS site).**
-> GSP is a heavily customized fork of OGP maintained by WDS.
+> **Admin Documentation (not shown on public Core Loop site).**
+> GSP is a heavily customized fork of OGP maintained by Core Loop.
 
 ## Scope
 
 Mystical Islands relies on the Atavism MMO platform for server-side gameplay systems, instancing, and data-driven content. These admin notes consolidate the most frequently referenced Atavism guides in a single place so design, engineering, and live-ops staff can keep Copilot grounded in the same vocabulary when producing Unity behaviors or panel-side automations.
 
-- **Audience:** Internal WDS designers, engineers, and toolsmiths.
+- **Audience:** Internal Core Loop designers, engineers, and toolsmiths.
 - **Source:** Sanitized from the public Atavism wiki exports as of 2025-11-30 and cross-checked against our `world_content` database snapshot.
 - **Focus:** Item, ability, and prefab authoring workflows required for rapid content iteration.
 
@@ -56,11 +56,11 @@ Each folder contains a single Markdown guide with the original slug preserved so
 
 - Re-run the `projects/mystical-islands/scripts/convert_raw_docs.py` tool after every significant Atavism release and manually review the output for markup drift.
 - Update `modules/billing/timestamp.txt` in the GSP repo whenever documentation changes require a public-announcement sync.
-- Log major doc revisions in the WDS operations weekly digest so support and community teams know which gameplay systems changed.
+- Log major doc revisions in the Core Loop operations weekly digest so support and community teams know which gameplay systems changed.
 
 ## Related Resources
 
-- WDS Knowledge Base → `content/docs/gsp/` for panel administration specifics.
+- Core Loop Knowledge Base → `content/docs/gsp/` for panel administration specifics.
 - Atavism release notes (licensed mirror on internal Confluence).
 - Mystical Islands design bible (`content/projects/mystical-islands/design/` in the private repo).
 

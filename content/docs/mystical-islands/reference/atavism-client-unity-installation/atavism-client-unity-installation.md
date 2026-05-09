@@ -1,12 +1,12 @@
-<!-- Developed by World Domination Software LLC -->
+<!-- Developed by Core Loop Development LLC -->
 ---
 title: "Atavism Client Unity Installation"
 description: "Atavism reference import"
 weight: 100
 ---
 
-> **Admin Documentation (not shown on public WDS site).**
-> GSP is a heavily customized fork of OGP maintained by WDS.
+> **Admin Documentation (not shown on public Core Loop site).**
+> GSP is a heavily customized fork of OGP maintained by Core Loop.
 
 ## Supported Platforms
 
@@ -17,7 +17,7 @@ weight: 100
 ## Installation Steps
 
 1. **Install Unity Hub**
-	- Download from `https://unity.com/download`. Sign in with the WDS Unity ID (see `ops-tools/credentials/vault`) if you need seat access.
+	- Download from `https://unity.com/download`. Sign in with the Core Loop Unity ID (see `ops-tools/credentials/vault`) if you need seat access.
 
 2. **Add the LTS Editor**
 	- In Unity Hub, click **Installs → Add**, choose `2021.3.32f1`, and enable the **Android Build Support** checkbox only if you work on mobile builds. WebGL is required for lightweight previews.

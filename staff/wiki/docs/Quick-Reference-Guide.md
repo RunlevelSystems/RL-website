@@ -1,4 +1,4 @@
-<!-- Developed by Level X Development -->
+<!-- Developed by Core Loop Development -->
 # Quick Reference
 
 Commonly used shortcuts and commands for our tools.

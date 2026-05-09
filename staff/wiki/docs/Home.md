@@ -1,4 +1,4 @@
-<!-- Developed by Level X Development -->
+<!-- Developed by Core Loop Development -->
 # Staff Wiki
 
 Welcome! This is your quick reference for team information and guides.

@@ -1,22 +1,22 @@
-<!-- Developed by World Domination Software LLC -->
+<!-- Developed by Core Loop Development LLC -->
 ---
 title: "Atavism Windows Manager"
 description: "Atavism reference import"
 weight: 100
 ---
 
-> **Admin Documentation (not shown on public WDS site).**
-> GSP is a heavily customized fork of OGP maintained by WDS.
+> **Admin Documentation (not shown on public Core Loop site).**
+> GSP is a heavily customized fork of OGP maintained by Core Loop.
 
 ## Purpose
 
-The Atavism Windows Manager (AWM) is a lightweight launcher WDS uses on Windows QA rigs to manage client builds, apply patches, and launch the Mystical Islands test client with preconfigured arguments.
+The Atavism Windows Manager (AWM) is a lightweight launcher Core Loop uses on Windows QA rigs to manage client builds, apply patches, and launch the Mystical Islands test client with preconfigured arguments.
 
 ## Installation
 
 1. Download the latest AWM installer from `ops-tools/atavism/windows-manager/AtavismWindowsManagerSetup.msi`.
 2. Run the installer with administrative privileges.
-3. When prompted, choose the **Mystical Islands** profile; this pulls default endpoints from the WDS CDN.
+3. When prompted, choose the **Mystical Islands** profile; this pulls default endpoints from the Core Loop CDN.
 
 ## Configuration Files
 
@@ -41,7 +41,7 @@ Example snippet:
 
 ## Updating Client Builds
 
-1. Place the new client ZIP on the WDS CDN under `/mystical-islands/builds/<version>/`.
+1. Place the new client ZIP on the Core Loop CDN under `/mystical-islands/builds/<version>/`.
 2. Update the manifest file `manifest.json` in the same directory.
 3. Increment the `build_version` field in `settings.json` or push via the remote config service.
 4. QA rigs will auto-download on next launcher start.

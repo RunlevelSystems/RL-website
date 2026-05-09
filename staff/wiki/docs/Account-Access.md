@@ -1,4 +1,4 @@
-<!-- Developed by Level X Development -->
+<!-- Developed by Core Loop Development -->
 # Accounts and Access
 
 Quick reference for all team credentials. This page is only accessible to logged-in staff members.

@@ -4,12 +4,13 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="/assets/images/icon.png">
 
-        <title>Level X Development | Join Our Team</title>
+        <title>Core Loop Development | Join Our Team</title>
 
         <!-- CSS -->
 
-        <!-- Level X Development Fonts -->
+        <!-- Core Loop Development Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -33,7 +34,7 @@
         // Page-specific variables
         $current_page = 'joinus';
         $header_class = 'joinus-header inner-header';
-        $page_subtitle = 'Design • Debug • Deploy';
+        $page_subtitle = 'Engineer • Ship • Scale';
         ?>
     <!-- Include Site Header -->
     <?php include 'includes/header.php'; ?>
@@ -737,7 +738,7 @@
                         </div>
 
                         <p style="margin-bottom: 20px;">
-                            This Agreement is between Level X Development / GameServers World ("The Co-Op"), 
+                            This Agreement is between Core Loop Development / GameServers World ("The Co-Op"), 
                             managed by __________________ ("Manager"), and __________________ ("Contributor").
                         </p>
 

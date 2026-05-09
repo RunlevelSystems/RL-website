@@ -1,17 +1,17 @@
-<!-- Developed by World Domination Software LLC -->
+<!-- Developed by Core Loop Development LLC -->
 ---
 title: "Install: Ubuntu 24.04 Panel"
 description: "Bootstrap the GSP panel stack on Ubuntu 24.04 LTS"
 weight: 20
 ---
 
-> **Admin Documentation (not shown on public GSP end-user site).** Internal deployment checklist for WDS ops.
+> **Admin Documentation (not shown on public GSP end-user site).** Internal deployment checklist for Core Loop ops.
 
 GSP is deployed on Ubuntu 24.04 LTS hosts via the idempotent script at `GSP/bootstrap/ubuntu-24.04/install_panel.sh`. The script adheres to these workspace guardrails:
 
 - `ssh` listens on port **12322** (pre-created in `panel.conf` and firewall rules).
 - Database accounts: `localuser@localhost` and `remoteuser@<reporter-ip>` share the password stored in `/home/gameserver/tools/.password`.
-- Heritage note: GSP is a heavily customized fork of OGP maintained by WDS; upstream wiki references are for context only.
+- Heritage note: GSP is a heavily customized fork of OGP maintained by Core Loop; upstream wiki references are for context only.
 
 ## Prerequisites
 1. Ubuntu 24.04 LTS with sudo access.
@@ -42,7 +42,7 @@ What the script does:
 1. Pull latest `Panel-unstable` branch to `/var/www/gsp`.
 2. Run the bootstrap script with `--upgrade-only --keep-config` so it refreshes dependencies, database migrations, and cron entries without nuking `panel.conf`.
 3. Update `modules/billing/timestamp.txt` to reflect the deployment time.
-4. Re-run `tools/setup_mysql_users.sh` from `WDS-Team` if `servers.txt` changed.
+4. Re-run `tools/setup_mysql_users.sh` from `Core Loop-Team` if `servers.txt` changed.
 
 ## Post-install verification
 - Login to `https://panel-host/` as the seeded admin account and confirm the footer shows `Last updated at YYYY-MM-DD HH:MM:SS`.
@@ -56,4 +56,4 @@ What the script does:
 - `sudo systemctl stop apache2 php*-fpm` to take the panel offline.
 - Disable cron jobs by removing the `gsp_cron` entry under `/etc/cron.d/` (the bootstrap creates a labelled file).
 - Restore `/var/www/gsp` from the latest DR snapshot and re-run the bootstrap script with `--upgrade-only` to reapply permissions.
-- If the host must be removed entirely, revoke DNS, run `mysql DROP DATABASE gsp_panel`, and rotate the `.password` secret via `WDS-Team/tools/check_servers.sh --password NEW`.
+- If the host must be removed entirely, revoke DNS, run `mysql DROP DATABASE gsp_panel`, and rotate the `.password` secret via `Core Loop-Team/tools/check_servers.sh --password NEW`.

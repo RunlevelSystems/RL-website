@@ -1,12 +1,12 @@
-<!-- Developed by World Domination Software LLC -->
+<!-- Developed by Core Loop Development LLC -->
 ---
 title: "Troubleshooting"
 description: "Atavism reference import"
 weight: 100
 ---
 
-> **Admin Documentation (not shown on public WDS site).**
-> GSP is a heavily customized fork of OGP maintained by WDS.
+> **Admin Documentation (not shown on public Core Loop site).**
+> GSP is a heavily customized fork of OGP maintained by Core Loop.
 
 ## Quick Reference Table
 
@@ -52,7 +52,7 @@ mysql -h $MI_ATAVISM_DB_HOST -u $MI_ATAVISM_DB_USER -p -e "SELECT NOW();"
 
 1. Attempt self-service fixes listed above.
 2. Open ticket in Jira (`MI-SUPPORT`) with logs and reproduction steps.
-3. Page on-call engineer for production outages using the WDS Ops rotation.
+3. Page on-call engineer for production outages using the Core Loop Ops rotation.
 
 ## Preventative Maintenance
 

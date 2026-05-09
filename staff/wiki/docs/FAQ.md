@@ -1,4 +1,4 @@
-<!-- Developed by Level X Development -->
+<!-- Developed by Core Loop Development -->
 # Frequently Asked Questions
 
 Quick answers to common questions.

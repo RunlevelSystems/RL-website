@@ -1,13 +1,13 @@
-<!-- Developed by World Domination Software LLC -->
+<!-- Developed by Core Loop Development LLC -->
 ---
 title: "Game Server Locations & IPs"
-description: "Current WDS game server hostnames, IP addresses, and roles"
+description: "Current Core Loop game server hostnames, IP addresses, and roles"
 weight: 20
 ---
 
 > **Admin Documentation (not shown on public GSP end-user site).**
 >
-> This page tracks the primary WDS game infrastructure endpoints. Use these
+> This page tracks the primary Core Loop game infrastructure endpoints. Use these
 > hostnames when configuring the panel, monitoring, or routing player traffic.
 
 ## Production endpoints

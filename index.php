@@ -4,12 +4,13 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="/assets/images/icon.png">
 
-        <title>Level X Development</title>
+        <title>Core Loop Development</title>
 
         <!-- CSS -->
 
-        <!-- Level X Development Fonts -->
+        <!-- Core Loop Development Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">        <!-- google fonts -->
@@ -22,7 +23,7 @@
         <link href="assets/css/owl.carousel.css" rel="stylesheet">
         <link href="assets/css/owl.carousel.theme.min.css" rel="stylesheet">
         <link href="assets/css/ionicons.css" rel="stylesheet">
-        <!-- Level X Unified Theme -->
+        <!-- Core Loop Unified Theme -->
         <link href="assets/css/wds-unified.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -35,7 +36,7 @@
         <?php 
         // Page-specific variables - customize these for each page
         $current_page = 'index';
-        $page_subtitle = 'Design • Debug • Deploy';
+        $page_subtitle = 'Engineer • Ship • Scale';
         $page_description = '';
         $page_title = '';
         $page_title_thin = '';
@@ -46,7 +47,7 @@
     <!-- Include Navigation Header -->
     <?php include 'includes/navigation.php'; ?>
 
-    <!-- Level X Development — Overview Block -->
+    <!-- Core Loop Development — Overview Block -->
 <section class="wds-hero" aria-label="Company Overview">
   <style>
     .wds-hero {
@@ -131,7 +132,7 @@
       </div>
 
       <div class="lx-meta">
-        <span>⚡ <a href="mailto:hello@levelx.dev">hello@levelx.dev</a></span>
+        <span>⚡ <a href="mailto:hello@worlddomination.dev">hello@worlddomination.dev</a></span>
         <span>🔒 Private portal available for clients</span>
       </div>
     </div>
@@ -146,7 +147,7 @@
       </article>
       <article class="lx-card" aria-label="Game Development">
         <h3>Game Development</h3>
-        <p>Multiplayer and open-world game development. See our growing catalog on <a href="https://store.steampowered.com/search/?developer=WorldDominationSoftware" target="_blank" rel="noopener">Steam</a> and explore what we're building next.</p>
+        <p>Multiplayer and open-world game development. See our growing catalog on <a href="https://store.steampowered.com/curator/45805039/" target="_blank" rel="noopener">Steam</a> and explore what we're building next.</p>
       </article>
       <article class="lx-card" aria-label="Business Applications">
         <h3>Business Applications &amp; Websites</h3>
@@ -163,13 +164,13 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Level X Development",
+    "name": "Core Loop Development",
     "url": "https://worlddomination.dev",
     "sameAs": ["https://gameservers.world"],
     "contactPoint": [{
       "@type": "ContactPoint",
       "contactType": "customer support",
-      "email": "hello@levelx.dev"
+      "email": "hello@worlddomination.dev"
     }]
   }
   </script>
@@ -196,7 +197,7 @@
                                 In our professional careers, we architect and deliver enterprise-grade solutions for Fortune 500 companies across diverse industries. Our expertise spans cloud infrastructure, scalable web applications, cybersecurity implementations, and mission-critical system integrations that serve millions of users worldwide.
                             </p>
                             <p style="font-size: 17px; line-height: 1.8; color: #94a3b8;">
-                                <strong style="color: #00a8ff;">Nearly three decades of experience</strong> have taught us that the most groundbreaking innovations come from passionate collaboration. That's why we founded Level X Development — to channel our corporate expertise and entrepreneurial drive into creating the next generation of gaming experiences and infrastructure.
+                                <strong style="color: #00a8ff;">Nearly three decades of experience</strong> have taught us that the most groundbreaking innovations come from passionate collaboration. That's why we founded Core Loop Development — to channel our corporate expertise and entrepreneurial drive into creating the next generation of gaming experiences and infrastructure.
                             </p>
                         </div>
                         <div class="col-sm-12" style="text-align: center; margin: 40px 0;">
@@ -228,7 +229,7 @@
                                 <div style="text-align: center; color: #00a8ff;">
                                     <i class="fas fa-rocket" style="font-size: 40px; margin-bottom: 10px;"></i>
                                     <h4 style="color: #00a8ff; margin: 5px 0;">2025</h4>
-                                    <p style="color: #64748b; font-size: 13px; font-weight: 500;">Level X Dev</p>
+                                    <p style="color: #64748b; font-size: 13px; font-weight: 500;">Core Loop</p>
                                 </div>
                             </div>
                         </div>

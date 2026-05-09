@@ -1,4 +1,4 @@
-<!-- Developed by World Domination Software LLC -->
+<!-- Developed by Core Loop Development LLC -->
 ---
 title: "MySQL via Adminer"
 description: "Secure database access patterns for GSP"
@@ -23,7 +23,7 @@ Adminer replaces phpMyAdmin in our stack and lives at `/adminer.php` on every pa
 ## Operations
 - Export/import via Adminer’s “Dump” uses per-table toggles; keep SQL dumps in `/home/gameserver/backups/mysql/` and sync via DR toolkit.
 - When touching panel tables such as `gsp_remote_servers`, document changes in `docs/wds-gsp-migration.md`.
-- Rotate passwords with `WDS-Team/tools/check_servers.sh --password NEW`; the script updates MySQL and redistributes `.password`.
+- Rotate passwords with `Core Loop-Team/tools/check_servers.sh --password NEW`; the script updates MySQL and redistributes `.password`.
 
 ## Verification & rollback
 - After schema changes, run panel health check: `php scripts/validate_schema.php` inside the GSP repo.

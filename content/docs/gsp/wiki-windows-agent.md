@@ -1,4 +1,4 @@
-<!-- Developed by World Domination Software LLC -->
+<!-- Developed by Core Loop Development LLC -->
 # Windows Agent + WINE Notes
 
 GameServer Panel supports Windows workloads through two paths:

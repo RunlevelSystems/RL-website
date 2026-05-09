@@ -4,12 +4,13 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="/assets/images/icon.png">
 
-        <title>Level X Development | Privacy Policy</title>
+        <title>Core Loop Development | Privacy Policy</title>
 
         <!-- CSS -->
 
-        <!-- Level X Development Fonts -->
+        <!-- Core Loop Development Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -32,7 +33,7 @@
         // Page-specific variables
         $current_page = 'privacy';
         $header_class = 'privacy-header inner-header';
-        $page_subtitle = 'Design • Debug • Deploy';
+        $page_subtitle = 'Engineer • Ship • Scale';
         ?>
     <!-- Include Site Header -->
     <?php include 'includes/header.php'; ?>
@@ -55,10 +56,10 @@
                         <div class="col-sm-12">
                             <p class="inner-p" style="font-size: 14px; color: #7894b9;">Last updated: March 2026</p>
                             <p class="inner-p">
-                                This privacy policy applies to all software, games, websites, and services created or published by Level X Development.
+                                This privacy policy applies to all software, games, websites, and services created or published by Core Loop Development.
                             </p>
                             <p class="inner-p">
-                                This includes applications released under our main brand as well as products and services such as GameServers.World and any other projects developed by Level X Development.
+                                This includes applications released under our main brand as well as products and services such as GameServers.World and any other projects developed by Core Loop Development.
                             </p>
                             <p class="inner-p">
                                 Our goal is simple: we create software and games for entertainment and useful services. We do not collect personal information unless it is necessary for the service to function.
@@ -150,7 +151,7 @@
                                     All purchases are securely processed through the platform provider (such as Google Play).
                                 </p>
                                 <p style="color: #a8bedc; font-size: 16px; line-height: 1.6;">
-                                    Level X Development does not store payment information.
+                                    Core Loop Development does not store payment information.
                                 </p>
                             </div>
                         </div>
@@ -205,10 +206,10 @@
                             <div class="wds-card">
                                 <h3 style="color: #ffd166; margin-bottom: 15px;">Contact</h3>
                                 <p style="color: #a8bedc; margin-bottom: 15px; font-size: 16px; line-height: 1.6;">
-                                    If you have questions about this privacy policy or any products created by Level X Development, please contact us:
+                                    If you have questions about this privacy policy or any products created by Core Loop Development, please contact us:
                                 </p>
                                 <p style="color: #a8bedc; font-size: 16px; line-height: 1.8;">
-                                    <strong>Level X Development</strong><br>
+                                    <strong>Core Loop Development</strong><br>
                                     Website: <a href="https://worlddomination.dev" style="color: #ffd166;">https://worlddomination.dev</a><br>
                                     Email: <a href="mailto:info@worlddomination.dev" style="color: #ffd166;">info@worlddomination.dev</a>
                                 </p>
@@ -221,7 +222,7 @@
                     <div class="boxed">
                         <div class="col-sm-12">
                             <p class="inner-p" style="font-size: 14px; color: #7894b9;">
-                                This privacy policy applies to all applications, games, websites, and services created or published by Level X Development unless a specific product provides its own privacy policy.
+                                This privacy policy applies to all applications, games, websites, and services created or published by Core Loop Development unless a specific product provides its own privacy policy.
                             </p>
                         </div>
                     </div>
