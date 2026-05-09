@@ -21,7 +21,7 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
 <!-- Navigation Header -->
 <section id="header" class="main-header <?php echo isset($header_class) ? $header_class : ''; ?>">
     <div class="container-fluid">
-        <div class="row" style="background-color: #000000; position: relative; z-index: 5;">
+        <div class="row" style="background: linear-gradient(180deg, #08111f, #0f1e2e); position: relative; z-index: 5;">
             <nav class="navbar navbar-default">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#site-nav-bar" aria-expanded="false">
@@ -32,7 +32,7 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
                     </button>
                 </div>
 
-                <div class="collapse navbar-collapse" id="site-nav-bar" style="background-color: #000000;">
+                <div class="collapse navbar-collapse" id="site-nav-bar" style="background: linear-gradient(180deg, #08111f, #0f1e2e);">
                     <ul class="nav navbar-nav">
                         <?php 
                         // Universal path detection for both XAMPP and web hosting
@@ -71,28 +71,28 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
                     <ul class="nav navbar-nav navbar-right">
                         <?php if ($is_logged_in): ?>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #00d4ff;">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #00a8ff;">
                                     <i class="ion-person"></i> <?php echo isset($_SESSION['wds_admin_user']) ? htmlspecialchars($_SESSION['wds_admin_user']) : 'Staff'; ?> <span class="caret"></span>
                                 </a>
-                                <ul class="dropdown-menu" style="background: #13161f; border: 1px solid rgba(0,212,255,0.15);">
-                                    <li><a href="<?php echo $base_path; ?>staff-info.php" style="color: #94a3b8;"><i class="ion-information-circled"></i> Staff Home</a></li>
-                                    <li><a href="<?php echo $base_path; ?>staff/operations.php" style="color: #94a3b8;"><i class="ion-android-desktop"></i> Operations</a></li>
-                                    <li><a href="<?php echo $base_path; ?>staff/tools.php" style="color: #94a3b8;"><i class="ion-wrench"></i> Toolbox</a></li>
-                                    <li><a href="<?php echo $base_path; ?>staff/server-status.php" style="color: #94a3b8;"><i class="ion-ios-pulse"></i> Server Status</a></li>
-                                    <li><a href="<?php echo $base_path; ?>staff/wiki/index.php" style="color: #94a3b8;"><i class="ion-document"></i> Wiki</a></li>
-                                    <li role="separator" class="divider" style="background: rgba(0,212,255,0.15);"></li>
+                                <ul class="dropdown-menu" style="background: #132b44; border: 1px solid rgba(255,255,255,0.14);">
+                                    <li><a href="<?php echo $base_path; ?>staff-info.php" style="color: #f5f7fa;"><i class="ion-information-circled"></i> Staff Home</a></li>
+                                    <li><a href="<?php echo $base_path; ?>staff/operations.php" style="color: #f5f7fa;"><i class="ion-android-desktop"></i> Operations</a></li>
+                                    <li><a href="<?php echo $base_path; ?>staff/tools.php" style="color: #f5f7fa;"><i class="ion-wrench"></i> Toolbox</a></li>
+                                    <li><a href="<?php echo $base_path; ?>staff/server-status.php" style="color: #f5f7fa;"><i class="ion-ios-pulse"></i> Server Status</a></li>
+                                    <li><a href="<?php echo $base_path; ?>staff/wiki/index.php" style="color: #f5f7fa;"><i class="ion-document"></i> Wiki</a></li>
+                                    <li role="separator" class="divider" style="background: rgba(255,255,255,0.14);"></li>
                                     <li><a href="<?php echo $base_path; ?>logout.php" style="color: #f87171;"><i class="ion-log-out"></i> Logout</a></li>
                                 </ul>
                             </li>
                         <?php else: ?>
-                            <li><a href="<?php echo $base_path; ?>login.php" style="color: #00d4ff;"><i class="ion-log-in"></i> Staff Login</a></li>
+                            <li><a href="<?php echo $base_path; ?>login.php" style="color: #00a8ff;"><i class="ion-log-in"></i> Staff Login</a></li>
                         <?php endif; ?>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </nav>
         </div>
         
-        <div class="intro row intro-fixed-height" style="height: 300px; min-height: 300px; background: #0a0a0f; position: relative; z-index: 2;">
+        <div class="intro row intro-fixed-height" style="height: 260px; min-height: 260px; background: linear-gradient(180deg, #08111f, #0f1e2e); position: relative; z-index: 2;">
             <div class="overlay"></div>
             <div class="col-sm-6" style="display: flex; align-items: center; height: 100%; position: relative; z-index: 3;">
                 <a href="<?php echo $base_path; ?>index.php" class="lx-logo" style="height: 100%; width: 100%; display: flex; align-items: center; justify-content: flex-start; padding-left: 30px; text-decoration: none;">
@@ -105,16 +105,16 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
             </div>
             <div class="col-sm-6 header-right-column">
                 <div>
-                    <h2 class="header-quote" style="color: #00d4ff; margin-bottom: 5px;">
+                    <h2 class="header-quote" style="color: #00a8ff; margin-bottom: 5px;">
                         <?php echo isset($page_subtitle) ? $page_subtitle : 'Design • Debug • Deploy'; ?>
                     </h2>
                     <?php if(isset($page_description) && $page_description): ?>
-                        <p style="color: #94a3b8; margin-bottom: 10px;">
+                        <p style="color: #b8c7d9; margin-bottom: 10px;">
                             <?php echo $page_description; ?>
                         </p>
                     <?php endif; ?>
                     <?php if(isset($page_title) && $page_title): ?>
-                        <h1 class="header-title" style="color: #00d4ff;">
+                        <h1 class="header-title" style="color: #00a8ff;">
                             <?php echo $page_title; ?>
                             <?php if(isset($page_title_thin) && $page_title_thin): ?>
                                 <br><span class="thin"><?php echo $page_title_thin; ?></span>

@@ -19,10 +19,10 @@ if ($is_in_wiki) {
 }
 ?>
 <!-- Site Header -->
-<div class="site-header-bg" style="background-color: #0a0a0f; position: relative; z-index: 5; border-bottom: 1px solid rgba(0,212,255,0.1);">
+<div class="site-header-bg" style="background: linear-gradient(180deg, #08111f, #0f1e2e); position: relative; z-index: 5; border-bottom: 1px solid rgba(255,255,255,0.14);">
     <div class="container-fluid">
-        <div class="row" style="display: flex; align-items: center; padding: 8px 15px;">
-            <div class="col-sm-5">
+        <div class="row wds-topbar-row" style="padding: 8px 0;">
+            <div class="col-sm-5 col-xs-12">
                 <a href="<?php echo $header_base_path; ?>index.php" class="lx-logo" style="text-decoration: none;">
                     <div class="lx-logo-mark">LX</div>
                     <div class="lx-logo-text">
@@ -31,7 +31,7 @@ if ($is_in_wiki) {
                     </div>
                 </a>
             </div>
-            <div class="col-sm-4 col-sm-offset-3 text-right">
+            <div class="col-sm-7 col-xs-12 text-right wds-header-search">
                 <form method="GET" action="<?php echo $header_base_path; ?>search.php">
                     <div class="input-group">
                         <input type="text" name="q" class="form-control" placeholder="Search Level X...">

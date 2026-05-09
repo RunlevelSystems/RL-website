@@ -147,7 +147,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="title-box">
-                                <a href="#" onclick="hideProject(); return false;" id="back-to-projects" style="color: #ffd166; text-decoration: none; font-size: 14px; display: inline-block; margin-bottom: 10px;">
+                                <a href="#" onclick="hideProject(); return false;" id="back-to-projects" style="color: #4cc9ff; text-decoration: none; font-size: 14px; display: inline-block; margin-bottom: 10px;">
                                     ← Back to All Projects
                                 </a>
                                 <p id="project-category">Current Project</p>
@@ -194,10 +194,10 @@
                                     <p class="inner-p" style="margin-top:10px;">
                                         Key GitHub resources for our projects:
                                         <br>
-                                        • <a href="https://github.com/World-Domination-Software/Projects/wiki" target="_blank" rel="noopener noreferrer" style="color:#ffd166; text-decoration:underline;">Project descriptions &amp; design documents (Wiki)</a><br>
-                                        • <a href="https://github.com/World-Domination-Software/Projects/discussions/categories/ideas" target="_blank" rel="noopener noreferrer" style="color:#ffd166; text-decoration:underline;">Future project ideas &amp; feature discussions (Ideas)</a><br>
-                                        • <a href="https://github.com/World-Domination-Software/Projects/issues" target="_blank" rel="noopener noreferrer" style="color:#ffd166; text-decoration:underline;">Bug reports &amp; support issues (Issues)</a><br>
-                                        • <a href="https://github.com/World-Domination-Software/Projects/discussions" target="_blank" rel="noopener noreferrer" style="color:#ffd166; text-decoration:underline;">General project discussions</a>
+                                        • <a href="https://github.com/World-Domination-Software/Projects/wiki" target="_blank" rel="noopener noreferrer" style="color:#4cc9ff; text-decoration:underline;">Project descriptions &amp; design documents (Wiki)</a><br>
+                                        • <a href="https://github.com/World-Domination-Software/Projects/discussions/categories/ideas" target="_blank" rel="noopener noreferrer" style="color:#4cc9ff; text-decoration:underline;">Future project ideas &amp; feature discussions (Ideas)</a><br>
+                                        • <a href="https://github.com/World-Domination-Software/Projects/issues" target="_blank" rel="noopener noreferrer" style="color:#4cc9ff; text-decoration:underline;">Bug reports &amp; support issues (Issues)</a><br>
+                                        • <a href="https://github.com/World-Domination-Software/Projects/discussions" target="_blank" rel="noopener noreferrer" style="color:#4cc9ff; text-decoration:underline;">General project discussions</a>
                                     </p>
                             </div>
                         </div>
@@ -255,7 +255,7 @@
                         flex: 1;
                     }
                     .project-title-text {
-                        color: #ffd166;
+                        color: #4cc9ff;
                         font-weight: 600;
                         margin-right: 10px;
                         margin-bottom: 2px;
@@ -271,7 +271,7 @@
                         font-size: 13px;
                     }
                     .project-links-block a {
-                        color: #ffd166;
+                        color: #4cc9ff;
                         text-decoration: none;
                     }
                     .project-links-block a:hover {
