@@ -490,6 +490,7 @@
         <script>
             // Reuse CSS theme variables in Chart.js for palette consistency.
             // Depends on :root variables from assets/css/wds-unified.css.
+            // Keep fallback colors in sync with CSS variables for resilience.
             const rootStyles = getComputedStyle(document.documentElement);
             const themeColor = (varName, fallback) => rootStyles.getPropertyValue(varName).trim() || fallback;
             const careerColors = {

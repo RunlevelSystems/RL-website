@@ -24,6 +24,7 @@
    ============================================ */
 
 :root {
+    /* Borland/Cobalt-inspired core theme variables for global site branding. */
     --wds-bg: #08111f;
     --wds-bg-2: #0f1e2e;
     --wds-panel: #132b44;
@@ -1240,7 +1241,7 @@ div[style*="background-color: #1a1a1a"] {
         min-width: 0 !important;
     }
 
-    /* Mobile override intentionally relaxes fixed desktop hero height. */
+    /* Mobile override intentionally relaxes fixed desktop hero height while keeping min-height. */
     .intro-fixed-height {
         min-height: 200px !important;
         height: auto !important;
