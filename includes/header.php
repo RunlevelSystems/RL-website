@@ -21,7 +21,7 @@ if ($is_in_wiki) {
 <!-- Site Header -->
 <div class="site-header-bg" style="background: linear-gradient(180deg, #08111f, #0f1e2e); position: relative; z-index: 5; border-bottom: 1px solid rgba(255,255,255,0.14);">
     <div class="container-fluid">
-        <div class="row wds-topbar-row" style="padding: 8px 0;">
+        <div class="row wds-topbar-row">
             <div class="col-sm-5 col-xs-12">
                 <a href="<?php echo $header_base_path; ?>index.php" class="lx-logo" style="text-decoration: none;">
                     <div class="lx-logo-mark">LX</div>

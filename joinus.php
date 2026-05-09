@@ -488,15 +488,19 @@
         </div>
 
         <script>
-            // Dystopian 1984 color palette for charts
+            // Reuse CSS theme variables in Chart.js for palette consistency.
+            // Depends on :root variables from assets/css/wds-unified.css.
+            const rootStyles = getComputedStyle(document.documentElement);
+            const themeColor = (varName, fallback) => rootStyles.getPropertyValue(varName).trim() || fallback;
             const careerColors = {
-                primary: '#00a8ff',
-                secondary: '#4cc9ff',
-                accent: '#ffc600',
+                primary: themeColor('--wds-primary', '#00a8ff'),
+                secondary: themeColor('--wds-primary-soft', '#4cc9ff'),
+                accent: themeColor('--wds-accent', '#ffc600'),
                 success: '#556B2F',
                 warning: '#7894b9',
                 danger: '#8B0000',
-                light: '#94a3b8'
+                light: themeColor('--wds-muted', '#b8c7d9'),
+                text: themeColor('--wds-text', '#f5f7fa')
             };
 
             // Skills Growth Chart
@@ -552,7 +556,7 @@
                                     family: 'Roboto',
                                     weight: 'bold'
                                 },
-                                color: '#f5f7fa',
+                                color: careerColors.text,
                                 padding: 20,
                                 usePointStyle: true,
                                 pointStyle: 'circle'
@@ -581,7 +585,7 @@
                                     family: 'Roboto',
                                     weight: 'bold'
                                 },
-                                color: '#f5f7fa'
+                                color: careerColors.text
                             },
                             grid: {
                                 color: 'rgba(241,245,249,0.1)',
@@ -597,7 +601,7 @@
                                     family: 'Roboto',
                                     weight: 'bold'
                                 },
-                                color: '#f5f7fa',
+                                color: careerColors.text,
                                 callback: function(value) {
                                     return value + '%';
                                 }

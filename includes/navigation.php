@@ -92,7 +92,7 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
             </nav>
         </div>
         
-        <div class="intro row intro-fixed-height" style="height: 260px; min-height: 260px; background: linear-gradient(180deg, #08111f, #0f1e2e); position: relative; z-index: 2;">
+        <div class="intro row intro-fixed-height" style="background: linear-gradient(180deg, #08111f, #0f1e2e); position: relative; z-index: 2;">
             <div class="overlay"></div>
             <div class="col-sm-6" style="display: flex; align-items: center; height: 100%; position: relative; z-index: 3;">
                 <a href="<?php echo $base_path; ?>index.php" class="lx-logo" style="height: 100%; width: 100%; display: flex; align-items: center; justify-content: flex-start; padding-left: 30px; text-decoration: none;">

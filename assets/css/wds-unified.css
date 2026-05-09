@@ -1206,11 +1206,18 @@ div[style*="background-color: #1a1a1a"] {
     justify-content: space-between !important;
     flex-wrap: wrap !important;
     row-gap: 8px !important;
+    padding: 8px 0 !important;
 }
 
 .wds-header-search .input-group,
 .wds-header-search form {
     width: 100% !important;
+}
+
+.intro-fixed-height {
+    /* Intentionally reduced from legacy 300px to tighten hero spacing. */
+    min-height: 260px !important;
+    height: 260px !important;
 }
 
 @media (max-width: 767.98px) {
@@ -1233,6 +1240,7 @@ div[style*="background-color: #1a1a1a"] {
         min-width: 0 !important;
     }
 
+    /* Mobile override intentionally relaxes fixed desktop hero height. */
     .intro-fixed-height {
         min-height: 200px !important;
         height: auto !important;
