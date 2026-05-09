@@ -15,7 +15,7 @@ if ($is_in_wiki) {
 }
 ?>
     <!-- Footer -->
-        <section id="footer-widget" class="footer-widget" style="background: #0d1117; color: #94a3b8; padding: 40px 0;">
+        <section id="footer-widget" class="footer-widget" style="background: linear-gradient(180deg, var(--wds-bg), var(--wds-bg-2)); color: var(--wds-muted); padding: 40px 0;">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-4">
@@ -53,23 +53,23 @@ if ($is_in_wiki) {
                             <li><a href="https://store.steampowered.com/app/2096070/Neverwards/" target="_blank">Neverwards on Steam</a></li>
                             <li><a href="https://store.steampowered.com/app/1774030/Mystical_Islands/" target="_blank">Mystical Islands on Steam</a></li>
                         </ul>
-                        <p style="color: #64748b; font-size: 14px; line-height: 1.5; margin-top: 15px;">
+                        <p style="color: #b8c7d9; font-size: 14px; line-height: 1.5; margin-top: 15px;">
                             Design • Debug • Deploy — building the future of games and infrastructure.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
-    <footer class="footer text-center" style="background: #0d1117; color: #94a3b8;">
-            <div style="padding: 20px 0; border-top: 1px solid rgba(0,212,255,0.1);">
-                <p style="color: #64748b; margin-bottom: 10px; font-size: 16px;">
+    <footer class="footer text-center" style="background: linear-gradient(180deg, var(--wds-bg), var(--wds-bg-2)); color: var(--wds-muted);">
+            <div style="padding: 20px 0; border-top: 1px solid var(--wds-border);">
+                <p style="color: var(--wds-muted); margin-bottom: 10px; font-size: 16px;">
                     &copy; 2025 Level X Development. All rights reserved.
                 </p>
-                <p style="color: #64748b; margin: 0; font-size: 14px;">
+                <p style="color: var(--wds-muted); margin: 0; font-size: 14px;">
                     Design • Debug • Deploy | 
-                    <a href="https://gameservers.world" target="_blank" style="color: #64748b;">Gameservers.world</a> | 
-                    <a href="https://github.com/World-Domination-Software" target="_blank" style="color: #64748b;">GitHub</a> | 
-                    <a href="https://discord.gg/XPFnNdWGyW" target="_blank" style="color: #64748b;">Discord</a>
+                    <a href="https://gameservers.world" target="_blank" style="color: var(--wds-primary-soft);">Gameservers.world</a> | 
+                    <a href="https://github.com/World-Domination-Software" target="_blank" style="color: var(--wds-primary-soft);">GitHub</a> | 
+                    <a href="https://discord.gg/XPFnNdWGyW" target="_blank" style="color: var(--wds-primary-soft);">Discord</a>
                 </p>
             </div>
         </footer>
