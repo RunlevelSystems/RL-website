@@ -74,7 +74,7 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: var(--wds-primary-soft);">
                                     <i class="ion-person"></i> <?php echo isset($_SESSION['wds_admin_user']) ? htmlspecialchars($_SESSION['wds_admin_user']) : 'Staff'; ?> <span class="caret"></span>
                                 </a>
-                                <ul class="dropdown-menu" style="background: var(--core-graphite); border: 1px solid var(--wds-border);">
+                                <ul class="dropdown-menu">
                                     <li><a href="<?php echo $base_path; ?>staff-info.php" style="color: #f5f7fa;"><i class="ion-information-circled"></i> Staff Home</a></li>
                                     <li><a href="<?php echo $base_path; ?>staff/operations.php" style="color: #f5f7fa;"><i class="ion-android-desktop"></i> Operations</a></li>
                                     <li><a href="<?php echo $base_path; ?>staff/tools.php" style="color: #f5f7fa;"><i class="ion-wrench"></i> Toolbox</a></li>

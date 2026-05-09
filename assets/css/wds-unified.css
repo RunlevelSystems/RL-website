@@ -363,8 +363,6 @@ li {
 
 .lx-logo-icon {
     display: block !important;
-    align-items: center !important;
-    justify-content: center !important;
     width: auto !important;
     max-width: 40px !important;
     max-height: 40px !important;
