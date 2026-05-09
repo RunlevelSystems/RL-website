@@ -24,18 +24,27 @@
    ============================================ */
 
 :root {
-    /* Core Loop Development global theme variables (cobalt + gold). */
-    --wds-bg: #0a0b0f;
-    --wds-bg-2: #151922;
-    --wds-panel: #ffffff;
-    --wds-panel-2: #f5f7fb;
-    --wds-text: #172033;
-    --wds-muted: #4b5a73;
-    --wds-primary: #145de8;
-    --wds-primary-soft: #2f86ff;
-    --wds-accent: #f6c84f;
-    --wds-border: rgba(20, 93, 232, 0.16);
-    --wds-shadow: rgba(16, 30, 52, 0.12);
+    --core-black: #05070d;
+    --core-graphite: #111827;
+    --core-cobalt: #0047ff;
+    --core-cyan: #00aaff;
+    --core-gold: #ffc600;
+    --core-text: #111827;
+    --core-muted: #64748b;
+    --core-bg: #f8fafc;
+    --core-card: #ffffff;
+
+    --wds-bg: var(--core-black);
+    --wds-bg-2: var(--core-graphite);
+    --wds-panel: var(--core-card);
+    --wds-panel-2: #eef3fb;
+    --wds-text: var(--core-text);
+    --wds-muted: var(--core-muted);
+    --wds-primary: var(--core-cobalt);
+    --wds-primary-soft: var(--core-cyan);
+    --wds-accent: var(--core-gold);
+    --wds-border: rgba(0, 71, 255, 0.18);
+    --wds-shadow: rgba(17, 24, 39, 0.14);
 
     --lx-bg: var(--wds-bg);
     --lx-bg-alt: var(--wds-bg-2);
@@ -90,10 +99,12 @@
 
 html {
     scroll-behavior: smooth;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
-    background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%) !important;
+    background: var(--core-bg) !important;
     color: var(--lx-text) !important;
     font-family: var(--lx-font-body) !important;
     line-height: 1.6 !important;
@@ -102,6 +113,8 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     position: relative;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body::before {
@@ -139,6 +152,12 @@ body > * {
     max-width: 1400px !important;
     margin: 0 auto !important;
     padding: 20px !important;
+    width: 100% !important;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 /* ============================================
@@ -343,11 +362,13 @@ li {
 }
 
 .lx-logo-icon {
-    display: flex !important;
+    display: block !important;
     align-items: center !important;
     justify-content: center !important;
-    width: 44px !important;
-    height: 44px !important;
+    width: auto !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+    height: auto !important;
     object-fit: contain !important;
     border-radius: 10px !important;
     border: 1px solid rgba(47, 134, 255, 0.5) !important;
@@ -357,13 +378,28 @@ li {
 }
 
 .lx-logo-banner {
-    width: 64px !important;
-    height: 64px !important;
+    width: 100% !important;
+    max-width: 260px !important;
+    height: auto !important;
     object-fit: contain !important;
+    display: block !important;
     border-radius: 12px !important;
     border: 1px solid rgba(47, 134, 255, 0.5) !important;
     box-shadow: 0 0 18px rgba(47, 134, 255, 0.35) !important;
     flex-shrink: 0 !important;
+}
+
+.intro .lx-logo-banner {
+    max-width: 480px !important;
+}
+
+.footer-logo {
+    width: 100% !important;
+    max-width: 220px !important;
+    height: auto !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin-bottom: 12px !important;
 }
 
 .lx-logo-text {
@@ -481,7 +517,7 @@ nav,
     }
 
     #site-nav-bar .navbar-nav > li > a {
-        color: var(--wds-text) !important;
+        color: #e5ecff !important;
         font-weight: 600 !important;
         letter-spacing: 0.12em !important;
         text-transform: uppercase !important;
@@ -492,7 +528,7 @@ nav,
 
     #site-nav-bar .navbar-nav > li.active > a,
     #site-nav-bar .navbar-nav > li > a:hover {
-        color: var(--wds-primary-soft) !important;
+        color: var(--wds-accent) !important;
         background: transparent !important;
     }
 }
@@ -545,10 +581,10 @@ nav,
 
 /* Dropdown menus */
 .dropdown-menu {
-    background: var(--wds-panel) !important;
+    background: var(--core-graphite) !important;
     border: 1px solid var(--wds-border) !important;
     border-radius: 10px !important;
-    box-shadow: 0 0 10px rgba(0, 212, 255, 0.2), 0 8px 32px rgba(0, 0, 0, 0.5) !important;
+    box-shadow: 0 0 10px rgba(0, 170, 255, 0.24), 0 8px 32px rgba(0, 0, 0, 0.5) !important;
 }
 
 .dropdown-menu > li > a {
@@ -559,7 +595,7 @@ nav,
 }
 
 .dropdown-menu > li > a:hover {
-    background: rgba(47, 134, 255, 0.14) !important;
+    background: rgba(0, 71, 255, 0.3) !important;
     color: var(--wds-accent) !important;
 }
 
@@ -576,9 +612,9 @@ a[class*="btn"],
 .btn-primary,
 .btn-robot,
 .btn-wds {
-    background: linear-gradient(135deg, #12306a, #1f4ca3) !important;
-    color: var(--lx-text) !important;
-    border: 1px solid rgba(54, 243, 255, 0.38) !important;
+    background: var(--core-cobalt) !important;
+    color: #ffffff !important;
+    border: 1px solid var(--core-cobalt) !important;
     padding: 10px 24px !important;
     font-weight: 600 !important;
     border-radius: 6px !important;
@@ -597,28 +633,28 @@ button:hover,
 input[type="submit"]:hover,
 input[type="button"]:hover,
 a[class*="btn"]:hover {
-    background: linear-gradient(135deg, #124080, #2d7fff) !important;
-    color: #f3fbff !important;
-    border-color: var(--wds-primary-soft) !important;
+    background: var(--core-cyan) !important;
+    color: var(--core-black) !important;
+    border-color: var(--core-cyan) !important;
     transform: translateY(-2px) !important;
     text-decoration: none !important;
-    box-shadow: 0 0 16px rgba(76, 201, 255, 0.45), inset 0 0 0 1px rgba(255, 198, 0, 0.22) !important;
+    box-shadow: 0 0 16px rgba(0, 170, 255, 0.45), inset 0 0 0 1px rgba(255, 198, 0, 0.35) !important;
 }
 
 .btn-primary,
 .btn-filled {
-    background: linear-gradient(135deg, #1f4ca3, #2d7fff) !important;
-    color: #f3fbff !important;
-    border-color: rgba(76, 201, 255, 0.5) !important;
+    background: var(--core-cobalt) !important;
+    color: #ffffff !important;
+    border-color: var(--core-cobalt) !important;
     font-weight: 700 !important;
 }
 
 .btn-primary:hover,
 .btn-filled:hover {
-    background: linear-gradient(135deg, #2360cc, var(--wds-primary-soft)) !important;
-    border-color: var(--wds-primary-soft) !important;
-    color: #051225 !important;
-    box-shadow: 0 0 24px rgba(76, 201, 255, 0.42), 0 0 18px rgba(255, 198, 0, 0.2) !important;
+    background: var(--core-cyan) !important;
+    border-color: var(--core-cyan) !important;
+    color: var(--core-black) !important;
+    box-shadow: 0 0 24px rgba(0, 170, 255, 0.42), 0 0 18px rgba(255, 198, 0, 0.3) !important;
 }
 
 .btn-secondary {
@@ -759,12 +795,12 @@ table {
     width: 100% !important;
     border-collapse: collapse !important;
     margin: 20px 0 !important;
-    background: rgba(19, 43, 68, 0.92) !important;
+    background: var(--core-card) !important;
 }
 
 th {
-    background: rgba(0, 168, 255, 0.08) !important;
-    color: var(--wds-primary-soft) !important;
+    background: rgba(0, 71, 255, 0.08) !important;
+    color: var(--core-text) !important;
     padding: 12px !important;
     text-align: left !important;
     font-weight: bold !important;
@@ -778,12 +814,12 @@ th {
 td {
     padding: 10px 12px !important;
     border-bottom: 1px solid var(--wds-border) !important;
-    color: var(--wds-muted) !important;
+    color: var(--core-text) !important;
     text-shadow: none !important;
 }
 
 tr:hover {
-    background: rgba(0, 168, 255, 0.08) !important;
+    background: rgba(0, 71, 255, 0.06) !important;
 }
 
 /* ============================================
@@ -797,9 +833,9 @@ input[type="search"],
 textarea,
 select,
 .form-control {
-    background: rgba(19, 43, 68, 0.9) !important;
-    color: var(--wds-text) !important;
-    border: 1px solid var(--wds-border) !important;
+    background: #ffffff !important;
+    color: var(--core-text) !important;
+    border: 1px solid #cfd8e6 !important;
     padding: 10px 15px !important;
     border-radius: 6px !important;
     font-size: 14px !important;
@@ -808,7 +844,7 @@ select,
 
 input::placeholder,
 textarea::placeholder {
-    color: #91a9c0 !important;
+    color: #8a98ad !important;
 }
 
 input:focus,
@@ -816,9 +852,9 @@ textarea:focus,
 select:focus,
 .form-control:focus {
     outline: none !important;
-    border-color: var(--wds-primary-soft) !important;
-    box-shadow: 0 0 10px rgba(76, 201, 255, 0.22) !important;
-    background: rgba(27, 58, 90, 0.95) !important;
+    border-color: var(--core-cobalt) !important;
+    box-shadow: 0 0 0 3px rgba(0, 170, 255, 0.16) !important;
+    background: #ffffff !important;
 }
 
 label {
@@ -912,8 +948,8 @@ pre {
 
 .breadcrumb,
 .breadcrumbs {
-    background: rgba(19, 43, 68, 0.92) !important;
-    color: var(--wds-muted) !important;
+    background: #edf2fb !important;
+    color: var(--core-text) !important;
     padding: 10px 20px !important;
     border-radius: 0 !important;
 }
@@ -993,7 +1029,7 @@ footer ul li {
 }
 
 .tech-stack {
-    background: rgba(19, 43, 68, 0.92) !important;
+    background: #eff4fd !important;
     border-radius: 10px !important;
     padding: 20px !important;
     margin: 20px 0 !important;
@@ -1029,7 +1065,7 @@ footer ul li {
    ============================================ */
 
 .cta-section {
-    background: rgba(19, 43, 68, 0.92) !important;
+    background: #f2f6ff !important;
     border: 1px solid var(--wds-border) !important;
     border-radius: 16px !important;
     padding: 40px !important;
@@ -1134,31 +1170,6 @@ hr {
     color: #101828 !important;
 }
 
-/* ============================================
-   OVERRIDE INLINE STYLES — CORE LOOP THEME
-   ============================================ */
-
-*[style*="color: #8B4513"],
-*[style*="color:#8B4513"],
-*[style*="color: #8B7355"],
-*[style*="color:#8B7355"],
-*[style*="color: #B8621B"],
-*[style*="color:#B8621B"],
-*[style*="color: #D2B48C"],
-*[style*="color:#D2B48C"],
-*[style*="color: #A0522D"],
-*[style*="color:#A0522D"] {
-    color: var(--wds-primary) !important;
-}
-
-*[style*="background: #8B4513"],
-*[style*="background:#8B4513"],
-*[style*="background-color: #8B4513"] {
-    background: linear-gradient(135deg, var(--wds-primary), var(--wds-primary-soft)) !important;
-    color: #ffffff !important;
-    border-color: rgba(47, 134, 255, 0.55) !important;
-}
-
 .site-header-bg .container-fluid {
     padding-left: 15px !important;
     padding-right: 15px !important;
@@ -1219,6 +1230,10 @@ hr {
         justify-content: center !important;
         padding-left: 0 !important;
         min-height: auto !important;
+    }
+
+    .intro .lx-logo-banner {
+        max-width: 90vw !important;
     }
 
     .header-right-column {
