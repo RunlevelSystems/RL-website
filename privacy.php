@@ -210,7 +210,7 @@
                                 </p>
                                 <p style="color: #a8bedc; font-size: 16px; line-height: 1.8;">
                                     <strong>Core Loop Development</strong><br>
-                                    Website: <a href="https://worlddomination.dev" style="color: #ffd166;">https://worlddomination.dev</a><br>
+                                    Website: <a href="https://coreloop.dev" style="color: #ffd166;">https://coreloop.dev</a><br>
                                     Email: <a href="mailto:info@coreloop.dev" style="color: #ffd166;">info@coreloop.dev</a>
                                 </p>
                             </div>
