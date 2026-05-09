@@ -71,46 +71,50 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
                     <ul class="nav navbar-nav navbar-right">
                         <?php if ($is_logged_in): ?>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #8B4513;">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #00d4ff;">
                                     <i class="ion-person"></i> <?php echo isset($_SESSION['wds_admin_user']) ? htmlspecialchars($_SESSION['wds_admin_user']) : 'Staff'; ?> <span class="caret"></span>
                                 </a>
-                                <ul class="dropdown-menu" style="background: #1a1a1a; border: 1px solid #8B4513;">
-                                    <li><a href="<?php echo $base_path; ?>staff-info.php" style="color: #8B7355;"><i class="ion-information-circled"></i> Staff Home</a></li>
-                                    <li><a href="<?php echo $base_path; ?>staff/operations.php" style="color: #8B7355;"><i class="ion-android-desktop"></i> Operations</a></li>
-                                    <li><a href="<?php echo $base_path; ?>staff/tools.php" style="color: #8B7355;"><i class="ion-wrench"></i> Toolbox</a></li>
-                                    <li><a href="<?php echo $base_path; ?>staff/server-status.php" style="color: #8B7355;"><i class="ion-ios-pulse"></i> Server Status</a></li>
-                                    <li><a href="<?php echo $base_path; ?>staff/wiki/index.php" style="color: #8B7355;"><i class="ion-document"></i> Wiki</a></li>
-                                    <li role="separator" class="divider" style="background: #333;"></li>
+                                <ul class="dropdown-menu" style="background: #13161f; border: 1px solid rgba(0,212,255,0.15);">
+                                    <li><a href="<?php echo $base_path; ?>staff-info.php" style="color: #94a3b8;"><i class="ion-information-circled"></i> Staff Home</a></li>
+                                    <li><a href="<?php echo $base_path; ?>staff/operations.php" style="color: #94a3b8;"><i class="ion-android-desktop"></i> Operations</a></li>
+                                    <li><a href="<?php echo $base_path; ?>staff/tools.php" style="color: #94a3b8;"><i class="ion-wrench"></i> Toolbox</a></li>
+                                    <li><a href="<?php echo $base_path; ?>staff/server-status.php" style="color: #94a3b8;"><i class="ion-ios-pulse"></i> Server Status</a></li>
+                                    <li><a href="<?php echo $base_path; ?>staff/wiki/index.php" style="color: #94a3b8;"><i class="ion-document"></i> Wiki</a></li>
+                                    <li role="separator" class="divider" style="background: rgba(0,212,255,0.15);"></li>
                                     <li><a href="<?php echo $base_path; ?>logout.php" style="color: #f87171;"><i class="ion-log-out"></i> Logout</a></li>
                                 </ul>
                             </li>
                         <?php else: ?>
-                            <li><a href="<?php echo $base_path; ?>login.php" style="color: #8B4513;"><i class="ion-log-in"></i> Staff Login</a></li>
+                            <li><a href="<?php echo $base_path; ?>login.php" style="color: #00d4ff;"><i class="ion-log-in"></i> Staff Login</a></li>
                         <?php endif; ?>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </nav>
         </div>
         
-        <div class="intro row intro-fixed-height" style="height: 400px; min-height: 400px; background: #000000; position: relative; z-index: 2;">
+        <div class="intro row intro-fixed-height" style="height: 300px; min-height: 300px; background: #0a0a0f; position: relative; z-index: 2;">
             <div class="overlay"></div>
             <div class="col-sm-6" style="display: flex; align-items: center; height: 100%; position: relative; z-index: 3;">
-                <a href="<?php echo $base_path; ?>index.php" style="height: 100%; width: 100%; display: flex; align-items: center; justify-content: center;">
-                    <img src="<?php echo $base_path; ?>assets/images/wds-logo.png" alt="WDS Logo" class="header-logo" style="max-width: 90%; max-height: 90%; object-fit: contain;">
+                <a href="<?php echo $base_path; ?>index.php" class="lx-logo" style="height: 100%; width: 100%; display: flex; align-items: center; justify-content: flex-start; padding-left: 30px; text-decoration: none;">
+                    <div class="lx-logo-mark" style="width: 60px; height: 60px; font-size: 28px;">LX</div>
+                    <div class="lx-logo-text" style="margin-left: 14px;">
+                        <span class="lx-logo-name" style="font-size: 26px;">LEVEL <span>X</span></span>
+                        <span class="lx-logo-sub" style="font-size: 12px; margin-top: 4px; display: block;">Development</span>
+                    </div>
                 </a>
             </div>
             <div class="col-sm-6 header-right-column">
                 <div>
-                    <h2 class="header-quote" style="color: #F5F5F5; margin-bottom: 5px;">
-                        <?php echo isset($page_subtitle) ? $page_subtitle : 'Design. Debug. Deploy.'; ?>
+                    <h2 class="header-quote" style="color: #00d4ff; margin-bottom: 5px;">
+                        <?php echo isset($page_subtitle) ? $page_subtitle : 'Design • Debug • Deploy'; ?>
                     </h2>
                     <?php if(isset($page_description) && $page_description): ?>
-                        <p style="color: #CCCCCC; margin-bottom: 10px;">
+                        <p style="color: #94a3b8; margin-bottom: 10px;">
                             <?php echo $page_description; ?>
                         </p>
                     <?php endif; ?>
                     <?php if(isset($page_title) && $page_title): ?>
-                        <h1 class="header-title" style="color: #8B4513;">
+                        <h1 class="header-title" style="color: #00d4ff;">
                             <?php echo $page_title; ?>
                             <?php if(isset($page_title_thin) && $page_title_thin): ?>
                                 <br><span class="thin"><?php echo $page_title_thin; ?></span>

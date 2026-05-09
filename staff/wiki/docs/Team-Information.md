@@ -1,4 +1,4 @@
-<!-- Developed by World Domination Software LLC -->
+<!-- Developed by Level X Development -->
 # Team Information
 
 An overview of how our team is organized.

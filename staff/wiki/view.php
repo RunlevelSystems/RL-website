@@ -25,7 +25,7 @@ $page_subtitle = 'Wiki Viewer';
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WDS | Wiki - <?php echo htmlspecialchars($requested); ?></title>
+    <title>Level X | Wiki - <?php echo htmlspecialchars($requested); ?></title>
     <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../assets/css/main.css" rel="stylesheet">
     <link href="../../assets/css/wds-unified.css" rel="stylesheet">
@@ -74,7 +74,7 @@ $page_subtitle = 'Wiki Viewer';
         <div class="row">
             <div class="col-sm-12">
                 <div class="title-box">
-                    <p>WDS Wiki</p>
+                    <p>Level X Wiki</p>
                     <h2 class="title mt0" style="color:#8B4513;"><?php echo htmlspecialchars(str_replace('-', ' ', $requested)); ?></h2>
                     <p><a href="index.php" style="color:#DDD; text-decoration:underline;">Back to index</a></p>
                 </div>

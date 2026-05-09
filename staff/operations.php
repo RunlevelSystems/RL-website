@@ -16,11 +16,14 @@ $page_description = 'Ubuntu 24.04 baselines, PHP 7.4 requirement, MySQL 5.7 Dock
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WDS | Infrastructure Runbooks</title>
+    <title>Level X | Infrastructure Runbooks</title>
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/css/ionicons.css" rel="stylesheet">
     <link href="../assets/css/main.css" rel="stylesheet">
     <link href="../assets/css/wds-unified.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Ops page keeps dark code blocks for shell readability; card styling lives in wds-unified.css */
         pre {
@@ -109,7 +112,7 @@ cd /opt/gsp/bootstrap/ubuntu-24.04
                 <div class="ops-card">
                     <h3><i class="ion-wand"></i> Website Deployments</h3>
                     <ul style="color:#E5E7EB;">
-                        <li><strong>WDS Website:</strong> standard Apache/PHP host. Clone this repo, update <code>includes/db-config.php</code>, and run <code>deploy_gsp.sh</code> if panel files are co-located.</li>
+                        <li><strong>Level X Website:</strong> standard Apache/PHP host. Clone this repo, update <code>includes/db-config.php</code>, and run <code>deploy_gsp.sh</code> if panel files are co-located.</li>
                         <li><strong>Gameservers World:</strong> static marketing pages plus billing module. Keep content synced with <code>GSP/modules/billing</code>.</li>
                         <li><strong>Status site:</strong> copy <code>ops-tools/www/status</code> to an internal Apache host, update <code>config.php</code>, and point it to the <code>peer_status</code> MySQL database.</li>
                     </ul>

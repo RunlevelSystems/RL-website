@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Co-op Journey - Interactive Opportunity Hub</title>
+    <title>Level X Development — Join Our Team</title>
     
     <!-- CSS -->
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <!-- Level X Development Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/magnific-popup.css" rel="stylesheet">
     <link href="assets/css/owl.carousel.css" rel="stylesheet">
     <link href="assets/css/owl.carousel.theme.min.css" rel="stylesheet">
     <link href="assets/css/ionicons.css" rel="stylesheet">
-    <link href="<!-- main.css removed -->" rel="stylesheet">
+    
     <link href="assets/css/wds-unified.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     
     <style>
         body { 
@@ -211,8 +212,8 @@
         <nav class="container-custom py-4 flex justify-between items-center" style="display: flex; justify-content: space-between; align-items: center;">
             <div style="display: flex; align-items: center;">
                 <a href="index.php" style="text-decoration: none;">
-                    <span style="font-size: 24px; font-weight: 800; color: #8B4513;">WDS</span>
-                    <span style="color: #D2B48C; font-size: 18px; margin-left: 8px;">Co-op Journey</span>
+                    <span style="font-size: 24px; font-weight: 800; color: #00d4ff;">LEVEL X</span>
+                    <span style="color: #94a3b8; font-size: 16px; margin-left: 8px;">Team Journey</span>
                 </a>
             </div>
             <div style="display: none; gap: 32px;" class="nav-desktop">
@@ -349,7 +350,7 @@
 
     <footer class="footer-dark" style="margin-top: 80px;">
         <div class="container-custom" style="padding: 32px 20px; text-align: center;">
-            <p style="margin: 0; color: #8B7355;">&copy; 2025 World Domination Software Co-op. Building careers, together.</p>
+            <p style="margin: 0; color: #8B7355;">&copy; 2025 Level X Development. Building careers, together.</p>
             <p style="margin: 8px 0 0; font-size: 14px; color: #64748b;">
                 <a href="index.php" style="color: #8B4513; text-decoration: none;">← Back to Main Site</a> | 
                 <a href="joinus.php" style="color: #8B4513; text-decoration: none;">Apply Now</a>

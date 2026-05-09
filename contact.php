@@ -5,13 +5,16 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Robot | Contact</title>
+        <title>Level X Development | Contact</title>
 
         <!-- CSS -->
 
-        <!-- google fonts -->
-        <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+        <!-- Level X Development Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">        <!-- google fonts -->
+        
+        
 
         <!-- files -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -31,7 +34,7 @@
         // Page-specific variables
         $current_page = 'contact';
         $header_class = 'contact-header inner-header';
-        $page_subtitle = 'Design. Debug. Deploy.';
+        $page_subtitle = 'Design • Debug • Deploy';
         
         // Handle form submission
         $message_sent = false;
@@ -158,7 +161,7 @@
                                         <i class="ion-social-discord" style="font-size: 48px; color: #8B4513;"></i>
                                     </div>
                                     <h4 style="margin-bottom: 15px; color: #8B4513; font-size: 22px;">
-                                        World Domination Dev
+                                        Level X Development
                                     </h4>
                                     <p style="margin-bottom: 25px; color: #1a1a1a; font-size: 15px; line-height: 1.6;">
                                         Join our Discord community for real-time discussions, project updates, and collaboration opportunities!

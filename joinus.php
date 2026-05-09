@@ -5,13 +5,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>World Domination Software | Join Our Co-op</title>
+        <title>Level X Development | Join Our Team</title>
 
         <!-- CSS -->
 
-        <!-- google fonts -->
-        <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+        <!-- Level X Development Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 
         <!-- files -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -19,7 +20,7 @@
         <link href="assets/css/owl.carousel.css" rel="stylesheet">
         <link href="assets/css/owl.carousel.theme.min.css" rel="stylesheet">
         <link href="assets/css/ionicons.css" rel="stylesheet">
-        <link href="<!-- main.css removed -->" rel="stylesheet">
+        
         <link href="assets/css/wds-unified.css" rel="stylesheet">
 
         <!--[if lt IE 9]>
@@ -32,7 +33,7 @@
         // Page-specific variables
         $current_page = 'joinus';
         $header_class = 'joinus-header inner-header';
-        $page_subtitle = 'Design. Debug. Deploy.';
+        $page_subtitle = 'Design • Debug • Deploy';
         ?>
     <!-- Include Site Header -->
     <?php include 'includes/header.php'; ?>
@@ -705,7 +706,7 @@
                 <div class="col-sm-12">
                     <div class="title-box" style="margin-bottom: 40px;">
                         <p style="color: #8B7355;">Review the</p>
-                        <h2 class="title mt0" style="color: #8B4513;">Co-op Agreement</h2>
+                        <h2 class="title mt0" style="color: #00d4ff;">Team Agreement</h2>
                     </div>
                 </div>
             </div>
@@ -731,7 +732,7 @@
                         </div>
 
                         <p style="margin-bottom: 20px;">
-                            This Agreement is between World Domination Software / GameServers World ("The Co-Op"), 
+                            This Agreement is between Level X Development / GameServers World ("The Co-Op"), 
                             managed by __________________ ("Manager"), and __________________ ("Contributor").
                         </p>
 

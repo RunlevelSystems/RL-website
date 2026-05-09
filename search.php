@@ -29,7 +29,7 @@ function searchWebsiteContent($query) {
     // Define searchable pages with better descriptions
     $static_pages = [
         'index.php' => [
-            'title' => 'Home - World Domination Software',
+            'title' => 'Home - Level X Development',
             'description' => 'Main homepage featuring our company overview, services, and development philosophy.',
             'keywords' => 'home, main, company, overview, development, software, world domination'
         ],
@@ -191,11 +191,11 @@ if (!empty($search_query)) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Search Results - World Domination Software</title>
+    <title>Search Results - Level X Development</title>
 
     <!-- CSS -->
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    
+    
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/magnific-popup.css" rel="stylesheet">
     <link href="assets/css/owl.carousel.css" rel="stylesheet">
@@ -299,7 +299,7 @@ if (!empty($search_query)) {
                     <div class="search-form-page wds-card">
                         <form method="GET" action="search.php">
                             <div class="input-group">
-                                <input type="text" name="q" class="form-control" placeholder="Search World Domination Software..." value="<?php echo htmlspecialchars($search_query); ?>">
+                                <input type="text" name="q" class="form-control" placeholder="Search Level X Development..." value="<?php echo htmlspecialchars($search_query); ?>">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default btn-wds" type="submit">
                                         <i class="ion-search" aria-hidden="true"></i> Search
@@ -341,7 +341,7 @@ if (!empty($search_query)) {
                         <?php endif; ?>
                     <?php else: ?>
                         <div class="no-results">
-                            <h3>Search World Domination Software</h3>
+                            <h3>Search Level X Development</h3>
                             <p>Enter your search terms above to find content across our website.</p>
                         </div>
                     <?php endif; ?>

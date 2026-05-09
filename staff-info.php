@@ -22,7 +22,7 @@ $page_description = 'Centralize every password, host, tool and operating procedu
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WDS | Staff Control Room</title>
+    <title>Level X | Staff Control Room</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/magnific-popup.css" rel="stylesheet">
     <link href="assets/css/owl.carousel.css" rel="stylesheet">
@@ -30,6 +30,9 @@ $page_description = 'Centralize every password, host, tool and operating procedu
     <link href="assets/css/ionicons.css" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet">
     <link href="assets/css/wds-unified.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         .staff-grid { display: flex; flex-wrap: wrap; gap: 20px; }
 

@@ -21,7 +21,7 @@ $page_subtitle = 'Procedures & Process';
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WDS | Staff Wiki</title>
+    <title>Level X | Staff Wiki</title>
     <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../assets/css/ionicons.css" rel="stylesheet">
     <link href="../../assets/css/main.css" rel="stylesheet">
@@ -60,9 +60,9 @@ $page_subtitle = 'Procedures & Process';
         <div class="row">
             <div class="col-sm-12">
                 <div class="title-box">
-                    <p>WDS Team Wiki</p>
+                    <p>Level X Team Wiki</p>
                     <h2 class="title mt0" style="color:#8B4513;">Procedures & Process</h2>
-                    <p style="color:#DDD;">This is a live copy of the legacy WDS-Team wiki so we no longer need a separate site.</p>
+                    <p style="color:#DDD;">This is a live copy of the legacy Level X Team wiki so we no longer need a separate site.</p>
                 </div>
             </div>
         </div>
