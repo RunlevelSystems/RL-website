@@ -22,7 +22,7 @@
         <link href="assets/css/owl.carousel.css" rel="stylesheet">
         <link href="assets/css/owl.carousel.theme.min.css" rel="stylesheet">
         <link href="assets/css/ionicons.css" rel="stylesheet">
-        <!-- WDS Unified CSS - Simplified & Clean -->
+        <!-- Level X Unified Theme -->
         <link href="assets/css/wds-unified.css" rel="stylesheet">
         <!-- Font Awesome for GameServer Panel icons -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -147,7 +147,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="title-box">
-                                <a href="#" onclick="hideProject(); return false;" id="back-to-projects" style="color: #8B4513; text-decoration: none; font-size: 14px; display: inline-block; margin-bottom: 10px;">
+                                <a href="#" onclick="hideProject(); return false;" id="back-to-projects" style="color: #ffd166; text-decoration: none; font-size: 14px; display: inline-block; margin-bottom: 10px;">
                                     ← Back to All Projects
                                 </a>
                                 <p id="project-category">Current Project</p>
@@ -156,8 +156,7 @@
                         </div>
                     </div>
                     
-                    <!-- Orange HR before project content -->
-                    <hr style="border: none; height: 3px; background: linear-gradient(to right, #8B4513, #A0522D, #8B4513); margin: 30px 0; border-radius: 2px;">
+                    <hr style="border: none; height: 2px; background: linear-gradient(to right, transparent, rgba(54,243,255,0.65), rgba(255,209,102,0.75), rgba(54,243,255,0.65), transparent); margin: 30px 0; border-radius: 2px;">
                     
                     <div class="row">
                         <div class="boxed">
@@ -167,8 +166,7 @@
                         </div>
                     </div>
                     
-                    <!-- Orange HR after project content -->
-                    <hr style="border: none; height: 3px; background: linear-gradient(to right, #8B4513, #A0522D, #8B4513); margin: 30px 0; border-radius: 2px;">
+                    <hr style="border: none; height: 2px; background: linear-gradient(to right, transparent, rgba(54,243,255,0.65), rgba(255,209,102,0.75), rgba(54,243,255,0.65), transparent); margin: 30px 0; border-radius: 2px;">
                 </div>
                 <!-- Projects Overview Section -->
                 <div id="projects-overview">
@@ -196,10 +194,10 @@
                                     <p class="inner-p" style="margin-top:10px;">
                                         Key GitHub resources for our projects:
                                         <br>
-                                        • <a href="https://github.com/World-Domination-Software/Projects/wiki" target="_blank" rel="noopener noreferrer" style="color:#8B4513; text-decoration:underline;">Project descriptions &amp; design documents (Wiki)</a><br>
-                                        • <a href="https://github.com/World-Domination-Software/Projects/discussions/categories/ideas" target="_blank" rel="noopener noreferrer" style="color:#8B4513; text-decoration:underline;">Future project ideas &amp; feature discussions (Ideas)</a><br>
-                                        • <a href="https://github.com/World-Domination-Software/Projects/issues" target="_blank" rel="noopener noreferrer" style="color:#8B4513; text-decoration:underline;">Bug reports &amp; support issues (Issues)</a><br>
-                                        • <a href="https://github.com/World-Domination-Software/Projects/discussions" target="_blank" rel="noopener noreferrer" style="color:#8B4513; text-decoration:underline;">General project discussions</a>
+                                        • <a href="https://github.com/World-Domination-Software/Projects/wiki" target="_blank" rel="noopener noreferrer" style="color:#ffd166; text-decoration:underline;">Project descriptions &amp; design documents (Wiki)</a><br>
+                                        • <a href="https://github.com/World-Domination-Software/Projects/discussions/categories/ideas" target="_blank" rel="noopener noreferrer" style="color:#ffd166; text-decoration:underline;">Future project ideas &amp; feature discussions (Ideas)</a><br>
+                                        • <a href="https://github.com/World-Domination-Software/Projects/issues" target="_blank" rel="noopener noreferrer" style="color:#ffd166; text-decoration:underline;">Bug reports &amp; support issues (Issues)</a><br>
+                                        • <a href="https://github.com/World-Domination-Software/Projects/discussions" target="_blank" rel="noopener noreferrer" style="color:#ffd166; text-decoration:underline;">General project discussions</a>
                                     </p>
                             </div>
                         </div>
@@ -244,12 +242,12 @@
                         align-items: flex-start;
                         padding: 10px 15px;
                         margin-bottom: 5px;
-                        background-color: #D4CFC0;
+                        background-color: #0d1a33;
                         border-radius: 4px;
-                        border: 1px solid #B8B19F;
+                        border: 1px solid rgba(54,243,255,0.22);
                     }
                     .project-row:hover {
-                        background-color: #C5BEAE;
+                        background-color: #112448;
                     }
                     .project-main {
                         display: flex;
@@ -257,13 +255,13 @@
                         flex: 1;
                     }
                     .project-title-text {
-                        color: #8B4513;
+                        color: #ffd166;
                         font-weight: 600;
                         margin-right: 10px;
                         margin-bottom: 2px;
                     }
                     .project-short {
-                        color: #1a1a1a;
+                        color: #a8bedc;
                         font-size: 14px;
                         line-height: 1.6;
                         margin-top: 2px;
@@ -273,11 +271,11 @@
                         font-size: 13px;
                     }
                     .project-links-block a {
-                        color: #8B4513;
+                        color: #ffd166;
                         text-decoration: none;
                     }
                     .project-links-block a:hover {
-                        color: #6B3410;
+                        color: #ffbe55;
                         text-decoration: underline;
                     }
                     /* Old detail/admin styles removed now that details live on GitHub */

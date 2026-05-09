@@ -84,16 +84,16 @@ function h($v) { return htmlspecialchars((string)$v, ENT_QUOTES, 'UTF-8'); }
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #000000; }
+        body { background-color: #071228; }
         .staff-card { background:#111827; border-radius:10px; padding:20px; margin-bottom:20px; border:1px solid #374151; }
-        .staff-card h3 { color:#E8E4D8; margin-top:0; }
+        .staff-card h3 { color:#eaf3ff; margin-top:0; }
         .project-links-table th, .project-links-table td { vertical-align: middle; }
-        .project-links-table th { color:#E8E4D8; border-color:#374151; }
-        .project-links-table td { color:#E8E4D8; border-color:#374151; }
-        .project-links-table input[type="text"] { width:100%; padding:6px 8px; border-radius:3px; border:1px solid #4b5563; background:#0f172a; color:#E8E4D8; }
-        .btn-primary-wds { background:#8B4513; border-color:#8B4513; color:#E8E4D8; }
-        .btn-primary-wds:hover { background:#6B3410; border-color:#6B3410; }
-        .alert-info { background:#1f2937; color:#E8E4D8; border-color:#374151; }
+        .project-links-table th { color:#eaf3ff; border-color:#374151; }
+        .project-links-table td { color:#eaf3ff; border-color:#374151; }
+        .project-links-table input[type="text"] { width:100%; padding:6px 8px; border-radius:3px; border:1px solid #4b5563; background:#0f172a; color:#eaf3ff; }
+        .btn-primary-wds { background:linear-gradient(135deg,#1f4ca3,#2d7fff); border-color:rgba(54,243,255,0.4); color:#f4fbff; }
+        .btn-primary-wds:hover { background:linear-gradient(135deg,#2360cc,#36f3ff); border-color:#36f3ff; color:#051225; }
+        .alert-info { background:#1f2937; color:#eaf3ff; border-color:#374151; }
         .breadcrumb { background:transparent; padding-left:0; margin-bottom:10px; }
         .breadcrumb > li + li:before { color:#9ca3af; }
     </style>
@@ -107,8 +107,8 @@ function h($v) { return htmlspecialchars((string)$v, ENT_QUOTES, 'UTF-8'); }
             <div class="col-sm-12">
                 <div class="title-box">
                     <p>Welcome, <?php echo h($_SESSION['wds_admin_user']); ?></p>
-                    <h2 class="title mt0" style="color:#8B4513;">Project GitHub Links</h2>
-                    <p style="color:#DDD; max-width:720px;">Map each public-facing project to its GitHub or wiki page used by the main Projects list.</p>
+                    <h2 class="title mt0" style="color:#ffd166;">Project GitHub Links</h2>
+                    <p style="color:#a8bedc; max-width:720px;">Map each public-facing project to its GitHub or wiki page used by the main Projects list.</p>
                 </div>
             </div>
         </div>

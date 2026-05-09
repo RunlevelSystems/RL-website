@@ -28,27 +28,27 @@ $page_subtitle = 'Procedures & Process';
     <link href="../../assets/css/wds-unified.css" rel="stylesheet">
     <style>
         .staff-login .page-bgc {
-            background-color: #E8E4D8 !important;
+            background-color: #071228 !important;
         }
 
         /* Override rust gradient cards from readability-improvements.css */
         .staff-login .wiki-card {
-            background: #D4CFC0 !important;
+            background: #0d1a33 !important;
             border-radius: 10px !important;
-            border: 1px solid #B8A996 !important;
+            border: 1px solid rgba(54,243,255,0.25) !important;
             padding: 20px;
             margin-bottom: 15px;
             box-shadow: 0 6px 16px rgba(0,0,0,0.18) !important;
-            color: #1a1a1a !important;
+            color: #eaf3ff !important;
         }
 
         .staff-login .wiki-card a {
             font-weight: 600;
-            color: #8B4513 !important;
+            color: #ffd166 !important;
         }
 
         .staff-login .wiki-card p {
-            color: #4a4a4a !important;
+            color: #a8bedc !important;
         }
     </style>
 </head>
@@ -61,8 +61,8 @@ $page_subtitle = 'Procedures & Process';
             <div class="col-sm-12">
                 <div class="title-box">
                     <p>Level X Team Wiki</p>
-                    <h2 class="title mt0" style="color:#8B4513;">Procedures & Process</h2>
-                    <p style="color:#DDD;">This is a live copy of the legacy Level X Team wiki so we no longer need a separate site.</p>
+                    <h2 class="title mt0" style="color:#ffd166;">Procedures & Process</h2>
+                    <p style="color:#a8bedc;">This is a live copy of the legacy Level X Team wiki so we no longer need a separate site.</p>
                 </div>
             </div>
         </div>
@@ -73,7 +73,7 @@ $page_subtitle = 'Procedures & Process';
                         <a href="view.php?doc=<?php echo urlencode($base); ?>">
                             <i class="ion-document-text"></i> <?php echo htmlspecialchars(str_replace('-', ' ', $base)); ?>
                         </a>
-                        <p style="color:#9CA3AF; font-size:13px; margin:5px 0 0;">Updated on <?php echo date('Y-m-d', filemtime($docsDir . '/' . $file)); ?></p>
+                        <p style="color:#7894b9; font-size:13px; margin:5px 0 0;">Updated on <?php echo date('Y-m-d', filemtime($docsDir . '/' . $file)); ?></p>
                     </div>
                 </div>
             <?php endforeach; ?>

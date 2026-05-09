@@ -31,38 +31,38 @@ $page_subtitle = 'Wiki Viewer';
     <link href="../../assets/css/wds-unified.css" rel="stylesheet">
     <style>
         .staff-login .page-bgc {
-            background-color: #E8E4D8 !important;
+            background-color: #071228 !important;
         }
 
         /* Override rust gradient wiki content from readability-improvements.css */
         .staff-login .wiki-content {
-            background: #D4CFC0 !important;
+            background: #0d1a33 !important;
             border-radius: 12px !important;
             padding: 25px;
-            color: #1a1a1a !important;
+            color: #eaf3ff !important;
             box-shadow: 0 6px 16px rgba(0,0,0,0.18) !important;
         }
 
         .staff-login .wiki-content :is(p, li, span, td, th, label, small, strong, em, ul, ol) {
-            color: #1a1a1a !important;
+            color: #a8bedc !important;
         }
 
         .staff-login .wiki-content h1,
         .staff-login .wiki-content h2,
         .staff-login .wiki-content h3 {
-            color: #8B4513 !important;
+            color: #ffd166 !important;
         }
 
         .staff-login .wiki-content pre {
             background: #111827 !important;
             padding: 12px;
             border-radius: 8px;
-            color: #E5E7EB !important;
+            color: #eaf3ff !important;
         }
 
         .staff-login .wiki-content a {
             text-decoration: underline;
-            color: #8B4513 !important;
+            color: #ffd166 !important;
         }
     </style>
 </head>
@@ -75,8 +75,8 @@ $page_subtitle = 'Wiki Viewer';
             <div class="col-sm-12">
                 <div class="title-box">
                     <p>Level X Wiki</p>
-                    <h2 class="title mt0" style="color:#8B4513;"><?php echo htmlspecialchars(str_replace('-', ' ', $requested)); ?></h2>
-                    <p><a href="index.php" style="color:#DDD; text-decoration:underline;">Back to index</a></p>
+                    <h2 class="title mt0" style="color:#ffd166;"><?php echo htmlspecialchars(str_replace('-', ' ', $requested)); ?></h2>
+                    <p><a href="index.php" style="color:#a8bedc; text-decoration:underline;">Back to index</a></p>
                 </div>
             </div>
         </div>

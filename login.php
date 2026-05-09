@@ -140,38 +140,6 @@ $page_subtitle = 'Design • Debug • Deploy';
                                 </div>
                             <?php endif; ?>
                             
-                            <!-- DEBUG OUTPUT -->
-                            <!-- ⚠️ WARNING: TEMPORARY DEBUG OUTPUT - REMOVE BEFORE PRODUCTION! -->
-                            <!-- This exposes sensitive login information for troubleshooting purposes only -->
-                            <?php if ($login_attempted && function_exists('getLoginDebug')): ?>
-                                <div style="background: #1a1a2e; color: #00ff00; padding: 20px; border-radius: 8px; margin-bottom: 25px; border-left: 4px solid #00ff00; font-family: 'Courier New', monospace; font-size: 12px; max-height: 500px; overflow-y: auto;">
-                                    <h4 style="color: #00ff00; margin-top: 0; margin-bottom: 15px; border-bottom: 1px solid #00ff00; padding-bottom: 10px;">🔍 LOGIN DEBUG OUTPUT</h4>
-                                    <?php 
-                                    $debugInfo = getLoginDebug();
-                                    if (empty($debugInfo)): 
-                                    ?>
-                                        <p style="color: #ffaa00;">No debug information captured. This might indicate a very early failure.</p>
-                                    <?php else: ?>
-                                        <?php foreach ($debugInfo as $index => $entry): ?>
-                                            <div style="margin-bottom: 8px; padding: 5px; background: rgba(0,255,0,0.1); border-radius: 4px;">
-                                                <span style="color: #888;">[<?php echo $index + 1; ?>]</span>
-                                                <span style="color: #00ff00; font-weight: bold;"><?php echo htmlspecialchars($entry['message']); ?></span>
-                                                <?php if (isset($entry['data'])): ?>
-                                                    <span style="color: #ffff00;"> → </span>
-                                                    <span style="color: #00ffff;"><?php 
-                                                        if (is_array($entry['data'])) {
-                                                            echo htmlspecialchars(json_encode($entry['data'], JSON_PRETTY_PRINT));
-                                                        } else {
-                                                            echo htmlspecialchars((string)$entry['data']);
-                                                        }
-                                                    ?></span>
-                                                <?php endif; ?>
-                                            </div>
-                                        <?php endforeach; ?>
-                                    <?php endif; ?>
-                                </div>
-                            <?php endif; ?>
-
                             <!-- Login Form -->
                             <form action="login.php<?php echo isset($_GET['redirect']) ? '?redirect=' . urlencode($_GET['redirect']) : ''; ?>" method="post" class="staff-login-form">
                                 <input type="hidden" name="login_form" value="1">

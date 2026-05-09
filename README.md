@@ -1,15 +1,15 @@
-<!-- Developed by World Domination Software LLC -->
-# World Domination Software Website
+<!-- Developed by Level X Development -->
+# Level X Development Website
 
 A professional corporate website showcasing game development, server hosting, and business application services. Built with PHP and modern responsive design principles.
 
 ## Overview
 
-This is the corporate website for World Domination Software (WDS), a company specializing in indie game development, game server hosting, and custom business applications. The site presents a professional, modern dark-themed interface that reflects the company's technical expertise and gaming industry focus.
+This is the corporate website for Level X Development, a company specializing in indie game development, game server hosting, and custom business applications. The site presents a professional, modern Cobalt2-inspired interface reflecting the company’s developer-first identity.
 
 ## Roadmap & Documentation
 
-Public roadmap and documentation for WDS projects are managed in the separate **Projects** hub on GitHub:
+Public roadmap and documentation for Level X projects are managed in the separate **Projects** hub on GitHub:
 
 - **Roadmap (Discussions category):** https://github.com/World-Domination-Software/Projects/discussions/categories/roadmap
 - **Projects hub repository:** https://github.com/World-Domination-Software/Projects
@@ -42,16 +42,16 @@ Individual project pages located in `/projects/` directory:
 ## Design & Styling
 
 ### Visual Theme
-- **Dark Mode Interface**: Deep navy/charcoal backgrounds with high contrast text
-- **Color Palette**: 
-  - Primary: Green accent colors (`#22c55e`, `#a7f3d0`)
-  - Background: Dark grays and deep blues (`#111a26`, `#1a1a1a`)
-  - Text: Light grays and off-whites (`#e2e8f0`, `#D2B48C`)
-  - Accent: Brown/tan highlights (`#8B4513`, `#8B7355`)
+- **Dark Mode Interface**: Deep cobalt/navy backgrounds with high contrast text
+- **Color Palette**:
+  - Primary accents: Cyan and electric blue (`#36f3ff`, `#2d7fff`)
+  - Backgrounds: Midnight/cobalt layers (`#071228`, `#0a1730`, `#0d1a33`)
+  - Text: Soft white and muted steel-blue (`#eaf3ff`, `#a8bedc`)
+  - Secondary accents: Warm gold highlights (`#ffd166`)
 
 ### Typography
-- **Primary Font**: 'Oswald' - Clean, modern sans-serif for headings
-- **Body Font**: 'Roboto' - Readable sans-serif for body text and UI elements
+- **Primary Font**: 'Exo 2' / 'Rajdhani' - Developer-style sans-serif for headings
+- **Body Font**: 'Inter' - Readable sans-serif for body text and UI elements
 - **Font Weights**: 300 (light), 400 (regular), 500 (medium), 700 (bold)
 
 ### Layout Features
@@ -66,7 +66,7 @@ Individual project pages located in `/projects/` directory:
 - **Service Cards**: Three-column grid showcasing main business services
 - **Project Showcases**: Detailed project pages with feature lists and technical specs
 - **Navigation**: Clean top navigation with responsive mobile menu
-- **Bullet Lists**: Custom checkmark bullets with green accent styling
+- **Bullet Lists**: Custom checkmark bullets with cyan accent styling
 
 ## Technical Stack
 

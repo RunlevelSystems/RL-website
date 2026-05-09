@@ -43,7 +43,7 @@ $page_description = 'Centralize every password, host, tool and operating procedu
         }
 
         .staff-credentials-table td {
-            border-color: #D6C8B3;
+            border-color: rgba(54,243,255,0.18);
         }
 
         /* Code and inline pre blocks: dark background for contrast */
@@ -52,7 +52,7 @@ $page_description = 'Centralize every password, host, tool and operating procedu
             background: #111827 !important;
             padding: 10px;
             border-radius: 8px;
-            color: #E5E7EB !important;
+            color: #eaf3ff !important;
         }
 
         .tag {
@@ -60,9 +60,9 @@ $page_description = 'Centralize every password, host, tool and operating procedu
             padding: 3px 8px;
             border-radius: 10px;
             margin: 2px;
-            color: #8B4513;
-            background: rgba(0,200,81,0.2);
-            border: 1px solid rgba(0,200,81,0.2);
+            color: #ffd166;
+            background: rgba(54,243,255,0.2);
+            border: 1px solid rgba(54,243,255,0.2);
             font-size: 11px;
         }
 
@@ -70,23 +70,23 @@ $page_description = 'Centralize every password, host, tool and operating procedu
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: #E8E4D8 !important;
+            background: #0f2142 !important;
             border-radius: 10px;
             padding: 16px 20px;
             margin-bottom: 12px;
-            border: 1px solid #B8A996 !important;
-            color: #1a1a1a !important;
+            border: 1px solid rgba(54,243,255,0.25) !important;
+            color: #eaf3ff !important;
             cursor: pointer;
             transition: background 0.2s;
         }
 
         .staff-information .link-tile span {
-            color: #4a4a4a !important;
+            color: #eaf3ff !important;
             font-weight: 600;
         }
 
         .staff-information .link-tile:hover {
-            background: #ddd5c4 !important;
+            background: #132b57 !important;
         }
 
         a.link-tile { text-decoration: none; }
@@ -101,8 +101,8 @@ $page_description = 'Centralize every password, host, tool and operating procedu
             <div class="col-sm-12">
                 <div class="title-box">
                     <p>Welcome, <?php echo htmlspecialchars($_SESSION['wds_admin_user']); ?></p>
-                    <h2 class="title mt0" style="color:#8B4513;">Operations Control Room</h2>
-                    <p style="color:#DDD; max-width:720px;">Everything our co-op team needs: current passwords, infrastructure baselines, runbooks, tool downloads, and wiki procedures.</p>
+                    <h2 class="title mt0" style="color:#ffd166;">Operations Control Room</h2>
+                    <p style="color:#a8bedc; max-width:720px;">Everything our co-op team needs: current passwords, infrastructure baselines, runbooks, tool downloads, and wiki procedures.</p>
                 </div>
             </div>
         </div>
@@ -155,7 +155,7 @@ $page_description = 'Centralize every password, host, tool and operating procedu
                     <h3><i class="ion-android-cart"></i> External Storefront Accounts</h3>
                     <a href="https://play.google.com/console" target="_blank" rel="noopener noreferrer" class="link-tile" style="text-decoration:none;"><span>Google Play Console</span><i class="ion-android-open" style="color:#FFD699;"></i></a>
                     <a href="https://partner.steampowered.com/" target="_blank" rel="noopener noreferrer" class="link-tile" style="text-decoration:none;"><span>Steamworks Partner Portal</span><i class="ion-android-open" style="color:#FFD699;"></i></a>
-                    <p style="color:#DDD; margin-top:15px;">Use <code>team@worlddomination.dev</code> for invites and access requests; it already satisfies Google Play and Steam contact requirements.</p>
+                    <p style="color:#a8bedc; margin-top:15px;">Use <code>team@worlddomination.dev</code> for invites and access requests; it already satisfies Google Play and Steam contact requirements.</p>
                     <ul style="color:#cbd5f5; padding-left:18px; font-size:13px;">
                         <li>Google Play: send an Admin invite from the Console &rarr; Users &amp; permissions page. Ask ops to approve within 24h.</li>
                         <li>Steamworks: create a new partner account invite via Users &rarr; Manage Users. Assign publishing and marketing roles as needed.</li>
@@ -165,7 +165,7 @@ $page_description = 'Centralize every password, host, tool and operating procedu
                 </div>
                 <div class="staff-card">
                     <h3><i class="ion-email"></i> Shared Admin Mailbox</h3>
-                    <p style="color:#DDD;">Use <strong>team@worlddomination.dev</strong> whenever a vendor, registrar, or platform needs a single administrative contact. Everyone on the ops roster can authenticate to clear login challenges and receive 2FA resets.</p>
+                    <p style="color:#a8bedc;">Use <strong>team@worlddomination.dev</strong> whenever a vendor, registrar, or platform needs a single administrative contact. Everyone on the ops roster can authenticate to clear login challenges and receive 2FA resets.</p>
                     <div class="table-responsive">
                         <table class="table staff-credentials-table">
                             <tbody>
@@ -192,7 +192,7 @@ $page_description = 'Centralize every password, host, tool and operating procedu
                             </tbody>
                         </table>
                     </div>
-                    <ul style="color:#DDD; padding-left:18px; margin-bottom:12px;">
+                    <ul style="color:#a8bedc; padding-left:18px; margin-bottom:12px;">
                         <li>Keep it on IMAP so read/deleted flags stay synced across devices.</li>
                         <li>Label vendor threads before archiving so the next person knows the context.</li>
                         <li>If you add a new client, use manual setup with the ports above and ensure SMTP auth is ON.</li>
@@ -201,7 +201,7 @@ $page_description = 'Centralize every password, host, tool and operating procedu
                 </div>
                 <div class="staff-card">
                     <h3><i class="ion-shuffle"></i> Password Rotation</h3>
-                    <p style="color:#DDD;">Manual process only—no automation runs without us.</p>
+                    <p style="color:#a8bedc;">Manual process only—no automation runs without us.</p>
                     <ol style="color:#CCC; padding-left:20px;">
                         <li>SSH to <code>gameserver@core.iaregamer.com -p 12322</code>.</li>
                         <li>Run <code>cd /home/gameserver/tools/scripts</code>.</li>
@@ -218,7 +218,7 @@ $page_description = 'Centralize every password, host, tool and operating procedu
                 <div class="staff-card">
                     <h3><i class="ion-network"></i> Core Servers</h3>
                     <div class="table-responsive">
-                        <table class="table" style="color:#E5E7EB;">
+                        <table class="table" style="color:#eaf3ff;">
                             <thead><tr><th>Hostname</th><th>Role</th><th>SSH / Console</th></tr></thead>
                             <tbody>
                                 <?php foreach ($coreServers as $srv): ?>
@@ -241,7 +241,7 @@ $page_description = 'Centralize every password, host, tool and operating procedu
                 <div class="staff-card">
                     <h3><i class="ion-ios-cloud"></i> Other Servers</h3>
                     <div class="table-responsive">
-                        <table class="table" style="color:#E5E7EB;">
+                        <table class="table" style="color:#eaf3ff;">
                             <thead><tr><th>Hostname</th><th>Role</th><th>SSH / Console</th></tr></thead>
                             <tbody>
                                 <?php foreach ($otherServers as $srv): ?>
@@ -265,7 +265,7 @@ $page_description = 'Centralize every password, host, tool and operating procedu
                 <div class="staff-card">
                     <h3><i class="ion-briefcase"></i> Tool Summary</h3>
                     <div class="table-responsive">
-                        <table class="table" style="color:#E5E7EB;">
+                        <table class="table" style="color:#eaf3ff;">
                             <thead><tr><th>Tool</th><th>Description</th><th>Command</th><th>Notes</th></tr></thead>
                             <tbody>
                                 <?php foreach ($toolCatalog as $tool): ?>

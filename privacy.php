@@ -53,7 +53,7 @@
                 <div class="row">
                     <div class="boxed">
                         <div class="col-sm-12">
-                            <p class="inner-p" style="font-size: 14px; color: #4a4a4a;">Last updated: March 2026</p>
+                            <p class="inner-p" style="font-size: 14px; color: #7894b9;">Last updated: March 2026</p>
                             <p class="inner-p">
                                 This privacy policy applies to all software, games, websites, and services created or published by Level X Development.
                             </p>
@@ -71,21 +71,21 @@
                     <div class="boxed">
                         <div class="col-sm-12">
                             <div class="wds-card">
-                                <h3 style="color: #8B4513; margin-bottom: 15px;">Information We Collect</h3>
-                                <p style="color: #1a1a1a; margin-bottom: 15px; font-size: 16px; line-height: 1.6;">
+                                <h3 style="color: #ffd166; margin-bottom: 15px;">Information We Collect</h3>
+                                <p style="color: #a8bedc; margin-bottom: 15px; font-size: 16px; line-height: 1.6;">
                                     Most of our applications and services do not directly collect personal information.
                                 </p>
-                                <p style="color: #1a1a1a; margin-bottom: 10px; font-size: 16px; line-height: 1.6;">
+                                <p style="color: #a8bedc; margin-bottom: 10px; font-size: 16px; line-height: 1.6;">
                                     However, some apps or services may automatically collect limited technical information such as:
                                 </p>
-                                <ul style="color: #1a1a1a; font-size: 16px; line-height: 1.8; padding-left: 20px; margin-bottom: 15px;">
+                                <ul style="color: #a8bedc; font-size: 16px; line-height: 1.8; padding-left: 20px; margin-bottom: 15px;">
                                     <li>Device type</li>
                                     <li>Operating system version</li>
                                     <li>App usage statistics</li>
                                     <li>Crash reports</li>
                                     <li>Anonymous identifiers used for advertising or analytics</li>
                                 </ul>
-                                <p style="color: #1a1a1a; font-size: 16px; line-height: 1.6;">
+                                <p style="color: #a8bedc; font-size: 16px; line-height: 1.6;">
                                     This information helps us improve stability, performance, and user experience.
                                 </p>
                             </div>
@@ -97,14 +97,14 @@
                     <div class="boxed">
                         <div class="col-sm-12">
                             <div class="wds-card">
-                                <h3 style="color: #8B4513; margin-bottom: 15px;">Advertising</h3>
-                                <p style="color: #1a1a1a; margin-bottom: 15px; font-size: 16px; line-height: 1.6;">
+                                <h3 style="color: #ffd166; margin-bottom: 15px;">Advertising</h3>
+                                <p style="color: #a8bedc; margin-bottom: 15px; font-size: 16px; line-height: 1.6;">
                                     Some of our applications may display advertisements provided by third-party advertising networks such as Google AdMob.
                                 </p>
-                                <p style="color: #1a1a1a; margin-bottom: 15px; font-size: 16px; line-height: 1.6;">
+                                <p style="color: #a8bedc; margin-bottom: 15px; font-size: 16px; line-height: 1.6;">
                                     Advertising providers may automatically collect anonymous device information in order to show relevant ads and measure ad performance.
                                 </p>
-                                <p style="color: #1a1a1a; font-size: 16px; line-height: 1.6;">
+                                <p style="color: #a8bedc; font-size: 16px; line-height: 1.6;">
                                     Some apps may offer a one-time purchase to remove advertisements.
                                 </p>
                             </div>
@@ -116,16 +116,16 @@
                     <div class="boxed">
                         <div class="col-sm-12">
                             <div class="wds-card">
-                                <h3 style="color: #8B4513; margin-bottom: 15px;">Analytics and Crash Reporting</h3>
-                                <p style="color: #1a1a1a; margin-bottom: 10px; font-size: 16px; line-height: 1.6;">
+                                <h3 style="color: #ffd166; margin-bottom: 15px;">Analytics and Crash Reporting</h3>
+                                <p style="color: #a8bedc; margin-bottom: 10px; font-size: 16px; line-height: 1.6;">
                                     Some applications may use analytics or crash reporting services to help us understand:
                                 </p>
-                                <ul style="color: #1a1a1a; font-size: 16px; line-height: 1.8; padding-left: 20px; margin-bottom: 15px;">
+                                <ul style="color: #a8bedc; font-size: 16px; line-height: 1.8; padding-left: 20px; margin-bottom: 15px;">
                                     <li>How the application is used</li>
                                     <li>When crashes occur</li>
                                     <li>How performance can be improved</li>
                                 </ul>
-                                <p style="color: #1a1a1a; font-size: 16px; line-height: 1.6;">
+                                <p style="color: #a8bedc; font-size: 16px; line-height: 1.6;">
                                     This data is typically anonymous and used only to improve our products.
                                 </p>
                             </div>
@@ -137,19 +137,19 @@
                     <div class="boxed">
                         <div class="col-sm-12">
                             <div class="wds-card">
-                                <h3 style="color: #8B4513; margin-bottom: 15px;">In-App Purchases</h3>
-                                <p style="color: #1a1a1a; margin-bottom: 10px; font-size: 16px; line-height: 1.6;">
+                                <h3 style="color: #ffd166; margin-bottom: 15px;">In-App Purchases</h3>
+                                <p style="color: #a8bedc; margin-bottom: 10px; font-size: 16px; line-height: 1.6;">
                                     Some applications may offer optional in-app purchases such as:
                                 </p>
-                                <ul style="color: #1a1a1a; font-size: 16px; line-height: 1.8; padding-left: 20px; margin-bottom: 15px;">
+                                <ul style="color: #a8bedc; font-size: 16px; line-height: 1.8; padding-left: 20px; margin-bottom: 15px;">
                                     <li>Removing advertisements</li>
                                     <li>Unlocking additional features</li>
                                     <li>Game content or upgrades</li>
                                 </ul>
-                                <p style="color: #1a1a1a; margin-bottom: 10px; font-size: 16px; line-height: 1.6;">
+                                <p style="color: #a8bedc; margin-bottom: 10px; font-size: 16px; line-height: 1.6;">
                                     All purchases are securely processed through the platform provider (such as Google Play).
                                 </p>
-                                <p style="color: #1a1a1a; font-size: 16px; line-height: 1.6;">
+                                <p style="color: #a8bedc; font-size: 16px; line-height: 1.6;">
                                     Level X Development does not store payment information.
                                 </p>
                             </div>
@@ -161,11 +161,11 @@
                     <div class="boxed">
                         <div class="col-sm-12">
                             <div class="wds-card">
-                                <h3 style="color: #8B4513; margin-bottom: 15px;">Children's Privacy</h3>
-                                <p style="color: #1a1a1a; margin-bottom: 15px; font-size: 16px; line-height: 1.6;">
+                                <h3 style="color: #ffd166; margin-bottom: 15px;">Children's Privacy</h3>
+                                <p style="color: #a8bedc; margin-bottom: 15px; font-size: 16px; line-height: 1.6;">
                                     Our applications are generally intended for a general audience.
                                 </p>
-                                <p style="color: #1a1a1a; font-size: 16px; line-height: 1.6;">
+                                <p style="color: #a8bedc; font-size: 16px; line-height: 1.6;">
                                     We do not knowingly collect personal information from children. If you believe a child has provided personal information through one of our services, please contact us and we will remove it.
                                 </p>
                             </div>
@@ -177,8 +177,8 @@
                     <div class="boxed">
                         <div class="col-sm-12">
                             <div class="wds-card">
-                                <h3 style="color: #8B4513; margin-bottom: 15px;">Data Security</h3>
-                                <p style="color: #1a1a1a; font-size: 16px; line-height: 1.6;">
+                                <h3 style="color: #ffd166; margin-bottom: 15px;">Data Security</h3>
+                                <p style="color: #a8bedc; font-size: 16px; line-height: 1.6;">
                                     We take reasonable steps to protect the limited information used by our applications and services. However, no method of transmission or storage is completely secure.
                                 </p>
                             </div>
@@ -190,8 +190,8 @@
                     <div class="boxed">
                         <div class="col-sm-12">
                             <div class="wds-card">
-                                <h3 style="color: #8B4513; margin-bottom: 15px;">Changes to This Policy</h3>
-                                <p style="color: #1a1a1a; font-size: 16px; line-height: 1.6;">
+                                <h3 style="color: #ffd166; margin-bottom: 15px;">Changes to This Policy</h3>
+                                <p style="color: #a8bedc; font-size: 16px; line-height: 1.6;">
                                     We may update this privacy policy from time to time. When updates occur, the revised policy will be posted on this page.
                                 </p>
                             </div>
@@ -203,14 +203,14 @@
                     <div class="boxed">
                         <div class="col-sm-12">
                             <div class="wds-card">
-                                <h3 style="color: #8B4513; margin-bottom: 15px;">Contact</h3>
-                                <p style="color: #1a1a1a; margin-bottom: 15px; font-size: 16px; line-height: 1.6;">
+                                <h3 style="color: #ffd166; margin-bottom: 15px;">Contact</h3>
+                                <p style="color: #a8bedc; margin-bottom: 15px; font-size: 16px; line-height: 1.6;">
                                     If you have questions about this privacy policy or any products created by Level X Development, please contact us:
                                 </p>
-                                <p style="color: #1a1a1a; font-size: 16px; line-height: 1.8;">
+                                <p style="color: #a8bedc; font-size: 16px; line-height: 1.8;">
                                     <strong>Level X Development</strong><br>
-                                    Website: <a href="https://worlddomination.dev" style="color: #8B4513;">https://worlddomination.dev</a><br>
-                                    Email: <a href="mailto:info@worlddomination.dev" style="color: #8B4513;">info@worlddomination.dev</a>
+                                    Website: <a href="https://worlddomination.dev" style="color: #ffd166;">https://worlddomination.dev</a><br>
+                                    Email: <a href="mailto:info@worlddomination.dev" style="color: #ffd166;">info@worlddomination.dev</a>
                                 </p>
                             </div>
                         </div>
@@ -220,7 +220,7 @@
                 <div class="row">
                     <div class="boxed">
                         <div class="col-sm-12">
-                            <p class="inner-p" style="font-size: 14px; color: #4a4a4a;">
+                            <p class="inner-p" style="font-size: 14px; color: #7894b9;">
                                 This privacy policy applies to all applications, games, websites, and services created or published by Level X Development unless a specific product provides its own privacy policy.
                             </p>
                         </div>
