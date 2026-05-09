@@ -19,7 +19,7 @@ if ($is_in_wiki) {
 }
 ?>
 <!-- Site Header -->
-<div class="site-header-bg" style="background: linear-gradient(180deg, #08111f, #0f1e2e); position: relative; z-index: 5; border-bottom: 1px solid rgba(255,255,255,0.14);">
+<div class="site-header-bg" style="background: linear-gradient(180deg, var(--wds-bg), var(--wds-bg-2)); position: relative; z-index: 5; border-bottom: 1px solid var(--wds-border);">
     <div class="container-fluid">
         <div class="row wds-topbar-row">
             <div class="col-sm-5 col-xs-12">

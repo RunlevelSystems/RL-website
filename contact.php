@@ -89,10 +89,10 @@
                         <div class="col-sm-6">
                             <div class="wds-card">
                                 <h3 style="color: #00a8ff; margin-bottom: 20px; font-size: 28px;">Get in Touch</h3>
-                                <p style="color: #a8bedc; margin-bottom: 30px; font-size: 16px; line-height: 1.6;">
+                                <p style="color: var(--wds-muted); margin-bottom: 30px; font-size: 16px; line-height: 1.6;">
                                     Have a question or want to collaborate? Fill out the form below and we'll get back to you as soon as possible.
                                 </p>
-                                <p style="color: #a8bedc; margin-bottom: 30px; font-size: 14px; line-height: 1.6;">
+                                <p style="color: var(--wds-muted); margin-bottom: 30px; font-size: 14px; line-height: 1.6;">
                                     <em>Note: This form submits to our Discord server. You can also join our server directly using the link on the right.</em>
                                 </p>
                                 
@@ -101,7 +101,7 @@
                                         <strong>Thank you!</strong> Your message has been sent successfully. We'll get back to you soon!
                                     </div>
                                 <?php elseif ($error_message): ?>
-                                    <div style="background-color: rgba(248, 113, 113, 0.2); color: #a8bedc; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 2px solid #f87171;">
+                                    <div style="background-color: rgba(248, 113, 113, 0.2); color: var(--wds-muted); padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 2px solid #f87171;">
                                         <strong>Error:</strong> <?php echo htmlspecialchars($error_message); ?>
                                     </div>
                                 <?php endif; ?>
@@ -110,28 +110,28 @@
                                     <div style="margin-bottom: 25px;">
                                         <label style="display: block; color: #00a8ff; margin-bottom: 8px; font-weight: bold; font-size: 16px;">Name *</label>
                                         <input type="text" name="fname" required 
-                                               style="width: 100%; padding: 14px; border-radius: 8px; background: #0f2142; color: #a8bedc; font-size: 16px; border: 1px solid rgba(54,243,255,0.35);"
+                                               style="width: 100%; padding: 14px; border-radius: 8px; background: var(--wds-panel); color: var(--wds-muted); font-size: 16px; border: 1px solid rgba(54,243,255,0.35);"
                                                placeholder="Your name">
                                     </div>
                                     
                                     <div style="margin-bottom: 25px;">
                                         <label style="display: block; color: #00a8ff; margin-bottom: 8px; font-weight: bold; font-size: 16px;">Discord UserID <span style="color: #666; font-weight: normal;">(optional)</span></label>
                                         <input type="text" name="discord_id" 
-                                               style="width: 100%; padding: 14px; border-radius: 8px; background: #0f2142; color: #a8bedc; font-size: 16px; border: 1px solid rgba(54,243,255,0.35);"
+                                               style="width: 100%; padding: 14px; border-radius: 8px; background: var(--wds-panel); color: var(--wds-muted); font-size: 16px; border: 1px solid rgba(54,243,255,0.35);"
                                                placeholder="YourDiscordName#1234">
                                     </div>
                                     
                                     <div style="margin-bottom: 25px;">
                                         <label style="display: block; color: #00a8ff; margin-bottom: 8px; font-weight: bold; font-size: 16px;">Email *</label>
                                         <input type="email" name="email" required 
-                                               style="width: 100%; padding: 14px; border-radius: 8px; background: #0f2142; color: #a8bedc; font-size: 16px; border: 1px solid rgba(54,243,255,0.35);"
+                                               style="width: 100%; padding: 14px; border-radius: 8px; background: var(--wds-panel); color: var(--wds-muted); font-size: 16px; border: 1px solid rgba(54,243,255,0.35);"
                                                placeholder="your@email.com">
                                     </div>
                                     
                                     <div style="margin-bottom: 30px;">
                                         <label style="display: block; color: #00a8ff; margin-bottom: 8px; font-weight: bold; font-size: 16px;">Question / Comment *</label>
                                         <textarea name="message" rows="6" required 
-                                                  style="width: 100%; padding: 14px; border-radius: 8px; background: #0f2142; color: #a8bedc; font-size: 16px; resize: vertical; border: 1px solid rgba(54,243,255,0.35);"
+                                                  style="width: 100%; padding: 14px; border-radius: 8px; background: var(--wds-panel); color: var(--wds-muted); font-size: 16px; resize: vertical; border: 1px solid rgba(54,243,255,0.35);"
                                                   placeholder="Tell us about your project, question, or how we can help..."></textarea>
                                     </div>
                                     
@@ -150,7 +150,7 @@
                         <div class="col-sm-6">
                             <div class="wds-card">
                                 <h3 style="color: #00a8ff; margin-bottom: 20px; font-size: 28px;">Join Our Community</h3>
-                                <p style="color: #a8bedc; margin-bottom: 30px; font-size: 16px; line-height: 1.6;">
+                                <p style="color: var(--wds-muted); margin-bottom: 30px; font-size: 16px; line-height: 1.6;">
                                     <i class="ion-chatbubbles" style="margin-right: 8px; color: #00a8ff;"></i>
                                     Chat with us directly on Discord! Ask questions, share ideas, and collaborate in real-time.
                                 </p>
@@ -163,7 +163,7 @@
                                     <h4 style="margin-bottom: 15px; color: #00a8ff; font-size: 22px;">
                                         Level X Development
                                     </h4>
-                                    <p style="margin-bottom: 25px; color: #a8bedc; font-size: 15px; line-height: 1.6;">
+                                    <p style="margin-bottom: 25px; color: var(--wds-muted); font-size: 15px; line-height: 1.6;">
                                         Join our Discord community for real-time discussions, project updates, and collaboration opportunities!
                                     </p>
                                     <a href="https://discord.gg/XPFnNdWGyW" target="_blank" class="discord-join-btn"
@@ -172,7 +172,7 @@
                                     </a>
                                 </div>
                                 
-                                <p style="margin-top: 20px; font-size: 14px; color: #a8bedc; text-align: center; line-height: 1.6;">
+                                <p style="margin-top: 20px; font-size: 14px; color: var(--wds-muted); text-align: center; line-height: 1.6;">
                                     New to Discord? Click the button above to get started! Discord is free and works on desktop and mobile.
                                 </p>
                             </div>

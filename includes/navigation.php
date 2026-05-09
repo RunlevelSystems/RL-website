@@ -21,7 +21,7 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
 <!-- Navigation Header -->
 <section id="header" class="main-header <?php echo isset($header_class) ? $header_class : ''; ?>">
     <div class="container-fluid">
-        <div class="row" style="background: linear-gradient(180deg, #08111f, #0f1e2e); position: relative; z-index: 5;">
+        <div class="row" style="background: linear-gradient(180deg, var(--wds-bg), var(--wds-bg-2)); position: relative; z-index: 5;">
             <nav class="navbar navbar-default">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#site-nav-bar" aria-expanded="false">
@@ -32,7 +32,7 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
                     </button>
                 </div>
 
-                <div class="collapse navbar-collapse" id="site-nav-bar" style="background: linear-gradient(180deg, #08111f, #0f1e2e);">
+                <div class="collapse navbar-collapse" id="site-nav-bar" style="background: linear-gradient(180deg, var(--wds-bg), var(--wds-bg-2));">
                     <ul class="nav navbar-nav">
                         <?php 
                         // Universal path detection for both XAMPP and web hosting
@@ -92,7 +92,7 @@ $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
             </nav>
         </div>
         
-        <div class="intro row intro-fixed-height" style="background: linear-gradient(180deg, #08111f, #0f1e2e); position: relative; z-index: 2;">
+        <div class="intro row intro-fixed-height" style="background: linear-gradient(180deg, var(--wds-bg), var(--wds-bg-2)); position: relative; z-index: 2;">
             <div class="overlay"></div>
             <div class="col-sm-6" style="display: flex; align-items: center; height: 100%; position: relative; z-index: 3;">
                 <a href="<?php echo $base_path; ?>index.php" class="lx-logo" style="height: 100%; width: 100%; display: flex; align-items: center; justify-content: flex-start; padding-left: 30px; text-decoration: none;">

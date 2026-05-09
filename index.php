@@ -51,7 +51,7 @@
   <style>
     .wds-hero {
       isolation: isolate;
-      background: linear-gradient(180deg, #0f1e2e, #08111f);
+      background: linear-gradient(180deg, var(--wds-bg-2), var(--wds-bg));
       border: 1px solid rgba(76, 201, 255,0.15);
       border-radius: 16px;
       padding: 48px 36px;

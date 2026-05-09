@@ -15,7 +15,7 @@ if ($is_in_wiki) {
 }
 ?>
     <!-- Footer -->
-        <section id="footer-widget" class="footer-widget" style="background: linear-gradient(180deg, #08111f, #0f1e2e); color: #b8c7d9; padding: 40px 0;">
+        <section id="footer-widget" class="footer-widget" style="background: linear-gradient(180deg, var(--wds-bg), var(--wds-bg-2)); color: var(--wds-muted); padding: 40px 0;">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-4">
@@ -60,16 +60,16 @@ if ($is_in_wiki) {
                 </div>
             </div>
         </section>
-    <footer class="footer text-center" style="background: linear-gradient(180deg, #08111f, #0f1e2e); color: #b8c7d9;">
-            <div style="padding: 20px 0; border-top: 1px solid rgba(255,255,255,0.14);">
-                <p style="color: #b8c7d9; margin-bottom: 10px; font-size: 16px;">
+    <footer class="footer text-center" style="background: linear-gradient(180deg, var(--wds-bg), var(--wds-bg-2)); color: var(--wds-muted);">
+            <div style="padding: 20px 0; border-top: 1px solid var(--wds-border);">
+                <p style="color: var(--wds-muted); margin-bottom: 10px; font-size: 16px;">
                     &copy; 2025 Level X Development. All rights reserved.
                 </p>
-                <p style="color: #b8c7d9; margin: 0; font-size: 14px;">
+                <p style="color: var(--wds-muted); margin: 0; font-size: 14px;">
                     Design • Debug • Deploy | 
-                    <a href="https://gameservers.world" target="_blank" style="color: #4cc9ff;">Gameservers.world</a> | 
-                    <a href="https://github.com/World-Domination-Software" target="_blank" style="color: #4cc9ff;">GitHub</a> | 
-                    <a href="https://discord.gg/XPFnNdWGyW" target="_blank" style="color: #4cc9ff;">Discord</a>
+                    <a href="https://gameservers.world" target="_blank" style="color: var(--wds-primary-soft);">Gameservers.world</a> | 
+                    <a href="https://github.com/World-Domination-Software" target="_blank" style="color: var(--wds-primary-soft);">GitHub</a> | 
+                    <a href="https://discord.gg/XPFnNdWGyW" target="_blank" style="color: var(--wds-primary-soft);">Discord</a>
                 </p>
             </div>
         </footer>

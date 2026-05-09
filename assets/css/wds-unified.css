@@ -1217,7 +1217,6 @@ div[style*="background-color: #1a1a1a"] {
 
 .intro-fixed-height {
     /* Intentionally reduced from legacy 300px to tighten hero spacing. */
-    min-height: 260px !important;
     height: 260px !important;
 }
 
