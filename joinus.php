@@ -162,7 +162,7 @@
                 top: 0;
                 bottom: 0;
                 width: 4px;
-                background: linear-gradient(to bottom, #00d4ff, #654321);
+                background: linear-gradient(to bottom, #00d4ff, #ffd166);
                 transform: translateX(-50%);
                 border-radius: 2px;
             }
@@ -199,7 +199,7 @@
             }
             .timeline-content {
                 background: rgba(255,255,255,0.1);
-                border: 2px solid rgba(0,200,81,0.3);
+                border: 2px solid rgba(54,243,255,0.3);
                 border-radius: 15px;
                 padding: 30px;
                 backdrop-filter: blur(10px);
@@ -209,7 +209,7 @@
                 background: rgba(255,255,255,0.15);
                 border-color: #00d4ff;
                 transform: translateY(-5px);
-                box-shadow: 0 10px 25px rgba(0,200,81,0.2);
+                box-shadow: 0 10px 25px rgba(54,243,255,0.2);
             }
             .timeline-icon {
                 font-size: 36px;
@@ -254,7 +254,7 @@
                 left: -50%;
                 width: 200%;
                 height: 200%;
-                background: conic-gradient(from 0deg, transparent, rgba(0,200,81,0.1), transparent);
+                background: conic-gradient(from 0deg, transparent, rgba(54,243,255,0.1), transparent);
                 animation: rotate 6s linear infinite;
                 opacity: 0;
                 transition: opacity 0.3s ease;
@@ -264,9 +264,9 @@
             }
             .mission-card:hover {
                 transform: translateY(-10px) scale(1.02);
-                background: linear-gradient(135deg, rgba(0,200,81,0.25), rgba(0,160,67,0.25));
+                background: linear-gradient(135deg, rgba(54,243,255,0.25), rgba(0,160,67,0.25));
                 border-color: #00d4ff;
-                box-shadow: 0 20px 40px rgba(0,200,81,0.3);
+                box-shadow: 0 20px 40px rgba(54,243,255,0.3);
             }
             @keyframes rotate {
                 from { transform: rotate(0deg); }
@@ -494,7 +494,7 @@
                 secondary: '#A0522D',
                 accent: '#CD853F',
                 success: '#556B2F',
-                warning: '#8B7355',
+                warning: '#7894b9',
                 danger: '#8B0000',
                 light: '#94a3b8'
             };
@@ -618,7 +618,7 @@
     </section>
 
     <!-- Audio Break Section -->
-    <section style="background: #1C1C1C; padding: 60px 0; border-top: 1px solid rgba(0,200,81,0.2);">
+    <section style="background: #1C1C1C; padding: 60px 0; border-top: 1px solid rgba(54,243,255,0.2);">
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2">
@@ -633,7 +633,7 @@
                             </p>
                         </div>
                         
-                        <div style="background: rgba(0,200,81,0.1); padding: 30px; border-radius: 15px; margin-bottom: 20px;">
+                        <div style="background: rgba(54,243,255,0.1); padding: 30px; border-radius: 15px; margin-bottom: 20px;">
                             <audio controls preload="metadata" style="width: 100%; max-width: 600px; height: 60px; border-radius: 10px;">
                                 <source src="assets/The Accelerated Exit Strategy.mp3" type="audio/mpeg">
                                 <p style="color: #94a3b8;">Your browser doesn't support audio playback. 
@@ -643,15 +643,15 @@
                         </div>
                         
                         <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
-                            <div style="display: flex; align-items: center; gap: 8px; color: #8B7355; font-size: 14px;">
+                            <div style="display: flex; align-items: center; gap: 8px; color: #7894b9; font-size: 14px;">
                                 <i class="fas fa-clock" style="color: #00d4ff;"></i>
                                 <span>Audio duration varies</span>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 8px; color: #8B7355; font-size: 14px;">
+                            <div style="display: flex; align-items: center; gap: 8px; color: #7894b9; font-size: 14px;">
                                 <i class="fas fa-volume-up" style="color: #00d4ff;"></i>
                                 <span>Headphones recommended</span>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 8px; color: #8B7355; font-size: 14px;">
+                            <div style="display: flex; align-items: center; gap: 8px; color: #7894b9; font-size: 14px;">
                                 <i class="fas fa-download" style="color: #00d4ff;"></i>
                                 <a href="assets/The Accelerated Exit Strategy.mp3" download style="color: #00d4ff; text-decoration: none;">
                                     Download MP3
@@ -705,7 +705,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="title-box" style="margin-bottom: 40px;">
-                        <p style="color: #8B7355;">Review the</p>
+                        <p style="color: #7894b9;">Review the</p>
                         <h2 class="title mt0" style="color: #00d4ff;">Team Agreement</h2>
                     </div>
                 </div>
@@ -818,7 +818,7 @@
                                 and profits already earned.</li>
                         </ul>
 
-                        <div style="margin-top: 50px; border-top: 1px solid #8B7355; padding-top: 30px;">
+                        <div style="margin-top: 50px; border-top: 1px solid #7894b9; padding-top: 30px;">
                             <p style="margin-bottom: 40px;">
                                 <strong>Signed:</strong> ______________________ &nbsp;&nbsp;&nbsp;&nbsp; <strong>Date:</strong> __________
                             </p>
@@ -829,7 +829,7 @@
                     <div style="text-align: center; margin: 30px 0;">
                         <div style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 12px;">
                             <h3 style="color: #00d4ff; margin-bottom: 15px;">Download Contract Package</h3>
-                            <p style="color: #8B7355; margin-bottom: 20px;">
+                            <p style="color: #7894b9; margin-bottom: 20px;">
                                 Get the complete contract documents including fillable forms and legal templates.
                             </p>
                             <a href="assets/contract.zip" download 

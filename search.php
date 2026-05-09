@@ -207,8 +207,8 @@ if (!empty($search_query)) {
     
     <style>
         .search-results {
-            background-color: #e2e8f0;
-            color: #1a1a1a;
+            background-color: #071228;
+            color: #eaf3ff;
             padding: 40px 0;
             min-height: 500px;
         }
@@ -239,31 +239,31 @@ if (!empty($search_query)) {
         }
         
         .search-result-title a:hover {
-            color: #D2B48C;
+            color: #ffd166;
             text-decoration: underline;
         }
         
         .search-result-snippet {
-            color: #1a1a1a;
+            color: #a8bedc;
             line-height: 1.6;
             font-size: 14px;
         }
         
         .search-result-url {
-            color: #8B7355;
+            color: #7894b9;
             font-size: 12px;
             margin-top: 10px;
         }
         
         .search-stats {
-            color: #6B3410;
+            color: #ffbe55;
             margin-bottom: 30px;
             font-size: 14px;
         }
         
         .no-results {
             text-align: center;
-            color: #4a4a4a;
+            color: #a8bedc;
             font-size: 16px;
             padding: 50px 0;
         }
@@ -276,8 +276,8 @@ if (!empty($search_query)) {
         }
         
         mark {
-            background-color: #00d4ff;
-            color: white;
+            background-color: rgba(54,243,255,0.24);
+            color: #eaf3ff;
             padding: 2px 4px;
             border-radius: 2px;
         }

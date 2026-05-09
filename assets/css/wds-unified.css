@@ -3,15 +3,16 @@
  * LEVEL X DEVELOPMENT — UNIFIED CSS
  * ============================================
  *
- * CYBERPUNK DARK THEME:
- * - Background:    #0a0a0f  (near-black void)
- * - Card Surface:  #13161f  (dark charcoal card)
- * - Surface Hover: #1a1e2a  (slightly lighter charcoal)
- * - Text Primary:  #e2e8f0  (near-white)
- * - Text Muted:    #64748b  (slate muted)
- * - Accent Cyan:   #00d4ff  (electric cyan)
- * - Accent Blue:   #3b82f6  (electric blue)
- * - Accent Glow:   rgba(0, 212, 255, 0.25)
+ * COBALT2 INSPIRED THEME:
+ * - Background:    #071228  (deep cobalt midnight)
+ * - Card Surface:  #0d1a33  (graphite navy panel)
+ * - Surface Hover: #112448  (elevated cobalt)
+ * - Text Primary:  #eaf3ff  (soft white)
+ * - Text Muted:    #a8bedc  (muted steel cyan)
+ * - Accent Cyan:   #36f3ff  (electric cyan)
+ * - Accent Blue:   #2d7fff  (editor blue)
+ * - Accent Gold:   #ffd166  (warm gold highlight)
+ * - Accent Glow:   rgba(54, 243, 255, 0.28)
  * - Border:        rgba(0, 212, 255, 0.15)
  *
  * FONTS: Exo 2 (headings) + Inter (body)
@@ -23,27 +24,30 @@
    ============================================ */
 
 :root {
-    --lx-bg:           #0a0a0f;
-    --lx-bg-alt:       #0d1117;
-    --lx-card:         #13161f;
-    --lx-card-hover:   #1a1e2a;
-    --lx-surface:      #1e2330;
-    --lx-border:       rgba(0, 212, 255, 0.15);
-    --lx-border-hover: rgba(0, 212, 255, 0.4);
+    --lx-bg:           #071228;
+    --lx-bg-alt:       #0a1730;
+    --lx-card:         #0d1a33;
+    --lx-card-hover:   #112448;
+    --lx-surface:      #132b57;
+    --lx-border:       rgba(54, 243, 255, 0.18);
+    --lx-border-hover: rgba(54, 243, 255, 0.45);
 
-    --lx-text:         #e2e8f0;
-    --lx-text-muted:   #94a3b8;
-    --lx-text-dim:     #64748b;
+    --lx-text:         #eaf3ff;
+    --lx-text-muted:   #a8bedc;
+    --lx-text-dim:     #7894b9;
 
-    --lx-accent:       #00d4ff;
-    --lx-accent-dim:   rgba(0, 212, 255, 0.08);
-    --lx-accent-glow:  rgba(0, 212, 255, 0.25);
-    --lx-blue:         #3b82f6;
-    --lx-blue-dim:     rgba(59, 130, 246, 0.1);
+    --lx-accent:       #36f3ff;
+    --lx-accent-dim:   rgba(54, 243, 255, 0.1);
+    --lx-accent-glow:  rgba(54, 243, 255, 0.28);
+    --lx-blue:         #2d7fff;
+    --lx-blue-dim:     rgba(45, 127, 255, 0.16);
+    --lx-gold:         #ffd166;
+    --lx-gold-dim:     rgba(255, 209, 102, 0.16);
+    --lx-gold-glow:    rgba(255, 209, 102, 0.3);
 
-    --lx-glow-sm:  0 0 10px rgba(0, 212, 255, 0.2);
-    --lx-glow-md:  0 0 20px rgba(0, 212, 255, 0.3);
-    --lx-glow-lg:  0 0 40px rgba(0, 212, 255, 0.2);
+    --lx-glow-sm:  0 0 12px rgba(54, 243, 255, 0.24);
+    --lx-glow-md:  0 0 22px rgba(54, 243, 255, 0.32);
+    --lx-glow-lg:  0 0 40px rgba(45, 127, 255, 0.25);
 
     --lx-font-head: 'Exo 2', 'Rajdhani', 'Segoe UI', sans-serif;
     --lx-font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
@@ -76,7 +80,10 @@ html {
 }
 
 body {
-    background: var(--lx-bg) !important;
+    background:
+        radial-gradient(circle at 12% 0%, rgba(45, 127, 255, 0.2), transparent 45%),
+        radial-gradient(circle at 92% 12%, rgba(54, 243, 255, 0.12), transparent 38%),
+        linear-gradient(180deg, #0a1730 0%, #071228 100%) !important;
     color: var(--lx-text) !important;
     font-family: var(--lx-font-body) !important;
     line-height: 1.6 !important;
@@ -84,6 +91,40 @@ body {
     padding: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(54, 243, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(54, 243, 255, 0.04) 1px, transparent 1px);
+    background-size: 38px 38px;
+    opacity: 0.24;
+    z-index: 0;
+}
+
+body::after {
+    content: "X";
+    position: fixed;
+    right: 3vw;
+    bottom: -20px;
+    font-family: 'Orbitron', 'Rajdhani', sans-serif;
+    font-size: clamp(120px, 22vw, 320px);
+    line-height: 1;
+    font-weight: 900;
+    color: rgba(255, 209, 102, 0.06);
+    text-shadow: 0 0 40px rgba(45, 127, 255, 0.25);
+    pointer-events: none;
+    z-index: 0;
+}
+
+body > * {
+    position: relative;
+    z-index: 1;
 }
 
 .container {
@@ -136,7 +177,7 @@ a {
 
 a:hover,
 a:focus {
-    color: #40e0ff !important;
+    color: var(--lx-gold) !important;
     text-decoration: none !important;
     opacity: 0.9 !important;
 }
@@ -299,14 +340,15 @@ li {
     justify-content: center !important;
     width: 44px !important;
     height: 44px !important;
-    background: linear-gradient(135deg, #00d4ff, #3b82f6) !important;
+    background: linear-gradient(135deg, #2d7fff, #36f3ff) !important;
     border-radius: 8px !important;
     font-family: 'Exo 2', sans-serif !important;
     font-weight: 900 !important;
     font-size: 22px !important;
-    color: #0a0a0f !important;
+    color: #041224 !important;
     letter-spacing: -1px !important;
-    box-shadow: 0 0 10px rgba(0, 212, 255, 0.2) !important;
+    border: 1px solid rgba(255, 209, 102, 0.45) !important;
+    box-shadow: 0 0 14px rgba(54, 243, 255, 0.35), 0 0 20px rgba(255, 209, 102, 0.2) !important;
     flex-shrink: 0 !important;
     text-shadow: none !important;
 }
@@ -330,7 +372,7 @@ li {
 }
 
 .lx-logo-name span {
-    color: var(--lx-accent) !important;
+    color: var(--lx-gold) !important;
     text-shadow: none !important;
 }
 
@@ -354,7 +396,7 @@ header,
 nav,
 #header,
 .main-header {
-    background: rgba(10, 10, 15, 0.97) !important;
+    background: linear-gradient(180deg, rgba(8, 20, 44, 0.98), rgba(8, 20, 44, 0.94)) !important;
     border: none !important;
     box-shadow: 0 1px 0 rgba(0, 212, 255, 0.15), 0 4px 20px rgba(0, 0, 0, 0.5) !important;
 }
@@ -503,9 +545,9 @@ a[class*="btn"],
 .btn-primary,
 .btn-robot,
 .btn-wds {
-    background: transparent !important;
-    color: #00d4ff !important;
-    border: 1px solid #00d4ff !important;
+    background: linear-gradient(135deg, #12306a, #1f4ca3) !important;
+    color: var(--lx-text) !important;
+    border: 1px solid rgba(54, 243, 255, 0.38) !important;
     padding: 10px 24px !important;
     font-weight: 600 !important;
     border-radius: 6px !important;
@@ -524,28 +566,28 @@ button:hover,
 input[type="submit"]:hover,
 input[type="button"]:hover,
 a[class*="btn"]:hover {
-    background: #00d4ff !important;
-    color: #0a0a0f !important;
-    border-color: #00d4ff !important;
+    background: linear-gradient(135deg, #124080, #2d7fff) !important;
+    color: #f3fbff !important;
+    border-color: #36f3ff !important;
     transform: translateY(-2px) !important;
     text-decoration: none !important;
-    box-shadow: 0 0 10px rgba(0, 212, 255, 0.2) !important;
+    box-shadow: 0 0 16px rgba(54, 243, 255, 0.45), inset 0 0 0 1px rgba(255, 209, 102, 0.35) !important;
 }
 
 .btn-primary,
 .btn-filled {
-    background: #00d4ff !important;
-    color: #0a0a0f !important;
-    border-color: #00d4ff !important;
+    background: linear-gradient(135deg, #1f4ca3, #2d7fff) !important;
+    color: #f3fbff !important;
+    border-color: rgba(54, 243, 255, 0.5) !important;
     font-weight: 700 !important;
 }
 
 .btn-primary:hover,
 .btn-filled:hover {
-    background: #40e0ff !important;
-    border-color: #40e0ff !important;
-    color: #0a0a0f !important;
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3) !important;
+    background: linear-gradient(135deg, #2360cc, #36f3ff) !important;
+    border-color: #36f3ff !important;
+    color: #051225 !important;
+    box-shadow: 0 0 24px rgba(54, 243, 255, 0.42), 0 0 18px rgba(255, 209, 102, 0.24) !important;
 }
 
 .btn-secondary {
@@ -1081,7 +1123,7 @@ div[style*="background-color: #E8E4D8"] {
 *[style*="color:#D2B48C"],
 *[style*="color: #A0522D"],
 *[style*="color:#A0522D"] {
-    color: #00d4ff !important;
+    color: var(--lx-gold) !important;
 }
 
 *[style*="color: #1a1a1a"],
@@ -1096,8 +1138,9 @@ div[style*="background-color: #E8E4D8"] {
 *[style*="background: #8B4513"],
 *[style*="background:#8B4513"],
 *[style*="background-color: #8B4513"] {
-    background: #00d4ff !important;
-    color: #0a0a0f !important;
+    background: linear-gradient(135deg, #1f4ca3, #2d7fff) !important;
+    color: #f3fbff !important;
+    border-color: rgba(54, 243, 255, 0.4) !important;
 }
 
 *[style*="color: #E8E4D8"],

@@ -102,33 +102,19 @@ function getDatabaseConnection() {
 }
 
 /**
- * Global variable to store debug info for login attempts
- * 
- * ⚠️ WARNING: This debug output is for TEMPORARY TROUBLESHOOTING only!
- * It exposes sensitive information like usernames, password hashes, and DB details.
- * REMOVE or DISABLE this debug code before deploying to production!
- */
-$GLOBALS['wds_login_debug'] = [];
-
-/**
- * Add a debug message to the global debug array
- * @param string $message Debug message
- * @param mixed $data Optional data to include
+ * Debug hook for login flow.
+ * Intentionally disabled in production to avoid retaining sensitive data.
  */
 function addLoginDebug($message, $data = null) {
-    $entry = ['message' => $message, 'time' => microtime(true)];
-    if ($data !== null) {
-        $entry['data'] = $data;
-    }
-    $GLOBALS['wds_login_debug'][] = $entry;
+    return;
 }
 
 /**
- * Get all debug messages
- * @return array Debug messages
+ * Return debug messages.
+ * Always empty in production mode.
  */
 function getLoginDebug() {
-    return $GLOBALS['wds_login_debug'];
+    return [];
 }
 
 /**

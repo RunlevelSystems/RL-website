@@ -278,7 +278,7 @@ if ($healthyCount === 0 && $totalCount > 0) $overallStatus = 'outage';
 
         <div class="footer">
             <p>Auto-refreshes every 60 seconds</p>
-            <p style="margin-top: 5px;">Powered by World Domination Software</p>
+            <p style="margin-top: 5px;">Powered by Level X Development</p>
         </div>
     </div>
 </body>

@@ -41,12 +41,12 @@
         .skill-card { 
             transition: transform 0.3s, box-shadow 0.3s; 
             background: rgba(255,255,255,0.08);
-            border: 2px solid rgba(0,200,81,0.2);
+            border: 2px solid rgba(54,243,255,0.2);
             color: #94a3b8;
         }
         .skill-card:hover { 
             transform: translateY(-5px); 
-            box-shadow: 0 10px 25px rgba(0,200,81,0.2);
+            box-shadow: 0 10px 25px rgba(54,243,255,0.2);
             border-color: #00d4ff;
             background: rgba(255,255,255,0.12);
         }
@@ -63,7 +63,7 @@
         .sticky-header {
             background: rgba(8,8,8,0.9);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0,200,81,0.2);
+            border-bottom: 1px solid rgba(54,243,255,0.2);
         }
         
         /* Button styling */
@@ -81,7 +81,7 @@
         .btn-primary:hover {
             background: #0ea5e9;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,200,81,0.3);
+            box-shadow: 0 8px 20px rgba(54,243,255,0.3);
             color: #080808;
             text-decoration: none;
         }
@@ -90,7 +90,7 @@
             background: rgba(255,255,255,0.1);
             color: #94a3b8;
             font-weight: 700;
-            border: 2px solid rgba(0,200,81,0.3);
+            border: 2px solid rgba(54,243,255,0.3);
             padding: 10px 22px;
             border-radius: 8px;
             text-decoration: none;
@@ -98,7 +98,7 @@
             transition: all 0.3s ease;
         }
         .btn-secondary:hover {
-            background: rgba(0,200,81,0.1);
+            background: rgba(54,243,255,0.1);
             border-color: #00d4ff;
             color: #94a3b8;
             text-decoration: none;
@@ -107,7 +107,7 @@
         /* Card backgrounds */
         .card-dark {
             background: rgba(255,255,255,0.08);
-            border: 2px solid rgba(0,200,81,0.2);
+            border: 2px solid rgba(54,243,255,0.2);
             border-radius: 16px;
             padding: 32px;
         }
@@ -129,7 +129,7 @@
         /* Process flow styling */
         .process-step {
             background: rgba(255,255,255,0.08);
-            border: 2px solid rgba(0,200,81,0.2);
+            border: 2px solid rgba(54,243,255,0.2);
             border-radius: 12px;
             padding: 20px;
             margin: 8px 0;
@@ -143,8 +143,8 @@
         /* Footer styling */
         .footer-dark {
             background: #0f1419;
-            color: #8B7355;
-            border-top: 1px solid rgba(0,200,81,0.2);
+            color: #7894b9;
+            border-top: 1px solid rgba(54,243,255,0.2);
         }
         
         /* Container spacing */
@@ -172,7 +172,7 @@
             background: #00d4ff;
             cursor: pointer;
             border: 2px solid #fff;
-            box-shadow: 0 2px 8px rgba(0,200,81,0.3);
+            box-shadow: 0 2px 8px rgba(54,243,255,0.3);
         }
         .profit-slider::-moz-range-thumb {
             width: 20px;
@@ -181,7 +181,7 @@
             background: #00d4ff;
             cursor: pointer;
             border: 2px solid #fff;
-            box-shadow: 0 2px 8px rgba(0,200,81,0.3);
+            box-shadow: 0 2px 8px rgba(54,243,255,0.3);
         }
         
         /* Progress bars */
@@ -235,7 +235,7 @@
                 <h1 style="font-size: clamp(36px, 5vw, 64px); font-weight: 900; color: #94a3b8; line-height: 1.1; margin-bottom: 24px;">
                     Build Projects <br><span style="color: #00d4ff;">That Matter</span>
                 </h1>
-                <p style="margin-top: 24px; font-size: clamp(18px, 2.5vw, 24px); max-width: 900px; margin-left: auto; margin-right: auto; color: #8B7355; line-height: 1.5;">
+                <p style="margin-top: 24px; font-size: clamp(18px, 2.5vw, 24px); max-width: 900px; margin-left: auto; margin-right: auto; color: #7894b9; line-height: 1.5;">
                     Our developer co-op offers real-world experience, collaborative projects, and a share of the profits. Work on meaningful projects while building your skills and portfolio.
                 </p>
                 <div style="margin-top: 40px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
@@ -249,7 +249,7 @@
             <div class="container-custom">
                 <div style="text-align: center; margin-bottom: 48px;">
                     <h2 style="font-size: clamp(32px, 4vw, 48px); font-weight: 900; color: #94a3b8; margin-bottom: 16px;">Skills You'll Develop</h2>
-                    <p style="font-size: 20px; max-width: 800px; margin: 0 auto; color: #8B7355;">Gain hands-on experience with skills that are valued in the industry. Click each card to see how it can appear on your resume.</p>
+                    <p style="font-size: 20px; max-width: 800px; margin: 0 auto; color: #7894b9;">Gain hands-on experience with skills that are valued in the industry. Click each card to see how it can appear on your resume.</p>
                 </div>
                 <div id="skill-cards-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
                 </div>
@@ -260,7 +260,7 @@
             <div class="container-custom">
                 <div style="text-align: center; margin-bottom: 48px;">
                     <h2 style="font-size: clamp(32px, 4vw, 48px); font-weight: 900; color: #94a3b8; margin-bottom: 16px;">Earnings Calculator</h2>
-                    <p style="font-size: 20px; max-width: 1000px; margin: 0 auto; color: #8B7355;">Our profit-sharing model is designed to be fair and transparent. As the co-op succeeds, contributor shares increase. Use the slider below to see how earnings scale at different profit levels.</p>
+                    <p style="font-size: 20px; max-width: 1000px; margin: 0 auto; color: #7894b9;">Our profit-sharing model is designed to be fair and transparent. As the co-op succeeds, contributor shares increase. Use the slider below to see how earnings scale at different profit levels.</p>
                 </div>
                 
                 <div style="display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center;">
@@ -281,7 +281,7 @@
                                     <div class="progress-bar-bg">
                                         <div id="manager-share-bar" class="progress-bar-fill-alt" style="width: 48%"></div>
                                     </div>
-                                    <div style="text-align: right; font-size: 14px; color: #8B7355; margin-top: 4px;" id="manager-share-value"></div>
+                                    <div style="text-align: right; font-size: 14px; color: #7894b9; margin-top: 4px;" id="manager-share-value"></div>
                                 </div>
                                 <div>
                                     <div style="display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 8px;">
@@ -291,7 +291,7 @@
                                     <div class="progress-bar-bg">
                                         <div id="contributor-share-bar" class="progress-bar-fill" style="width: 52%"></div>
                                     </div>
-                                    <div style="text-align: right; font-size: 14px; color: #8B7355; margin-top: 4px;" id="contributor-share-value"></div>
+                                    <div style="text-align: right; font-size: 14px; color: #7894b9; margin-top: 4px;" id="contributor-share-value"></div>
                                 </div>
                             </div>
                         </div>
@@ -309,7 +309,7 @@
             <div class="container-custom">
                 <div style="text-align: center; margin-bottom: 48px;">
                     <h2 style="font-size: clamp(32px, 4vw, 48px); font-weight: 900; color: #94a3b8; margin-bottom: 16px;">Our Revenue Model</h2>
-                    <p style="font-size: 20px; max-width: 1000px; margin: 0 auto; color: #8B7355;">We generate income through two streams: steady revenue from services that fund operations, and growth potential from our own products.</p>
+                    <p style="font-size: 20px; max-width: 1000px; margin: 0 auto; color: #7894b9;">We generate income through two streams: steady revenue from services that fund operations, and growth potential from our own products.</p>
                 </div>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 48px;">
                     <div style="text-align: center;">
@@ -321,7 +321,7 @@
                             <div style="font-weight: 700; font-size: 24px; color: #475569;">↓</div>
                             <div class="process-step">Generate Monthly Recurring Revenue</div>
                             <div style="font-weight: 700; font-size: 24px; color: #475569;">↓</div>
-                            <div style="background: rgba(0,200,81,0.2); color: #00d4ff; font-weight: 600; padding: 20px; border-radius: 12px; border: 2px solid #00d4ff;">Shared Quarterly Profits</div>
+                            <div style="background: rgba(54,243,255,0.2); color: #00d4ff; font-weight: 600; padding: 20px; border-radius: 12px; border: 2px solid #00d4ff;">Shared Quarterly Profits</div>
                         </div>
                     </div>
                     <div style="text-align: center;">
@@ -333,13 +333,13 @@
                             <div style="font-weight: 700; font-size: 24px; color: #475569;">↓</div>
                             <div class="process-step">Game Sales & Revenue</div>
                             <div style="font-weight: 700; font-size: 24px; color: #475569;">↓</div>
-                            <div style="background: rgba(0,200,81,0.2); color: #00d4ff; font-weight: 600; padding: 20px; border-radius: 12px; border: 2px solid #00d4ff;">Additional Shared Profits</div>
+                            <div style="background: rgba(54,243,255,0.2); color: #00d4ff; font-weight: 600; padding: 20px; border-radius: 12px; border: 2px solid #00d4ff;">Additional Shared Profits</div>
                         </div>
                     </div>
                 </div>
                 <div style="text-align: center; margin-top: 64px;">
                     <h3 style="font-size: 24px; font-weight: 700; color: #94a3b8; margin-bottom: 16px;">Tiered Profit Distribution</h3>
-                    <p style="color: #8B7355; max-width: 800px; margin: 0 auto 32px; font-size: 16px;">The manager's share is higher on initial profits to reinvest in infrastructure, while the contributors' share increases significantly at higher profit levels.</p>
+                    <p style="color: #7894b9; max-width: 800px; margin: 0 auto 32px; font-size: 16px;">The manager's share is higher on initial profits to reinvest in infrastructure, while the contributors' share increases significantly at higher profit levels.</p>
                     <div class="bar-chart-container">
                          <canvas id="tierBarChart"></canvas>
                     </div>
@@ -350,7 +350,7 @@
 
     <footer class="footer-dark" style="margin-top: 80px;">
         <div class="container-custom" style="padding: 32px 20px; text-align: center;">
-            <p style="margin: 0; color: #8B7355;">&copy; 2025 Level X Development. Building careers, together.</p>
+            <p style="margin: 0; color: #7894b9;">&copy; 2025 Level X Development. Building careers, together.</p>
             <p style="margin: 8px 0 0; font-size: 14px; color: #64748b;">
                 <a href="index.php" style="color: #00d4ff; text-decoration: none;">← Back to Main Site</a> | 
                 <a href="joinus.php" style="color: #00d4ff; text-decoration: none;">Apply Now</a>
@@ -376,7 +376,7 @@
                 card.innerHTML = `
                     <div style="font-size: 48px; margin-bottom: 16px;">${skill.icon}</div>
                     <h3 style="font-size: 20px; font-weight: 700; color: #94a3b8; margin-bottom: 8px;">${skill.title}</h3>
-                    <p class="original-text" style="color: #8B7355;">Click to see a resume example</p>
+                    <p class="original-text" style="color: #7894b9;">Click to see a resume example</p>
                     <p class="resume-text" style="color: #00d4ff; font-weight: 600; display: none;"><strong>Resume:</strong> ${skill.resume}</p>
                 `;
                 skillCardsContainer.appendChild(card);

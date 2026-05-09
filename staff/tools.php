@@ -29,61 +29,63 @@ $page_description = 'Download scripts and deploy to servers via wget or manual c
     <style>
         /* Toolbox cards use unified light tan palette */
         .staff-login .download-all-box {
-            background: #D4CFC0 !important;
-            border: 2px solid #B8A996 !important;
+            background: #0d1a33 !important;
+            border: 2px solid rgba(54,243,255,0.25) !important;
             border-radius: 14px !important;
             padding: 30px;
             margin-bottom: 30px;
             text-align: center;
             box-shadow: 0 6px 16px rgba(0,0,0,0.18) !important;
-            color: #1a1a1a !important;
+            color: #eaf3ff !important;
         }
 
         .staff-login .download-all-box h3 {
             margin-top: 0;
-            color: #8B4513 !important;
+            color: #ffd166 !important;
         }
 
         .staff-login .download-all-box p {
-            color: #1a1a1a !important;
+            color: #a8bedc !important;
         }
 
         .staff-login .download-all-box .btn-download-all {
-            background: #8B4513 !important;
-            color: #E8E4D8 !important;
+            background: linear-gradient(135deg, #1f4ca3, #2d7fff) !important;
+            border: 1px solid rgba(54,243,255,0.4) !important;
+            color: #f4fbff !important;
         }
 
         .staff-login .tool-card {
-            background: #D4CFC0 !important;
-            border: 1px solid #B8A996 !important;
+            background: #0d1a33 !important;
+            border: 1px solid rgba(54,243,255,0.25) !important;
             border-radius: 12px !important;
             padding: 25px;
             margin-bottom: 25px;
             box-shadow: 0 6px 16px rgba(0,0,0,0.18) !important;
-            color: #1a1a1a !important;
+            color: #eaf3ff !important;
         }
 
         .staff-login .tool-card h3 {
             margin-top: 0;
-            color: #8B4513 !important;
+            color: #ffd166 !important;
         }
 
         .staff-login .tool-card :is(p, li, span, td, th, label, small, strong, em, ul, ol) {
-            color: #1a1a1a !important;
+            color: #a8bedc !important;
         }
 
         .staff-login .tool-card a:not(.btn-download) {
-            color: #8B4513 !important;
+            color: #ffd166 !important;
         }
 
         .tool-card a.btn-download {
-            color: #E8E4D8 !important;
+            color: #f4fbff !important;
         }
 
         .tool-meta code {
-            background: #E8E4D8;
+            background: #132b57;
             padding: 2px 6px;
             border-radius: 6px;
+            color: #36f3ff;
         }
 
         .tool-card a.btn-download {
@@ -92,15 +94,15 @@ $page_description = 'Download scripts and deploy to servers via wget or manual c
         }
 
         .staff-login .dir-notice {
-            background: #D4CFC0 !important;
+            background: #0d1a33 !important;
             padding: 18px;
             border-radius: 10px;
-            border-left: 4px solid #8B4513 !important;
-            color: #1a1a1a !important;
+            border-left: 4px solid #ffd166 !important;
+            color: #a8bedc !important;
         }
 
         .staff-login .dir-notice :is(p, li, span, strong, code) {
-            color: #1a1a1a !important;
+            color: #a8bedc !important;
         }
 
         .wget-command {
@@ -108,7 +110,7 @@ $page_description = 'Download scripts and deploy to servers via wget or manual c
             padding: 15px;
             border-radius: 8px;
             font-family: monospace;
-            color: #E5E7EB !important;
+            color: #eaf3ff !important;
             margin-top: 15px;
             word-break: break-all;
         }
@@ -144,7 +146,7 @@ $page_description = 'Download scripts and deploy to servers via wget or manual c
             <div class="col-sm-12">
                 <div class="title-box">
                     <p>Staff Toolbox</p>
-                    <h2 class="title mt0" style="color:#8B4513;">Operations Scripts & Docs</h2>
+                    <h2 class="title mt0" style="color:#ffd166;">Operations Scripts & Docs</h2>
                 </div>
             </div>
         </div>
@@ -154,13 +156,13 @@ $page_description = 'Download scripts and deploy to servers via wget or manual c
             <div class="col-sm-12">
                 <div class="download-all-box">
                     <h3><i class="ion-android-download"></i> Download All Tools</h3>
-                    <p style="color:#E5E7EB;">Get the complete toolkit in a single ZIP file for easy deployment.</p>
+                    <p style="color:#eaf3ff;">Get the complete toolkit in a single ZIP file for easy deployment.</p>
                     <a href="../ops-tools/wds-tools.zip" class="btn-download-all" download><i class="ion-ios-cloud-download"></i> Download wds-tools.zip</a>
                     <div class="wget-command">
                         <strong style="color:#FDE68A;">Quick Deploy via wget:</strong><br>
                         <code>cd /tmp && wget -q https://core.iaregamer.com/ops-tools/wds-tools.zip && unzip -o wds-tools.zip -d /home/gameserver/tools/ && rm wds-tools.zip</code>
                     </div>
-                    <p style="color:#9CA3AF; font-size:0.9rem; margin-top:15px;">
+                    <p style="color:#7894b9; font-size:0.9rem; margin-top:15px;">
                         For DR failover, change <code>core.iaregamer.com</code> to <code>core-dr.iaregamer.com</code>. 
                         Always verify the source is trusted before deploying scripts.
                     </p>
@@ -193,7 +195,7 @@ $page_description = 'Download scripts and deploy to servers via wget or manual c
             <div class="col-sm-12">
                 <div class="tool-card">
                     <h3><i class="ion-document-text"></i> Password Rotation Reference</h3>
-                    <ol style="color:#DDD; padding-left:20px;">
+                    <ol style="color:#a8bedc; padding-left:20px;">
                         <li>Rotate Linux + MySQL creds with <code>check_servers.sh --password "NewPass!"</code> on core.</li>
                         <li>Re-seed database grants via <code>setup_mysql_users.sh</code> on the MySQL host.</li>
                         <li>Update <code>tools/servers.txt</code> if hosts were added/removed.</li>

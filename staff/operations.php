@@ -44,7 +44,7 @@ $page_description = 'Ubuntu 24.04 baselines, PHP 7.4 requirement, MySQL 5.7 Dock
             <div class="col-sm-12">
                 <div class="title-box">
                     <p>Infrastructure</p>
-                    <h2 class="title mt0" style="color:#8B4513;">Panel, Agents, Websites</h2>
+                    <h2 class="title mt0" style="color:#ffd166;">Panel, Agents, Websites</h2>
                 </div>
             </div>
         </div>

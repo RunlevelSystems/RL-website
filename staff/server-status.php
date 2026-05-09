@@ -71,7 +71,7 @@ function getStatusInfo($server) {
     } elseif ($server['cpu_used_pct'] > 90 || $memPct > 95 || $diskPct > 95) {
         return ['status' => 'degraded', 'color' => '#f59e0b', 'label' => 'Degraded', 'bg' => 'rgba(245,158,11,0.2)'];
     }
-    return ['status' => 'healthy', 'color' => '#22c55e', 'label' => 'Operational', 'bg' => 'rgba(34,197,94,0.2)'];
+    return ['status' => 'healthy', 'color' => '#36f3ff', 'label' => 'Operational', 'bg' => 'rgba(54,243,255,0.2)'];
 }
 
 function formatBytes($bytes) {
@@ -118,12 +118,12 @@ $totalCount = count($servers);
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         .staff-login .page-bgc {
-            background-color: #E8E4D8 !important;
+            background-color: #071228 !important;
         }
 
         .status-card {
-            background: #D4CFC0;
-            border: 1px solid #B8A996;
+            background: #0d1a33;
+            border: 1px solid rgba(54,243,255,0.25);
             border-radius: 12px;
             padding: 25px;
             margin-bottom: 25px;
@@ -132,7 +132,7 @@ $totalCount = count($servers);
 
         .status-card h3 {
             margin-top: 0;
-            color: #8B4513 !important;
+            color: #ffd166 !important;
         }
 
         .summary-grid {
@@ -143,35 +143,35 @@ $totalCount = count($servers);
         }
 
         .summary-box {
-            background: #E8E4D8;
+            background: #0f2142;
             border-radius: 12px;
             padding: 20px;
             text-align: center;
-            border: 1px solid #B8A996;
+            border: 1px solid rgba(54,243,255,0.25);
         }
 
         .summary-value {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #1a1a1a;
+            color: #eaf3ff;
         }
 
         .summary-label {
-            color: #4a4a4a;
+            color: #a8bedc;
             font-size: 0.9rem;
             margin-top: 5px;
         }
 
         .server-row {
-            background: #E8E4D8;
+            background: #0f2142;
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 15px;
-            border: 1px solid #B8A996;
+            border: 1px solid rgba(54,243,255,0.25);
         }
 
         .server-row:hover {
-            background: #ddd5c4;
+            background: #132b57;
         }
 
         .server-header {
@@ -184,7 +184,7 @@ $totalCount = count($servers);
         .server-name {
             font-size: 1.25rem;
             font-weight: 600;
-            color: #4a4a4a;
+            color: #eaf3ff;
         }
 
         .server-ip {
@@ -213,11 +213,11 @@ $totalCount = count($servers);
         .metric-value {
             font-size: 1.5rem;
             font-weight: 600;
-            color: #1a1a1a;
+            color: #eaf3ff;
         }
 
         .metric-label {
-            color: #6b7280;
+            color: #a8bedc;
             font-size: 0.8rem;
             margin-top: 4px;
         }
@@ -238,7 +238,7 @@ $totalCount = count($servers);
         .top-procs {
             margin-top: 15px;
             padding-top: 15px;
-            border-top: 1px solid rgba(0,0,0,0.08);
+            border-top: 1px solid rgba(54,243,255,0.2);
         }
 
         .top-procs h5 {
@@ -260,12 +260,12 @@ $totalCount = count($servers);
         }
 
         .proc-table td {
-            color: #1f2933;
+            color: #a8bedc;
             padding: 4px 0;
         }
 
         .proc-table td:first-child {
-            color: #111827;
+            color: #eaf3ff;
         }
 
         .last-update {
@@ -298,8 +298,8 @@ $totalCount = count($servers);
             <div class="col-sm-12">
                 <div class="title-box">
                     <p>Live Monitoring</p>
-                    <h2 class="title mt0" style="color:#8B4513;">Server Fleet Status</h2>
-                    <p style="color:#9CA3AF;">Data from <code>peer_status</code> database on core.iaregamer.com • Auto-refreshes every 60 seconds</p>
+                    <h2 class="title mt0" style="color:#ffd166;">Server Fleet Status</h2>
+                    <p style="color:#7894b9;">Data from <code>peer_status</code> database on core.iaregamer.com • Auto-refreshes every 60 seconds</p>
                 </div>
             </div>
         </div>
@@ -321,11 +321,11 @@ $totalCount = count($servers);
             <div class="col-sm-12">
                 <div class="summary-grid">
                     <div class="summary-box">
-                        <div class="summary-value" style="color: #fff;"><?php echo $totalCount; ?></div>
+                        <div class="summary-value" style="color: var(--lx-text);"><?php echo $totalCount; ?></div>
                         <div class="summary-label">Total Servers</div>
                     </div>
                     <div class="summary-box">
-                        <div class="summary-value" style="color: #22c55e;"><?php echo $healthyCount; ?></div>
+                        <div class="summary-value" style="color: var(--lx-accent);"><?php echo $healthyCount; ?></div>
                         <div class="summary-label">Operational</div>
                     </div>
                     <div class="summary-box">
@@ -347,7 +347,7 @@ $totalCount = count($servers);
                     <h3><i class="ion-ios-pulse"></i> Server Details</h3>
                     
                     <?php if (empty($servers)): ?>
-                    <p style="color: #9CA3AF; text-align: center; padding: 40px;">
+                    <p style="color: #7894b9; text-align: center; padding: 40px;">
                         No servers reporting. Run <code>report_server_status.sh</code> on each server to begin collecting metrics.
                     </p>
                     <?php else: ?>
@@ -378,21 +378,21 @@ $totalCount = count($servers);
                                 <div class="metric-value"><?php echo number_format($srv['cpu_used_pct'], 1); ?>%</div>
                                 <div class="metric-label">CPU Usage</div>
                                 <div class="progress-bar">
-                                    <div class="progress-fill" style="width: <?php echo min(100, $srv['cpu_used_pct']); ?>%; background: <?php echo $srv['cpu_used_pct'] > 80 ? '#ef4444' : ($srv['cpu_used_pct'] > 50 ? '#f59e0b' : '#22c55e'); ?>;"></div>
+                                    <div class="progress-fill" style="width: <?php echo min(100, $srv['cpu_used_pct']); ?>%; background: <?php echo $srv['cpu_used_pct'] > 80 ? '#ef4444' : ($srv['cpu_used_pct'] > 50 ? '#f59e0b' : '#36f3ff'); ?>;"></div>
                                 </div>
                             </div>
                             <div class="metric-box">
                                 <div class="metric-value"><?php echo number_format($memPct, 1); ?>%</div>
                                 <div class="metric-label">Memory (<?php echo formatBytes($srv['mem_used_bytes']); ?> / <?php echo formatBytes($srv['mem_total_bytes']); ?>)</div>
                                 <div class="progress-bar">
-                                    <div class="progress-fill" style="width: <?php echo min(100, $memPct); ?>%; background: <?php echo $memPct > 80 ? '#ef4444' : ($memPct > 50 ? '#f59e0b' : '#22c55e'); ?>;"></div>
+                                    <div class="progress-fill" style="width: <?php echo min(100, $memPct); ?>%; background: <?php echo $memPct > 80 ? '#ef4444' : ($memPct > 50 ? '#f59e0b' : '#36f3ff'); ?>;"></div>
                                 </div>
                             </div>
                             <div class="metric-box">
                                 <div class="metric-value"><?php echo number_format($diskPct, 1); ?>%</div>
                                 <div class="metric-label">Disk (<?php echo formatBytes($srv['disk_used_bytes']); ?> / <?php echo formatBytes($srv['disk_total_bytes']); ?>)</div>
                                 <div class="progress-bar">
-                                    <div class="progress-fill" style="width: <?php echo min(100, $diskPct); ?>%; background: <?php echo $diskPct > 80 ? '#ef4444' : ($diskPct > 50 ? '#f59e0b' : '#22c55e'); ?>;"></div>
+                                    <div class="progress-fill" style="width: <?php echo min(100, $diskPct); ?>%; background: <?php echo $diskPct > 80 ? '#ef4444' : ($diskPct > 50 ? '#f59e0b' : '#36f3ff'); ?>;"></div>
                                 </div>
                             </div>
                         </div>
@@ -442,14 +442,14 @@ $totalCount = count($servers);
             <div class="col-sm-12">
                 <div class="status-card">
                     <h3><i class="ion-wrench"></i> Monitoring Setup</h3>
-                    <p style="color:#DDD;">To add a new server to monitoring:</p>
-                    <ol style="color:#CCC; padding-left:20px; margin-top:10px;">
+                    <p style="color:#a8bedc;">To add a new server to monitoring:</p>
+                    <ol style="color:#a8bedc; padding-left:20px; margin-top:10px;">
                         <li>Copy <code>ops-tools/scripts/report_server_status.sh</code> to <code>/home/gameserver/tools/scripts/</code></li>
                         <li>Ensure <code>/home/gameserver/tools/.password</code> exists with the MySQL password</li>
                         <li>Run: <code>./report_server_status.sh --mysql-host core.iaregamer.com</code></li>
                         <li>Add to cron for regular updates: <code>*/5 * * * * /home/gameserver/tools/scripts/report_server_status.sh</code></li>
                     </ol>
-                    <p style="color:#9CA3AF; margin-top:15px; font-size:0.9rem;">
+                    <p style="color:#7894b9; margin-top:15px; font-size:0.9rem;">
                         The script auto-creates the database and tables on first run. For DR failover, change <code>--mysql-host</code> to <code>core-dr.iaregamer.com</code>.
                     </p>
                 </div>
