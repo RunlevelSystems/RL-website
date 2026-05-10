@@ -8,48 +8,33 @@
 
         <title>Core Loop Development | Contact</title>
 
-        <!-- CSS -->
         <link href="assets/css/coreloop.css" rel="stylesheet">
-
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
     </head>
     <body>
-        <?php 
-        // Page-specific variables
+        <?php
         $current_page = 'contact';
         $header_class = 'contact-header inner-header';
         $page_subtitle = 'Engineer • Ship • Scale';
-        
-        // Handle form submission
+
         $message_sent = false;
         $error_message = '';
-        
+
         if ($_POST) {
             $fname = $_POST['fname'] ?? '';
-            $lname = $_POST['lname'] ?? '';
             $email = $_POST['email'] ?? '';
-            $phone = $_POST['phone'] ?? '';
             $message = $_POST['message'] ?? '';
-            
+
             if (!empty($fname) && !empty($email) && !empty($message)) {
-                // Here you would normally send the email
-                // For now, we'll just show a success message
                 $message_sent = true;
             } else {
-                $error_message = 'Please fill in all required fields (First Name, Email, and Message).';
+                $error_message = 'Please fill in all required fields (Name, Email, and Message).';
             }
         }
         ?>
-    <!-- Include Site Header -->
-    <?php include 'includes/header.php'; ?>
-        
-    <!-- Include Navigation Header -->
-    <?php include 'includes/navigation.php'; ?>
 
-    <!-- Contact -->
+        <?php include 'includes/header.php'; ?>
+        <?php include 'includes/navigation.php'; ?>
+
         <section class="contact">
             <div class="container page-bgc">
                 <div class="row">
@@ -59,141 +44,82 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="boxed">
                         <div class="col-sm-12">
-                            <p class="inner-p">
-                                We'd love to hear from you! Whether you have questions about our projects, want to collaborate, 
-                                or need technical support, don't hesitate to reach out. Join our Discord community for real-time chat 
-                                or send us a message using the form below.
-                            </p>
+                            <p class="inner-p">We'd love to hear from you. Questions, collaboration requests, and support inquiries are all welcome.</p>
+                            <p class="inner-p">This form submits to our Discord server. You can also join directly using the invite on this page.</p>
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="boxed">
-                        <!-- Email Form Section - Left Side -->
                         <div class="col-sm-6">
                             <div class="wds-card">
-                                <h3 style="color: #00a8ff; margin-bottom: 20px; font-size: 28px;">Get in Touch</h3>
-                                <p style="color: var(--wds-muted); margin-bottom: 30px; font-size: 16px; line-height: 1.6;">
-                                    Have a question or want to collaborate? Fill out the form below and we'll get back to you as soon as possible.
-                                </p>
-                                <p style="color: var(--wds-muted); margin-bottom: 30px; font-size: 14px; line-height: 1.6;">
-                                    <em>Note: This form submits to our Discord server. You can also join our server directly using the link on the right.</em>
-                                </p>
-                                
+                                <h3>Get in Touch</h3>
+
                                 <?php if ($message_sent): ?>
-                                    <div style="background-color: rgba(76, 201, 255, 0.06); color: #e2e8f0; padding: 20px; border-radius: 8px; margin-bottom: 20px; text-align: center; border: 1px solid rgba(76, 201, 255,0.25);">
-                                        <strong>Thank you!</strong> Your message has been sent successfully. We'll get back to you soon!
+                                    <div class="info-box">
+                                        <strong>Thank you.</strong> Your message has been sent successfully.
                                     </div>
                                 <?php elseif ($error_message): ?>
-                                    <div style="background-color: rgba(248, 113, 113, 0.2); color: var(--wds-muted); padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 2px solid #f87171;">
+                                    <div class="info-box">
                                         <strong>Error:</strong> <?php echo htmlspecialchars($error_message); ?>
                                     </div>
                                 <?php endif; ?>
-                                
+
                                 <form action="contact.php" class="contact-form" id="contactForm" method="post">
-                                    <div style="margin-bottom: 25px;">
-                                        <label style="display: block; color: #00a8ff; margin-bottom: 8px; font-weight: bold; font-size: 16px;">Name *</label>
-                                        <input type="text" name="fname" required 
-                                               style="width: 100%; padding: 14px; border-radius: 8px; background: var(--wds-panel); color: var(--wds-muted); font-size: 16px; border: 1px solid rgba(54,243,255,0.35);"
-                                               placeholder="Your name">
+                                    <div>
+                                        <label for="contact-name">Name *</label>
+                                        <input id="contact-name" type="text" name="fname" required placeholder="Your name">
                                     </div>
-                                    
-                                    <div style="margin-bottom: 25px;">
-                                        <label style="display: block; color: #00a8ff; margin-bottom: 8px; font-weight: bold; font-size: 16px;">Discord UserID <span style="color: #666; font-weight: normal;">(optional)</span></label>
-                                        <input type="text" name="discord_id" 
-                                               style="width: 100%; padding: 14px; border-radius: 8px; background: var(--wds-panel); color: var(--wds-muted); font-size: 16px; border: 1px solid rgba(54,243,255,0.35);"
-                                               placeholder="YourDiscordName#1234">
+                                    <div>
+                                        <label for="contact-discord">Discord UserID (optional)</label>
+                                        <input id="contact-discord" type="text" name="discord_id" placeholder="YourDiscordName#1234">
                                     </div>
-                                    
-                                    <div style="margin-bottom: 25px;">
-                                        <label style="display: block; color: #00a8ff; margin-bottom: 8px; font-weight: bold; font-size: 16px;">Email *</label>
-                                        <input type="email" name="email" required 
-                                               style="width: 100%; padding: 14px; border-radius: 8px; background: var(--wds-panel); color: var(--wds-muted); font-size: 16px; border: 1px solid rgba(54,243,255,0.35);"
-                                               placeholder="your@email.com">
+                                    <div>
+                                        <label for="contact-email">Email *</label>
+                                        <input id="contact-email" type="email" name="email" required placeholder="your@email.com">
                                     </div>
-                                    
-                                    <div style="margin-bottom: 30px;">
-                                        <label style="display: block; color: #00a8ff; margin-bottom: 8px; font-weight: bold; font-size: 16px;">Question / Comment *</label>
-                                        <textarea name="message" rows="6" required 
-                                                  style="width: 100%; padding: 14px; border-radius: 8px; background: var(--wds-panel); color: var(--wds-muted); font-size: 16px; resize: vertical; border: 1px solid rgba(54,243,255,0.35);"
-                                                  placeholder="Tell us about your project, question, or how we can help..."></textarea>
+                                    <div>
+                                        <label for="contact-message">Question / Comment *</label>
+                                        <textarea id="contact-message" name="message" rows="6" required placeholder="Tell us about your project, question, or how we can help..."></textarea>
                                     </div>
-                                    
-                                    <div style="text-align: center;">
-                                        <button type="submit" class="contact-submit-btn"
-                                                style="background: transparent; color: #00a8ff; border: 1px solid rgba(76, 201, 255,0.25); padding: 15px 40px; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: all 0.3s ease;">
-                                            Send Message
-                                        </button>
+                                    <div>
+                                        <button type="submit" class="btn">Send Message</button>
                                     </div>
                                 </form>
                                 <div id="contactFormResponse"></div>
                             </div>
-                        </div> <!-- /.col-sm-6 -->
-                        
-                        <!-- Discord Section - Right Side -->
+                        </div>
+
                         <div class="col-sm-6">
                             <div class="wds-card">
-                                <h3 style="color: #00a8ff; margin-bottom: 20px; font-size: 28px;">Join Our Community</h3>
-                                <p style="color: var(--wds-muted); margin-bottom: 30px; font-size: 16px; line-height: 1.6;">
-                                    <i class="ion-chatbubbles" style="margin-right: 8px; color: #00a8ff;"></i>
-                                    Chat with us directly on Discord! Ask questions, share ideas, and collaborate in real-time.
-                                </p>
-                                
-                                <!-- Discord Widget -->
-                                <div class="wds-card" style="margin: 20px 0; text-align: center;">
-                                    <div style="margin-bottom: 20px;">
-                                        <i class="ion-social-discord" style="font-size: 48px; color: #00a8ff;"></i>
-                                    </div>
-                                    <h4 style="margin-bottom: 15px; color: #00a8ff; font-size: 22px;">
-                                        Core Loop Development
-                                    </h4>
-                                    <p style="margin-bottom: 25px; color: var(--wds-muted); font-size: 15px; line-height: 1.6;">
-                                        Join our Discord community for real-time discussions, project updates, and collaboration opportunities!
-                                    </p>
-                                    <a href="https://discord.gg/XPFnNdWGyW" target="_blank" class="discord-join-btn"
-                                       style="background: transparent; color: #00a8ff; border: 1px solid rgba(76, 201, 255,0.25); padding: 14px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block; transition: all 0.3s ease; font-size: 16px;">
-                                        Join Discord Server
-                                    </a>
+                                <h3>Join Our Community</h3>
+                                <p>Chat with us directly on Discord. Ask questions, share ideas, and collaborate in real time.</p>
+                                <div class="wds-card text-center">
+                                    <i class="ion-social-discord" aria-hidden="true"></i>
+                                    <h4>Core Loop Development</h4>
+                                    <p>Join our Discord community for project updates and collaboration opportunities.</p>
+                                    <a href="https://discord.gg/XPFnNdWGyW" target="_blank" class="btn" rel="noopener">Join Discord Server</a>
                                 </div>
-                                
-                                <p style="margin-top: 20px; font-size: 14px; color: var(--wds-muted); text-align: center; line-height: 1.6;">
-                                    New to Discord? Click the button above to get started! Discord is free and works on desktop and mobile.
-                                </p>
+                                <p>New to Discord? The invite works on desktop and mobile.</p>
                             </div>
-                        </div> <!-- /.col-sm-6 -->
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-    <!-- Include Footer -->
-    <?php include 'includes/footer.php'; ?>
+        <?php include 'includes/footer.php'; ?>
 
-    <!-- Custom Styles for Contact Page -->
-    <style>
-        .contact-submit-btn:hover,
-        .discord-join-btn:hover {
-            background: #00a8ff !important;
-            color: #08111f !important;
-            text-decoration: none !important;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(76, 201, 255, 0.35);
-        }
-    </style>
-
-    <!-- Scripts -->
         <script src="assets/js/jquery-1.12.3.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/jquery.magnific-popup.min.js"></script>
         <script src="assets/js/owl.carousel.min.js"></script>
         <script src="assets/js/script.js"></script>
-        
-        <!-- Widgetbot HTML Embed Script -->
         <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
-
     </body>
 </html>
-
