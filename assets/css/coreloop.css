@@ -444,26 +444,26 @@ img {
 .project-row h6,
 .project-row .project-title,
 .project-row .project-title-text {
-  color: var(--core-cyan) !important;
+  color: var(--core-cyan);
 }
 
 .project-card p,
 .project-card .project-short,
 .project-row p,
 .project-row .project-short {
-  color: #dbeafe !important;
+  color: #dbeafe;
 }
 
 .project-card a,
 .project-row a {
-  color: var(--core-gold) !important;
+  color: var(--core-gold);
 }
 
 .project-card a:hover,
 .project-card a:focus,
 .project-row a:hover,
 .project-row a:focus {
-  color: var(--core-cyan) !important;
+  color: var(--core-cyan);
 }
 
 /* ============================================================
