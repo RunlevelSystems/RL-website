@@ -35,14 +35,14 @@ if ($is_in_wiki) {
                     <span class="core-brand-text">Core Loop</span>
                 </a>
 
-                <button type="button" class="navbar-toggle collapsed core-nav-toggle" data-toggle="collapse" data-target="#site-nav-bar" aria-expanded="false" aria-label="Open navigation menu">
+                <button type="button" class="navbar-toggle collapsed core-nav-toggle" data-toggle="collapse" data-target="#site-nav-bar" aria-expanded="false" aria-label="Toggle navigation menu">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
 
                 <div class="collapse navbar-collapse core-nav-collapse" id="site-nav-bar">
-                    <ul class="core-nav-links" role="list">
+                    <ul class="core-nav-links">
                         <li><a href="<?php echo $base_path; ?>index.php" <?php echo ($current_page == 'index') ? 'aria-current="page"' : ''; ?>>Home</a></li>
                         <li><a href="<?php echo $base_path; ?>projects.php" <?php echo ($current_page == 'projects') ? 'aria-current="page"' : ''; ?>>Projects</a></li>
                         <li><a href="<?php echo $base_path; ?>joinus.php" <?php echo ($current_page == 'joinus') ? 'aria-current="page"' : ''; ?>>Join Us</a></li>

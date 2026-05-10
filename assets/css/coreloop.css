@@ -362,7 +362,7 @@ img {
 
 @media (min-width: 993px) {
   .core-nav-collapse.collapse {
-    display: flex !important;
+    display: flex;
   }
 }
 
