@@ -23,16 +23,13 @@ $page_subtitle = 'Procedures & Process';
     <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="/assets/images/icon.png">
     <title>Core Loop | Staff Wiki</title>
-    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../assets/css/ionicons.css" rel="stylesheet">
-    <link href="../../assets/css/main.css" rel="stylesheet">
-    <link href="../../assets/css/wds-unified.css" rel="stylesheet">
+    <link href="../../assets/css/coreloop.css" rel="stylesheet">
     <style>
         .staff-login .page-bgc {
             background-color: #071228 !important;
         }
 
-        /* Override rust gradient cards from readability-improvements.css */
+        /* Override rust gradient cards */
         .staff-login .wiki-card {
             background: #0d1a33 !important;
             border-radius: 10px !important;

@@ -20,15 +20,7 @@ $page_description = 'Download scripts and deploy to servers via wget or manual c
     <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="/assets/images/icon.png">
     <title>Core Loop | Staff Toolbox</title>
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/css/ionicons.css" rel="stylesheet">
-    <link href="../assets/css/main.css" rel="stylesheet">
-    <link href="../assets/css/wds-unified.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Toolbox cards use unified light tan palette */
+    <link href="../assets/css/coreloop.css" rel="stylesheet">
         .staff-login .download-all-box {
             background: #0d1a33 !important;
             border: 2px solid rgba(54,243,255,0.25) !important;

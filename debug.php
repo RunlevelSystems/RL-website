@@ -16,7 +16,7 @@ echo "<h3>File Existence Check:</h3>";
 $files_to_check = [
     'assets/images/logo.png',
     'assets/images/code.png', 
-    'assets/css/main.css',
+    'assets/css/coreloop.css',
     'includes/navigation.php',
     'includes/header.php'
 ];
