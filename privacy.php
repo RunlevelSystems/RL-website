@@ -8,226 +8,81 @@
 
         <title>Core Loop Development | Privacy Policy</title>
 
-        <!-- CSS -->
         <link href="assets/css/coreloop.css" rel="stylesheet">
-
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
     </head>
     <body>
-        <?php 
-        // Page-specific variables
+        <?php
         $current_page = 'privacy';
         $header_class = 'privacy-header inner-header';
         $page_subtitle = 'Engineer • Ship • Scale';
         ?>
-    <!-- Include Site Header -->
-    <?php include 'includes/header.php'; ?>
-        
-    <!-- Include Navigation Header -->
-    <?php include 'includes/navigation.php'; ?>
 
-    <!-- Privacy Policy -->
+        <?php include 'includes/header.php'; ?>
+        <?php include 'includes/navigation.php'; ?>
+
         <section class="privacy-policy">
             <div class="container page-bgc">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="title-box">
-                            <h2 class="title mt0">Privacy Policy</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="boxed">
-                        <div class="col-sm-12">
-                            <p class="inner-p" style="font-size: 14px; color: #7894b9;">Last updated: March 2026</p>
-                            <p class="inner-p">
-                                This privacy policy applies to all software, games, websites, and services created or published by Core Loop Development.
-                            </p>
-                            <p class="inner-p">
-                                This includes applications released under our main brand as well as products and services such as GameServers.World and any other projects developed by Core Loop Development.
-                            </p>
-                            <p class="inner-p">
-                                Our goal is simple: we create software and games for entertainment and useful services. We do not collect personal information unless it is necessary for the service to function.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <div class="row"><div class="col-sm-12"><div class="title-box"><h2 class="title mt0">Privacy Policy</h2></div></div></div>
 
-                <div class="row">
-                    <div class="boxed">
-                        <div class="col-sm-12">
-                            <div class="wds-card">
-                                <h3 style="color: #ffd166; margin-bottom: 15px;">Information We Collect</h3>
-                                <p style="color: #a8bedc; margin-bottom: 15px; font-size: 16px; line-height: 1.6;">
-                                    Most of our applications and services do not directly collect personal information.
-                                </p>
-                                <p style="color: #a8bedc; margin-bottom: 10px; font-size: 16px; line-height: 1.6;">
-                                    However, some apps or services may automatically collect limited technical information such as:
-                                </p>
-                                <ul style="color: #a8bedc; font-size: 16px; line-height: 1.8; padding-left: 20px; margin-bottom: 15px;">
-                                    <li>Device type</li>
-                                    <li>Operating system version</li>
-                                    <li>App usage statistics</li>
-                                    <li>Crash reports</li>
-                                    <li>Anonymous identifiers used for advertising or analytics</li>
-                                </ul>
-                                <p style="color: #a8bedc; font-size: 16px; line-height: 1.6;">
-                                    This information helps us improve stability, performance, and user experience.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="row"><div class="boxed"><div class="col-sm-12">
+                    <p class="inner-p">Last updated: March 2026</p>
+                    <p class="inner-p">This privacy policy applies to all software, games, websites, and services created or published by Core Loop Development.</p>
+                    <p class="inner-p">This includes applications under our main brand and products or services such as GameServers.World.</p>
+                    <p class="inner-p">We do not collect personal information unless it is necessary for the service to function.</p>
+                </div></div></div>
 
-                <div class="row">
-                    <div class="boxed">
-                        <div class="col-sm-12">
-                            <div class="wds-card">
-                                <h3 style="color: #ffd166; margin-bottom: 15px;">Advertising</h3>
-                                <p style="color: #a8bedc; margin-bottom: 15px; font-size: 16px; line-height: 1.6;">
-                                    Some of our applications may display advertisements provided by third-party advertising networks such as Google AdMob.
-                                </p>
-                                <p style="color: #a8bedc; margin-bottom: 15px; font-size: 16px; line-height: 1.6;">
-                                    Advertising providers may automatically collect anonymous device information in order to show relevant ads and measure ad performance.
-                                </p>
-                                <p style="color: #a8bedc; font-size: 16px; line-height: 1.6;">
-                                    Some apps may offer a one-time purchase to remove advertisements.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="row"><div class="boxed"><div class="col-sm-12"><div class="wds-card">
+                    <h3>Information We Collect</h3>
+                    <p>Most of our applications and services do not directly collect personal information.</p>
+                    <p>Some apps or services may collect limited technical information such as device type, OS version, usage statistics, crash reports, and anonymous identifiers for analytics or advertising.</p>
+                </div></div></div></div>
 
-                <div class="row">
-                    <div class="boxed">
-                        <div class="col-sm-12">
-                            <div class="wds-card">
-                                <h3 style="color: #ffd166; margin-bottom: 15px;">Analytics and Crash Reporting</h3>
-                                <p style="color: #a8bedc; margin-bottom: 10px; font-size: 16px; line-height: 1.6;">
-                                    Some applications may use analytics or crash reporting services to help us understand:
-                                </p>
-                                <ul style="color: #a8bedc; font-size: 16px; line-height: 1.8; padding-left: 20px; margin-bottom: 15px;">
-                                    <li>How the application is used</li>
-                                    <li>When crashes occur</li>
-                                    <li>How performance can be improved</li>
-                                </ul>
-                                <p style="color: #a8bedc; font-size: 16px; line-height: 1.6;">
-                                    This data is typically anonymous and used only to improve our products.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="row"><div class="boxed"><div class="col-sm-12"><div class="wds-card">
+                    <h3>Advertising</h3>
+                    <p>Some applications may display ads from third-party networks such as Google AdMob. Providers may collect anonymous device information for ad relevance and reporting.</p>
+                </div></div></div></div>
 
-                <div class="row">
-                    <div class="boxed">
-                        <div class="col-sm-12">
-                            <div class="wds-card">
-                                <h3 style="color: #ffd166; margin-bottom: 15px;">In-App Purchases</h3>
-                                <p style="color: #a8bedc; margin-bottom: 10px; font-size: 16px; line-height: 1.6;">
-                                    Some applications may offer optional in-app purchases such as:
-                                </p>
-                                <ul style="color: #a8bedc; font-size: 16px; line-height: 1.8; padding-left: 20px; margin-bottom: 15px;">
-                                    <li>Removing advertisements</li>
-                                    <li>Unlocking additional features</li>
-                                    <li>Game content or upgrades</li>
-                                </ul>
-                                <p style="color: #a8bedc; margin-bottom: 10px; font-size: 16px; line-height: 1.6;">
-                                    All purchases are securely processed through the platform provider (such as Google Play).
-                                </p>
-                                <p style="color: #a8bedc; font-size: 16px; line-height: 1.6;">
-                                    Core Loop Development does not store payment information.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="row"><div class="boxed"><div class="col-sm-12"><div class="wds-card">
+                    <h3>Analytics and Crash Reporting</h3>
+                    <p>Some applications may use analytics and crash reporting to improve stability and user experience.</p>
+                </div></div></div></div>
 
-                <div class="row">
-                    <div class="boxed">
-                        <div class="col-sm-12">
-                            <div class="wds-card">
-                                <h3 style="color: #ffd166; margin-bottom: 15px;">Children's Privacy</h3>
-                                <p style="color: #a8bedc; margin-bottom: 15px; font-size: 16px; line-height: 1.6;">
-                                    Our applications are generally intended for a general audience.
-                                </p>
-                                <p style="color: #a8bedc; font-size: 16px; line-height: 1.6;">
-                                    We do not knowingly collect personal information from children. If you believe a child has provided personal information through one of our services, please contact us and we will remove it.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="row"><div class="boxed"><div class="col-sm-12"><div class="wds-card">
+                    <h3>In-App Purchases</h3>
+                    <p>Some applications may offer optional purchases like ad removal or feature unlocks. Payments are processed by platform providers.</p>
+                </div></div></div></div>
 
-                <div class="row">
-                    <div class="boxed">
-                        <div class="col-sm-12">
-                            <div class="wds-card">
-                                <h3 style="color: #ffd166; margin-bottom: 15px;">Data Security</h3>
-                                <p style="color: #a8bedc; font-size: 16px; line-height: 1.6;">
-                                    We take reasonable steps to protect the limited information used by our applications and services. However, no method of transmission or storage is completely secure.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="row"><div class="boxed"><div class="col-sm-12"><div class="wds-card">
+                    <h3>Children's Privacy</h3>
+                    <p>We do not knowingly collect personal information from children. Contact us if you believe child data has been submitted through one of our services.</p>
+                </div></div></div></div>
 
-                <div class="row">
-                    <div class="boxed">
-                        <div class="col-sm-12">
-                            <div class="wds-card">
-                                <h3 style="color: #ffd166; margin-bottom: 15px;">Changes to This Policy</h3>
-                                <p style="color: #a8bedc; font-size: 16px; line-height: 1.6;">
-                                    We may update this privacy policy from time to time. When updates occur, the revised policy will be posted on this page.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="row"><div class="boxed"><div class="col-sm-12"><div class="wds-card">
+                    <h3>Data Security</h3>
+                    <p>We take reasonable measures to protect information used by our applications and services.</p>
+                </div></div></div></div>
 
-                <div class="row">
-                    <div class="boxed">
-                        <div class="col-sm-12">
-                            <div class="wds-card">
-                                <h3 style="color: #ffd166; margin-bottom: 15px;">Contact</h3>
-                                <p style="color: #a8bedc; margin-bottom: 15px; font-size: 16px; line-height: 1.6;">
-                                    If you have questions about this privacy policy or any products created by Core Loop Development, please contact us:
-                                </p>
-                                <p style="color: #a8bedc; font-size: 16px; line-height: 1.8;">
-                                    <strong>Core Loop Development</strong><br>
-                                    Website: <a href="https://coreloop.dev" style="color: #ffd166;">https://coreloop.dev</a><br>
-                                    Email: <a href="mailto:info@coreloop.dev" style="color: #ffd166;">info@coreloop.dev</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="row"><div class="boxed"><div class="col-sm-12"><div class="wds-card">
+                    <h3>Changes to This Policy</h3>
+                    <p>We may update this policy from time to time. Updated versions will be posted on this page.</p>
+                </div></div></div></div>
 
-                <div class="row">
-                    <div class="boxed">
-                        <div class="col-sm-12">
-                            <p class="inner-p" style="font-size: 14px; color: #7894b9;">
-                                This privacy policy applies to all applications, games, websites, and services created or published by Core Loop Development unless a specific product provides its own privacy policy.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
+                <div class="row"><div class="boxed"><div class="col-sm-12"><div class="wds-card">
+                    <h3>Contact</h3>
+                    <p>If you have questions about this privacy policy, please contact us:</p>
+                    <p><strong>Core Loop Development</strong><br>
+                    Website: <a href="https://coreloop.dev">https://coreloop.dev</a><br>
+                    Email: <a href="mailto:info@coreloop.dev">info@coreloop.dev</a></p>
+                </div></div></div></div>
             </div>
         </section>
 
-    <!-- Include Footer -->
-    <?php include 'includes/footer.php'; ?>
+        <?php include 'includes/footer.php'; ?>
 
-    <!-- Scripts -->
         <script src="assets/js/jquery-1.12.3.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/jquery.magnific-popup.min.js"></script>
         <script src="assets/js/owl.carousel.min.js"></script>
         <script src="assets/js/script.js"></script>
-
     </body>
 </html>
