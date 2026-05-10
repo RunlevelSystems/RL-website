@@ -65,3 +65,23 @@ if ($is_in_wiki) {
         </nav>
     </div>
 </section>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var navToggle = document.querySelector('.core-nav-toggle');
+    var navMenu = document.getElementById('site-nav-bar');
+    if (!navToggle || !navMenu) {
+        return;
+    }
+
+    var syncToggleState = function () {
+        var expanded = navMenu.classList.contains('in');
+        navToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        navToggle.setAttribute('aria-label', expanded ? 'Close navigation menu' : 'Open navigation menu');
+    };
+
+    syncToggleState();
+    navToggle.addEventListener('click', function () {
+        window.setTimeout(syncToggleState, 0);
+    });
+});
+</script>
