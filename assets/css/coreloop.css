@@ -234,6 +234,7 @@ img {
   min-height: 68px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
   position: relative;
 }
@@ -247,16 +248,11 @@ img {
   min-height: 44px;
 }
 
-.core-brand-icon {
+.core-brand-logo {
   width: auto;
-  max-height: 40px;
-}
-
-.core-brand-text {
-  color: #ffffff;
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  max-width: 260px;
+  height: auto;
+  object-fit: contain;
 }
 
 .core-nav-toggle {
@@ -268,6 +264,7 @@ img {
   padding: 0.45rem 0.55rem;
   min-width: 44px;
   min-height: 44px;
+  line-height: 1;
 }
 
 .core-nav-toggle .icon-bar {
@@ -353,21 +350,7 @@ img {
   color: #08111f;
 }
 
-.collapse {
-  display: none;
-}
-
-.collapse.in {
-  display: block;
-}
-
-@media (min-width: 993px) {
-  .core-nav-collapse.collapse {
-    display: flex;
-  }
-}
-
-@media (max-width: 992px) {
+@media (max-width: 768px) {
   .core-navbar {
     min-height: 62px;
   }
@@ -376,8 +359,8 @@ img {
     min-height: 62px;
   }
 
-  .core-brand-icon {
-    max-height: 36px;
+  .core-brand-logo {
+    max-width: 220px;
   }
 
   .core-nav-toggle {
@@ -402,11 +385,11 @@ img {
     gap: 0.5rem;
   }
 
-  .core-nav-collapse.collapse {
+  .core-nav-collapse {
     display: none;
   }
 
-  .core-nav-collapse.collapse.in {
+  .core-nav-collapse.is-open {
     display: flex;
   }
 
@@ -432,10 +415,6 @@ img {
 }
 
 @media (max-width: 500px) {
-  .core-brand-text {
-    font-size: 1rem;
-  }
-
   .core-nav-search {
     flex-direction: column;
   }
@@ -444,6 +423,47 @@ img {
     width: 100%;
     height: 40px;
   }
+}
+
+/* ============================================================
+   Dark Project Card Readability
+   ============================================================ */
+.project-card h1,
+.project-card h2,
+.project-card h3,
+.project-card h4,
+.project-card h5,
+.project-card h6,
+.project-card .project-title,
+.project-card .project-title-text,
+.project-row h1,
+.project-row h2,
+.project-row h3,
+.project-row h4,
+.project-row h5,
+.project-row h6,
+.project-row .project-title,
+.project-row .project-title-text {
+  color: var(--core-cyan);
+}
+
+.project-card p,
+.project-card .project-short,
+.project-row p,
+.project-row .project-short {
+  color: #dbeafe;
+}
+
+.project-card a,
+.project-row a {
+  color: var(--core-gold);
+}
+
+.project-card a:hover,
+.project-card a:focus,
+.project-row a:hover,
+.project-row a:focus {
+  color: var(--core-cyan);
 }
 
 /* ============================================================

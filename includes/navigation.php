@@ -31,17 +31,16 @@ if ($is_in_wiki) {
         <nav class="navbar core-navbar" role="navigation" aria-label="Primary navigation">
             <div class="core-nav-inner">
                 <a href="<?php echo $base_path; ?>index.php" class="core-brand" aria-label="Core Loop home">
-                    <img src="<?php echo $base_path; ?>assets/images/icon.png" alt="Core Loop" class="core-brand-icon">
-                    <span class="core-brand-text">Core Loop</span>
+                    <img src="<?php echo $base_path; ?>assets/images/logo.png" alt="Core Loop Development" class="core-brand-logo">
                 </a>
 
-                <button type="button" class="navbar-toggle collapsed core-nav-toggle" data-toggle="collapse" data-target="#site-nav-bar" aria-expanded="false" aria-label="Toggle navigation menu">
+                <button type="button" class="core-nav-toggle" aria-controls="site-nav-bar" aria-expanded="false" aria-label="Open navigation menu">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
 
-                <div class="collapse navbar-collapse core-nav-collapse" id="site-nav-bar">
+                <div class="core-nav-collapse" id="site-nav-bar">
                     <ul class="core-nav-links">
                         <li><a href="<?php echo $base_path; ?>index.php" <?php echo ($current_page == 'index') ? 'aria-current="page"' : ''; ?>>Home</a></li>
                         <li><a href="<?php echo $base_path; ?>projects.php" <?php echo ($current_page == 'projects') ? 'aria-current="page"' : ''; ?>>Projects</a></li>
@@ -73,15 +72,40 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
-    var syncToggleState = function () {
-        var expanded = navMenu.classList.contains('in');
-        navToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-        navToggle.setAttribute('aria-label', expanded ? 'Close navigation menu' : 'Open navigation menu');
+    var mobileMedia = window.matchMedia('(max-width: 768px)');
+    var syncToggleState = function (isOpen) {
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        navToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
     };
 
-    syncToggleState();
     navToggle.addEventListener('click', function () {
-        window.setTimeout(syncToggleState, 0);
+        var isOpen = navMenu.classList.toggle('is-open');
+        syncToggleState(isOpen);
     });
+
+    var closeMobileMenu = function () {
+        navMenu.classList.remove('is-open');
+        syncToggleState(false);
+    };
+
+    navMenu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+            if (mobileMedia.matches) {
+                closeMobileMenu();
+            }
+        });
+    });
+
+    var handleViewportChange = function (event) {
+        if (!event.matches) {
+            closeMobileMenu();
+        }
+    };
+
+    if (typeof mobileMedia.addEventListener === 'function') {
+        mobileMedia.addEventListener('change', handleViewportChange);
+    }
+
+    closeMobileMenu();
 });
 </script>
