@@ -27,15 +27,13 @@ $page_subtitle = 'Wiki Viewer';
     <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="/assets/images/icon.png">
     <title>Core Loop | Wiki - <?php echo htmlspecialchars($requested); ?></title>
-    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../assets/css/main.css" rel="stylesheet">
-    <link href="../../assets/css/wds-unified.css" rel="stylesheet">
+    <link href="../../assets/css/coreloop.css" rel="stylesheet">
     <style>
         .staff-login .page-bgc {
             background-color: #071228 !important;
         }
 
-        /* Override rust gradient wiki content from readability-improvements.css */
+        /* Override rust gradient wiki content */
         .staff-login .wiki-content {
             background: #0d1a33 !important;
             border-radius: 12px !important;

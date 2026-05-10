@@ -110,13 +110,7 @@ $totalCount = count($servers);
         <link rel="icon" type="image/png" href="/assets/images/icon.png">
     <meta http-equiv="refresh" content="60">
     <title>Core Loop | Server Fleet Status</title>
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/css/ionicons.css" rel="stylesheet">
-    <link href="../assets/css/main.css" rel="stylesheet">
-    <link href="../assets/css/wds-unified.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="../assets/css/coreloop.css" rel="stylesheet">
     <style>
         .staff-login .page-bgc {
             background-color: #071228 !important;
