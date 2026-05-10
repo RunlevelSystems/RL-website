@@ -21,7 +21,7 @@
         // Page-specific variables
         $current_page = 'contact';
         $header_class = 'contact-header inner-header';
-        $page_subtitle = 'Engineer • Ship • Scale';
+        $page_subtitle = 'Design • Debug • Deploy';
         
         // Handle form submission
         $message_sent = false;

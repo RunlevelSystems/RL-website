@@ -60,7 +60,7 @@ if ($is_in_wiki) {
                             <li><a href="https://store.steampowered.com/app/1774030/Mystical_Islands/" target="_blank">Mystical Islands on Steam</a></li>
                         </ul>
                         <p style="color: var(--core-text-light); font-size: 14px; line-height: 1.5; margin-top: 15px;">
-                            Engineer • Ship • Scale — building the future of games and infrastructure.
+                            Design • Debug • Deploy — building the future of games and infrastructure.
                         </p>
                     </div>
                 </div>
@@ -72,7 +72,7 @@ if ($is_in_wiki) {
                     &copy; 2025 Core Loop Development. All rights reserved.
                 </p>
                 <p style="color: var(--core-text-light); margin: 0; font-size: 14px;">
-                    Engineer • Ship • Scale | 
+                    Design • Debug • Deploy | 
                     <a href="https://gameservers.world" target="_blank" style="color: var(--wds-primary-soft);">Gameservers.world</a> | 
                     <a href="https://github.com/World-Domination-Software" target="_blank" style="color: var(--wds-primary-soft);">GitHub</a> | 
                     <a href="https://discord.gg/XPFnNdWGyW" target="_blank" style="color: var(--wds-primary-soft);">Discord</a>

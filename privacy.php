@@ -21,7 +21,7 @@
         // Page-specific variables
         $current_page = 'privacy';
         $header_class = 'privacy-header inner-header';
-        $page_subtitle = 'Engineer • Ship • Scale';
+        $page_subtitle = 'Design • Debug • Deploy';
         ?>
     <!-- Include Site Header -->
     <?php include 'includes/header.php'; ?>

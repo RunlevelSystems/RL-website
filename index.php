@@ -20,7 +20,7 @@
         <?php 
         // Page-specific variables - customize these for each page
         $current_page = 'index';
-        $page_subtitle = 'Engineer • Ship • Scale';
+        $page_subtitle = 'Design • Debug • Deploy';
         $page_description = '';
         $page_title = '';
         $page_title_thin = '';
@@ -96,7 +96,7 @@
   <div class="lx-wrap">
     <div>
       <div class="lx-eyebrow">Advanced Engineering Studio</div>
-      <h1 class="lx-title">Build <span>•</span> Launch <span>•</span> Scale</h1>
+      <h1 class="lx-title">Design <span>•</span> Debug <span>•</span> Deploy</h1>
       <p class="lx-tagline">Game development • Multiplayer infrastructure • Business applications</p>
       <p class="lx-motto">We engineer resilient software and scalable game infrastructure.</p>
 
