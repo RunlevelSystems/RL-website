@@ -19,6 +19,7 @@ $page_description = 'Ubuntu 24.04 baselines, PHP 7.4 requirement, MySQL 5.7 Dock
         <link rel="icon" type="image/png" href="/assets/images/icon.png">
     <title>Core Loop | Infrastructure Runbooks</title>
     <link href="../assets/css/coreloop.css" rel="stylesheet">
+    <style>
         pre {
             background: #111827 !important;
             color: #E5E7EB !important;

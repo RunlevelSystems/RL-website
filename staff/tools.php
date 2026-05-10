@@ -21,6 +21,7 @@ $page_description = 'Download scripts and deploy to servers via wget or manual c
         <link rel="icon" type="image/png" href="/assets/images/icon.png">
     <title>Core Loop | Staff Toolbox</title>
     <link href="../assets/css/coreloop.css" rel="stylesheet">
+    <style>
         .staff-login .download-all-box {
             background: #0d1a33 !important;
             border: 2px solid rgba(54,243,255,0.25) !important;
