@@ -1,15 +1,15 @@
-<!-- Developed by Core Loop Development -->
-# Core Loop Development Website
+<!-- Developed by Runlevel Systems -->
+# Runlevel Systems Website
 
 A professional corporate website showcasing game development, server hosting, and business application services. Built with PHP and modern responsive design principles.
 
 ## Overview
 
-This is the corporate website for Core Loop Development, a company specializing in indie game development, game server hosting, and custom business applications. The site presents a professional, modern Cobalt2-inspired interface reflecting the company’s developer-first identity.
+This is the corporate website for Runlevel Systems, a company specializing in indie game development, game server hosting, and custom business applications. The site presents a professional, modern interface reflecting the company’s developer-first identity.
 
 ## Roadmap & Documentation
 
-Public roadmap and documentation for Core Loop projects are managed in the separate **Projects** hub on GitHub:
+Public roadmap and documentation for Runlevel Systems projects are managed in the separate **Projects** hub on GitHub:
 
 - **Roadmap (Discussions category):** https://github.com/World-Domination-Software/Projects/discussions/categories/roadmap
 - **Projects hub repository:** https://github.com/World-Domination-Software/Projects

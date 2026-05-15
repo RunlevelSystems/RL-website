@@ -21,8 +21,8 @@ $page_subtitle = 'Procedures & Process';
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/png" href="/assets/images/icon.png">
-    <title>Core Loop | Staff Wiki</title>
+        <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
+    <title>Runlevel Systems | Staff Wiki</title>
     <link href="../../assets/css/coreloop.css" rel="stylesheet">
     <style>
         .staff-login .page-bgc {
@@ -58,9 +58,9 @@ $page_subtitle = 'Procedures & Process';
         <div class="row">
             <div class="col-sm-12">
                 <div class="title-box">
-                    <p>Core Loop Team Wiki</p>
+                    <p>Runlevel Systems Team Wiki</p>
                     <h2 class="title mt0" style="color:#ffd166;">Procedures & Process</h2>
-                    <p style="color:#a8bedc;">This is a live copy of the legacy Core Loop Team wiki so we no longer need a separate site.</p>
+                    <p style="color:#a8bedc;">This is a live copy of the legacy team wiki so we no longer need a separate site.</p>
                 </div>
             </div>
         </div>

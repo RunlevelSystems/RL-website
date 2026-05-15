@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Core Loop Development — Join Our Team</title>
+    <title>Runlevel Systems — Join Our Team</title>
     
     <!-- CSS -->
     <link href="assets/css/coreloop.css" rel="stylesheet">
@@ -339,7 +339,7 @@
 
     <footer class="footer-dark" style="margin-top: 80px;">
         <div class="container-custom" style="padding: 32px 20px; text-align: center;">
-            <p style="margin: 0; color: #7894b9;">&copy; 2025 Core Loop Development. Building careers, together.</p>
+            <p style="margin: 0; color: #7894b9;">&copy; 2025 Runlevel Systems. Building careers, together.</p>
             <p style="margin: 8px 0 0; font-size: 14px; color: #64748b;">
                 <a href="index.php" style="color: #00d4ff; text-decoration: none;">← Back to Main Site</a> | 
                 <a href="joinus.php" style="color: #00d4ff; text-decoration: none;">Apply Now</a>

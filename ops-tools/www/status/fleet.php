@@ -75,7 +75,7 @@ if ($healthyCount === 0 && $totalCount > 0) $overallStatus = 'outage';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/png" href="/assets/images/icon.png">
+        <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
     <meta http-equiv="refresh" content="60">
     <title>Fleet Status - iaregamer.com</title>
     <style>
@@ -279,7 +279,7 @@ if ($healthyCount === 0 && $totalCount > 0) $overallStatus = 'outage';
 
         <div class="footer">
             <p>Auto-refreshes every 60 seconds</p>
-            <p style="margin-top: 5px;">Powered by Core Loop Development</p>
+            <p style="margin-top: 5px;">Powered by Runlevel Systems</p>
         </div>
     </div>
 </body>

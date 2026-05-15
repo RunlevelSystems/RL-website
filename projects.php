@@ -5,9 +5,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/png" href="/assets/images/icon.png">
+        <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
 
-    <title>Projects | Core Loop Development</title>
+    <title>Projects | Runlevel Systems</title>
 
         <!-- CSS -->
         <link href="assets/css/coreloop.css" rel="stylesheet">
@@ -157,14 +157,6 @@
                 <div id="projects-overview">
                     <!-- Projects Overview Section -->
                     <div id="projects-overview">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="title-box">
-                                <p>Explore our</p>
-                                <h2 class="title mt0">Latest Projects</h2>
-                            </div>
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="boxed">
                             <div class="col-sm-12">

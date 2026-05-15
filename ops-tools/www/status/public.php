@@ -83,7 +83,7 @@ $currentStatus = $statusConfig[$status] ?? $statusConfig['unknown'];
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/png" href="/assets/images/icon.png">
+        <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
     <meta http-equiv="refresh" content="60">
     <title>Server Status - <?php echo htmlspecialchars($thisHost); ?></title>
     <style>

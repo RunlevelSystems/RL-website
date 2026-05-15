@@ -54,9 +54,9 @@ $page_subtitle = 'Design • Debug • Deploy';
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/png" href="/assets/images/icon.png">
+        <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
 
-    <title>Staff Login | Core Loop Development</title>
+    <title>Staff Login | Runlevel Systems</title>
 
         <!-- CSS -->
         <link href="assets/css/coreloop.css" rel="stylesheet">

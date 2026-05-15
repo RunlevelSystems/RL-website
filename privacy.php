@@ -4,9 +4,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/png" href="/assets/images/icon.png">
+        <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
 
-        <title>Core Loop Development | Privacy Policy</title>
+        <title>Runlevel Systems | Privacy Policy</title>
 
         <!-- CSS -->
         <link href="assets/css/coreloop.css" rel="stylesheet">
@@ -44,10 +44,10 @@
                         <div class="col-sm-12">
                             <p class="inner-p" style="font-size: 14px; color: #7894b9;">Last updated: March 2026</p>
                             <p class="inner-p">
-                                This privacy policy applies to all software, games, websites, and services created or published by Core Loop Development.
+                                This privacy policy applies to all software, games, websites, and services created or published by Runlevel Systems.
                             </p>
                             <p class="inner-p">
-                                This includes applications released under our main brand as well as products and services such as GameServers.World and any other projects developed by Core Loop Development.
+                                This includes applications released under our main brand as well as products and services such as GameServers.World and any other projects developed by Runlevel Systems.
                             </p>
                             <p class="inner-p">
                                 Our goal is simple: we create software and games for entertainment and useful services. We do not collect personal information unless it is necessary for the service to function.
@@ -139,7 +139,7 @@
                                     All purchases are securely processed through the platform provider (such as Google Play).
                                 </p>
                                 <p style="color: #a8bedc; font-size: 16px; line-height: 1.6;">
-                                    Core Loop Development does not store payment information.
+                                    Runlevel Systems does not store payment information.
                                 </p>
                             </div>
                         </div>
@@ -194,10 +194,10 @@
                             <div class="wds-card">
                                 <h3 style="color: #ffd166; margin-bottom: 15px;">Contact</h3>
                                 <p style="color: #a8bedc; margin-bottom: 15px; font-size: 16px; line-height: 1.6;">
-                                    If you have questions about this privacy policy or any products created by Core Loop Development, please contact us:
+                                    If you have questions about this privacy policy or any products created by Runlevel Systems, please contact us:
                                 </p>
                                 <p style="color: #a8bedc; font-size: 16px; line-height: 1.8;">
-                                    <strong>Core Loop Development</strong><br>
+                                    <strong>Runlevel Systems</strong><br>
                                     Website: <a href="https://coreloop.dev" style="color: #ffd166;">https://coreloop.dev</a><br>
                                     Email: <a href="mailto:info@coreloop.dev" style="color: #ffd166;">info@coreloop.dev</a>
                                 </p>
@@ -210,7 +210,7 @@
                     <div class="boxed">
                         <div class="col-sm-12">
                             <p class="inner-p" style="font-size: 14px; color: #7894b9;">
-                                This privacy policy applies to all applications, games, websites, and services created or published by Core Loop Development unless a specific product provides its own privacy policy.
+                                This privacy policy applies to all applications, games, websites, and services created or published by Runlevel Systems unless a specific product provides its own privacy policy.
                             </p>
                         </div>
                     </div>

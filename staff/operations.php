@@ -16,8 +16,8 @@ $page_description = 'Ubuntu 24.04 baselines, PHP 7.4 requirement, MySQL 5.7 Dock
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/png" href="/assets/images/icon.png">
-    <title>Core Loop | Infrastructure Runbooks</title>
+        <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
+    <title>Runlevel Systems | Infrastructure Runbooks</title>
     <link href="../assets/css/coreloop.css" rel="stylesheet">
     <style>
         pre {
@@ -106,7 +106,7 @@ cd /opt/gsp/bootstrap/ubuntu-24.04
                 <div class="ops-card">
                     <h3><i class="ion-wand"></i> Website Deployments</h3>
                     <ul style="color:#E5E7EB;">
-                        <li><strong>Core Loop Website:</strong> standard Apache/PHP host. Clone this repo, update <code>includes/db-config.php</code>, and run <code>deploy_gsp.sh</code> if panel files are co-located.</li>
+                        <li><strong>Runlevel Systems Website:</strong> standard Apache/PHP host. Clone this repo, update <code>includes/db-config.php</code>, and run <code>deploy_gsp.sh</code> if panel files are co-located.</li>
                         <li><strong>Gameservers World:</strong> static marketing pages plus billing module. Keep content synced with <code>GSP/modules/billing</code>.</li>
                         <li><strong>Status site:</strong> copy <code>ops-tools/www/status</code> to an internal Apache host, update <code>config.php</code>, and point it to the <code>peer_status</code> MySQL database.</li>
                     </ul>

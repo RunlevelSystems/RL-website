@@ -25,8 +25,8 @@ $page_subtitle = 'Wiki Viewer';
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/png" href="/assets/images/icon.png">
-    <title>Core Loop | Wiki - <?php echo htmlspecialchars($requested); ?></title>
+        <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
+    <title>Runlevel Systems | Wiki - <?php echo htmlspecialchars($requested); ?></title>
     <link href="../../assets/css/coreloop.css" rel="stylesheet">
     <style>
         .staff-login .page-bgc {
@@ -73,7 +73,7 @@ $page_subtitle = 'Wiki Viewer';
         <div class="row">
             <div class="col-sm-12">
                 <div class="title-box">
-                    <p>Core Loop Wiki</p>
+                    <p>Runlevel Systems Wiki</p>
                     <h2 class="title mt0" style="color:#ffd166;"><?php echo htmlspecialchars(str_replace('-', ' ', $requested)); ?></h2>
                     <p><a href="index.php" style="color:#a8bedc; text-decoration:underline;">Back to index</a></p>
                 </div>

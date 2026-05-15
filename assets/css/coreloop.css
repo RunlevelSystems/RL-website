@@ -4,15 +4,16 @@
    CSS Custom Properties
    ============================================================ */
 :root {
-  --core-black:    #05070d;
-  --core-graphite: #111827;
-  --core-cobalt:   #0047ff;
-  --core-cyan:     #00aaff;
+  --core-black:    #000000;
+  --core-graphite: #08111f;
+  --core-cobalt:   #0a84ff;
+  --core-cyan:     #36f3ff;
   --core-gold:     #ffc600;
-  --core-bg:       #f8fafc;
-  --core-text:     #111827;
-  --core-muted:    #64748b;
-  --core-card:     #ffffff;
+  --core-menu-text:#0a84ff;
+  --core-bg:       #07111f;
+  --core-text:     #eaf3ff;
+  --core-muted:    #9fb3c9;
+  --core-card:     #0c1729;
 }
 
 /* ============================================================
@@ -35,7 +36,7 @@ html {
 }
 
 body {
-  background-color: var(--core-bg);
+  background: linear-gradient(180deg, #07111f 0%, #0a1426 100%);
   color: var(--core-text);
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.7;
@@ -47,7 +48,7 @@ body {
    Typography
    ============================================================ */
 h1, h2, h3, h4, h5, h6 {
-  color: var(--core-graphite);
+  color: #f4f9ff;
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 0.5em;
@@ -68,13 +69,13 @@ p {
    Links
    ============================================================ */
 a {
-  color: var(--core-cobalt);
+  color: var(--core-cyan);
   text-decoration: none;
 }
 
 a:hover,
 a:focus {
-  color: var(--core-cyan);
+  color: var(--core-gold);
   text-decoration: underline;
 }
 
@@ -88,8 +89,8 @@ input[type="button"],
 input[type="reset"] {
   display: inline-block;
   padding: 0.5rem 1.25rem;
-  background-color: var(--core-cobalt);
-  color: #ffffff;
+  background-color: var(--core-gold);
+  color: #08111f;
   border: none;
   border-radius: 4px;
   font-size: 1rem;
@@ -104,7 +105,7 @@ input[type="submit"]:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover {
   background-color: var(--core-cyan);
-  color: var(--core-black);
+  color: #08111f;
 }
 
 /* ============================================================
@@ -197,7 +198,7 @@ img {
    ============================================================ */
 .card {
   background-color: var(--core-card);
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(54, 243, 255, 0.15);
   border-radius: 8px;
   padding: 1.5rem;
 }
@@ -219,8 +220,8 @@ img {
 }
 
 .main-header {
-  background: linear-gradient(180deg, #070d18, #0c1422);
-  border-bottom: 1px solid rgba(0, 170, 255, 0.22);
+  background: #000000;
+  border-bottom: 1px solid rgba(54, 243, 255, 0.28);
   position: relative;
   z-index: 1000;
 }
@@ -244,7 +245,7 @@ img {
   align-items: center;
   gap: 0.7rem;
   text-decoration: none;
-  color: #ffffff;
+  color: var(--core-menu-text);
   min-height: 44px;
 }
 
@@ -258,9 +259,9 @@ img {
 .core-nav-toggle {
   margin-left: auto;
   display: none;
-  border: 1px solid rgba(0, 170, 255, 0.45);
+  border: 1px solid rgba(54, 243, 255, 0.45);
   border-radius: 6px;
-  background: rgba(0, 71, 255, 0.15);
+  background: rgba(10, 132, 255, 0.15);
   padding: 0.45rem 0.55rem;
   min-width: 44px;
   min-height: 44px;
@@ -272,7 +273,7 @@ img {
   width: 20px;
   height: 2px;
   margin: 3px 0;
-  background: #ffffff;
+  background: var(--core-cyan);
 }
 
 .core-nav-collapse {
@@ -292,7 +293,7 @@ img {
 }
 
 .core-nav-links a {
-  color: #f7fbff;
+  color: var(--core-menu-text);
   display: inline-flex;
   align-items: center;
   min-height: 44px;
@@ -304,8 +305,8 @@ img {
 
 .core-nav-links a:hover,
 .core-nav-links a:focus {
-  color: #00aaff;
-  background: rgba(0, 170, 255, 0.12);
+  color: var(--core-gold);
+  background: rgba(54, 243, 255, 0.1);
   text-decoration: none;
 }
 
@@ -324,14 +325,14 @@ img {
 .core-nav-search input {
   margin: 0;
   min-width: 0;
-  border: 1px solid rgba(0, 170, 255, 0.32);
-  background: #111a2a;
-  color: #ffffff;
+  border: 1px solid rgba(54, 243, 255, 0.32);
+  background: #09111d;
+  color: #eef6ff;
   height: 38px;
 }
 
 .core-nav-search input::placeholder {
-  color: #b9c7dd;
+  color: #96adc5;
 }
 
 .core-nav-search button {
@@ -339,14 +340,14 @@ img {
   padding: 0 0.9rem;
   border: 1px solid rgba(255, 198, 0, 0.55);
   border-radius: 4px;
-  background: #0047ff;
-  color: #ffffff;
+  background: #0a84ff;
+  color: #08111f;
   white-space: nowrap;
 }
 
 .core-nav-search button:hover,
 .core-nav-search button:focus {
-  background: #00aaff;
+  background: #36f3ff;
   color: #08111f;
 }
 
@@ -376,8 +377,8 @@ img {
     left: 0;
     right: 0;
     margin-left: 0;
-    background: #090f1c;
-    border: 1px solid rgba(0, 170, 255, 0.25);
+    background: #03070d;
+    border: 1px solid rgba(54, 243, 255, 0.25);
     border-radius: 8px;
     padding: 0.5rem;
     flex-direction: column;
@@ -470,8 +471,8 @@ img {
    Footer placeholder
    ============================================================ */
 footer {
-  background-color: var(--core-graphite);
-  color: #ffffff;
+  background-color: #000000;
+  color: var(--core-cyan);
   padding: 2rem 1rem;
   margin-top: 3rem;
 }
@@ -482,6 +483,20 @@ footer a {
 
 footer a:hover {
   color: var(--core-gold);
+}
+
+/* ============================================================
+   Highlight Text: Gold on Blue Surfaces
+   ============================================================ */
+body *[style*="color: #00a8ff"],
+body *[style*="color:#00a8ff"],
+body *[style*="color: #00d4ff"],
+body *[style*="color:#00d4ff"],
+body *[style*="color: #36f3ff"],
+body *[style*="color:#36f3ff"],
+body *[style*="color: #4cc9ff"],
+body *[style*="color:#4cc9ff"] {
+  color: var(--core-gold) !important;
 }
 
 /* ============================================================

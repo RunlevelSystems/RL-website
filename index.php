@@ -4,9 +4,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/png" href="/assets/images/icon.png">
+        <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
 
-        <title>Core Loop Development</title>
+        <title>Runlevel Systems</title>
 
         <!-- CSS -->
         <link href="assets/css/coreloop.css" rel="stylesheet">
@@ -31,13 +31,13 @@
     <!-- Include Navigation Header -->
     <?php include 'includes/navigation.php'; ?>
 
-    <!-- Core Loop Development — Overview Block -->
+    <!-- Runlevel Systems — Overview Block -->
 <section class="wds-hero" aria-label="Company Overview">
   <style>
     .wds-hero {
       isolation: isolate;
-      background: linear-gradient(180deg, var(--wds-bg-2), var(--wds-bg));
-      border: 1px solid rgba(76, 201, 255,0.15);
+      background: linear-gradient(180deg, #07111f, #0b1630);
+      border: 1px solid rgba(54, 243, 255,0.16);
       border-radius: 16px;
       padding: 48px 36px;
       margin: 24px auto;
@@ -49,7 +49,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 20% 0%, rgba(76, 201, 255,0.07), transparent 60%);
+      background: radial-gradient(ellipse at 20% 0%, rgba(54, 243, 255,0.08), transparent 60%);
       pointer-events: none;
     }
     .wds-hero::after {
@@ -57,52 +57,60 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(76, 201, 255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(76, 201, 255,0.04) 1px, transparent 1px);
+        linear-gradient(rgba(54, 243, 255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(54, 243, 255,0.04) 1px, transparent 1px);
       background-size: 32px 32px;
       pointer-events: none;
       opacity: 0.6;
     }
     .lx-wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: start; position: relative; z-index: 1; }
     @media (max-width: 900px){ .lx-wrap { grid-template-columns: 1fr; } }
-    .lx-eyebrow { color: #00a8ff; letter-spacing: .15em; text-transform: uppercase; font-size: 11px; margin-bottom: 10px; font-family: 'Exo 2', sans-serif; font-weight: 600; }
-    .lx-title { font-size: clamp(28px, 4vw, 44px); line-height: 1.05; margin: 0 0 12px; color: #e2e8f0; font-family: 'Exo 2', sans-serif; font-weight: 800; text-shadow: none !important; }
-    .lx-title span { color: #00a8ff; }
-    .lx-tagline { font-size: clamp(15px, 2.2vw, 18px); color: #94a3b8; margin: 0 0 18px; }
-    .lx-motto { font-size: 14px; color: #64748b; margin: 0 0 22px; }
+    .lx-eyebrow { color: #36f3ff; letter-spacing: .15em; text-transform: uppercase; font-size: 11px; margin-bottom: 10px; font-family: 'Exo 2', sans-serif; font-weight: 600; }
+    .lx-title { font-size: clamp(28px, 4vw, 44px); line-height: 1.05; margin: 0 0 12px; color: #f4f9ff; font-family: 'Exo 2', sans-serif; font-weight: 800; text-shadow: none !important; }
+    .lx-title span { color: #ffc600; }
+    .lx-tagline { font-size: clamp(15px, 2.2vw, 18px); color: #c7d7e8; margin: 0 0 18px; }
+    .lx-motto { font-size: 14px; color: #9fb3c9; margin: 0 0 22px; }
     .lx-cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0 26px; }
     .lx-btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 6px; text-decoration: none; font-weight: 700; font-family: 'Exo 2', sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.2s ease; text-shadow: none !important; }
-    .lx-btn--primary { background: #00a8ff; color: #08111f; border: 1px solid #00a8ff; }
-    .lx-btn--primary:hover { background: #4cc9ff; color: #08111f; box-shadow: 0 0 16px rgba(76, 201, 255,0.3); }
-    .lx-btn--ghost { background: transparent; color: #94a3b8; border: 1px solid rgba(76, 201, 255,0.25); }
-    .lx-btn--ghost:hover { background: rgba(76, 201, 255,0.08); color: #00a8ff; border-color: rgba(76, 201, 255,0.5); }
+    .lx-btn--primary { background: #ffc600; color: #08111f; border: 1px solid #ffc600; }
+    .lx-btn--primary:hover { background: #36f3ff; color: #08111f; box-shadow: 0 0 16px rgba(54, 243, 255,0.3); }
+    .lx-btn--ghost { background: transparent; color: #c7d7e8; border: 1px solid rgba(54, 243, 255,0.25); }
+    .lx-btn--ghost:hover { background: rgba(54, 243, 255,0.08); color: #ffc600; border-color: rgba(54, 243, 255,0.5); }
     .lx-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
     @media (max-width: 900px){ .lx-cards { grid-template-columns: 1fr; } }
-    .lx-card { background: rgba(76, 201, 255,0.04); border: 1px solid rgba(76, 201, 255,0.12); border-radius: 10px; padding: 18px; transition: border-color 0.2s ease; }
-    .lx-card:hover { border-color: rgba(76, 201, 255,0.35); }
-    .lx-card h3 { font-size: 15px; margin: 0 0 8px; color: #e2e8f0; font-family: 'Exo 2', sans-serif; text-shadow: none !important; }
-    .lx-card p { font-size: 13px; color: #64748b; margin: 0; text-shadow: none !important; }
-    .lx-card a { color: #00a8ff; text-decoration: none; }
+    .lx-card { background: rgba(54, 243, 255,0.04); border: 1px solid rgba(54, 243, 255,0.12); border-radius: 10px; padding: 18px; transition: border-color 0.2s ease; }
+    .lx-card:hover { border-color: rgba(54, 243, 255,0.35); }
+    .lx-card h3 { font-size: 15px; margin: 0 0 8px; color: #f4f9ff; font-family: 'Exo 2', sans-serif; text-shadow: none !important; }
+    .lx-card p { font-size: 13px; color: #9fb3c9; margin: 0; text-shadow: none !important; }
+    .lx-card a { color: #36f3ff; text-decoration: none; }
     .lx-bullets { display: grid; gap: 9px; margin-top: 12px; }
-    .lx-bullet { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; font-size: 14px; color: #94a3b8; text-shadow: none !important; }
-    .lx-check { width: 18px; height: 18px; border-radius: 4px; background: rgba(76, 201, 255,0.1); border: 1px solid rgba(76, 201, 255,0.35); display: inline-grid; place-items: center; font-size: 11px; color: #00a8ff; }
-    .lx-meta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; color: #64748b; font-size: 13px; }
-    .lx-meta a { color: #00a8ff; text-decoration: none; }
+    .lx-bullet { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; font-size: 14px; color: #c7d7e8; text-shadow: none !important; }
+    .lx-check { width: 18px; height: 18px; border-radius: 4px; background: rgba(54, 243, 255,0.1); border: 1px solid rgba(54, 243, 255,0.35); display: inline-grid; place-items: center; font-size: 11px; color: #36f3ff; }
+    .lx-meta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; color: #9fb3c9; font-size: 13px; }
+    .lx-meta a { color: #36f3ff; text-decoration: none; }
     .lx-meta a:hover { text-decoration: underline; }
-    .lx-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(76, 201, 255,0.3), transparent); margin: 20px 0; border: none; }
-    .lx-small { font-size: 12px; color: #64748b; text-shadow: none !important; }
+    .lx-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(54, 243, 255,0.3), transparent); margin: 20px 0; border: none; }
+    .lx-small { font-size: 12px; color: #9fb3c9; text-shadow: none !important; }
+    .lx-banner {
+      margin-bottom: 18px;
+      border: 1px solid rgba(54, 243, 255,0.18);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 0 1px rgba(255, 198, 0,0.05), 0 20px 40px rgba(0,0,0,0.25);
+    }
+    .lx-banner img { width: 100%; height: auto; display: block; }
   </style>
 
   <div class="lx-wrap">
     <div>
-      <div class="lx-eyebrow">Advanced Engineering Studio</div>
+      <div class="lx-eyebrow">Runlevel Systems</div>
       <h1 class="lx-title">Design <span>•</span> Debug <span>•</span> Deploy</h1>
       <p class="lx-tagline">Game development • Multiplayer infrastructure • Business applications</p>
-      <p class="lx-motto">We engineer resilient software and scalable game infrastructure.</p>
+      <p class="lx-motto">We build resilient software and scalable infrastructure with a blue-and-gold professional finish.</p>
 
       <div class="lx-cta">
         <a class="lx-btn lx-btn--primary" href="contact.php">Request a consultation</a>
-        <a class="lx-btn lx-btn--ghost" href="/portal">Client portal</a>
+        <a class="lx-btn lx-btn--ghost" href="portal/">Client portal</a>
         <a class="lx-btn lx-btn--ghost" href="https://gameservers.world" target="_blank" rel="noopener">Game servers</a>
       </div>
 
@@ -119,6 +127,9 @@
         <span>⚡ <a href="mailto:hello@coreloop.dev">hello@coreloop.dev</a></span>
         <span>🔒 Private portal available for clients</span>
       </div>
+    </div>
+    <div class="lx-banner" aria-label="Runlevel Systems banner">
+      <img src="assets/images/RL-splash.png" alt="Runlevel Systems banner">
     </div>
   </div>
 
@@ -148,7 +159,7 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Core Loop Development",
+    "name": "Runlevel Systems",
     "url": "https://coreloop.dev",
     "sameAs": ["https://gameservers.world"],
     "contactPoint": [{
@@ -181,39 +192,39 @@
                                 In our professional careers, we architect and deliver enterprise-grade solutions for Fortune 500 companies across diverse industries. Our expertise spans cloud infrastructure, scalable web applications, cybersecurity implementations, and mission-critical system integrations that serve millions of users worldwide.
                             </p>
                             <p style="font-size: 17px; line-height: 1.8; color: #94a3b8;">
-                                <strong style="color: #00a8ff;">Nearly three decades of experience</strong> have taught us that the most groundbreaking innovations come from passionate collaboration. That's why we founded Core Loop Development — to channel our corporate expertise and entrepreneurial drive into creating the next generation of gaming experiences and infrastructure.
+                                <strong style="color: #36f3ff;">Nearly three decades of experience</strong> have taught us that the most groundbreaking innovations come from passionate collaboration. That's why we founded Runlevel Systems — to channel our corporate expertise and entrepreneurial drive into creating the next generation of gaming experiences and infrastructure.
                             </p>
                         </div>
                         <div class="col-sm-12" style="text-align: center; margin: 40px 0;">
                             <div style="display: inline-flex; align-items: center; gap: 30px; flex-wrap: wrap; justify-content: center;">
-                                <div style="text-align: center; color: #00a8ff;">
+                                <div style="text-align: center; color: #36f3ff;">
                                     <i class="fas fa-calendar-alt" style="font-size: 40px; margin-bottom: 10px;"></i>
-                                    <h4 style="color: #00a8ff; margin: 5px 0;">1996</h4>
-                                    <p style="color: #64748b; font-size: 13px; font-weight: 500;">Started BBS</p>
+                                  <h4 style="color: #ffc600; margin: 5px 0;">1996</h4>
+                                  <p style="color: #9fb3c9; font-size: 13px; font-weight: 500;">Started BBS</p>
                                 </div>
-                                <div style="color: #64748b;">
+                                <div style="color: #9fb3c9;">
                                     <i class="fas fa-arrow-right" style="font-size: 20px;"></i>
                                 </div>
-                                <div style="text-align: center; color: #00a8ff;">
+                                <div style="text-align: center; color: #36f3ff;">
                                     <i class="fas fa-server" style="font-size: 40px; margin-bottom: 10px;"></i>
-                                    <h4 style="color: #00a8ff; margin: 5px 0;">2000s</h4>
-                                    <p style="color: #64748b; font-size: 13px; font-weight: 500;">Game Servers</p>
+                                  <h4 style="color: #ffc600; margin: 5px 0;">2000s</h4>
+                                  <p style="color: #9fb3c9; font-size: 13px; font-weight: 500;">Game Servers</p>
                                 </div>
-                                <div style="color: #64748b;">
+                                <div style="color: #9fb3c9;">
                                     <i class="fas fa-arrow-right" style="font-size: 20px;"></i>
                                 </div>
-                                <div style="text-align: center; color: #00a8ff;">
+                                <div style="text-align: center; color: #36f3ff;">
                                     <i class="fas fa-building" style="font-size: 40px; margin-bottom: 10px;"></i>
-                                    <h4 style="color: #00a8ff; margin: 5px 0;">2010s</h4>
-                                    <p style="color: #64748b; font-size: 13px; font-weight: 500;">Enterprise</p>
+                                  <h4 style="color: #ffc600; margin: 5px 0;">2010s</h4>
+                                  <p style="color: #9fb3c9; font-size: 13px; font-weight: 500;">Enterprise</p>
                                 </div>
-                                <div style="color: #64748b;">
+                                <div style="color: #9fb3c9;">
                                     <i class="fas fa-arrow-right" style="font-size: 20px;"></i>
                                 </div>
-                                <div style="text-align: center; color: #00a8ff;">
+                                <div style="text-align: center; color: #36f3ff;">
                                     <i class="fas fa-rocket" style="font-size: 40px; margin-bottom: 10px;"></i>
-                                    <h4 style="color: #00a8ff; margin: 5px 0;">2025</h4>
-                                    <p style="color: #64748b; font-size: 13px; font-weight: 500;">Core Loop</p>
+                                  <h4 style="color: #ffc600; margin: 5px 0;">2025</h4>
+                                  <p style="color: #9fb3c9; font-size: 13px; font-weight: 500;">Runlevel Systems</p>
                                 </div>
                             </div>
                         </div>
@@ -228,9 +239,9 @@
     .hero-hook {
       padding: 64px 16px;
       text-align: center;
-      background: linear-gradient(135deg, #0f1e2e 0%, #0a0f1a 100%);
-      border-top: 1px solid rgba(76, 201, 255,0.15);
-      border-bottom: 1px solid rgba(76, 201, 255,0.15);
+      background: linear-gradient(135deg, #0a1322 0%, #05070d 100%);
+      border-top: 1px solid rgba(54, 243, 255,0.15);
+      border-bottom: 1px solid rgba(54, 243, 255,0.15);
       position: relative;
       overflow: hidden;
     }
@@ -238,19 +249,19 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(76, 201, 255,0.08), transparent 65%);
+      background: radial-gradient(ellipse at 50% 0%, rgba(54, 243, 255,0.08), transparent 65%);
       pointer-events: none;
     }
-    .hero-hook h1 { font-size: clamp(26px, 5vw, 44px); margin: 0 0 12px; color: #e2e8f0; font-family: 'Exo 2', sans-serif; font-weight: 800; text-shadow: none !important; position: relative; z-index: 1; }
-    .hero-hook p { margin: 0 auto 20px; max-width: 760px; color: #94a3b8; font-size: 17px; position: relative; z-index: 1; text-shadow: none !important; }
+    .hero-hook h1 { font-size: clamp(26px, 5vw, 44px); margin: 0 0 12px; color: #f4f9ff; font-family: 'Exo 2', sans-serif; font-weight: 800; text-shadow: none !important; position: relative; z-index: 1; }
+    .hero-hook p { margin: 0 auto 20px; max-width: 760px; color: #c7d7e8; font-size: 17px; position: relative; z-index: 1; text-shadow: none !important; }
     .hero-hook .lx-btn {
       display: inline-flex; align-items: center; padding: 12px 28px;
       border-radius: 6px; font-weight: 700; text-decoration: none;
       font-family: 'Exo 2', sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
-      background: #00a8ff; color: #08111f; border: 1px solid #00a8ff;
+      background: #ffc600; color: #08111f; border: 1px solid #ffc600;
       transition: all 0.2s ease; position: relative; z-index: 1; text-shadow: none !important;
     }
-    .hero-hook .lx-btn:hover { background: #4cc9ff; box-shadow: 0 0 20px rgba(76, 201, 255,0.3); }
+    .hero-hook .lx-btn:hover { background: #36f3ff; box-shadow: 0 0 20px rgba(54, 243, 255,0.3); }
   </style>
 
   <h1>Build games. Host worlds. Ship faster.</h1>

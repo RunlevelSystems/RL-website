@@ -4,9 +4,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/png" href="/assets/images/icon.png">
+        <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
 
-        <title>Core Loop Development | Join Our Team</title>
+        <title>Runlevel Systems | Join Our Team</title>
 
         <!-- CSS -->
         <link href="assets/css/coreloop.css" rel="stylesheet">
@@ -33,18 +33,10 @@
     <section class="join-us-coop">
         <div class="container page-bgc">
             <div class="row">
-                <div class="col-sm-12">
-                    <div class="title-box">
-                        <p>Join the</p>
-                        <h2 class="title mt0">Co-op Team</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
                 <div class="boxed">
                     <div class="col-sm-12">
                         <div class="why-work-for-us wds-card" style="max-width: 900px; margin: 0 auto; padding: 20px;">
-                            <h2 style="color: #00a8ff; margin-bottom: 20px;">About Our Co-op</h2>
+                            <h2 style="color: #36f3ff; margin-bottom: 20px;">About Our Co-op</h2>
                             <p style="font-size: 18px; line-height: 1.6; margin-bottom: 30px;">
                                 We're a co-op. That means instead of just collecting a paycheck, 
                                 you directly share in the <strong>profits</strong> of everything we build together. 
@@ -52,7 +44,7 @@
                                 while the founder covers all upfront costs for servers, tools, and AI.
                             </p>
 
-                            <h3 style="color: #00a8ff; margin-bottom: 15px;">What We Do</h3>
+                            <h3 style="color: #36f3ff; margin-bottom: 15px;">What We Do</h3>
                             <ul style="font-size: 16px; line-height: 1.6; margin-bottom: 30px;">
                                 <li>Commercial <strong>game server hosting</strong> for classic and modern titles</li>
                                 <li><strong>Game testing</strong>, <strong>customer support</strong>, and <strong>mod development</strong></li>
@@ -61,7 +53,7 @@
                                 <li><strong>Business applications</strong> for real-world clients</li>
                             </ul>
 
-                            <h3 style="color: #00a8ff; margin-bottom: 15px;">Why It's Worth It</h3>
+                            <h3 style="color: #36f3ff; margin-bottom: 15px;">Why It's Worth It</h3>
                             <ul style="font-size: 16px; line-height: 1.6; margin-bottom: 30px;">
                                 <li>It's genuinely <strong>fun to build games</strong> with a passionate team</li>
                                 <li>Hands-on Linux & Windows sysadmin experience</li>
@@ -71,7 +63,7 @@
                                 <li><strong>Use our tools for your own side projects</strong> — we'll even help where we can</li>
                             </ul>
 
-                            <h3 style="color: #00a8ff; margin-bottom: 15px;">Who We're Looking For</h3>
+                            <h3 style="color: #36f3ff; margin-bottom: 15px;">Who We're Looking For</h3>
                             <p style="font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
                                 Gamers, coders, modders, and developers interested in real-world experience and 
                                 collaborative projects. If you're interested in game development, 
@@ -79,7 +71,7 @@
                                 we'd like to hear from you.
                             </p>
 
-                            <p style="font-size: 20px; font-weight: bold; text-align: center; color: #00a8ff;"><strong>Collaborate. Build. Grow Together.</strong></p>
+                            <p style="font-size: 20px; font-weight: bold; text-align: center; color: #36f3ff;"><strong>Collaborate. Build. Grow Together.</strong></p>
                         </div>
                     </div>
                 </div>
@@ -725,7 +717,7 @@
                         </div>
 
                         <p style="margin-bottom: 20px;">
-                            This Agreement is between Core Loop Development / GameServers World ("The Co-Op"), 
+                            This Agreement is between Runlevel Systems / GameServers World ("The Co-Op"), 
                             managed by __________________ ("Manager"), and __________________ ("Contributor").
                         </p>
 

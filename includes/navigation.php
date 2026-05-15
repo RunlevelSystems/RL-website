@@ -12,14 +12,15 @@ if (!function_exists('isLoggedInAdmin')) {
 
 $is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
 
-$current_url = $_SERVER['REQUEST_URI'];
+$current_url = parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH) ?: '';
 $is_in_projects = (strpos($current_url, '/projects/') !== false);
 $is_in_staff = (strpos($current_url, '/staff/') !== false);
 $is_in_wiki = (strpos($current_url, '/staff/wiki/') !== false);
+$is_in_portal = (bool) preg_match('#/portal(?:/|$)#', $current_url);
 
 if ($is_in_wiki) {
     $base_path = '../../';
-} elseif ($is_in_staff || $is_in_projects) {
+} elseif ($is_in_staff || $is_in_projects || $is_in_portal) {
     $base_path = '../';
 } else {
     $base_path = '';
@@ -30,8 +31,8 @@ if ($is_in_wiki) {
     <div class="container-fluid">
         <nav class="navbar core-navbar" role="navigation" aria-label="Primary navigation">
             <div class="core-nav-inner">
-                <a href="<?php echo $base_path; ?>index.php" class="core-brand" aria-label="Core Loop home">
-                    <img src="<?php echo $base_path; ?>assets/images/logo.png" alt="Core Loop Development" class="core-brand-logo">
+                <a href="<?php echo $base_path; ?>index.php" class="core-brand" aria-label="Runlevel Systems home">
+                    <img src="<?php echo $base_path; ?>assets/images/RL-logo-no-tag.png" alt="Runlevel Systems" class="core-brand-logo">
                 </a>
 
                 <button type="button" class="core-nav-toggle" aria-controls="site-nav-bar" aria-expanded="false" aria-label="Open navigation menu">

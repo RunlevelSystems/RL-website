@@ -22,8 +22,8 @@ $page_description = 'Centralize every password, host, tool and operating procedu
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/png" href="/assets/images/icon.png">
-    <title>Core Loop | Staff Control Room</title>
+        <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
+    <title>Runlevel Systems | Staff Control Room</title>
     <!-- CSS -->
     <link href="assets/css/coreloop.css" rel="stylesheet">
     <style>
@@ -141,6 +141,7 @@ $page_description = 'Centralize every password, host, tool and operating procedu
                     <a href="staff/tools.php" class="link-tile" style="text-decoration:none;"><span>Toolbox & Downloads</span><i class="ion-ios-arrow-right" style="color:#FFD699;"></i></a>
                     <a href="staff/wiki/index.php" class="link-tile" style="text-decoration:none;"><span>Processes Wiki</span><i class="ion-ios-arrow-right" style="color:#FFD699;"></i></a>
                     <a href="staff/projects-links.php" class="link-tile" style="text-decoration:none;"><span>Project GitHub Links</span><i class="ion-social-github" style="color:#FFD699;"></i></a>
+                    <a href="staff/client-portal.php" class="link-tile" style="text-decoration:none;"><span>Client Portal Admin</span><i class="ion-folder" style="color:#FFD699;"></i></a>
                     <a href="ops-tools/" target="_blank" class="link-tile" style="text-decoration:none;"><span>Raw Tools Folder (GitHub)</span><i class="ion-social-github" style="color:#FFD699;"></i></a>
                     <a href="content/docs/gsp/install-ubuntu-panel.md" target="_blank" class="link-tile" style="text-decoration:none;"><span>Migration Tracker</span><i class="ion-document" style="color:#FFD699;"></i></a>
                 </div>

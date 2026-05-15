@@ -107,9 +107,9 @@ $totalCount = count($servers);
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/png" href="/assets/images/icon.png">
+        <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
     <meta http-equiv="refresh" content="60">
-    <title>Core Loop | Server Fleet Status</title>
+    <title>Runlevel Systems | Server Fleet Status</title>
     <link href="../assets/css/coreloop.css" rel="stylesheet">
     <style>
         .staff-login .page-bgc {

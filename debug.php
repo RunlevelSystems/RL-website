@@ -14,7 +14,7 @@ echo "<p><strong>Current Directory:</strong> " . __DIR__ . "</p>";
 
 echo "<h3>File Existence Check:</h3>";
 $files_to_check = [
-    'assets/images/logo.png',
+    'assets/images/RL-logo.png',
     'assets/images/code.png', 
     'assets/css/coreloop.css',
     'includes/navigation.php',
@@ -39,14 +39,14 @@ if ($is_in_projects) {
 }
 
 echo "<p><strong>Base path:</strong> '$base_path'</p>";
-echo "<p><strong>Logo URL would be:</strong> {$base_path}assets/images/logo.png</p>";
+echo "<p><strong>Logo URL would be:</strong> {$base_path}assets/images/RL-logo.png</p>";
 echo "<p><strong>Code.png URL would be:</strong> {$base_path}assets/images/code.png</p>";
 echo "<p><strong>Home link would be:</strong> {$base_path}index.php</p>";
 
 echo "<h3>Universal Configuration Test:</h3>";
 echo "<p><strong>WDS_BASE_URL:</strong> " . WDS_BASE_URL . "</p>";
 echo "<p><strong>getBasePath():</strong> '" . getBasePath() . "'</p>";
-echo "<p><strong>Logo URL (absolute):</strong> " . getAssetUrl('assets/images/logo.png') . "</p>";
+echo "<p><strong>Logo URL (absolute):</strong> " . getAssetUrl('assets/images/RL-logo.png') . "</p>";
 echo "<p><strong>Home URL (relative):</strong> " . getPageUrl('index.php') . "</p>";
 
 echo "<h3>Web Host Compatibility:</h3>";
