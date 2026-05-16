@@ -173,7 +173,8 @@
 
     <!-- History -->
         <section id="history" class="history">
-            <div class="container-fluid section-bg">
+            <div class="container">
+                <div class="wds-card" style="padding: 36px 40px; margin: 0 auto;">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="title-box">
@@ -230,6 +231,7 @@
                         </div>
                     </div>
                 </div>
+                </div><!-- /.wds-card -->
             </div>
         </section>
 

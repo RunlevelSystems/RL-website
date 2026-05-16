@@ -25,6 +25,7 @@ if ($is_in_wiki) {
                 }
                 .footer-widget .footer-list li {
                     margin: 0 0 8px 0;
+                    text-align: center;
                 }
                 .footer-widget .footer-list a {
                     color: #eaf3ff;
@@ -44,6 +45,7 @@ if ($is_in_wiki) {
                     color: #eaf3ff;
                     font-size: 19px;
                     margin: 0 0 10px 0;
+                    text-align: center;
                 }
                 .footer-widget .footer-brand-line {
                     color: #c7d7e8;
@@ -53,7 +55,7 @@ if ($is_in_wiki) {
                 }
             </style>
             <div class="container">
-                <div class="row">
+                <div class="row" style="display:flex; justify-content:center; text-align:center;">
                     <div class="col-sm-4 footer-col">
                         <h4>Site</h4>
                         <ul class="footer-list">
