@@ -266,14 +266,14 @@ img {
 
 @media (min-width: 769px) {
   .core-brand {
-    flex: 0 0 30%;
-    max-width: 30%;
+    flex: 0 0 25%;
+    max-width: 25%;
   }
 
   .core-brand-logo {
     width: 100%;
-    max-width: 430px;
-    max-height: 88px;
+    max-width: 100%;
+    max-height: none;
   }
 }
 
