@@ -32,7 +32,7 @@ if ($is_in_wiki) {
         <nav class="navbar core-navbar" role="navigation" aria-label="Primary navigation">
             <div class="core-nav-inner">
                 <a href="<?php echo $base_path; ?>index.php" class="core-brand" aria-label="Runlevel Systems home">
-                    <img src="<?php echo $base_path; ?>assets/images/RL-logo-no-tag.png" alt="Runlevel Systems" class="core-brand-logo">
+                    <img src="<?php echo $base_path; ?>assets/images/RL-logo-name-only.png" alt="Runlevel Systems" class="core-brand-logo">
                 </a>
 
                 <button type="button" class="core-nav-toggle" aria-controls="site-nav-bar" aria-expanded="false" aria-label="Open navigation menu">
@@ -45,6 +45,7 @@ if ($is_in_wiki) {
                     <ul class="core-nav-links">
                         <li><a href="<?php echo $base_path; ?>index.php" <?php echo ($current_page == 'index') ? 'aria-current="page"' : ''; ?>>Home</a></li>
                         <li><a href="<?php echo $base_path; ?>projects.php" <?php echo ($current_page == 'projects') ? 'aria-current="page"' : ''; ?>>Projects</a></li>
+                        <li><a href="<?php echo $base_path; ?>portal/">Client Portal</a></li>
                         <li><a href="<?php echo $base_path; ?>joinus.php" <?php echo ($current_page == 'joinus') ? 'aria-current="page"' : ''; ?>>Join Us</a></li>
                         <li><a href="<?php echo $base_path; ?>contact.php" <?php echo ($current_page == 'contact') ? 'aria-current="page"' : ''; ?>>Contact</a></li>
                         <?php if ($is_logged_in): ?>
@@ -54,12 +55,6 @@ if ($is_in_wiki) {
                             <li><a href="<?php echo $base_path; ?>login.php">Staff Login</a></li>
                         <?php endif; ?>
                     </ul>
-
-                    <form method="GET" action="<?php echo $base_path; ?>search.php" class="core-nav-search" role="search">
-                        <label class="sr-only" for="site-search-input">Search</label>
-                        <input id="site-search-input" type="text" name="q" placeholder="Search">
-                        <button type="submit">Search</button>
-                    </form>
                 </div>
             </div>
         </nav>

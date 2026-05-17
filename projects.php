@@ -57,9 +57,34 @@
         if (!isset($project['slug'])) {
             continue;
         }
+
+        $slug = isset($project['slug']) ? (string)$project['slug'] : '';
         $category = isset($project['category']) && $project['category'] !== ''
-            ? $project['category']
-            : 'Current Projects';
+            ? (string)$project['category']
+            : 'Software Engineering';
+
+        $slugCategoryMap = [
+            'gameserver-panel' => 'Platforms',
+            'gameservers-world' => 'Network & Hosting Systems',
+            'pureops' => 'Infrastructure Solutions',
+            'neverwards' => 'Game Technology',
+            'roadkill' => 'Game Technology',
+            'mystical-islands' => 'Interactive Technologies',
+            'castle-walls' => 'Interactive Technologies',
+            'retro-space-blaster' => 'Interactive Technologies',
+            'space5x' => 'Research & Development',
+            'bbs-revival' => 'Software Engineering',
+            'alien-apocalypse' => 'Research & Development',
+        ];
+
+        if (isset($slugCategoryMap[$slug])) {
+            $category = $slugCategoryMap[$slug];
+        }
+
+        if ($slug === 'gameserver-panel') {
+            $project['shortDescription'] = 'A commercial-grade game server management and hosting automation platform developed by Runlevel Systems. It provides centralized server lifecycle management, automated provisioning and deployment workflows, remote node orchestration, multi-location infrastructure coordination, customer management integration, update orchestration, monitoring and control systems, Linux-first operational tooling, and extensible integration points for custom hosting environments.';
+            $project['fullDescription'] = $project['shortDescription'];
+        }
         if (!isset($groupedProjects[$category])) {
             $groupedProjects[$category] = [];
         }
@@ -77,7 +102,15 @@
     unset($projectsInCat);
 
     // Sort categories so key ones appear first (configurable order)
-    $preferredOrder = getCategoryOrder();
+    $preferredOrder = [
+        'Platforms',
+        'Infrastructure Solutions',
+        'Network & Hosting Systems',
+        'Software Engineering',
+        'Game Technology',
+        'Interactive Technologies',
+        'Research & Development',
+    ];
     uksort($groupedProjects, function ($a, $b) use ($preferredOrder) {
         $ia = array_search($a, $preferredOrder, true);
         $ib = array_search($b, $preferredOrder, true);
@@ -116,9 +149,9 @@
         echo '  <div class="project-main">';
         echo '      <div class="project-title-text">' . $title . '</div>';
         echo '      <div class="project-short">' . $short . '</div>';
-        echo '      <div class="project-links-block"><a href="' . h($readUrl) . '" target="_blank" rel="noopener noreferrer">Read more</a></div>';
-        echo '      <div class="project-links-block"><a href="' . h($discUrl) . '" target="_blank" rel="noopener noreferrer">Discussion</a></div>';
-        echo '      <div class="project-links-block"><a href="' . h($issueUrl) . '" target="_blank" rel="noopener noreferrer">Report Issue</a></div>';
+        echo '      <div class="project-links-block"><a href="' . h($readUrl) . '" target="_blank" rel="noopener noreferrer">Technical Overview</a></div>';
+        echo '      <div class="project-links-block"><a href="' . h($discUrl) . '" target="_blank" rel="noopener noreferrer">Architecture Discussion</a></div>';
+        echo '      <div class="project-links-block"><a href="' . h($issueUrl) . '" target="_blank" rel="noopener noreferrer">Support and Issue Tracking</a></div>';
         echo '  </div>';
         echo '</li>';
     }
@@ -135,7 +168,7 @@
                                 <a href="#" onclick="hideProject(); return false;" id="back-to-projects" style="color:var(--wds-primary-soft); text-decoration: none; font-size: 14px; display: inline-block; margin-bottom: 10px;">
                                     ← Back to All Projects
                                 </a>
-                                <p id="project-category">Current Project</p>
+                                <p id="project-category">Project Portfolio</p>
                                 <h2 class="title mt0" id="project-title">Project Title</h2>
                             </div>
                         </div>
@@ -155,26 +188,23 @@
                 </div>
                 <!-- Projects Overview Section -->
                 <div id="projects-overview">
-                    <!-- Projects Overview Section -->
-                    <div id="projects-overview">
                     <div class="row">
                         <div class="boxed">
                             <div class="col-sm-12">
                                     <p class="inner-p">
-                                        Discover our innovative projects and cutting-edge solutions in game development and technology.
-                                        Each project represents our commitment to excellence and innovation.
+                                        Runlevel Systems designs and operates professional software platforms for hosting providers, multiplayer operations, and enterprise-scale product teams.
+                                        This portfolio highlights production-focused systems built for reliability, automation, and long-term maintainability.
                                     </p>
                                     <p class="inner-p" style="margin-top:15px;">
-                                        For deeper details, every project on this page links to our public GitHub project hub, where we track design documents, roadmaps,
-                                        future project ideas, bug reports, and community discussions.
+                                        Our delivery scope includes commercial-grade hosting platforms, scalable infrastructure software, game server management systems,
+                                        multiplayer technologies, backend automation systems, deployment and orchestration tooling, and custom software ecosystems.
                                     </p>
                                     <p class="inner-p" style="margin-top:10px;">
-                                        Key GitHub resources for our projects:
+                                        Technical resources for each platform:
                                         <br>
                                         • <a href="https://github.com/World-Domination-Software/Projects/wiki" target="_blank" rel="noopener noreferrer" style="color:var(--wds-primary-soft); text-decoration:underline;">Project descriptions &amp; design documents (Wiki)</a><br>
-                                        • <a href="https://github.com/World-Domination-Software/Projects/discussions/categories/ideas" target="_blank" rel="noopener noreferrer" style="color:var(--wds-primary-soft); text-decoration:underline;">Future project ideas &amp; feature discussions (Ideas)</a><br>
-                                        • <a href="https://github.com/World-Domination-Software/Projects/issues" target="_blank" rel="noopener noreferrer" style="color:var(--wds-primary-soft); text-decoration:underline;">Bug reports &amp; support issues (Issues)</a><br>
-                                        • <a href="https://github.com/World-Domination-Software/Projects/discussions" target="_blank" rel="noopener noreferrer" style="color:var(--wds-primary-soft); text-decoration:underline;">General project discussions</a>
+                                        • <a href="https://github.com/World-Domination-Software/Projects/discussions" target="_blank" rel="noopener noreferrer" style="color:var(--wds-primary-soft); text-decoration:underline;">Engineering discussions and implementation notes</a><br>
+                                        • <a href="https://github.com/World-Domination-Software/Projects/issues" target="_blank" rel="noopener noreferrer" style="color:var(--wds-primary-soft); text-decoration:underline;">Support issues and platform tracking</a>
                                     </p>
                             </div>
                         </div>
@@ -217,14 +247,18 @@
                     .project-row {
                         display: flex;
                         align-items: flex-start;
-                        padding: 10px 15px;
-                        margin-bottom: 5px;
-                        background-color: #0d1a33;
-                        border-radius: 4px;
-                        border: 1px solid rgba(54,243,255,0.22);
+                        padding: 16px 18px;
+                        margin-bottom: 12px;
+                        background: linear-gradient(180deg, #0d1a33, #0b1830);
+                        border-radius: 10px;
+                        border: 1px solid rgba(54,243,255,0.24);
+                        box-shadow: 0 0 0 1px rgba(54,243,255,0.06), 0 8px 20px rgba(0,0,0,0.2);
+                        transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
                     }
                     .project-row:hover {
-                        background-color: #112448;
+                        border-color: rgba(54,243,255,0.48);
+                        box-shadow: 0 0 0 1px rgba(54,243,255,0.12), 0 10px 24px rgba(0,0,0,0.26), 0 0 18px rgba(54,243,255,0.14);
+                        transform: translateY(-1px);
                     }
                     .project-main {
                         display: flex;
@@ -233,18 +267,19 @@
                     }
                     .project-title-text {
                         color:var(--wds-primary-soft);
-                        font-weight: 600;
+                        font-weight: 700;
+                        letter-spacing: 0.01em;
                         margin-right: 10px;
-                        margin-bottom: 2px;
+                        margin-bottom: 6px;
                     }
                     .project-short {
                         color: #a8bedc;
                         font-size: 14px;
-                        line-height: 1.6;
+                        line-height: 1.7;
                         margin-top: 2px;
                     }
                     .project-links-block {
-                        margin-top: 2px;
+                        margin-top: 6px;
                         font-size: 13px;
                     }
                     .project-links-block a {

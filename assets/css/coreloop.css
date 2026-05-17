@@ -155,6 +155,13 @@ textarea {
   padding-inline: 1rem;
 }
 
+@media (min-width: 992px) {
+  .container {
+    width: 70%;
+    max-width: 70%;
+  }
+}
+
 .container-fluid {
   width: 100%;
   padding-inline: 1rem;
@@ -229,6 +236,7 @@ img {
 .core-navbar {
   margin: 0;
   min-height: 68px;
+  padding: 0;
 }
 
 .core-nav-inner {
@@ -254,6 +262,19 @@ img {
   max-width: 260px;
   height: auto;
   object-fit: contain;
+}
+
+@media (min-width: 769px) {
+  .core-brand {
+    flex: 0 0 30%;
+    max-width: 30%;
+  }
+
+  .core-brand-logo {
+    width: 100%;
+    max-width: 430px;
+    max-height: 88px;
+  }
 }
 
 .core-nav-toggle {
@@ -322,6 +343,7 @@ img {
   width: 100%;
 }
 
+
 .core-nav-search input {
   margin: 0;
   min-width: 0;
@@ -354,6 +376,7 @@ img {
 @media (max-width: 768px) {
   .core-navbar {
     min-height: 62px;
+    padding: 0;
   }
 
   .core-nav-inner {

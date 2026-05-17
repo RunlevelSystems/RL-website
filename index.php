@@ -31,247 +31,330 @@
     <!-- Include Navigation Header -->
     <?php include 'includes/navigation.php'; ?>
 
-    <!-- Runlevel Systems — Overview Block -->
-<section class="wds-hero" aria-label="Company Overview">
-  <style>
-    .wds-hero {
-      isolation: isolate;
-      background: linear-gradient(180deg, #07111f, #0b1630);
-      border: 1px solid rgba(54, 243, 255,0.16);
-      border-radius: 16px;
-      padding: 48px 36px;
-      margin: 24px auto;
-      max-width: 1100px;
-      overflow: hidden;
-      position: relative;
-    }
-    .wds-hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 20% 0%, rgba(54, 243, 255,0.08), transparent 60%);
-      pointer-events: none;
-    }
-    .wds-hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(54, 243, 255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(54, 243, 255,0.04) 1px, transparent 1px);
-      background-size: 32px 32px;
-      pointer-events: none;
-      opacity: 0.6;
-    }
-    .lx-wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: start; position: relative; z-index: 1; }
-    @media (max-width: 900px){ .lx-wrap { grid-template-columns: 1fr; } }
-    .lx-eyebrow { color: #36f3ff; letter-spacing: .15em; text-transform: uppercase; font-size: 11px; margin-bottom: 10px; font-family: 'Exo 2', sans-serif; font-weight: 600; }
-    .lx-title { font-size: clamp(28px, 4vw, 44px); line-height: 1.05; margin: 0 0 12px; color: #f4f9ff; font-family: 'Exo 2', sans-serif; font-weight: 800; text-shadow: none !important; }
-    .lx-title span { color: #ffc600; }
-    .lx-tagline { font-size: clamp(15px, 2.2vw, 18px); color: #c7d7e8; margin: 0 0 18px; }
-    .lx-motto { font-size: 14px; color: #9fb3c9; margin: 0 0 22px; }
-    .lx-cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0 26px; }
-    .lx-btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 6px; text-decoration: none; font-weight: 700; font-family: 'Exo 2', sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.2s ease; text-shadow: none !important; }
-    .lx-btn--primary { background: #ffc600; color: #08111f; border: 1px solid #ffc600; }
-    .lx-btn--primary:hover { background: #36f3ff; color: #08111f; box-shadow: 0 0 16px rgba(54, 243, 255,0.3); }
-    .lx-btn--ghost { background: transparent; color: #c7d7e8; border: 1px solid rgba(54, 243, 255,0.25); }
-    .lx-btn--ghost:hover { background: rgba(54, 243, 255,0.08); color: #ffc600; border-color: rgba(54, 243, 255,0.5); }
-    .lx-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    @media (max-width: 900px){ .lx-cards { grid-template-columns: 1fr; } }
-    .lx-card { background: rgba(54, 243, 255,0.04); border: 1px solid rgba(54, 243, 255,0.12); border-radius: 10px; padding: 18px; transition: border-color 0.2s ease; }
-    .lx-card:hover { border-color: rgba(54, 243, 255,0.35); }
-    .lx-card h3 { font-size: 15px; margin: 0 0 8px; color: #f4f9ff; font-family: 'Exo 2', sans-serif; text-shadow: none !important; }
-    .lx-card p { font-size: 13px; color: #9fb3c9; margin: 0; text-shadow: none !important; }
-    .lx-card a { color: #36f3ff; text-decoration: none; }
-    .lx-bullets { display: grid; gap: 9px; margin-top: 12px; }
-    .lx-bullet { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; font-size: 14px; color: #c7d7e8; text-shadow: none !important; }
-    .lx-check { width: 18px; height: 18px; border-radius: 4px; background: rgba(54, 243, 255,0.1); border: 1px solid rgba(54, 243, 255,0.35); display: inline-grid; place-items: center; font-size: 11px; color: #36f3ff; }
-    .lx-meta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; color: #9fb3c9; font-size: 13px; }
-    .lx-meta a { color: #36f3ff; text-decoration: none; }
-    .lx-meta a:hover { text-decoration: underline; }
-    .lx-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(54, 243, 255,0.3), transparent); margin: 20px 0; border: none; }
-    .lx-small { font-size: 12px; color: #9fb3c9; text-shadow: none !important; }
-    .lx-banner {
-      margin-bottom: 18px;
-      border: 1px solid rgba(54, 243, 255,0.18);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 0 0 1px rgba(255, 198, 0,0.05), 0 20px 40px rgba(0,0,0,0.25);
-    }
-    .lx-banner img { width: 100%; height: auto; display: block; }
-  </style>
+    <style>
+      .home {
+        padding: 28px 0 34px;
+      }
+      .home-block {
+        background: linear-gradient(180deg, #07111f, #0b1630);
+        border: 1px solid rgba(54, 243, 255, 0.16);
+        border-radius: 14px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+        margin-bottom: 22px;
+        position: relative;
+        overflow: hidden;
+      }
+      .home-block::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 12% -5%, rgba(54, 243, 255, 0.1), transparent 45%);
+        pointer-events: none;
+      }
+      .home-inner {
+        position: relative;
+        z-index: 1;
+        padding: 36px;
+      }
+      .home-label {
+        color: #36f3ff;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-size: 11px;
+        margin: 0 0 10px;
+        font-weight: 700;
+      }
+      .home-title {
+        margin: 0 0 12px;
+        color: #f4f9ff;
+        font-size: clamp(30px, 4.3vw, 46px);
+        line-height: 1.08;
+      }
+      .home-title-accent {
+        color: #ffc600;
+      }
+      .home-lead {
+        margin: 0;
+        color: #d7e6f7;
+        font-size: 19px;
+        line-height: 1.6;
+        max-width: 840px;
+      }
+      .home-summary {
+        margin: 14px 0 0;
+        color: #a8bedc;
+        font-size: 16px;
+        line-height: 1.75;
+        max-width: 900px;
+      }
+      .home-actions {
+        margin-top: 22px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 11px;
+      }
+      .home-btn {
+        display: inline-flex;
+        align-items: center;
+        padding: 11px 18px;
+        border-radius: 6px;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        font-size: 12px;
+        font-weight: 700;
+        transition: all 0.2s ease;
+      }
+      .home-btn-primary {
+        background: #ffc600;
+        border: 1px solid #ffc600;
+        color: #08111f;
+      }
+      .home-btn-primary:hover,
+      .home-btn-primary:focus {
+        background: #36f3ff;
+        color: #08111f;
+        box-shadow: 0 0 18px rgba(54, 243, 255, 0.26);
+      }
+      .home-btn-ghost {
+        background: transparent;
+        border: 1px solid rgba(54, 243, 255, 0.35);
+        color: #d7e6f7;
+      }
+      .home-btn-ghost:hover,
+      .home-btn-ghost:focus {
+        color: #ffc600;
+        border-color: rgba(54, 243, 255, 0.58);
+        background: rgba(54, 243, 255, 0.1);
+      }
+      .home-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .home-card {
+        background: rgba(5, 15, 29, 0.65);
+        border: 1px solid rgba(54, 243, 255, 0.2);
+        border-radius: 10px;
+        padding: 18px;
+        animation: homeFadeUp 0.45s ease both;
+      }
+      .home-card h3 {
+        color: #f4f9ff;
+        margin: 0 0 8px;
+        font-size: 19px;
+      }
+      .home-card p {
+        margin: 0;
+        color: #a8bedc;
+        font-size: 15px;
+        line-height: 1.72;
+      }
+      .home-highlight {
+        border: 1px solid rgba(255, 198, 0, 0.35);
+        box-shadow: inset 0 0 0 1px rgba(255, 198, 0, 0.09), 0 0 24px rgba(54, 243, 255, 0.14);
+      }
+      .home-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 8px;
+      }
+      .home-list li {
+        color: #c7d7e8;
+        padding-left: 18px;
+        position: relative;
+        line-height: 1.68;
+      }
+      .home-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #36f3ff;
+        box-shadow: 0 0 8px rgba(54, 243, 255, 0.55);
+      }
+      .home-tag-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .home-tag {
+        border: 1px solid rgba(54, 243, 255, 0.26);
+        background: rgba(4, 14, 26, 0.72);
+        color: #dce9f8;
+        border-radius: 8px;
+        padding: 11px 10px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+      .home-tech {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .home-tech-item {
+        border: 1px solid rgba(54, 243, 255, 0.2);
+        background: rgba(4, 14, 26, 0.72);
+        border-radius: 9px;
+        padding: 14px;
+      }
+      .home-tech-item strong {
+        display: block;
+        color: #f4f9ff;
+        margin-bottom: 4px;
+      }
+      .home-tech-item span {
+        color: #a8bedc;
+        font-size: 14px;
+        line-height: 1.55;
+      }
+      .home-divider {
+        border: 0;
+        height: 1px;
+        margin: 18px 0;
+        background: linear-gradient(90deg, transparent, rgba(54, 243, 255, 0.46), transparent);
+      }
+      @keyframes homeFadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (max-width: 980px) {
+        .home-grid,
+        .home-tag-grid,
+        .home-tech {
+          grid-template-columns: 1fr;
+        }
+        .home-inner {
+          padding: 24px;
+        }
+        .home-lead {
+          font-size: 17px;
+        }
+      }
+    </style>
 
-  <div class="lx-wrap">
-    <div>
-      <div class="lx-eyebrow">Runlevel Systems</div>
-      <h1 class="lx-title">Design <span>•</span> Debug <span>•</span> Deploy</h1>
-      <p class="lx-tagline">Game development • Multiplayer infrastructure • Business applications</p>
-      <p class="lx-motto">We build resilient software and scalable infrastructure with a blue-and-gold professional finish.</p>
-
-      <div class="lx-cta">
-        <a class="lx-btn lx-btn--primary" href="contact.php">Request a consultation</a>
-        <a class="lx-btn lx-btn--ghost" href="portal/">Client portal</a>
-        <a class="lx-btn lx-btn--ghost" href="https://gameservers.world" target="_blank" rel="noopener">Game servers</a>
-      </div>
-
-      <hr class="lx-divider">
-
-      <div class="lx-bullets" role="list">
-        <div class="lx-bullet"><span class="lx-check">✓</span><span>Indie studio shipping performant games and tools.</span></div>
-        <div class="lx-bullet"><span class="lx-check">✓</span><span>DevOps-grade hosting: monitoring, crash recovery, CI/CD pipelines.</span></div>
-        <div class="lx-bullet"><span class="lx-check">✓</span><span>Custom business apps and integrations — scoped clearly, delivered predictably.</span></div>
-        <div class="lx-bullet"><span class="lx-check">✓</span><span>Flexible engagements: fixed-scope builds or ongoing retainers.</span></div>
-      </div>
-
-      <div class="lx-meta">
-        <span>⚡ <a href="mailto:hello@coreloop.dev">hello@coreloop.dev</a></span>
-        <span>🔒 Private portal available for clients</span>
-      </div>
-    </div>
-    <div class="lx-banner" aria-label="Runlevel Systems banner">
-      <img src="assets/images/RL-splash.png" alt="Runlevel Systems banner">
-    </div>
-  </div>
-
-  <!-- Service Cards Section -->
-  <div style="margin-top: 40px; position: relative; z-index: 1;">
-    <div class="lx-cards">
-      <article class="lx-card" aria-label="Game Server Hosting">
-        <h3>Game Server Hosting</h3>
-        <p>Global game server hosting across multiple regions. Affordable, reliable, and optimized for performance. Experience it at <a href="http://gameservers.world" target="_blank" rel="noopener">gameservers.world</a>.</p>
-      </article>
-      <article class="lx-card" aria-label="Game Development">
-        <h3>Game Development</h3>
-        <p>Multiplayer and open-world game development. See our growing catalog on <a href="https://store.steampowered.com/curator/45805039/" target="_blank" rel="noopener">Steam Curator</a> and explore what we're building next.</p>
-      </article>
-      <article class="lx-card" aria-label="Business Applications">
-        <h3>Business Applications &amp; Websites</h3>
-        <p>Custom business applications and professional websites built with enterprise-grade security, scalability, and maintainability.</p>
-      </article>
-    </div>
-
-    <hr class="lx-divider" style="margin-top: 28px;">
-    <p class="lx-small">Prefer to talk scope first? We'll propose the smallest thing that works — then earn the right to build more.</p>
-  </div>
-
-  <!-- Structured data for better SEO -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Runlevel Systems",
-    "url": "https://coreloop.dev",
-    "sameAs": ["https://gameservers.world"],
-    "contactPoint": [{
-      "@type": "ContactPoint",
-      "contactType": "customer support",
-      "email": "hello@coreloop.dev"
-    }]
-  }
-  </script>
-</section>
-
-    <!-- History -->
-        <section id="history" class="history">
-            <div class="container">
-                <div class="wds-card" style="padding: 36px 40px; margin: 0 auto;">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="title-box">
-                            <p>Since 1996</p>
-                            <h2 class="title mt0">Our Professional Legacy</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="boxed">
-                        <div class="col-sm-10 col-sm-offset-1">
-                            <p style="font-size: 17px; line-height: 1.8; color: #94a3b8; margin-bottom: 30px;">
-                                We are seasoned IT professionals with an unrelenting passion for development and innovation. Since 1996, we've been at the forefront of digital communities — from running bulletin board systems (BBS) and managing high-performance game servers to developing cutting-edge applications that push technological boundaries.
-                            </p>
-                            <p style="font-size: 17px; line-height: 1.8; color: #94a3b8; margin-bottom: 30px;">
-                                In our professional careers, we architect and deliver enterprise-grade solutions for Fortune 500 companies across diverse industries. Our expertise spans cloud infrastructure, scalable web applications, cybersecurity implementations, and mission-critical system integrations that serve millions of users worldwide.
-                            </p>
-                            <p style="font-size: 17px; line-height: 1.8; color: #94a3b8;">
-                                <strong style="color: #36f3ff;">Nearly three decades of experience</strong> have taught us that the most groundbreaking innovations come from passionate collaboration. That's why we founded Runlevel Systems — to channel our corporate expertise and entrepreneurial drive into creating the next generation of gaming experiences and infrastructure.
-                            </p>
-                        </div>
-                        <div class="col-sm-12" style="text-align: center; margin: 40px 0;">
-                            <div style="display: inline-flex; align-items: center; gap: 30px; flex-wrap: wrap; justify-content: center;">
-                                <div style="text-align: center; color: #36f3ff;">
-                                    <i class="fas fa-calendar-alt" style="font-size: 40px; margin-bottom: 10px;"></i>
-                                  <h4 style="color: #ffc600; margin: 5px 0;">1996</h4>
-                                  <p style="color: #9fb3c9; font-size: 13px; font-weight: 500;">Started BBS</p>
-                                </div>
-                                <div style="color: #9fb3c9;">
-                                    <i class="fas fa-arrow-right" style="font-size: 20px;"></i>
-                                </div>
-                                <div style="text-align: center; color: #36f3ff;">
-                                    <i class="fas fa-server" style="font-size: 40px; margin-bottom: 10px;"></i>
-                                  <h4 style="color: #ffc600; margin: 5px 0;">2000s</h4>
-                                  <p style="color: #9fb3c9; font-size: 13px; font-weight: 500;">Game Servers</p>
-                                </div>
-                                <div style="color: #9fb3c9;">
-                                    <i class="fas fa-arrow-right" style="font-size: 20px;"></i>
-                                </div>
-                                <div style="text-align: center; color: #36f3ff;">
-                                    <i class="fas fa-building" style="font-size: 40px; margin-bottom: 10px;"></i>
-                                  <h4 style="color: #ffc600; margin: 5px 0;">2010s</h4>
-                                  <p style="color: #9fb3c9; font-size: 13px; font-weight: 500;">Enterprise</p>
-                                </div>
-                                <div style="color: #9fb3c9;">
-                                    <i class="fas fa-arrow-right" style="font-size: 20px;"></i>
-                                </div>
-                                <div style="text-align: center; color: #36f3ff;">
-                                    <i class="fas fa-rocket" style="font-size: 40px; margin-bottom: 10px;"></i>
-                                  <h4 style="color: #ffc600; margin: 5px 0;">2025</h4>
-                                  <p style="color: #9fb3c9; font-size: 13px; font-weight: 500;">Runlevel Systems</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div><!-- /.wds-card -->
+    <main class="home" aria-label="Runlevel Systems homepage">
+      <section class="container">
+        <div class="home-block" aria-label="Hero">
+          <div class="home-inner">
+            <p class="home-label">Runlevel Systems</p>
+            <h1 class="home-title">Commercial Infrastructure Software <span class="home-title-accent">and Hosting Platforms</span></h1>
+            <p class="home-lead">Runlevel Systems is a technology and infrastructure software company that builds hosting platforms, backend systems, multiplayer infrastructure, deployment automation, and custom Linux-based software ecosystems.</p>
+            <p class="home-summary">We design and operate production-grade systems for organizations that need reliable platform tooling, automated operations, and scalable service architecture.</p>
+            <div class="home-actions">
+              <a class="home-btn home-btn-primary" href="projects.php">View Platforms</a>
+              <a class="home-btn home-btn-ghost" href="contact.php">Request Consultation</a>
             </div>
-        </section>
+          </div>
+        </div>
 
-    <!-- CTA: Join Us -->
-<section class="hero-hook">
-  <style>
-    .hero-hook {
-      padding: 64px 16px;
-      text-align: center;
-      background: linear-gradient(135deg, #0a1322 0%, #05070d 100%);
-      border-top: 1px solid rgba(54, 243, 255,0.15);
-      border-bottom: 1px solid rgba(54, 243, 255,0.15);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-hook::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(54, 243, 255,0.08), transparent 65%);
-      pointer-events: none;
-    }
-    .hero-hook h1 { font-size: clamp(26px, 5vw, 44px); margin: 0 0 12px; color: #f4f9ff; font-family: 'Exo 2', sans-serif; font-weight: 800; text-shadow: none !important; position: relative; z-index: 1; }
-    .hero-hook p { margin: 0 auto 20px; max-width: 760px; color: #c7d7e8; font-size: 17px; position: relative; z-index: 1; text-shadow: none !important; }
-    .hero-hook .lx-btn {
-      display: inline-flex; align-items: center; padding: 12px 28px;
-      border-radius: 6px; font-weight: 700; text-decoration: none;
-      font-family: 'Exo 2', sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
-      background: #ffc600; color: #08111f; border: 1px solid #ffc600;
-      transition: all 0.2s ease; position: relative; z-index: 1; text-shadow: none !important;
-    }
-    .hero-hook .lx-btn:hover { background: #36f3ff; box-shadow: 0 0 20px rgba(54, 243, 255,0.3); }
-  </style>
+        <div class="home-block" aria-label="Core capabilities">
+          <div class="home-inner">
+            <p class="home-label">Core Capabilities</p>
+            <div class="home-grid">
+              <article class="home-card">
+                <h3>Infrastructure Platforms</h3>
+                <p>We build scalable backend management platforms for hosting and online services, with a focus on reliability, service lifecycle control, and long-term maintainability.</p>
+              </article>
+              <article class="home-card home-highlight">
+                <h3>Game Server Technology</h3>
+                <p>Our GameServer Panel platform is commercial-grade infrastructure software for game server management, deployment automation, and orchestration across distributed multiplayer hosting environments.</p>
+              </article>
+              <article class="home-card">
+                <h3>Automation and Deployment</h3>
+                <p>We implement automated provisioning, remote management, update control, monitoring pipelines, and orchestration tooling that reduces operational overhead at scale.</p>
+              </article>
+              <article class="home-card">
+                <h3>Software Engineering</h3>
+                <p>We deliver custom backend engineering, Linux infrastructure services, API systems, and platform integrations tailored to customer environments and business workflows.</p>
+              </article>
+              <article class="home-card">
+                <h3>Network and Hosting Solutions</h3>
+                <p>Our architecture work spans virtualization, remote node management, infrastructure monitoring, and scalable operations for regional and multi-location hosting platforms.</p>
+              </article>
+            </div>
+          </div>
+        </div>
 
-  <h1>Build games. Host worlds. Ship faster.</h1>
-  <p>Real projects in Server Hosting, Game Dev, Modding, and Web Apps — using our tools and servers.<br>Launch your own side projects too (keep 100%).</p>
-  <div>
-    <a class="lx-btn" href="joinus.php" data-cta="hero-readmore">Join the Team</a>
-  </div>
-</section>
+        <div class="home-block" aria-label="GameServer Panel platform">
+          <div class="home-inner">
+            <p class="home-label">Platform Spotlight</p>
+            <h2 class="home-title" style="font-size: clamp(24px, 3.4vw, 34px);">GameServer Panel by Runlevel Systems</h2>
+            <p class="home-summary">GameServer Panel is positioned as a commercial hosting platform and infrastructure management system for multiplayer service operators. It provides centralized control, deployment orchestration, node-level lifecycle operations, and automation tooling for Linux-based hosting environments.</p>
+            <hr class="home-divider">
+            <ul class="home-list">
+              <li>Centralized game server management across nodes and infrastructure locations.</li>
+              <li>Automated provisioning and deployment workflows for service consistency.</li>
+              <li>Remote orchestration for node operations, updates, and service rollouts.</li>
+              <li>Integrated monitoring and operational controls for production hosting.</li>
+              <li>Extensible platform architecture for custom integrations and backend tooling.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="home-block" aria-label="Who we serve">
+          <div class="home-inner">
+            <p class="home-label">Who We Serve</p>
+            <div class="home-tag-grid">
+              <div class="home-tag">Hosting Providers</div>
+              <div class="home-tag">Online Gaming Communities</div>
+              <div class="home-tag">Infrastructure Operators</div>
+              <div class="home-tag">Developers and Product Teams</div>
+              <div class="home-tag">Multiplayer Platform Operators</div>
+              <div class="home-tag">Businesses Requiring Scalable Backend Systems</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-block" aria-label="Core technologies">
+          <div class="home-inner">
+            <p class="home-label">Core Technologies</p>
+            <div class="home-tech">
+              <div class="home-tech-item"><strong>Linux Infrastructure</strong><span>Production-first Linux environments for stable and predictable operations.</span></div>
+              <div class="home-tech-item"><strong>Virtualization</strong><span>Resource-isolated service layers for efficient multi-tenant hosting.</span></div>
+              <div class="home-tech-item"><strong>Distributed Systems</strong><span>Node-aware design for resilient, horizontally scalable services.</span></div>
+              <div class="home-tech-item"><strong>Backend Automation</strong><span>Automated workflows for provisioning, updates, and operational recovery.</span></div>
+              <div class="home-tech-item"><strong>Deployment Architecture</strong><span>Repeatable orchestration patterns for fast, controlled releases.</span></div>
+              <div class="home-tech-item"><strong>Multiplayer Hosting</strong><span>Infrastructure and control tooling for online game server environments.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-block" aria-label="Call to action">
+          <div class="home-inner" style="text-align: center;">
+            <h2 style="margin:0 0 10px; color:#f4f9ff; font-size:clamp(22px,3vw,30px);">Infrastructure Software Built for Real Operations</h2>
+            <p class="home-summary" style="margin:0 auto 16px; max-width:760px;">If you need hosting technology, backend automation, or a custom platform tailored to your environment, Runlevel Systems can design and deliver it.</p>
+            <a class="home-btn home-btn-primary" href="contact.php">Talk to Our Team</a>
+          </div>
+        </div>
+      </section>
+
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Runlevel Systems",
+        "url": "https://worlddomination.dev",
+        "contactPoint": [{
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "url": "https://worlddomination.dev/contact.php"
+        }]
+      }
+      </script>
+    </main>
 
 
     <!-- Include Footer -->
