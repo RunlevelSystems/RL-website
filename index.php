@@ -250,9 +250,9 @@
         <div class="home-block" aria-label="Hero">
           <div class="home-inner">
             <p class="home-label">Runlevel Systems</p>
-            <h1 class="home-title">Commercial Infrastructure Software <span class="home-title-accent">and Hosting Platforms</span></h1>
-            <p class="home-lead">Runlevel Systems is a technology and infrastructure software company that builds hosting platforms, backend systems, multiplayer infrastructure, deployment automation, and custom Linux-based software ecosystems.</p>
-            <p class="home-summary">We design and operate production-grade systems for organizations that need reliable platform tooling, automated operations, and scalable service architecture.</p>
+            <h1 class="home-title">Multiplayer Game Development <span class="home-title-accent">and GameServer Panel Platform Engineering</span></h1>
+            <p class="home-lead">Runlevel Systems primarily develops multiplayer games and the GameServer Panel hosting platform. We build the game technology, backend systems, and Linux-based infrastructure required to run and scale modern multiplayer environments.</p>
+            <p class="home-summary">Our core business is production-ready multiplayer software and hosting platform operations, with automation and custom engineering supporting those two primary areas.</p>
             <div class="home-actions">
               <a class="home-btn home-btn-primary" href="projects.php">View Platforms</a>
               <a class="home-btn home-btn-ghost" href="contact.php">Request Consultation</a>
@@ -262,19 +262,23 @@
 
         <div class="home-block" aria-label="Core capabilities">
           <div class="home-inner">
-            <p class="home-label">Core Capabilities</p>
+            <p class="home-label">Primary Focus</p>
             <div class="home-grid">
+              <article class="home-card home-highlight">
+                <h3>GameServer Panel Hosting Platform</h3>
+                <p>GameServer Panel is our commercial-grade hosting platform for centralized game server management, deployment automation, and orchestration across distributed multiplayer infrastructure.</p>
+              </article>
+              <article class="home-card">
+                <h3>Multiplayer Game Development</h3>
+                <p>We develop multiplayer game systems, synchronized gameplay services, and backend integrations designed for persistent online operation and scalable player concurrency.</p>
+              </article>
               <article class="home-card">
                 <h3>Infrastructure Platforms</h3>
-                <p>We build scalable backend management platforms for hosting and online services, with a focus on reliability, service lifecycle control, and long-term maintainability.</p>
-              </article>
-              <article class="home-card home-highlight">
-                <h3>Game Server Technology</h3>
-                <p>Our GameServer Panel platform is commercial-grade infrastructure software for game server management, deployment automation, and orchestration across distributed multiplayer hosting environments.</p>
+                <p>We build scalable backend management platforms for hosting and online services, with a focus on reliability, service lifecycle control, and maintainability.</p>
               </article>
               <article class="home-card">
                 <h3>Automation and Deployment</h3>
-                <p>We implement automated provisioning, remote management, update control, monitoring pipelines, and orchestration tooling that reduces operational overhead at scale.</p>
+                <p>We implement provisioning, remote management, update control, monitoring pipelines, and orchestration tooling that reduces operational overhead at scale.</p>
               </article>
               <article class="home-card">
                 <h3>Software Engineering</h3>
@@ -292,7 +296,7 @@
           <div class="home-inner">
             <p class="home-label">Platform Spotlight</p>
             <h2 class="home-title" style="font-size: clamp(24px, 3.4vw, 34px);">GameServer Panel by Runlevel Systems</h2>
-            <p class="home-summary">GameServer Panel is positioned as a commercial hosting platform and infrastructure management system for multiplayer service operators. It provides centralized control, deployment orchestration, node-level lifecycle operations, and automation tooling for Linux-based hosting environments.</p>
+            <p class="home-summary">GameServer Panel is one of our primary products. It is a commercial hosting platform and infrastructure management system for multiplayer service operators, with centralized control, deployment orchestration, node lifecycle operations, and Linux-based automation tooling.</p>
             <hr class="home-divider">
             <ul class="home-list">
               <li>Centralized game server management across nodes and infrastructure locations.</li>
@@ -334,8 +338,8 @@
 
         <div class="home-block" aria-label="Call to action">
           <div class="home-inner" style="text-align: center;">
-            <h2 style="margin:0 0 10px; color:#f4f9ff; font-size:clamp(22px,3vw,30px);">Infrastructure Software Built for Real Operations</h2>
-            <p class="home-summary" style="margin:0 auto 16px; max-width:760px;">If you need hosting technology, backend automation, or a custom platform tailored to your environment, Runlevel Systems can design and deliver it.</p>
+            <h2 style="margin:0 0 10px; color:#f4f9ff; font-size:clamp(22px,3vw,30px);">Multiplayer Games and Hosting Platforms Built for Production</h2>
+            <p class="home-summary" style="margin:0 auto 16px; max-width:760px;">If you need a multiplayer game product, GameServer Panel-based hosting operations, or supporting backend engineering, Runlevel Systems can deliver it.</p>
             <a class="home-btn home-btn-primary" href="contact.php">Talk to Our Team</a>
           </div>
         </div>

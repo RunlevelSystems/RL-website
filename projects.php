@@ -103,11 +103,11 @@
 
     // Sort categories so key ones appear first (configurable order)
     $preferredOrder = [
-        'Platforms',
-        'Infrastructure Solutions',
-        'Network & Hosting Systems',
-        'Software Engineering',
         'Game Technology',
+        'Platforms',
+        'Network & Hosting Systems',
+        'Infrastructure Solutions',
+        'Software Engineering',
         'Interactive Technologies',
         'Research & Development',
     ];
@@ -192,12 +192,12 @@
                         <div class="boxed">
                             <div class="col-sm-12">
                                     <p class="inner-p">
-                                        Runlevel Systems designs and operates professional software platforms for hosting providers, multiplayer operations, and enterprise-scale product teams.
-                                        This portfolio highlights production-focused systems built for reliability, automation, and long-term maintainability.
+                                        Runlevel Systems primarily develops multiplayer games and the GameServer Panel hosting platform.
+                                        This portfolio is centered on those two product lines and the infrastructure systems that support them in production.
                                     </p>
                                     <p class="inner-p" style="margin-top:15px;">
-                                        Our delivery scope includes commercial-grade hosting platforms, scalable infrastructure software, game server management systems,
-                                        multiplayer technologies, backend automation systems, deployment and orchestration tooling, and custom software ecosystems.
+                                        Our core work includes multiplayer game technology, commercial-grade game server management, deployment automation,
+                                        Linux-based backend operations, and platform engineering for scalable hosting environments.
                                     </p>
                                     <p class="inner-p" style="margin-top:10px;">
                                         Technical resources for each platform:
