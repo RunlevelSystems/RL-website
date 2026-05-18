@@ -5,6 +5,7 @@ define('WDS_SYSTEM', true);
 
 // Include database configuration
 require_once 'includes/db-config.php';
+addLoginDebug('Config file loaded', __FILE__);
 
 // Check if already logged in
 if (isLoggedInAdmin()) {
@@ -34,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_form'])) {
             $_SESSION['wds_admin_user'] = $user['username'];
             $_SESSION['wds_admin_role'] = $user['role'];
             $_SESSION['wds_login_time'] = $user['login_time'];
+            addLoginDebug('Session created', (isset($_SESSION['wds_admin_user']) && isset($_SESSION['wds_admin_role'])) ? 'YES' : 'NO');
             
             // Redirect to requested page or staff info.
             // Only allow relative paths (no scheme/host) to prevent open-redirect attacks.
@@ -44,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_form'])) {
             header('Location: ' . $redirect);
             exit;
         } else {
+            addLoginDebug('Session created', 'NO');
             $error_message = 'Invalid username or password, or insufficient privileges.';
         }
     }
@@ -83,6 +86,40 @@ $page_subtitle = 'Design • Debug • Deploy';
 
             .staff-login-form .form-control {
                 font-size: 16px;
+            }
+
+            .password-field-wrapper {
+                position: relative;
+            }
+
+            .password-field-wrapper input[type="password"],
+            .password-field-wrapper input[type="text"] {
+                padding-right: 48px;
+            }
+
+            .password-toggle-btn {
+                position: absolute;
+                top: 50%;
+                right: 10px;
+                transform: translateY(-50%);
+                border: 1px solid rgba(255, 209, 102, 0.45);
+                background: rgba(13, 26, 51, 0.85);
+                color: #ffd166;
+                border-radius: 6px;
+                width: 34px;
+                height: 34px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+            }
+
+            .password-toggle-btn:hover,
+            .password-toggle-btn:focus {
+                background: #ffd166;
+                color: #0a1730;
+                border-color: #ffd166;
+                outline: none;
             }
         </style>
 
@@ -147,14 +184,20 @@ $page_subtitle = 'Design • Debug • Deploy';
                                            placeholder="Enter your admin username">
                                 </div>
                                 
-                                <div style="margin-bottom: 30px;">
-                                    <label style="display: block; margin-bottom: 8px; font-weight: bold; font-size: 16px;">
-                                        <i class="ion-locked" style="margin-right: 8px;"></i>Password
-                                    </label>
-                                    <input type="password" name="password" required 
-                                           class="form-control"
-                                           placeholder="Enter your password">
-                                </div>
+                                 <div style="margin-bottom: 30px;">
+                                     <label style="display: block; margin-bottom: 8px; font-weight: bold; font-size: 16px;">
+                                         <i class="ion-locked" style="margin-right: 8px;"></i>Password
+                                     </label>
+                                     <div class="password-field-wrapper">
+                                         <input type="password" name="password" required
+                                                class="form-control"
+                                                id="password"
+                                                placeholder="Enter your password">
+                                         <button type="button" class="password-toggle-btn" id="passwordToggle" aria-label="Show password">
+                                             <i class="ion-eye" aria-hidden="true"></i>
+                                         </button>
+                                     </div>
+                                 </div>
                                 
                                 <div style="text-align: center;">
                                     <button type="submit" class="btn btn-primary">
@@ -193,6 +236,24 @@ $page_subtitle = 'Design • Debug • Deploy';
         <script src="assets/js/jquery.magnific-popup.min.js"></script>
         <script src="assets/js/owl.carousel.min.js"></script>
         <script src="assets/js/script.js"></script>
+        <script>
+            (function () {
+                var passwordInput = document.getElementById('password');
+                var toggleButton = document.getElementById('passwordToggle');
+                if (!passwordInput || !toggleButton) {
+                    return;
+                }
+
+                toggleButton.addEventListener('click', function () {
+                    var isHidden = passwordInput.type === 'password';
+                    passwordInput.type = isHidden ? 'text' : 'password';
+                    toggleButton.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+                    toggleButton.innerHTML = isHidden
+                        ? '<i class="ion-eye-disabled" aria-hidden="true"></i>'
+                        : '<i class="ion-eye" aria-hidden="true"></i>';
+                });
+            })();
+        </script>
 
     </body>
 </html>

