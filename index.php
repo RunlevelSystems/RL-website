@@ -70,6 +70,9 @@
         font-size: clamp(30px, 4.3vw, 46px);
         line-height: 1.08;
       }
+      .home-title-line {
+        display: block;
+      }
       .home-title-accent {
         color: #ffc600;
       }
@@ -250,9 +253,9 @@
         <div class="home-block" aria-label="Hero">
           <div class="home-inner">
             <p class="home-label">Runlevel Systems</p>
-            <h1 class="home-title">We Build Multiplayer Games <span class="home-title-accent">and Game Server Hosting Software</span></h1>
-            <p class="home-lead">Runlevel Systems develops multiplayer games and GameServer Panel — our own hosting management platform. We write the code, run the Linux infrastructure, and handle the backend systems that keep multiplayer environments running.</p>
-            <p class="home-summary">Our two main areas are multiplayer game development and the GameServer Panel hosting platform. Everything else — automation, deployment tooling, backend integrations — supports those two things.</p>
+            <h1 class="home-title"><span class="home-title-line">Software Development</span><span class="home-title-accent home-title-line">Games, Hosting, and Infrastructure</span></h1>
+            <p class="home-lead">Runlevel Systems develops software across games, hosting platforms, backend systems, and infrastructure tools. Our work includes multiplayer games, mobile games, commercial game server hosting software, Linux-based hosting environments, deployment automation, and custom backend systems.</p>
+            <p class="home-summary">We build and operate products for interactive services and online operations, from player-facing experiences to the platforms and infrastructure that keep them reliable.</p>
             <div class="home-actions">
               <a class="home-btn home-btn-primary" href="projects.php">See Our Projects</a>
               <a class="home-btn home-btn-ghost" href="contact.php">Get in Touch</a>
@@ -270,7 +273,7 @@
               </article>
               <article class="home-card">
                 <h3>Multiplayer Game Development</h3>
-                <p>We make multiplayer games — from client/server networking to persistent world backends and live game services. Real games, built for real players.</p>
+                <p>We develop multiplayer titles with robust networking, persistent world services, and backend systems designed for live operations.</p>
               </article>
               <article class="home-card">
                 <h3>Hosting Infrastructure</h3>
@@ -278,11 +281,11 @@
               </article>
               <article class="home-card">
                 <h3>Automation and Deployment</h3>
-                <p>We automate server provisioning, deployments, updates, and monitoring. Less manual work for you, fewer things breaking unexpectedly.</p>
+                <p>We automate provisioning, deployment, updates, and monitoring to improve consistency, reduce manual overhead, and speed up delivery.</p>
               </article>
               <article class="home-card">
                 <h3>Backend Engineering</h3>
-                <p>Custom APIs, backend systems, and platform integrations. We build what your project needs, tailored to your environment.</p>
+                <p>We deliver custom APIs, backend services, and platform integrations tailored to your product requirements and operating environment.</p>
               </article>
               <article class="home-card">
                 <h3>Multi-Location Hosting</h3>
@@ -338,8 +341,8 @@
 
         <div class="home-block" aria-label="Call to action">
           <div class="home-inner" style="text-align: center;">
-            <h2 style="margin:0 0 10px; color:#f4f9ff; font-size:clamp(22px,3vw,30px);">Real Games and Real Hosting Software</h2>
-            <p class="home-summary" style="margin:0 auto 16px; max-width:760px;">If you need a multiplayer game, a GameServer Panel-powered hosting setup, or help with backend systems, we'd be happy to talk.</p>
+            <h2 style="margin:0 0 10px; color:#f4f9ff; font-size:clamp(22px,3vw,30px);">Let's Build Your Next Platform</h2>
+            <p class="home-summary" style="margin:0 auto 16px; max-width:760px;">If you need game development, hosting software, or backend and infrastructure engineering, we can help you design and deliver it.</p>
             <a class="home-btn home-btn-primary" href="contact.php">Talk to Our Team</a>
           </div>
         </div>

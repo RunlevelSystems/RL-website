@@ -56,9 +56,8 @@
                     <div class="boxed">
                         <div class="col-sm-12">
                             <p class="inner-p">
-                                We'd love to hear from you! Whether you have questions about our projects, want to collaborate, 
-                                or need technical support, don't hesitate to reach out. Join our Discord community for real-time chat 
-                                or send us a message using the form below.
+                                Contact Runlevel Systems for project inquiries, technical questions, or collaboration discussions.
+                                You can reach us through Discord for real-time communication or send a message using the form below.
                             </p>
                         </div>
                     </div>
@@ -70,7 +69,7 @@
                             <div class="wds-card">
                                 <h3 style="color: #36f3ff; margin-bottom: 20px; font-size: 28px;">Send a Message</h3>
                                 <p style="color: #c7d7e8; margin-bottom: 30px; font-size: 16px; line-height: 1.6;">
-                                    Have a question or want to collaborate? Fill out the form below and we'll get back to you as soon as possible.
+                                    Tell us what you are working on or what support you need, and our team will follow up.
                                 </p>
                                 <p style="color: #c7d7e8; margin-bottom: 30px; font-size: 14px; line-height: 1.6;">
                                     <em>Note: This form submits to our Discord server. You can also join our server directly using the link on the right.</em>
@@ -157,4 +156,3 @@
 
     </body>
 </html>
-

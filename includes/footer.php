@@ -171,7 +171,7 @@ if ($is_in_wiki) {
                         </ul>
                     </div>
                     <div class="col-sm-4 footer-col">
-                        <h4>Products</h4>
+                        <h4>Products & Projects</h4>
                         <ul class="footer-list">
                             <li><a href="https://github.com/GameServerPanel/GSP" target="_blank" rel="noopener noreferrer">GameServer Panel (Platform)</a></li>
                             <li><a href="https://gameservers.world" target="_blank" rel="noopener noreferrer">Gameservers.world (Hosting Website)</a></li>
@@ -186,7 +186,7 @@ if ($is_in_wiki) {
     <footer class="footer text-center" style="background: #000000; color: #eaf3ff;">
             <div style="padding: 14px 0 18px; border-top: 1px solid rgba(255,255,255,0.08);">
                 <p style="color: #c7d7e8; margin: 0; font-size: 14px;">
-                    &copy; 2025 Runlevel Systems. All rights reserved.
+                    &copy; 2025 Runlevel Systems. Software development for games, hosting, and infrastructure.
                 </p>
             </div>
         </footer>
