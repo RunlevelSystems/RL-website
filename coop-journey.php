@@ -225,7 +225,7 @@
                     Build Projects <br><span style="color: #00d4ff;">That Matter</span>
                 </h1>
                 <p style="margin-top: 24px; font-size: clamp(18px, 2.5vw, 24px); max-width: 900px; margin-left: auto; margin-right: auto; color: #7894b9; line-height: 1.5;">
-                    Our developer co-op offers real-world experience, collaborative projects, and a share of the profits. Work on meaningful projects while building your skills and portfolio.
+                    Our developer co-op combines collaborative software delivery with profit sharing, giving contributors practical experience on production projects while building long-term technical capability.
                 </p>
                 <div style="margin-top: 40px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
                     <a href="#earnings" class="btn-primary" style="font-size: 18px; padding: 16px 32px;">View Earnings Model</a>
@@ -302,7 +302,7 @@
                 </div>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 48px;">
                     <div style="text-align: center;">
-                        <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 24px; color: #00d4ff;">🎮 Stream 1: Service Revenue</h3>
+                        <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 24px; color: #00d4ff;">Stream 1: Service Revenue</h3>
                         <div style="display: flex; flex-direction: column; gap: 16px;">
                             <div class="process-step">Host & Manage Game Servers</div>
                             <div style="font-weight: 700; font-size: 24px; color: #475569;">↓</div>
@@ -314,7 +314,7 @@
                         </div>
                     </div>
                     <div style="text-align: center;">
-                        <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 24px; color: #00d4ff;">🚀 Stream 2: Product Development</h3>
+                        <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 24px; color: #00d4ff;">Stream 2: Product Development</h3>
                         <div style="display: flex; flex-direction: column; gap: 16px;">
                             <div class="process-step">Collaborate on Indie Game Dev</div>
                             <div style="font-weight: 700; font-size: 24px; color: #475569;">↓</div>
@@ -339,7 +339,7 @@
 
     <footer class="footer-dark" style="margin-top: 80px;">
         <div class="container-custom" style="padding: 32px 20px; text-align: center;">
-            <p style="margin: 0; color: #7894b9;">&copy; 2025 Runlevel Systems. Building careers, together.</p>
+            <p style="margin: 0; color: #7894b9;">&copy; 2025 Runlevel Systems. Building software careers through collaborative delivery.</p>
             <p style="margin: 8px 0 0; font-size: 14px; color: #64748b;">
                 <a href="index.php" style="color: #00d4ff; text-decoration: none;">← Back to Main Site</a> | 
                 <a href="joinus.php" style="color: #00d4ff; text-decoration: none;">Apply Now</a>
@@ -637,5 +637,4 @@
     <script src="assets/js/script.js"></script>
 </body>
 </html>
-
 

@@ -36,40 +36,38 @@
                 <div class="boxed">
                     <div class="col-sm-12">
                         <div class="why-work-for-us wds-card" style="max-width: 900px; margin: 0 auto; padding: 20px;">
-                            <h2 style="color: #36f3ff; margin-bottom: 20px;">About Our Co-op</h2>
+                            <h2 style="color: #36f3ff; margin-bottom: 20px;">About the Runlevel Co-op</h2>
                             <p style="font-size: 18px; line-height: 1.6; margin-bottom: 30px;">
-                                We run as a co-op. Instead of working for a salary, contributors share directly in the 
-                                <strong>profits</strong> of everything we build. The more the co-op earns, the more everyone earns.
-                                The founder covers upfront costs for servers, tools, and infrastructure — you just bring your skills.
+                                We operate as a developer co-op. Instead of a fixed salary model, contributors receive a share of
+                                <strong>profits</strong> based on project performance and contribution. The founder covers core startup
+                                costs for infrastructure and tooling so the team can focus on delivery.
                             </p>
 
                             <h3 style="color: #36f3ff; margin-bottom: 15px;">What We Work On</h3>
                             <ul style="font-size: 16px; line-height: 1.6; margin-bottom: 30px;">
-                                <li>Commercial <strong>game server hosting</strong> for classic and modern multiplayer titles</li>
-                                <li><strong>Game testing</strong>, <strong>customer support</strong>, and <strong>mod development</strong></li>
-                                <li><strong>Code and website work</strong> — Linux and Windows server administration</li>
+                                <li>Commercial <strong>game server hosting</strong> for modern multiplayer communities</li>
+                                <li><strong>Game testing</strong>, <strong>customer support</strong>, and <strong>mod integration</strong></li>
+                                <li><strong>Software and web development</strong> with Linux and Windows server administration</li>
                                 <li><strong>Game development</strong> in Unity and Unreal Engine</li>
-                                <li><strong>Business applications</strong> for real-world clients</li>
+                                <li><strong>Business applications</strong> and backend systems for client operations</li>
                             </ul>
 
-                            <h3 style="color: #36f3ff; margin-bottom: 15px;">Why It's Worth Your Time</h3>
+                            <h3 style="color: #36f3ff; margin-bottom: 15px;">What Contributors Gain</h3>
                             <ul style="font-size: 16px; line-height: 1.6; margin-bottom: 30px;">
-                                <li>You get to <strong>actually build games</strong> with a team that cares about making them good</li>
-                                <li>Real hands-on experience with Linux, Windows servers, and dev tools</li>
-                                <li>Portfolio-ready work in hosting, coding, and game development</li>
-                                <li>Learn Unity, Unreal, PHP, AI tooling, and more on the job</li>
-                                <li><strong>Share in profits</strong> — percentages grow as you develop and as we grow</li>
-                                <li><strong>Use our tools for your own side projects</strong> — we'll help where we can</li>
+                                <li>Hands-on delivery experience across games, hosting platforms, and infrastructure</li>
+                                <li>Portfolio-ready work in production systems and collaborative software projects</li>
+                                <li>Practical growth with Unity, Unreal, PHP, Linux, and related tooling</li>
+                                <li><strong>Profit sharing</strong> that scales with both your contribution and co-op performance</li>
+                                <li>Access to internal tools and mentorship for side projects where appropriate</li>
                             </ul>
 
                             <h3 style="color: #36f3ff; margin-bottom: 15px;">Who We're Looking For</h3>
                             <p style="font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
-                                Developers, modders, gamers, and anyone interested in building real things with a small team.
-                                If you want experience in game development, server management, or software work and you'd rather
-                                earn a share of what you build than just clock in and out — get in touch.
+                                We welcome developers, technical contributors, and builders who want to work in a small, accountable team.
+                                If you are serious about software delivery and want to grow through hands-on work in games, hosting, or backend systems, we would like to hear from you.
                             </p>
 
-                            <p style="font-size: 20px; font-weight: bold; text-align: center; color: #36f3ff;"><strong>Build things. Earn your share. Grow together.</strong></p>
+                            <p style="font-size: 20px; font-weight: bold; text-align: center; color: #36f3ff;"><strong>Build meaningful software. Share in the outcomes.</strong></p>
                         </div>
                     </div>
                 </div>
@@ -394,8 +392,8 @@
             
             <!-- Hero Section -->
             <div class="career-hero">
-                <h2>🚀 Grow Your Skills & Career</h2>
-                <p>A co-op where your skills develop, your ideas have value, and you share in the success of what we build together.</p>
+                <h2>Develop Your Skills and Career</h2>
+                <p>A co-op model where your technical growth, project impact, and compensation are connected.</p>
             </div>
             
             <!-- Career Timeline -->
@@ -454,7 +452,7 @@
             
             <!-- Skills Growth Chart -->
             <div class="skills-chart-section">
-                <h3>📈 Skills & Earnings Growth</h3>
+                <h3>Skills and Earnings Growth</h3>
                 <p>Technical abilities and earning potential can develop together as you gain experience with the co-op.</p>
                 <div class="chart-container">
                     <canvas id="skillsGrowthChart"></canvas>
@@ -653,7 +651,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="title-box">
-                        <p>Ready to join?</p>
+                        <p>Interested in contributing?</p>
                         <h2 class="title mt0" style="color: #00a8ff;">Get in Touch</h2>
                     </div>
                 </div>
@@ -664,15 +662,15 @@
                         <div style="background: rgba(255,255,255,0.15); padding: 60px 40px; border-radius: 12px; text-align: center;">
                             <div style="margin-bottom: 30px;">
                                 <i class="ion-chatbubbles" style="font-size: 64px; color: #00a8ff; margin-bottom: 20px; display: block;"></i>
-                                <h3 style="color: #00a8ff; font-size: 28px; margin-bottom: 20px;">Contact Us on Discord or Email</h3>
+                                <h3 style="color: #00a8ff; font-size: 28px; margin-bottom: 20px;">Contact Us via Discord or Email</h3>
                                 <p style="color: #94a3b8; font-size: 18px; line-height: 1.6; max-width: 600px; margin: 0 auto 30px;">
-                                    We use Discord for all communications. Visit our contact page to join our Discord server or send us an email with your questions and interest in joining the co-op.
+                                    We coordinate community communication through Discord. Visit our contact page to join the server or send an email with your background and interest in joining the co-op.
                                 </p>
                             </div>
                             
                             <div style="margin-top: 40px;">
                                 <a href="contact.php" class="btn btn-wds">
-                                    Go to Contact Page
+                                    Open Contact Page
                                 </a>
                             </div>
                         </div>
