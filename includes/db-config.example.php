@@ -1,10 +1,12 @@
 <?php
 /**
  * Database Configuration for Staff Authentication - EXAMPLE FILE
- * 
- * Copy this file to db-config.php and update with your actual credentials
- * DO NOT commit db-config.php to version control!
- * Uses mysqli for database operations
+ *
+ * Copy this file to db-config.php and fill in your actual credentials.
+ * DO NOT commit db-config.php to version control (it is in .gitignore).
+ *
+ * Authentication mirrors the GSP panel (Panel/index.php):
+ *   md5($password) == $row['users_passwd']  AND  $row['users_role'] == 'admin'
  */
 
 // Prevent direct access
@@ -12,32 +14,101 @@ if (!defined('WDS_SYSTEM')) {
     die('Access denied');
 }
 
-// Database Configuration
-// Replace these values with your actual database credentials
-define('DB_HOST', 'your_mysql_host');      // e.g., 'localhost' or 'mysql.example.com'
-define('DB_NAME', 'your_database_name');   // e.g., 'panel'
-define('DB_USER', 'your_database_user');   // e.g., 'dbuser'
-define('DB_PASS', 'your_database_pass');   // Strong password
-define('DB_CHARSET', 'utf8mb4');           // Character set (usually utf8mb4)
+// Database credentials - must match the panel's includes/config.inc.php values
+define('DB_HOST',    'your_mysql_host');      // e.g. 'mysql.example.com' or 'localhost'
+define('DB_NAME',    'your_database_name');   // e.g. 'panel' or 'gsp_panel'
+define('DB_USER',    'your_database_user');
+define('DB_PASS',    'your_database_pass');
+define('DB_CHARSET', 'utf8mb4');
 
-/**
- * Create mysqli database connection
- * @return mysqli|false Database connection or false on failure
- */
+// Table prefix - must match $table_prefix in the panel's includes/config.inc.php.
+// Default for GameServerPanel installs is 'gsp_', giving table name 'gsp_users'.
+// Change to 'ogp_' if the panel was installed from a stock OGP setup.
+define('DB_TABLE_PREFIX', 'gsp_');
+
+// Debug flag: set to true temporarily to write detailed auth steps to the PHP error log.
+// Always false in production.
+define('WDS_DEBUG_AUTH', false);
+
+// Base path + URL helpers (provided by includes/config.php, included by db-config.php)
+require_once __DIR__ . '/config.php';
+
+// ----- Helper functions -----
+
+function _buildAllowedUserTables() {
+    $prefix = DB_TABLE_PREFIX;
+    $tables = [$prefix . 'users'];
+    if ($prefix !== 'ogp_') {
+        $tables[] = 'ogp_users';
+    }
+    return array_unique($tables);
+}
+
+function isValidUserTable($table) {
+    return in_array($table, _buildAllowedUserTables(), true);
+}
+
+function addLoginDebug($message, $data = null) {
+    if (!defined('WDS_DEBUG_AUTH') || !WDS_DEBUG_AUTH) {
+        return;
+    }
+    $entry = '[WDS Auth] ' . $message;
+    if ($data !== null) {
+        $entry .= ': ' . (is_array($data) ? json_encode($data) : (string)$data);
+    }
+    error_log($entry);
+}
+
+function getLoginDebug() {
+    return [];
+}
+
+function resolveUsersTable(mysqli $db) {
+    static $tableName = null;
+    if ($tableName !== null) {
+        return $tableName;
+    }
+    $candidates = _buildAllowedUserTables();
+    foreach ($candidates as $candidate) {
+        if (!preg_match('/^[a-zA-Z0-9_]+$/', $candidate)) {
+            continue;
+        }
+        $result = mysqli_query($db, "SHOW TABLES LIKE '" . mysqli_real_escape_string($db, $candidate) . "'");
+        if ($result && mysqli_num_rows($result) > 0) {
+            mysqli_free_result($result);
+            $tableName = $candidate;
+            return $tableName;
+        }
+        if ($result) {
+            mysqli_free_result($result);
+        }
+    }
+    throw new RuntimeException(
+        'Unable to locate users table with prefix "' . DB_TABLE_PREFIX . '". Checked: ' . implode(', ', $candidates)
+    );
+}
+
+function tableHasPassHash(mysqli $db, $table) {
+    if (!isValidUserTable($table)) {
+        throw new RuntimeException('Invalid table name provided');
+    }
+    $result = mysqli_query($db, "SHOW COLUMNS FROM `" . $table . "` LIKE 'users_pass_hash'");
+    $hasColumn = ($result && mysqli_num_rows($result) > 0);
+    if ($result) {
+        mysqli_free_result($result);
+    }
+    return $hasColumn;
+}
+
 function getDatabaseConnection() {
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-    
     try {
         $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-        
         if (!$conn) {
             error_log("Database connection failed: " . mysqli_connect_error());
             return false;
         }
-        
-        // Set charset
         mysqli_set_charset($conn, DB_CHARSET);
-        
         return $conn;
     } catch (mysqli_sql_exception $e) {
         error_log("Database connection failed: " . $e->getMessage());
@@ -46,66 +117,78 @@ function getDatabaseConnection() {
 }
 
 /**
- * Verify admin user credentials against ogp_users table
- * @param string $username The username to check
- * @param string $password The plain text password
- * @return array|false User data array or false on failure
+ * Verify admin credentials against the panel database.
+ * Mirrors GSP panel: md5($password) == users_passwd AND users_role == 'admin'
  */
 function verifyAdminLogin($username, $password) {
     $db = getDatabaseConnection();
     if (!$db) {
+        error_log("WDS Login: Database connection failed for user: " . $username);
         return false;
     }
-    
     try {
-        // Hash the password using MD5 as required by the existing system
-        $hashedPassword = md5($password);
-        
-        $query = "SELECT users_login, users_passwd, users_role 
-                  FROM ogp_users 
-                  WHERE users_login = ? 
-                  AND users_passwd = ? 
-                  AND users_role = 'admin'
-                  LIMIT 1";
-        
-        $stmt = mysqli_prepare($db, $query);
-        if (!$stmt) {
-            error_log("Login verification failed: " . mysqli_error($db));
-            return false;
+        $table      = resolveUsersTable($db);
+        if (!isValidUserTable($table)) {
+            throw new RuntimeException('Resolved table name is not in the allowed list: ' . $table);
         }
-        
-        mysqli_stmt_bind_param($stmt, "ss", $username, $hashedPassword);
+        $columnList = "user_id, users_login, users_passwd, users_role";
+        $hasPassHash = tableHasPassHash($db, $table);
+        if ($hasPassHash) {
+            $columnList .= ", users_pass_hash";
+        }
+        $query = "SELECT {$columnList} FROM `{$table}` WHERE users_login = ? LIMIT 1";
+        $stmt  = mysqli_prepare($db, $query);
+        if (!$stmt) {
+            throw new RuntimeException("Failed to prepare statement: " . mysqli_error($db));
+        }
+        mysqli_stmt_bind_param($stmt, "s", $username);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
+        if ($result === false) {
+            throw new RuntimeException("mysqli_stmt_get_result failed - mysqlnd extension may be missing");
+        }
         $user = mysqli_fetch_assoc($result);
         mysqli_stmt_close($stmt);
-        
-        if ($user) {
-            return [
-                'username' => $user['users_login'],
-                'role' => $user['users_role'],
-                'login_time' => time()
-            ];
+        if (!$user) {
+            error_log("WDS Login: User not found: " . $username);
+            return false;
         }
-        
-        return false;
-    } catch (mysqli_sql_exception $e) {
-        error_log("Login verification failed: " . $e->getMessage());
+        $passwordOk = false;
+        if ($hasPassHash && !empty($user['users_pass_hash'])) {
+            $passwordOk = password_verify($password, $user['users_pass_hash']);
+        }
+        if (!$passwordOk && !empty($user['users_passwd'])) {
+            $passwordOk = (md5($password) == $user['users_passwd']);
+        }
+        if (!$passwordOk) {
+            error_log("WDS Login: Password verification failed for: " . $username);
+            return false;
+        }
+        $userRole = !empty($user['users_role']) ? strtolower(trim($user['users_role'])) : 'user';
+        if ($userRole !== 'admin') {
+            error_log("WDS Login: User '" . $username . "' does not have admin role (role: " . $userRole . ")");
+            return false;
+        }
+        return [
+            'username'   => $user['users_login'],
+            'role'       => 'admin',
+            'login_time' => time(),
+        ];
+    } catch (Throwable $e) {
+        error_log("WDS Login exception: " . $e->getMessage());
         return false;
     }
 }
 
 /**
  * Check if user is currently logged in as admin
- * @return bool True if logged in as admin, false otherwise
  */
 function isLoggedInAdmin() {
-    if (!isset($_SESSION)) {
+    if (session_status() !== PHP_SESSION_ACTIVE) {
         session_start();
     }
-    
-    return isset($_SESSION['wds_admin_user']) && 
-           isset($_SESSION['wds_admin_role']) && 
+    return isset($_SESSION['wds_admin_user']) &&
+           isset($_SESSION['wds_admin_role']) &&
            $_SESSION['wds_admin_role'] === 'admin';
 }
 
@@ -114,9 +197,10 @@ function isLoggedInAdmin() {
  */
 function requireAdminLogin() {
     if (!isLoggedInAdmin()) {
-        header('Location: /login.php?redirect=' . urlencode($_SERVER['REQUEST_URI']));
+        $basePath = function_exists('getBasePath') ? getBasePath() : '';
+        $redirect  = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : 'staff-info.php';
+        header('Location: ' . $basePath . 'login.php?redirect=' . urlencode($redirect));
         exit;
     }
 }
 
-?>
