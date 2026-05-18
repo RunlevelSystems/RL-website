@@ -8,7 +8,10 @@ require_once 'includes/db-config.php';
 
 // Check if already logged in
 if (isLoggedInAdmin()) {
-    $redirect = $_GET['redirect'] ?? 'staff-info.php';
+    $redirect = $_GET['redirect'] ?? '';
+    if (empty($redirect) || !preg_match('#^/#', $redirect) || preg_match('#^//|^/\\\\#', $redirect)) {
+        $redirect = 'staff-info.php';
+    }
     header('Location: ' . $redirect);
     exit;
 }
@@ -32,8 +35,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_form'])) {
             $_SESSION['wds_admin_role'] = $user['role'];
             $_SESSION['wds_login_time'] = $user['login_time'];
             
-            // Redirect to requested page or staff info
-            $redirect = $_GET['redirect'] ?? 'staff-info.php';
+            // Redirect to requested page or staff info.
+            // Only allow relative paths (no scheme/host) to prevent open-redirect attacks.
+            $redirect = $_GET['redirect'] ?? '';
+            if (empty($redirect) || !preg_match('#^/#', $redirect) || preg_match('#^//|^/\\\\#', $redirect)) {
+                $redirect = 'staff-info.php';
+            }
             header('Location: ' . $redirect);
             exit;
         } else {
