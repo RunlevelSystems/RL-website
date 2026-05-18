@@ -56,9 +56,8 @@
                     <div class="boxed">
                         <div class="col-sm-12">
                             <p class="inner-p">
-                                We'd love to hear from you! Whether you have questions about our projects, want to collaborate, 
-                                or need technical support, don't hesitate to reach out. Join our Discord community for real-time chat 
-                                or send us a message using the form below.
+                                Contact Runlevel Systems for project inquiries, collaboration opportunities, technical questions, or platform support.
+                                You can message us through the form below or join our Discord community for direct discussion.
                             </p>
                         </div>
                     </div>
@@ -70,7 +69,7 @@
                             <div class="wds-card">
                                 <h3 style="color: #36f3ff; margin-bottom: 20px; font-size: 28px;">Send a Message</h3>
                                 <p style="color: #c7d7e8; margin-bottom: 30px; font-size: 16px; line-height: 1.6;">
-                                    Have a question or want to collaborate? Fill out the form below and we'll get back to you as soon as possible.
+                                    Share your question, project scope, or support request and our team will respond as quickly as possible.
                                 </p>
                                 <p style="color: #c7d7e8; margin-bottom: 30px; font-size: 14px; line-height: 1.6;">
                                     <em>Note: This form submits to our Discord server. You can also join our server directly using the link on the right.</em>
@@ -78,7 +77,7 @@
                                 
                                 <?php if ($message_sent): ?>
                                     <div style="background-color: rgba(54, 243, 255, 0.08); color: #eaf3ff; padding: 20px; border-radius: 8px; margin-bottom: 20px; text-align: center; border: 1px solid rgba(54, 243, 255,0.25);">
-                                        <strong>Thank you!</strong> Your message has been sent successfully. We'll get back to you soon!
+                                        <strong>Thank you.</strong> Your message has been sent successfully, and we will follow up shortly.
                                     </div>
                                 <?php elseif ($error_message): ?>
                                     <div style="background-color: rgba(248, 113, 113, 0.2); color: #c7d7e8; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 2px solid #f87171;">
@@ -157,4 +156,3 @@
 
     </body>
 </html>
-

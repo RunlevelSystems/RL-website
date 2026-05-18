@@ -250,9 +250,9 @@
         <div class="home-block" aria-label="Hero">
           <div class="home-inner">
             <p class="home-label">Runlevel Systems</p>
-            <h1 class="home-title">We Build Multiplayer Games <span class="home-title-accent">and Game Server Hosting Software</span></h1>
-            <p class="home-lead">Runlevel Systems develops multiplayer games and GameServer Panel — our own hosting management platform. We write the code, run the Linux infrastructure, and handle the backend systems that keep multiplayer environments running.</p>
-            <p class="home-summary">Our two main areas are multiplayer game development and the GameServer Panel hosting platform. Everything else — automation, deployment tooling, backend integrations — supports those two things.</p>
+            <h1 class="home-title">Software Development <br><span class="home-title-accent">for Games, Hosting, and Infrastructure</span></h1>
+            <p class="home-lead">Runlevel Systems develops software across games, hosting platforms, backend systems, and infrastructure tools. Our work includes multiplayer games, mobile games, commercial game server hosting software, Linux-based hosting environments, deployment automation, and custom backend systems.</p>
+            <p class="home-summary">We operate as a full software development company with products and services that span interactive experiences, platform engineering, and operational tooling.</p>
             <div class="home-actions">
               <a class="home-btn home-btn-primary" href="projects.php">See Our Projects</a>
               <a class="home-btn home-btn-ghost" href="contact.php">Get in Touch</a>
@@ -266,11 +266,11 @@
             <div class="home-grid">
               <article class="home-card home-highlight">
                 <h3>GameServer Panel</h3>
-                <p>Our own game server management platform. It handles server deployment, automation, remote management, and monitoring across your entire Linux-based hosting setup. We built it and we use it ourselves.</p>
+                <p>Our commercial game server management platform for deployment, automation, remote administration, and infrastructure monitoring across Linux-based hosting environments.</p>
               </article>
               <article class="home-card">
                 <h3>Multiplayer Game Development</h3>
-                <p>We make multiplayer games — from client/server networking to persistent world backends and live game services. Real games, built for real players.</p>
+                <p>We develop multiplayer titles with client/server networking, persistent world services, and live backend operations built for long-term support.</p>
               </article>
               <article class="home-card">
                 <h3>Hosting Infrastructure</h3>
@@ -278,11 +278,11 @@
               </article>
               <article class="home-card">
                 <h3>Automation and Deployment</h3>
-                <p>We automate server provisioning, deployments, updates, and monitoring. Less manual work for you, fewer things breaking unexpectedly.</p>
+                <p>We automate provisioning, deployments, updates, and monitoring to improve reliability and reduce operational overhead.</p>
               </article>
               <article class="home-card">
                 <h3>Backend Engineering</h3>
-                <p>Custom APIs, backend systems, and platform integrations. We build what your project needs, tailored to your environment.</p>
+                <p>Custom APIs, backend services, and platform integrations designed around your product requirements and operating environment.</p>
               </article>
               <article class="home-card">
                 <h3>Multi-Location Hosting</h3>
@@ -328,7 +328,7 @@
             <div class="home-tech">
               <div class="home-tech-item"><strong>Linux</strong><span>Our infrastructure runs on Linux. We've built and managed Linux-based hosting environments for years.</span></div>
               <div class="home-tech-item"><strong>Virtualization</strong><span>We use virtualization to isolate services and make efficient use of hardware in hosting environments.</span></div>
-              <div class="home-tech-item"><strong>Distributed Systems</strong><span>We build systems that work across multiple servers, so things keep running even when individual nodes have problems.</span></div>
+              <div class="home-tech-item"><strong>Distributed Systems</strong><span>We design distributed services that remain stable across multiple nodes and recover cleanly from individual failures.</span></div>
               <div class="home-tech-item"><strong>Deployment Automation</strong><span>Automated deployments mean less manual work and more consistent results when rolling out updates or new servers.</span></div>
               <div class="home-tech-item"><strong>Backend Development</strong><span>We write the server-side code that powers hosting platforms, game services, and business applications.</span></div>
               <div class="home-tech-item"><strong>Multiplayer Systems</strong><span>From matchmaking to persistent world backends, we build the infrastructure that keeps multiplayer games online.</span></div>
@@ -338,8 +338,8 @@
 
         <div class="home-block" aria-label="Call to action">
           <div class="home-inner" style="text-align: center;">
-            <h2 style="margin:0 0 10px; color:#f4f9ff; font-size:clamp(22px,3vw,30px);">Real Games and Real Hosting Software</h2>
-            <p class="home-summary" style="margin:0 auto 16px; max-width:760px;">If you need a multiplayer game, a GameServer Panel-powered hosting setup, or help with backend systems, we'd be happy to talk.</p>
+            <h2 style="margin:0 0 10px; color:#f4f9ff; font-size:clamp(22px,3vw,30px);">Let’s Build the Right Software Stack</h2>
+            <p class="home-summary" style="margin:0 auto 16px; max-width:760px;">If you need support with game development, hosting platforms, backend systems, or infrastructure engineering, our team is ready to help.</p>
             <a class="home-btn home-btn-primary" href="contact.php">Talk to Our Team</a>
           </div>
         </div>

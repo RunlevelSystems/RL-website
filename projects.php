@@ -44,16 +44,16 @@
     }
 
     $projectContentOverrides = [
-        'gameservers-world' => 'Gameservers World is our live game server hosting business. We run it ourselves using GameServer Panel — our own hosting management software. Customers rent multiplayer game servers that we deploy and manage on Linux-based infrastructure. Everything from provisioning to day-to-day management is handled through our own platform.',
-        'gameserver-panel' => 'GameServer Panel is our commercial game server management platform. It gives hosting providers a single control panel to deploy servers, automate installs and updates, manage remote nodes, and monitor their entire infrastructure. It\'s Linux-first and built around the real workflows of running a game server hosting business.',
-        'pureops' => 'PureOps is a business simulation and training platform. It puts players in charge of managing a virtual organization, making operational decisions, and dealing with realistic business challenges. It\'s designed for training environments where hands-on decision-making matters more than reading a manual.',
+        'gameservers-world' => 'Gameservers World is our live hosting operation, where we deploy and manage multiplayer game servers for customers on Linux-based infrastructure. The service runs on our own GameServer Panel platform, giving us full control over provisioning, operations, and support workflows.',
+        'gameserver-panel' => 'GameServer Panel is our commercial platform for game server operations. It centralizes deployment, automation, remote node management, and monitoring for hosting providers that need reliable day-to-day infrastructure control.',
+        'pureops' => 'PureOps is a business simulation and training platform focused on practical decision-making. It places users in realistic operational scenarios to strengthen planning, execution, and leadership under changing conditions.',
         'neverwards' => 'Neverwards is a multiplayer online game with cooperative play, character progression, and a persistent shared world. Players explore, build, and advance together in a world that keeps running between sessions.',
         'roadkill' => 'Roadkill is a fast-paced multiplayer vehicular combat game. Players compete in destructive online matches with team-based objectives and quick, action-heavy sessions.',
         'castle-walls' => 'Castle Walls is a multiplayer strategy game built around base defense and coordinated team combat. Players build up defenses and fight back against attackers in persistent online matches.',
         'mystical-islands' => 'Mystical Islands is a multiplayer fantasy adventure game. Players explore islands together, unlock progression systems, and share a persistent online world that grows over time.',
         'space5x' => 'Space5X is a multiplayer sci-fi strategy game with long-term economic planning, cooperative play, and persistent universe progression. Sessions can last weeks as players build empires and compete for control.',
-        'retro-space-blaster' => 'Retro Space Blaster is an arcade-style mobile action game built for quick sessions and fast-paced gameplay. Designed for cross-platform mobile play with simple controls and satisfying combat.',
-        'be-very-very-quiet' => 'Be Very Very Quiet is a fast-paced zombie survival mobile game. Your job is to rescue survivors and reach the evacuation helicopter — but every gunshot attracts every zombie in the area. Use weapons when you have to, then run. Swarms grow quickly, and keeping the survivors alive while making it out yourself is harder than it sounds.',
+        'retro-space-blaster' => 'Retro Space Blaster is an arcade-style mobile action title designed for short sessions, responsive controls, and polished cross-platform gameplay.',
+        'be-very-very-quiet' => 'Be Very Very Quiet is a mobile zombie survival game where every decision affects risk. Players rescue survivors and reach extraction while balancing combat, mobility, and escalating enemy pressure.',
     ];
 
     foreach ($projectContentOverrides as $slug => $description) {
@@ -67,26 +67,26 @@
     $sections = [
         [
             'title' => 'Hosting & Infrastructure',
-            'kicker' => 'Our Core Business',
-            'description' => 'We host multiplayer game servers commercially and build the management platform that powers it all.',
+            'kicker' => 'Commercial Platforms',
+            'description' => 'Customer-facing hosting operations and platform software built for production Linux environments.',
             'slugs' => ['gameservers-world', 'gameserver-panel'],
         ],
         [
             'title' => 'Business Simulation & Training',
-            'kicker' => 'Operational Training Tools',
-            'description' => 'Simulation software that puts people in realistic management scenarios to develop practical decision-making skills.',
+            'kicker' => 'Simulation Software',
+            'description' => 'Interactive software that develops operational judgment through realistic management scenarios.',
             'slugs' => ['pureops'],
         ],
         [
             'title' => 'Multiplayer Games',
-            'kicker' => 'Active Game Development',
-            'description' => 'Online multiplayer games we are actively developing — covering cooperative, competitive, and strategy gameplay.',
+            'kicker' => 'Live Development',
+            'description' => 'Multiplayer projects spanning cooperative, competitive, and strategy-focused online systems.',
             'slugs' => ['neverwards', 'roadkill', 'castle-walls', 'mystical-islands', 'space5x'],
         ],
         [
             'title' => 'Mobile Games',
             'kicker' => 'Mobile Game Development',
-            'description' => 'Fast-paced arcade games built for mobile — quick to pick up, hard to put down.',
+            'description' => 'Mobile titles designed for tight controls, clear progression, and reliable cross-platform play.',
             'slugs' => ['retro-space-blaster', 'be-very-very-quiet'],
         ],
     ];
@@ -128,10 +128,10 @@
                         <div class="boxed">
                             <div class="col-sm-12">
                                 <p class="inner-p">
-                                    RunLevel Systems develops and operates hosting software, business simulation tools, and online games.
+                                    RunLevel Systems develops software across hosting platforms, backend systems, simulation tools, and game development.
                                 </p>
                                 <p class="inner-p" style="margin-top:15px;">
-                                    Our main commercial products are Gameservers World (our live hosting service) and GameServer Panel (the management platform behind it). We also build PureOps for business simulation and training, plus a range of multiplayer and mobile game projects.
+                                    Our portfolio includes Gameservers World, GameServer Panel, PureOps, and a growing set of multiplayer and mobile game projects. Together they reflect our broader focus on software engineering for games, operations, and infrastructure.
                                 </p>
                                 <p class="inner-p" style="margin-top:10px;">
                                     Project resources:

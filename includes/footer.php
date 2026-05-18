@@ -146,7 +146,7 @@ if ($is_in_wiki) {
                 <div class="footer-search-wrap">
                     <form method="GET" action="<?php echo $footer_base_path; ?>search.php" class="footer-search-form" role="search">
                         <label class="sr-only" for="footer-search-input">Search</label>
-                        <input id="footer-search-input" type="text" name="q" placeholder="Search Runlevel Systems">
+                        <input id="footer-search-input" type="text" name="q" placeholder="Search projects, products, and docs">
                         <button type="submit">Search</button>
                     </form>
                 </div>
@@ -171,7 +171,7 @@ if ($is_in_wiki) {
                         </ul>
                     </div>
                     <div class="col-sm-4 footer-col">
-                        <h4>Products</h4>
+                        <h4>Featured Products</h4>
                         <ul class="footer-list">
                             <li><a href="https://github.com/GameServerPanel/GSP" target="_blank" rel="noopener noreferrer">GameServer Panel (Platform)</a></li>
                             <li><a href="https://gameservers.world" target="_blank" rel="noopener noreferrer">Gameservers.world (Hosting Website)</a></li>

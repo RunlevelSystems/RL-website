@@ -38,38 +38,36 @@
                         <div class="why-work-for-us wds-card" style="max-width: 900px; margin: 0 auto; padding: 20px;">
                             <h2 style="color: #36f3ff; margin-bottom: 20px;">About Our Co-op</h2>
                             <p style="font-size: 18px; line-height: 1.6; margin-bottom: 30px;">
-                                We run as a co-op. Instead of working for a salary, contributors share directly in the 
-                                <strong>profits</strong> of everything we build. The more the co-op earns, the more everyone earns.
-                                The founder covers upfront costs for servers, tools, and infrastructure — you just bring your skills.
+                                We operate as a contributor co-op where members earn through shared project outcomes. 
+                                Contributors participate in real delivery work and share in <strong>profits</strong> based on the model outlined below.
+                                Upfront infrastructure, tooling, and operating costs are covered by the founder.
                             </p>
 
                             <h3 style="color: #36f3ff; margin-bottom: 15px;">What We Work On</h3>
                             <ul style="font-size: 16px; line-height: 1.6; margin-bottom: 30px;">
-                                <li>Commercial <strong>game server hosting</strong> for classic and modern multiplayer titles</li>
-                                <li><strong>Game testing</strong>, <strong>customer support</strong>, and <strong>mod development</strong></li>
-                                <li><strong>Code and website work</strong> — Linux and Windows server administration</li>
+                                <li>Commercial <strong>game server hosting</strong> operations and platform management</li>
+                                <li><strong>Game testing</strong>, <strong>customer support</strong>, and <strong>mod/tool development</strong></li>
+                                <li><strong>Web and software engineering</strong> with Linux and Windows administration</li>
                                 <li><strong>Game development</strong> in Unity and Unreal Engine</li>
-                                <li><strong>Business applications</strong> for real-world clients</li>
+                                <li><strong>Business and backend applications</strong> for operational use cases</li>
                             </ul>
 
                             <h3 style="color: #36f3ff; margin-bottom: 15px;">Why It's Worth Your Time</h3>
                             <ul style="font-size: 16px; line-height: 1.6; margin-bottom: 30px;">
-                                <li>You get to <strong>actually build games</strong> with a team that cares about making them good</li>
-                                <li>Real hands-on experience with Linux, Windows servers, and dev tools</li>
-                                <li>Portfolio-ready work in hosting, coding, and game development</li>
-                                <li>Learn Unity, Unreal, PHP, AI tooling, and more on the job</li>
-                                <li><strong>Share in profits</strong> — percentages grow as you develop and as we grow</li>
-                                <li><strong>Use our tools for your own side projects</strong> — we'll help where we can</li>
+                                <li>Hands-on delivery experience across production software and infrastructure projects</li>
+                                <li>Portfolio-ready work in hosting, backend development, and game engineering</li>
+                                <li>Practical growth with Unity, Unreal, PHP, automation workflows, and operational tooling</li>
+                                <li><strong>Shared profit participation</strong> that scales with project performance and contribution</li>
+                                <li><strong>Access to internal tools</strong> for approved side projects where capacity allows</li>
                             </ul>
 
                             <h3 style="color: #36f3ff; margin-bottom: 15px;">Who We're Looking For</h3>
                             <p style="font-size: 16px; line-height: 1.6; margin-bottom: 20px;">
-                                Developers, modders, gamers, and anyone interested in building real things with a small team.
-                                If you want experience in game development, server management, or software work and you'd rather
-                                earn a share of what you build than just clock in and out — get in touch.
+                                We welcome developers, technical contributors, support specialists, and builders who want to ship meaningful work with a focused team.
+                                If you are serious about game development, platform engineering, or infrastructure operations, we would like to hear from you.
                             </p>
 
-                            <p style="font-size: 20px; font-weight: bold; text-align: center; color: #36f3ff;"><strong>Build things. Earn your share. Grow together.</strong></p>
+                            <p style="font-size: 20px; font-weight: bold; text-align: center; color: #36f3ff;"><strong>Build with us. Grow your skills. Share in the results.</strong></p>
                         </div>
                     </div>
                 </div>
@@ -653,7 +651,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="title-box">
-                        <p>Ready to join?</p>
+                        <p>Interested in contributing?</p>
                         <h2 class="title mt0" style="color: #00a8ff;">Get in Touch</h2>
                     </div>
                 </div>
@@ -664,9 +662,9 @@
                         <div style="background: rgba(255,255,255,0.15); padding: 60px 40px; border-radius: 12px; text-align: center;">
                             <div style="margin-bottom: 30px;">
                                 <i class="ion-chatbubbles" style="font-size: 64px; color: #00a8ff; margin-bottom: 20px; display: block;"></i>
-                                <h3 style="color: #00a8ff; font-size: 28px; margin-bottom: 20px;">Contact Us on Discord or Email</h3>
+                                <h3 style="color: #00a8ff; font-size: 28px; margin-bottom: 20px;">Start the Conversation</h3>
                                 <p style="color: #94a3b8; font-size: 18px; line-height: 1.6; max-width: 600px; margin: 0 auto 30px;">
-                                    We use Discord for all communications. Visit our contact page to join our Discord server or send us an email with your questions and interest in joining the co-op.
+                                    We use Discord as our primary communication channel. Visit the contact page to join the server or send us an email with your background and areas of interest.
                                 </p>
                             </div>
                             

@@ -30,13 +30,13 @@ function searchWebsiteContent($query) {
     $static_pages = [
         'index.php' => [
             'title' => 'Home - Runlevel Systems',
-            'description' => 'Main homepage featuring our company overview, services, and development philosophy.',
-            'keywords' => 'home, main, company, overview, development, software, runlevel systems'
+            'description' => 'Software development company overview covering games, hosting platforms, backend systems, and infrastructure engineering.',
+            'keywords' => 'home, company, software development, games, hosting, backend, infrastructure, runlevel systems'
         ],
         'projects.php' => [
             'title' => 'Projects - Development Portfolio', 
-            'description' => 'Our complete portfolio of development projects including games and business applications.',
-            'keywords' => 'projects, portfolio, development, games, applications, work'
+            'description' => 'Project portfolio across hosting products, simulation software, multiplayer games, and mobile development.',
+            'keywords' => 'projects, portfolio, hosting platform, simulation, multiplayer games, mobile games, software engineering'
         ],
         'joinus.php' => [
             'title' => 'Join Us - Career Opportunities',
@@ -45,8 +45,8 @@ function searchWebsiteContent($query) {
         ],
         'contact.php' => [
             'title' => 'Contact - Get In Touch',
-            'description' => 'Contact information and ways to reach our development team.',
-            'keywords' => 'contact, email, phone, reach, communication, support'
+            'description' => 'Contact Runlevel Systems for project collaboration, technical inquiries, and support requests.',
+            'keywords' => 'contact, collaboration, support, technical inquiries, runlevel systems'
         ],
         'coop-journey.php' => [
             'title' => 'Co-op Journey - Development Experience',
