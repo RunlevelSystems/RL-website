@@ -22,7 +22,7 @@
             // Page-specific variables
             $current_page = 'projects';
             $header_class = 'projects-header inner-header';
-            $page_subtitle = 'Infrastructure • Multiplayer • Operations';
+            $page_subtitle = 'Hosting • Simulation • Games';
             ?>
     <!-- Include Site Header -->
     <?php include 'includes/header.php'; ?>
@@ -44,17 +44,15 @@
     }
 
     $projectContentOverrides = [
-        'gameservers-world' => 'A managed multiplayer hosting and infrastructure platform operated by RunLevel Systems. Gameservers World provides multiplayer server hosting, scalable deployment infrastructure, centralized operational tooling, Linux-based hosting environments, automated provisioning, monitoring and lifecycle management, and multi-location deployment support for customer hosting services powered by our internal platforms.',
-        'gameserver-panel' => 'A commercial-grade game server management and hosting automation platform developed and operated by RunLevel Systems. GameServer Panel delivers centralized server lifecycle management, automated provisioning and deployment, remote node orchestration, multi-region infrastructure coordination, Linux-first infrastructure tooling, monitoring and control systems, customer management integration, deployment automation, update orchestration, and extensible architecture for scalable hosting operations.',
-        'neverwards' => 'Multiplayer technology stack focused on synchronized gameplay systems, persistent world architecture, and service-backed progression systems for large-scale online environments.',
-        'roadkill' => 'Cross-platform multiplayer systems initiative built around synchronized simulation, distributed gameplay infrastructure, and real-time session orchestration.',
-        'castle-walls' => 'Multiplayer simulation platform centered on persistent systems architecture, synchronized combat state, and high-throughput online session performance.',
-        'mystical-islands' => 'Persistent world architecture initiative for distributed multiplayer gameplay, service-backed progression, and long-lived online ecosystem operations.',
-        'retro-space-blaster' => 'Real-time multiplayer technology platform optimized for high-frequency interaction loops, synchronized systems, and cross-platform online consistency.',
-        'pureops' => 'Infrastructure automation and operational governance platform for deployment orchestration, environment standardization, provisioning workflows, and scalable backend operations.',
-        'alien-apocalypse' => 'Internal R&D initiative exploring large-scale autonomous optimization models across distributed simulation systems.',
-        'space5x' => 'Internal R&D systems research focused on advanced simulation strategy, distributed state control, and long-horizon platform design.',
-        'bbs-revival' => 'A modernized communication and community platform inspired by legacy distributed systems architecture.',
+        'gameservers-world' => 'Gameservers World is the live production hosting environment operated by RunLevel Systems using our internally developed GameServer Panel platform. It provides multiplayer game server hosting, customer environment management, automated deployment and management workflows, Linux-based hosting operations, and scalable support for online gaming communities.',
+        'gameserver-panel' => 'A commercial-grade game server management and hosting automation platform developed by RunLevel Systems. GameServer Panel provides centralized server management, automated deployment, remote node management, monitoring and lifecycle control, multi-location infrastructure support, customer hosting integration, and Linux-first operational tooling.',
+        'pureops' => 'PureOps is a business operations and management simulation platform focused on organizational decision making, operational strategy, workflow optimization, and systems-based training environments.',
+        'neverwards' => 'A multiplayer online game world focused on cooperative play, character progression, and persistent shared environments.',
+        'roadkill' => 'A fast-paced multiplayer vehicular combat game built for competitive online sessions and team-based action.',
+        'castle-walls' => 'A multiplayer strategy and combat game centered on base defense, coordinated battles, and persistent online progression.',
+        'mystical-islands' => 'A multiplayer fantasy adventure game featuring cooperative exploration, progression systems, and persistent online islands.',
+        'space5x' => 'A multiplayer sci-fi strategy and simulation game with persistent progression, economic planning, and cooperative long-term play.',
+        'retro-space-blaster' => 'An arcade-inspired, fast-paced mobile action game designed for cross-platform gameplay and quick-session combat.',
     ];
 
     foreach ($projectContentOverrides as $slug => $description) {
@@ -67,34 +65,28 @@
 
     $sections = [
         [
-            'title' => 'Hosting & Infrastructure Platforms',
-            'kicker' => 'Primary Commercial Offerings',
-            'description' => 'RunLevel Systems operates production infrastructure platforms for multiplayer hosting services and enterprise-grade orchestration.',
+            'title' => 'Hosting & Infrastructure',
+            'kicker' => 'Primary Business Category',
+            'description' => 'Our core business is commercial multiplayer hosting infrastructure operated in live production environments.',
             'slugs' => ['gameservers-world', 'gameserver-panel'],
         ],
         [
-            'title' => 'Multiplayer Game Technologies',
-            'kicker' => 'Multiplayer Ecosystems',
-            'description' => 'Our multiplayer initiatives are developed as technology platforms with service-backed systems, synchronization architecture, and scalable online operations.',
-            'slugs' => ['neverwards', 'roadkill', 'castle-walls', 'mystical-islands', 'retro-space-blaster'],
-        ],
-        [
-            'title' => 'Infrastructure & Automation',
-            'kicker' => 'Operations Tooling',
-            'description' => 'Internal platform engineering and automation systems that support reliable deployment, governance, and service operations.',
+            'title' => 'Business Simulation & Training',
+            'kicker' => 'Operations Learning Tools',
+            'description' => 'Simulation software for management training, systems thinking, and operational decision making.',
             'slugs' => ['pureops'],
         ],
         [
-            'title' => 'Research & Development',
-            'kicker' => 'Internal R&D',
-            'description' => 'These are internal R&D initiatives and experimental systems research programs.',
-            'slugs' => ['alien-apocalypse', 'space5x'],
+            'title' => 'Multiplayer Games',
+            'kicker' => 'Active Game Development',
+            'description' => 'Online multiplayer games and persistent worlds developed for cooperative, competitive, and strategy-focused gameplay.',
+            'slugs' => ['neverwards', 'roadkill', 'castle-walls', 'mystical-islands', 'space5x'],
         ],
         [
-            'title' => 'Community & Communication Systems',
-            'kicker' => 'Community Platforms',
-            'description' => 'Communication and community platform technologies that support distributed engagement and long-term ecosystem growth.',
-            'slugs' => ['bbs-revival'],
+            'title' => 'Mobile Games',
+            'kicker' => 'Action-Focused Mobile Play',
+            'description' => 'Arcade-inspired game experiences designed for fast, responsive cross-platform mobile gameplay.',
+            'slugs' => ['retro-space-blaster'],
         ],
     ];
 
@@ -111,27 +103,16 @@
 
         // Per-project links with sensible defaults
         $defaultRead = 'https://github.com/World-Domination-Software/Projects/wiki';
-        $defaultDisc = 'https://github.com/World-Domination-Software/Projects/discussions';
-        $defaultIssue = 'https://github.com/World-Domination-Software/Projects/issues';
-
-        // Preserve older githubUrl/wikiUrl as a fallback for documentation links
         $readUrl = !empty($project['readMoreUrl'])
             ? $project['readMoreUrl']
             : (!empty($project['githubUrl']) ? $project['githubUrl'] : (!empty($project['wikiUrl']) ? $project['wikiUrl'] : $defaultRead));
-        $discUrl = !empty($project['discussionUrl']) ? $project['discussionUrl'] : $defaultDisc;
-        $platformUrl = !empty($project['platformUrl']) ? $project['platformUrl'] : $discUrl;
-        $notesUrl = !empty($project['technicalNotesUrl']) ? $project['technicalNotesUrl'] : $discUrl;
-        $issueUrl = !empty($project['issueUrl']) ? $project['issueUrl'] : $defaultIssue;
 
         echo '<li class="project-row" data-slug="' . $slug . '">';
         echo '  <div class="project-main">';
         echo '      <div class="project-title-text">' . $title . '</div>';
         echo '      <div class="project-short">' . $short . '</div>';
         echo '      <div class="project-actions">';
-        echo '          <a class="project-action" href="' . h($readUrl) . '" target="_blank" rel="noopener noreferrer">Documentation</a>';
-        echo '          <a class="project-action" href="' . h($platformUrl) . '" target="_blank" rel="noopener noreferrer">Platform Details</a>';
-        echo '          <a class="project-action" href="' . h($notesUrl) . '" target="_blank" rel="noopener noreferrer">Technical Notes</a>';
-        echo '          <a class="project-action" href="' . h($issueUrl) . '" target="_blank" rel="noopener noreferrer">Support</a>';
+        echo '          <a class="project-action" href="' . h($readUrl) . '" target="_blank" rel="noopener noreferrer">Learn More</a>';
         echo '      </div>';
         echo '  </div>';
         echo '</li>';
@@ -146,18 +127,18 @@
                         <div class="boxed">
                             <div class="col-sm-12">
                                 <p class="inner-p">
-                                    RunLevel Systems develops and operates commercial infrastructure platforms, multiplayer technologies, and hosting systems.
+                                    RunLevel Systems develops and operates commercial hosting software, business simulation tools, and online games.
                                 </p>
                                 <p class="inner-p" style="margin-top:15px;">
-                                    Our customer-facing business is led by Gameservers World and GameServer Panel, supported by internal automation platforms,
-                                    multiplayer ecosystem engineering, and focused systems research.
+                                    Our primary commercial offerings are Gameservers World and GameServer Panel. We also build PureOps for business simulation
+                                    and training, alongside active multiplayer and mobile game projects.
                                 </p>
                                 <p class="inner-p" style="margin-top:10px;">
-                                    Core resources:
+                                    Project resources:
                                     <br>
-                                    • <a href="https://github.com/World-Domination-Software/Projects/wiki" target="_blank" rel="noopener noreferrer" style="color:var(--core-cyan); text-decoration:underline;">Documentation</a><br>
-                                    • <a href="https://github.com/World-Domination-Software/Projects/discussions" target="_blank" rel="noopener noreferrer" style="color:var(--core-cyan); text-decoration:underline;">Platform Details &amp; Technical Notes</a><br>
-                                    • <a href="https://github.com/World-Domination-Software/Projects/issues" target="_blank" rel="noopener noreferrer" style="color:var(--core-cyan); text-decoration:underline;">Support</a>
+                                    • <a href="https://github.com/World-Domination-Software/Projects/wiki" target="_blank" rel="noopener noreferrer" style="color:var(--core-cyan); text-decoration:underline;">Project Documentation</a><br>
+                                    • <a href="https://github.com/World-Domination-Software/Projects/discussions" target="_blank" rel="noopener noreferrer" style="color:var(--core-cyan); text-decoration:underline;">Ideas &amp; Discussions</a><br>
+                                    • <a href="https://github.com/World-Domination-Software/Projects/issues" target="_blank" rel="noopener noreferrer" style="color:var(--core-cyan); text-decoration:underline;">Bug Reports &amp; Support</a>
                                 </p>
                             </div>
                         </div>
@@ -208,18 +189,19 @@
                     }
                     .section-description {
                         color: #a8bedc;
-                        max-width: 900px;
+                        max-width: 880px;
                         line-height: 1.7;
+                        margin-bottom: 0;
                     }
                     .project-row {
                         display: flex;
                         align-items: flex-start;
-                        padding: 20px 22px;
+                        padding: 22px 24px;
                         margin-bottom: 18px;
                         background: linear-gradient(180deg, #0d1a33, #0b1830);
-                        border-radius: 12px;
+                        border-radius: 14px;
                         border: 1px solid rgba(54,243,255,0.28);
-                        box-shadow: 0 0 0 1px rgba(54,243,255,0.08), 0 10px 24px rgba(0,0,0,0.22);
+                        box-shadow: 0 0 0 1px rgba(54,243,255,0.08), 0 12px 28px rgba(0,0,0,0.22);
                         transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
                     }
                     .project-row:hover {
@@ -235,18 +217,19 @@
                     .project-title-text {
                         color: var(--core-cyan);
                         font-weight: 700;
+                        font-size: 1.08rem;
                         letter-spacing: 0.01em;
                         margin-right: 10px;
-                        margin-bottom: 6px;
+                        margin-bottom: 8px;
                     }
                     .project-short {
                         color: #a8bedc;
-                        font-size: 14px;
-                        line-height: 1.7;
+                        font-size: 15px;
+                        line-height: 1.75;
                         margin-top: 2px;
                     }
                     .project-actions {
-                        margin-top: 14px;
+                        margin-top: 16px;
                         display: flex;
                         flex-wrap: wrap;
                         gap: 8px;
@@ -256,8 +239,8 @@
                         align-items: center;
                         justify-content: center;
                         border: 1px solid rgba(54,243,255,0.45);
-                        border-radius: 6px;
-                        padding: 6px 12px;
+                        border-radius: 7px;
+                        padding: 7px 14px;
                         font-size: 12px;
                         font-weight: 600;
                         color: #dff9ff;
@@ -279,9 +262,14 @@
                         }
                         .project-row {
                             padding: 18px 16px;
+                            margin-bottom: 14px;
                         }
                         .project-actions {
                             gap: 7px;
+                        }
+                        .project-short {
+                            font-size: 14px;
+                            line-height: 1.7;
                         }
                     }
                     /* Old detail/admin styles removed now that details live on GitHub */
