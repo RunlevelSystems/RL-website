@@ -122,6 +122,25 @@ if ($is_in_wiki) {
                         align-items: stretch;
                     }
                 }
+                @media (max-width: 768px) {
+                    .footer-widget .footer-row {
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 1.25rem;
+                    }
+                    .footer-widget .footer-col {
+                        width: 100%;
+                        max-width: 320px;
+                        text-align: center;
+                        margin: 0 auto;
+                    }
+                    .footer-widget .footer-col h4,
+                    .footer-widget .footer-list,
+                    .footer-widget .footer-list li {
+                        text-align: center;
+                    }
+                }
             </style>
             <div class="container footer-widget-container">
                 <div class="footer-search-wrap">
