@@ -159,15 +159,36 @@ function getLoginDebug() {
 }
 
 /**
+ * Staff-area authorization role gate.
+ * Only users with one of these values in `users_role` may access staff pages.
+ *
+ * @param string $role Normalized role value from users_role
+ * @return bool
+ */
+function hasStaffAccessRole($role) {
+    return in_array($role, ['admin', 'staff'], true);
+}
+
+/**
  * Verify admin user credentials against the panel database users table.
- * Authentication logic mirrors the GSP panel (Panel/index.php):
- *   md5($password) == $row['users_passwd']  AND  $row['users_role'] == 'admin'
- * resolveUsersTable() dynamically locates the table using DB_TABLE_PREFIX.
+ * Auth flow:
+ *  1) Load exactly one user row by users_login from `{$prefix}users`.
+ *  2) Verify password against users_passwd (MD5 legacy format, panel-compatible).
+ *  3) Authorize using users_role (admin/staff allowed).
+ *
+ * Failure classification (internal only):
+ *  - incorrect_login: login not found, password mismatch, or internal auth error
+ *  - no_authorization: valid login + password, but users_role is not authorized
+ *
+ * resolveUsersTable() dynamically locates the users table using DB_TABLE_PREFIX.
+ *
  * @param string $username The username to check
  * @param string $password The plain text password
+ * @param string|null $failureReason Output failure reason for callers
  * @return array|false User data array on success, false on failure
  */
-function verifyAdminLogin($username, $password) {
+function verifyAdminLogin($username, $password, &$failureReason = null) {
+    $failureReason = null;
     addLoginDebug("=== LOGIN ATTEMPT ===");
     addLoginDebug("Username", $username);
     addLoginDebug("Password length", strlen($password));
@@ -181,6 +202,7 @@ function verifyAdminLogin($username, $password) {
     if (!$db) {
         addLoginDebug("ERROR: Database connection failed");
         error_log("WDS Login: Database connection failed for user: " . $username);
+        $failureReason = 'incorrect_login';
         return false;
     }
     addLoginDebug("Database connected");
@@ -220,6 +242,7 @@ function verifyAdminLogin($username, $password) {
         addLoginDebug("User found", $user ? "YES" : "NO");
         if (!$user) {
             error_log("WDS Login: User not found: " . $username);
+            $failureReason = 'incorrect_login';
             return false;
         }
         addLoginDebug("users_role", $user['users_role'] ?? 'NULL');
@@ -244,7 +267,6 @@ function verifyAdminLogin($username, $password) {
             addLoginDebug("Trying MD5 check against users_passwd");
             $inputMd5  = md5($password);
             $storedMd5 = $user['users_passwd'];
-            addLoginDebug("MD5 of input", $inputMd5);
             $passwordOk = ($inputMd5 == $storedMd5);
             addLoginDebug("Stored hash length", strlen($storedMd5));
             addLoginDebug("Password match", $passwordOk ? "YES" : "NO");
@@ -252,32 +274,34 @@ function verifyAdminLogin($username, $password) {
 
         if (!$passwordOk) {
             error_log("WDS Login: Password verification failed for: " . $username);
+            $failureReason = 'incorrect_login';
             return false;
         }
         addLoginDebug("Password OK");
 
-        // Role check: GSP panel requires users_role === 'admin'
+        // Role authorization check uses users_role only.
         $userRole = !empty($user['users_role']) ? strtolower(trim($user['users_role'])) : 'user';
-        $isTempStaffUser = (isset($user['users_login']) && strtolower(trim($user['users_login'])) === 'iaregamer');
-        $hasStaffPrivileges = ($userRole === 'admin') || $isTempStaffUser;
         addLoginDebug("Privilege check column", "users_role");
         addLoginDebug("Normalized role", $userRole);
+        $hasStaffPrivileges = hasStaffAccessRole($userRole);
         addLoginDebug("Privilege/admin check result", $hasStaffPrivileges ? "PASS" : "FAIL");
         if (!$hasStaffPrivileges) {
-            error_log("WDS Login: User '" . $username . "' does not have admin role (role: " . $userRole . ")");
+            error_log("WDS Login: User '" . $username . "' is authenticated but unauthorized for staff area (users_role: " . $userRole . ")");
+            $failureReason = 'no_authorization';
             return false;
         }
         addLoginDebug("=== LOGIN SUCCESS ===");
 
         return [
             'username'   => $user['users_login'],
-            'role'       => 'admin',
+            'role'       => $userRole,
             'login_time' => time(),
         ];
 
     } catch (Throwable $e) {
         addLoginDebug("EXCEPTION: " . $e->getMessage());
         error_log("WDS Login verification exception: " . $e->getMessage());
+        $failureReason = 'incorrect_login';
         return false;
     }
 }
@@ -293,7 +317,7 @@ function isLoggedInAdmin() {
 
     return isset($_SESSION['wds_admin_user']) &&
            isset($_SESSION['wds_admin_role']) &&
-           $_SESSION['wds_admin_role'] === 'admin';
+           hasStaffAccessRole(strtolower(trim((string)$_SESSION['wds_admin_role'])));
 }
 
 /**
