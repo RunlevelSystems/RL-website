@@ -155,7 +155,7 @@ if ($is_in_wiki) {
                         <h4>Site</h4>
                         <ul class="footer-list">
                             <li><a href="<?php echo $footer_base_path; ?>index.php">Home</a></li>
-                            <li><a href="<?php echo $footer_base_path; ?>projects.php">Projects</a></li>
+                            <li><a href="<?php echo $footer_base_path; ?>projects.php">What We've Built</a></li>
                             <li><a href="<?php echo $footer_base_path; ?>joinus.php">Join Our Team</a></li>
                             <li><a href="<?php echo $footer_base_path; ?>contact.php">Contact</a></li>
                             <li><a href="<?php echo $footer_base_path; ?>privacy.php">Privacy Policy</a></li>
@@ -171,7 +171,7 @@ if ($is_in_wiki) {
                         </ul>
                     </div>
                     <div class="col-sm-4 footer-col">
-                        <h4>Products & Projects</h4>
+                        <h4>What We've Built</h4>
                         <ul class="footer-list">
                             <li><a href="https://github.com/GameServerPanel/GSP" target="_blank" rel="noopener noreferrer">GameServer Panel (Platform)</a></li>
                             <li><a href="https://gameservers.world" target="_blank" rel="noopener noreferrer">Gameservers.world (Hosting Website)</a></li>

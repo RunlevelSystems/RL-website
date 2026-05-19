@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
 
-    <title>Projects | Runlevel Systems</title>
+    <title>What We've Built | Runlevel Systems</title>
 
         <!-- CSS -->
         <link href="assets/css/coreloop.css" rel="stylesheet">
@@ -22,7 +22,7 @@
             // Page-specific variables
             $current_page = 'projects';
             $header_class = 'projects-header inner-header';
-            $page_subtitle = 'Hosting • Simulation • Games';
+            $page_subtitle = 'Products • Platforms • Games';
             ?>
     <!-- Include Site Header -->
     <?php include 'includes/header.php'; ?>
@@ -66,27 +66,27 @@
 
     $sections = [
         [
-            'title' => 'Hosting & Infrastructure',
-            'kicker' => 'Platforms We Operate',
-            'description' => 'Commercial hosting and infrastructure software we build, run, and support in production.',
+            'title' => 'Platforms & Products',
+            'kicker' => 'Operational Software',
+            'description' => 'Customer-facing platforms we actively operate, support, and improve in live production environments.',
             'slugs' => ['gameservers-world', 'gameserver-panel'],
         ],
         [
-            'title' => 'Business Simulation & Training',
-            'kicker' => 'Operational Training Tools',
-            'description' => 'Simulation software that puts people in realistic management scenarios to develop practical decision-making skills.',
+            'title' => 'Simulation & Training',
+            'kicker' => 'Interactive Operations Learning',
+            'description' => 'Simulation software designed to train planning, execution, and decision-making in realistic operational contexts.',
             'slugs' => ['pureops'],
         ],
         [
-            'title' => 'Multiplayer Games',
-            'kicker' => 'Game Development',
-            'description' => 'Multiplayer titles in active development across cooperative, competitive, and strategy formats.',
+            'title' => 'Games in Active Development',
+            'kicker' => 'Online Interactive Projects',
+            'description' => 'Live development initiatives across cooperative, competitive, and persistent online game experiences.',
             'slugs' => ['neverwards', 'roadkill', 'castle-walls', 'mystical-islands', 'space5x'],
         ],
         [
-            'title' => 'Mobile Games',
-            'kicker' => 'Mobile Game Development',
-            'description' => 'Mobile projects built for accessible controls, strong game loops, and reliable cross-platform delivery.',
+            'title' => 'Mobile Interactive Titles',
+            'kicker' => 'Cross-Platform Releases',
+            'description' => 'Mobile games focused on clear controls, replayability, and reliable performance across device classes.',
             'slugs' => ['retro-space-blaster', 'be-very-very-quiet'],
         ],
     ];
@@ -120,7 +120,7 @@
     }
     ?>
 
-    <!-- Projects -->
+    <!-- What We've Built -->
         <section class="about">
             <div class="container page-bgc">
                 <div id="projects-overview">
@@ -128,13 +128,13 @@
                         <div class="boxed">
                             <div class="col-sm-12">
                                 <p class="inner-p">
-                                    RunLevel Systems develops software across games, hosting platforms, backend systems, and infrastructure tooling.
+                                    What We've Built highlights completed work, active products, and live development initiatives at RunLevel Systems.
                                 </p>
                                 <p class="inner-p" style="margin-top:15px;">
-                                    Our portfolio includes commercial products such as Gameservers World and GameServer Panel, along with PureOps, multiplayer games, and mobile game projects.
+                                    The portfolio includes production platforms like Gameservers World and GameServer Panel, operational simulation software, and online game projects across PC and mobile.
                                 </p>
                                 <p class="inner-p" style="margin-top:10px;">
-                                    Project resources:
+                                    Portfolio resources:
                                     <br>
                                     • <a href="https://github.com/World-Domination-Software/Projects/wiki" target="_blank" rel="noopener noreferrer" style="color:var(--core-cyan); text-decoration:underline;">Technical Documentation</a><br>
                                     • <a href="https://github.com/World-Domination-Software/Projects/discussions" target="_blank" rel="noopener noreferrer" style="color:var(--core-cyan); text-decoration:underline;">Ideas and Discussions</a><br>
