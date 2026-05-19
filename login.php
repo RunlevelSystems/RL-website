@@ -29,7 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_form'])) {
     if (empty($username) || empty($password)) {
         $error_message = 'Please enter both username and password.';
     } else {
-        $user = verifyAdminLogin($username, $password);
+        $loginFailureReason = null;
+        $user = verifyAdminLogin($username, $password, $loginFailureReason);
         if ($user) {
             // Set session variables
             $_SESSION['wds_admin_user'] = $user['username'];
@@ -47,7 +48,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_form'])) {
             exit;
         } else {
             addLoginDebug('Session created', 'NO');
-            $error_message = 'Invalid username or password, or insufficient privileges.';
+            // User-facing text is intentionally generic for credential failures,
+            // while authorization failures receive a separate message.
+            if ($loginFailureReason === 'no_authorization') {
+                $error_message = 'Your account is not authorized for staff access.';
+            } else {
+                $error_message = 'Incorrect username or password.';
+            }
         }
     }
 }

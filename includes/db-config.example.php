@@ -63,6 +63,10 @@ function getLoginDebug() {
     return [];
 }
 
+function hasStaffAccessRole($role) {
+    return in_array($role, ['admin', 'staff'], true);
+}
+
 function resolveUsersTable(mysqli $db) {
     static $tableName = null;
     if ($tableName !== null) {
@@ -118,12 +122,21 @@ function getDatabaseConnection() {
 
 /**
  * Verify admin credentials against the panel database.
- * Mirrors GSP panel: md5($password) == users_passwd AND users_role == 'admin'
+ * Auth flow:
+ * 1) Find user by users_login from `{$prefix}users`.
+ * 2) Verify password against users_passwd (MD5 fallback required for legacy panel data).
+ * 3) Authorize by users_role (admin/staff only).
+ *
+ * Failure classification:
+ * - incorrect_login
+ * - no_authorization
  */
-function verifyAdminLogin($username, $password) {
+function verifyAdminLogin($username, $password, &$failureReason = null) {
+    $failureReason = null;
     $db = getDatabaseConnection();
     if (!$db) {
         error_log("WDS Login: Database connection failed for user: " . $username);
+        $failureReason = 'incorrect_login';
         return false;
     }
     try {
@@ -151,6 +164,7 @@ function verifyAdminLogin($username, $password) {
         mysqli_stmt_close($stmt);
         if (!$user) {
             error_log("WDS Login: User not found: " . $username);
+            $failureReason = 'incorrect_login';
             return false;
         }
         $passwordOk = false;
@@ -162,20 +176,23 @@ function verifyAdminLogin($username, $password) {
         }
         if (!$passwordOk) {
             error_log("WDS Login: Password verification failed for: " . $username);
+            $failureReason = 'incorrect_login';
             return false;
         }
         $userRole = !empty($user['users_role']) ? strtolower(trim($user['users_role'])) : 'user';
-        if ($userRole !== 'admin') {
-            error_log("WDS Login: User '" . $username . "' does not have admin role (role: " . $userRole . ")");
+        if (!hasStaffAccessRole($userRole)) {
+            error_log("WDS Login: User '" . $username . "' is authenticated but unauthorized for staff area (users_role: " . $userRole . ")");
+            $failureReason = 'no_authorization';
             return false;
         }
         return [
             'username'   => $user['users_login'],
-            'role'       => 'admin',
+            'role'       => $userRole,
             'login_time' => time(),
         ];
     } catch (Throwable $e) {
         error_log("WDS Login exception: " . $e->getMessage());
+        $failureReason = 'incorrect_login';
         return false;
     }
 }
@@ -189,7 +206,7 @@ function isLoggedInAdmin() {
     }
     return isset($_SESSION['wds_admin_user']) &&
            isset($_SESSION['wds_admin_role']) &&
-           $_SESSION['wds_admin_role'] === 'admin';
+           hasStaffAccessRole(strtolower(trim((string)$_SESSION['wds_admin_role'])));
 }
 
 /**
@@ -203,4 +220,3 @@ function requireAdminLogin() {
         exit;
     }
 }
-
