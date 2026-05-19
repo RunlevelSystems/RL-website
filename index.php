@@ -253,11 +253,11 @@
         <div class="home-block" aria-label="Hero">
           <div class="home-inner">
             <p class="home-label">Runlevel Systems</p>
-            <h1 class="home-title"><span class="home-title-line">Software Development</span><span class="home-title-accent home-title-line">Games, Hosting, and Infrastructure</span></h1>
-            <p class="home-lead">Runlevel Systems develops software across games, hosting platforms, backend systems, and infrastructure tools. Our work includes multiplayer games, mobile games, commercial game server hosting software, Linux-based hosting environments, deployment automation, and custom backend systems.</p>
-            <p class="home-summary">We build and operate products for interactive services and online operations, from player-facing experiences to the platforms and infrastructure that keep them reliable.</p>
+            <h1 class="home-title"><span class="home-title-line">Software Development</span><span class="home-title-accent home-title-line">Platforms, Games, and Operations</span></h1>
+            <p class="home-lead">RunLevel Systems develops software for multiplayer games, hosting platforms, backend systems, and Linux-based infrastructure.</p>
+            <p class="home-summary">We build both customer-facing experiences and the systems that keep online platforms running reliably.</p>
             <div class="home-actions">
-              <a class="home-btn home-btn-primary" href="projects.php">See Our Projects</a>
+              <a class="home-btn home-btn-primary" href="projects.php">See What We've Built</a>
               <a class="home-btn home-btn-ghost" href="contact.php">Get in Touch</a>
             </div>
           </div>
@@ -265,31 +265,31 @@
 
         <div class="home-block" aria-label="Core capabilities">
           <div class="home-inner">
-            <p class="home-label">What We Do</p>
+            <p class="home-label">What We Build</p>
             <div class="home-grid">
               <article class="home-card home-highlight">
-                <h3>GameServer Panel</h3>
-                <p>Our own game server management platform. It handles server deployment, automation, remote management, and monitoring across your entire Linux-based hosting setup. We built it and we use it ourselves.</p>
+                <h3>Hosting Platforms</h3>
+                <p>We develop control software for game hosting providers that need reliable provisioning, customer operations tooling, and day-to-day service management in one place.</p>
               </article>
               <article class="home-card">
                 <h3>Multiplayer Game Development</h3>
-                <p>We develop multiplayer titles with robust networking, persistent world services, and backend systems designed for live operations.</p>
+                <p>We build online and cooperative game experiences with production-ready networking, live progression systems, and practical support tooling for ongoing releases.</p>
               </article>
               <article class="home-card">
-                <h3>Hosting Infrastructure</h3>
-                <p>We build and run Linux-based hosting infrastructure. Whether that's a single server or a multi-node setup, we keep things reliable and maintainable.</p>
+                <h3>Backend Systems</h3>
+                <p>We design APIs and service layers that connect game clients, admin interfaces, billing, and operations workflows without unnecessary complexity.</p>
               </article>
               <article class="home-card">
-                <h3>Automation and Deployment</h3>
-                <p>We automate provisioning, deployment, updates, and monitoring to improve consistency, reduce manual overhead, and speed up delivery.</p>
+                <h3>Linux Infrastructure</h3>
+                <p>We run Linux-first environments for hosting workloads, with practical standards around configuration, security hardening, and long-term maintainability.</p>
               </article>
               <article class="home-card">
-                <h3>Backend Engineering</h3>
-                <p>We deliver custom APIs, backend services, and platform integrations tailored to your product requirements and operating environment.</p>
+                <h3>Deployment Automation</h3>
+                <p>We automate rollout, server setup, service restarts, and update pipelines so teams can ship reliably while reducing manual operational overhead.</p>
               </article>
               <article class="home-card">
-                <h3>Multi-Location Hosting</h3>
-                <p>We manage hosting across multiple locations, with remote node management and monitoring built in from the start.</p>
+                <h3>Custom Software</h3>
+                <p>We deliver targeted software for organizations that need tools built around their real workflow instead of forcing operations into generic products.</p>
               </article>
             </div>
           </div>
@@ -299,50 +299,101 @@
           <div class="home-inner">
             <p class="home-label">Platform Spotlight</p>
             <h2 class="home-title" style="font-size: clamp(24px, 3.4vw, 34px);">GameServer Panel</h2>
-            <p class="home-summary">GameServer Panel is our commercial game server management platform. It gives hosting providers and server operators a central place to deploy, manage, and monitor game servers across their infrastructure. It's Linux-first, built for automation, and designed to handle the day-to-day work of running a hosting business.</p>
+            <p class="home-summary">GameServer Panel is used by hosting operators who need to deploy, manage, and support customer game servers at scale. We built it because we operate hosting infrastructure ourselves and needed practical tooling for real operational demands. The platform powers Gameservers World and helps automate server deployment, updates, and daily management work.</p>
             <hr class="home-divider">
             <ul class="home-list">
-              <li>Manage game servers across multiple nodes from one control panel.</li>
-              <li>Automate server installs, updates, and restarts without manual intervention.</li>
-              <li>Monitor server status and get alerts when something goes wrong.</li>
-              <li>Support multiple customers on the same infrastructure, each in their own space.</li>
-              <li>Extend and integrate with your own tools through a flexible backend.</li>
+              <li>Centralizes multi-node operations so teams can manage distributed game services from one control point.</li>
+              <li>Automates server installs, updates, and routine maintenance to reduce repetitive manual work.</li>
+              <li>Provides operational visibility through status monitoring and alerts for actionable incident response.</li>
+              <li>Supports tenant-based environments for shared infrastructure with clear customer separation.</li>
+              <li>Improves consistency across deployments, lowering operational drift across regions and nodes.</li>
             </ul>
           </div>
         </div>
 
-        <div class="home-block" aria-label="Who we serve">
+        <div class="home-block" aria-label="Infrastructure and operations">
           <div class="home-inner">
-            <p class="home-label">Who We Work With</p>
-            <div class="home-tag-grid">
-              <div class="home-tag">Game Server Hosting Providers</div>
-              <div class="home-tag">Online Gaming Communities</div>
-              <div class="home-tag">Infrastructure Operators</div>
-              <div class="home-tag">Developers and Small Teams</div>
-              <div class="home-tag">Multiplayer Game Studios</div>
-              <div class="home-tag">Businesses Needing Custom Backend Work</div>
+            <p class="home-label">Infrastructure &amp; Operations</p>
+            <div class="home-grid">
+              <article class="home-card">
+                <h3>Linux Hosting Operations</h3>
+                <p>We manage Linux-based hosting environments with clear operating standards, repeatable maintenance procedures, and practical uptime priorities.</p>
+              </article>
+              <article class="home-card">
+                <h3>Deployment Pipelines</h3>
+                <p>Our deployment workflows handle provisioning, version rollout, rollback planning, and staged updates across production infrastructure.</p>
+              </article>
+              <article class="home-card">
+                <h3>Remote Infrastructure Management</h3>
+                <p>We operate and maintain remote nodes across locations using centralized tooling and consistent operational controls.</p>
+              </article>
+              <article class="home-card">
+                <h3>Monitoring &amp; Incident Response</h3>
+                <p>We implement monitoring and alerting around service health so issues can be identified, triaged, and resolved quickly.</p>
+              </article>
+              <article class="home-card">
+                <h3>Virtualization Workloads</h3>
+                <p>We use virtualization to isolate services, optimize hardware use, and improve workload stability across mixed environments.</p>
+              </article>
+              <article class="home-card">
+                <h3>Multi-Node Systems</h3>
+                <p>We design systems that run across multiple nodes to support scale, reduce single points of failure, and simplify growth planning.</p>
+              </article>
             </div>
           </div>
         </div>
 
-        <div class="home-block" aria-label="Core technologies">
+        <div class="home-block" aria-label="Games and interactive projects">
           <div class="home-inner">
-            <p class="home-label">Tech We Work With</p>
+            <p class="home-label">Games &amp; Interactive Projects</p>
+            <div class="home-grid">
+              <article class="home-card">
+                <h3>Neverwards</h3>
+                <p>Online cooperative adventure with persistent progression and long-term shared-world systems.</p>
+              </article>
+              <article class="home-card">
+                <h3>Mystical Islands</h3>
+                <p>Multiplayer fantasy exploration focused on cooperative play and persistent online sessions.</p>
+              </article>
+              <article class="home-card">
+                <h3>Roadkill v2</h3>
+                <p>Competitive vehicular combat built for responsive multiplayer gameplay and repeat sessions.</p>
+              </article>
+              <article class="home-card">
+                <h3>Retro Space Blaster</h3>
+                <p>Fast-paced mobile arcade action designed for short play loops and cross-platform delivery.</p>
+              </article>
+              <article class="home-card">
+                <h3>Be Very Very Quiet</h3>
+                <p>Mobile zombie survival experience centered on stealth, pressure, and extraction choices.</p>
+              </article>
+              <article class="home-card">
+                <h3>Interactive Focus</h3>
+                <p>Our game work spans online multiplayer, cooperative systems, persistent worlds, and mobile-first gameplay.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-block" aria-label="Technical capabilities">
+          <div class="home-inner">
+            <p class="home-label">Technical Capabilities</p>
             <div class="home-tech">
-              <div class="home-tech-item"><strong>Linux</strong><span>Our infrastructure runs on Linux. We've built and managed Linux-based hosting environments for years.</span></div>
-              <div class="home-tech-item"><strong>Virtualization</strong><span>We use virtualization to isolate services and make efficient use of hardware in hosting environments.</span></div>
-              <div class="home-tech-item"><strong>Distributed Systems</strong><span>We build systems that work across multiple servers, so things keep running even when individual nodes have problems.</span></div>
-              <div class="home-tech-item"><strong>Deployment Automation</strong><span>Automated deployments mean less manual work and more consistent results when rolling out updates or new servers.</span></div>
-              <div class="home-tech-item"><strong>Backend Development</strong><span>We write the server-side code that powers hosting platforms, game services, and business applications.</span></div>
-              <div class="home-tech-item"><strong>Multiplayer Systems</strong><span>From matchmaking to persistent world backends, we build the infrastructure that keeps multiplayer games online.</span></div>
+              <div class="home-tech-item"><strong>Linux</strong><span>Production environments built and maintained on Linux infrastructure.</span></div>
+              <div class="home-tech-item"><strong>Virtualization</strong><span>Isolated service workloads for stable and efficient infrastructure usage.</span></div>
+              <div class="home-tech-item"><strong>Backend APIs</strong><span>Service interfaces that connect products, operations, and customer tooling.</span></div>
+              <div class="home-tech-item"><strong>Deployment Automation</strong><span>Automated rollout and maintenance workflows for reliable release cycles.</span></div>
+              <div class="home-tech-item"><strong>Multiplayer Networking</strong><span>Online session architecture designed for responsiveness and persistence.</span></div>
+              <div class="home-tech-item"><strong>Monitoring Systems</strong><span>Operational visibility with alerting, diagnostics, and service health tracking.</span></div>
+              <div class="home-tech-item"><strong>Scalable Hosting Operations</strong><span>Multi-node service operations designed for growth and long-term support.</span></div>
             </div>
           </div>
         </div>
 
         <div class="home-block" aria-label="Call to action">
           <div class="home-inner" style="text-align: center;">
-            <h2 style="margin:0 0 10px; color:#f4f9ff; font-size:clamp(22px,3vw,30px);">Let's Build Your Next Platform</h2>
-            <p class="home-summary" style="margin:0 auto 16px; max-width:760px;">If you need game development, hosting software, or backend and infrastructure engineering, we can help you design and deliver it.</p>
+            <h2 style="margin:0 0 10px; color:#f4f9ff; font-size:clamp(22px,3vw,30px);">Let's Build Something That Runs in the Real World</h2>
+            <p class="home-summary" style="margin:0 auto 16px; max-width:760px;">If you need practical software for games, hosting operations, or backend systems, we can help you plan it, build it, and run it.</p>
             <a class="home-btn home-btn-primary" href="contact.php">Talk to Our Team</a>
           </div>
         </div>

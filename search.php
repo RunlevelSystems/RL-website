@@ -34,9 +34,9 @@ function searchWebsiteContent($query) {
             'keywords' => 'home, main, company, overview, development, software, runlevel systems'
         ],
         'projects.php' => [
-            'title' => 'Projects - Development Portfolio', 
-            'description' => 'Our complete portfolio of development projects including games and business applications.',
-            'keywords' => 'projects, portfolio, development, games, applications, work'
+            'title' => 'What We\'ve Built - Products and Platforms', 
+            'description' => 'Our portfolio of active products, live platforms, and development initiatives across games and operations software.',
+            'keywords' => 'what we have built, portfolio, products, platforms, games, software, work'
         ],
         'joinus.php' => [
             'title' => 'Join Us - Career Opportunities',

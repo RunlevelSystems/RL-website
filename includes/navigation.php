@@ -44,7 +44,7 @@ if ($is_in_wiki) {
                 <div class="core-nav-collapse" id="site-nav-bar">
                     <ul class="core-nav-links">
                         <li><a href="<?php echo $base_path; ?>index.php" <?php echo ($current_page == 'index') ? 'aria-current="page"' : ''; ?>>Home</a></li>
-                        <li><a href="<?php echo $base_path; ?>projects.php" <?php echo ($current_page == 'projects') ? 'aria-current="page"' : ''; ?>>Projects</a></li>
+                        <li><a href="<?php echo $base_path; ?>projects.php" <?php echo ($current_page == 'projects') ? 'aria-current="page"' : ''; ?>>What We've Built</a></li>
                         <li><a href="<?php echo $base_path; ?>portal/">Client Portal</a></li>
                         <li><a href="<?php echo $base_path; ?>joinus.php" <?php echo ($current_page == 'joinus') ? 'aria-current="page"' : ''; ?>>Join Us</a></li>
                         <li><a href="<?php echo $base_path; ?>contact.php" <?php echo ($current_page == 'contact') ? 'aria-current="page"' : ''; ?>>Contact</a></li>
