@@ -311,33 +311,33 @@
           </div>
         </div>
 
-        <div class="home-block" aria-label="Infrastructure and operations">
+        <div class="home-block" aria-label="Technical capabilities">
           <div class="home-inner">
-            <p class="home-label">Infrastructure &amp; Operations</p>
+            <p class="home-label">Technical Capabilities</p>
             <div class="home-grid">
               <article class="home-card">
-                <h3>Linux Hosting Operations</h3>
-                <p>We manage Linux-based hosting environments with clear operating standards, repeatable maintenance procedures, and practical uptime priorities.</p>
+                <h3>Linux Infrastructure</h3>
+                <p>We design and manage Linux-based hosting environments for multiplayer platforms, backend services, and online applications. Our experience includes system configuration, automation, security hardening, monitoring, and long-term operational reliability.</p>
               </article>
               <article class="home-card">
-                <h3>Deployment Pipelines</h3>
-                <p>Our deployment workflows handle provisioning, version rollout, rollback planning, and staged updates across production infrastructure.</p>
+                <h3>Deployment Automation</h3>
+                <p>We build automated deployment systems that simplify server provisioning, software rollouts, updates, and service management across development and production environments.</p>
               </article>
               <article class="home-card">
                 <h3>Remote Infrastructure Management</h3>
-                <p>We operate and maintain remote nodes across locations using centralized tooling and consistent operational controls.</p>
+                <p>We develop centralized management systems for handling remote servers, distributed nodes, and multi-location infrastructure from a unified control platform.</p>
               </article>
               <article class="home-card">
-                <h3>Monitoring &amp; Incident Response</h3>
-                <p>We implement monitoring and alerting around service health so issues can be identified, triaged, and resolved quickly.</p>
+                <h3>Monitoring &amp; Reliability</h3>
+                <p>We implement monitoring, alerting, and operational tooling that help identify problems quickly and keep online systems stable and maintainable.</p>
               </article>
               <article class="home-card">
-                <h3>Virtualization Workloads</h3>
-                <p>We use virtualization to isolate services, optimize hardware use, and improve workload stability across mixed environments.</p>
+                <h3>Backend Development</h3>
+                <p>We create APIs, backend services, account systems, and operational tools that support multiplayer games, hosting platforms, and custom business applications.</p>
               </article>
               <article class="home-card">
-                <h3>Multi-Node Systems</h3>
-                <p>We design systems that run across multiple nodes to support scale, reduce single points of failure, and simplify growth planning.</p>
+                <h3>Multiplayer Systems</h3>
+                <p>We build networking and backend systems for multiplayer games including matchmaking, session management, persistent world services, and real-time synchronization.</p>
               </article>
             </div>
           </div>
