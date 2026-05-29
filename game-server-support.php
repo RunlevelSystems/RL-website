@@ -7,8 +7,8 @@
         <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
 
         <title>Mods &amp; Custom Code | Runlevel Systems</title>
-        <meta name="description" content="Custom scripts, mod installation, server fixes, migrations, and community tools for game servers.">
-        <meta name="keywords" content="Mods &amp; Custom Code, custom scripts, mod installation, server troubleshooting, Discord integration, migration help">
+        <meta name="description" content="Help with mod installs, custom features, Discord integration, broken updates, and community tools for game servers.">
+        <meta name="keywords" content="Mods &amp; Custom Code, install mods, fix broken mods, Discord integration, server automation, custom features">
         <link href="assets/css/coreloop.css" rel="stylesheet">
     </head>
     <body>
@@ -31,25 +31,28 @@
 
             <section class="service-section">
                 <div class="container">
-                    <h2>Mods Can Be Hard</h2>
-                    <p class="section-intro">Many game servers are easy to start but difficult to customize. Mods, plugins, scripts, maps, permissions, databases, and configuration files often have to work together. One update can break a server, conflict with another mod, or create hours of troubleshooting.</p>
-                    <p class="section-intro">Runlevel Systems helps server owners avoid that frustration.</p>
-                    <p class="section-intro">We can install mods, write small scripts, adjust gameplay settings, repair broken setups, migrate servers, connect Discord or websites, and help communities get the features they want.</p>
+                    <h2>Why Modding Gets Complicated</h2>
+                    <p class="section-intro">Installing one mod is usually easy.</p>
+                    <p class="section-intro">Running multiple mods together is where problems start.</p>
+                    <p class="section-intro">Different versions, updates, permissions, databases, scripts, and plugins often have to work together.</p>
+                    <p class="section-intro">One broken update can stop an entire server.</p>
+                    <p class="section-intro">That's where Runlevel Systems can help.</p>
                 </div>
             </section>
 
             <section class="service-section alt">
                 <div class="container">
-                    <h2>Services We Offer</h2>
+                    <h2>What We Actually Do</h2>
                     <div class="service-card-grid two-columns">
-                        <article class="service-card-item"><h3>Custom Scripts</h3><p>Small gameplay changes, commands, automation, events, server tools, and custom logic.</p></article>
-                        <article class="service-card-item"><h3>Mod Installation</h3><p>We install and configure mods, plugins, maps, and server add-ons.</p></article>
-                        <article class="service-card-item"><h3>Mod Troubleshooting</h3><p>We help find conflicts, broken updates, missing files, and configuration problems.</p></article>
-                        <article class="service-card-item"><h3>Server Customization</h3><p>Loot settings, economy changes, permissions, roles, spawn rates, timers, balance settings, and gameplay rules.</p></article>
-                        <article class="service-card-item"><h3>Discord &amp; Website Integration</h3><p>Connect server events, community tools, player info, support systems, and announcements.</p></article>
-                        <article class="service-card-item"><h3>Legacy Game Support</h3><p>Support for older games and long-running communities that still need modern hosting, fixes, and customization.</p></article>
-                        <article class="service-card-item"><h3>Migration Help</h3><p>Move your server, files, settings, mods, and community data to a new host or platform.</p></article>
-                        <article class="service-card-item"><h3>Community Features</h3><p>Roleplay systems, admin tools, player commands, donation perks, and custom server features.</p></article>
+                        <article class="service-card-item"><h3>Install Mods</h3><p>Get the right files in place and working on the correct version.</p></article>
+                        <article class="service-card-item"><h3>Configure Mods</h3><p>Adjust settings so features work the way your community expects.</p></article>
+                        <article class="service-card-item"><h3>Fix Broken Mods</h3><p>Troubleshoot conflicts, bad updates, and setups that stopped working.</p></article>
+                        <article class="service-card-item"><h3>Create Small Scripts</h3><p>Add simple custom behavior without turning your server into a giant dev project.</p></article>
+                        <article class="service-card-item"><h3>Build Custom Features</h3><p>Create the extras that make your server feel different from everyone else's.</p></article>
+                        <article class="service-card-item"><h3>Connect Discord</h3><p>Link your community tools so players stay informed and connected.</p></article>
+                        <article class="service-card-item"><h3>Setup Community Tools</h3><p>Help with permissions, economy systems, admin tools, and player conveniences.</p></article>
+                        <article class="service-card-item"><h3>Move Servers Between Hosts</h3><p>Migrate files, settings, and important server data with less disruption.</p></article>
+                        <article class="service-card-item"><h3>Repair Broken Updates</h3><p>Recover from update problems before they chase players away.</p></article>
                     </div>
                 </div>
             </section>

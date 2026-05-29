@@ -43,30 +43,58 @@
             <section class="service-section" id="what-we-do">
                 <div class="container">
                     <h2>What We Help With</h2>
-                    <p class="section-intro">Affordable technical help for creators, communities, and small teams.</p>
+                    <p class="section-intro">Clear help for real problems, without making you figure everything out alone.</p>
                     <div class="three-column-stack">
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">💻</div>
                             <h3>Dev Partner</h3>
-                            <p class="service-card-subtitle">Affordable development help when you need it.</p>
-                            <p>Affordable development help for websites, apps, games, iOS builds, project recovery, and custom software.</p>
-                            <a class="core-action tertiary" href="/design-debug-deploy.php">Get Development Help</a>
+                            <p class="service-card-subtitle">Need help building something but don't have a full development team?</p>
+                            <p>Runlevel Systems helps creators, startups, indie developers, and small businesses solve technical challenges, build new features, fix broken projects, launch products, and get across the finish line.</p>
+                            <p><strong>Examples:</strong> Build a website, launch a mobile app, fix a broken project, publish a game, add new features, and get help when you're stuck.</p>
+                            <a class="core-action tertiary" href="/design-debug-deploy.php">Learn About Development</a>
                         </article>
 
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">🌐</div>
                             <h3>Hosting</h3>
-                            <p class="service-card-subtitle">GameServers.World</p>
-                            <p>Rent game servers through GameServers.World for communities, friends, clans, and multiplayer projects.</p>
+                            <p class="service-card-subtitle">Need a place to run your game server?</p>
+                            <p>GameServers.World provides affordable game server hosting for communities, clans, friend groups, and multiplayer projects.</p>
+                            <p>We provide the server. You focus on your players.</p>
+                            <p><strong>Examples:</strong> Minecraft servers, survival servers, roleplay communities, modded servers, and private community servers.</p>
                             <a class="core-action tertiary" href="/gameserver-hosting.php">Explore Hosting</a>
                         </article>
 
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">🎮</div>
                             <h3>Mods &amp; Custom Code</h3>
-                            <p class="service-card-subtitle">Scripts, installs, fixes, and integrations.</p>
-                            <p>Custom scripts, mod installation, server changes, Discord integrations, migrations, and server troubleshooting.</p>
+                            <p class="service-card-subtitle">Need your server to do something unique?</p>
+                            <p>We help install mods, customize gameplay, create scripts, connect Discord, fix broken updates, and add features that make communities stand out.</p>
+                            <p><strong>Examples:</strong> Custom commands, economy systems, Discord integration, roleplay systems, server automation, and mod troubleshooting.</p>
                             <a class="core-action tertiary" href="/game-server-support.php">Explore Mods</a>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="service-section alt">
+                <div class="container">
+                    <h2>Why People Contact Us</h2>
+                    <div class="benefit-grid">
+                        <article class="benefit-item">
+                            <h3>&ldquo;I bought a template and got stuck.&rdquo;</h3>
+                            <p>We help troubleshoot and finish projects that never made it to launch.</p>
+                        </article>
+                        <article class="benefit-item">
+                            <h3>&ldquo;My server broke after an update.&rdquo;</h3>
+                            <p>We help repair, restore, and reconfigure servers after updates and mod conflicts.</p>
+                        </article>
+                        <article class="benefit-item">
+                            <h3>&ldquo;I need help getting published.&rdquo;</h3>
+                            <p>We help prepare games and apps for stores, platforms, and deployment.</p>
+                        </article>
+                        <article class="benefit-item">
+                            <h3>&ldquo;I don't know where to start.&rdquo;</h3>
+                            <p>We help plan projects, choose technologies, and avoid expensive mistakes.</p>
                         </article>
                     </div>
                 </div>
