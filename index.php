@@ -71,6 +71,57 @@
                 </div>
             </section>
 
+            <section class="service-section ddd-partnership-section">
+                <div class="container">
+                    <div class="ddd-partnership-grid">
+                        <div>
+                            <h2>Design • Debug • Deploy</h2>
+                            <p class="section-intro ddd-subtitle">Your On-Demand Development Team</p>
+                            <p class="ddd-copy">Building software, games, websites, and online services can be challenging, especially for small teams and independent developers.</p>
+                            <p class="ddd-copy">Sometimes you need help solving a difficult problem, planning the next stage of development, deploying a release, managing infrastructure, debugging an issue, or simply getting unstuck.</p>
+                            <p class="ddd-copy">Design • Debug • Deploy gives you access to experienced developers, infrastructure specialists, and technical resources when you need them.</p>
+                            <p class="ddd-copy"><strong>Think of us as an extension of your team.</strong></p>
+                            <p class="ddd-copy">Whether you need help for a few hours, a few days, or throughout an entire project, we're here to help move your project forward.</p>
+                        </div>
+                        <aside class="ddd-team-visual" aria-label="Customer team and Runlevel Systems working together">
+                            <h3>One Team, Shared Goals</h3>
+                            <div class="team-link">
+                                <div class="team-block">
+                                    <span>👥</span>
+                                    <p>Your Team</p>
+                                </div>
+                                <div class="team-connector" aria-hidden="true">🤝</div>
+                                <div class="team-block">
+                                    <span>🧠</span>
+                                    <p>Runlevel Systems</p>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                    <ul class="ddd-feature-list" aria-label="Design Debug Deploy highlights">
+                        <li>Project Planning Assistance</li>
+                        <li>Technical Problem Solving</li>
+                        <li>Development Support</li>
+                        <li>Infrastructure Guidance</li>
+                        <li>Deployment Assistance</li>
+                        <li>Hosting &amp; Operations Support</li>
+                        <li>Team Collaboration Tools</li>
+                        <li>Available When You Need Us</li>
+                    </ul>
+                    <div class="ddd-callout">
+                        <p class="ddd-callout-title">We don't replace your team. We help strengthen it.</p>
+                        <p>For solo developers, we provide access to experience, tools, and resources that would normally require an entire team.</p>
+                        <p>For growing teams, we provide additional technical support when workloads increase or specialized expertise is needed.</p>
+                        <p>For startups and studios, we help accelerate development without the cost of maintaining additional full-time staff.</p>
+                    </div>
+                    <div class="ddd-callout secondary">
+                        <p class="ddd-callout-title">Need an extra set of hands?</p>
+                        <p>Whether you're building a game, website, mobile app, online service, server platform, or software product, we're here when you need us.</p>
+                        <a class="core-action primary" href="/contact.php">Let's Talk</a>
+                    </div>
+                </div>
+            </section>
+
             <section class="service-section alt">
                 <div class="container">
                     <h2>Why Work With Us</h2>
