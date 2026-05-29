@@ -35,11 +35,10 @@ if ($is_in_wiki) {
                 <div class="core-nav-collapse" id="site-nav-bar">
                     <ul class="core-nav-links">
                         <li><a href="<?php echo $base_path; ?>index.php" <?php echo ($current_page == 'index') ? 'aria-current="page"' : ''; ?>>Home</a></li>
-                        <li><a href="<?php echo $base_path; ?>design-debug-deploy.php" <?php echo ($current_page == 'design-debug-deploy') ? 'aria-current="page"' : ''; ?>>Design • Debug • Deploy</a></li>
-                        <li><a href="<?php echo $base_path; ?>gameserver-hosting.php" <?php echo ($current_page == 'gameserver-hosting') ? 'aria-current="page"' : ''; ?>>Game Server Hosting</a></li>
-                        <li><a href="<?php echo $base_path; ?>game-server-support.php" <?php echo ($current_page == 'game-server-support') ? 'aria-current="page"' : ''; ?>>Game Server Support</a></li>
-                        <li><a href="<?php echo $base_path; ?>game-server-panel.php" <?php echo ($current_page == 'game-server-panel') ? 'aria-current="page"' : ''; ?>>Game Server Panel</a></li>
-                        <li><a href="<?php echo $base_path; ?>developer-workspaces.php" <?php echo ($current_page == 'developer-workspaces') ? 'aria-current="page"' : ''; ?>>Developer Workspaces</a></li>
+                        <li><a href="<?php echo $base_path; ?>design-debug-deploy.php" <?php echo ($current_page == 'design-debug-deploy') ? 'aria-current="page"' : ''; ?>>Development</a></li>
+                        <li><a href="<?php echo $base_path; ?>gameserver-hosting.php" <?php echo ($current_page == 'gameserver-hosting') ? 'aria-current="page"' : ''; ?>>Hosting</a></li>
+                        <li><a href="<?php echo $base_path; ?>game-server-support.php" <?php echo ($current_page == 'game-server-support') ? 'aria-current="page"' : ''; ?>>Mods</a></li>
+                        <li><a href="<?php echo $base_path; ?>products.php" <?php echo ($current_page == 'products') ? 'aria-current="page"' : ''; ?>>Products</a></li>
                         <li><a href="<?php echo $base_path; ?>projects.php" <?php echo ($current_page == 'projects') ? 'aria-current="page"' : ''; ?>>Projects</a></li>
                         <li><a href="<?php echo $base_path; ?>contact.php" <?php echo ($current_page == 'contact') ? 'aria-current="page"' : ''; ?>>Contact</a></li>
                     </ul>
