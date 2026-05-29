@@ -27,7 +27,7 @@
                 <div class="container">
                     <p class="service-kicker">Runlevel Systems</p>
                     <h1>Products</h1>
-                    <p class="service-lead">Products we sell and projects we build.</p>
+                    <p class="service-lead">Products we build for creators, communities, and hosting teams.</p>
                 </div>
             </section>
 
@@ -38,25 +38,24 @@
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">🌐</div>
                             <h3>GameServers.World</h3>
-                            <p>Hosting and infrastructure services for online communities and multiplayer projects.</p>
+                            <p>Game server hosting powered by GSP.</p>
                             <a class="core-action tertiary" href="/gameserver-hosting.php">Learn More</a>
                         </article>
 
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">🛠️</div>
                             <h3>GSP Panel</h3>
-                            <p>Game server management and automation platform.</p>
+                            <p>Open source game server management software and commercial infrastructure product.</p>
                             <a class="core-action tertiary" href="/game-server-panel.php">Learn More</a>
                         </article>
 
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">☁️</div>
-                            <h3>Developer Workspaces</h3>
-                            <p>Future collaboration and project management tools.</p>
-                            <a class="core-action tertiary" href="/developer-workspaces.php">Learn More</a>
+                            <h3>Runlevel Tools</h3>
+                            <p>Future tools for creators, developers, and communities.</p>
+                            <a class="core-action tertiary" href="/products.php">Learn More</a>
                         </article>
                     </div>
-                    <p class="section-intro" style="margin-top: 1.5rem;">Additional future Runlevel Systems products can be added here later.</p>
                 </div>
             </section>
 
@@ -68,7 +67,7 @@
                         <article class="service-card-item project-card-item">
                             <img src="assets/images/RL-splash.png" alt="Roadkill project image" class="project-image">
                             <h3>Roadkill</h3>
-                            <p>A completed and released project.</p>
+                            <p>Released game project.</p>
                             <p class="project-status"><strong>Status:</strong> Released</p>
                             <a class="core-action tertiary" href="https://store.steampowered.com/app/1376150/Roadkill/" target="_blank" rel="noopener noreferrer">Learn More</a>
                         </article>
@@ -76,7 +75,7 @@
                         <article class="service-card-item project-card-item">
                             <img src="assets/images/code.png" alt="Mystical Islands project image" class="project-image">
                             <h3>Mystical Islands</h3>
-                            <p>Multiplayer fantasy RPG currently in development.</p>
+                            <p>Multiplayer fantasy RPG project.</p>
                             <p class="project-status"><strong>Status:</strong> In Development</p>
                             <a class="core-action tertiary" href="/projects.php">Learn More</a>
                         </article>
@@ -84,7 +83,7 @@
                         <article class="service-card-item project-card-item">
                             <img src="assets/images/RL-logo.png" alt="Neverwards project image" class="project-image">
                             <h3>Neverwards</h3>
-                            <p>Project description placeholder until final details are available.</p>
+                            <p>Active game development project.</p>
                             <p class="project-status"><strong>Status:</strong> Active Development</p>
                             <a class="core-action tertiary" href="https://store.steampowered.com/app/2096070/Neverwards/" target="_blank" rel="noopener noreferrer">Learn More</a>
                         </article>

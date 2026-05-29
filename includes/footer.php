@@ -61,7 +61,7 @@ if ($is_in_wiki) {
                 <div class="col-sm-4 footer-col">
                     <h4>Services</h4>
                     <ul class="footer-list">
-                        <li><a href="<?php echo $footer_base_path; ?>design-debug-deploy.php">Dev Team</a></li>
+                        <li><a href="<?php echo $footer_base_path; ?>design-debug-deploy.php">Technical Partner</a></li>
                         <li><a href="<?php echo $footer_base_path; ?>gameserver-hosting.php">Hosting</a></li>
                         <li><a href="<?php echo $footer_base_path; ?>game-server-support.php">Mods &amp; Customization</a></li>
                         <li><a href="<?php echo $footer_base_path; ?>products.php">Products</a></li>
