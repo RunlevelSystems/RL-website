@@ -7,8 +7,8 @@
         <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
 
         <title>Runlevel Systems | Design Debug Deploy</title>
-        <meta name="description" content="Runlevel Systems helps solo developers and small indie teams with practical Unity support, multiplayer setup, deployment, hosting, and technical guidance.">
-        <meta name="keywords" content="indie game development, unity consulting, atavism support, multiplayer hosting, steam publishing, game deployment, linux game servers, online game infrastructure, runlevel systems">
+        <meta name="description" content="Runlevel Systems helps solo developers and small teams with practical support for websites, code, servers, publishing, and launch updates.">
+        <meta name="keywords" content="game development support, solo developer help, small team technical support, game websites, online game servers, publishing support, website hosting, runlevel systems">
 
         <link href="assets/css/coreloop.css" rel="stylesheet">
 
@@ -147,7 +147,7 @@
                 background: #ffffff;
                 border: 1px solid rgba(10, 132, 255, 0.14);
                 border-radius: 14px;
-                padding: 28px;
+                padding: 22px;
                 height: 100%;
                 box-shadow: 0 14px 32px rgba(5, 18, 35, 0.08);
             }
@@ -173,8 +173,8 @@
             .audience-card h3,
             .product-card h3 {
                 color: #08111f;
-                margin-bottom: 10px;
-                font-size: 24px;
+                margin-bottom: 8px;
+                font-size: 22px;
             }
 
             .feature-card p,
@@ -184,31 +184,21 @@
             .timeline-step p {
                 color: #334966;
                 margin-bottom: 0;
-                line-height: 1.7;
+                line-height: 1.55;
             }
 
-            .service-card .learn-more {
-                margin-top: 18px;
-                display: inline-flex;
-                align-items: center;
-                padding: 9px 14px;
-                border-radius: 6px;
-                background: #0a84ff;
-                color: #ffffff;
-                border: 1px solid #0a84ff;
-                text-decoration: none;
-                font-size: 12px;
-                letter-spacing: 0.08em;
-                text-transform: uppercase;
+            .result-word {
+                margin-top: 14px;
+                margin-bottom: 0;
+                color: #0a84ff !important;
                 font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                font-size: 12px;
             }
 
-            .service-card .learn-more:hover,
-            .service-card .learn-more:focus {
-                background: #08111f;
-                border-color: #08111f;
-                color: #ffc600;
-                text-decoration: none;
+            .service-grid .service-card h3 {
+                font-size: 20px;
             }
 
             .timeline {
@@ -295,6 +285,17 @@
                 .tagline {
                     letter-spacing: 0.14em;
                 }
+
+                .feature-card,
+                .service-card,
+                .audience-card,
+                .product-card {
+                    padding: 18px;
+                }
+
+                .service-grid > div {
+                    margin-bottom: 14px;
+                }
             }
         </style>
 
@@ -302,7 +303,7 @@
             <section class="landing-hero">
                 <div class="container">
                     <h1 class="hero-title">Build Your Game. We'll Help You Launch It.</h1>
-                    <p class="hero-subtitle">From first prototype to launch, Runlevel Systems helps indie developers solve technical problems in plain language. No developer is too small.</p>
+                    <p class="hero-subtitle">You have the idea. We help with the technical parts that can slow you down — websites, code, servers, publishing, updates, and getting your project in front of players.</p>
                     <p class="tagline">DESIGN • DEBUG • DEPLOY</p>
                     <div class="hero-actions">
                         <a class="hero-btn primary" href="contact.php">Schedule a Consultation</a>
@@ -314,35 +315,37 @@
             <section class="section-wrap">
                 <div class="container">
                     <h2 class="section-title">More Than Hosting. A Technical Partner.</h2>
-                    <p class="section-intro">Modern tools like Unity, Unreal Engine, AI coding assistants, and marketplace assets have made game development more accessible than ever.</p>
-                    <p class="section-intro">But many developers eventually hit technical roadblocks with multiplayer setup, networking, hosting, databases, deployment, and live operations.</p>
-                    <p class="section-intro">We are focused on helping solo developers and very small teams get unstuck early and keep moving.</p>
+                    <p class="section-intro">Building a game is like building a house. The artwork and gameplay are what people see, but the wiring, plumbing, foundation, and delivery systems still have to work.</p>
+                    <p class="section-intro">Runlevel Systems helps solo developers and small teams handle the technical pieces behind the scenes so they can keep building instead of getting stuck.</p>
                 </div>
             </section>
 
             <section class="section-wrap alt">
                 <div class="container">
-                    <h2 class="section-title">DESIGN • DEBUG • DEPLOY</h2>
+                    <h2 class="section-title">How We Help You Move Forward</h2>
                     <div class="row">
                         <div class="col-md-4">
                             <article class="feature-card">
                                 <div class="card-icon" aria-hidden="true">🧭</div>
-                                <h3>DESIGN</h3>
-                                <p>Plan your project with confidence. We help you choose a solid setup for multiplayer, servers, deployment, and day-to-day workflows before small issues become expensive problems.</p>
+                                <h3>Plan The Project</h3>
+                                <p>Before you build too much, we help you choose a clear path. We can help organize your idea, plan your website, decide what servers you need, set up your workflow, and avoid expensive mistakes early.</p>
+                                <p class="result-word">DESIGNED</p>
                             </article>
                         </div>
                         <div class="col-md-4">
                             <article class="feature-card">
                                 <div class="card-icon" aria-hidden="true">🛠️</div>
-                                <h3>DEBUG</h3>
-                                <p>Stuck on a technical problem? From Unity issues and Atavism configuration problems to server networking and deployment challenges, we help identify and solve blockers quickly.</p>
+                                <h3>Fix What Is Broken</h3>
+                                <p>When your project stops working, we help find the problem. Whether it is code errors, broken builds, server issues, database problems, login trouble, or confusing setup steps, we help get things working again.</p>
+                                <p class="result-word">DEBUGGED</p>
                             </article>
                         </div>
                         <div class="col-md-4">
                             <article class="feature-card">
                                 <div class="card-icon" aria-hidden="true">🚀</div>
-                                <h3>DEPLOY</h3>
-                                <p>Launch with confidence. We help deploy multiplayer servers, websites, databases, cloud infrastructure, updates, and publishing pipelines so your game reaches players successfully.</p>
+                                <h3>Get It Launched</h3>
+                                <p>When it is time to go live, we help you publish and deploy. That can mean launching a website, preparing for Steam, Google Play, or Apple App Store, setting up a dedicated server, and getting your updates out smoothly.</p>
+                                <p class="result-word">DEPLOYED</p>
                             </article>
                         </div>
                     </div>
@@ -351,18 +354,16 @@
 
             <section class="section-wrap">
                 <div class="container">
-                    <h2 class="section-title">How We Help</h2>
-                    <div class="row">
-                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">🧩</div><h3>Unity Development Support</h3><p>Hands-on troubleshooting, architecture guidance, and workflow support for Unity projects.</p><a class="learn-more" href="contact.php">Learn More</a></article></div>
-                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">⚙️</div><h3>Atavism MMO Consulting</h3><p>Configuration help, backend integration support, and production readiness consulting for Atavism.</p><a class="learn-more" href="contact.php">Learn More</a></article></div>
-                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">🌐</div><h3>Multiplayer Infrastructure</h3><p>Scalable networking and backend system planning for co-op, competitive, and MMO gameplay.</p><a class="learn-more" href="contact.php">Learn More</a></article></div>
-                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">🖥️</div><h3>Dedicated Server Deployment</h3><p>Reliable deployment workflows for game servers across cloud and bare-metal environments.</p><a class="learn-more" href="contact.php">Learn More</a></article></div>
-                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">🐧</div><h3>Linux Administration</h3><p>Server hardening, updates, monitoring, and operational tuning for game infrastructure.</p><a class="learn-more" href="contact.php">Learn More</a></article></div>
-                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">🗄️</div><h3>Database Management</h3><p>Performance tuning, migration planning, and stability support for game and platform data.</p><a class="learn-more" href="contact.php">Learn More</a></article></div>
-                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">🎮</div><h3>Steam Publishing Assistance</h3><p>Release preparation support, deployment alignment, and launch readiness for Steam publishing.</p><a class="learn-more" href="contact.php">Learn More</a></article></div>
-                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">📱</div><h3>Google Play Publishing Assistance</h3><p>Technical prep, update strategy, and production support for Android game releases.</p><a class="learn-more" href="contact.php">Learn More</a></article></div>
-                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">🍎</div><h3>Apple App Store Publishing Assistance</h3><p>Build validation, deployment review, and technical issue resolution for iOS submission.</p><a class="learn-more" href="contact.php">Learn More</a></article></div>
-                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">📊</div><h3>Live Operations &amp; Monitoring</h3><p>Observability and support workflows to keep your game stable after launch.</p><a class="learn-more" href="contact.php">Learn More</a></article></div>
+                    <h2 class="section-title">What We Can Help With</h2>
+                    <div class="row service-grid">
+                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">🌐</div><h3>Game Websites</h3><p>We can create landing pages, project websites, update pages, documentation, and community portals.</p></article></div>
+                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">🧩</div><h3>Game Development Help</h3><p>We can help with broken code, confusing setup steps, project organization, and feature planning.</p></article></div>
+                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">🖥️</div><h3>Online Game Servers</h3><p>We can help set up dedicated servers, multiplayer hosting, databases, updates, and backups.</p></article></div>
+                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">🚀</div><h3>Publishing Help</h3><p>We can help prepare your project for Steam, Google Play, Apple App Store, or direct download.</p></article></div>
+                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">🏠</div><h3>Website Hosting</h3><p>We can host and maintain websites, support portals, documentation, and small web apps.</p></article></div>
+                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">🧯</div><h3>Project Rescue</h3><p>If your project is stuck, broken, messy, or abandoned, we can help sort it out and create a recovery plan.</p></article></div>
+                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">💬</div><h3>Community Tools</h3><p>We can help connect your website, Discord, support system, updates, and player communication.</p></article></div>
+                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">🔧</div><h3>Ongoing Support</h3><p>We can stay involved after launch to help with updates, fixes, server issues, and improvements.</p></article></div>
                     </div>
                 </div>
             </section>
@@ -371,34 +372,20 @@
                 <div class="container">
                     <h2 class="section-title">Who We Help</h2>
                     <div class="row">
-                        <div class="col-md-4"><article class="audience-card"><div class="card-icon">🧠</div><h3>Solo Developers</h3><p>You have the vision but need help navigating the technical side of development.</p></article></div>
-                        <div class="col-md-4"><article class="audience-card"><div class="card-icon">🤝</div><h3>Small Indie Studios</h3><p>Extend your team with experienced infrastructure and deployment support.</p></article></div>
-                        <div class="col-md-4"><article class="audience-card"><div class="card-icon">🌍</div><h3>Multiplayer &amp; MMO Projects</h3><p>From server architecture to deployment and scaling, we help bring online worlds to life.</p></article></div>
+                        <div class="col-md-4"><article class="audience-card"><div class="card-icon">🧠</div><h3>Solo Developers</h3><p>You have the idea and the motivation. We help with the technical work that is hard to do alone.</p></article></div>
+                        <div class="col-md-4"><article class="audience-card"><div class="card-icon">🤝</div><h3>Small Teams</h3><p>You are building together but need someone who understands websites, servers, code, and deployment.</p></article></div>
+                        <div class="col-md-4"><article class="audience-card"><div class="card-icon">🧯</div><h3>Creators With A Stuck Project</h3><p>Your project was moving forward, then something broke or became too complicated. We help get it moving again.</p></article></div>
                     </div>
                 </div>
             </section>
 
             <section class="section-wrap">
                 <div class="container">
-                    <h2 class="section-title">Products Built By Developers</h2>
+                    <h2 class="section-title">Our Products</h2>
                     <div class="row">
-                        <div class="col-md-4"><article class="product-card"><div class="card-icon">🛰️</div><h3>GameServers.World</h3><p>Managed game hosting, multiplayer infrastructure, deployment assistance, and server management tools for game developers and communities.</p></article></div>
-                        <div class="col-md-4"><article class="product-card"><div class="card-icon">🧰</div><h3>GSP Panel</h3><p>Powerful game server management software developed for hosting providers and game developers.</p></article></div>
-                        <div class="col-md-4"><article class="product-card"><div class="card-icon">✨</div><h3>Future Runlevel Systems Products</h3><p>Developer tools, automation systems, deployment platforms, AI assistants, and studio management solutions.</p></article></div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section-wrap alt">
-                <div class="container">
-                    <h2 class="section-title">From Idea to Launch</h2>
-                    <p class="section-intro">DESIGN • DEBUG • DEPLOY guides every stage of bringing your game to players.</p>
-                    <div class="timeline">
-                        <div class="timeline-step"><strong>Step 1: Build Your Idea</strong><p>Shape your core concept, gameplay loop, and player experience.</p></div>
-                        <div class="timeline-step"><strong>Step 2: Design Your Systems</strong><p>Define multiplayer architecture, services, and technical workflows with confidence.</p></div>
-                        <div class="timeline-step"><strong>Step 3: Debug Technical Challenges</strong><p>Identify blockers early and resolve engine, networking, and infrastructure issues.</p></div>
-                        <div class="timeline-step"><strong>Step 4: Deploy Infrastructure</strong><p>Launch dedicated servers, backend services, databases, and release pipelines.</p></div>
-                        <div class="timeline-step"><strong>Step 5: Launch To Players</strong><p>Go live with monitoring, support, and live operations that keep your game running.</p></div>
+                        <div class="col-md-4"><article class="product-card"><div class="card-icon">🛰️</div><h3>GameServers.World</h3><p>Hosting, deployment, and server management for online games and communities.</p></article></div>
+                        <div class="col-md-4"><article class="product-card"><div class="card-icon">🧰</div><h3>GSP Panel</h3><p>Server management and automation tools for game hosting and online infrastructure.</p></article></div>
+                        <div class="col-md-4"><article class="product-card"><div class="card-icon">✨</div><h3>Runlevel Systems Tools</h3><p>Future tools, templates, automation, and support systems for creators and small teams.</p></article></div>
                     </div>
                 </div>
             </section>
@@ -406,8 +393,8 @@
             <section class="section-wrap" style="padding-top: 0;">
                 <div class="container">
                     <div class="cta-banner">
-                        <h2>Don't Let Technical Challenges Stop Your Game</h2>
-                        <p>Whether you're building your first indie title, launching a multiplayer game, or creating the next online world, Runlevel Systems can help you move faster and launch with confidence.</p>
+                        <h2>Ready To Get Your Project Moving?</h2>
+                        <p>Whether you need a website, help fixing your game, a server for players, or guidance getting published, Runlevel Systems can help you take the next step.</p>
                         <p class="tagline">DESIGN • DEBUG • DEPLOY</p>
                         <div class="cta-actions">
                             <a class="hero-btn primary" href="contact.php">Schedule a Consultation</a>
@@ -424,7 +411,7 @@
               "name": "Runlevel Systems",
               "url": "https://runlevel.systems",
               "slogan": "Design • Debug • Deploy",
-              "description": "Technical partner services for indie game developers building multiplayer games and online infrastructure.",
+              "description": "Technical support services for solo developers and small teams building and launching game projects.",
               "sameAs": [
                 "https://gameservers.world",
                 "https://github.com/GameServerPanel/GSP"
