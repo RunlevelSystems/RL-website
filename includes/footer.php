@@ -61,9 +61,9 @@ if ($is_in_wiki) {
                 <div class="col-sm-4 footer-col">
                     <h4>Services</h4>
                     <ul class="footer-list">
-                        <li><a href="<?php echo $footer_base_path; ?>design-debug-deploy.php">Technical Partner</a></li>
+                        <li><a href="<?php echo $footer_base_path; ?>design-debug-deploy.php">Dev Partner</a></li>
                         <li><a href="<?php echo $footer_base_path; ?>gameserver-hosting.php">Hosting</a></li>
-                        <li><a href="<?php echo $footer_base_path; ?>game-server-support.php">Mods &amp; Customization</a></li>
+                        <li><a href="<?php echo $footer_base_path; ?>game-server-support.php">Mods &amp; Custom Code</a></li>
                         <li><a href="<?php echo $footer_base_path; ?>products.php">Products</a></li>
                     </ul>
                 </div>
@@ -85,7 +85,7 @@ if ($is_in_wiki) {
                         <li><a href="https://discord.gg/XPFnNdWGyW" target="_blank" rel="noopener noreferrer">Runlevel Discord</a></li>
                         <li><a href="https://github.com/World-Domination-Software" target="_blank" rel="noopener noreferrer">GitHub</a></li>
                         <li><a href="https://gameservers.world" target="_blank" rel="noopener noreferrer">GameServers.World</a></li>
-                        <li><a href="https://github.com/GameServerPanel/GSP" target="_blank" rel="noopener noreferrer">GameServer Panel</a></li>
+                        <li><a href="https://github.com/RunlevelSystems/GSP" target="_blank" rel="noopener noreferrer">GSP</a></li>
                     </ul>
                 </div>
             </div>

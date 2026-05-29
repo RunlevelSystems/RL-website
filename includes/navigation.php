@@ -35,7 +35,7 @@ if ($is_in_wiki) {
                 <div class="core-nav-collapse" id="site-nav-bar">
                     <ul class="core-nav-links">
                         <li><a href="<?php echo $base_path; ?>index.php" <?php echo ($current_page == 'index') ? 'aria-current="page"' : ''; ?>>Home</a></li>
-                        <li><a href="<?php echo $base_path; ?>design-debug-deploy.php" <?php echo (in_array($current_page, ['design-debug-deploy', 'dev-team', 'technical-partner'], true)) ? 'aria-current="page"' : ''; ?>>Technical Partner</a></li>
+                        <li><a href="<?php echo $base_path; ?>design-debug-deploy.php" <?php echo (in_array($current_page, ['design-debug-deploy', 'dev-team', 'technical-partner', 'dev-partner'], true)) ? 'aria-current="page"' : ''; ?>>Dev Partner</a></li>
                         <li><a href="<?php echo $base_path; ?>gameserver-hosting.php" <?php echo ($current_page == 'gameserver-hosting') ? 'aria-current="page"' : ''; ?>>Hosting</a></li>
                         <li><a href="<?php echo $base_path; ?>game-server-support.php" <?php echo ($current_page == 'game-server-support') ? 'aria-current="page"' : ''; ?>>Mods</a></li>
                         <li><a href="<?php echo $base_path; ?>products.php" <?php echo ($current_page == 'products') ? 'aria-current="page"' : ''; ?>>Products</a></li>
