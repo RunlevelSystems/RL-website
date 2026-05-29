@@ -8,14 +8,14 @@
 
         <title>Runlevel Systems | Affordable Technical Help for Projects and Communities</title>
         <meta name="description" content="Runlevel Systems offers affordable development, hosting, customization, and publishing support for solo creators, small teams, communities, and small businesses.">
-        <meta name="keywords" content="Technical Partner, iOS build help, game server hosting, website development, publishing support, Runlevel Systems">
+        <meta name="keywords" content="Dev Partner, game server hosting, mods and custom code, website development, publishing support, Runlevel Systems">
 
         <link href="assets/css/coreloop.css" rel="stylesheet">
     </head>
     <body>
         <?php
         $current_page = 'index';
-        $page_subtitle = 'Affordable technical help for creators, communities, and small businesses';
+        $page_subtitle = 'Affordable technical help for creators, communities, and small teams';
         $page_description = 'Affordable development, hosting, customization, and publishing support for solo creators, small teams, communities, and small businesses.';
         $page_title = 'Runlevel Systems';
         $page_title_thin = 'Design • Debug • Deploy';
@@ -31,7 +31,7 @@
                     <p class="service-kicker">Runlevel Systems</p>
                     <h1>Affordable Technical Help For Real Projects</h1>
                     <p class="service-lead">Professional technical help should not be out of reach.</p>
-                    <p class="service-lead">Runlevel Systems offers affordable development, hosting, customization, and publishing support for solo creators, small teams, game communities, and small businesses.</p>
+                    <p class="service-lead">Runlevel Systems offers affordable development, hosting, customization, and publishing support for solo creators, small teams, and game communities.</p>
                     <p class="hero-tagline">DESIGN • DEBUG • DEPLOY</p>
                     <div class="service-actions">
                         <a class="core-action primary" href="#what-we-do">Explore Services</a>
@@ -43,13 +43,13 @@
             <section class="service-section" id="what-we-do">
                 <div class="container">
                     <h2>What We Help With</h2>
-                    <p class="section-intro">Runlevel Systems provides affordable technical help for creators, developers, communities, and small businesses. Whether you need a website, a game server, a custom script, or help getting a project launched, we can help.</p>
+                    <p class="section-intro">Affordable technical help for creators, communities, and small teams.</p>
                     <div class="three-column-stack">
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">💻</div>
-                            <h3>Technical Partner</h3>
-                            <p class="service-card-subtitle">Development help without hiring full-time staff.</p>
-                            <p>We help with websites, games, apps, software projects, iOS builds, publishing, troubleshooting, and project recovery.</p>
+                            <h3>Dev Partner</h3>
+                            <p class="service-card-subtitle">Affordable development help when you need it.</p>
+                            <p>Affordable development help for websites, apps, games, iOS builds, project recovery, and custom software.</p>
                             <a class="core-action tertiary" href="/design-debug-deploy.php">Get Development Help</a>
                         </article>
 
@@ -57,15 +57,15 @@
                             <div class="service-icon" aria-hidden="true">🌐</div>
                             <h3>Hosting</h3>
                             <p class="service-card-subtitle">GameServers.World</p>
-                            <p>We run a game server hosting company powered by our own custom software. Host communities, multiplayer servers, and online projects with tools built by people who actually run game servers.</p>
+                            <p>Rent game servers through GameServers.World for communities, friends, clans, and multiplayer projects.</p>
                             <a class="core-action tertiary" href="/gameserver-hosting.php">Explore Hosting</a>
                         </article>
 
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">🎮</div>
-                            <h3>Mods</h3>
-                            <p class="service-card-subtitle">Scripts, mods, and customization.</p>
-                            <p>Need a custom script, mod install, server migration, Discord integration, or gameplay change? We help communities customize and improve their servers.</p>
+                            <h3>Mods &amp; Custom Code</h3>
+                            <p class="service-card-subtitle">Scripts, installs, fixes, and integrations.</p>
+                            <p>Custom scripts, mod installation, server changes, Discord integrations, migrations, and server troubleshooting.</p>
                             <a class="core-action tertiary" href="/game-server-support.php">Explore Mods</a>
                         </article>
                     </div>
@@ -128,7 +128,7 @@
 
             <section class="service-section">
                 <div class="container cta-block">
-                    <h2>Need A Technical Partner?</h2>
+                    <h2>Need A Dev Partner?</h2>
                     <p>Whether you need development services, hosting, mods and customization, troubleshooting, or long-term support, Runlevel Systems can help.</p>
                     <p class="hero-tagline">DESIGN • DEBUG • DEPLOY</p>
                     <div class="service-actions">
