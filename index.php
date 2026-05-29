@@ -100,7 +100,7 @@
                 </div>
             </section>
 
-            <section class="service-section alt">
+            <section class="service-section">
                 <div class="container">
                     <h2>More Than A Service Provider</h2>
                     <p class="section-intro">Many companies stop after delivering a server, a website, or a piece of software.</p>
