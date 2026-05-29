@@ -32,7 +32,7 @@
             <section class="service-section">
                 <div class="container">
                     <p class="section-intro">We provide managed game server hosting for communities, clans, and indie teams. You stay focused on players and content while we handle the infrastructure work behind the scenes.</p>
-                    <p class="section-intro">Need technical help with mods, scripts, troubleshooting, or migrations? See our <a href="/game-server-support.php">Game Server Support</a> service.</p>
+                    <p class="section-intro">Need technical help with mods, scripts, troubleshooting, or migrations? See our <a href="/game-server-support.php">Mods &amp; Customization</a> service.</p>
                     <div class="service-card-grid two-columns">
                         <article class="service-card-item"><h3>Managed Game Server Hosting</h3><p>We set up and maintain your servers so you can focus on your game and community.</p></article>
                         <article class="service-card-item"><h3>Dedicated Game Servers</h3><p>Get stable dedicated resources for reliable player performance.</p></article>

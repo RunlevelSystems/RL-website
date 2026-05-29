@@ -910,6 +910,16 @@ body *[style*="color:#4cc9ff"] {
   background: rgba(8, 17, 31, 0.75);
 }
 
+.project-card-item .project-image {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(54, 243, 255, 0.28);
+  min-height: 130px;
+  object-fit: cover;
+  margin-bottom: 0.85rem;
+  background: rgba(8, 17, 31, 0.75);
+}
+
 .project-card-item .project-status {
   color: #e7f6ff;
   margin: 0.5rem 0 0.9rem;
