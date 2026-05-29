@@ -26,7 +26,6 @@
 
         <main class="service-site" aria-label="Runlevel Systems homepage">
 
-            <!-- Hero Section -->
             <section class="service-hero">
                 <div class="container">
                     <p class="service-kicker">Runlevel Systems</p>
@@ -40,44 +39,36 @@
                 </div>
             </section>
 
-            <!-- What We Do -->
             <section class="service-section" id="what-we-do">
                 <div class="container">
                     <h2>What We Do</h2>
                     <div class="three-column-stack">
-
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">💻</div>
-                            <h3>Development</h3>
-                            <p class="service-card-subtitle">Your Technical Development Partner</p>
-                            <p>Need help building a game, website, application, or online service?</p>
-                            <p>We help solo developers, indie studios, startups, and small teams solve technical challenges, build new features, recover stalled projects, and bring ideas to life.</p>
-                            <a class="core-action tertiary" href="/design-debug-deploy.php">Learn About Development</a>
+                            <h3>Dev Team</h3>
+                            <p>Need a technical partner?</p>
+                            <p>We help build games, websites, applications, online services, and custom software solutions.</p>
+                            <a class="core-action tertiary" href="/design-debug-deploy.php">Learn About Dev Team</a>
                         </article>
 
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">🌐</div>
                             <h3>Hosting</h3>
                             <p class="service-card-subtitle">GameServers.World</p>
-                            <p>Hosting and infrastructure for game servers, websites, communities, and online projects.</p>
-                            <p>From a single server to a growing online platform, we help deploy and manage reliable systems.</p>
+                            <p>Reliable hosting and infrastructure for online communities, websites, and multiplayer projects.</p>
                             <a class="core-action tertiary" href="/gameserver-hosting.php">Explore Hosting</a>
                         </article>
 
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">🎮</div>
-                            <h3>Mods</h3>
-                            <p class="service-card-subtitle">Customization &amp; Community Services</p>
-                            <p>Need custom scripts, mod installation, server customization, migrations, integrations, or troubleshooting?</p>
-                            <p>We help communities extend and improve their servers and online experiences.</p>
-                            <a class="core-action tertiary" href="/game-server-support.php">Explore Mod Services</a>
+                            <h3>Mods &amp; Customization</h3>
+                            <p>Custom scripts, server modifications, integrations, migrations, troubleshooting, and community tools.</p>
+                            <a class="core-action tertiary" href="/game-server-support.php">Explore Mods</a>
                         </article>
-
                     </div>
                 </div>
             </section>
 
-            <!-- Why Runlevel Systems -->
             <section class="service-section alt">
                 <div class="container">
                     <h2>More Than A Service Provider</h2>
@@ -98,18 +89,16 @@
                         </article>
                         <article class="benefit-item">
                             <h3>Flexible Solutions</h3>
-                            <p>Development, hosting, customization, consulting, and infrastructure services — all under one roof.</p>
+                            <p>Development services, hosting, customization, consulting, and infrastructure support under one roof.</p>
                         </article>
                     </div>
                 </div>
             </section>
 
-            <!-- Products Section -->
             <section class="service-section" id="products">
                 <div class="container">
                     <h2>Products Built By Runlevel Systems</h2>
                     <div class="three-column-stack">
-
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">🌐</div>
                             <h3>GameServers.World</h3>
@@ -130,18 +119,15 @@
                             <p>Tools and services designed to help creators organize and manage projects.</p>
                             <a class="core-action tertiary" href="/developer-workspaces.php">Learn More</a>
                         </article>
-
                     </div>
                 </div>
             </section>
 
-            <!-- Project Examples -->
             <section class="service-section alt">
                 <div class="container">
                     <h2>Project Examples</h2>
                     <p class="section-intro">Runlevel Systems has experience across a wide range of technical projects.</p>
                     <div class="project-examples-grid">
-
                         <div class="project-example-item">
                             <div class="service-icon" aria-hidden="true">🎮</div>
                             <h3>Game Development</h3>
@@ -177,7 +163,6 @@
                             <h3>Technical Consulting</h3>
                             <p>Architecture reviews, planning sessions, and technical guidance for projects at any stage of development.</p>
                         </div>
-
                     </div>
                     <div class="service-actions" style="margin-top: 2rem;">
                         <a class="core-action secondary" href="/projects.php">View All Projects</a>
@@ -185,11 +170,10 @@
                 </div>
             </section>
 
-            <!-- Final CTA -->
             <section class="service-section">
                 <div class="container cta-block">
                     <h2>Need A Technical Partner?</h2>
-                    <p>Whether you need development, hosting, customization, troubleshooting, deployment, or long-term support, Runlevel Systems can help.</p>
+                    <p>Whether you need development services, hosting, mods and customization, troubleshooting, or long-term support, Runlevel Systems can help.</p>
                     <p class="hero-tagline">DESIGN • DEBUG • DEPLOY</p>
                     <div class="service-actions">
                         <a class="core-action primary" href="/contact.php">Contact Us</a>
@@ -205,7 +189,7 @@
               "name": "Runlevel Systems",
               "url": "https://runlevel.systems",
               "slogan": "Design • Debug • Deploy",
-              "description": "A technical partner for creators, developers, startups, gaming communities, and small businesses. Development, hosting, and customization services."
+              "description": "A technical partner for creators, developers, startups, gaming communities, and small businesses. Development services, hosting, and customization services."
             }
             </script>
         </main>
