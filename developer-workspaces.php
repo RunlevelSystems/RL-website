@@ -76,7 +76,7 @@
                     <p>Tell us how your team works today and we can help design a workspace that supports your process.</p>
                     <div class="service-actions">
                         <a class="core-action primary" href="/contact.php">Contact Us</a>
-                        <a class="core-action secondary" href="/design-debug-deploy.php">Explore Technical Partner</a>
+                        <a class="core-action secondary" href="/design-debug-deploy.php">Explore Dev Partner</a>
                     </div>
                 </div>
             </section>
