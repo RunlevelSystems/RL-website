@@ -6,65 +6,62 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
 
-        <title>Game Server Hosting | Runlevel Systems</title>
-        <meta name="description" content="Managed game server hosting for indie developers and gaming communities with backups, monitoring, and deployment support.">
-        <meta name="keywords" content="Game Server Hosting, Game Server Infrastructure, managed game servers, community hosting">
+        <title>Hosting | Runlevel Systems</title>
+        <meta name="description" content="GameServers.World is Runlevel Systems game server hosting company powered by our custom GSP management platform.">
+        <meta name="keywords" content="GameServers.World, GSP Panel, game server hosting, hosting infrastructure, Runlevel Systems">
         <link href="assets/css/coreloop.css" rel="stylesheet">
     </head>
     <body>
         <?php
         $current_page = 'gameserver-hosting';
         $header_class = 'inner-header';
-        $page_subtitle = 'Managed multiplayer infrastructure made simple.';
+        $page_subtitle = 'Game Server Hosting Powered By Our Own Platform';
         ?>
         <?php include 'includes/header.php'; ?>
         <?php include 'includes/navigation.php'; ?>
 
-        <main class="service-site" aria-label="Game server hosting service page">
+        <main class="service-site" aria-label="Game server hosting page">
             <section class="service-hero compact">
                 <div class="container">
-                    <p class="service-kicker">Service</p>
-                    <h1>Game Server Hosting</h1>
-                    <p class="service-lead">Launch and run multiplayer servers without managing everything yourself.</p>
+                    <p class="service-kicker">Hosting</p>
+                    <h1>Game Server Hosting Powered By Our Own Platform</h1>
+                    <p class="service-lead">GameServers.World is a Runlevel Systems product providing game server hosting, community hosting, and online infrastructure using our own custom GSP management software.</p>
                 </div>
             </section>
 
             <section class="service-section">
                 <div class="container">
-                    <p class="section-intro">We provide managed game server hosting for communities, clans, and indie teams. You stay focused on players and content while we handle the infrastructure work behind the scenes.</p>
-                    <p class="section-intro">Need technical help with mods, scripts, troubleshooting, or migrations? See our <a href="/game-server-support.php">Mods &amp; Customization</a> service.</p>
+                    <h2>Built On GSP</h2>
+                    <p class="section-intro">GameServers.World runs on GSP, our custom game server management platform. GSP helps manage game servers, locations, users, services, automation, and infrastructure from one control system.</p>
+                    <p class="section-intro">Because we build the software and run the hosting platform, we understand both the customer side and the infrastructure side of game server hosting.</p>
                     <div class="service-card-grid two-columns">
-                        <article class="service-card-item"><h3>Managed Game Server Hosting</h3><p>We set up and maintain your servers so you can focus on your game and community.</p></article>
-                        <article class="service-card-item"><h3>Dedicated Game Servers</h3><p>Get stable dedicated resources for reliable player performance.</p></article>
-                        <article class="service-card-item"><h3>Community Hosting</h3><p>Support public or private communities with scalable hosting options.</p></article>
-                        <article class="service-card-item"><h3>Mod Support</h3><p>Run modded experiences with help for setup and ongoing updates.</p></article>
-                        <article class="service-card-item"><h3>Deployment Assistance</h3><p>Get help launching new instances, maps, and updates quickly.</p></article>
-                        <article class="service-card-item"><h3>Monitoring and Backups</h3><p>Track server health and protect your environment with routine backups.</p></article>
-                        <article class="service-card-item"><h3>Multi-Location Availability</h3><p>Host closer to your players with options across multiple regions.</p></article>
+                        <article class="service-card-item"><h3>Not a Resold Panel</h3><p>We are not just reselling someone else's panel. We built and maintain GSP ourselves.</p></article>
+                        <article class="service-card-item"><h3>Practical Operations Experience</h3><p>Our tools are shaped by real hosting operations, not only by theoretical design.</p></article>
+                        <article class="service-card-item"><h3>Community Hosting Focus</h3><p>Run servers for gaming communities, events, and long-term multiplayer projects.</p></article>
+                        <article class="service-card-item"><h3>Optional Customization Services</h3><p>Need scripts, setup changes, or migration help? We can support that through Runlevel Systems.</p></article>
                     </div>
                 </div>
             </section>
 
             <section class="service-section alt">
                 <div class="container">
-                    <article class="service-detail-card">
-                        <h2>Game Server Hosting Terms</h2>
-                        <p>GameServers.World provides game server hosting, managed setup, mod assistance, migrations, and support services. Game servers can be affected by game updates, mods, plugins, maps, player load, and third-party services, so performance and compatibility may vary.</p>
-                        <p>Advanced setup, custom development, mod troubleshooting, and migrations may be billed separately from standard hosting.</p>
-                        <div class="service-actions">
-                            <a class="core-action secondary" href="/gameservers-world-hosting-terms.php">Read the Full GameServers.World Hosting Terms</a>
-                        </div>
-                    </article>
+                    <h2>For Server Owners</h2>
+                    <p class="section-intro">Host your game community with GameServers.World and get access to practical hosting, setup help, server management, and optional customization services.</p>
+                    <div class="service-actions">
+                        <a class="core-action primary" href="https://gameservers.world" target="_blank" rel="noopener noreferrer">Visit GameServers.World</a>
+                        <a class="core-action secondary" href="/contact.php">Contact Us</a>
+                    </div>
                 </div>
             </section>
 
             <section class="service-section">
                 <div class="container cta-block">
-                    <h2>Need Reliable Hosting for Your Community?</h2>
-                    <p>Share your game, player count, and goals. We'll recommend a hosting setup that fits your needs.</p>
+                    <h2>GSP Is Also Available</h2>
+                    <p>GSP is open source and available for developers, hosting providers, and technical teams who want to run their own game server infrastructure.</p>
+                    <p>Commercial support, customization, installation, and infrastructure consulting are available through Runlevel Systems.</p>
                     <div class="service-actions">
-                        <a class="core-action primary" href="/contact.php">Contact Us</a>
-                        <a class="core-action secondary" href="/game-server-panel.php">Explore Game Server Panel</a>
+                        <a class="core-action primary" href="/game-server-panel.php">Learn About GSP</a>
+                        <a class="core-action secondary" href="/gameservers-world-hosting-terms.php">View Hosting Terms</a>
                     </div>
                 </div>
             </section>
