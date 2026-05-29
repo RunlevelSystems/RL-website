@@ -7,8 +7,8 @@
         <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
 
         <title>Dev Partner | Runlevel Systems</title>
-        <meta name="description" content="Affordable development help for websites, apps, games, server systems, project recovery, iOS builds, publishing help, and custom software support.">
-        <meta name="keywords" content="Dev Partner, affordable development help, iOS build help, publishing help, custom software support">
+        <meta name="description" content="Affordable development help for websites, apps, games, project rescue, publishing support, and custom features.">
+        <meta name="keywords" content="Dev Partner, project rescue, website development, mobile app support, publishing assistance, technical guidance">
         <link href="assets/css/coreloop.css" rel="stylesheet">
     </head>
     <body>
@@ -31,28 +31,78 @@
 
             <section class="service-section">
                 <div class="container">
-                    <h2>Flexible Support For Growing Projects</h2>
-                    <div class="ddd-partnership-grid">
-                        <article class="service-detail-card">
-                            <p class="ddd-copy">You bring the idea. We help with the technical work.</p>
-                            <p class="ddd-copy">Runlevel Systems can help with websites, apps, games, server systems, project recovery, iOS builds, publishing help, and custom software support.</p>
-                            <p class="ddd-copy">We work with solo creators, small teams, game communities, and small businesses.</p>
+                    <h2>Why People Hire A Dev Partner</h2>
+                    <p class="section-intro">Many projects don't fail because the idea was bad.</p>
+                    <p class="section-intro">They fail because people run into technical problems they don't know how to solve.</p>
+                    <p class="section-intro">Maybe a project was started years ago and no longer builds.</p>
+                    <p class="section-intro">Maybe a developer left.</p>
+                    <p class="section-intro">Maybe a game won't publish.</p>
+                    <p class="section-intro">Maybe a website doesn't work correctly.</p>
+                    <p class="section-intro">Maybe there simply isn't enough time.</p>
+                    <p class="section-intro">Runlevel Systems helps fill those gaps.</p>
+                </div>
+            </section>
+
+            <section class="service-section alt">
+                <div class="container">
+                    <h2>How We Help</h2>
+                    <div class="service-card-grid two-columns">
+                        <article class="service-card-item">
+                            <h3>Project Rescue</h3>
+                            <p>Got stuck? We'll help get things moving again.</p>
                         </article>
-                        <aside class="ddd-team-visual" aria-label="Partnership visual">
-                            <h3>Your Team 🤝 Runlevel Systems</h3>
-                            <div class="team-link">
-                                <div class="team-block">
-                                    <span>👥</span>
-                                    <p>Your Team</p>
-                                </div>
-                                <div class="team-connector" aria-hidden="true">🤝</div>
-                                <div class="team-block">
-                                    <span>💻</span>
-                                    <p>Runlevel Systems</p>
-                                </div>
-                            </div>
-                            <p class="ddd-copy">We work with you, not over you. Whether you need a few hours of help or a complete project built, Runlevel Systems can act as your development partner.</p>
-                        </aside>
+                        <article class="service-card-item">
+                            <h3>Website Development</h3>
+                            <p>Need a business site, project site, or community portal?</p>
+                        </article>
+                        <article class="service-card-item">
+                            <h3>Mobile App Support</h3>
+                            <p>Need help preparing Android or iOS builds?</p>
+                        </article>
+                        <article class="service-card-item">
+                            <h3>Publishing Assistance</h3>
+                            <p>Need help getting onto Steam, Google Play, or Apple App Store?</p>
+                        </article>
+                        <article class="service-card-item">
+                            <h3>Custom Features</h3>
+                            <p>Need something new built into your project?</p>
+                        </article>
+                        <article class="service-card-item">
+                            <h3>Technical Guidance</h3>
+                            <p>Need help deciding what to build and how to build it?</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="service-section">
+                <div class="container">
+                    <h2>Common Situations</h2>
+                    <div class="service-card-grid two-columns">
+                        <article class="service-card-item">
+                            <h3>&ldquo;I inherited somebody else's project.&rdquo;</h3>
+                            <p>We can sort through what is there and help you move forward without starting over blind.</p>
+                        </article>
+                        <article class="service-card-item">
+                            <h3>&ldquo;My website is broken.&rdquo;</h3>
+                            <p>We can find the issue, fix what is failing, and get your site working again.</p>
+                        </article>
+                        <article class="service-card-item">
+                            <h3>&ldquo;My Unity project won't build.&rdquo;</h3>
+                            <p>We help troubleshoot broken builds so you can get back to testing and release prep.</p>
+                        </article>
+                        <article class="service-card-item">
+                            <h3>&ldquo;I need an iPhone version.&rdquo;</h3>
+                            <p>We help with platform requirements, build prep, and the last steps needed to ship.</p>
+                        </article>
+                        <article class="service-card-item">
+                            <h3>&ldquo;I need a developer for a few hours.&rdquo;</h3>
+                            <p>We provide focused help when you need a short burst of progress instead of a full-time hire.</p>
+                        </article>
+                        <article class="service-card-item">
+                            <h3>&ldquo;I need someone to finish what I started.&rdquo;</h3>
+                            <p>We step in, identify what is left, and help get the project across the finish line.</p>
+                        </article>
                     </div>
                 </div>
             </section>
