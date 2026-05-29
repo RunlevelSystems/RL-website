@@ -3,15 +3,6 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-if (!function_exists('isLoggedInAdmin')) {
-    if (!defined('WDS_SYSTEM')) {
-        define('WDS_SYSTEM', true);
-        require_once __DIR__ . '/db-config.php';
-    }
-}
-
-$is_logged_in = function_exists('isLoggedInAdmin') ? isLoggedInAdmin() : false;
-
 $current_url = parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH) ?: '';
 $is_in_projects = (strpos($current_url, '/projects/') !== false);
 $is_in_staff = (strpos($current_url, '/staff/') !== false);
@@ -44,16 +35,12 @@ if ($is_in_wiki) {
                 <div class="core-nav-collapse" id="site-nav-bar">
                     <ul class="core-nav-links">
                         <li><a href="<?php echo $base_path; ?>index.php" <?php echo ($current_page == 'index') ? 'aria-current="page"' : ''; ?>>Home</a></li>
-                        <li><a href="<?php echo $base_path; ?>projects.php" <?php echo ($current_page == 'projects') ? 'aria-current="page"' : ''; ?>>What We've Built</a></li>
-                        <li><a href="<?php echo $base_path; ?>portal/">Client Portal</a></li>
-                        <li><a href="<?php echo $base_path; ?>joinus.php" <?php echo ($current_page == 'joinus') ? 'aria-current="page"' : ''; ?>>Join Us</a></li>
+                        <li><a href="<?php echo $base_path; ?>design-debug-deploy.php" <?php echo ($current_page == 'design-debug-deploy') ? 'aria-current="page"' : ''; ?>>Design • Debug • Deploy</a></li>
+                        <li><a href="<?php echo $base_path; ?>gameserver-hosting.php" <?php echo ($current_page == 'gameserver-hosting') ? 'aria-current="page"' : ''; ?>>Game Server Hosting</a></li>
+                        <li><a href="<?php echo $base_path; ?>game-server-panel.php" <?php echo ($current_page == 'game-server-panel') ? 'aria-current="page"' : ''; ?>>Game Server Panel</a></li>
+                        <li><a href="<?php echo $base_path; ?>developer-workspaces.php" <?php echo ($current_page == 'developer-workspaces') ? 'aria-current="page"' : ''; ?>>Developer Workspaces</a></li>
+                        <li><a href="<?php echo $base_path; ?>projects.php" <?php echo ($current_page == 'projects') ? 'aria-current="page"' : ''; ?>>Projects</a></li>
                         <li><a href="<?php echo $base_path; ?>contact.php" <?php echo ($current_page == 'contact') ? 'aria-current="page"' : ''; ?>>Contact</a></li>
-                        <?php if ($is_logged_in): ?>
-                            <li><a href="<?php echo $base_path; ?>staff-info.php">Staff Home</a></li>
-                            <li><a href="<?php echo $base_path; ?>logout.php">Logout</a></li>
-                        <?php else: ?>
-                            <li><a href="<?php echo $base_path; ?>login.php">Staff Login</a></li>
-                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
