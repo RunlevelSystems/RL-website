@@ -84,6 +84,19 @@
                 </div>
             </section>
 
+            <section class="service-section alt">
+                <div class="container">
+                    <article class="service-detail-card">
+                        <h2>How Project Ownership Works</h2>
+                        <p>Runlevel Systems can help build, manage, host, and improve your project. In most managed development projects, you own your idea, brand, content, data, and final usable deliverables, while Runlevel Systems maintains the internal frameworks, templates, tools, and source repositories used to build and support the project.</p>
+                        <p>If you need full source-code transfer or complete project files, we can discuss a separate buyout or transfer agreement. Some third-party assets may require you to purchase your own license before source files can be delivered.</p>
+                        <div class="service-actions">
+                            <a class="core-action secondary" href="/runlevel-terms.php">Read the Full Runlevel Systems Terms of Service</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
             <section class="service-section">
                 <div class="container cta-block">
                     <h2>Ready to Build With Confidence?</h2>

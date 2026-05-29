@@ -63,6 +63,19 @@
                 </div>
             </section>
 
+            <section class="service-section alt">
+                <div class="container">
+                    <article class="service-detail-card">
+                        <h2>Game Server Hosting Terms</h2>
+                        <p>GameServers.World provides game server hosting, managed setup, mod assistance, migrations, and support services. Game servers can be affected by game updates, mods, plugins, maps, player load, and third-party services, so performance and compatibility may vary.</p>
+                        <p>Advanced setup, custom development, mod troubleshooting, and migrations may be billed separately from standard hosting.</p>
+                        <div class="service-actions">
+                            <a class="core-action secondary" href="/gameservers-world-hosting-terms.php">Read the Full GameServers.World Hosting Terms</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
             <section class="service-section">
                 <div class="container cta-block">
                     <h2>Want to Use Game Server Panel?</h2>

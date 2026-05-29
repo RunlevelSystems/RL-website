@@ -74,6 +74,8 @@ if ($is_in_wiki) {
                         <li><a href="<?php echo $footer_base_path; ?>projects.php">Projects</a></li>
                         <li><a href="<?php echo $footer_base_path; ?>contact.php">Contact</a></li>
                         <li><a href="<?php echo $footer_base_path; ?>privacy.php">Privacy Policy</a></li>
+                        <li><a href="<?php echo $footer_base_path; ?>runlevel-terms.php">Runlevel Systems Terms</a></li>
+                        <li><a href="<?php echo $footer_base_path; ?>gameservers-world-hosting-terms.php">GameServers.World Hosting Terms</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-4 footer-col">
