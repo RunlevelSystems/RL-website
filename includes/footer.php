@@ -63,6 +63,7 @@ if ($is_in_wiki) {
                     <ul class="footer-list">
                         <li><a href="<?php echo $footer_base_path; ?>design-debug-deploy.php">Design • Debug • Deploy</a></li>
                         <li><a href="<?php echo $footer_base_path; ?>gameserver-hosting.php">Game Server Hosting</a></li>
+                        <li><a href="<?php echo $footer_base_path; ?>game-server-support.php">Game Server Support</a></li>
                         <li><a href="<?php echo $footer_base_path; ?>game-server-panel.php">Game Server Panel</a></li>
                         <li><a href="<?php echo $footer_base_path; ?>developer-workspaces.php">Developer Workspaces</a></li>
                     </ul>
@@ -76,6 +77,7 @@ if ($is_in_wiki) {
                         <li><a href="<?php echo $footer_base_path; ?>privacy.php">Privacy Policy</a></li>
                         <li><a href="<?php echo $footer_base_path; ?>runlevel-terms.php">Runlevel Systems Terms</a></li>
                         <li><a href="<?php echo $footer_base_path; ?>gameservers-world-hosting-terms.php">GameServers.World Hosting Terms</a></li>
+                        <li><a href="<?php echo $footer_base_path; ?>game-server-support-terms.php">Game Server Support Terms</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-4 footer-col">

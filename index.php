@@ -51,9 +51,9 @@
                         </article>
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">🎮</div>
-                            <h3>Game Server Hosting</h3>
-                            <p>Launch and manage multiplayer game servers without the hassle of maintaining your own infrastructure. Perfect for gaming communities, clans, and indie developers.</p>
-                            <a class="core-action tertiary" href="/gameserver-hosting.php">Learn More</a>
+                            <h3>Game Server Support</h3>
+                            <p>Need changes, fixes, scripting, mod support, migrations, or troubleshooting? We help server owners keep communities running smoothly.</p>
+                            <a class="core-action tertiary" href="/game-server-support.php">Learn More</a>
                         </article>
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">🛠️</div>
