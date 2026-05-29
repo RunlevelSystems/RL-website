@@ -828,6 +828,75 @@ body *[style*="color:#4cc9ff"] {
   margin-top: 2rem;
 }
 
+/* ============================================================
+   Hero Tagline Branding
+   ============================================================ */
+.hero-tagline {
+  display: inline-block;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--core-gold);
+  margin: 1rem 0 0;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255, 198, 0, 0.35);
+  border-radius: 6px;
+  background: rgba(255, 198, 0, 0.07);
+}
+
+/* ============================================================
+   Service Card Subtitle
+   ============================================================ */
+.service-card-subtitle {
+  color: var(--core-gold);
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+/* ============================================================
+   Project Examples Grid
+   ============================================================ */
+.project-examples-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.project-example-item {
+  background: linear-gradient(180deg, #0c1729, #0a1423);
+  border: 1px solid rgba(54, 243, 255, 0.2);
+  border-radius: 12px;
+  padding: 1.15rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+}
+
+.project-example-item h3 {
+  color: #f3fbff;
+  margin-bottom: 0.6rem;
+}
+
+.project-example-item p {
+  color: #c3d7ee;
+  margin-bottom: 0;
+}
+
+@media (max-width: 992px) {
+  .project-examples-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .project-examples-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
 .project-card-item .project-shot {
   border-radius: 10px;
   border: 1px dashed rgba(54, 243, 255, 0.4);
