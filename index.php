@@ -6,9 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
 
-        <title>Runlevel Systems</title>
+        <title>Runlevel Systems | Design Debug Deploy</title>
+        <meta name="description" content="Runlevel Systems helps indie game developers with Unity support, multiplayer infrastructure, Atavism consulting, deployment, publishing, hosting, and technical services.">
+        <meta name="keywords" content="indie game development, unity consulting, atavism support, multiplayer hosting, steam publishing, game deployment, linux game servers, online game infrastructure, runlevel systems">
 
-        <!-- CSS -->
         <link href="assets/css/coreloop.css" rel="stylesheet">
 
         <!--[if lt IE 9]>
@@ -17,413 +18,427 @@
         <![endif]-->
     </head>
     <body>
-        <?php 
-        // Page-specific variables - customize these for each page
+        <?php
         $current_page = 'index';
         $page_subtitle = 'Design • Debug • Deploy';
-        $page_description = '';
-        $page_title = '';
-        $page_title_thin = '';
+        $page_description = 'Technical partner services for indie game developers.';
+        $page_title = 'Runlevel Systems';
+        $page_title_thin = 'Design • Debug • Deploy';
         ?>
-    <!-- Include Site Header -->
-    <?php include 'includes/header.php'; ?>
-        
-    <!-- Include Navigation Header -->
-    <?php include 'includes/navigation.php'; ?>
 
-    <style>
-      .home {
-        padding: 28px 0 34px;
-      }
-      .home-block {
-        background: linear-gradient(180deg, #07111f, #0b1630);
-        border: 1px solid rgba(54, 243, 255, 0.16);
-        border-radius: 14px;
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
-        margin-bottom: 22px;
-        position: relative;
-        overflow: hidden;
-      }
-      .home-block::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(circle at 12% -5%, rgba(54, 243, 255, 0.1), transparent 45%);
-        pointer-events: none;
-      }
-      .home-inner {
-        position: relative;
-        z-index: 1;
-        padding: 36px;
-      }
-      .home-label {
-        color: #36f3ff;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        font-size: 11px;
-        margin: 0 0 10px;
-        font-weight: 700;
-      }
-      .home-title {
-        margin: 0 0 12px;
-        color: #f4f9ff;
-        font-size: clamp(30px, 4.3vw, 46px);
-        line-height: 1.08;
-      }
-      .home-title-line {
-        display: block;
-      }
-      .home-title-accent {
-        color: #ffc600;
-      }
-      .home-lead {
-        margin: 0;
-        color: #d7e6f7;
-        font-size: 19px;
-        line-height: 1.6;
-        max-width: 840px;
-      }
-      .home-summary {
-        margin: 14px 0 0;
-        color: #a8bedc;
-        font-size: 16px;
-        line-height: 1.75;
-        max-width: 900px;
-      }
-      .home-actions {
-        margin-top: 22px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 11px;
-      }
-      .home-btn {
-        display: inline-flex;
-        align-items: center;
-        padding: 11px 18px;
-        border-radius: 6px;
-        text-decoration: none;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        font-size: 12px;
-        font-weight: 700;
-        transition: all 0.2s ease;
-      }
-      .home-btn-primary {
-        background: #ffc600;
-        border: 1px solid #ffc600;
-        color: #08111f;
-      }
-      .home-btn-primary:hover,
-      .home-btn-primary:focus {
-        background: #36f3ff;
-        color: #08111f;
-        box-shadow: 0 0 18px rgba(54, 243, 255, 0.26);
-      }
-      .home-btn-ghost {
-        background: transparent;
-        border: 1px solid rgba(54, 243, 255, 0.35);
-        color: #d7e6f7;
-      }
-      .home-btn-ghost:hover,
-      .home-btn-ghost:focus {
-        color: #ffc600;
-        border-color: rgba(54, 243, 255, 0.58);
-        background: rgba(54, 243, 255, 0.1);
-      }
-      .home-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
-      }
-      .home-card {
-        background: rgba(5, 15, 29, 0.65);
-        border: 1px solid rgba(54, 243, 255, 0.2);
-        border-radius: 10px;
-        padding: 18px;
-        animation: homeFadeUp 0.45s ease both;
-      }
-      .home-card h3 {
-        color: #f4f9ff;
-        margin: 0 0 8px;
-        font-size: 19px;
-      }
-      .home-card p {
-        margin: 0;
-        color: #a8bedc;
-        font-size: 15px;
-        line-height: 1.72;
-      }
-      .home-highlight {
-        border: 1px solid rgba(255, 198, 0, 0.35);
-        box-shadow: inset 0 0 0 1px rgba(255, 198, 0, 0.09), 0 0 24px rgba(54, 243, 255, 0.14);
-      }
-      .home-list {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        display: grid;
-        gap: 8px;
-      }
-      .home-list li {
-        color: #c7d7e8;
-        padding-left: 18px;
-        position: relative;
-        line-height: 1.68;
-      }
-      .home-list li::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 10px;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: #36f3ff;
-        box-shadow: 0 0 8px rgba(54, 243, 255, 0.55);
-      }
-      .home-tag-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 10px;
-      }
-      .home-tag {
-        border: 1px solid rgba(54, 243, 255, 0.26);
-        background: rgba(4, 14, 26, 0.72);
-        color: #dce9f8;
-        border-radius: 8px;
-        padding: 11px 10px;
-        text-align: center;
-        font-size: 14px;
-        line-height: 1.4;
-      }
-      .home-tech {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-      }
-      .home-tech-item {
-        border: 1px solid rgba(54, 243, 255, 0.2);
-        background: rgba(4, 14, 26, 0.72);
-        border-radius: 9px;
-        padding: 14px;
-      }
-      .home-tech-item strong {
-        display: block;
-        color: #f4f9ff;
-        margin-bottom: 4px;
-      }
-      .home-tech-item span {
-        color: #a8bedc;
-        font-size: 14px;
-        line-height: 1.55;
-      }
-      .home-divider {
-        border: 0;
-        height: 1px;
-        margin: 18px 0;
-        background: linear-gradient(90deg, transparent, rgba(54, 243, 255, 0.46), transparent);
-      }
-      @keyframes homeFadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(8px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      @media (max-width: 980px) {
-        .home-grid,
-        .home-tag-grid,
-        .home-tech {
-          grid-template-columns: 1fr;
-        }
-        .home-inner {
-          padding: 24px;
-        }
-        .home-lead {
-          font-size: 17px;
-        }
-      }
-    </style>
+        <?php include 'includes/header.php'; ?>
+        <?php include 'includes/navigation.php'; ?>
 
-    <main class="home" aria-label="Runlevel Systems homepage">
-      <section class="container">
-        <div class="home-block" aria-label="Hero">
-          <div class="home-inner">
-            <p class="home-label">Runlevel Systems</p>
-            <h1 class="home-title"><span class="home-title-line">Software Development</span><span class="home-title-accent home-title-line">Platforms, Games, and Operations</span></h1>
-            <p class="home-lead">RunLevel Systems develops software for multiplayer games, hosting platforms, backend systems, and Linux-based infrastructure.</p>
-            <p class="home-summary">We build both customer-facing experiences and the systems that keep online platforms running reliably.</p>
-            <div class="home-actions">
-              <a class="home-btn home-btn-primary" href="projects.php">See What We've Built</a>
-              <a class="home-btn home-btn-ghost" href="contact.php">Get in Touch</a>
-            </div>
-          </div>
-        </div>
+        <style>
+            .landing-page {
+                background: #f4f8fc;
+                color: #0d1a2b;
+            }
 
-        <div class="home-block" aria-label="Core capabilities">
-          <div class="home-inner">
-            <p class="home-label">What We Build</p>
-            <div class="home-grid">
-              <article class="home-card home-highlight">
-                <h3>Hosting Platforms</h3>
-                <p>We develop control software for game hosting providers that need reliable provisioning, customer operations tooling, and day-to-day service management in one place.</p>
-              </article>
-              <article class="home-card">
-                <h3>Multiplayer Game Development</h3>
-                <p>We build online and cooperative game experiences with production-ready networking, live progression systems, and practical support tooling for ongoing releases.</p>
-              </article>
-              <article class="home-card">
-                <h3>Backend Systems</h3>
-                <p>We design APIs and service layers that connect game clients, admin interfaces, billing, and operations workflows without unnecessary complexity.</p>
-              </article>
-              <article class="home-card">
-                <h3>Linux Infrastructure</h3>
-                <p>We run Linux-first environments for hosting workloads, with practical standards around configuration, security hardening, and long-term maintainability.</p>
-              </article>
-              <article class="home-card">
-                <h3>Deployment Automation</h3>
-                <p>We automate rollout, server setup, service restarts, and update pipelines so teams can ship reliably while reducing manual operational overhead.</p>
-              </article>
-              <article class="home-card">
-                <h3>Custom Software</h3>
-                <p>We deliver targeted software for organizations that need tools built around their real workflow instead of forcing operations into generic products.</p>
-              </article>
-            </div>
-          </div>
-        </div>
+            .landing-page .section-wrap {
+                padding: 72px 0;
+                background: #ffffff;
+            }
 
-        <div class="home-block" aria-label="GameServer Panel platform">
-          <div class="home-inner">
-            <p class="home-label">Platform Spotlight</p>
-            <h2 class="home-title" style="font-size: clamp(24px, 3.4vw, 34px);">GameServer Panel</h2>
-            <p class="home-summary">GameServer Panel is used by hosting operators who need to deploy, manage, and support customer game servers at scale. We built it because we operate hosting infrastructure ourselves and needed practical tooling for real operational demands. The platform powers Gameservers World and helps automate server deployment, updates, and daily management work.</p>
-            <hr class="home-divider">
-            <ul class="home-list">
-              <li>Centralizes multi-node operations so teams can manage distributed game services from one control point.</li>
-              <li>Automates server installs, updates, and routine maintenance to reduce repetitive manual work.</li>
-              <li>Provides operational visibility through status monitoring and alerts for actionable incident response.</li>
-              <li>Supports tenant-based environments for shared infrastructure with clear customer separation.</li>
-              <li>Improves consistency across deployments, lowering operational drift across regions and nodes.</li>
-            </ul>
-          </div>
-        </div>
+            .landing-page .section-wrap.alt {
+                background: #f4f8fc;
+            }
 
-        <div class="home-block" aria-label="Technical capabilities">
-          <div class="home-inner">
-            <p class="home-label">Technical Capabilities</p>
-            <div class="home-grid">
-              <article class="home-card">
-                <h3>Linux Infrastructure</h3>
-                <p>We design and manage Linux-based hosting environments for multiplayer platforms, backend services, and online applications. Our experience includes system configuration, automation, security hardening, monitoring, and long-term operational reliability.</p>
-              </article>
-              <article class="home-card">
-                <h3>Deployment Automation</h3>
-                <p>We build automated deployment systems that simplify server provisioning, software rollouts, updates, and service management across development and production environments.</p>
-              </article>
-              <article class="home-card">
-                <h3>Remote Infrastructure Management</h3>
-                <p>We develop centralized management systems for handling remote servers, distributed nodes, and multi-location infrastructure from a unified control platform.</p>
-              </article>
-              <article class="home-card">
-                <h3>Monitoring &amp; Reliability</h3>
-                <p>We implement monitoring, alerting, and operational tooling that help identify problems quickly and keep online systems stable and maintainable.</p>
-              </article>
-              <article class="home-card">
-                <h3>Backend Development</h3>
-                <p>We create APIs, backend services, account systems, and operational tools that support multiplayer games, hosting platforms, and custom business applications.</p>
-              </article>
-              <article class="home-card">
-                <h3>Multiplayer Systems</h3>
-                <p>We build networking and backend systems for multiplayer games including matchmaking, session management, persistent world services, and real-time synchronization.</p>
-              </article>
-            </div>
-          </div>
-        </div>
+            .landing-page .section-title {
+                color: #08111f;
+                font-size: clamp(28px, 3.6vw, 42px);
+                margin-bottom: 16px;
+            }
 
-        <div class="home-block" aria-label="Games and interactive projects">
-          <div class="home-inner">
-            <p class="home-label">Games &amp; Interactive Projects</p>
-            <div class="home-grid">
-              <article class="home-card">
-                <h3>Neverwards</h3>
-                <p>Online cooperative adventure with persistent progression and long-term shared-world systems.</p>
-              </article>
-              <article class="home-card">
-                <h3>Mystical Islands</h3>
-                <p>Multiplayer fantasy exploration focused on cooperative play and persistent online sessions.</p>
-              </article>
-              <article class="home-card">
-                <h3>Roadkill v2</h3>
-                <p>Competitive vehicular combat built for responsive multiplayer gameplay and repeat sessions.</p>
-              </article>
-              <article class="home-card">
-                <h3>Retro Space Blaster</h3>
-                <p>Fast-paced mobile arcade action designed for short play loops and cross-platform delivery.</p>
-              </article>
-              <article class="home-card">
-                <h3>Be Very Very Quiet</h3>
-                <p>Mobile zombie survival experience centered on stealth, pressure, and extraction choices.</p>
-              </article>
-              <article class="home-card">
-                <h3>Interactive Focus</h3>
-                <p>Our game work spans online multiplayer, cooperative systems, persistent worlds, and mobile-first gameplay.</p>
-              </article>
-            </div>
-          </div>
-        </div>
+            .landing-page .section-intro {
+                color: #2c3c54;
+                font-size: 18px;
+                line-height: 1.7;
+                max-width: 920px;
+            }
 
-        <div class="home-block" aria-label="Technical capabilities">
-          <div class="home-inner">
-            <p class="home-label">Technical Capabilities</p>
-            <div class="home-tech">
-              <div class="home-tech-item"><strong>Linux</strong><span>Production environments built and maintained on Linux infrastructure.</span></div>
-              <div class="home-tech-item"><strong>Virtualization</strong><span>Isolated service workloads for stable and efficient infrastructure usage.</span></div>
-              <div class="home-tech-item"><strong>Backend APIs</strong><span>Service interfaces that connect products, operations, and customer tooling.</span></div>
-              <div class="home-tech-item"><strong>Deployment Automation</strong><span>Automated rollout and maintenance workflows for reliable release cycles.</span></div>
-              <div class="home-tech-item"><strong>Multiplayer Networking</strong><span>Online session architecture designed for responsiveness and persistence.</span></div>
-              <div class="home-tech-item"><strong>Monitoring Systems</strong><span>Operational visibility with alerting, diagnostics, and service health tracking.</span></div>
-              <div class="home-tech-item"><strong>Scalable Hosting Operations</strong><span>Multi-node service operations designed for growth and long-term support.</span></div>
-            </div>
-          </div>
-        </div>
+            .landing-hero {
+                padding: 90px 0;
+                color: #ecf5ff;
+                background: linear-gradient(120deg, rgba(7, 17, 31, 0.92), rgba(10, 132, 255, 0.7)), url('assets/images/RL-splash.png') center / cover no-repeat;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+            }
 
-        <div class="home-block" aria-label="Call to action">
-          <div class="home-inner" style="text-align: center;">
-            <h2 style="margin:0 0 10px; color:#f4f9ff; font-size:clamp(22px,3vw,30px);">Let's Build Something That Runs in the Real World</h2>
-            <p class="home-summary" style="margin:0 auto 16px; max-width:760px;">If you need practical software for games, hosting operations, or backend systems, we can help you plan it, build it, and run it.</p>
-            <a class="home-btn home-btn-primary" href="contact.php">Talk to Our Team</a>
-          </div>
-        </div>
-      </section>
+            .hero-title {
+                color: #ffffff;
+                font-size: clamp(36px, 5vw, 58px);
+                margin-bottom: 18px;
+                line-height: 1.08;
+            }
 
-      <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Runlevel Systems",
-        "url": "https://worlddomination.dev",
-        "contactPoint": [{
-          "@type": "ContactPoint",
-          "contactType": "customer support",
-          "url": "https://worlddomination.dev/contact.php"
-        }]
-      }
-      </script>
-    </main>
+            .hero-subtitle {
+                font-size: 20px;
+                line-height: 1.7;
+                color: #dcecff;
+                max-width: 860px;
+            }
 
+            .tagline {
+                display: inline-block;
+                margin: 18px 0 0;
+                letter-spacing: 0.22em;
+                text-transform: uppercase;
+                font-weight: 700;
+                color: var(--core-gold);
+                border: 1px solid rgba(255, 198, 0, 0.45);
+                padding: 10px 14px;
+                border-radius: 8px;
+                background: rgba(8, 17, 31, 0.35);
+            }
 
-    <!-- Include Footer -->
-    <?php include 'includes/footer.php'; ?>
+            .hero-actions {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px;
+                margin-top: 28px;
+            }
 
-    <!-- Scripts -->
+            .hero-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 12px 20px;
+                border-radius: 6px;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                font-weight: 700;
+                font-size: 12px;
+                text-decoration: none;
+                transition: all 0.2s ease;
+            }
+
+            .hero-btn.primary {
+                background: var(--core-gold);
+                color: #08111f;
+                border: 1px solid var(--core-gold);
+            }
+
+            .hero-btn.primary:hover,
+            .hero-btn.primary:focus {
+                background: var(--core-cyan);
+                border-color: var(--core-cyan);
+                color: #08111f;
+                text-decoration: none;
+            }
+
+            .hero-btn.secondary {
+                background: rgba(255, 255, 255, 0.08);
+                color: #f0f6ff;
+                border: 1px solid rgba(255, 255, 255, 0.35);
+            }
+
+            .hero-btn.secondary:hover,
+            .hero-btn.secondary:focus {
+                background: rgba(54, 243, 255, 0.2);
+                border-color: rgba(54, 243, 255, 0.65);
+                color: #ffffff;
+                text-decoration: none;
+            }
+
+            .feature-card,
+            .service-card,
+            .audience-card,
+            .product-card {
+                background: #ffffff;
+                border: 1px solid rgba(10, 132, 255, 0.14);
+                border-radius: 14px;
+                padding: 28px;
+                height: 100%;
+                box-shadow: 0 14px 32px rgba(5, 18, 35, 0.08);
+            }
+
+            .feature-card .card-icon,
+            .service-card .card-icon,
+            .audience-card .card-icon,
+            .product-card .card-icon {
+                width: 54px;
+                height: 54px;
+                border-radius: 12px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(10, 132, 255, 0.1);
+                color: var(--core-cobalt);
+                font-size: 24px;
+                margin-bottom: 14px;
+            }
+
+            .feature-card h3,
+            .service-card h3,
+            .audience-card h3,
+            .product-card h3 {
+                color: #08111f;
+                margin-bottom: 10px;
+                font-size: 24px;
+            }
+
+            .feature-card p,
+            .service-card p,
+            .audience-card p,
+            .product-card p,
+            .timeline-step p {
+                color: #334966;
+                margin-bottom: 0;
+                line-height: 1.7;
+            }
+
+            .service-card .learn-more {
+                margin-top: 18px;
+                display: inline-flex;
+                align-items: center;
+                padding: 9px 14px;
+                border-radius: 6px;
+                background: #0a84ff;
+                color: #ffffff;
+                border: 1px solid #0a84ff;
+                text-decoration: none;
+                font-size: 12px;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                font-weight: 700;
+            }
+
+            .service-card .learn-more:hover,
+            .service-card .learn-more:focus {
+                background: #08111f;
+                border-color: #08111f;
+                color: #ffc600;
+                text-decoration: none;
+            }
+
+            .timeline {
+                position: relative;
+                margin-top: 20px;
+                padding-left: 28px;
+                border-left: 2px solid rgba(10, 132, 255, 0.25);
+            }
+
+            .timeline-step {
+                position: relative;
+                margin-bottom: 26px;
+                padding: 14px 18px 14px 16px;
+                background: #ffffff;
+                border: 1px solid rgba(10, 132, 255, 0.14);
+                border-radius: 12px;
+            }
+
+            .timeline-step::before {
+                content: '';
+                position: absolute;
+                left: -38px;
+                top: 22px;
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                background: #0a84ff;
+                box-shadow: 0 0 0 4px rgba(10, 132, 255, 0.16);
+            }
+
+            .timeline-step strong {
+                display: block;
+                color: #08111f;
+                font-size: 20px;
+                margin-bottom: 5px;
+            }
+
+            .cta-banner {
+                background: linear-gradient(125deg, #08111f, #0a84ff);
+                color: #eef7ff;
+                text-align: center;
+                border-radius: 18px;
+                padding: 54px 28px;
+            }
+
+            .cta-banner h2 {
+                color: #ffffff;
+                font-size: clamp(30px, 4.2vw, 48px);
+                margin-bottom: 15px;
+            }
+
+            .cta-banner p {
+                max-width: 860px;
+                margin: 0 auto;
+                color: #d9ecff;
+                font-size: 19px;
+            }
+
+            .cta-banner .tagline {
+                margin-top: 22px;
+            }
+
+            .cta-actions {
+                margin-top: 28px;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            @media (max-width: 768px) {
+                .landing-page .section-wrap {
+                    padding: 54px 0;
+                }
+
+                .landing-hero {
+                    padding: 64px 0;
+                }
+
+                .hero-subtitle {
+                    font-size: 18px;
+                }
+
+                .tagline {
+                    letter-spacing: 0.14em;
+                }
+            }
+        </style>
+
+        <main class="landing-page" aria-label="Runlevel Systems indie game developer landing page">
+            <section class="landing-hero">
+                <div class="container">
+                    <h1 class="hero-title">Build Your Game. We'll Help You Launch It.</h1>
+                    <p class="hero-subtitle">From first prototype to live production servers, Runlevel Systems helps indie developers solve the technical challenges that stand between a great idea and a successful game.</p>
+                    <p class="tagline">DESIGN • DEBUG • DEPLOY</p>
+                    <div class="hero-actions">
+                        <a class="hero-btn primary" href="contact.php">Schedule a Consultation</a>
+                        <a class="hero-btn secondary" href="https://discord.gg/XPFnNdWGyW" target="_blank" rel="noopener noreferrer">Join Our Community</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-wrap">
+                <div class="container">
+                    <h2 class="section-title">More Than Hosting. A Technical Partner.</h2>
+                    <p class="section-intro">Modern tools like Unity, Unreal Engine, AI coding assistants, and marketplace assets have made game development more accessible than ever.</p>
+                    <p class="section-intro">But many developers eventually hit technical roadblocks involving multiplayer systems, networking, hosting, databases, publishing, deployment, infrastructure, version control, and live operations.</p>
+                    <p class="section-intro">Runlevel Systems helps bridge that gap. You focus on creating your game. We help solve the technical challenges.</p>
+                </div>
+            </section>
+
+            <section class="section-wrap alt">
+                <div class="container">
+                    <h2 class="section-title">DESIGN • DEBUG • DEPLOY</h2>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <article class="feature-card">
+                                <div class="card-icon" aria-hidden="true">🧭</div>
+                                <h3>DESIGN</h3>
+                                <p>Plan your project with confidence. We help developers design scalable game architectures, multiplayer infrastructure, server layouts, deployment strategies, and technical workflows before expensive mistakes are made.</p>
+                            </article>
+                        </div>
+                        <div class="col-md-4">
+                            <article class="feature-card">
+                                <div class="card-icon" aria-hidden="true">🛠️</div>
+                                <h3>DEBUG</h3>
+                                <p>Stuck on a technical problem? From Unity issues and Atavism configuration problems to server networking and deployment challenges, we help identify and solve blockers quickly.</p>
+                            </article>
+                        </div>
+                        <div class="col-md-4">
+                            <article class="feature-card">
+                                <div class="card-icon" aria-hidden="true">🚀</div>
+                                <h3>DEPLOY</h3>
+                                <p>Launch with confidence. We help deploy multiplayer servers, websites, databases, cloud infrastructure, updates, and publishing pipelines so your game reaches players successfully.</p>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-wrap">
+                <div class="container">
+                    <h2 class="section-title">How We Help</h2>
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">🧩</div><h3>Unity Development Support</h3><p>Hands-on troubleshooting, architecture guidance, and workflow support for Unity projects.</p><a class="learn-more" href="contact.php">Learn More</a></article></div>
+                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">⚙️</div><h3>Atavism MMO Consulting</h3><p>Configuration help, backend integration support, and production readiness consulting for Atavism.</p><a class="learn-more" href="contact.php">Learn More</a></article></div>
+                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">🌐</div><h3>Multiplayer Infrastructure</h3><p>Scalable networking and backend system planning for co-op, competitive, and MMO gameplay.</p><a class="learn-more" href="contact.php">Learn More</a></article></div>
+                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">🖥️</div><h3>Dedicated Server Deployment</h3><p>Reliable deployment workflows for game servers across cloud and bare-metal environments.</p><a class="learn-more" href="contact.php">Learn More</a></article></div>
+                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">🐧</div><h3>Linux Administration</h3><p>Server hardening, updates, monitoring, and operational tuning for game infrastructure.</p><a class="learn-more" href="contact.php">Learn More</a></article></div>
+                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">🗄️</div><h3>Database Management</h3><p>Performance tuning, migration planning, and stability support for game and platform data.</p><a class="learn-more" href="contact.php">Learn More</a></article></div>
+                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">🎮</div><h3>Steam Publishing Assistance</h3><p>Release preparation support, deployment alignment, and launch readiness for Steam publishing.</p><a class="learn-more" href="contact.php">Learn More</a></article></div>
+                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">📱</div><h3>Google Play Publishing Assistance</h3><p>Technical prep, update strategy, and production support for Android game releases.</p><a class="learn-more" href="contact.php">Learn More</a></article></div>
+                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">🍎</div><h3>Apple App Store Publishing Assistance</h3><p>Build validation, deployment review, and technical issue resolution for iOS submission.</p><a class="learn-more" href="contact.php">Learn More</a></article></div>
+                        <div class="col-sm-6 col-lg-4"><article class="service-card"><div class="card-icon">📊</div><h3>Live Operations &amp; Monitoring</h3><p>Observability and support workflows to keep your game stable after launch.</p><a class="learn-more" href="contact.php">Learn More</a></article></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-wrap alt">
+                <div class="container">
+                    <h2 class="section-title">Who We Help</h2>
+                    <div class="row">
+                        <div class="col-md-4"><article class="audience-card"><div class="card-icon">🧠</div><h3>Solo Developers</h3><p>You have the vision but need help navigating the technical side of development.</p></article></div>
+                        <div class="col-md-4"><article class="audience-card"><div class="card-icon">🤝</div><h3>Small Indie Studios</h3><p>Extend your team with experienced infrastructure and deployment support.</p></article></div>
+                        <div class="col-md-4"><article class="audience-card"><div class="card-icon">🌍</div><h3>Multiplayer &amp; MMO Projects</h3><p>From server architecture to deployment and scaling, we help bring online worlds to life.</p></article></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-wrap">
+                <div class="container">
+                    <h2 class="section-title">Products Built By Developers</h2>
+                    <div class="row">
+                        <div class="col-md-4"><article class="product-card"><div class="card-icon">🛰️</div><h3>GameServers.World</h3><p>Managed game hosting, multiplayer infrastructure, deployment assistance, and server management tools for game developers and communities.</p></article></div>
+                        <div class="col-md-4"><article class="product-card"><div class="card-icon">🧰</div><h3>GSP Panel</h3><p>Powerful game server management software developed for hosting providers and game developers.</p></article></div>
+                        <div class="col-md-4"><article class="product-card"><div class="card-icon">✨</div><h3>Future Runlevel Systems Products</h3><p>Developer tools, automation systems, deployment platforms, AI assistants, and studio management solutions.</p></article></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-wrap alt">
+                <div class="container">
+                    <h2 class="section-title">From Idea to Launch</h2>
+                    <p class="section-intro">DESIGN • DEBUG • DEPLOY guides every stage of bringing your game to players.</p>
+                    <div class="timeline">
+                        <div class="timeline-step"><strong>Step 1: Build Your Idea</strong><p>Shape your core concept, gameplay loop, and player experience.</p></div>
+                        <div class="timeline-step"><strong>Step 2: Design Your Systems</strong><p>Define multiplayer architecture, services, and technical workflows with confidence.</p></div>
+                        <div class="timeline-step"><strong>Step 3: Debug Technical Challenges</strong><p>Identify blockers early and resolve engine, networking, and infrastructure issues.</p></div>
+                        <div class="timeline-step"><strong>Step 4: Deploy Infrastructure</strong><p>Launch dedicated servers, backend services, databases, and release pipelines.</p></div>
+                        <div class="timeline-step"><strong>Step 5: Launch To Players</strong><p>Go live with monitoring, support, and live operations that keep your game running.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-wrap" style="padding-top: 0;">
+                <div class="container">
+                    <div class="cta-banner">
+                        <h2>Don't Let Technical Challenges Stop Your Game</h2>
+                        <p>Whether you're building your first indie title, launching a multiplayer game, or creating the next online world, Runlevel Systems can help you move faster and launch with confidence.</p>
+                        <p class="tagline">DESIGN • DEBUG • DEPLOY</p>
+                        <div class="cta-actions">
+                            <a class="hero-btn primary" href="contact.php">Schedule a Consultation</a>
+                            <a class="hero-btn secondary" href="contact.php">Contact Runlevel Systems</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Runlevel Systems",
+              "url": "https://runlevel.systems",
+              "slogan": "Design • Debug • Deploy",
+              "description": "Technical partner services for indie game developers building multiplayer games and online infrastructure.",
+              "sameAs": [
+                "https://gameservers.world",
+                "https://github.com/GameServerPanel/GSP"
+              ]
+            }
+            </script>
+        </main>
+
+        <?php include 'includes/footer.php'; ?>
+
         <script src="assets/js/jquery-1.12.3.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/jquery.magnific-popup.min.js"></script>
         <script src="assets/js/owl.carousel.min.js"></script>
         <script src="assets/js/script.js"></script>
-
     </body>
 </html>
