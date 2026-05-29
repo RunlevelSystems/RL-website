@@ -7,7 +7,7 @@
         <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
 
         <title>Runlevel Systems | Design Debug Deploy</title>
-        <meta name="description" content="Runlevel Systems helps indie game developers with Unity support, multiplayer infrastructure, Atavism consulting, deployment, publishing, hosting, and technical services.">
+        <meta name="description" content="Runlevel Systems helps solo developers and small indie teams with practical Unity support, multiplayer setup, deployment, hosting, and technical guidance.">
         <meta name="keywords" content="indie game development, unity consulting, atavism support, multiplayer hosting, steam publishing, game deployment, linux game servers, online game infrastructure, runlevel systems">
 
         <link href="assets/css/coreloop.css" rel="stylesheet">
@@ -21,7 +21,7 @@
         <?php
         $current_page = 'index';
         $page_subtitle = 'Design • Debug • Deploy';
-        $page_description = 'Technical partner services for indie game developers.';
+        $page_description = 'Practical technical support for indie game developers and small teams.';
         $page_title = 'Runlevel Systems';
         $page_title_thin = 'Design • Debug • Deploy';
         ?>
@@ -302,7 +302,7 @@
             <section class="landing-hero">
                 <div class="container">
                     <h1 class="hero-title">Build Your Game. We'll Help You Launch It.</h1>
-                    <p class="hero-subtitle">From first prototype to live production servers, Runlevel Systems helps indie developers solve the technical challenges that stand between a great idea and a successful game.</p>
+                    <p class="hero-subtitle">From first prototype to launch, Runlevel Systems helps indie developers solve technical problems in plain language. No developer is too small.</p>
                     <p class="tagline">DESIGN • DEBUG • DEPLOY</p>
                     <div class="hero-actions">
                         <a class="hero-btn primary" href="contact.php">Schedule a Consultation</a>
@@ -315,8 +315,8 @@
                 <div class="container">
                     <h2 class="section-title">More Than Hosting. A Technical Partner.</h2>
                     <p class="section-intro">Modern tools like Unity, Unreal Engine, AI coding assistants, and marketplace assets have made game development more accessible than ever.</p>
-                    <p class="section-intro">But many developers eventually hit technical roadblocks involving multiplayer systems, networking, hosting, databases, publishing, deployment, infrastructure, version control, and live operations.</p>
-                    <p class="section-intro">Runlevel Systems helps bridge that gap. You focus on creating your game. We help solve the technical challenges.</p>
+                    <p class="section-intro">But many developers eventually hit technical roadblocks with multiplayer setup, networking, hosting, databases, deployment, and live operations.</p>
+                    <p class="section-intro">We are focused on helping solo developers and very small teams get unstuck early and keep moving.</p>
                 </div>
             </section>
 
@@ -328,7 +328,7 @@
                             <article class="feature-card">
                                 <div class="card-icon" aria-hidden="true">🧭</div>
                                 <h3>DESIGN</h3>
-                                <p>Plan your project with confidence. We help developers design scalable game architectures, multiplayer infrastructure, server layouts, deployment strategies, and technical workflows before expensive mistakes are made.</p>
+                                <p>Plan your project with confidence. We help you choose a solid setup for multiplayer, servers, deployment, and day-to-day workflows before small issues become expensive problems.</p>
                             </article>
                         </div>
                         <div class="col-md-4">
