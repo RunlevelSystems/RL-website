@@ -6,17 +6,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
 
-        <title>Runlevel Systems | Affordable Technical Help for Projects and Communities</title>
-        <meta name="description" content="Runlevel Systems offers affordable development, hosting, customization, and publishing support for solo creators, small teams, communities, and small businesses.">
-        <meta name="keywords" content="Dev Partner, game server hosting, mods and custom code, website development, publishing support, Runlevel Systems">
+        <title>Runlevel Systems | Software Development for Web, Mobile, Simulation, and Infrastructure</title>
+        <meta name="description" content="Runlevel Systems designs, builds, tests, and deploys software solutions including websites, business applications, mobile apps, training simulators, customer portals, backend services, and infrastructure platforms.">
+        <meta name="keywords" content="software development, custom software, mobile applications, training simulation, infrastructure platforms, Dev Partner, Runlevel Systems">
 
         <link href="assets/css/coreloop.css" rel="stylesheet">
     </head>
     <body>
         <?php
         $current_page = 'index';
-        $page_subtitle = 'Affordable technical help for creators, communities, and small teams';
-        $page_description = 'Affordable development, hosting, customization, and publishing support for solo creators, small teams, communities, and small businesses.';
+        $page_subtitle = 'Software development for businesses, creators, and organizations';
+        $page_description = 'Runlevel Systems designs, builds, tests, and deploys software solutions for businesses, creators, startups, communities, and organizations.';
         $page_title = 'Runlevel Systems';
         $page_title_thin = 'Design • Debug • Deploy';
         ?>
@@ -29,47 +29,85 @@
             <section class="service-hero">
                 <div class="container">
                     <p class="service-kicker">Runlevel Systems</p>
-                    <h1>Affordable Technical Help For Real Projects</h1>
-                    <p class="service-lead">Professional technical help should not be out of reach.</p>
-                    <p class="service-lead">Runlevel Systems offers affordable development, hosting, customization, and publishing support for solo creators, small teams, and game communities.</p>
+                    <h1>Turn Ideas Into Working Software</h1>
+                    <p class="service-lead">Runlevel Systems designs, builds, tests, and deploys software solutions for businesses, creators, startups, communities, and organizations.</p>
+                    <p class="service-sublead">Whether you need a website, mobile app, business application, training simulator, customer portal, backend service, or complete software platform, we can build it.</p>
                     <p class="hero-tagline">DESIGN • DEBUG • DEPLOY</p>
+                    <p class="service-sublead">We help businesses, creators, and organizations:</p>
+                    <ul class="service-icon-list single-column">
+                        <li><strong>DESIGN</strong> new solutions.</li>
+                        <li><strong>DEBUG</strong> difficult problems.</li>
+                        <li><strong>DEPLOY</strong> software that works.</li>
+                    </ul>
                     <div class="service-actions">
-                        <a class="core-action primary" href="/contact.php">Tell Us What You Need</a>
+                        <a class="core-action primary" href="/contact.php">Tell Us About Your Project</a>
+                        <a class="core-action secondary" href="#what-we-build">See What We Build</a>
                     </div>
                 </div>
             </section>
 
             <section class="service-section" id="what-we-do">
                 <div class="container">
-                    <h2>What We Help With</h2>
-                    <p class="section-intro">Clear help for real problems, without making you figure everything out alone.</p>
-                    <div class="three-column-stack">
+                    <h2>What We Build</h2>
+                    <p class="section-intro">Every project starts with a problem that needs solving.</p>
+                    <p class="section-intro">We help transform ideas into real software systems that people can use.</p>
+                    <div class="service-card-grid">
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">💻</div>
-                            <h3>Dev Partner</h3>
-                            <p class="service-card-subtitle">Need help building something but don't have a full development team?</p>
-                            <p>Runlevel Systems helps creators, startups, indie developers, and small businesses solve technical challenges, build new features, fix broken projects, launch products, and get across the finish line.</p>
-                            <p><strong>Examples:</strong> Build a website, launch a mobile app, fix a broken project, publish a game, add new features, and get help when you're stuck.</p>
-                            <a class="core-action tertiary" href="/design-debug-deploy.php">See How We Can Help</a>
+                            <h3>Custom Software</h3>
+                            <p class="service-card-subtitle">Business applications, portals, tools, websites, web apps, and backend systems.</p>
+                            <p>We build software that supports daily operations, customer workflows, internal teams, and online services.</p>
+                            <ul class="service-icon-list single-column">
+                                <li>Business management systems</li>
+                                <li>Customer portals</li>
+                                <li>Inventory systems</li>
+                                <li>Scheduling tools</li>
+                                <li>Internal company software</li>
+                                <li>Automation systems</li>
+                            </ul>
                         </article>
 
                         <article class="service-card-item">
-                            <div class="service-icon" aria-hidden="true">🌐</div>
-                            <h3>Hosting</h3>
-                            <p class="service-card-subtitle">Need a place to run your game server?</p>
-                            <p>GameServers.World provides affordable game server hosting for communities, clans, friend groups, and multiplayer projects.</p>
-                            <p>We provide the server. You focus on your players.</p>
-                            <p><strong>Examples:</strong> Minecraft servers, survival servers, roleplay communities, modded servers, and private community servers.</p>
-                            <a class="core-action tertiary" href="/gameserver-hosting.php">View Hosting Options</a>
+                            <div class="service-icon" aria-hidden="true">📱</div>
+                            <h3>Mobile Applications</h3>
+                            <p class="service-card-subtitle">Android and iOS applications for businesses, communities, products, and customers.</p>
+                            <p>We create mobile experiences that keep teams connected, services accessible, and customers engaged.</p>
+                            <ul class="service-icon-list single-column">
+                                <li>Customer apps</li>
+                                <li>Field service apps</li>
+                                <li>Membership systems</li>
+                                <li>Community apps</li>
+                                <li>Mobile business tools</li>
+                            </ul>
                         </article>
 
                         <article class="service-card-item">
-                            <div class="service-icon" aria-hidden="true">🎮</div>
-                            <h3>Mods &amp; Custom Code</h3>
-                            <p class="service-card-subtitle">Need your server to do something unique?</p>
-                            <p>We help install mods, customize gameplay, create scripts, connect Discord, fix broken updates, and add features that make communities stand out.</p>
-                            <p><strong>Examples:</strong> Custom commands, economy systems, Discord integration, roleplay systems, server automation, and mod troubleshooting.</p>
-                            <a class="core-action tertiary" href="/game-server-support.php">See Mod Services</a>
+                            <div class="service-icon" aria-hidden="true">🧪</div>
+                            <h3>Training &amp; Simulation</h3>
+                            <p class="service-card-subtitle">Interactive virtual environments for learning, validation, and product understanding.</p>
+                            <p>We create simulation systems that let people learn safely before working with real equipment or processes.</p>
+                            <ul class="service-icon-list single-column">
+                                <li>Equipment training</li>
+                                <li>Safety training</li>
+                                <li>Installation training</li>
+                                <li>Maintenance procedures</li>
+                                <li>Product demonstrations</li>
+                                <li>Virtual labs</li>
+                            </ul>
+                        </article>
+
+                        <article class="service-card-item">
+                            <div class="service-icon" aria-hidden="true">🖧</div>
+                            <h3>Infrastructure Platforms</h3>
+                            <p class="service-card-subtitle">Systems for accounts, hosted services, automation, deployments, and online operations.</p>
+                            <p>We build the platforms behind software delivery, customer access, and service management.</p>
+                            <ul class="service-icon-list single-column">
+                                <li>Hosting platforms</li>
+                                <li>Service management systems</li>
+                                <li>Provisioning systems</li>
+                                <li>Remote management tools</li>
+                                <li>Customer management platforms</li>
+                            </ul>
                         </article>
                     </div>
                 </div>
@@ -77,23 +115,24 @@
 
             <section class="service-section alt">
                 <div class="container">
-                    <h2>Why People Contact Us</h2>
-                    <div class="benefit-grid">
-                        <article class="benefit-item">
-                            <h3>&ldquo;I bought a template and got stuck.&rdquo;</h3>
-                            <p>We help troubleshoot and finish projects that never made it to launch.</p>
+                    <h2>Build It, Launch It, Keep It Moving</h2>
+                    <p class="section-intro">Some customers need a complete software project built from the ground up.</p>
+                    <p class="section-intro">Others already have a project and need technical help adding features, fixing issues, launching products, or maintaining what is already in production.</p>
+                    <div class="service-card-grid two-columns">
+                        <article class="service-card-item">
+                            <div class="service-icon" aria-hidden="true">🚀</div>
+                            <h3>Complete Project Delivery</h3>
+                            <p>Runlevel Systems can design, build, test, and deploy complete software solutions when you need a project created from idea to launch.</p>
+                            <p>We build business software, web applications, mobile apps, simulation systems, infrastructure platforms, games, and interactive experiences.</p>
                         </article>
-                        <article class="benefit-item">
-                            <h3>&ldquo;My server broke after an update.&rdquo;</h3>
-                            <p>We help repair, restore, and reconfigure servers after updates and mod conflicts.</p>
-                        </article>
-                        <article class="benefit-item">
-                            <h3>&ldquo;I need help getting published.&rdquo;</h3>
-                            <p>We help prepare games and apps for stores, platforms, and deployment.</p>
-                        </article>
-                        <article class="benefit-item">
-                            <h3>&ldquo;I don't know where to start.&rdquo;</h3>
-                            <p>We help plan projects, choose technologies, and avoid expensive mistakes.</p>
+                        <article class="service-card-item">
+                            <div class="service-icon" aria-hidden="true">🤝</div>
+                            <h3>Dev Partner + Runlevel Tools</h3>
+                            <p>When your project needs ongoing help, Dev Partner lets Runlevel Systems become part of your team while Runlevel Tools keeps planning, code, documentation, builds, testing, and support requests connected.</p>
+                            <div class="service-actions">
+                                <a class="core-action tertiary" href="/design-debug-deploy.php">Explore Dev Partner</a>
+                                <a class="core-action tertiary" href="/products.php">See Runlevel Tools</a>
+                            </div>
                         </article>
                     </div>
                 </div>
@@ -101,52 +140,26 @@
 
             <section class="service-section">
                 <div class="container">
-                    <h2>More Than A Service Provider</h2>
-                    <p class="section-intro">Many companies stop after delivering a server, a website, or a piece of software.</p>
-                    <p class="section-intro">Runlevel Systems acts as a long-term technical partner, helping clients build, maintain, improve, and grow their projects over time.</p>
-                    <div class="benefit-grid">
-                        <article class="benefit-item">
-                            <h3>Practical Experience</h3>
-                            <p>Real-world software development and infrastructure experience across games, web, and community platforms.</p>
-                        </article>
-                        <article class="benefit-item">
-                            <h3>Small Team Friendly</h3>
-                            <p>Built for solo creators, small teams, game communities, and small businesses.</p>
-                        </article>
-                        <article class="benefit-item">
-                            <h3>End-to-End Support</h3>
-                            <p>From planning and development to deployment, hosting, and long-term maintenance.</p>
-                        </article>
-                        <article class="benefit-item">
-                            <h3>Flexible Solutions</h3>
-                            <p>Development services, hosting, customization, consulting, and publishing support under one roof.</p>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <section class="service-section" id="products">
-                <div class="container">
-                    <h2>Products Built By Runlevel Systems</h2>
+                    <h2>Platforms That Support Real Projects</h2>
+                    <p class="section-intro">Runlevel Systems also builds and maintains products that support collaboration, hosting, infrastructure, and long-term operations.</p>
+                    <p class="section-intro">Games and interactive experiences are part of our development portfolio, but they live in the Projects page as examples of what we have built.</p>
                     <div class="three-column-stack">
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">🌐</div>
                             <h3>GameServers.World</h3>
-                            <p>Game server hosting powered by GSP.</p>
+                            <p>Hosted infrastructure for communities and online services that need reliable deployment and management.</p>
                             <a class="core-action tertiary" href="/gameserver-hosting.php">Learn More</a>
                         </article>
-
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">🛠️</div>
                             <h3>GSP Panel</h3>
-                            <p>Open source game server management software and commercial infrastructure product.</p>
+                            <p>Infrastructure software for provisioning, managing, and operating hosted game server environments.</p>
                             <a class="core-action tertiary" href="/game-server-panel.php">Learn More</a>
                         </article>
-
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">☁️</div>
                             <h3>Runlevel Tools</h3>
-                            <p>Future tools for creators, developers, and communities.</p>
+                            <p>The shared collaboration platform behind Dev Partner, connecting planning, repositories, builds, testing, documentation, and support work.</p>
                             <a class="core-action tertiary" href="/products.php">Learn More</a>
                         </article>
                     </div>
@@ -155,11 +168,12 @@
 
             <section class="service-section">
                 <div class="container cta-block">
-                    <h2>Need A Dev Partner?</h2>
-                    <p>Whether you need development services, hosting, mods and customization, troubleshooting, or long-term support, Runlevel Systems can help.</p>
+                    <h2>Ready To Build Something Real?</h2>
+                    <p>If you have an idea, a product to improve, or a system that needs to move forward, Runlevel Systems can help design it, debug it, and deploy it.</p>
                     <p class="hero-tagline">DESIGN • DEBUG • DEPLOY</p>
                     <div class="service-actions">
-                        <a class="core-action primary" href="/contact.php">Tell Us What You Need</a>
+                        <a class="core-action primary" href="/contact.php">Tell Us About Your Project</a>
+                        <a class="core-action secondary" href="/projects.php">See What We Build</a>
                     </div>
                 </div>
             </section>
@@ -171,7 +185,7 @@
               "name": "Runlevel Systems",
               "url": "https://runlevel.systems",
               "slogan": "Design • Debug • Deploy",
-              "description": "Runlevel Systems offers affordable development, hosting, customization, and publishing support for solo creators, small teams, game communities, and small businesses."
+              "description": "Runlevel Systems designs, builds, tests, and deploys software solutions including websites, mobile apps, simulations, business platforms, backend services, and infrastructure systems."
             }
             </script>
         </main>
