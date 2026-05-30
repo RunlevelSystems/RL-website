@@ -33,11 +33,6 @@
                 <div class="container">
                     <h2>Your Team 🤝 Runlevel Systems</h2>
                     <div class="ddd-partnership-grid">
-                        <article class="service-detail-card">
-                            <p class="ddd-copy">You bring the vision, goals, project knowledge, and business requirements.</p>
-                            <p class="ddd-copy">We bring technical expertise, development experience, deployment knowledge, troubleshooting skills, and infrastructure support.</p>
-                            <p class="ddd-copy"><strong>Together we move the project forward.</strong></p>
-                        </article>
                         <article class="ddd-team-visual">
                             <div class="team-link">
                                 <div class="team-block">
@@ -48,6 +43,13 @@
                                     <p>Runlevel Systems</p>
                                 </div>
                             </div>
+                        </article>
+                        <article class="service-detail-card">
+                            <ul class="service-icon-list single-column">
+                                <li>You bring the vision, goals, project knowledge, and business requirements.</li>
+                                <li>We bring technical expertise, development experience, deployment knowledge, troubleshooting skills, and infrastructure support.</li>
+                                <li><strong>Together we move the project forward.</strong></li>
+                            </ul>
                         </article>
                     </div>
                 </div>
@@ -62,7 +64,7 @@
                         <p>Instead of managing tasks, notes, bugs, documentation, and technical requests across multiple disconnected platforms, Runlevel Tools provides a central hub for your project.</p>
                         <p>It combines planning, tracking, documentation, collaboration, and direct access to Runlevel Systems support.</p>
                     </div>
-                    <div class="service-card-grid two-columns" style="margin-top: 1rem;">
+                    <div class="service-card-grid">
                         <article class="service-card-item"><h3>Project Planning</h3><p>Track goals, milestones, features, and project requirements.</p></article>
                         <article class="service-card-item"><h3>Kanban Boards</h3><p>Organize development work using visual workflows.</p></article>
                         <article class="service-card-item"><h3>Issue Tracking</h3><p>Report bugs, request features, and track technical problems.</p></article>
@@ -93,7 +95,7 @@
                         </article>
                         <article class="service-card-item">
                             <h3>Request Help Directly In Workspace</h3>
-                            <ul class="service-icon-list">
+                            <ul class="service-icon-list single-column">
                                 <li>Create a request.</li>
                                 <li>Attach screenshots, notes, and details.</li>
                                 <li>Keep support tied to project context.</li>
