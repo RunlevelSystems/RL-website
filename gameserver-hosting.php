@@ -44,7 +44,15 @@
 
             <section class="service-section">
                 <div class="container">
-                    <h2>Who Hosting Is For</h2>
+                    <h2>Rent Through GameServers.World</h2>
+                    <p class="section-intro">Get affordable, production-ready hosting for game communities, private groups, and multiplayer projects.</p>
+                    <ul class="service-icon-list">
+                        <li>Community hosting with reliable uptime</li>
+                        <li>Modded server support for custom stacks</li>
+                        <li>Help when setup and update issues appear</li>
+                        <li>Simple path from launch to growth</li>
+                    </ul>
+                    <p class="service-card-subtitle mt-3">Who Hosting Is For</p>
                     <div class="service-card-grid two-columns">
                         <article class="service-card-item"><h3>Friend Groups</h3><p>Spin up a server for regular game nights without managing the hardware yourself.</p></article>
                         <article class="service-card-item"><h3>Gaming Communities</h3><p>Give your players a stable home base that can grow with your community.</p></article>
