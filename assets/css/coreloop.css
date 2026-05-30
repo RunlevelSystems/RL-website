@@ -1290,3 +1290,111 @@ body *[style*="color:#4cc9ff"] {
     margin-bottom: 0.75rem;
   }
 }
+
+/* ============================================================
+   Six-block "What We Build" grid
+   ============================================================ */
+.six-block-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+@media (max-width: 992px) {
+  .six-block-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .six-block-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   "Why Customers Work With Us" reason grid
+   ============================================================ */
+.customer-reason-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.customer-reason-item {
+  background: rgba(12, 23, 41, 0.75);
+  border: 1px solid rgba(54, 243, 255, 0.2);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  color: #e6f5ff;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+@media (max-width: 992px) {
+  .customer-reason-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .customer-reason-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   Featured project spotlight section
+   ============================================================ */
+.featured-project-section {
+  background: linear-gradient(135deg, #07111f 0%, #0a1e3a 50%, #071928 100%);
+  border-top: 2px solid rgba(255, 198, 0, 0.35);
+  border-bottom: 2px solid rgba(255, 198, 0, 0.35);
+  padding: 2.5rem 0;
+}
+
+.featured-project-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.featured-project-text {
+  /* Main text content */
+}
+
+.featured-project-badge {
+  background: linear-gradient(165deg, rgba(10, 20, 38, 0.95), rgba(9, 24, 46, 0.92));
+  border: 1px solid rgba(255, 198, 0, 0.35);
+  border-radius: 14px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  position: sticky;
+  top: 1rem;
+}
+
+.featured-badge-label {
+  font-weight: 700;
+  color: #f3fbff;
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+
+.featured-badge-sub {
+  color: #bfd4ec;
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .featured-project-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-project-badge {
+    position: static;
+    order: -1;
+  }
+}

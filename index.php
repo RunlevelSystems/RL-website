@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
 
-        <title>Runlevel Systems | Software Development for Web, Mobile, Simulation, and Infrastructure</title>
-        <meta name="description" content="Runlevel Systems designs, builds, tests, and deploys software solutions including websites, business applications, mobile apps, training simulators, customer portals, backend services, and infrastructure platforms.">
-        <meta name="keywords" content="software development, custom software, mobile applications, training simulation, infrastructure platforms, Dev Partner, Runlevel Systems">
+        <title>Runlevel Systems | Turn Ideas Into Working Software</title>
+        <meta name="description" content="Runlevel Systems designs, builds, tests, and deploys software solutions for businesses, organizations, creators, startups, and communities. Business applications, mobile apps, training simulators, web applications, infrastructure platforms, and interactive experiences.">
+        <meta name="keywords" content="software development, custom software, mobile applications, training simulation, business applications, infrastructure platforms, Dev Partner, Runlevel Systems">
 
         <link href="assets/css/coreloop.css" rel="stylesheet">
     </head>
@@ -30,15 +30,9 @@
                 <div class="container">
                     <p class="service-kicker">Runlevel Systems</p>
                     <h1>Turn Ideas Into Working Software</h1>
-                    <p class="service-lead">Runlevel Systems designs, builds, tests, and deploys software solutions for businesses, creators, startups, communities, and organizations.</p>
-                    <p class="service-sublead">Whether you need a website, mobile app, business application, training simulator, customer portal, backend service, or complete software platform, we can build it.</p>
+                    <p class="service-lead">Runlevel Systems designs, builds, tests, and deploys software solutions for businesses, organizations, creators, startups, and communities.</p>
+                    <p class="service-sublead">Whether you need a mobile app, business application, training simulator, customer portal, backend service, website, or complete software platform, we can build it.</p>
                     <p class="hero-tagline">DESIGN • DEBUG • DEPLOY</p>
-                    <p class="service-sublead">We help businesses, creators, and organizations:</p>
-                    <ul class="service-icon-list single-column">
-                        <li><strong>DESIGN</strong> new solutions.</li>
-                        <li><strong>DEBUG</strong> difficult problems.</li>
-                        <li><strong>DEPLOY</strong> software that works.</li>
-                    </ul>
                     <div class="service-actions">
                         <a class="core-action primary" href="/contact.php">Tell Us About Your Project</a>
                         <a class="core-action secondary" href="#what-we-build">See What We Build</a>
@@ -49,118 +43,115 @@
             <section class="service-section" id="what-we-build">
                 <div class="container">
                     <h2>What We Build</h2>
-                    <p class="section-intro">Every project starts with a problem that needs solving.</p>
-                    <p class="section-intro">We help transform ideas into real software systems that people can use.</p>
-                    <div class="service-card-grid">
+                    <p class="section-intro">We help businesses, organizations, creators, and communities turn ideas into real software.</p>
+                    <div class="six-block-grid">
                         <article class="service-card-item">
-                            <div class="service-icon" aria-hidden="true">💻</div>
-                            <h3>Custom Software</h3>
-                            <p class="service-card-subtitle">Business applications, portals, tools, websites, web apps, and backend systems.</p>
-                            <p>We build software that supports daily operations, customer workflows, internal teams, and online services.</p>
-                            <ul class="service-icon-list single-column">
-                                <li>Business management systems</li>
-                                <li>Customer portals</li>
-                                <li>Inventory systems</li>
-                                <li>Scheduling tools</li>
-                                <li>Internal company software</li>
-                                <li>Automation systems</li>
-                            </ul>
+                            <div class="service-icon" aria-hidden="true">💼</div>
+                            <h3>Business Applications</h3>
+                            <p>Custom software designed around your workflow.</p>
+                            <a class="core-action tertiary" href="/software.php">Learn More</a>
                         </article>
-
-                        <article class="service-card-item">
-                            <div class="service-icon" aria-hidden="true">📱</div>
-                            <h3>Mobile Applications</h3>
-                            <p class="service-card-subtitle">Android and iOS applications for businesses, communities, products, and customers.</p>
-                            <p>We create mobile experiences that keep teams connected, services accessible, and customers engaged.</p>
-                            <ul class="service-icon-list single-column">
-                                <li>Customer apps</li>
-                                <li>Field service apps</li>
-                                <li>Membership systems</li>
-                                <li>Community apps</li>
-                                <li>Mobile business tools</li>
-                            </ul>
-                        </article>
-
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">🧪</div>
                             <h3>Training &amp; Simulation</h3>
-                            <p class="service-card-subtitle">Interactive virtual environments for learning, validation, and product understanding.</p>
-                            <p>We create simulation systems that let people learn safely before working with real equipment or processes.</p>
-                            <ul class="service-icon-list single-column">
-                                <li>Equipment training</li>
-                                <li>Safety training</li>
-                                <li>Installation training</li>
-                                <li>Maintenance procedures</li>
-                                <li>Product demonstrations</li>
-                                <li>Virtual labs</li>
-                            </ul>
+                            <p>Interactive training systems and virtual environments.</p>
+                            <a class="core-action tertiary" href="/simulation.php">Learn More</a>
                         </article>
-
+                        <article class="service-card-item">
+                            <div class="service-icon" aria-hidden="true">📱</div>
+                            <h3>Mobile Apps</h3>
+                            <p>Android and iPhone applications for employees and customers.</p>
+                            <a class="core-action tertiary" href="/software.php">Learn More</a>
+                        </article>
+                        <article class="service-card-item">
+                            <div class="service-icon" aria-hidden="true">🌐</div>
+                            <h3>Web Applications</h3>
+                            <p>Customer portals, SaaS platforms, and online systems.</p>
+                            <a class="core-action tertiary" href="/software.php">Learn More</a>
+                        </article>
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">🖧</div>
                             <h3>Infrastructure Platforms</h3>
-                            <p class="service-card-subtitle">Systems for accounts, hosted services, automation, deployments, and online operations.</p>
-                            <p>We build the platforms behind software delivery, customer access, and service management.</p>
-                            <ul class="service-icon-list single-column">
-                                <li>Hosting platforms</li>
-                                <li>Service management systems</li>
-                                <li>Provisioning systems</li>
-                                <li>Remote management tools</li>
-                                <li>Customer management platforms</li>
-                            </ul>
+                            <p>Management systems, automation tools, and backend services.</p>
+                            <a class="core-action tertiary" href="/software.php">Learn More</a>
+                        </article>
+                        <article class="service-card-item">
+                            <div class="service-icon" aria-hidden="true">🎮</div>
+                            <h3>Interactive Experiences</h3>
+                            <p>Games, simulations, and real-time collaborative software.</p>
+                            <a class="core-action tertiary" href="/projects.php">Learn More</a>
                         </article>
                     </div>
                 </div>
             </section>
 
-            <section class="service-section alt">
+            <section class="service-section alt" id="why-customers">
                 <div class="container">
-                    <h2>Build It, Launch It, Keep It Moving</h2>
-                    <p class="section-intro">Some customers need a complete software project built from the ground up.</p>
-                    <p class="section-intro">Others already have a project and need technical help adding features, fixing issues, launching products, or maintaining what is already in production.</p>
-                    <div class="service-card-grid two-columns">
-                        <article class="service-card-item">
-                            <div class="service-icon" aria-hidden="true">🚀</div>
-                            <h3>Complete Project Delivery</h3>
-                            <p>Runlevel Systems can design, build, test, and deploy complete software solutions when you need a project created from idea to launch.</p>
-                            <p>We build business software, web applications, mobile apps, simulation systems, infrastructure platforms, games, and interactive experiences.</p>
-                        </article>
-                        <article class="service-card-item">
-                            <div class="service-icon" aria-hidden="true">🤝</div>
-                            <h3>Dev Partner + Runlevel Tools</h3>
-                            <p>When your project needs ongoing help, Dev Partner lets Runlevel Systems become part of your team while Runlevel Tools keeps planning, code, documentation, builds, testing, and support requests connected.</p>
+                    <h2>Why Customers Work With Us</h2>
+                    <p class="section-intro">Runlevel Systems helps solve real development problems.</p>
+                    <div class="customer-reason-grid">
+                        <div class="customer-reason-item">"We have an idea but no development team."</div>
+                        <div class="customer-reason-item">"Our software is outdated and needs a rebuild."</div>
+                        <div class="customer-reason-item">"We need a mobile app."</div>
+                        <div class="customer-reason-item">"We need employee training software."</div>
+                        <div class="customer-reason-item">"We need a customer portal."</div>
+                        <div class="customer-reason-item">"We need help getting our product launched."</div>
+                    </div>
+                    <p class="section-intro" style="margin-top: 1.2rem;">We can design it, build it, or help you get it across the finish line.</p>
+                    <div class="service-actions">
+                        <a class="core-action primary" href="/contact.php">Tell Us About Your Project</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="service-section featured-project-section">
+                <div class="container">
+                    <div class="featured-project-inner">
+                        <div class="featured-project-text">
+                            <p class="service-kicker">Featured Project</p>
+                            <h2>Virtual Training Without Real-World Risk</h2>
+                            <p class="service-lead">Runlevel Systems developed an interactive hardware training environment that allows technicians to learn installation, maintenance, and upgrade procedures inside a virtual environment before working on production equipment.</p>
+                            <p>The PureOPS Training Platform eliminates the cost and risk of training staff on live systems. Technicians learn the procedures in a realistic virtual environment and arrive confident and prepared.</p>
+                            <ul class="service-icon-list" style="margin-top: 0.8rem;">
+                                <li>Equipment training</li>
+                                <li>Safety training</li>
+                                <li>New employee onboarding</li>
+                                <li>Manufacturing processes</li>
+                                <li>IT operations</li>
+                                <li>Customer education</li>
+                                <li>Digital twins</li>
+                                <li>Virtual labs</li>
+                            </ul>
                             <div class="service-actions">
-                                <a class="core-action tertiary" href="/design-debug-deploy.php">Explore Dev Partner</a>
-                                <a class="core-action tertiary" href="/products.php">See Runlevel Tools</a>
+                                <a class="core-action primary" href="/simulation.php">See Training &amp; Simulation</a>
                             </div>
-                        </article>
+                        </div>
+                        <div class="featured-project-badge">
+                            <div class="service-icon" style="width: 72px; height: 72px; font-size: 2.5rem; margin: 0 auto 1rem;" aria-hidden="true">🧪</div>
+                            <p class="featured-badge-label">PureOPS Training Platform</p>
+                            <p class="featured-badge-sub">Interactive hardware simulation for enterprise training.</p>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <section class="service-section">
                 <div class="container">
-                    <h2>Platforms That Support Real Projects</h2>
-                    <p class="section-intro">Runlevel Systems also builds and maintains products that support collaboration, hosting, infrastructure, and long-term operations.</p>
-                    <p class="section-intro">Games and interactive experiences are part of our development portfolio, but they live in the Projects page as examples of what we have built.</p>
-                    <div class="three-column-stack">
+                    <h2>Build It, Launch It, Keep It Moving</h2>
+                    <p class="section-intro">Some customers need a complete software project built from the ground up. Others already have a project and need technical help adding features, fixing issues, or maintaining what is in production.</p>
+                    <div class="service-card-grid two-columns">
                         <article class="service-card-item">
-                            <div class="service-icon" aria-hidden="true">🌐</div>
-                            <h3>GameServers.World</h3>
-                            <p>Hosted infrastructure for communities and online services that need reliable deployment and management.</p>
-                            <a class="core-action tertiary" href="/gameserver-hosting.php">Learn More</a>
+                            <div class="service-icon" aria-hidden="true">🚀</div>
+                            <h3>Complete Project Delivery</h3>
+                            <p>Runlevel Systems can design, build, test, and deploy complete software solutions when you need a project created from idea to launch.</p>
+                            <p>We build business software, web applications, mobile apps, simulation systems, infrastructure platforms, games, and interactive experiences.</p>
+                            <a class="core-action tertiary" href="/software.php">Explore Software Development</a>
                         </article>
                         <article class="service-card-item">
-                            <div class="service-icon" aria-hidden="true">🛠️</div>
-                            <h3>GSP Panel</h3>
-                            <p>Infrastructure software for provisioning, managing, and operating hosted game server environments.</p>
-                            <a class="core-action tertiary" href="/game-server-panel.php">Learn More</a>
-                        </article>
-                        <article class="service-card-item">
-                            <div class="service-icon" aria-hidden="true">☁️</div>
-                            <h3>Runlevel Tools</h3>
-                            <p>The shared collaboration platform behind Dev Partner, connecting planning, repositories, builds, testing, documentation, and support work.</p>
-                            <a class="core-action tertiary" href="/products.php">Learn More</a>
+                            <div class="service-icon" aria-hidden="true">🤝</div>
+                            <h3>Dev Partner</h3>
+                            <p>Need ongoing help? Dev Partner lets Runlevel Systems become part of your team while Runlevel Tools keeps planning, code, documentation, builds, testing, and support connected.</p>
+                            <a class="core-action tertiary" href="/design-debug-deploy.php">Explore Dev Partner</a>
                         </article>
                     </div>
                 </div>
