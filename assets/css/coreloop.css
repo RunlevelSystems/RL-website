@@ -582,6 +582,10 @@ body *[style*="color:#4cc9ff"] {
   padding: 1.95rem 0;
 }
 
+.service-section + .service-section {
+  border-top: 1px solid rgba(54, 243, 255, 0.08);
+}
+
 .service-section.alt {
   background: rgba(12, 23, 41, 0.72);
   border-top: 1px solid rgba(54, 243, 255, 0.08);
@@ -698,6 +702,10 @@ body *[style*="color:#4cc9ff"] {
 .benefit-item p:last-child,
 .service-detail-card p:last-child {
   margin-bottom: 0;
+}
+
+.service-card-item h3 {
+  line-height: 1.3;
 }
 
 .service-icon {
@@ -1196,6 +1204,15 @@ body *[style*="color:#4cc9ff"] {
 
   .service-hero h1 {
     font-size: clamp(1.6rem, 7vw, 2.2rem);
+  }
+
+  .service-lead {
+    font-size: clamp(1rem, 4.2vw, 1.2rem);
+  }
+
+  .service-sublead {
+    font-size: 0.97rem;
+    line-height: 1.55;
   }
 
   h2 {
