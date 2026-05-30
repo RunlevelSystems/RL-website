@@ -46,7 +46,7 @@
                 </div>
             </section>
 
-            <section class="service-section" id="what-we-do">
+            <section class="service-section" id="what-we-build">
                 <div class="container">
                     <h2>What We Build</h2>
                     <p class="section-intro">Every project starts with a problem that needs solving.</p>
