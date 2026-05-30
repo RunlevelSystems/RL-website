@@ -32,129 +32,96 @@
             <section class="service-section">
                 <div class="container">
                     <h2>Your Team + Runlevel Systems</h2>
-                    <p class="ddd-subtitle">A Development Partnership When You Need Extra Help</p>
-                    <article class="partnership-card">
-                        <div class="partnership-row">
-                            <div class="partnership-block">
+                    <p class="ddd-subtitle">We help when your project needs extra technical help.</p>
+                    <article class="partnership-card partnership-compact">
+                        <div class="partnership-equation" aria-label="Your Team plus Runlevel Systems equals Project Moving Forward">
+                            <div class="partnership-eq-block">
                                 <span class="partnership-icon" aria-hidden="true">👥</span>
-                                <h3>Your Team</h3>
-                                <ul class="service-icon-list single-column">
-                                    <li>Vision</li>
-                                    <li>Goals</li>
-                                    <li>Industry knowledge</li>
-                                </ul>
+                                <strong>Your Team</strong>
                             </div>
                             <div class="partnership-operator" aria-hidden="true">+</div>
-                            <div class="partnership-block">
+                            <div class="partnership-eq-block">
                                 <span class="partnership-icon" aria-hidden="true">🤝</span>
-                                <h3>Runlevel Systems</h3>
-                                <ul class="service-icon-list single-column">
-                                    <li>Technical expertise</li>
-                                    <li>Infrastructure</li>
-                                    <li>Deployment experience</li>
-                                </ul>
+                                <strong>Runlevel Systems</strong>
                             </div>
                             <div class="partnership-operator" aria-hidden="true">=</div>
-                            <div class="partnership-block">
+                            <div class="partnership-eq-block">
                                 <span class="partnership-icon" aria-hidden="true">🚀</span>
-                                <h3>Project Success</h3>
-                                <ul class="service-icon-list single-column">
-                                    <li>Working product</li>
-                                    <li>Launch</li>
-                                    <li>Growth</li>
-                                </ul>
+                                <strong>Project Moving Forward</strong>
                             </div>
                         </div>
-                        <p class="partnership-text">You bring the vision, project goals, customer knowledge, and business requirements.</p>
-                        <p class="partnership-text">Runlevel Systems brings technical expertise, development experience, infrastructure knowledge, deployment support, and troubleshooting assistance.</p>
-                        <p class="partnership-text"><strong>Together, we help move projects from idea to reality.</strong></p>
+                        <p class="partnership-text">You bring the idea, goals, and project knowledge.</p>
+                        <p class="partnership-text">Runlevel Systems brings development help, troubleshooting, infrastructure, deployment, and publishing support.</p>
+                        <p class="partnership-text"><strong>Together, we move the project forward.</strong></p>
                     </article>
-                </div>
-            </section>
-
-            <section class="service-section alt">
-                <div class="container">
-                    <h2>Why People Hire A Dev Partner</h2>
-                    <p class="section-intro">Projects often stall because teams need practical technical help at the right moment.</p>
-                    <div class="service-card-grid">
-                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">⏸️</span><h3>Project Stalled</h3><p>We diagnose blockers, rebuild momentum, and get delivery moving again.</p></article>
-                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">👋</span><h3>Developer Left</h3><p>We step in quickly, document the current state, and stabilize the roadmap.</p></article>
-                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">📦</span><h3>Won&rsquo;t Publish</h3><p>We resolve release blockers, fix build issues, and prepare your launch pipeline.</p></article>
-                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">📱</span><h3>Need An iOS Version</h3><p>We plan cross-platform delivery and help expand your product to iOS.</p></article>
-                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🎮</span><h3>Need Multiplayer</h3><p>We design backend workflows and implementation paths for multiplayer features.</p></article>
-                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🌐</span><h3>Need A Website</h3><p>We deliver connected web experiences that support your product and growth.</p></article>
-                    </div>
-                </div>
-            </section>
-
-            <section class="service-section">
-                <div class="container">
-                    <h2>How We Help</h2>
-                    <div class="service-card-grid two-columns">
-                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🧭</span><h3>Technical Direction</h3><p>Get clear next steps, realistic scope, and decision support for your roadmap.</p></article>
-                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🧰</span><h3>Delivery Support</h3><p>We handle implementation work, unblock engineering tasks, and protect momentum.</p></article>
-                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">⚙️</span><h3>Infrastructure Guidance</h3><p>Set up environments, deployment workflows, and operational practices that scale.</p></article>
-                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🛠️</span><h3>Troubleshooting</h3><p>Fix urgent technical issues before they become expensive schedule delays.</p></article>
-                    </div>
-                </div>
-            </section>
-
-            <section class="service-section alt">
-                <div class="container">
-                    <h2>What We Can Build</h2>
-                    <div class="service-card-grid two-columns">
-                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🕸️</span><h3>Web Platforms</h3><p>Customer portals, dashboards, and websites connected to your core product.</p></article>
-                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">📲</span><h3>Mobile Features</h3><p>iOS and Android capabilities that extend your product experience.</p></article>
-                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">☁️</span><h3>Backend Systems</h3><p>APIs, automation, integrations, and cloud services that support real users.</p></article>
-                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🧩</span><h3>Custom Components</h3><p>Targeted systems for gameplay, operations, workflow tooling, and growth needs.</p></article>
-                    </div>
                 </div>
             </section>
 
             <section class="service-section tools-flagship">
                 <div class="container">
                     <h2>Runlevel Tools</h2>
-                    <p class="ddd-subtitle">Your Development Hub</p>
-                    <p class="section-intro">Runlevel Tools is a shared development workspace designed to help teams plan, build, track, and launch projects while providing direct access to Runlevel Systems when help is needed.</p>
+                    <p class="ddd-subtitle">Your Project Hub For Planning, Code, Issues, Builds, And Help</p>
+                    <p class="section-intro">Runlevel Tools gives your project one place to plan work, share code, submit issues, track progress, and request help from Runlevel Systems.</p>
+                    <p class="section-intro">Instead of sending scattered messages, screenshots, files, and notes across different platforms, your project gets a shared workspace where the work can be organized and acted on.</p>
                     <div class="service-card-grid">
-                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">📋</span><h3>Kanban Boards</h3><p>Organize development work with clear visual workflow stages.</p></article>
-                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🐞</span><h3>Issue Tracking</h3><p>Capture blockers, bugs, and feature requests in one place.</p></article>
-                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">📚</span><h3>Documentation</h3><p>Keep requirements, notes, and technical references accessible to everyone.</p></article>
-                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🔗</span><h3>Source Control Integration</h3><p>Connect repos and development workflows to project planning.</p></article>
-                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🗺️</span><h3>Project Planning</h3><p>Track milestones, delivery targets, and execution priorities.</p></article>
-                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">👥</span><h3>Team Collaboration</h3><p>Share context and decisions without tool sprawl.</p></article>
-                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">📨</span><h3>Development Requests</h3><p>Submit technical requests directly to Runlevel Systems support.</p></article>
-                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">📈</span><h3>Progress Tracking</h3><p>See status changes and delivery progress at a glance.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">📋</span><h3>Kanban Planning</h3><p>Plan features, bugs, tasks, milestones, and development goals.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🔗</span><h3>Code Access</h3><p>Connect repositories or shared workspaces so Runlevel Systems can review and work on code when approved.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🐞</span><h3>Issue Requests</h3><p>Submit bugs, feature requests, screenshots, notes, and project blockers directly to the Dev Partner team.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🏗️</span><h3>Build Tools</h3><p>Prepare and test builds for Windows, Android, iOS, web apps, and server deployments.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">✅</span><h3>Testing Tools</h3><p>Run checks, test deployment steps, review logs, and verify that changes are working.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🚀</span><h3>Deployment Tools</h3><p>Help move projects from local development to websites, stores, servers, or hosting platforms.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">📚</span><h3>Documentation</h3><p>Keep setup notes, decisions, requirements, credentials guidance, and project knowledge in one place.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">👥</span><h3>Team Workflow</h3><p>Give small teams a simple structure for what needs to be done next.</p></article>
                     </div>
                 </div>
             </section>
 
             <section class="service-section alt">
                 <div class="container">
-                    <h2>Help Request Workflow</h2>
-                    <p class="section-intro">Support requests stay connected to project context from first report to final delivery.</p>
-                    <div class="workflow-diagram" role="img" aria-label="Create issue, describe problem, review by Runlevel Systems, solution implemented, project moves forward">
-                        <div class="workflow-step"><span aria-hidden="true">1</span><p>Create Issue</p></div>
-                        <div class="workflow-arrow" aria-hidden="true">↓</div>
-                        <div class="workflow-step"><span aria-hidden="true">2</span><p>Describe Problem</p></div>
-                        <div class="workflow-arrow" aria-hidden="true">↓</div>
-                        <div class="workflow-step"><span aria-hidden="true">3</span><p>Runlevel Systems Reviews</p></div>
-                        <div class="workflow-arrow" aria-hidden="true">↓</div>
-                        <div class="workflow-step"><span aria-hidden="true">4</span><p>Solution Implemented</p></div>
-                        <div class="workflow-arrow" aria-hidden="true">↓</div>
-                        <div class="workflow-step"><span aria-hidden="true">5</span><p>Project Moves Forward</p></div>
+                    <h2>Optional Development Workspace</h2>
+                    <p class="ddd-subtitle">A Ready-To-Use Environment For Building And Testing</p>
+                    <p class="section-intro">Some projects need more than a task board.</p>
+                    <p class="section-intro">Runlevel Systems can provide development workspaces using Linux containers and remote tools so projects have a controlled environment for building, testing, validating, and deploying work.</p>
+                    <p class="section-intro">This helps avoid the common problem where a project works on one person's computer but not anywhere else.</p>
+                    <div class="service-card-grid">
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">💻</span><h3>Code Workspace</h3><p>Browser-based or remote coding environment for project work.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🌿</span><h3>Git Tools</h3><p>Source control, branch management, project history, and collaboration.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🔨</span><h3>Build Validation</h3><p>Check whether a project can build before changes are considered complete.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🤖</span><h3>Android Build Support</h3><p>Tools and setup help for Android builds and Google Play preparation.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🍎</span><h3>iOS Build Support</h3><p>Assistance preparing iOS projects, Xcode exports, signing steps, and App Store submission support when Apple hardware is available.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🪟</span><h3>Windows Build Support</h3><p>Build and package desktop applications or games for Windows.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">📜</span><h3>Deployment Scripts</h3><p>Repeatable deployment steps for websites, servers, apps, and backend services.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🖧</span><h3>Server Testing</h3><p>Test backend services, APIs, game servers, databases, and network configuration.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">📋</span><h3>Log Review</h3><p>Collect and review logs to troubleshoot problems faster.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">💾</span><h3>Backup And Rollback</h3><p>Help protect projects before major changes or deployments.</p></article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="service-section alt">
+                <div class="container">
+                    <h2>How Help Requests Work</h2>
+                    <div class="workflow-horizontal" role="img" aria-label="Create Request, Add Details, We Review, We Fix Or Advise, Project Moves Forward">
+                        <div class="workflow-pill"><span aria-hidden="true">1</span><p>Create Request</p></div>
+                        <div class="workflow-h-arrow" aria-hidden="true">→</div>
+                        <div class="workflow-pill"><span aria-hidden="true">2</span><p>Add Details</p></div>
+                        <div class="workflow-h-arrow" aria-hidden="true">→</div>
+                        <div class="workflow-pill"><span aria-hidden="true">3</span><p>We Review</p></div>
+                        <div class="workflow-h-arrow" aria-hidden="true">→</div>
+                        <div class="workflow-pill"><span aria-hidden="true">4</span><p>We Fix Or Advise</p></div>
+                        <div class="workflow-h-arrow" aria-hidden="true">→</div>
+                        <div class="workflow-pill"><span aria-hidden="true">5</span><p>Project Moves Forward</p></div>
                     </div>
                 </div>
             </section>
 
             <section class="service-section">
                 <div class="container cta-block">
-                    <h2>Need A Dev Partner?</h2>
-                    <p>Bring your goals, blockers, or project ideas and we will help you move faster with practical technical support.</p>
+                    <h2>Ready To Get Started?</h2>
+                    <p>Bring your goals, blockers, or project ideas and we will help you move forward.</p>
                     <p class="hero-tagline">DESIGN • DEBUG • DEPLOY</p>
                     <div class="service-actions">
-                        <a class="core-action primary" href="/contact.php">Contact Us</a>
-                        <a class="core-action secondary" href="/projects.php">View Projects</a>
+                        <a class="core-action primary" href="/contact.php">Get Help</a>
                     </div>
                 </div>
             </section>
