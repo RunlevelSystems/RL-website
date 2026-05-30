@@ -901,6 +901,34 @@ body *[style*="color:#4cc9ff"] {
   padding: 0.9rem;
 }
 
+/* Compact equation-style partnership layout */
+.partnership-compact .partnership-equation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.partnership-eq-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(8, 17, 31, 0.82);
+  border: 1px solid rgba(54, 243, 255, 0.22);
+  border-radius: 10px;
+  padding: 0.6rem 0.9rem;
+  text-align: center;
+  min-width: 130px;
+}
+
+.partnership-eq-block strong {
+  color: #f3fbff;
+  font-size: 0.95rem;
+}
+
 .partnership-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
@@ -929,7 +957,7 @@ body *[style*="color:#4cc9ff"] {
   height: 40px;
   border-radius: 10px;
   background: rgba(10, 132, 255, 0.25);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   font-size: 1.2rem;
 }
 
@@ -951,6 +979,56 @@ body *[style*="color:#4cc9ff"] {
   border-bottom: 1px solid rgba(255, 198, 0, 0.2);
 }
 
+/* ============================================================
+   Horizontal workflow (desktop) / stacked (mobile)
+   ============================================================ */
+.workflow-horizontal {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+}
+
+.workflow-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid rgba(54, 243, 255, 0.24);
+  background: rgba(10, 20, 38, 0.82);
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem 0.45rem 0.55rem;
+  white-space: nowrap;
+}
+
+.workflow-pill span {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 198, 0, 0.2);
+  color: var(--core-gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.82rem;
+  flex: 0 0 auto;
+}
+
+.workflow-pill p {
+  margin: 0;
+  color: #e8f5ff;
+  font-size: 0.9rem;
+}
+
+.workflow-h-arrow {
+  color: var(--core-gold);
+  font-size: 1.1rem;
+  line-height: 1;
+  flex: 0 0 auto;
+}
+
+/* Keep old vertical workflow styles in case used elsewhere */
 .workflow-diagram {
   display: grid;
   gap: 0.5rem;
@@ -1110,14 +1188,32 @@ body *[style*="color:#4cc9ff"] {
 }
 
 @media (max-width: 768px) {
+  /* Reduce section and hero padding by ~25% on mobile */
   .service-hero,
   .service-section {
-    padding: 1.72rem 0;
+    padding: 1.3rem 0;
+  }
+
+  .service-hero h1 {
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
   }
 
   .service-actions {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .core-action {
+    text-align: center;
+    justify-content: center;
   }
 
   .service-card-grid,
@@ -1126,6 +1222,13 @@ body *[style*="color:#4cc9ff"] {
   .ddd-feature-list,
   .service-icon-list {
     grid-template-columns: 1fr;
+  }
+
+  /* Ensure cards look card-like on mobile */
+  .service-card-item,
+  .benefit-item {
+    padding: 0.75rem;
+    border-radius: 10px;
   }
 
   .partnership-row {
@@ -1137,7 +1240,53 @@ body *[style*="color:#4cc9ff"] {
     line-height: 1;
   }
 
+  /* Compact equation wraps nicely on small screens */
+  .partnership-compact .partnership-equation {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .partnership-eq-block {
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    min-width: unset;
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .partnership-compact .partnership-operator {
+    align-self: center;
+  }
+
+  /* Workflow pills stack vertically on mobile */
+  .workflow-horizontal {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .workflow-pill {
+    border-radius: 10px;
+    white-space: normal;
+  }
+
+  .workflow-h-arrow {
+    text-align: center;
+    transform: rotate(90deg);
+    align-self: center;
+  }
+
   .cta-block {
     padding: 1.05rem;
+  }
+
+  /* Compact list spacing on mobile */
+  .service-icon-list li {
+    line-height: 1.5;
+  }
+
+  p {
+    margin-bottom: 0.75rem;
   }
 }

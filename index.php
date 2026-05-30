@@ -34,8 +34,7 @@
                     <p class="service-lead">Runlevel Systems offers affordable development, hosting, customization, and publishing support for solo creators, small teams, and game communities.</p>
                     <p class="hero-tagline">DESIGN • DEBUG • DEPLOY</p>
                     <div class="service-actions">
-                        <a class="core-action primary" href="#what-we-do">Explore Services</a>
-                        <a class="core-action secondary" href="/contact.php">Contact Us</a>
+                        <a class="core-action primary" href="/contact.php">Tell Us What You Need</a>
                     </div>
                 </div>
             </section>
@@ -51,7 +50,7 @@
                             <p class="service-card-subtitle">Need help building something but don't have a full development team?</p>
                             <p>Runlevel Systems helps creators, startups, indie developers, and small businesses solve technical challenges, build new features, fix broken projects, launch products, and get across the finish line.</p>
                             <p><strong>Examples:</strong> Build a website, launch a mobile app, fix a broken project, publish a game, add new features, and get help when you're stuck.</p>
-                            <a class="core-action tertiary" href="/design-debug-deploy.php">Learn About Development</a>
+                            <a class="core-action tertiary" href="/design-debug-deploy.php">See How We Can Help</a>
                         </article>
 
                         <article class="service-card-item">
@@ -61,7 +60,7 @@
                             <p>GameServers.World provides affordable game server hosting for communities, clans, friend groups, and multiplayer projects.</p>
                             <p>We provide the server. You focus on your players.</p>
                             <p><strong>Examples:</strong> Minecraft servers, survival servers, roleplay communities, modded servers, and private community servers.</p>
-                            <a class="core-action tertiary" href="/gameserver-hosting.php">Explore Hosting</a>
+                            <a class="core-action tertiary" href="/gameserver-hosting.php">View Hosting Options</a>
                         </article>
 
                         <article class="service-card-item">
@@ -70,7 +69,7 @@
                             <p class="service-card-subtitle">Need your server to do something unique?</p>
                             <p>We help install mods, customize gameplay, create scripts, connect Discord, fix broken updates, and add features that make communities stand out.</p>
                             <p><strong>Examples:</strong> Custom commands, economy systems, Discord integration, roleplay systems, server automation, and mod troubleshooting.</p>
-                            <a class="core-action tertiary" href="/game-server-support.php">Explore Mods</a>
+                            <a class="core-action tertiary" href="/game-server-support.php">See Mod Services</a>
                         </article>
                     </div>
                 </div>
@@ -160,8 +159,7 @@
                     <p>Whether you need development services, hosting, mods and customization, troubleshooting, or long-term support, Runlevel Systems can help.</p>
                     <p class="hero-tagline">DESIGN • DEBUG • DEPLOY</p>
                     <div class="service-actions">
-                        <a class="core-action primary" href="/contact.php">Contact Us</a>
-                        <a class="core-action secondary" href="/contact.php?subject=schedule">Schedule Consultation</a>
+                        <a class="core-action primary" href="/contact.php">Tell Us What You Need</a>
                     </div>
                 </div>
             </section>
