@@ -26,11 +26,16 @@
                     <p class="service-kicker">Hosting</p>
                     <h1>Game Server Hosting</h1>
                     <p class="service-lead">Rent Affordable Game Servers Through GameServers.World</p>
-                    <p class="section-intro">Need a game server for friends, a growing community, or a multiplayer project?</p>
-                    <p class="section-intro">GameServers.World provides affordable hosting designed for communities of all sizes.</p>
-                    <p class="section-intro">Simple setup.</p>
-                    <p class="section-intro">Reliable hosting.</p>
-                    <p class="section-intro">Real support.</p>
+                    <div class="compact-copy">
+                        <p>Need a game server for friends, a growing community, or a multiplayer project?</p>
+                        <p>GameServers.World provides affordable hosting designed for communities of all sizes.</p>
+                    </div>
+                    <ul class="service-icon-list">
+                        <li>Simple setup</li>
+                        <li>Reliable hosting</li>
+                        <li>Community-ready performance</li>
+                        <li>Real support</li>
+                    </ul>
                     <div class="service-actions">
                         <a class="core-action primary" href="https://gameservers.world" target="_blank" rel="noopener noreferrer">Visit GameServers.World</a>
                     </div>
@@ -53,22 +58,24 @@
 
             <section class="service-section alt">
                 <div class="container">
-                    <h2>What You Get</h2>
+                    <h2>Built For Communities And Modded Servers</h2>
                     <div class="service-card-grid two-columns">
-                        <article class="service-card-item"><h3>A Server Ready To Use</h3><p>You rent the server space you need without buying or maintaining the machine yourself.</p></article>
-                        <article class="service-card-item"><h3>Help When Problems Come Up</h3><p>You are not left alone when setup questions or hosting issues appear.</p></article>
-                        <article class="service-card-item"><h3>Room To Grow</h3><p>Start with a small community server and scale as more players join.</p></article>
-                        <article class="service-card-item"><h3>A Simpler Launch</h3><p>Spend more time building your player community and less time dealing with infrastructure.</p></article>
+                        <article class="service-card-item"><h3>Community Hosting</h3><p>Give your players a dependable home base with practical management and uptime support.</p></article>
+                        <article class="service-card-item"><h3>Modded Server Hosting</h3><p>Run customized stacks without juggling every technical detail alone.</p></article>
+                        <article class="service-card-item"><h3>Support When Needed</h3><p>Get help when setup issues, updates, or technical blockers appear.</p></article>
+                        <article class="service-card-item"><h3>Room To Scale</h3><p>Start with what you need now and grow as your server population increases.</p></article>
                     </div>
                 </div>
             </section>
 
             <section class="service-section">
                 <div class="container cta-block">
-                    <h2>Interested In Running Your Own Hosting Company?</h2>
+                    <h2>Powered By GSP Open Source Technology</h2>
                     <p>GameServers.World is powered by GSP, our open-source game server management platform.</p>
-                    <p>GSP is free to use and can be used by communities, developers, and hosting providers to run their own game server infrastructure.</p>
-                    <p>Runlevel Systems offers optional installation, customization, migration, and commercial support services.</p>
+                    <div class="service-card-grid two-columns">
+                        <article class="service-card-item"><h3>Open Source Foundation</h3><p>GSP is available for communities, developers, and teams building their own infrastructure.</p></article>
+                        <article class="service-card-item"><h3>Commercial Hosting Ready</h3><p>Hosting providers can use GSP for production operations, with Runlevel Systems available for installation, customization, migration, and support.</p></article>
+                    </div>
                     <div class="service-actions">
                         <a class="core-action primary" href="https://github.com/RunlevelSystems/GSP" target="_blank" rel="noopener noreferrer">View GSP On GitHub</a>
                         <a class="core-action secondary" href="/contact.php?subject=GSP%20Commercial%20Support">Commercial Support</a>

@@ -31,78 +31,87 @@
 
             <section class="service-section">
                 <div class="container">
-                    <h2>Why People Hire A Dev Partner</h2>
-                    <p class="section-intro">Many projects don't fail because the idea was bad.</p>
-                    <p class="section-intro">They fail because people run into technical problems they don't know how to solve.</p>
-                    <p class="section-intro">Maybe a project was started years ago and no longer builds.</p>
-                    <p class="section-intro">Maybe a developer left.</p>
-                    <p class="section-intro">Maybe a game won't publish.</p>
-                    <p class="section-intro">Maybe a website doesn't work correctly.</p>
-                    <p class="section-intro">Maybe there simply isn't enough time.</p>
-                    <p class="section-intro">Runlevel Systems helps fill those gaps.</p>
+                    <h2>Your Team 🤝 Runlevel Systems</h2>
+                    <div class="ddd-partnership-grid">
+                        <article class="service-detail-card">
+                            <p class="ddd-copy">You bring the vision, goals, project knowledge, and business requirements.</p>
+                            <p class="ddd-copy">We bring technical expertise, development experience, deployment knowledge, troubleshooting skills, and infrastructure support.</p>
+                            <p class="ddd-copy"><strong>Together we move the project forward.</strong></p>
+                        </article>
+                        <article class="ddd-team-visual">
+                            <div class="team-link">
+                                <div class="team-block">
+                                    <p>Your Team</p>
+                                </div>
+                                <div class="team-connector" aria-hidden="true">🤝</div>
+                                <div class="team-block">
+                                    <p>Runlevel Systems</p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
                 </div>
             </section>
 
             <section class="service-section alt">
                 <div class="container">
-                    <h2>How We Help</h2>
-                    <div class="service-card-grid two-columns">
-                        <article class="service-card-item">
-                            <h3>Project Rescue</h3>
-                            <p>Got stuck? We'll help get things moving again.</p>
-                        </article>
-                        <article class="service-card-item">
-                            <h3>Website Development</h3>
-                            <p>Need a business site, project site, or community portal?</p>
-                        </article>
-                        <article class="service-card-item">
-                            <h3>Mobile App Support</h3>
-                            <p>Need help preparing Android or iOS builds?</p>
-                        </article>
-                        <article class="service-card-item">
-                            <h3>Publishing Assistance</h3>
-                            <p>Need help getting onto Steam, Google Play, or Apple App Store?</p>
-                        </article>
-                        <article class="service-card-item">
-                            <h3>Custom Features</h3>
-                            <p>Need something new built into your project?</p>
-                        </article>
-                        <article class="service-card-item">
-                            <h3>Technical Guidance</h3>
-                            <p>Need help deciding what to build and how to build it?</p>
-                        </article>
+                    <h2>Runlevel Tools</h2>
+                    <p class="ddd-subtitle">Your Development Hub</p>
+                    <div class="compact-copy">
+                        <p>Runlevel Tools is a shared development workspace designed to keep projects organized and moving forward.</p>
+                        <p>Instead of managing tasks, notes, bugs, documentation, and technical requests across multiple disconnected platforms, Runlevel Tools provides a central hub for your project.</p>
+                        <p>It combines planning, tracking, documentation, collaboration, and direct access to Runlevel Systems support.</p>
+                    </div>
+                    <div class="service-card-grid two-columns" style="margin-top: 1rem;">
+                        <article class="service-card-item"><h3>Project Planning</h3><p>Track goals, milestones, features, and project requirements.</p></article>
+                        <article class="service-card-item"><h3>Kanban Boards</h3><p>Organize development work using visual workflows.</p></article>
+                        <article class="service-card-item"><h3>Issue Tracking</h3><p>Report bugs, request features, and track technical problems.</p></article>
+                        <article class="service-card-item"><h3>Documentation</h3><p>Store notes, specifications, onboarding information, and project knowledge.</p></article>
+                        <article class="service-card-item"><h3>Development Requests</h3><p>Need help? Create an issue directly from the workspace and send it to Runlevel Systems.</p></article>
+                        <article class="service-card-item"><h3>Progress Tracking</h3><p>Monitor project status and development progress.</p></article>
+                        <article class="service-card-item"><h3>Source Control Integration</h3><p>Connect project repositories and development workflows.</p></article>
+                        <article class="service-card-item"><h3>Team Collaboration</h3><p>Keep your team working from a shared source of truth.</p></article>
                     </div>
                 </div>
             </section>
 
             <section class="service-section">
                 <div class="container">
-                    <h2>Common Situations</h2>
+                    <h2>Get Help When You Need It</h2>
                     <div class="service-card-grid two-columns">
-                        <article class="service-card-item">
-                            <h3>&ldquo;I inherited somebody else's project.&rdquo;</h3>
-                            <p>We can sort through what is there and help you move forward without starting over blind.</p>
+                        <article class="service-detail-card">
+                            <p>One of the biggest challenges for small teams is getting technical help when a problem appears.</p>
+                            <p>With Runlevel Tools, support requests become part of the project workflow.</p>
+                            <ul class="service-quote-list">
+                                <li>&ldquo;My build no longer works.&rdquo;</li>
+                                <li>&ldquo;We need help publishing.&rdquo;</li>
+                                <li>&ldquo;We need an iOS version.&rdquo;</li>
+                                <li>&ldquo;Our website integration is broken.&rdquo;</li>
+                                <li>&ldquo;We need a multiplayer backend.&rdquo;</li>
+                                <li>&ldquo;We need a feature implemented.&rdquo;</li>
+                            </ul>
                         </article>
                         <article class="service-card-item">
-                            <h3>&ldquo;My website is broken.&rdquo;</h3>
-                            <p>We can find the issue, fix what is failing, and get your site working again.</p>
+                            <h3>Request Help Directly In Workspace</h3>
+                            <ul class="service-icon-list">
+                                <li>Create a request.</li>
+                                <li>Attach screenshots, notes, and details.</li>
+                                <li>Keep support tied to project context.</li>
+                                <li>Get Runlevel Systems help to move the project forward.</li>
+                            </ul>
                         </article>
-                        <article class="service-card-item">
-                            <h3>&ldquo;My Unity project won't build.&rdquo;</h3>
-                            <p>We help troubleshoot broken builds so you can get back to testing and release prep.</p>
-                        </article>
-                        <article class="service-card-item">
-                            <h3>&ldquo;I need an iPhone version.&rdquo;</h3>
-                            <p>We help with platform requirements, build prep, and the last steps needed to ship.</p>
-                        </article>
-                        <article class="service-card-item">
-                            <h3>&ldquo;I need a developer for a few hours.&rdquo;</h3>
-                            <p>We provide focused help when you need a short burst of progress instead of a full-time hire.</p>
-                        </article>
-                        <article class="service-card-item">
-                            <h3>&ldquo;I need someone to finish what I started.&rdquo;</h3>
-                            <p>We step in, identify what is left, and help get the project across the finish line.</p>
-                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="service-section alt">
+                <div class="container">
+                    <h2>More Than Project Management</h2>
+                    <p class="section-intro">Runlevel Tools is not just another Kanban board.</p>
+                    <p class="section-intro">It is a collaboration hub that connects your team with planning tools, project tracking, documentation, deployment assistance, and direct access to Runlevel Systems when technical help is needed.</p>
+                    <div class="service-card-grid two-columns">
+                        <article class="service-card-item"><h3>Dev Partner Services</h3><ul class="service-icon-list"><li>Project rescue</li><li>Website development</li><li>Mobile app support</li><li>Publishing assistance</li></ul></article>
+                        <article class="service-card-item"><h3>Technical Delivery Support</h3><ul class="service-icon-list"><li>Custom features</li><li>Infrastructure guidance</li><li>Troubleshooting and unblock support</li><li>Deployment and release help</li></ul></article>
                     </div>
                 </div>
             </section>
