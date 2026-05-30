@@ -32,11 +32,13 @@
             <section class="service-section">
                 <div class="container">
                     <h2>Why Modding Gets Complicated</h2>
-                    <p class="section-intro">Installing one mod is usually easy.</p>
-                    <p class="section-intro">Running multiple mods together is where problems start.</p>
-                    <p class="section-intro">Different versions, updates, permissions, databases, scripts, and plugins often have to work together.</p>
-                    <p class="section-intro">One broken update can stop an entire server.</p>
-                    <p class="section-intro">That's where Runlevel Systems can help.</p>
+                    <p class="section-intro">Multiple mods, changing versions, and broken updates can quickly turn a stable server into a troubleshooting loop.</p>
+                    <div class="service-card-grid two-columns">
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🔁</span><h3>Version Conflicts</h3><p>We align mod versions and dependencies so features work together.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🧯</span><h3>Broken Updates</h3><p>We recover from update failures before players leave your server.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🧱</span><h3>Stack Complexity</h3><p>We simplify scripts, plugins, and tools into a manageable setup.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">✅</span><h3>Reliable Operations</h3><p>We help keep gameplay smooth as your community grows.</p></article>
+                    </div>
                 </div>
             </section>
 
@@ -44,15 +46,14 @@
                 <div class="container">
                     <h2>What We Actually Do</h2>
                     <div class="service-card-grid two-columns">
-                        <article class="service-card-item"><h3>Install Mods</h3><p>Get the right files in place and working on the correct version.</p></article>
-                        <article class="service-card-item"><h3>Configure Mods</h3><p>Adjust settings so features work the way your community expects.</p></article>
-                        <article class="service-card-item"><h3>Fix Broken Mods</h3><p>Troubleshoot conflicts, bad updates, and setups that stopped working.</p></article>
-                        <article class="service-card-item"><h3>Create Small Scripts</h3><p>Add simple custom behavior without turning your server into a giant dev project.</p></article>
-                        <article class="service-card-item"><h3>Build Custom Features</h3><p>Create the extras that make your server feel different from everyone else's.</p></article>
-                        <article class="service-card-item"><h3>Connect Discord</h3><p>Link your community tools so players stay informed and connected.</p></article>
-                        <article class="service-card-item"><h3>Setup Community Tools</h3><p>Help with permissions, economy systems, admin tools, and player conveniences.</p></article>
-                        <article class="service-card-item"><h3>Move Servers Between Hosts</h3><p>Migrate files, settings, and important server data with less disruption.</p></article>
-                        <article class="service-card-item"><h3>Repair Broken Updates</h3><p>Recover from update problems before they chase players away.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🧾</span><h3>Custom Scripts</h3><p>Add focused gameplay and admin automation tailored to your server.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">📦</span><h3>Mod Installation</h3><p>Install and validate mod stacks on the right versions and dependencies.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">💬</span><h3>Discord Integration</h3><p>Connect player updates, moderation workflows, and community tools.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">💰</span><h3>Economy Systems</h3><p>Configure balanced in-game economies with practical management controls.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🎭</span><h3>Roleplay Systems</h3><p>Build and tune roleplay frameworks for long-running communities.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🛠️</span><h3>Server Fixes</h3><p>Troubleshoot crashes, config errors, and unstable behavior.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🚚</span><h3>Migration Services</h3><p>Move files, settings, and data between hosts with less downtime.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">👥</span><h3>Community Tools</h3><p>Set up permissions, admin utilities, and quality-of-life features.</p></article>
                     </div>
                 </div>
             </section>

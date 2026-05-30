@@ -26,16 +26,13 @@
                     <p class="service-kicker">Hosting</p>
                     <h1>Game Server Hosting</h1>
                     <p class="service-lead">Rent Affordable Game Servers Through GameServers.World</p>
-                    <div class="compact-copy">
-                        <p>Need a game server for friends, a growing community, or a multiplayer project?</p>
-                        <p>GameServers.World provides affordable hosting designed for communities of all sizes.</p>
+                    <p class="section-intro">Hosting that is easy to launch, affordable to run, and reliable as your community grows.</p>
+                    <div class="service-card-grid two-columns">
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">⚡</span><h3>Simple Setup</h3><p>Get a server online quickly without complex configuration work.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🛡️</span><h3>Reliable Hosting</h3><p>Keep sessions stable with infrastructure built for active communities.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">📶</span><h3>Community-Ready Performance</h3><p>Support regular players, events, and growth without constant tuning.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🧑‍💻</span><h3>Real Support</h3><p>Get help when setup issues and update problems appear.</p></article>
                     </div>
-                    <ul class="service-icon-list">
-                        <li>Simple setup</li>
-                        <li>Reliable hosting</li>
-                        <li>Community-ready performance</li>
-                        <li>Real support</li>
-                    </ul>
                     <div class="service-actions">
                         <a class="core-action primary" href="https://gameservers.world" target="_blank" rel="noopener noreferrer">Visit GameServers.World</a>
                     </div>
@@ -45,21 +42,15 @@
             <section class="service-section">
                 <div class="container">
                     <h2>Rent Through GameServers.World</h2>
-                    <p class="section-intro">Get affordable, production-ready hosting for game communities, private groups, and multiplayer projects.</p>
-                    <ul class="service-icon-list">
-                        <li>Community hosting with reliable uptime</li>
-                        <li>Modded server support for custom stacks</li>
-                        <li>Help when setup and update issues appear</li>
-                        <li>Simple path from launch to growth</li>
-                    </ul>
+                    <p class="section-intro">Choose hosting that matches how your players and team actually use your server.</p>
                     <p class="service-card-subtitle mt-3">Who Hosting Is For</p>
                     <div class="service-card-grid two-columns">
-                        <article class="service-card-item"><h3>Friend Groups</h3><p>Spin up a server for regular game nights without managing the hardware yourself.</p></article>
-                        <article class="service-card-item"><h3>Gaming Communities</h3><p>Give your players a stable home base that can grow with your community.</p></article>
-                        <article class="service-card-item"><h3>Roleplay Servers</h3><p>Keep custom communities online with hosting built for long-running sessions.</p></article>
-                        <article class="service-card-item"><h3>Modded Servers</h3><p>Run servers that need extra setup without juggling every technical detail alone.</p></article>
-                        <article class="service-card-item"><h3>Competitive Servers</h3><p>Host events, scrims, and organized matches on dependable infrastructure.</p></article>
-                        <article class="service-card-item"><h3>Private Projects</h3><p>Test ideas, prototypes, and invite-only communities in a controlled environment.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🎉</span><h3>Friend Groups</h3><p>Spin up a server for regular game nights without managing hardware yourself.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🧑‍🤝‍🧑</span><h3>Gaming Communities</h3><p>Give your players a stable home base that grows with your community.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🎭</span><h3>Roleplay Servers</h3><p>Keep custom communities online with hosting for long-running sessions.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🧪</span><h3>Modded Servers</h3><p>Run customized stacks without juggling every technical detail alone.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🏆</span><h3>Competitive Servers</h3><p>Host events, scrims, and organized matches on dependable infrastructure.</p></article>
+                        <article class="service-card-item"><span class="service-icon" aria-hidden="true">🔒</span><h3>Private Projects</h3><p>Test ideas and invite-only communities in a controlled environment.</p></article>
                     </div>
                 </div>
             </section>
