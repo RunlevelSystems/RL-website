@@ -7,7 +7,7 @@
         <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
 
         <title>Products | Runlevel Systems</title>
-        <meta name="description" content="Products and platforms from Runlevel Systems that support software delivery, collaboration, hosting, and long-term operations.">
+        <meta name="description" content="Featured products and platforms from Runlevel Systems: GSP infrastructure platform, PureOPS Training Platform, and Runlevel Tools. Plus completed projects including Roadkill, Neverwards, and Mystical Islands.">
 
         <link href="assets/css/coreloop.css" rel="stylesheet">
     </head>
@@ -26,8 +26,8 @@
             <section class="service-hero compact">
                 <div class="container">
                     <p class="service-kicker">Runlevel Systems</p>
-                    <h1>Products</h1>
-                    <p class="service-lead">Products and platforms that support software delivery, collaboration, hosting, and operations.</p>
+                    <h1>Featured Products &amp; Platforms</h1>
+                    <p class="service-lead">Products and platforms built by Runlevel Systems — from enterprise infrastructure to team collaboration to virtual training.</p>
                     <p class="hero-tagline">DESIGN • DEBUG • DEPLOY</p>
                 </div>
             </section>
@@ -35,27 +35,56 @@
             <section class="service-section">
                 <div class="container">
                     <h2>Products &amp; Platforms</h2>
-                    <p class="section-intro">These platforms support how Runlevel Systems builds, hosts, manages, and maintains real software systems.</p>
-                    <div class="three-column-stack">
+                    <div class="service-card-grid two-columns">
                         <article class="service-card-item">
-                            <div class="service-icon" aria-hidden="true">🌐</div>
-                            <h3>GameServers.World</h3>
-                            <p>Hosted infrastructure service powered by GSP for online communities and managed game server operations.</p>
-                            <a class="core-action tertiary" href="/gameserver-hosting.php">Learn More</a>
+                            <div class="service-icon" aria-hidden="true">🛠️</div>
+                            <h3>Game Server Panel (GSP)</h3>
+                            <p class="service-card-subtitle">Enterprise infrastructure platform</p>
+                            <p>GSP is an enterprise infrastructure platform for managing services, customers, billing, deployments, automation, and infrastructure. Game server hosting is one example of what it runs.</p>
+                            <p>GSP is open source and free to use. Future applications include Docker hosting, application hosting, service platforms, and managed infrastructure.</p>
+                            <div class="service-actions">
+                                <a class="core-action tertiary" href="/game-server-panel.php">Learn More</a>
+                                <a class="core-action tertiary" href="https://github.com/RunlevelSystems/GSP" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                            </div>
                         </article>
 
                         <article class="service-card-item">
-                            <div class="service-icon" aria-hidden="true">🛠️</div>
-                            <h3>GSP Panel</h3>
-                            <p>Open source infrastructure software for provisioning, deploying, and managing hosted game server environments.</p>
-                            <a class="core-action tertiary" href="/game-server-panel.php">Learn More</a>
+                            <div class="service-icon" aria-hidden="true">🧪</div>
+                            <h3>PureOPS Training Platform</h3>
+                            <p class="service-card-subtitle">Interactive hardware training simulation</p>
+                            <p>PureOPS is an interactive hardware training environment developed by Runlevel Systems. It allows technicians to learn installation, maintenance, and upgrade procedures inside a virtual environment before working on production equipment.</p>
+                            <p>Designed for enterprise equipment training, safety training, onboarding, IT operations, and customer education.</p>
+                            <div class="service-actions">
+                                <a class="core-action tertiary" href="/simulation.php">Learn More</a>
+                            </div>
                         </article>
 
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">☁️</div>
                             <h3>Runlevel Tools</h3>
-                            <p>The shared collaboration workspace behind Dev Partner, connecting planning, repositories, documentation, builds, testing, and support activity.</p>
-                            <a class="core-action tertiary" href="/design-debug-deploy.php">Learn More</a>
+                            <p class="service-card-subtitle">Shared development workspace</p>
+                            <p>Runlevel Tools is a shared development workspace connecting customers and Runlevel Systems. It is the platform behind Dev Partner — keeping project planning, source code, builds, deployments, documentation, and team collaboration connected in one place.</p>
+                            <ul class="service-icon-list single-column" style="margin-top: 0.6rem;">
+                                <li>Project planning and Kanban boards</li>
+                                <li>Milestones and progress tracking</li>
+                                <li>Source code management</li>
+                                <li>Build and deployment tracking</li>
+                                <li>Documentation and team collaboration</li>
+                            </ul>
+                            <div class="service-actions">
+                                <a class="core-action tertiary" href="/design-debug-deploy.php">Learn More</a>
+                            </div>
+                        </article>
+
+                        <article class="service-card-item">
+                            <div class="service-icon" aria-hidden="true">🌐</div>
+                            <h3>GameServers.World</h3>
+                            <p class="service-card-subtitle">Live deployment of GSP infrastructure</p>
+                            <p>GameServers.World is a real-world deployment of the GSP platform, providing hosted infrastructure for gaming communities and multiplayer projects. It is a working example of GSP in commercial production use.</p>
+                            <div class="service-actions">
+                                <a class="core-action tertiary" href="/gameserver-hosting.php">Learn More</a>
+                                <a class="core-action tertiary" href="https://gameservers.world" target="_blank" rel="noopener noreferrer">Visit Site</a>
+                            </div>
                         </article>
                     </div>
                 </div>
@@ -63,32 +92,31 @@
 
             <section class="service-section alt">
                 <div class="container">
-                    <h2>Selected Portfolio Examples</h2>
-                    <p class="section-intro">Games and interactive experiences are part of Runlevel Systems' broader development portfolio.</p>
-                    <p class="section-intro">They are examples of development experience alongside business software, web applications, infrastructure platforms, and other technical systems.</p>
+                    <h2>Projects &amp; Portfolio</h2>
+                    <p class="section-intro">These are examples of completed and active development work from Runlevel Systems. Games and interactive experiences represent one area of our development portfolio alongside business software, infrastructure platforms, and training systems.</p>
                     <div class="three-column-stack">
                         <article class="service-card-item project-card-item">
                             <img src="assets/images/RL-splash.png" alt="Roadkill project image" class="project-image">
                             <h3>Roadkill</h3>
-                            <p>Released game project.</p>
+                            <p>Released action game developed and published by Runlevel Systems.</p>
                             <p class="project-status"><strong>Status:</strong> Released</p>
-                            <a class="core-action tertiary" href="https://store.steampowered.com/app/1376150/Roadkill/" target="_blank" rel="noopener noreferrer">Learn More</a>
-                        </article>
-
-                        <article class="service-card-item project-card-item">
-                            <img src="assets/images/code.png" alt="Mystical Islands project image" class="project-image">
-                            <h3>Mystical Islands</h3>
-                            <p>Multiplayer fantasy RPG project and example of ongoing game development experience.</p>
-                            <p class="project-status"><strong>Status:</strong> In Development</p>
-                            <a class="core-action tertiary" href="/projects.php">Learn More</a>
+                            <a class="core-action tertiary" href="https://store.steampowered.com/app/1376150/Roadkill/" target="_blank" rel="noopener noreferrer">View on Steam</a>
                         </article>
 
                         <article class="service-card-item project-card-item">
                             <img src="assets/images/RL-logo.png" alt="Neverwards project image" class="project-image">
                             <h3>Neverwards</h3>
-                            <p>Active game development project within the broader Runlevel Systems portfolio.</p>
+                            <p>Active game development project within the Runlevel Systems portfolio.</p>
                             <p class="project-status"><strong>Status:</strong> Active Development</p>
-                            <a class="core-action tertiary" href="https://store.steampowered.com/app/2096070/Neverwards/" target="_blank" rel="noopener noreferrer">Learn More</a>
+                            <a class="core-action tertiary" href="https://store.steampowered.com/app/2096070/Neverwards/" target="_blank" rel="noopener noreferrer">View on Steam</a>
+                        </article>
+
+                        <article class="service-card-item project-card-item">
+                            <img src="assets/images/code.png" alt="Mystical Islands project image" class="project-image">
+                            <h3>Mystical Islands</h3>
+                            <p>Multiplayer fantasy RPG and example of ongoing game development within the broader Runlevel Systems portfolio.</p>
+                            <p class="project-status"><strong>Status:</strong> In Development</p>
+                            <a class="core-action tertiary" href="/projects.php">Learn More</a>
                         </article>
                     </div>
                 </div>
