@@ -7,18 +7,52 @@
         <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
 
         <title>Projects | Runlevel Systems</title>
-        <meta name="description" content="Portfolio of games, software, infrastructure, and open source projects built by Runlevel Systems.">
-        <meta name="keywords" content="Runlevel Systems projects, game projects, software platforms, infrastructure projects, open source">
+        <meta name="description" content="Portfolio of software, infrastructure, games, and open source projects built by Runlevel Systems.">
+        <meta name="keywords" content="Runlevel Systems projects, software projects, infrastructure platforms, game projects, open source">
         <link href="assets/css/coreloop.css" rel="stylesheet">
     </head>
     <body>
         <?php
         $current_page = 'projects';
         $header_class = 'projects-header inner-header';
-        $page_subtitle = 'Games • Software • Infrastructure • Open Source';
+        $page_subtitle = 'Software • Infrastructure • Games • Open Source';
 
         $projectCategories = [
-            'Games' => [
+            'Software' => [
+                [
+                    'title' => 'Game Server Panel',
+                    'description' => 'A platform for deploying, monitoring, and managing multiplayer game servers across providers and locations.',
+                    'status' => 'Production Platform',
+                    'link' => 'https://github.com/GameServerPanel/GSP',
+                ],
+                [
+                    'title' => 'GameServers.World',
+                    'description' => 'Managed game server hosting offering deployment workflows, server operations support, and customer management.',
+                    'status' => 'Live Service',
+                    'link' => 'https://gameservers.world',
+                ],
+                [
+                    'title' => 'Runlevel Tools',
+                    'description' => 'Shared project collaboration platform for planning, repositories, builds, documentation, testing, and support workflows.',
+                    'status' => 'Planning',
+                    'link' => '/products.php',
+                ],
+            ],
+            'Infrastructure' => [
+                [
+                    'title' => 'Game Infrastructure Services',
+                    'description' => 'Infrastructure work for hosting, deployment, update delivery, and uptime support for game services.',
+                    'status' => 'Active',
+                    'link' => 'https://gameservers.world',
+                ],
+                [
+                    'title' => 'Project Infrastructure Services',
+                    'description' => 'Technical infrastructure support for websites, apps, APIs, and cloud-based software workflows.',
+                    'status' => 'Active',
+                    'link' => '/contact.php',
+                ],
+            ],
+            'Games & Interactive' => [
                 [
                     'title' => 'Neverwards',
                     'description' => 'A multiplayer game project focused on persistent progression and cooperative gameplay systems.',
@@ -36,40 +70,6 @@
                     'description' => 'A portfolio stream of current and upcoming game concepts under active iteration.',
                     'status' => 'In Progress',
                     'link' => 'https://github.com/World-Domination-Software/Projects/discussions',
-                ],
-            ],
-            'Software' => [
-                [
-                    'title' => 'Game Server Panel',
-                    'description' => 'A platform for deploying, monitoring, and managing multiplayer game servers across providers and locations.',
-                    'status' => 'Production Platform',
-                    'link' => 'https://github.com/GameServerPanel/GSP',
-                ],
-                [
-                    'title' => 'GameServers.World',
-                    'description' => 'Managed game server hosting offering deployment workflows, server operations support, and customer management.',
-                    'status' => 'Live Service',
-                    'link' => 'https://gameservers.world',
-                ],
-                [
-                    'title' => 'Future Products',
-                    'description' => 'Upcoming software products focused on developer workflows, automation, and online operations.',
-                    'status' => 'Planning',
-                    'link' => 'https://github.com/World-Domination-Software/Projects/wiki',
-                ],
-            ],
-            'Infrastructure' => [
-                [
-                    'title' => 'Game Infrastructure Services',
-                    'description' => 'Infrastructure work for hosting, deployment, update delivery, and uptime support for game services.',
-                    'status' => 'Active',
-                    'link' => 'https://gameservers.world',
-                ],
-                [
-                    'title' => 'Project Infrastructure Services',
-                    'description' => 'Technical infrastructure support for websites, apps, APIs, and cloud-based software workflows.',
-                    'status' => 'Active',
-                    'link' => '/contact.php',
                 ],
             ],
             'Open Source Projects' => [
@@ -97,13 +97,16 @@
                 <div class="container">
                     <p class="service-kicker">Portfolio</p>
                     <h1>Projects</h1>
-                    <p class="service-lead">Completed work, active builds, platforms, and technologies we've created.</p>
+                    <p class="service-lead">Completed work, active builds, platforms, and technologies created by Runlevel Systems.</p>
+                    <p class="hero-tagline">DESIGN • DEBUG • DEPLOY</p>
                 </div>
             </section>
 
             <section class="service-section">
                 <div class="container">
-                    <p class="section-intro">This page highlights our portfolio and experience. It includes production platforms, active development work, and open source projects across games, software, and infrastructure.</p>
+                    <p class="section-intro">This page highlights the broader Runlevel Systems portfolio.</p>
+                    <p class="section-intro">It includes production platforms, active development work, infrastructure systems, games, and open source projects.</p>
+                    <p class="section-intro">Games are included here as part of our development experience, not as the primary company focus.</p>
 
                     <?php foreach ($projectCategories as $category => $projects): ?>
                         <section class="portfolio-category">

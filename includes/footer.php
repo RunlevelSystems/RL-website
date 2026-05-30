@@ -94,7 +94,7 @@ if ($is_in_wiki) {
     <footer class="footer text-center" style="background: #000000; color: #eaf3ff;">
         <div style="padding: 14px 0 18px; border-top: 1px solid rgba(255,255,255,0.08);">
             <p style="color: #c7d7e8; margin: 0; font-size: 14px;">
-                &copy; 2026 Runlevel Systems. Design • Debug • Deploy for games, software, and infrastructure.
+                &copy; 2026 Runlevel Systems. DESIGN • DEBUG • DEPLOY software, simulations, mobile apps, and infrastructure.
             </p>
         </div>
     </footer>
