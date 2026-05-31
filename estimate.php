@@ -5,15 +5,26 @@ require_once __DIR__ . '/includes/portal-helpers.php';
 $current_page = 'estimate';
 $header_class = 'inner-header';
 
+// Project types that trigger the Discord community invite block
+$gameTypes = ['Game / Interactive project', 'Server / Mod / Script'];
+
 $error   = '';
+$warning = '';
 $success = false;
 $submitted = null;
+
+/**
+ * Generate a unique Estimate ID in the format RLS-YYYYMMDD-XXXX.
+ * Uses the current date plus a random 4-digit number.
+ */
+function generateEstimateId() {
+    return 'RLS-' . date('Ymd') . '-' . str_pad(mt_rand(1, 9999), 4, '0', STR_PAD_LEFT);
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_estimate'])) {
     $name          = trim($_POST['name'] ?? '');
     $email         = trim($_POST['email'] ?? '');
     $phone         = trim($_POST['phone'] ?? '');
-    $discord       = trim($_POST['discord'] ?? '');
     $contactMethod = trim($_POST['contact_method'] ?? '');
     $projectType   = trim($_POST['project_type'] ?? '');
     $whatNeeded    = trim($_POST['what_needed'] ?? '');
@@ -26,10 +37,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_estimate'])) {
     $budget        = trim($_POST['budget'] ?? '');
     $agreed        = isset($_POST['agreement']);
 
+    $isGameType = in_array($projectType, $gameTypes, true);
+
     if ($name === '') {
         $error = 'Please enter your name.';
-    } elseif ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error = 'Please enter a valid email address.';
     } elseif ($contactMethod === '') {
         $error = 'Please select a preferred contact method.';
     } elseif ($projectType === '') {
@@ -42,7 +53,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_estimate'])) {
         $error = 'Please check the acknowledgement checkbox before submitting.';
     } elseif ($repoLink !== '' && !filter_var($repoLink, FILTER_VALIDATE_URL)) {
         $error = 'The repository or project link does not appear to be a valid URL.';
-    } else {
+    } elseif ($email === '' && $phone === '') {
+        // Soft validation: warn but allow submit if Discord is the preferred contact for a game project
+        if ($isGameType && $contactMethod === 'Discord') {
+            $warning = 'Please join our Discord and mention your Estimate ID so we can connect your message to this request.';
+        } else {
+            $error = 'Please provide at least one way for us to contact you, such as email or phone.';
+        }
+    } elseif ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = 'The email address provided does not appear to be valid.';
+    }
+
+    if ($error === '') {
         // Determine rough category for confirmation display
         $category = 'Software Project';
         if (in_array($projectType, ['Training / Simulation'], true)) {
@@ -57,14 +79,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_estimate'])) {
             $category = 'Starter Project';
         } elseif (in_array($projectType, ['Business application', 'Infrastructure / Backend'], true)) {
             $category = 'Business / Infrastructure Project';
+        } elseif ($isGameType) {
+            $category = 'Game / Interactive Project';
         }
 
+        $estimateId = generateEstimateId();
+
         $request = [
+            'estimate_id'    => $estimateId,
             'id'             => bin2hex(random_bytes(8)),
             'name'           => $name,
             'email'          => $email,
             'phone'          => $phone,
-            'discord'        => $discord,
             'contact_method' => $contactMethod,
             'project_type'   => $projectType,
             'what_needed'    => $whatNeeded,
@@ -89,6 +115,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_estimate'])) {
         }
     }
 }
+
+// Determine if previously selected project type is game-related (for JS init)
+$selectedType = $_POST['project_type'] ?? '';
+$isGameSelected = in_array($selectedType, $gameTypes, true);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -121,11 +151,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_estimate'])) {
         .btn-submit { background: #ffc600; color: #08111f; border: none; border-radius: 6px; padding: 13px 32px; font-weight: 700; font-size: 1.05rem; cursor: pointer; }
         .btn-submit:hover { background: #36f3ff; }
         .alert-error { background: rgba(239,68,68,0.18); border: 1px solid #ef4444; color: #fecaca; border-radius: 6px; padding: 12px 14px; margin-bottom: 18px; }
+        .alert-warning { background: rgba(255,198,0,0.1); border: 1px solid rgba(255,198,0,0.35); color: #ffc600; border-radius: 6px; padding: 12px 14px; margin-bottom: 18px; }
         .success-card { background: #0c1729; border: 1px solid rgba(34,197,94,0.3); border-radius: 10px; padding: 36px 30px; max-width: 640px; margin: 0 auto; text-align: center; }
         .success-card h2 { color: #22c55e; margin-top: 0; }
         .success-card p { color: #a8bedc; line-height: 1.7; }
         .category-badge { display: inline-block; background: rgba(54,243,255,0.1); border: 1px solid rgba(54,243,255,0.3); color: #36f3ff; border-radius: 6px; padding: 8px 18px; font-weight: 700; font-size: 1rem; margin: 12px 0 20px; }
+        .estimate-id-box { background: rgba(255,198,0,0.08); border: 2px solid rgba(255,198,0,0.4); border-radius: 8px; padding: 16px 20px; margin: 16px 0 24px; }
+        .estimate-id-box .eid-label { color: #a8bedc; font-size: 0.85rem; margin-bottom: 6px; }
+        .estimate-id-box .eid-value { color: #ffc600; font-size: 1.4rem; font-weight: 700; font-family: monospace; letter-spacing: 0.06em; }
         .terms-note { background: rgba(54,243,255,0.05); border: 1px solid rgba(54,243,255,0.12); border-radius: 8px; padding: 14px 18px; margin-bottom: 24px; color: #7a9ac0; font-size: 0.875rem; line-height: 1.6; }
+        .discord-invite-block { display: none; background: rgba(88,101,242,0.12); border: 1px solid rgba(88,101,242,0.35); border-radius: 8px; padding: 16px 20px; margin-top: 16px; }
+        .discord-invite-block p { color: #a8bedc; font-size: 0.9rem; margin: 0 0 12px; }
+        .btn-discord { display: inline-block; background: #5865f2; color: #fff; border: none; border-radius: 6px; padding: 9px 20px; font-weight: 700; font-size: 0.95rem; text-decoration: none; }
+        .btn-discord:hover { background: #7289da; color: #fff; text-decoration: none; }
     </style>
 </head>
 <body>
@@ -146,31 +184,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_estimate'])) {
         <div class="success-card">
             <h2>✅ Request Received</h2>
             <p>Thank you, <strong><?php echo pe($submitted['name']); ?></strong>. We received your project information.</p>
+
+            <div class="estimate-id-box">
+                <div class="eid-label">Your Estimate ID:</div>
+                <div class="eid-value"><?php echo pe($submitted['estimate_id']); ?></div>
+            </div>
+            <p style="color:#7a9ac0; font-size:0.875rem; margin-top: -12px; margin-bottom: 20px;">
+                Please save this ID. If you contact us later or submit another request, this helps us find your project quickly.
+            </p>
+
             <p>
                 <strong>Likely project category:</strong><br>
                 <span class="category-badge"><?php echo pe($submitted['category']); ?></span>
             </p>
-            <p style="color:#5a7a9e; font-size:0.9rem;">
-                Estimated range will be reviewed manually. This looks like a
-                <?php
-                $sz = strtolower($submitted['approx_size'] ?? '');
-                if (strpos($sz, 'very small') !== false || strpos($sz, 'small') !== false) { echo 'small'; }
-                elseif (strpos($sz, 'medium') !== false) { echo 'medium'; }
-                elseif (strpos($sz, 'larger') !== false || strpos($sz, 'ongoing') !== false) { echo 'larger'; }
-                else { echo 'project-specific'; }
-                ?> request. We will confirm after review.
-            </p>
+
             <hr style="border-color: rgba(54,243,255,0.12); margin: 20px 0;">
             <p>
                 <strong style="color:#eaf3ff;">Next step:</strong><br>
-                Runlevel Systems will review your request and contact you using your preferred method
-                (<strong><?php echo pe($submitted['contact_method']); ?></strong>).
+                Runlevel Systems will review your request and contact you using the contact information provided.
+                You may also contact us directly and reference your Estimate ID.
             </p>
-            <p>
-                If needed, we may schedule a Google Meet session to review the project, clarify requirements,
-                and prepare a quote or proposal.
+            <?php if (!empty($submitted['contact_method']) && $submitted['contact_method'] !== 'Not sure'): ?>
+            <p style="color:#7a9ac0; font-size:0.875rem;">
+                Preferred contact method: <strong style="color:#eaf3ff;"><?php echo pe($submitted['contact_method']); ?></strong>
             </p>
-            <a href="pricing.php" style="color:#36f3ff;">← Back to Pricing</a>
+            <?php endif; ?>
+            <?php if (in_array($submitted['project_type'] ?? '', $gameTypes, true)): ?>
+            <div style="margin-top: 16px; background: rgba(88,101,242,0.12); border: 1px solid rgba(88,101,242,0.3); border-radius: 8px; padding: 14px 18px;">
+                <p style="color:#a8bedc; font-size:0.9rem; margin:0 0 10px;">
+                    For game, server, or mod-related projects, you can also join our Discord and mention your Estimate ID.
+                </p>
+                <?php /* TODO: Replace Discord invite link with official Runlevel Systems Discord invite. */ ?>
+                <a href="https://discord.gg/REPLACE_ME" target="_blank" rel="noopener noreferrer" class="btn-discord">Join Discord</a>
+            </div>
+            <?php endif; ?>
+            <p style="margin-top: 20px;">
+                <a href="pricing.php" style="color:#36f3ff;">← Back to Pricing</a>
+            </p>
         </div>
 <?php else: ?>
 
@@ -183,6 +233,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_estimate'])) {
         <?php if ($error !== ''): ?>
             <div class="alert-error"><?php echo pe($error); ?></div>
         <?php endif; ?>
+        <?php if ($warning !== ''): ?>
+            <div class="alert-warning">⚠️ <?php echo pe($warning); ?></div>
+        <?php endif; ?>
 
         <form method="post">
             <input type="hidden" name="submit_estimate" value="1">
@@ -190,35 +243,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_estimate'])) {
             <!-- Contact Info -->
             <div class="est-card">
                 <h2>📋 Your Contact Information</h2>
-                <div class="form-row">
-                    <div class="form-field">
-                        <label for="est_name">Name *</label>
-                        <input id="est_name" type="text" name="name" class="est-input" required
-                               value="<?php echo pe($_POST['name'] ?? ''); ?>" placeholder="Your name or company">
-                    </div>
-                    <div class="form-field">
-                        <label for="est_email">Email *</label>
-                        <input id="est_email" type="email" name="email" class="est-input" required
-                               value="<?php echo pe($_POST['email'] ?? ''); ?>" placeholder="you@example.com">
-                    </div>
+                <div class="form-field">
+                    <label for="est_name">Name *</label>
+                    <input id="est_name" type="text" name="name" class="est-input" required
+                           value="<?php echo pe($_POST['name'] ?? ''); ?>" placeholder="Your name or company">
                 </div>
                 <div class="form-row">
+                    <div class="form-field">
+                        <label for="est_email">Email <span class="optional-badge">optional</span></label>
+                        <input id="est_email" type="email" name="email" class="est-input"
+                               value="<?php echo pe($_POST['email'] ?? ''); ?>" placeholder="you@example.com">
+                    </div>
                     <div class="form-field">
                         <label for="est_phone">Phone <span class="optional-badge">optional</span></label>
                         <input id="est_phone" type="text" name="phone" class="est-input"
                                value="<?php echo pe($_POST['phone'] ?? ''); ?>" placeholder="Phone or text number">
-                    </div>
-                    <div class="form-field">
-                        <label for="est_discord">Discord <span class="optional-badge">optional</span></label>
-                        <input id="est_discord" type="text" name="discord" class="est-input"
-                               value="<?php echo pe($_POST['discord'] ?? ''); ?>" placeholder="Discord username">
                     </div>
                 </div>
                 <div class="form-field">
                     <label for="est_contact">Preferred contact method *</label>
                     <select id="est_contact" name="contact_method" class="est-select" required>
                         <option value="">— Select —</option>
-                        <?php foreach (['Email', 'Google Meet', 'Discord', 'Phone', 'Text message', 'Not sure'] as $opt): ?>
+                        <?php foreach (['Email', 'Phone', 'Google Meet', 'Discord', 'Not sure'] as $opt): ?>
                             <option value="<?php echo pe($opt); ?>" <?php echo (($_POST['contact_method'] ?? '') === $opt) ? 'selected' : ''; ?>><?php echo pe($opt); ?></option>
                         <?php endforeach; ?>
                     </select>
@@ -236,6 +282,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_estimate'])) {
                             <option value="<?php echo pe($opt); ?>" <?php echo (($_POST['project_type'] ?? '') === $opt) ? 'selected' : ''; ?>><?php echo pe($opt); ?></option>
                         <?php endforeach; ?>
                     </select>
+
+                    <!-- Discord community invite: shown only for game/server/mod project types -->
+                    <div class="discord-invite-block" id="discord-invite-block">
+                        <p>
+                            For game, server, or mod-related projects, you can also join our Discord and mention your Estimate ID.
+                        </p>
+                        <?php /* TODO: Replace Discord invite link with official Runlevel Systems Discord invite. */ ?>
+                        <a href="https://discord.gg/REPLACE_ME" target="_blank" rel="noopener noreferrer" class="btn-discord">Join Discord</a>
+                    </div>
                 </div>
                 <div class="form-field">
                     <label for="est_what">What do you need? *</label>
@@ -335,5 +390,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_estimate'])) {
 <?php include 'includes/footer.php'; ?>
 <script src="assets/js/jquery-1.12.3.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
+<script>
+(function () {
+    // Discord invite block: show only for game-related project types
+    var gameTypes = <?php echo json_encode($gameTypes); ?>;
+    var projectSelect  = document.getElementById('est_type');
+    var discordBlock   = document.getElementById('discord-invite-block');
+
+    function updateDiscordBlock() {
+        if (!projectSelect || !discordBlock) { return; }
+        var selected = projectSelect.value;
+        if (gameTypes.indexOf(selected) !== -1) {
+            discordBlock.style.display = 'block';
+        } else {
+            discordBlock.style.display = 'none';
+        }
+    }
+
+    if (projectSelect) {
+        projectSelect.addEventListener('change', updateDiscordBlock);
+    }
+
+    // On page load: apply state based on any pre-selected value (e.g. form re-display after validation error)
+    updateDiscordBlock();
+})();
+</script>
 </body>
 </html>

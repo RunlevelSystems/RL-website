@@ -42,17 +42,11 @@ if ($is_in_wiki) {
                         <li><a href="<?php echo $base_path; ?>products.php" <?php echo ($current_page == 'products') ? 'aria-current="page"' : ''; ?>>Products</a></li>
                         <li><a href="<?php echo $base_path; ?>pricing.php" <?php echo ($current_page == 'pricing') ? 'aria-current="page"' : ''; ?>>Pricing</a></li>
                         <?php
-                        // Dashboard link: staff → staff dashboard, client → client dashboard, guest → login
-                        $dashUrl = $base_path . 'login.php';
-                        if (!isset($_SESSION)) { @session_start(); }
-                        if (!empty($_SESSION['rls_portal_staff']['username'])) {
-                            $dashUrl = $base_path . 'staff/dashboard.php';
-                        } elseif (!empty($_SESSION['rls_portal_client']['username'])) {
-                            $dashUrl = $base_path . 'client/dashboard.php';
-                        }
-                        $dashActive = in_array($current_page, ['staff-portal', 'client-portal'], true) ? 'aria-current="page"' : '';
+                        // Dashboard link always points to /dashboard.php.
+                        // If not logged in, /dashboard.php redirects to /login.php.
+                        $dashActive = ($current_page === 'dashboard') ? 'aria-current="page"' : '';
                         ?>
-                        <li><a href="<?php echo $dashUrl; ?>" <?php echo $dashActive; ?>>Dashboard</a></li>
+                        <li><a href="<?php echo $base_path; ?>dashboard.php" <?php echo $dashActive; ?>>Dashboard</a></li>
                         <li><a href="<?php echo $base_path; ?>contact.php" <?php echo ($current_page == 'contact') ? 'aria-current="page"' : ''; ?>>Contact</a></li>
                     </ul>
                 </div>

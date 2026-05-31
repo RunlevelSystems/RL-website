@@ -26,8 +26,10 @@ define('PORTAL_COMMERCIAL_FILE', PORTAL_DATA_DIR . '/commercial_requests.json');
 define('PORTAL_ESTIMATES_FILE',  PORTAL_DATA_DIR . '/estimate_requests.json');
 
 // Session keys
-define('PORTAL_STAFF_SESSION',  'rls_portal_staff');
-define('PORTAL_CLIENT_SESSION', 'rls_portal_client');
+define('PORTAL_STAFF_SESSION',   'rls_portal_staff');
+define('PORTAL_CLIENT_SESSION',  'rls_portal_client');
+// Unified dashboard session key (used by /login.php and /dashboard.php)
+define('PORTAL_UNIFIED_SESSION', 'rls_session');
 
 // ------------------------------------------------------------------
 // Utilities
@@ -103,7 +105,7 @@ function portalFindUserByUsername($username) {
 }
 
 /**
- * Verify staff login credentials.
+ * Verify staff login credentials (admin and staff roles only).
  *
  * TODO: Replace plaintext password comparison with password_hash/password_verify before production.
  *       Current plaintext storage is temporary for development only.
@@ -127,14 +129,52 @@ function portalVerifyStaffLogin($username, $password) {
     return $user;
 }
 
+/**
+ * Verify unified login credentials against users.json (all roles: admin, staff, client).
+ *
+ * TODO: Replace plaintext password comparison with password_hash/password_verify before production.
+ * TODO: Move users to database later.
+ */
+function portalVerifyLogin($username, $password) {
+    $user = portalFindUserByUsername($username);
+    if (!$user) {
+        return false;
+    }
+    if (($user['status'] ?? '') !== 'active') {
+        return false;
+    }
+    // TODO: Replace plaintext passwords with password_hash/password_verify before production.
+    if ($user['password'] !== $password) {
+        return false;
+    }
+    return $user;
+}
+
 function portalIsStaffLoggedIn() {
     portalEnsureSession();
-    return !empty($_SESSION[PORTAL_STAFF_SESSION]['username']);
+    // Check legacy portal staff session
+    if (!empty($_SESSION[PORTAL_STAFF_SESSION]['username'])) {
+        return true;
+    }
+    // Also accept unified session with admin or staff role
+    $unified = $_SESSION[PORTAL_UNIFIED_SESSION] ?? null;
+    if (!empty($unified['logged_in']) && in_array($unified['role'] ?? '', ['admin', 'staff'], true)) {
+        return true;
+    }
+    return false;
 }
 
 function portalGetStaffUser() {
     portalEnsureSession();
-    return $_SESSION[PORTAL_STAFF_SESSION] ?? null;
+    if (!empty($_SESSION[PORTAL_STAFF_SESSION]['username'])) {
+        return $_SESSION[PORTAL_STAFF_SESSION];
+    }
+    // Fall back to unified session for admin/staff
+    $unified = $_SESSION[PORTAL_UNIFIED_SESSION] ?? null;
+    if (!empty($unified['logged_in']) && in_array($unified['role'] ?? '', ['admin', 'staff'], true)) {
+        return $unified;
+    }
+    return null;
 }
 
 function portalGetStaffRole() {
@@ -143,14 +183,14 @@ function portalGetStaffRole() {
 }
 
 /**
- * Protect a staff page. Redirects to /staff/login.php if not authenticated.
+ * Protect a staff page. Redirects to /login.php if not authenticated.
  * Optionally restrict to specific roles (default: admin and staff).
  */
 function portalRequireStaff($allowedRoles = ['admin', 'staff']) {
     portalEnsureSession();
     if (!portalIsStaffLoggedIn()) {
         $redirect = isset($_SERVER['REQUEST_URI']) ? urlencode($_SERVER['REQUEST_URI']) : '';
-        header('Location: /staff/login.php' . ($redirect ? '?redirect=' . $redirect : ''));
+        header('Location: /login.php' . ($redirect ? '?redirect=' . $redirect : ''));
         exit;
     }
     $role = portalGetStaffRole();
@@ -160,7 +200,7 @@ function portalRequireStaff($allowedRoles = ['admin', 'staff']) {
             . '<body style="background:#07111f;color:#eaf3ff;font-family:sans-serif;padding:2rem;">'
             . '<h1 style="color:#ffc600;">Access Denied</h1>'
             . '<p>You do not have permission to view this page.</p>'
-            . '<p><a href="/staff/dashboard.php" style="color:#36f3ff;">Return to Dashboard</a></p>'
+            . '<p><a href="/dashboard.php" style="color:#36f3ff;">Return to Dashboard</a></p>'
             . '</body></html>';
         exit;
     }
@@ -169,6 +209,57 @@ function portalRequireStaff($allowedRoles = ['admin', 'staff']) {
 function portalStaffLogout() {
     portalEnsureSession();
     unset($_SESSION[PORTAL_STAFF_SESSION]);
+    unset($_SESSION[PORTAL_UNIFIED_SESSION]);
+}
+
+// ------------------------------------------------------------------
+// Unified dashboard session helpers
+// ------------------------------------------------------------------
+
+/**
+ * Check if any user is logged in via the unified dashboard session.
+ */
+function portalIsLoggedIn() {
+    portalEnsureSession();
+    return !empty($_SESSION[PORTAL_UNIFIED_SESSION]['logged_in']);
+}
+
+/**
+ * Get the unified session user array, or null if not logged in.
+ */
+function portalGetUser() {
+    portalEnsureSession();
+    return $_SESSION[PORTAL_UNIFIED_SESSION] ?? null;
+}
+
+/**
+ * Get the role from the unified session.
+ */
+function portalGetRole() {
+    $u = portalGetUser();
+    return $u ? (string)($u['role'] ?? '') : '';
+}
+
+/**
+ * Protect a dashboard page. Redirects to /login.php if not authenticated.
+ */
+function portalRequireLogin() {
+    portalEnsureSession();
+    if (!portalIsLoggedIn()) {
+        $redirect = isset($_SERVER['REQUEST_URI']) ? urlencode($_SERVER['REQUEST_URI']) : '';
+        header('Location: /login.php' . ($redirect ? '?redirect=' . $redirect : ''));
+        exit;
+    }
+}
+
+/**
+ * Full logout: clears unified session, staff portal session, and client portal session.
+ */
+function portalLogout() {
+    portalEnsureSession();
+    unset($_SESSION[PORTAL_UNIFIED_SESSION]);
+    unset($_SESSION[PORTAL_STAFF_SESSION]);
+    unset($_SESSION[PORTAL_CLIENT_SESSION]);
 }
 
 // ------------------------------------------------------------------
