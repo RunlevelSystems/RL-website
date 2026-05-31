@@ -8,10 +8,11 @@ $is_in_projects = (strpos($current_url, '/projects/') !== false);
 $is_in_staff = (strpos($current_url, '/staff/') !== false);
 $is_in_wiki = (strpos($current_url, '/staff/wiki/') !== false);
 $is_in_portal = (bool) preg_match('#/portal(?:/|$)#', $current_url);
+$is_in_client = (strpos($current_url, '/client/') !== false);
 
 if ($is_in_wiki) {
     $base_path = '../../';
-} elseif ($is_in_staff || $is_in_projects || $is_in_portal) {
+} elseif ($is_in_staff || $is_in_projects || $is_in_portal || $is_in_client) {
     $base_path = '../';
 } else {
     $base_path = '';
