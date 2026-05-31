@@ -14,11 +14,21 @@ $displayName = $user['display_name'] ?? $user['username'] ?? 'User';
 // Load counts for admin/staff overview cards
 $newEstimates = [];
 $newRequests  = [];
+$myEstimates  = [];
 if (in_array($role, ['admin', 'staff'], true)) {
     $allEstimates = portalLoadEstimateRequests();
     $newEstimates = array_filter($allEstimates, function ($r) { return ($r['status'] ?? '') === 'new'; });
     $allRequests  = portalLoadRequests();
     $newRequests  = array_filter($allRequests, function ($r) { return ($r['status'] ?? '') === 'new'; });
+} elseif ($role === 'client') {
+    $allEstimates = portalLoadEstimateRequests();
+    $myUsername = (string)($user['username'] ?? '');
+    $myEstimates = array_values(array_filter($allEstimates, function ($r) use ($myUsername) {
+        return (string)($r['client_username'] ?? '') === $myUsername;
+    }));
+    usort($myEstimates, function ($a, $b) {
+        return strcmp((string)($b['created_at'] ?? ''), (string)($a['created_at'] ?? ''));
+    });
 }
 
 $current_page = 'dashboard';
@@ -232,18 +242,13 @@ $header_class = 'inner-header';
         <div class="portal-card-grid">
             <a href="/estimate.php" class="portal-dash-card" style="border-color: rgba(255,198,0,0.3);">
                 <div class="card-icon">➕</div>
-                <div class="card-label">Submit New Request</div>
+                <div class="card-label">Submit New Estimate</div>
                 <div class="card-sub">Start a project estimate</div>
-            </a>
-            <a href="/client/requests.php" class="portal-dash-card">
-                <div class="card-icon">📥</div>
-                <div class="card-label">My Requests</div>
-                <div class="card-sub">View your requests</div>
             </a>
             <a href="/estimate.php" class="portal-dash-card">
                 <div class="card-icon">📝</div>
-                <div class="card-label">My Estimates</div>
-                <div class="card-sub">Submit or review</div>
+                <div class="card-label">My Estimate Requests</div>
+                <div class="card-sub"><?php echo count($myEstimates); ?> submitted</div>
             </a>
             <a href="/client/proposals.php" class="portal-dash-card">
                 <div class="card-icon">📄</div>
@@ -263,13 +268,41 @@ $header_class = 'inner-header';
             <a href="/design-debug-deploy.php" class="portal-dash-card">
                 <div class="card-icon">🛠️</div>
                 <div class="card-label">Runlevel Tools</div>
-                <div class="card-sub">Dev Partner tools</div>
+                <div class="card-sub">Dev+1 tools</div>
             </a>
             <a href="/contact.php" class="portal-dash-card">
                 <div class="card-icon">🙋</div>
                 <div class="card-label">Support / Issues</div>
                 <div class="card-sub">Contact us</div>
             </a>
+        </div>
+
+        <div style="background:#0c1729;border:1px solid rgba(54,243,255,0.18);border-radius:10px;padding:20px;overflow:auto;">
+            <h3 style="margin-top:0;color:#36f3ff;text-transform:uppercase;font-size:1rem;letter-spacing:.04em;">My Estimate Requests</h3>
+            <table style="width:100%;min-width:680px;border-collapse:collapse;">
+                <thead>
+                    <tr>
+                        <th style="text-align:left;padding:8px 6px;color:#5a7a9e;font-size:.76rem;text-transform:uppercase;">Estimate ID</th>
+                        <th style="text-align:left;padding:8px 6px;color:#5a7a9e;font-size:.76rem;text-transform:uppercase;">Project Type</th>
+                        <th style="text-align:left;padding:8px 6px;color:#5a7a9e;font-size:.76rem;text-transform:uppercase;">Status</th>
+                        <th style="text-align:left;padding:8px 6px;color:#5a7a9e;font-size:.76rem;text-transform:uppercase;">Submitted Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php if (empty($myEstimates)): ?>
+                    <tr><td colspan="4" style="padding:12px 6px;color:#7a9ac0;">No estimate requests yet.</td></tr>
+                <?php else: ?>
+                    <?php foreach ($myEstimates as $est): ?>
+                        <tr>
+                            <td style="padding:10px 6px;border-top:1px solid rgba(54,243,255,0.12);font-family:monospace;color:#ffc600;"><?php echo pe(portalGetEstimateDisplayId($est)); ?></td>
+                            <td style="padding:10px 6px;border-top:1px solid rgba(54,243,255,0.12);color:#a8bedc;"><?php echo pe($est['project_type'] ?? '—'); ?></td>
+                            <td style="padding:10px 6px;border-top:1px solid rgba(54,243,255,0.12);color:#a8bedc;"><?php echo pe(ucfirst((string)($est['status'] ?? 'new'))); ?></td>
+                            <td style="padding:10px 6px;border-top:1px solid rgba(54,243,255,0.12);color:#7a9ac0;"><?php echo pe(date('M j, Y', strtotime($est['created_at'] ?? 'now'))); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+                </tbody>
+            </table>
         </div>
 
 <?php endif; ?>

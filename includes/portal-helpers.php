@@ -13,6 +13,191 @@ if (!defined('WDS_SYSTEM')) {
     die('Access denied');
 }
 
+function portalFindUserByEmail($email) {
+    $email = strtolower(trim((string)$email));
+    if ($email === '') {
+        return null;
+    }
+    foreach (portalLoadUsers() as $user) {
+        if (strtolower(trim((string)($user['email'] ?? ''))) === $email) {
+            return $user;
+        }
+    }
+    return null;
+}
+
+function portalIsValidEstimateUsername($username) {
+    $username = trim((string)$username);
+    return (bool) preg_match('/^[A-Za-z0-9_-]{3,}$/', $username);
+}
+
+function portalGenerateVerificationToken() {
+    return bin2hex(random_bytes(16));
+}
+
+function portalGenerateTemporaryPassword($length = 12) {
+    $alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%';
+    $max = strlen($alphabet) - 1;
+    $out = '';
+    for ($i = 0; $i < $length; $i++) {
+        $out .= $alphabet[random_int(0, $max)];
+    }
+    return $out;
+}
+
+function portalGenerateUniqueEstimateId() {
+    $requests = portalLoadEstimateRequests();
+    $existing = [];
+    foreach ($requests as $r) {
+        if (!empty($r['estimate_id'])) {
+            $existing[(string)$r['estimate_id']] = true;
+        }
+    }
+    $datePart = date('Ymd');
+    $attempts = 0;
+    do {
+        $estimateId = 'RLS-' . $datePart . '-' . str_pad((string) random_int(1, 9999), 4, '0', STR_PAD_LEFT);
+        $attempts++;
+    } while (isset($existing[$estimateId]) && $attempts < 10000);
+    return $estimateId;
+}
+
+function portalGetEstimateDisplayId(array $request) {
+    $estimateId = trim((string)($request['estimate_id'] ?? ''));
+    if ($estimateId !== '') {
+        return $estimateId;
+    }
+    return 'Legacy Request';
+}
+
+/**
+ * Create a new client-style user entry in users.json for estimate submissions.
+ *
+ * TODO: Replace plaintext passwords with password_hash/password_verify before production.
+ * TODO: Add password reset flow and stop issuing temporary passwords.
+ */
+function portalCreateClientUserFromEstimate($username, $name, $email, $phone = '', $discordUsername = '', &$error = '') {
+    $error = '';
+    $username = strtolower(trim((string)$username));
+    $name = trim((string)$name);
+    $email = trim((string)$email);
+    $phone = trim((string)$phone);
+    $discordUsername = trim((string)$discordUsername);
+
+    if (!portalIsValidEstimateUsername($username)) {
+        $error = 'Username must be at least 3 characters and use only letters, numbers, dash, or underscore.';
+        return false;
+    }
+    if ($name === '') {
+        $error = 'Name is required.';
+        return false;
+    }
+    if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = 'A valid email address is required.';
+        return false;
+    }
+    if (portalFindUserByUsername($username)) {
+        $error = 'That username is already taken. Please log in or choose another username.';
+        return false;
+    }
+    if (portalFindUserByEmail($email)) {
+        $error = 'An account with this email already exists. Please log in and submit your estimate from your account.';
+        return false;
+    }
+
+    $temporaryPassword = portalGenerateTemporaryPassword(12);
+    $verificationToken = portalGenerateVerificationToken();
+    $users = portalLoadUsers();
+    $users[] = [
+        'username' => $username,
+        'password' => $temporaryPassword,
+        'role' => 'client',
+        'status' => 'pending_verification',
+        'display_name' => $name,
+        'email' => $email,
+        'phone' => $phone,
+        'discord_username' => $discordUsername,
+        'verification_token' => $verificationToken,
+        'verification_expires_at' => date('c', time() + (48 * 3600)),
+        'created_at' => date('c'),
+    ];
+    if (!portalSaveUsers($users)) {
+        $error = 'Unable to create your account right now. Please try again.';
+        return false;
+    }
+
+    return [
+        'username' => $username,
+        'temporary_password' => $temporaryPassword,
+        'verification_token' => $verificationToken,
+        'verification_expires_at' => date('c', time() + (48 * 3600)),
+    ];
+}
+
+function portalActivateUserByVerificationToken($token) {
+    $token = trim((string)$token);
+    if ($token === '') {
+        return false;
+    }
+    $users = portalLoadUsers();
+    $updated = false;
+    $matched = false;
+    foreach ($users as &$user) {
+        if (($user['verification_token'] ?? '') !== $token) {
+            continue;
+        }
+        $matched = true;
+        $expiresAt = trim((string)($user['verification_expires_at'] ?? ''));
+        if ($expiresAt !== '' && strtotime($expiresAt) !== false && strtotime($expiresAt) < time()) {
+            unset($user);
+            return false;
+        }
+        $user['status'] = 'active';
+        $user['verification_token'] = '';
+        $user['verification_expires_at'] = '';
+        $updated = true;
+        break;
+    }
+    unset($user);
+
+    if (!$matched || !$updated) {
+        return false;
+    }
+    if (!portalSaveUsers($users)) {
+        return false;
+    }
+    return true;
+}
+
+function portalRefreshVerificationTokenByEmail($email, &$userOut = null) {
+    $email = strtolower(trim((string)$email));
+    if ($email === '') {
+        return false;
+    }
+    $users = portalLoadUsers();
+    foreach ($users as &$user) {
+        if (strtolower(trim((string)($user['email'] ?? ''))) !== $email) {
+            continue;
+        }
+        if (($user['status'] ?? '') === 'active') {
+            $userOut = $user;
+            unset($user);
+            return false;
+        }
+        $user['verification_token'] = portalGenerateVerificationToken();
+        $user['verification_expires_at'] = date('c', time() + (48 * 3600));
+        if (!portalSaveUsers($users)) {
+            unset($user);
+            return false;
+        }
+        $userOut = $user;
+        unset($user);
+        return true;
+    }
+    unset($user);
+    return false;
+}
+
 // ------------------------------------------------------------------
 // Data file paths (relative to this file which lives in /includes/)
 // ------------------------------------------------------------------
@@ -81,6 +266,27 @@ function pe($str) {
     return htmlspecialchars((string)$str, ENT_QUOTES, 'UTF-8');
 }
 
+/**
+ * Allow only local relative paths beginning with "/".
+ */
+function portalSanitizeReturnPath($path, $default = '/dashboard.php') {
+    $path = trim((string)$path);
+    if ($path === '') {
+        return $default;
+    }
+    if ($path[0] !== '/') {
+        return $default;
+    }
+    if (preg_match('#^//#', $path) || strpos($path, '\\') !== false) {
+        return $default;
+    }
+    $parts = parse_url($path);
+    if ($parts === false || isset($parts['scheme']) || isset($parts['host'])) {
+        return $default;
+    }
+    return $path;
+}
+
 // ------------------------------------------------------------------
 // Staff user management
 // ------------------------------------------------------------------
@@ -135,16 +341,27 @@ function portalVerifyStaffLogin($username, $password) {
  * TODO: Replace plaintext password comparison with password_hash/password_verify before production.
  * TODO: Move users to database later.
  */
-function portalVerifyLogin($username, $password) {
+function portalVerifyLogin($username, $password, &$failureReason = '') {
+    $failureReason = '';
     $user = portalFindUserByUsername($username);
     if (!$user) {
+        $failureReason = 'invalid_credentials';
         return false;
     }
-    if (($user['status'] ?? '') !== 'active') {
+    $status = (string)($user['status'] ?? '');
+    if ($status !== 'active') {
+        if ($status === 'pending_verification') {
+            $failureReason = 'pending_verification';
+        } elseif ($status === 'disabled') {
+            $failureReason = 'disabled';
+        } else {
+            $failureReason = 'inactive';
+        }
         return false;
     }
     // TODO: Replace plaintext passwords with password_hash/password_verify before production.
     if ($user['password'] !== $password) {
+        $failureReason = 'invalid_credentials';
         return false;
     }
     return $user;

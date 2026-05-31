@@ -47,7 +47,7 @@
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">☁️</div>
                             <h3>Runlevel Tools</h3>
-                            <p>Shared project hub for planning, code access, issue tracking, builds, testing, documentation, and Dev Partner workflow.</p>
+                            <p>Shared project hub for planning, code access, issue tracking, builds, testing, documentation, and Dev+1 workflow.</p>
                             <div class="service-actions">
                                 <a class="core-action tertiary" href="/design-debug-deploy.php">Learn More</a>
                             </div>
