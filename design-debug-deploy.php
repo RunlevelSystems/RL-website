@@ -6,25 +6,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
 
-        <title>Dev Partner | Runlevel Systems</title>
-        <meta name="description" content="Dev Partner gives you access to Runlevel Systems as your development team when you need one.">
-        <meta name="keywords" content="Dev Partner, software development support, project rescue, Runlevel Tools, deployment support">
+        <title>Dev+1 | Runlevel Systems</title>
+        <meta name="description" content="Dev+1 gives you access to Runlevel Systems as your development team when you need one.">
+        <meta name="keywords" content="Dev+1, software development support, project rescue, Runlevel Tools, deployment support">
         <link href="assets/css/coreloop.css" rel="stylesheet">
     </head>
     <body>
         <?php
         $current_page = 'dev-partner';
         $header_class = 'inner-header';
-        $page_subtitle = 'Your development team when you need one';
+        $page_subtitle = 'Your extra development help when the project needs momentum';
         ?>
         <?php include 'includes/header.php'; ?>
         <?php include 'includes/navigation.php'; ?>
 
-        <main class="service-site" aria-label="Dev Partner service page">
+        <main class="service-site" aria-label="Dev+1 service page">
             <section class="service-hero compact">
                 <div class="container">
-                    <p class="service-kicker">Dev Partner</p>
-                    <h1>Your Development Team When You Need One</h1>
+                    <p class="service-kicker">Dev+1</p>
+                    <h1>Your Extra Development Help When The Project Needs Momentum</h1>
                     <p class="service-lead">Need help building, fixing, launching, or improving software? Runlevel Systems can work alongside your team or handle development for you.</p>
                     <p class="hero-tagline">DESIGN • DEBUG • DEPLOY</p>
                     <div class="service-actions">
@@ -35,7 +35,7 @@
 
             <section class="service-section">
                 <div class="container">
-                    <h2>Who Dev Partner Is For</h2>
+                    <h2>Who Dev+1 Is For</h2>
                     <ul class="service-icon-list single-column">
                         <li>Customers who need help finishing a project</li>
                         <li>Customers who need a complete application built</li>

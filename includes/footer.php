@@ -81,7 +81,7 @@ if ($is_in_wiki) {
                 <div class="col-sm-4 footer-col">
                     <h4>Work With Us</h4>
                     <ul class="footer-list">
-                        <li><a href="<?php echo $footer_base_path; ?>design-debug-deploy.php">Dev Partner</a></li>
+                        <li><a href="<?php echo $footer_base_path; ?>design-debug-deploy.php">Dev+1</a></li>
                         <li><a href="<?php echo $footer_base_path; ?>estimate.php">Get A Project Estimate</a></li>
                         <li><a href="<?php echo $footer_base_path; ?>pricing.php">Pricing &amp; Estimates</a></li>
                         <li><a href="<?php echo $footer_base_path; ?>contact.php">Contact</a></li>

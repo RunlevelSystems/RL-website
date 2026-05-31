@@ -6,10 +6,7 @@ require_once 'includes/portal-helpers.php';
 
 // If already logged in via unified session, redirect to dashboard
 if (portalIsLoggedIn()) {
-    $redirect = $_GET['redirect'] ?? '';
-    if (empty($redirect) || !preg_match('#^/#', $redirect) || preg_match('#^//|^/\\\\#', $redirect)) {
-        $redirect = '/dashboard.php';
-    }
+    $redirect = portalSanitizeReturnPath($_GET['return'] ?? ($_GET['redirect'] ?? ''), '/dashboard.php');
     header('Location: ' . $redirect);
     exit;
 }
@@ -25,7 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_form'])) {
         $error_message = 'Please enter both username and password.';
     } else {
         // Authenticate against /data/users.json (all roles: admin, staff, client)
-        $user = portalVerifyLogin($username, $password);
+        $failureReason = '';
+        $user = portalVerifyLogin($username, $password, $failureReason);
         if ($user) {
             $role        = $user['role'] ?? 'staff';
             $displayName = $user['display_name'] ?? $user['username'];
@@ -50,14 +48,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_form'])) {
                 ];
             }
 
-            $redirect = $_GET['redirect'] ?? '';
-            if (empty($redirect) || !preg_match('#^/#', $redirect) || preg_match('#^//|^/\\\\#', $redirect)) {
-                $redirect = '/dashboard.php';
-            }
+            $redirect = portalSanitizeReturnPath($_GET['return'] ?? ($_GET['redirect'] ?? ''), '/dashboard.php');
             header('Location: ' . $redirect);
             exit;
         } else {
-            $error_message = 'Incorrect username or password, or account is inactive.';
+            if ($failureReason === 'pending_verification') {
+                $error_message = 'Your account exists but email verification is required before login. Please check your email.';
+            } elseif ($failureReason === 'disabled' || $failureReason === 'inactive') {
+                $error_message = 'Your account is currently disabled. Please contact Runlevel Systems.';
+            } else {
+                $error_message = 'Incorrect username or password.';
+            }
         }
     }
 }
@@ -167,7 +168,7 @@ $header_class = 'login-header inner-header';
                             <?php endif; ?>
 
                             <!-- Login Form -->
-                            <form action="login.php<?php echo isset($_GET['redirect']) ? '?redirect=' . urlencode($_GET['redirect']) : ''; ?>" method="post" class="dashboard-login-form">
+                            <form action="login.php<?php echo isset($_GET['return']) ? '?return=' . urlencode($_GET['return']) : (isset($_GET['redirect']) ? '?redirect=' . urlencode($_GET['redirect']) : ''); ?>" method="post" class="dashboard-login-form">
                                 <input type="hidden" name="login_form" value="1">
 
                                 <div style="margin-bottom: 25px;">
