@@ -297,7 +297,7 @@ EOF
         # Human-readable output
         echo ""
         echo "╔══════════════════════════════════════════════════════════════════════╗"
-        echo "║                    WDS Server Fleet Status                           ║"
+        echo "║                    Runlevel Server Fleet Status                           ║"
         echo "╠══════════════════════════════════════════════════════════════════════╣"
         echo "║  Servers: $total total | $(printf '\033[32m%d\033[0m' $healthy) healthy | $(printf '\033[33m%d\033[0m' $degraded) degraded | $(printf '\033[31m%d\033[0m' $offline) offline"
         echo "╠══════════════════════════════════════════════════════════════════════╣"

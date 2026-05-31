@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['resend_verification']
         if (!$refreshed || !$user) {
             $error = 'Verification link is invalid or expired. Please request a new verification email.';
         } else {
-            $verifyLink = 'https://' . ($_SERVER['HTTP_HOST'] ?? 'runlevel.systems') . '/verify-email.php?token=' . urlencode((string)$user['verification_token']);
+            $verifyLink = 'https://' . ($_SERVER['HTTP_HOST'] ?? 'runlevelsystems.com') . '/verify-email.php?token=' . urlencode((string)$user['verification_token']);
             $name = trim((string)($user['display_name'] ?? $user['username'] ?? 'Customer'));
             $body = "Hello {$name},\n\n"
                   . "We received your request to resend account verification.\n\n"
@@ -42,7 +42,7 @@ $header_class = 'inner-header';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
     <title>Resend Verification | Runlevel Systems</title>
-    <link href="assets/css/coreloop.css" rel="stylesheet">
+    <link href="assets/css/runlevel.css" rel="stylesheet">
 </head>
 <body>
 <?php include __DIR__ . '/includes/header.php'; ?>

@@ -3,7 +3,7 @@
 # xfer.sh - Simple Folder Transfer Script
 # =============================================================================
 # Transfers a folder from this server to another using rsync over SSH.
-# Designed for quick ad-hoc transfers between WDS infrastructure hosts.
+# Designed for quick ad-hoc transfers between Runlevel infrastructure hosts.
 #
 # Usage:
 #   ./xfer.sh <SOURCE_PATH> <DEST_HOST> [OPTIONS]

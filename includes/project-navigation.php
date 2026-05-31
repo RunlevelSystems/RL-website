@@ -1,18 +1,10 @@
 <?php
 // Project navigation order - matches the order on projects.php page
 $project_order = [
-    // Current Projects
-    'neverwards' => ['title' => 'Neverwards', 'type' => 'current'],
-    'gameservers-world' => ['title' => 'Gameservers.world', 'type' => 'current'],
-    'worlddomination-dev' => ['title' => 'Worlddomination.dev', 'type' => 'current'], 
-    'pureops' => ['title' => 'PureOps', 'type' => 'current'],
-    // Legacy Projects
-    'roadkill' => ['title' => 'Roadkill', 'type' => 'legacy'],
-    // Upcoming Projects
-    'space-4x' => ['title' => 'Space-4X', 'type' => 'upcoming'],
-    'alien-apocalypse' => ['title' => 'Alien Apocalypse', 'type' => 'upcoming'],
-    'bbs-revival' => ['title' => 'BBS Revival', 'type' => 'upcoming'],
-    'roadkill-v2' => ['title' => 'Roadkill v2', 'type' => 'upcoming']
+    'roadkill' => ['title' => 'Roadkill', 'type' => 'project'],
+    'neverwards' => ['title' => 'Neverwards', 'type' => 'project'],
+    'mystical-islands' => ['title' => 'Mystical Islands', 'type' => 'project'],
+    'pure-storage-training-simulator' => ['title' => 'Pure Storage Training Simulator', 'type' => 'project']
 ];
 
 // Get current project from filename
@@ -54,10 +46,10 @@ if (strpos($proj_nav_url, '/projects/') !== false) {
                     <!-- Previous Project -->
                     <div style="flex: 1; min-width: 200px;">
                         <?php if ($prev_project): ?>
-                            <a href="<?php echo $proj_nav_base; ?>projects/<?php echo $prev_project; ?>" style="text-decoration: none; color: #eaf3ff; display: block; padding: 15px; background: #0d1a33; border: 1px solid rgba(54,243,255,0.2); border-radius: 8px; transition: all 0.3s ease;">
+                            <a href="<?php echo $proj_nav_base; ?>projects/<?php echo $prev_project; ?>.php" style="text-decoration: none; color: #eaf3ff; display: block; padding: 15px; background: #0d1a33; border: 1px solid rgba(54,243,255,0.2); border-radius: 8px; transition: all 0.3s ease;">
                                 <div style="font-size: 12px; color: #ffd166; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">← Previous Project</div>
                                 <div style="font-size: 16px; font-weight: bold;"><?php echo $project_order[$prev_project]['title']; ?></div>
-                                <div style="font-size: 12px; color: #64748b; text-transform: capitalize;"><?php echo $project_order[$prev_project]['type']; ?> Project</div>
+                                <div style="font-size: 12px; color: #64748b; text-transform: capitalize;"><?php echo $project_order[$prev_project]['type']; ?></div>
                             </a>
                         <?php else: ?>
                             <div style="padding: 15px; color: #64748b; text-align: center; font-style: italic;">
@@ -77,10 +69,10 @@ if (strpos($proj_nav_url, '/projects/') !== false) {
                     <!-- Next Project -->
                     <div style="flex: 1; min-width: 200px; text-align: right;">
                         <?php if ($next_project): ?>
-                            <a href="<?php echo $proj_nav_base; ?>projects/<?php echo $next_project; ?>" style="text-decoration: none; color: #eaf3ff; display: block; padding: 15px; background: #0d1a33; border: 1px solid rgba(54,243,255,0.2); border-radius: 8px; transition: all 0.3s ease;">
+                            <a href="<?php echo $proj_nav_base; ?>projects/<?php echo $next_project; ?>.php" style="text-decoration: none; color: #eaf3ff; display: block; padding: 15px; background: #0d1a33; border: 1px solid rgba(54,243,255,0.2); border-radius: 8px; transition: all 0.3s ease;">
                                 <div style="font-size: 12px; color: #ffd166; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; text-align: right;">Next Project →</div>
                                 <div style="font-size: 16px; font-weight: bold; text-align: right;"><?php echo $project_order[$next_project]['title']; ?></div>
-                                <div style="font-size: 12px; color: #64748b; text-transform: capitalize; text-align: right;"><?php echo $project_order[$next_project]['type']; ?> Project</div>
+                                <div style="font-size: 12px; color: #64748b; text-transform: capitalize; text-align: right;"><?php echo $project_order[$next_project]['type']; ?></div>
                             </a>
                         <?php else: ?>
                             <div style="padding: 15px; color: #64748b; text-align: center; font-style: italic;">

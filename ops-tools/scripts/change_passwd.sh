@@ -2,7 +2,7 @@
 # =============================================================================
 # change_passwd.sh - Unified Password Rotation Script
 # =============================================================================
-# Rotates passwords across the WDS infrastructure:
+# Rotates passwords across the Runlevel infrastructure:
 #   - Linux gameserver user password on all hosts
 #   - MySQL localuser and remoteuser accounts on core and core-dr
 #   - Updates .password file on all hosts
@@ -316,7 +316,7 @@ rotate_linux_remote() {
 # Main
 # =============================================================================
 say "=============================================="
-say "  WDS Password Rotation"
+say "  Runlevel Password Rotation"
 say "=============================================="
 say ""
 say "Password length: ${#NEW_PASSWORD} characters"
