@@ -40,11 +40,12 @@ function getBasePath() {
     $is_in_wiki = (strpos($current_url, '/staff/wiki/') !== false);
     $is_in_staff = (strpos($current_url, '/staff/') !== false);
     $is_in_projects = (strpos($current_url, '/projects/') !== false);
+    $is_in_client = (strpos($current_url, '/client/') !== false);
 	
     if ($is_in_wiki) {
         // Wiki lives one level deeper under /staff/wiki/
         return '../../';
-    } elseif ($is_in_staff || $is_in_projects) {
+    } elseif ($is_in_staff || $is_in_projects || $is_in_client) {
         // Staff tools and project pages sit one level below the site root
         return '../';
     }

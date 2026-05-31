@@ -5,10 +5,11 @@ $is_in_wiki = (strpos($current_url, '/staff/wiki/') !== false);
 $is_in_staff = (strpos($current_url, '/staff/') !== false);
 $is_in_projects = (strpos($current_url, '/projects/') !== false);
 $is_in_portal = (bool) preg_match('#/portal(?:/|$)#', $current_url);
+$is_in_client = (strpos($current_url, '/client/') !== false);
 
 if ($is_in_wiki) {
     $footer_base_path = '../../';
-} elseif ($is_in_staff || $is_in_projects || $is_in_portal) {
+} elseif ($is_in_staff || $is_in_projects || $is_in_portal || $is_in_client) {
     $footer_base_path = '../';
 } else {
     $footer_base_path = '';
@@ -86,6 +87,10 @@ if ($is_in_wiki) {
                         <li><a href="<?php echo $footer_base_path; ?>privacy.php">Privacy Policy</a></li>
                         <li><a href="<?php echo $footer_base_path; ?>runlevel-terms.php">Runlevel Systems Terms</a></li>
                         <li><a href="<?php echo $footer_base_path; ?>gameservers-world-hosting-terms.php">GameServers.World Hosting Terms</a></li>
+                        <li><a href="<?php echo $footer_base_path; ?>payments.php">How Payments Work</a></li>
+                        <li><a href="<?php echo $footer_base_path; ?>pricing.php">Pricing Guide</a></li>
+                        <li><a href="<?php echo $footer_base_path; ?>commercial.php">Commercial Projects</a></li>
+                        <li><a href="<?php echo $footer_base_path; ?>client/login.php">Client Portal</a></li>
                     </ul>
                 </div>
             </div>
