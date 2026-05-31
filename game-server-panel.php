@@ -31,23 +31,25 @@
                     <div class="service-actions">
                         <a class="core-action primary" href="https://github.com/RunlevelSystems/GSP" target="_blank" rel="noopener noreferrer">View On GitHub</a>
                         <a class="core-action secondary" href="https://gameservers.world" target="_blank" rel="noopener noreferrer">View GameServers.World</a>
-                        <a class="core-action secondary" href="/contact.php?subject=GSP%20Commercial%20Support">Request Commercial Support</a>
+                        <a class="core-action secondary" href="/start-project.php?type=Commercial%20%2F%20Long-Term%20Work&amp;title=Commercial%20Support%20For%20GSP">Request Commercial Support</a>
                     </div>
                 </div>
             </section>
 
             <section class="service-section">
                 <div class="container">
-                    <h2>Future Uses</h2>
-                    <ul class="service-icon-list single-column">
-                        <li>Docker containers</li>
-                        <li>Hosted applications</li>
-                        <li>Development workspaces</li>
-                        <li>Application hosting</li>
-                        <li>Service automation</li>
-                        <li>Managed infrastructure</li>
-                    </ul>
-                    <p class="section-intro" style="margin-top: 1rem;">GSP is free and open source. It can be used to run your own commercial hosting company.</p>
+                    <h2>What GSP Can Support</h2>
+                    <div class="service-card-grid two-columns">
+                        <article class="service-card-item"><h3>Hosted Services</h3><p>Manage services, users, automation, and customer-facing operations in one platform.</p></article>
+                        <article class="service-card-item"><h3>Remote Systems</h3><p>Support infrastructure workflows, service management, and hosted environments.</p></article>
+                        <article class="service-card-item"><h3>Application Hosting</h3><p>Extend the platform toward hosted applications, managed workspaces, and deployment workflows.</p></article>
+                        <article class="service-card-item"><h3>Service Automation</h3><p>Build repeatable operations around provisioning, management, and commercial delivery.</p></article>
+                        <article class="service-card-item"><h3>Containers &amp; Workspaces</h3><p>Future uses may include Docker containers, hosted applications, development workspaces, and managed infrastructure.</p></article>
+                    </div>
+                    <div class="ddd-callout secondary" style="margin-top: 1rem;">
+                        <div class="ddd-callout-title">Free and Open Source</div>
+                        <p>GSP is free and open source. It can be used to run your own commercial hosting company.</p>
+                    </div>
                 </div>
             </section>
         </main>
