@@ -3,7 +3,12 @@ session_start();
 define('WDS_SYSTEM', true);
 require_once __DIR__ . '/../includes/portal-helpers.php';
 
-portalRequireClient();
+// Redirect guests to the public estimate form instead of forcing account creation.
+if (!portalIsClientLoggedIn()) {
+    header('Location: /estimate.php', true, 302);
+    exit;
+}
+
 $client = portalGetClientUser();
 
 $error   = '';

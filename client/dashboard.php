@@ -63,15 +63,20 @@ $header_class = 'inner-header';
 
         <p class="portal-section-title">My Portal</p>
         <div class="portal-card-grid">
-            <a href="/client/new-request.php" class="portal-dash-card" style="border-color: rgba(255,198,0,0.3);">
+            <a href="/estimate.php" class="portal-dash-card" style="border-color: rgba(255,198,0,0.3);">
                 <div class="card-icon">➕</div>
                 <div class="card-label">Submit Request</div>
-                <div class="card-sub">Start a new project request</div>
+                <div class="card-sub">Start a new project estimate</div>
             </a>
             <a href="/client/requests.php" class="portal-dash-card">
                 <div class="card-icon">📥</div>
                 <div class="card-label">My Requests</div>
                 <div class="card-count"><?php echo $myRequestCount; ?></div>
+            </a>
+            <a href="/estimate.php" class="portal-dash-card">
+                <div class="card-icon">📝</div>
+                <div class="card-label">My Estimates</div>
+                <div class="card-sub">Submit or review estimates</div>
             </a>
             <a href="/client/proposals.php" class="portal-dash-card">
                 <div class="card-icon">📄</div>

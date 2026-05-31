@@ -23,6 +23,7 @@ define('PORTAL_USERS_FILE',      PORTAL_DATA_DIR . '/users.json');
 define('PORTAL_CLIENTS_FILE',    PORTAL_DATA_DIR . '/clients.json');
 define('PORTAL_REQUESTS_FILE',   PORTAL_DATA_DIR . '/requests.json');
 define('PORTAL_COMMERCIAL_FILE', PORTAL_DATA_DIR . '/commercial_requests.json');
+define('PORTAL_ESTIMATES_FILE',  PORTAL_DATA_DIR . '/estimate_requests.json');
 
 // Session keys
 define('PORTAL_STAFF_SESSION',  'rls_portal_staff');
@@ -310,4 +311,20 @@ function portalAppendCommercialRequest(array $request) {
     $requests = isset($data['requests']) && is_array($data['requests']) ? $data['requests'] : [];
     $requests[] = $request;
     return portalSaveJson(PORTAL_COMMERCIAL_FILE, ['requests' => $requests]);
+}
+
+function portalLoadEstimateRequests() {
+    $data = portalLoadJson(PORTAL_ESTIMATES_FILE);
+    return isset($data['requests']) && is_array($data['requests']) ? $data['requests'] : [];
+}
+
+function portalAppendEstimateRequest(array $request) {
+    $data     = portalLoadJson(PORTAL_ESTIMATES_FILE);
+    $requests = isset($data['requests']) && is_array($data['requests']) ? $data['requests'] : [];
+    $requests[] = $request;
+    return portalSaveJson(PORTAL_ESTIMATES_FILE, ['requests' => $requests]);
+}
+
+function portalSaveEstimateRequests(array $requests) {
+    return portalSaveJson(PORTAL_ESTIMATES_FILE, ['requests' => array_values($requests)]);
 }

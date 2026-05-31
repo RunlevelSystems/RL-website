@@ -8,8 +8,10 @@ portalRequireStaff();
 $staff = portalGetStaffUser();
 $allRequests     = portalLoadRequests();
 $commercialReqs  = portalLoadCommercialRequests();
+$estimateReqs    = portalLoadEstimateRequests();
 $newRequests     = array_filter($allRequests, function($r) { return ($r['status'] ?? '') === 'new'; });
 $newCommercial   = array_filter($commercialReqs, function($r) { return ($r['status'] ?? '') === 'new'; });
+$newEstimates    = array_filter($estimateReqs, function($r) { return ($r['status'] ?? '') === 'new'; });
 
 $current_page = 'staff-portal';
 $header_class = 'inner-header';
@@ -60,16 +62,23 @@ $header_class = 'inner-header';
 
         <p class="portal-section-title">Portal Overview</p>
         <div class="portal-card-grid">
+            <a href="/staff/estimate-requests.php" class="portal-dash-card" style="border-color: rgba(255,198,0,0.35);">
+                <div class="card-icon">📝</div>
+                <div class="card-label">Estimate Requests</div>
+                <div class="card-count <?php echo count($newEstimates) > 0 ? 'alert' : ''; ?>"><?php echo count($newEstimates); ?></div>
+            </a>
             <a href="/staff/requests.php" class="portal-dash-card">
                 <div class="card-icon">📥</div>
-                <div class="card-label">New Requests</div>
+                <div class="card-label">Project Requests</div>
                 <div class="card-count <?php echo count($newRequests) > 0 ? 'alert' : ''; ?>"><?php echo count($newRequests); ?></div>
             </a>
-            <a href="/staff/commercial-requests.php" class="portal-dash-card">
-                <div class="card-icon">🏢</div>
-                <div class="card-label">Commercial Requests</div>
-                <div class="card-count <?php echo count($newCommercial) > 0 ? 'alert' : ''; ?>"><?php echo count($newCommercial); ?></div>
+            <?php if (portalGetStaffRole() === 'admin'): ?>
+            <a href="/staff/users.php" class="portal-dash-card">
+                <div class="card-icon">👥</div>
+                <div class="card-label">Users</div>
+                <div class="card-count"><?php echo count(portalLoadUsers()); ?></div>
             </a>
+            <?php endif; ?>
             <a href="/proposals.php" class="portal-dash-card">
                 <div class="card-icon">📄</div>
                 <div class="card-label">Proposals</div>
@@ -80,13 +89,6 @@ $header_class = 'inner-header';
                 <div class="card-label">Contracts</div>
                 <div class="card-count" style="color:#5a7a9e;">—</div>
             </a>
-            <?php if (portalGetStaffRole() === 'admin'): ?>
-            <a href="/staff/users.php" class="portal-dash-card">
-                <div class="card-icon">👥</div>
-                <div class="card-label">Users</div>
-                <div class="card-count"><?php echo count(portalLoadUsers()); ?></div>
-            </a>
-            <?php endif; ?>
             <a href="/payments.php" class="portal-dash-card">
                 <div class="card-icon">💳</div>
                 <div class="card-label">Payments</div>
@@ -99,7 +101,7 @@ $header_class = 'inner-header';
             </a>
             <a href="/staff/tools.php" class="portal-dash-card">
                 <div class="card-icon">🛠️</div>
-                <div class="card-label">Site Tools</div>
+                <div class="card-label">Runlevel Tools</div>
                 <div class="card-count" style="font-size:0.8rem; color:#5a7a9e;">Tools</div>
             </a>
         </div>

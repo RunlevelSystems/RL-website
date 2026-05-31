@@ -9,186 +9,102 @@ $header_class = 'inner-header';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="assets/images/RL-icon.png">
-    <title>Typical Price Ranges | Runlevel Systems</title>
-    <meta name="description" content="Runlevel Systems typical price ranges for web development, bug fixes, game scripts, Unity help, mobile builds, and commercial projects.">
+    <title>Pricing &amp; Estimates | Runlevel Systems</title>
+    <meta name="description" content="Fair pricing based on what your project actually needs. Runlevel Systems provides estimates after reviewing your requirements.">
     <link href="assets/css/coreloop.css" rel="stylesheet">
     <style>
-        .pub-wrap { padding: 60px 0 80px; }
-        .pub-hero { margin-bottom: 40px; }
-        .pub-hero h1 { color: #ffc600; font-size: 2rem; margin-bottom: 10px; }
-        .pub-hero p { color: #7a9ac0; font-size: 1.05rem; max-width: 680px; }
-        .price-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-bottom: 32px; }
-        .price-card { background: #0c1729; border: 1px solid rgba(54,243,255,0.18); border-radius: 10px; padding: 24px 22px; display: flex; flex-direction: column; }
-        .price-card .card-icon { font-size: 1.8rem; margin-bottom: 10px; }
-        .price-card h3 { color: #36f3ff; margin: 0 0 8px; font-size: 1.1rem; }
-        .price-card .price-range { color: #ffc600; font-size: 1.4rem; font-weight: 700; margin-bottom: 12px; }
-        .price-card .price-examples { color: #7a9ac0; font-size: 0.875rem; line-height: 1.6; }
-        .price-card .price-examples strong { color: #a8bedc; display: block; margin-bottom: 4px; }
-        .price-card .price-examples ul { padding-left: 1.2rem; margin: 0; }
-        .price-card .price-examples li { margin-bottom: 3px; }
-        .price-card.highlight { border-color: rgba(255,198,0,0.3); }
-        .price-card.custom { border-color: rgba(167,139,250,0.3); }
-        .price-card.custom .price-range { color: #a78bfa; }
-        .disclaimer { background: rgba(54,243,255,0.06); border: 1px solid rgba(54,243,255,0.15); border-radius: 8px; padding: 18px 22px; margin-bottom: 28px; }
-        .disclaimer p { color: #7a9ac0; font-size: 0.9rem; line-height: 1.6; margin: 0; }
-        .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
-        .btn-gold { background: #ffc600; color: #08111f; border: none; border-radius: 6px; padding: 11px 22px; font-weight: 700; font-size: 0.95rem; text-decoration: none; display: inline-block; }
-        .btn-gold:hover { background: #36f3ff; color: #08111f; text-decoration: none; }
-        .btn-outline { border: 2px solid #36f3ff; color: #36f3ff; background: transparent; border-radius: 6px; padding: 10px 20px; font-weight: 600; font-size: 0.95rem; text-decoration: none; display: inline-block; }
-        .btn-outline:hover { background: rgba(54,243,255,0.1); text-decoration: none; }
-        .audience-note { background: rgba(255,198,0,0.06); border: 1px solid rgba(255,198,0,0.2); border-radius: 8px; padding: 16px 20px; margin-bottom: 28px; color: #c7a800; font-size: 0.9rem; }
+        .pricing-hero { padding: 64px 0 40px; text-align: center; }
+        .pricing-hero h1 { color: #ffc600; font-size: 2.2rem; margin-bottom: 12px; }
+        .pricing-hero .subtitle { color: #7a9ac0; font-size: 1.15rem; max-width: 600px; margin: 0 auto 28px; }
+        .pricing-section { padding: 48px 0; }
+        .pricing-section h2 { color: #36f3ff; font-size: 1.4rem; margin-bottom: 8px; }
+        .pricing-section .section-intro { color: #a8bedc; font-size: 1rem; max-width: 700px; margin: 0 0 32px; line-height: 1.7; }
+        .factor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-bottom: 40px; }
+        .factor-card { background: #0c1729; border: 1px solid rgba(54,243,255,0.15); border-radius: 10px; padding: 22px 20px; }
+        .factor-card .fc-title { color: #ffc600; font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
+        .factor-card .fc-body { color: #7a9ac0; font-size: 0.9rem; line-height: 1.6; margin: 0; }
+        .cta-section { background: #0c1729; border: 1px solid rgba(255,198,0,0.2); border-radius: 12px; padding: 40px 32px; text-align: center; margin: 40px 0 60px; }
+        .cta-section h2 { color: #ffc600; margin-top: 0; margin-bottom: 12px; }
+        .cta-section p { color: #a8bedc; max-width: 560px; margin: 0 auto 24px; font-size: 1rem; line-height: 1.7; }
+        .btn-estimate { display: inline-block; background: #ffc600; color: #08111f; font-weight: 700; font-size: 1.05rem; padding: 14px 36px; border-radius: 6px; text-decoration: none; transition: background 0.2s; }
+        .btn-estimate:hover { background: #36f3ff; color: #08111f; text-decoration: none; }
+        .process-steps { list-style: none; padding: 0; margin: 0 0 32px; }
+        .process-steps li { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 14px; color: #a8bedc; font-size: 0.95rem; }
+        .process-steps li .step-num { background: rgba(54,243,255,0.12); color: #36f3ff; font-weight: 700; min-width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0; }
     </style>
 </head>
 <body>
 <?php include 'includes/header.php'; ?>
 <?php include 'includes/navigation.php'; ?>
 
-<section class="pub-wrap">
+<section class="pricing-hero">
     <div class="container">
+        <h1>Pricing &amp; Estimates</h1>
+        <p class="subtitle">Fair pricing based on what your project actually needs.</p>
+    </div>
+</section>
 
-        <div class="pub-hero">
-            <h1>💰 Typical Price Ranges</h1>
+<section class="pricing-section">
+    <div class="container">
+        <p class="section-intro">
+            Every project is different. A small fix, a starter website, a mobile app, a business application,
+            or a training simulator all require different levels of planning, development, testing, and support.
+        </p>
+        <p class="section-intro">
+            Runlevel Systems provides fair estimates after reviewing what you need.
+            Instead of guessing, we use a short project requirements form to understand the work
+            and provide a realistic next step.
+        </p>
+
+        <h2>What Affects Cost</h2>
+        <div class="factor-grid">
+            <div class="factor-card">
+                <div class="fc-title">📐 Project Size</div>
+                <p class="fc-body">A small fix is different from a complete application. Scope drives the estimate.</p>
+            </div>
+            <div class="factor-card">
+                <div class="fc-title">💾 Existing Code</div>
+                <p class="fc-body">Clean code is faster to update than broken or undocumented code.</p>
+            </div>
+            <div class="factor-card">
+                <div class="fc-title">🧪 Testing Needs</div>
+                <p class="fc-body">Some work needs only a quick check. Other work needs device, server, or user testing.</p>
+            </div>
+            <div class="factor-card">
+                <div class="fc-title">🖥️ Platform</div>
+                <p class="fc-body">Websites, mobile apps, desktop apps, servers, and simulations all have different requirements.</p>
+            </div>
+            <div class="factor-card">
+                <div class="fc-title">⏱️ Timeline</div>
+                <p class="fc-body">Urgent work may require more focused scheduling.</p>
+            </div>
+            <div class="factor-card">
+                <div class="fc-title">🔧 Ongoing Support</div>
+                <p class="fc-body">Some projects need launch help, updates, hosting, or maintenance after delivery.</p>
+            </div>
+        </div>
+
+        <h2>How It Works</h2>
+        <ul class="process-steps">
+            <li><span class="step-num">1</span> Submit your project requirements using our estimate form.</li>
+            <li><span class="step-num">2</span> We review your request and reach out using your preferred contact method.</li>
+            <li><span class="step-num">3</span> If needed, we schedule a brief call or Google Meet to clarify scope.</li>
+            <li><span class="step-num">4</span> We provide a written estimate or proposal with expected deliverables and cost.</li>
+            <li><span class="step-num">5</span> You approve the work before any payment is requested.</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="cta-section">
+            <h2>Get A Project Estimate</h2>
             <p>
-                Real pricing for real people — not enterprise-only quotes.
-                Runlevel Systems is here to help solo developers, hobbyists, small teams, game server owners,
-                and small businesses get things done at an accessible price.
+                Tell us what you need. No account required. We work with hobby developers, small businesses,
+                and commercial customers using the same professional process.
             </p>
+            <a href="estimate.php" class="btn-estimate">Get A Project Estimate</a>
         </div>
-
-        <div class="audience-note">
-            🎯 <strong>Who we work with:</strong> Solo developers · Hobby developers · Game server owners · Small teams · Indie creators · Small businesses
-        </div>
-
-        <div class="price-grid">
-
-            <div class="price-card highlight">
-                <div class="card-icon">🔧</div>
-                <h3>Quick Fixes</h3>
-                <div class="price-range">$20 – $40</div>
-                <div class="price-examples">
-                    <strong>Examples:</strong>
-                    <ul>
-                        <li>Small bug fix</li>
-                        <li>Config issue</li>
-                        <li>Simple script change</li>
-                        <li>Animation problem</li>
-                        <li>Minor website edit</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="price-card">
-                <div class="card-icon">⚙️</div>
-                <h3>Small Development Tasks</h3>
-                <div class="price-range">$30 – $100</div>
-                <div class="price-examples">
-                    <strong>Examples:</strong>
-                    <ul>
-                        <li>Small feature addition</li>
-                        <li>Game script</li>
-                        <li>Simple Unity issue</li>
-                        <li>Mod adjustment</li>
-                        <li>Small automation task</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="price-card">
-                <div class="card-icon">🌐</div>
-                <h3>Starter Website</h3>
-                <div class="price-range">$40 – $100</div>
-                <div class="price-examples">
-                    <strong>Examples:</strong>
-                    <ul>
-                        <li>Single-page site</li>
-                        <li>Simple business page</li>
-                        <li>Project landing page</li>
-                        <li>Basic contact page</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="price-card">
-                <div class="card-icon">✏️</div>
-                <h3>Website Improvements</h3>
-                <div class="price-range">$20 – $150</div>
-                <div class="price-examples">
-                    <strong>Examples:</strong>
-                    <ul>
-                        <li>Fix layout issues</li>
-                        <li>Add page or section</li>
-                        <li>Update content</li>
-                        <li>Improve mobile view</li>
-                        <li>Add basic form</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="price-card">
-                <div class="card-icon">📱</div>
-                <h3>Mobile / Build Help</h3>
-                <div class="price-range">$40 – $150</div>
-                <div class="price-examples">
-                    <strong>Examples:</strong>
-                    <ul>
-                        <li>Android build help</li>
-                        <li>iOS build preparation</li>
-                        <li>Store publishing guidance</li>
-                        <li>Build troubleshooting</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="price-card">
-                <div class="card-icon">🚨</div>
-                <h3>Project Rescue</h3>
-                <div class="price-range" style="color:#36f3ff;">Quoted After Review</div>
-                <div class="price-examples">
-                    <strong>Examples:</strong>
-                    <ul>
-                        <li>Broken project</li>
-                        <li>Inherited code</li>
-                        <li>Build failures</li>
-                        <li>Unknown bugs</li>
-                        <li>Server issues</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="price-card custom" style="grid-column: span 1;">
-                <div class="card-icon">🏢</div>
-                <h3>Commercial / Long-Term Work</h3>
-                <div class="price-range">Custom Quote</div>
-                <div class="price-examples">
-                    <strong>Examples:</strong>
-                    <ul>
-                        <li>Business applications</li>
-                        <li>Training simulation</li>
-                        <li>Mobile application</li>
-                        <li>Backend systems</li>
-                        <li>Infrastructure platforms</li>
-                        <li>Ongoing support</li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="disclaimer">
-            <p>
-                <strong style="color:#a8bedc;">These are examples only.</strong>
-                Final pricing depends on project scope, code condition, testing needs, and requested delivery timeline.
-                All prices are in USD. Work begins after a proposal is approved and required payment is received.
-                <a href="/proposals.php" style="color:#36f3ff;">Learn how proposals work →</a>
-            </p>
-        </div>
-
-        <div class="cta-row">
-            <a href="/client/new-request.php" class="btn-gold">Request a Quote</a>
-            <a href="/commercial.php" class="btn-outline">Commercial Projects</a>
-            <a href="/payments.php" class="btn-outline">How Payments Work</a>
-        </div>
-
     </div>
 </section>
 

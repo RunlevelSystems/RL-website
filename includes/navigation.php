@@ -40,6 +40,19 @@ if ($is_in_wiki) {
                         <li><a href="<?php echo $base_path; ?>simulation.php" <?php echo ($current_page == 'simulation') ? 'aria-current="page"' : ''; ?>>Simulation</a></li>
                         <li><a href="<?php echo $base_path; ?>design-debug-deploy.php" <?php echo (in_array($current_page, ['design-debug-deploy', 'dev-team', 'technical-partner', 'dev-partner'], true)) ? 'aria-current="page"' : ''; ?>>Dev Partner</a></li>
                         <li><a href="<?php echo $base_path; ?>products.php" <?php echo ($current_page == 'products') ? 'aria-current="page"' : ''; ?>>Products</a></li>
+                        <li><a href="<?php echo $base_path; ?>pricing.php" <?php echo ($current_page == 'pricing') ? 'aria-current="page"' : ''; ?>>Pricing</a></li>
+                        <?php
+                        // Dashboard link: staff → staff dashboard, client → client dashboard, guest → login
+                        $dashUrl = $base_path . 'login.php';
+                        if (!isset($_SESSION)) { @session_start(); }
+                        if (!empty($_SESSION['rls_portal_staff']['username'])) {
+                            $dashUrl = $base_path . 'staff/dashboard.php';
+                        } elseif (!empty($_SESSION['rls_portal_client']['username'])) {
+                            $dashUrl = $base_path . 'client/dashboard.php';
+                        }
+                        $dashActive = in_array($current_page, ['staff-portal', 'client-portal'], true) ? 'aria-current="page"' : '';
+                        ?>
+                        <li><a href="<?php echo $dashUrl; ?>" <?php echo $dashActive; ?>>Dashboard</a></li>
                         <li><a href="<?php echo $base_path; ?>contact.php" <?php echo ($current_page == 'contact') ? 'aria-current="page"' : ''; ?>>Contact</a></li>
                     </ul>
                 </div>
