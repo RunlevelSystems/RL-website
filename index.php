@@ -10,7 +10,7 @@
         <meta name="description" content="Runlevel Systems designs, builds, tests, and deploys software solutions for businesses, organizations, creators, startups, and communities.">
         <meta name="keywords" content="software development, simulation software, business applications, web applications, mobile apps, infrastructure platforms, Runlevel Systems">
 
-        <link href="assets/css/runlevel.css" rel="stylesheet">
+        <link href="assets/css/coreloop.css" rel="stylesheet">
     </head>
     <body>
         <?php
@@ -42,60 +42,36 @@
             <section class="service-section" id="what-we-build">
                 <div class="container">
                     <h2>What We Build</h2>
-                    <div class="service-card-grid three-columns">
-                        <article class="service-card-item">
-                            <div class="service-icon" aria-hidden="true">🧩</div>
-                            <h3>Software Development</h3>
-                            <p>Custom software solutions designed around your business, platform, and operational goals.</p>
-                            <a class="service-card-link" href="/software.php">Learn More</a>
-                        </article>
+                    <div class="six-block-grid">
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">💼</div>
                             <h3>Business Applications</h3>
                             <p>Software built around your workflow, customers, team, or internal process.</p>
-                            <a class="service-card-link" href="/software.php#business-applications">Learn More</a>
                         </article>
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">🌐</div>
                             <h3>Web Applications</h3>
                             <p>Customer portals, dashboards, SaaS-style platforms, documentation systems, and online tools.</p>
-                            <a class="service-card-link" href="/software.php#web-applications">Learn More</a>
                         </article>
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">📱</div>
                             <h3>Mobile Apps</h3>
                             <p>Android and iOS applications for businesses, communities, employees, and customers.</p>
-                            <a class="service-card-link" href="/software.php#mobile-applications">Learn More</a>
-                        </article>
-                        <article class="service-card-item">
-                            <div class="service-icon" aria-hidden="true">🗄️</div>
-                            <h3>Backend Systems</h3>
-                            <p>Reliable services, APIs, and platform architecture to keep your apps and operations running smoothly.</p>
-                            <a class="service-card-link" href="/software.php#backend-systems">Learn More</a>
                         </article>
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">🧪</div>
                             <h3>Training &amp; Simulation</h3>
                             <p>Interactive training systems, virtual hardware, procedure practice, product demos, and safe learning environments.</p>
-                            <a class="service-card-link" href="/software.php#training-simulation">Learn More</a>
                         </article>
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">🖧</div>
                             <h3>Infrastructure Platforms</h3>
                             <p>Systems for users, services, automation, deployments, hosted apps, containers, and customer-facing operations.</p>
-                            <a class="service-card-link" href="/software.php#servers-infrastructure">Learn More</a>
                         </article>
                         <article class="service-card-item">
-                            <div class="service-icon" aria-hidden="true">⚙️</div>
-                            <h3>Automation</h3>
-                            <p>Workflow automation and integration tooling to reduce repetitive work and improve delivery speed.</p>
-                            <a class="service-card-link" href="/software.php#automation">Learn More</a>
-                        </article>
-                        <article class="service-card-item">
-                            <div class="service-icon" aria-hidden="true">📦</div>
-                            <h3>Virtualization &amp; Containers</h3>
-                            <p>Scalable containerized systems and virtualized environments for secure and repeatable deployments.</p>
-                            <a class="service-card-link" href="/software.php#virtualization-containers">Learn More</a>
+                            <div class="service-icon" aria-hidden="true">🎮</div>
+                            <h3>Interactive Experiences</h3>
+                            <p>Games, simulations, multiplayer systems, visualizers, and real-time interactive applications.</p>
                         </article>
                     </div>
                 </div>
@@ -180,7 +156,7 @@
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "Runlevel Systems",
-              "url": "https://runlevelsystems.com",
+              "url": "https://runlevel.systems",
               "slogan": "Design • Debug • Deploy",
               "description": "Runlevel Systems builds practical software and systems for businesses, organizations, creators, teams, and communities."
             }

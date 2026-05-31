@@ -19,7 +19,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 OPS_TOOLS_DIR="$(dirname "$SCRIPT_DIR")"
 OUTPUT_ZIP="${OPS_TOOLS_DIR}/wds-tools.zip"
 
-echo "Building Runlevel Tools Package..."
+echo "Building WDS Tools Package..."
 echo "Source: ${OPS_TOOLS_DIR}"
 echo "Output: ${OUTPUT_ZIP}"
 

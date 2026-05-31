@@ -1,4 +1,4 @@
-<!-- Developed by Runlevel Systems LLC -->
+<!-- Developed by World Domination Software LLC -->
 # Auto-Update Framework for Project Status
 
 ## Overview

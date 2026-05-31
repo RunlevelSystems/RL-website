@@ -39,7 +39,7 @@ $current_page = 'client-portal';
 $header_class = 'inner-header';
 ?>
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Project Agreement | Client Portal</title><link href="../assets/css/runlevel.css" rel="stylesheet">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Project Agreement | Client Portal</title><link href="../assets/css/coreloop.css" rel="stylesheet">
 <style>.wrap{padding:30px 0 70px;}.card{background:#0c1729;border:1px solid rgba(54,243,255,.18);border-radius:10px;padding:16px;} .lbl{color:#5a7a9e;font-size:.72rem;text-transform:uppercase;} .val{color:#eaf3ff;font-size:.86rem;white-space:pre-wrap;} .mono{font-family:monospace;color:#ffc600;}</style></head>
 <body>
 <?php include __DIR__ . '/../includes/header.php'; ?>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Universal Configuration for Runlevel Systems Website
+ * Universal Configuration for WDS Website
  * Works with both XAMPP and web hosting platforms
  */
 

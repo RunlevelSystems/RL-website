@@ -79,7 +79,7 @@ function h($v) { return htmlspecialchars((string)$v, ENT_QUOTES, 'UTF-8'); }
     <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
     <title>Runlevel Systems | Project GitHub Links</title>
-    <link href="../assets/css/runlevel.css" rel="stylesheet">
+    <link href="../assets/css/coreloop.css" rel="stylesheet">
     <style>
         body { background-color: #071228; }
         .staff-card { background:#111827; border-radius:10px; padding:20px; margin-bottom:20px; border:1px solid #374151; }

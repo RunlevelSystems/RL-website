@@ -233,7 +233,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$notFound && !$forbidden) {
         portalSaveProjectRequests($allRequests);
 
         if ($action === 'send_proposal') {
-            $host = $_SERVER['HTTP_HOST'] ?? 'runlevelsystems.com';
+            $host = $_SERVER['HTTP_HOST'] ?? 'runlevel.systems';
             $link = 'https://' . $host . '/project.php?id=' . urlencode($projectId);
             send_project_proposal_email($record['client_email'], $record['client_name'], $projectId, $link);
             $notice = 'Proposal saved and sent by email.';
@@ -317,7 +317,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$notFound && !$forbidden) {
         portalSaveProjectRequests($allRequests);
 
         if ($action === 'send_agreement') {
-            $host = $_SERVER['HTTP_HOST'] ?? 'runlevelsystems.com';
+            $host = $_SERVER['HTTP_HOST'] ?? 'runlevel.systems';
             $link = 'https://' . $host . '/project.php?id=' . urlencode($projectId);
             send_project_agreement_email($record['client_email'], $record['client_name'], $projectId, $link);
             $notice = 'Project agreement saved and sent by email.';
@@ -525,7 +525,7 @@ $header_class = 'inner-header';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
     <title>Project <?php echo pe($projectId); ?> | Runlevel Systems</title>
-    <link href="assets/css/runlevel.css" rel="stylesheet">
+    <link href="assets/css/coreloop.css" rel="stylesheet">
     <style>
         .pw-wrap{padding:26px 0 70px;}
         .pw-card{background:#0c1729;border:1px solid rgba(54,243,255,.18);border-radius:10px;padding:18px;margin-bottom:14px;}

@@ -11,7 +11,7 @@ $header_class = 'inner-header';
     <link rel="icon" type="image/png" href="assets/images/RL-icon.png">
     <title>Proposals | Runlevel Systems</title>
     <meta name="description" content="How Runlevel Systems project proposals work.">
-    <link href="assets/css/runlevel.css" rel="stylesheet">
+    <link href="assets/css/coreloop.css" rel="stylesheet">
     <style>
         .wrap{padding:54px 0 70px;text-align:center;}
         .box{max-width:760px;margin:0 auto;background:#0c1729;border:1px solid rgba(54,243,255,.18);border-radius:10px;padding:26px;}

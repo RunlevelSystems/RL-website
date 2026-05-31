@@ -1,8 +1,8 @@
-<!-- Developed by Runlevel Systems LLC -->
+<!-- Developed by World Domination Software LLC -->
 # Database Configuration
 
 ## Overview
-The Runlevel website uses a shared database with the GameServer Panel for staff authentication. This ensures a single source of truth for user credentials and admin access.
+The WDS website uses a shared database with the GameServer Panel for staff authentication. This ensures a single source of truth for user credentials and admin access.
 
 ## Setup Instructions
 

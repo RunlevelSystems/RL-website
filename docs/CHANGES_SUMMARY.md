@@ -1,5 +1,5 @@
-<!-- Developed by Runlevel Systems LLC -->
-# Runlevel Website Refactoring - Changes Summary
+<!-- Developed by World Domination Software LLC -->
+# WDS Website Refactoring - Changes Summary
 
 ## Date: 2025-12-04
 
@@ -10,7 +10,7 @@
 
 ## Date: 2025-11-05
 
-This document summarizes all changes made to the Runlevel Systems website as part of the refactoring effort.
+This document summarizes all changes made to the World Domination Software website as part of the refactoring effort.
 
 ---
 

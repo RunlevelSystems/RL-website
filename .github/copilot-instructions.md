@@ -1,11 +1,11 @@
-# Runlevel Systems - Website Development Guidelines
+# World Domination Software - Website Development Guidelines
 
 ## Site Overview
-Runlevel Systems (Runlevel) is a worker co-op focused on game development, server hosting, and business applications. The website showcases our projects, facilitates community engagement, and provides information about joining our co-op.
+World Domination Software (WDS) is a worker co-op focused on game development, server hosting, and business applications. The website showcases our projects, facilitates community engagement, and provides information about joining our co-op.
 
 ## Multi-Repo Architecture (Important for AIs)
 
-- This repository (`WDS_Website`) is the public marketing and information site at runlevelsystems.com.
+- This repository (`WDS_Website`) is the public marketing and information site at worlddomination.dev.
 - The separate GitHub repository `World-Domination-Software/Projects` is the customer-facing hub for **all project details and interactions** (wiki pages, discussions, ideas, and issues).
 - The `projects.php` page in this repo lists projects and links out to the `Projects` repo for:
   - Detailed project descriptions and design docs (GitHub Wiki)
@@ -198,7 +198,7 @@ $base_path = $is_in_projects ? '../' : '';
 7. **Selected Button States**: Buttons should not look "selected" by default
 
 ## Deployment & Environment
-- **Production**: runlevelsystems.com (shared hosting environment)
+- **Production**: worlddomination.dev (shared hosting environment)
 - **Development**: XAMPP local server (different path structure)
 - **Database**: External MySQL connection to gaming panel database
 - **Sessions**: Namespace isolation from gaming panel sessions

@@ -37,7 +37,7 @@ $header_class = 'inner-header';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Request Detail | Client Portal</title>
-    <link href="../assets/css/runlevel.css" rel="stylesheet">
+    <link href="../assets/css/coreloop.css" rel="stylesheet">
     <style>
         .wrap{padding:30px 0 70px;}.card{background:#0c1729;border:1px solid rgba(54,243,255,.18);border-radius:10px;padding:16px;}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}@media(max-width:760px){.grid{grid-template-columns:1fr;}}
         .lbl{color:#5a7a9e;font-size:.72rem;text-transform:uppercase;} .val{color:#eaf3ff;font-size:.86rem;} .mono{font-family:monospace;color:#ffc600;}

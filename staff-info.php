@@ -25,7 +25,7 @@ $page_description = 'Centralize every password, host, tool and operating procedu
         <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
     <title>Runlevel Systems | Staff Control Room</title>
     <!-- CSS -->
-    <link href="assets/css/runlevel.css" rel="stylesheet">
+    <link href="assets/css/coreloop.css" rel="stylesheet">
     <style>
         .staff-grid { display: flex; flex-wrap: wrap; gap: 20px; }
 
@@ -149,7 +149,7 @@ $page_description = 'Centralize every password, host, tool and operating procedu
                     <h3><i class="ion-android-cart"></i> External Storefront Accounts</h3>
                     <a href="https://play.google.com/console" target="_blank" rel="noopener noreferrer" class="link-tile" style="text-decoration:none;"><span>Google Play Console</span><i class="ion-android-open" style="color:#FFD699;"></i></a>
                     <a href="https://partner.steampowered.com/" target="_blank" rel="noopener noreferrer" class="link-tile" style="text-decoration:none;"><span>Steamworks Partner Portal</span><i class="ion-android-open" style="color:#FFD699;"></i></a>
-                    <p style="color:#a8bedc; margin-top:15px;">Use <code>team@runlevelsystems.com</code> for invites and access requests; it already satisfies Google Play and Steam contact requirements.</p>
+                    <p style="color:#a8bedc; margin-top:15px;">Use <code>team@worlddomination.dev</code> for invites and access requests; it already satisfies Google Play and Steam contact requirements.</p>
                     <ul style="color:#cbd5f5; padding-left:18px; font-size:13px;">
                         <li>Google Play: send an Admin invite from the Console &rarr; Users &amp; permissions page. Ask ops to approve within 24h.</li>
                         <li>Steamworks: create a new partner account invite via Users &rarr; Manage Users. Assign publishing and marketing roles as needed.</li>
@@ -159,13 +159,13 @@ $page_description = 'Centralize every password, host, tool and operating procedu
                 </div>
                 <div class="staff-card">
                     <h3><i class="ion-email"></i> Shared Admin Mailbox</h3>
-                    <p style="color:#a8bedc;">Use <strong>team@runlevelsystems.com</strong> whenever a vendor, registrar, or platform needs a single administrative contact. Everyone on the ops roster can authenticate to clear login challenges and receive 2FA resets.</p>
+                    <p style="color:#a8bedc;">Use <strong>team@worlddomination.dev</strong> whenever a vendor, registrar, or platform needs a single administrative contact. Everyone on the ops roster can authenticate to clear login challenges and receive 2FA resets.</p>
                     <div class="table-responsive">
                         <table class="table staff-credentials-table">
                             <tbody>
                                 <tr>
                                     <th scope="row" style="width:35%;">Username</th>
-                                    <td><code>team@runlevelsystems.com</code></td>
+                                    <td><code>team@worlddomination.dev</code></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Password</th>
@@ -173,15 +173,15 @@ $page_description = 'Centralize every password, host, tool and operating procedu
                                 </tr>
                                 <tr>
                                     <th scope="row">Incoming IMAP</th>
-                                    <td><code>mail.runlevelsystems.com</code> &middot; port <code>993</code> &middot; SSL/TLS required.</td>
+                                    <td><code>mail.worlddomination.dev</code> &middot; port <code>993</code> &middot; SSL/TLS required.</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Incoming POP3</th>
-                                    <td><code>mail.runlevelsystems.com</code> &middot; port <code>995</code> &middot; SSL/TLS required (IMAP preferred).</td>
+                                    <td><code>mail.worlddomination.dev</code> &middot; port <code>995</code> &middot; SSL/TLS required (IMAP preferred).</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Outgoing SMTP</th>
-                                    <td><code>mail.runlevelsystems.com</code> &middot; port <code>465</code> &middot; SSL/TLS required with authentication.</td>
+                                    <td><code>mail.worlddomination.dev</code> &middot; port <code>465</code> &middot; SSL/TLS required with authentication.</td>
                                 </tr>
                             </tbody>
                         </table>

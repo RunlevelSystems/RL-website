@@ -1,20 +1,20 @@
-<!-- Developed by Runlevel Systems LLC -->
+<!-- Developed by World Domination Software LLC -->
 ---
 title: "GSP (GameServer Panel)"
-description: "Runlevel Systems's unified control panel and storefront for GameServers World"
+description: "World Domination Software's unified control panel and storefront for GameServers World"
 weight: 5
 ---
 
-GSP (GameServer Panel) is Runlevel's production control panel and storefront that powers **Gameservers World (GSW)**. The platform is a heavily customized fork of Open Game Panel, maintained and extended exclusively by Runlevel Systems.
+GSP (GameServer Panel) is WDS's production control panel and storefront that powers **Gameservers World (GSW)**. The platform is a heavily customized fork of Open Game Panel, maintained and extended exclusively by World Domination Software.
 
-> **Heritage:** GSP is a heavily customized fork of OGP maintained by Runlevel. We reference upstream docs for history, but this page reflects the live platform.
+> **Heritage:** GSP is a heavily customized fork of OGP maintained by WDS. We reference upstream docs for history, but this page reflects the live platform.
 
 ## Snapshot
 
 | | |
 | --- | --- |
 | **Primary customer** | [Gameservers World](https://gameservers.world) |
-| **Code repos** | `GSP/`, `GSP-Agent-Linux/`, `GSP-Agent-Windows/`, `Runlevel-Team/` |
+| **Code repos** | `GSP/`, `GSP-Agent-Linux/`, `GSP-Agent-Windows/`, `WDS-Team/` |
 | **Security defaults** | SSH port 12322, MySQL `localuser@localhost` / `remoteuser@&lt;reporter-ip&gt;`, shared secret in `/home/gameserver/tools/.password` |
 | **Install targets** | Ubuntu 24.04+ (panel + agents), Windows Server 2019 via Cygwin (agents) |
 
@@ -22,8 +22,8 @@ GSP (GameServer Panel) is Runlevel's production control panel and storefront tha
 
 - **Single pane for billing + provisioning** – storefront orders flow straight into the panel via `BillingProvisioner`.
 - **Multi-remote orchestration** – agents span Linux and Windows hosts, all driven by XML metadata under `modules/config_games/server_configs/`.
-- **Automation ready** – cron/task scheduler, Adminer access, API hooks, and shipping DR automation (Runlevel-Team/tools) keep the fleet consistent.
-- **Brand alignment** – storefront themes, FAQs, and docs consistently reference Runlevel, GSP, and GSW terminology.
+- **Automation ready** – cron/task scheduler, Adminer access, API hooks, and shipping DR automation (WDS-Team/tools) keep the fleet consistent.
+- **Brand alignment** – storefront themes, FAQs, and docs consistently reference WDS, GSP, and GSW terminology.
 
 ## Admin Documentation (internal use only)
 
@@ -42,4 +42,4 @@ Every guide below starts with the “Admin Documentation (not shown on public GS
 1. Finish the remaining admin docs + Docker/dev compose file described in the workspace brief.
 2. Publish the Ubuntu/Windows agent bootstrap scripts and reference them from both the docs and `.github/copilot-instructions.md`.
 3. Link this project page from `projects.php` and other public navigation once copy is approved.
-4. Keep the Runlevel-Team migration tracker updated with every cross-repo change so ops can trace context quickly.
+4. Keep the WDS-Team migration tracker updated with every cross-repo change so ops can trace context quickly.

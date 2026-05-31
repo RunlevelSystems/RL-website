@@ -151,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         portalSaveProjectRequests($requests);
 
         if ($action === 'send_email') {
-            $host = $_SERVER['HTTP_HOST'] ?? 'runlevelsystems.com';
+            $host = $_SERVER['HTTP_HOST'] ?? 'runlevel.systems';
             $clientLink = 'https://' . $host . '/client/contracts.php?agreement_id=' . urlencode($record['agreement_id']);
             send_project_agreement_email($record['client_email'], $record['client_name'], $record['request_id'], $clientLink);
             $notice = 'Project agreement saved and sent by email.';
@@ -175,7 +175,7 @@ $header_class = 'inner-header';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="../assets/images/RL-icon.png">
     <title>Create Project Agreement | Staff | Runlevel Systems</title>
-    <link href="../assets/css/runlevel.css" rel="stylesheet">
+    <link href="../assets/css/coreloop.css" rel="stylesheet">
     <style>
         .wrap{padding:28px 0 70px;}
         .card{background:#0c1729;border:1px solid rgba(54,243,255,.18);border-radius:10px;padding:18px;margin-bottom:14px;}
