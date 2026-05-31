@@ -45,11 +45,13 @@ function portalGenerateTemporaryPassword($length = 12) {
     return $out;
 }
 
-function portalGenerateUniqueEstimateId() {
-    $requests = portalLoadEstimateRequests();
+function portalGenerateUniqueRequestId() {
+    $requests = portalLoadProjectRequests();
     $existing = [];
     foreach ($requests as $r) {
-        if (!empty($r['estimate_id'])) {
+        if (!empty($r['request_id'])) {
+            $existing[(string)$r['request_id']] = true;
+        } elseif (!empty($r['estimate_id'])) {
             $existing[(string)$r['estimate_id']] = true;
         }
     }
@@ -62,12 +64,24 @@ function portalGenerateUniqueEstimateId() {
     return $estimateId;
 }
 
-function portalGetEstimateDisplayId(array $request) {
+function portalGenerateUniqueEstimateId() {
+    return portalGenerateUniqueRequestId();
+}
+
+function portalGetRequestDisplayId(array $request) {
+    $requestId = trim((string)($request['request_id'] ?? ''));
+    if ($requestId !== '') {
+        return $requestId;
+    }
     $estimateId = trim((string)($request['estimate_id'] ?? ''));
     if ($estimateId !== '') {
         return $estimateId;
     }
     return 'Legacy Request';
+}
+
+function portalGetEstimateDisplayId(array $request) {
+    return portalGetRequestDisplayId($request);
 }
 
 /**
@@ -208,7 +222,10 @@ define('PORTAL_USERS_FILE',      PORTAL_DATA_DIR . '/users.json');
 define('PORTAL_CLIENTS_FILE',    PORTAL_DATA_DIR . '/clients.json');
 define('PORTAL_REQUESTS_FILE',   PORTAL_DATA_DIR . '/requests.json');
 define('PORTAL_COMMERCIAL_FILE', PORTAL_DATA_DIR . '/commercial_requests.json');
-define('PORTAL_ESTIMATES_FILE',  PORTAL_DATA_DIR . '/estimate_requests.json');
+define('PORTAL_PROJECT_REQUESTS_FILE', PORTAL_DATA_DIR . '/project_requests.json');
+define('PORTAL_ESTIMATES_FILE',        PORTAL_DATA_DIR . '/estimate_requests.json');
+define('PORTAL_PROPOSALS_FILE',        PORTAL_DATA_DIR . '/proposals.json');
+define('PORTAL_PROJECT_AGREEMENTS_FILE', PORTAL_DATA_DIR . '/project_agreements.json');
 
 // Session keys
 define('PORTAL_STAFF_SESSION',   'rls_portal_staff');
@@ -598,15 +615,11 @@ function portalClientLogout() {
 // ------------------------------------------------------------------
 
 function portalLoadRequests() {
-    $data = portalLoadJson(PORTAL_REQUESTS_FILE);
-    return isset($data['requests']) && is_array($data['requests']) ? $data['requests'] : [];
+    return portalLoadProjectRequests();
 }
 
 function portalAppendRequest(array $request) {
-    $data     = portalLoadJson(PORTAL_REQUESTS_FILE);
-    $requests = isset($data['requests']) && is_array($data['requests']) ? $data['requests'] : [];
-    $requests[] = $request;
-    return portalSaveJson(PORTAL_REQUESTS_FILE, ['requests' => $requests]);
+    return portalAppendProjectRequest($request);
 }
 
 function portalLoadCommercialRequests() {
@@ -622,17 +635,105 @@ function portalAppendCommercialRequest(array $request) {
 }
 
 function portalLoadEstimateRequests() {
-    $data = portalLoadJson(PORTAL_ESTIMATES_FILE);
-    return isset($data['requests']) && is_array($data['requests']) ? $data['requests'] : [];
+    return portalLoadProjectRequests();
 }
 
 function portalAppendEstimateRequest(array $request) {
-    $data     = portalLoadJson(PORTAL_ESTIMATES_FILE);
-    $requests = isset($data['requests']) && is_array($data['requests']) ? $data['requests'] : [];
-    $requests[] = $request;
-    return portalSaveJson(PORTAL_ESTIMATES_FILE, ['requests' => $requests]);
+    return portalAppendProjectRequest($request);
 }
 
 function portalSaveEstimateRequests(array $requests) {
-    return portalSaveJson(PORTAL_ESTIMATES_FILE, ['requests' => array_values($requests)]);
+    return portalSaveProjectRequests($requests);
+}
+
+function portalNormalizeProjectRequest(array $request) {
+    if (!isset($request['request_id']) || trim((string)$request['request_id']) === '') {
+        $legacy = trim((string)($request['estimate_id'] ?? ''));
+        if ($legacy !== '') {
+            $request['request_id'] = $legacy;
+        } else {
+            $seed = (string)($request['id'] ?? '') . '|' . (string)($request['created_at'] ?? '');
+            $hash = str_pad((string)((abs(crc32($seed)) % 9000) + 1000), 4, '0', STR_PAD_LEFT);
+            $request['request_id'] = 'RLS-' . date('Ymd', strtotime((string)($request['created_at'] ?? 'now'))) . '-' . $hash;
+        }
+    }
+    if (!isset($request['estimate_id']) || trim((string)$request['estimate_id']) === '') {
+        $request['estimate_id'] = $request['request_id'];
+    }
+    $status = trim((string)($request['status'] ?? 'new'));
+    $statusMap = [
+        'reviewed' => 'reviewing',
+        'proposal_needed' => 'proposal_drafted',
+        'quoted' => 'proposal_drafted',
+        'approved' => 'accepted',
+    ];
+    $request['status'] = isset($statusMap[$status]) ? $statusMap[$status] : $status;
+    $request['timeline'] = (string)($request['timeline'] ?? ($request['desired_timeline'] ?? ''));
+    $request['budget_comfort'] = (string)($request['budget_comfort'] ?? ($request['budget_range'] ?? ''));
+    $request['project_stage'] = (string)($request['project_stage'] ?? '');
+    $request['project_size'] = (string)($request['project_size'] ?? '');
+    $request['estimated_cost_range'] = (string)($request['estimated_cost_range'] ?? '');
+    $request['estimated_time_range'] = (string)($request['estimated_time_range'] ?? '');
+    $request['staff_summary'] = (string)($request['staff_summary'] ?? '');
+    $request['recommended_next_step'] = (string)($request['recommended_next_step'] ?? '');
+    $request['internal_notes'] = (string)($request['internal_notes'] ?? ($request['notes'] ?? ''));
+    $request['proposal_ids'] = isset($request['proposal_ids']) && is_array($request['proposal_ids']) ? array_values($request['proposal_ids']) : [];
+    $request['agreement_ids'] = isset($request['agreement_ids']) && is_array($request['agreement_ids']) ? array_values($request['agreement_ids']) : [];
+    if (!isset($request['created_at']) || trim((string)$request['created_at']) === '') {
+        $request['created_at'] = date('c');
+    }
+    return $request;
+}
+
+function portalLoadProjectRequests() {
+    $projectData = portalLoadJson(PORTAL_PROJECT_REQUESTS_FILE);
+    $projectRequests = isset($projectData['requests']) && is_array($projectData['requests']) ? $projectData['requests'] : [];
+
+    $legacyData = portalLoadJson(PORTAL_ESTIMATES_FILE);
+    $legacyRequests = isset($legacyData['requests']) && is_array($legacyData['requests']) ? $legacyData['requests'] : [];
+
+    $seen = [];
+    $all = [];
+    foreach (array_merge($projectRequests, $legacyRequests) as $row) {
+        $normalized = portalNormalizeProjectRequest((array)$row);
+        $key = (string)($normalized['id'] ?? '') . '|' . (string)($normalized['request_id'] ?? '');
+        if (isset($seen[$key])) {
+            continue;
+        }
+        $seen[$key] = true;
+        $all[] = $normalized;
+    }
+    return $all;
+}
+
+function portalSaveProjectRequests(array $requests) {
+    $normalized = [];
+    foreach ($requests as $request) {
+        $normalized[] = portalNormalizeProjectRequest((array)$request);
+    }
+    return portalSaveJson(PORTAL_PROJECT_REQUESTS_FILE, ['requests' => array_values($normalized)]);
+}
+
+function portalAppendProjectRequest(array $request) {
+    $requests = portalLoadProjectRequests();
+    $requests[] = portalNormalizeProjectRequest($request);
+    return portalSaveProjectRequests($requests);
+}
+
+function portalLoadProposals() {
+    $data = portalLoadJson(PORTAL_PROPOSALS_FILE);
+    return isset($data['proposals']) && is_array($data['proposals']) ? $data['proposals'] : [];
+}
+
+function portalSaveProposals(array $proposals) {
+    return portalSaveJson(PORTAL_PROPOSALS_FILE, ['proposals' => array_values($proposals)]);
+}
+
+function portalLoadProjectAgreements() {
+    $data = portalLoadJson(PORTAL_PROJECT_AGREEMENTS_FILE);
+    return isset($data['agreements']) && is_array($data['agreements']) ? $data['agreements'] : [];
+}
+
+function portalSaveProjectAgreements(array $agreements) {
+    return portalSaveJson(PORTAL_PROJECT_AGREEMENTS_FILE, ['agreements' => array_values($agreements)]);
 }
