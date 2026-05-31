@@ -2,7 +2,7 @@
 # =============================================================================
 # install.sh - Unified Prerequisites Installer
 # =============================================================================
-# Installs all required software for Runlevel game server hosts.
+# Installs all required software for WDS game server hosts.
 # Supports Linux (Debian/Ubuntu, RHEL/CentOS), Cygwin, and Windows.
 #
 # Usage:
@@ -256,7 +256,7 @@ setup_user() {
     local sudoers_file="/etc/sudoers.d/${GAMESERVER_USER}"
     if [[ "$DRY_RUN" != "true" ]]; then
         cat > "${sudoers_file}" <<EOF
-# Runlevel gameserver user sudo rules
+# WDS gameserver user sudo rules
 ${GAMESERVER_USER} ALL=(ALL) NOPASSWD: /usr/sbin/service
 ${GAMESERVER_USER} ALL=(ALL) NOPASSWD: /bin/systemctl
 ${GAMESERVER_USER} ALL=(ALL) NOPASSWD: /usr/bin/chpasswd
@@ -312,7 +312,7 @@ setup_directories() {
     if [[ ! -f "${servers_file}" ]]; then
         if [[ "$DRY_RUN" != "true" ]]; then
             cat > "${servers_file}" <<EOF
-# Runlevel Server List
+# WDS Server List
 # Format: hostname:port (port defaults to 12322 if omitted)
 # Example:
 # core.iaregamer.com:12322
@@ -429,14 +429,14 @@ configure_firewall() {
 # Copy Scripts
 # =============================================================================
 copy_scripts() {
-    say "Installing Runlevel ops-tools scripts..."
+    say "Installing WDS ops-tools scripts..."
     
     local script_dir
     script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     
     if [[ ! -d "${script_dir}" ]] || [[ ! -f "${script_dir}/status.sh" ]]; then
         warn "Scripts not found in ${script_dir}"
-        say "Copy scripts manually from Runlevel-website/ops-tools/scripts/"
+        say "Copy scripts manually from WDS-website/ops-tools/scripts/"
         return 0
     fi
     
@@ -489,7 +489,7 @@ print_summary() {
 # Main
 # =============================================================================
 say "=============================================="
-say "  Runlevel Game Server Host Installer"
+say "  WDS Game Server Host Installer"
 say "=============================================="
 say ""
 say "Platform: $(uname -s)"

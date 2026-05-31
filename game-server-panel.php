@@ -9,7 +9,7 @@
         <title>GSP Panel | Runlevel Systems</title>
         <meta name="description" content="GSP Panel is an open source hosting and service management platform by Runlevel Systems.">
         <meta name="keywords" content="GSP Panel, open source hosting platform, service management platform, Runlevel Systems">
-        <link href="assets/css/runlevel.css" rel="stylesheet">
+        <link href="assets/css/coreloop.css" rel="stylesheet">
     </head>
     <body>
         <?php

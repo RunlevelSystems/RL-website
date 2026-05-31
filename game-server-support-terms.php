@@ -8,7 +8,7 @@
 
         <title>Game Server Support | Terms of Service</title>
         <meta name="description" content="Terms of Service for Runlevel Systems Game Server Support services.">
-        <link href="assets/css/runlevel.css" rel="stylesheet">
+        <link href="assets/css/coreloop.css" rel="stylesheet">
     </head>
     <body>
         <?php

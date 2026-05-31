@@ -15,7 +15,7 @@ function send_email($to, $subject, $body) {
 
     $headers = "MIME-Version: 1.0\r\n";
     $headers .= "Content-type: text/plain; charset=UTF-8\r\n";
-    $headers .= "From: Runlevel Systems <no-reply@runlevelsystems.com>\r\n";
+    $headers .= "From: Runlevel Systems <no-reply@runlevel.systems>\r\n";
 
     return @mail($to, (string)$subject, (string)$body, $headers);
 }

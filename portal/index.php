@@ -54,7 +54,7 @@ $folder_index_url = 'files/' . rawurlencode($client_folder) . '/index.html';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="../assets/images/RL-icon.png">
     <title>Runlevel Systems | Client Portal</title>
-    <link href="../assets/css/runlevel.css" rel="stylesheet">
+    <link href="../assets/css/coreloop.css" rel="stylesheet">
     <style>
         .client-portal-wrap { padding: 40px 0; }
         .client-card { background: #0c1729; border: 1px solid rgba(54,243,255,0.2); border-radius: 12px; padding: 24px; margin-bottom: 20px; }

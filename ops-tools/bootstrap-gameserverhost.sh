@@ -193,7 +193,7 @@ WHAT IT DOES:
     3. Sets up /home/gameserver/tools directory structure
     4. Configures SSH on custom port (default 12322)
     5. Opens firewall ports for game servers and management
-    6. Installs the Runlevel ops-tools scripts
+    6. Installs the WDS ops-tools scripts
 
 For more information, see: https://worlddomination.software/staff/operations.php
 EOF
@@ -349,7 +349,7 @@ setup_gameserver_user() {
     local sudoers_file="/etc/sudoers.d/${GAMESERVER_USER}"
     if [[ "$DRY_RUN" != "true" ]]; then
         cat > "${sudoers_file}" <<EOF
-# Runlevel gameserver user sudo rules
+# WDS gameserver user sudo rules
 ${GAMESERVER_USER} ALL=(ALL) NOPASSWD: /usr/sbin/service
 ${GAMESERVER_USER} ALL=(ALL) NOPASSWD: /bin/systemctl
 ${GAMESERVER_USER} ALL=(ALL) NOPASSWD: /usr/bin/chpasswd
@@ -405,7 +405,7 @@ setup_tools_directory() {
     if [[ ! -f "${servers_file}" ]]; then
         if [[ "$DRY_RUN" != "true" ]]; then
             cat > "${servers_file}" <<EOF
-# Runlevel Server List
+# WDS Server List
 # Format: hostname:port (port defaults to 12322 if omitted)
 # Example:
 # core.iaregamer.com:12322
@@ -543,7 +543,7 @@ configure_firewall() {
 # Scripts Installation
 # =============================================================================
 install_scripts() {
-    log "Installing Runlevel ops-tools scripts..."
+    log "Installing WDS ops-tools scripts..."
     
     # Determine script source directory
     local script_dir
@@ -552,7 +552,7 @@ install_scripts() {
     
     if [[ ! -d "${src_scripts}" ]]; then
         warn "Scripts directory not found: ${src_scripts}"
-        log "Scripts can be copied manually from the Runlevel-website repository"
+        log "Scripts can be copied manually from the WDS-website repository"
         return 0
     fi
     
@@ -610,7 +610,7 @@ main() {
     fi
     
     log "=============================================="
-    log "  Runlevel Game Server Host Bootstrap"
+    log "  WDS Game Server Host Bootstrap"
     log "=============================================="
     log "Starting bootstrap at $(date)"
     log "Platform: $(uname -s)"

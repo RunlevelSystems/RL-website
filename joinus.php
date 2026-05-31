@@ -9,7 +9,7 @@
         <title>Runlevel Systems | Join Our Team</title>
 
         <!-- CSS -->
-        <link href="assets/css/runlevel.css" rel="stylesheet">
+        <link href="assets/css/coreloop.css" rel="stylesheet">
 
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -813,7 +813,7 @@
                             <p style="color: #7894b9; margin-bottom: 20px;">
                                 Get the complete contract documents including fillable forms and legal templates.
                             </p>
-                            <a href="/start-project.php"
+                            <a href="assets/contract.zip" download 
                                style="
                                    display: inline-flex; 
                                    align-items: center; 
@@ -827,7 +827,7 @@
                                    transition: all 0.3s ease;
                                ">
                                 <i class="ion-android-download" style="margin-right: 8px; font-size: 18px;"></i>
-                                Start Project
+                                Download contract.zip
                             </a>
                         </div>
                     </div>
