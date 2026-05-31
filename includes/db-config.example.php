@@ -52,7 +52,7 @@ function addLoginDebug($message, $data = null) {
     if (!defined('WDS_DEBUG_AUTH') || !WDS_DEBUG_AUTH) {
         return;
     }
-    $entry = '[WDS Auth] ' . $message;
+    $entry = '[Runlevel Auth] ' . $message;
     if ($data !== null) {
         $entry .= ': ' . (is_array($data) ? json_encode($data) : (string)$data);
     }
@@ -135,7 +135,7 @@ function verifyAdminLogin($username, $password, &$failureReason = null) {
     $failureReason = null;
     $db = getDatabaseConnection();
     if (!$db) {
-        error_log("WDS Login: Database connection failed for user: " . $username);
+        error_log("Runlevel Login: Database connection failed for user: " . $username);
         $failureReason = 'incorrect_login';
         return false;
     }
@@ -163,7 +163,7 @@ function verifyAdminLogin($username, $password, &$failureReason = null) {
         $user = mysqli_fetch_assoc($result);
         mysqli_stmt_close($stmt);
         if (!$user) {
-            error_log("WDS Login: User not found: " . $username);
+            error_log("Runlevel Login: User not found: " . $username);
             $failureReason = 'incorrect_login';
             return false;
         }
@@ -175,13 +175,13 @@ function verifyAdminLogin($username, $password, &$failureReason = null) {
             $passwordOk = (md5($password) == $user['users_passwd']);
         }
         if (!$passwordOk) {
-            error_log("WDS Login: Password verification failed for: " . $username);
+            error_log("Runlevel Login: Password verification failed for: " . $username);
             $failureReason = 'incorrect_login';
             return false;
         }
         $userRole = !empty($user['users_role']) ? strtolower(trim($user['users_role'])) : 'user';
         if (!hasStaffAccessRole($userRole)) {
-            error_log("WDS Login: User '" . $username . "' is authenticated but unauthorized for staff area (users_role: " . $userRole . ")");
+            error_log("Runlevel Login: User '" . $username . "' is authenticated but unauthorized for staff area (users_role: " . $userRole . ")");
             $failureReason = 'no_authorization';
             return false;
         }
@@ -191,7 +191,7 @@ function verifyAdminLogin($username, $password, &$failureReason = null) {
             'login_time' => time(),
         ];
     } catch (Throwable $e) {
-        error_log("WDS Login exception: " . $e->getMessage());
+        error_log("Runlevel Login exception: " . $e->getMessage());
         $failureReason = 'incorrect_login';
         return false;
     }

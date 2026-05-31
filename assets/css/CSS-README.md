@@ -1,9 +1,9 @@
-<!-- Developed by World Domination Software LLC -->
-# WDS Website CSS Guide
+<!-- Developed by Runlevel Systems LLC -->
+# Runlevel Website CSS Guide
 
 ## SIMPLIFIED CSS STRUCTURE
 
-The WDS website now uses a single, unified CSS file for consistent styling across all pages:
+The Runlevel website now uses a single, unified CSS file for consistent styling across all pages:
 
 ### Main CSS File
 - **wds-unified.css** - The ONLY custom CSS file you need!

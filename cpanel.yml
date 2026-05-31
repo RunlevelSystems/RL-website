@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/domainpl/worlddomination.dev
+    - export DEPLOYPATH=/home/domainpl/runlevelsystems.com
     - /bin/rsync -a --delete --exclude ".git" ./ $DEPLOYPATH/
     # If rsync isn't available, fallback:
     # - /bin/find $DEPLOYPATH -mindepth 1 -maxdepth 1 -exec rm -rf {} +

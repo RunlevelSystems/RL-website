@@ -27,7 +27,7 @@ $page_subtitle = 'Wiki Viewer';
     <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
     <title>Runlevel Systems | Wiki - <?php echo htmlspecialchars($requested); ?></title>
-    <link href="../../assets/css/coreloop.css" rel="stylesheet">
+    <link href="../../assets/css/runlevel.css" rel="stylesheet">
     <style>
         .staff-login .page-bgc {
             background-color: #071228 !important;

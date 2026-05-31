@@ -7,7 +7,7 @@
         <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
         <title>Pure Storage Training Simulator | Runlevel Systems</title>
         <meta name="description" content="Portfolio page for the Pure Storage Training Simulator by Runlevel Systems.">
-        <link href="../assets/css/coreloop.css" rel="stylesheet">
+        <link href="../assets/css/runlevel.css" rel="stylesheet">
     </head>
     <body>
         <?php $current_page = 'projects'; $header_class = 'inner-header'; ?>
