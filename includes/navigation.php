@@ -35,19 +35,13 @@ if ($is_in_wiki) {
 
                 <div class="core-nav-collapse" id="site-nav-bar">
                     <ul class="core-nav-links">
-                        <li><a href="<?php echo $base_path; ?>index.php" <?php echo ($current_page == 'index') ? 'aria-current="page"' : ''; ?>>Home</a></li>
-                        <li><a href="<?php echo $base_path; ?>software.php" <?php echo ($current_page == 'software') ? 'aria-current="page"' : ''; ?>>Software</a></li>
-                        <li><a href="<?php echo $base_path; ?>simulation.php" <?php echo ($current_page == 'simulation') ? 'aria-current="page"' : ''; ?>>Simulation</a></li>
+                        <li><a href="<?php echo $base_path; ?>index.php" <?php echo ($current_page === 'index') ? 'aria-current="page"' : ''; ?>>Home</a></li>
+                        <li><a href="<?php echo $base_path; ?>software.php" <?php echo ($current_page === 'software') ? 'aria-current="page"' : ''; ?>>Software</a></li>
                         <li><a href="<?php echo $base_path; ?>design-debug-deploy.php" <?php echo (in_array($current_page, ['design-debug-deploy', 'dev-team', 'technical-partner', 'dev-partner'], true)) ? 'aria-current="page"' : ''; ?>>Dev+1</a></li>
-                        <li><a href="<?php echo $base_path; ?>products.php" <?php echo ($current_page == 'products') ? 'aria-current="page"' : ''; ?>>Products</a></li>
-                        <li><a href="<?php echo $base_path; ?>pricing.php" <?php echo ($current_page == 'pricing') ? 'aria-current="page"' : ''; ?>>Pricing</a></li>
-                        <?php
-                        // Dashboard link always points to /dashboard.php.
-                        // If not logged in, /dashboard.php redirects to /login.php.
-                        $dashActive = ($current_page === 'dashboard') ? 'aria-current="page"' : '';
-                        ?>
+                        <li><a href="<?php echo $base_path; ?>products.php" <?php echo ($current_page === 'products') ? 'aria-current="page"' : ''; ?>>Products</a></li>
+                        <li><a href="<?php echo $base_path; ?>start-project.php" <?php echo (in_array($current_page, ['start-project', 'estimate'], true)) ? 'aria-current="page"' : ''; ?>>Start Project</a></li>
+                        <?php $dashActive = ($current_page === 'dashboard') ? 'aria-current="page"' : ''; ?>
                         <li><a href="<?php echo $base_path; ?>dashboard.php" <?php echo $dashActive; ?>>Dashboard</a></li>
-                        <li><a href="<?php echo $base_path; ?>contact.php" <?php echo ($current_page == 'contact') ? 'aria-current="page"' : ''; ?>>Contact</a></li>
                     </ul>
                 </div>
             </div>
