@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (($r['id'] ?? '') === $id) {
                 if ($action === 'set_status') {
                     $newStatus = trim($_POST['new_status'] ?? '');
-                    $allowed   = ['new', 'reviewed', 'contacted', 'proposal_sent', 'closed'];
+                    $allowed   = ['new', 'reviewed', 'contacted', 'proposal_needed', 'proposal_sent', 'closed'];
                     if (in_array($newStatus, $allowed, true)) {
                         $r['status'] = $newStatus;
                     }
@@ -53,11 +53,12 @@ usort($requests, function($a, $b) {
 });
 
 $statusLabels = [
-    'new'           => ['label' => 'New',           'color' => '#ffc600'],
-    'reviewed'      => ['label' => 'Reviewed',      'color' => '#0a84ff'],
-    'contacted'     => ['label' => 'Contacted',     'color' => '#36f3ff'],
-    'proposal_sent' => ['label' => 'Proposal Sent', 'color' => '#a78bfa'],
-    'closed'        => ['label' => 'Closed',        'color' => '#5a7a9e'],
+    'new'              => ['label' => 'New',              'color' => '#ffc600'],
+    'reviewed'         => ['label' => 'Reviewed',         'color' => '#0a84ff'],
+    'contacted'        => ['label' => 'Contacted',        'color' => '#36f3ff'],
+    'proposal_needed'  => ['label' => 'Proposal Needed',  'color' => '#a78bfa'],
+    'proposal_sent'    => ['label' => 'Proposal Sent',    'color' => '#22c55e'],
+    'closed'           => ['label' => 'Closed',           'color' => '#5a7a9e'],
 ];
 
 $current_page = 'staff-portal';
@@ -137,28 +138,28 @@ $header_class = 'inner-header';
 
             <div class="detail-grid">
                 <div class="detail-item">
+                    <label>Estimate ID</label>
+                    <div class="dval" style="color:#ffc600; font-family:monospace; font-weight:700;"><?php echo pe($viewRequest['estimate_id'] ?? '—'); ?></div>
+                </div>
+                <div class="detail-item">
+                    <label>Submitted</label>
+                    <div class="dval"><?php echo pe(date('M j, Y g:i A', strtotime($viewRequest['created_at'] ?? 'now'))); ?></div>
+                </div>
+                <div class="detail-item">
                     <label>Name</label>
                     <div class="dval"><?php echo pe($viewRequest['name'] ?? '—'); ?></div>
                 </div>
                 <div class="detail-item">
                     <label>Email</label>
-                    <div class="dval"><a href="mailto:<?php echo pe($viewRequest['email'] ?? ''); ?>" style="color:#36f3ff;"><?php echo pe($viewRequest['email'] ?? '—'); ?></a></div>
+                    <div class="dval"><a href="mailto:<?php echo pe($viewRequest['email'] ?? ''); ?>" style="color:#36f3ff;"><?php echo pe($viewRequest['email'] ?? '—') ?: '—'; ?></a></div>
                 </div>
                 <div class="detail-item">
                     <label>Phone</label>
                     <div class="dval"><?php echo pe($viewRequest['phone'] ?? '—') ?: '—'; ?></div>
                 </div>
                 <div class="detail-item">
-                    <label>Discord</label>
-                    <div class="dval"><?php echo pe($viewRequest['discord'] ?? '—') ?: '—'; ?></div>
-                </div>
-                <div class="detail-item">
                     <label>Preferred Contact</label>
                     <div class="dval" style="color:#ffc600;"><?php echo pe($viewRequest['contact_method'] ?? '—'); ?></div>
-                </div>
-                <div class="detail-item">
-                    <label>Submitted</label>
-                    <div class="dval"><?php echo pe(date('M j, Y g:i A', strtotime($viewRequest['created_at'] ?? 'now'))); ?></div>
                 </div>
                 <div class="detail-item">
                     <label>Project Type</label>
@@ -238,7 +239,12 @@ $header_class = 'inner-header';
                 ?>
                 <div class="req-row">
                     <div>
-                        <div class="req-name"><?php echo pe($r['name'] ?? '—'); ?></div>
+                        <div class="req-name">
+                            <?php echo pe($r['name'] ?? '—'); ?>
+                            <?php if (!empty($r['estimate_id'])): ?>
+                                <span style="color:#ffc600; font-family:monospace; font-size:0.8rem; margin-left:8px;"><?php echo pe($r['estimate_id']); ?></span>
+                            <?php endif; ?>
+                        </div>
                         <div class="req-type"><?php echo pe($r['project_type'] ?? ''); ?> · <?php echo pe($r['what_needed'] ?? ''); ?></div>
                         <div class="req-date"><?php echo pe(date('M j, Y', strtotime($r['created_at'] ?? 'now'))); ?> · <?php echo pe($r['contact_method'] ?? ''); ?></div>
                     </div>

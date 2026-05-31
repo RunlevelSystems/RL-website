@@ -89,7 +89,7 @@ if ($is_in_wiki) {
                         <li><a href="<?php echo $footer_base_path; ?>runlevel-terms.php">Runlevel Systems Terms</a></li>
                         <li><a href="<?php echo $footer_base_path; ?>gameservers-world-hosting-terms.php">GameServers.World Hosting Terms</a></li>
                         <li><a href="<?php echo $footer_base_path; ?>payments.php">How Payments Work</a></li>
-                        <li><a href="<?php echo $footer_base_path; ?>client/login.php">Client Portal</a></li>
+                        <li><a href="<?php echo $footer_base_path; ?>dashboard.php">Dashboard</a></li>
                     </ul>
                 </div>
             </div>
