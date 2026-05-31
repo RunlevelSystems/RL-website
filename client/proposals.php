@@ -3,7 +3,27 @@ session_start();
 define('WDS_SYSTEM', true);
 require_once __DIR__ . '/../includes/portal-helpers.php';
 
-portalRequireClient();
+portalRequireLogin();
+if (portalGetRole() !== 'client') {
+    header('Location: /dashboard.php');
+    exit;
+}
+
+$user = portalGetUser();
+$username = (string)($user['username'] ?? '');
+$requests = array_values(array_filter(portalLoadProjectRequests(), function ($r) use ($username) {
+    return (string)($r['client_username'] ?? '') === $username;
+}));
+$requestIds = array_map(function ($r) { return portalGetRequestDisplayId((array)$r); }, $requests);
+
+$proposals = array_values(array_filter(portalLoadProposals(), function ($p) use ($requestIds, $username) {
+    return in_array((string)($p['request_id'] ?? ''), $requestIds, true)
+        || (string)($p['client_username'] ?? '') === $username;
+}));
+
+usort($proposals, function ($a, $b) {
+    return strcmp((string)($b['updated_at'] ?? $b['created_at'] ?? ''), (string)($a['updated_at'] ?? $a['created_at'] ?? ''));
+});
 
 $current_page = 'client-portal';
 $header_class = 'inner-header';
@@ -18,52 +38,37 @@ $header_class = 'inner-header';
     <title>My Proposals | Client Portal | Runlevel Systems</title>
     <link href="../assets/css/coreloop.css" rel="stylesheet">
     <style>
-        .portal-wrap { padding: 40px 0 80px; }
-        .portal-back { color: #36f3ff; font-size: 0.9rem; margin-bottom: 18px; display: inline-block; }
-        .portal-back:hover { color: #ffc600; }
-        .portal-card { background: #0c1729; border: 1px solid rgba(54,243,255,0.18); border-radius: 10px; padding: 30px; }
-        .portal-card h2 { color: #ffc600; margin-top: 0; }
-        .info-section { background: rgba(54,243,255,0.05); border: 1px solid rgba(54,243,255,0.15); border-radius: 8px; padding: 20px 22px; margin-bottom: 22px; }
-        .coming-soon { text-align: center; padding: 40px 20px; color: #5a7a9e; }
-        .coming-soon .icon { font-size: 2.5rem; margin-bottom: 12px; }
+        .portal-wrap{padding:30px 0 70px;}
+        .card{background:#0c1729;border:1px solid rgba(54,243,255,.18);border-radius:10px;padding:16px;}
+        .item{background:#09111d;border:1px solid rgba(54,243,255,.14);border-radius:8px;padding:12px;margin-bottom:10px;}
     </style>
 </head>
 <body>
 <?php include __DIR__ . '/../includes/header.php'; ?>
 <?php include __DIR__ . '/../includes/navigation.php'; ?>
-
 <section class="portal-wrap">
-    <div class="container">
-        <a href="/client/dashboard.php" class="portal-back">← Back to Dashboard</a>
-
-        <div class="portal-card">
-            <h2>📄 My Proposals</h2>
-
-            <div class="info-section">
-                <h4 style="color:#36f3ff; margin-top:0;">What is a Proposal?</h4>
-                <p style="color:#a8bedc; margin-bottom:0;">
-                    After reviewing your request, Runlevel Systems will prepare a written proposal. A proposal explains
-                    what we plan to do, estimated cost, timeline, deliverables, and payment required to begin.
-                    You will need to approve the proposal before any work starts.
-                </p>
-            </div>
-
-            <div class="coming-soon">
-                <div class="icon">🔧</div>
-                <p style="color:#5a7a9e;">Proposals will appear here once they have been prepared for your requests.</p>
-                <p style="color:#3a5a7e; font-size:0.875rem;">
-                    If you have submitted a request and haven't heard back yet,
-                    please allow time for review. You can also
-                    <a href="/contact.php" style="color:#36f3ff;">contact us</a> if you have questions.
-                </p>
-                <p>
-                    <a href="/proposals.php" style="color:#36f3ff; font-size:0.875rem;">Learn more about how proposals work →</a>
-                </p>
-            </div>
-        </div>
+<div class="container">
+    <a href="/dashboard.php" style="color:#36f3ff;font-size:.84rem;">← Back to Dashboard</a>
+    <div class="card" style="margin-top:10px;">
+        <h2 style="margin:0 0 12px;color:#ffc600;font-size:1.1rem;">My Proposals</h2>
+        <?php if (empty($proposals)): ?>
+            <p style="color:#7a9ac0;">No proposals available yet.</p>
+        <?php else: ?>
+            <?php foreach ($proposals as $proposal): ?>
+                <div class="item">
+                    <div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;">
+                        <div style="color:#ffc600;font-family:monospace;font-weight:700;"><?php echo pe($proposal['proposal_id'] ?? 'Proposal'); ?></div>
+                        <div style="color:#a8bedc;font-size:.8rem;"><?php echo pe(ucfirst((string)($proposal['status'] ?? 'draft'))); ?></div>
+                    </div>
+                    <div style="color:#eaf3ff;font-size:.9rem;margin-top:4px;"><?php echo pe($proposal['project_title'] ?? 'Project Proposal'); ?></div>
+                    <div style="color:#7a9ac0;font-size:.78rem;margin-top:4px;">Request ID: <?php echo pe($proposal['request_id'] ?? ''); ?></div>
+                    <a style="display:inline-block;margin-top:6px;color:#36f3ff;font-size:.82rem;" href="/client/proposal.php?proposal_id=<?php echo urlencode((string)($proposal['proposal_id'] ?? '')); ?>">View proposal</a>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </div>
+</div>
 </section>
-
 <?php include __DIR__ . '/../includes/footer.php'; ?>
 <script src="../assets/js/jquery-1.12.3.min.js"></script>
 <script src="../assets/js/bootstrap.min.js"></script>

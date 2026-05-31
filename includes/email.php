@@ -19,3 +19,27 @@ function send_email($to, $subject, $body) {
 
     return @mail($to, (string)$subject, (string)$body, $headers);
 }
+
+function send_project_proposal_email($to, $name, $requestId, $link) {
+    $subject = 'Runlevel Systems Proposal - ' . $requestId;
+    $body = "Hello {$name},\n\n"
+        . "Your proposal is ready for review.\n\n"
+        . "Request ID:\n{$requestId}\n\n"
+        . "Please review the linked document:\n{$link}\n\n"
+        . "Runlevel Systems\n"
+        . "DESIGN • DEBUG • DEPLOY\n\n"
+        . "TODO: Add PDF attachment generation later.\n";
+    return send_email($to, $subject, $body);
+}
+
+function send_project_agreement_email($to, $name, $requestId, $link) {
+    $subject = 'Runlevel Systems Project Agreement - ' . $requestId;
+    $body = "Hello {$name},\n\n"
+        . "Your project agreement is ready for review.\n\n"
+        . "Request ID:\n{$requestId}\n\n"
+        . "Please review the linked document:\n{$link}\n\n"
+        . "Runlevel Systems\n"
+        . "DESIGN • DEBUG • DEPLOY\n\n"
+        . "TODO: Add PDF attachment generation later.\n";
+    return send_email($to, $subject, $body);
+}
