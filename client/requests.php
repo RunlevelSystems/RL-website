@@ -14,8 +14,6 @@ $username = (string)($user['username'] ?? '');
 $requests = array_values(array_filter(portalLoadProjectRequests(), function ($r) use ($username) {
     return (string)($r['client_username'] ?? '') === $username;
 }));
-$proposals = portalLoadProposals();
-$agreements = portalLoadProjectAgreements();
 
 usort($requests, function ($a, $b) {
     return strcmp((string)($b['created_at'] ?? ''), (string)($a['created_at'] ?? ''));
@@ -31,7 +29,7 @@ $header_class = 'inner-header';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="../assets/images/RL-icon.png">
-    <title>My Project Requests | Client Portal | Runlevel Systems</title>
+    <title>My Projects | Client Portal | Runlevel Systems</title>
     <link href="../assets/css/coreloop.css" rel="stylesheet">
     <style>
         .portal-wrap { padding: 30px 0 70px; }
@@ -52,7 +50,7 @@ $header_class = 'inner-header';
     <a href="/dashboard.php" style="color:#36f3ff;font-size:.84rem;">← Back to Dashboard</a>
     <div class="portal-card" style="margin-top:10px;">
         <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px;">
-            <h2 style="margin:0;color:#ffc600;font-size:1.1rem;">My Project Requests</h2>
+            <h2 style="margin:0;color:#ffc600;font-size:1.1rem;">My Projects</h2>
             <a href="/estimate.php" class="btn">Submit New Project Request</a>
         </div>
 
@@ -62,12 +60,9 @@ $header_class = 'inner-header';
             <?php foreach ($requests as $req): ?>
                 <?php
                     $rid = portalGetRequestDisplayId((array)$req);
-                    $proposal = null;
-                    $agreement = null;
-                    foreach ($proposals as $p) { if ((string)($p['request_id'] ?? '') === $rid) { $proposal = $p; break; } }
-                    foreach ($agreements as $a) { if ((string)($a['request_id'] ?? '') === $rid) { $agreement = $a; break; } }
+                    $workspaceUrl = '/project.php?id=' . urlencode($rid);
                 ?>
-                <div class="req-item">
+                <div class="req-item" style="cursor:pointer;" onclick="window.location='<?php echo pe($workspaceUrl); ?>'">
                     <div class="req-head">
                         <div>
                             <div class="req-id"><?php echo pe($rid); ?></div>
@@ -77,9 +72,7 @@ $header_class = 'inner-header';
                     </div>
                     <div class="meta">Submitted <?php echo pe(date('M j, Y', strtotime((string)($req['created_at'] ?? 'now')))); ?></div>
                     <div class="links" style="margin-top:6px;">
-                        <a href="/client/request.php?request_id=<?php echo urlencode($rid); ?>">View request detail</a>
-                        <?php if ($proposal): ?><a href="/client/proposal.php?proposal_id=<?php echo urlencode((string)($proposal['proposal_id'] ?? '')); ?>">Linked proposal</a><?php endif; ?>
-                        <?php if ($agreement): ?><a href="/client/agreement.php?agreement_id=<?php echo urlencode((string)($agreement['agreement_id'] ?? '')); ?>">Linked project agreement</a><?php endif; ?>
+                        <a href="<?php echo pe($workspaceUrl); ?>" onclick="event.stopPropagation()">Open Project Workspace</a>
                     </div>
                 </div>
             <?php endforeach; ?>

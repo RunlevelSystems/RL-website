@@ -9,17 +9,45 @@ $user = portalGetUser();
 $role = portalGetRole();
 $displayName = $user['display_name'] ?? $user['username'] ?? 'User';
 
-$requests = portalLoadProjectRequests();
+$requests  = portalLoadProjectRequests();
 $proposals = portalLoadProposals();
 $agreements = portalLoadProjectAgreements();
 
-$newRequests = array_values(array_filter($requests, function ($r) {
-    return (string)($r['status'] ?? '') === 'new';
-}));
-
 $myUsername = (string)($user['username'] ?? '');
-$myRequests = [];
-$myProposals = [];
+
+// ---- Admin/Staff project counts
+$pendingRequests  = 0;
+$activeProjects   = 0;
+$completedProjects = 0;
+$awaitingApproval  = 0;  // proposals sent, not yet accepted
+$awaitingSignature = 0;  // agreements sent, not yet signed
+
+if (in_array($role, ['admin', 'staff'], true)) {
+    foreach ($requests as $r) {
+        $st = (string)($r['status'] ?? 'new');
+        if (in_array($st, ['new', 'reviewing', 'contacted', 'needs_info'], true)) {
+            $pendingRequests++;
+        } elseif (in_array($st, ['active', 'accepted'], true)) {
+            $activeProjects++;
+        } elseif (in_array($st, ['completed', 'closed'], true)) {
+            $completedProjects++;
+        }
+    }
+    foreach ($proposals as $p) {
+        if ((string)($p['status'] ?? '') === 'sent') {
+            $awaitingApproval++;
+        }
+    }
+    foreach ($agreements as $a) {
+        if ((string)($a['status'] ?? '') === 'sent') {
+            $awaitingSignature++;
+        }
+    }
+}
+
+// ---- Client data
+$myRequests   = [];
+$myProposals  = [];
 $myAgreements = [];
 if ($role === 'client') {
     $myRequests = array_values(array_filter($requests, function ($r) use ($myUsername) {
@@ -93,9 +121,11 @@ $header_class = 'inner-header';
 <?php if ($role === 'admin'): ?>
         <p class="portal-section-title">Admin Overview</p>
         <div class="portal-card-grid">
-            <a href="/staff/estimate-requests.php" class="portal-dash-card"><div class="card-icon">📥</div><div class="card-label">Project Requests</div><div class="card-count"><?php echo count($newRequests); ?></div></a>
-            <a href="/staff/create-proposal.php" class="portal-dash-card"><div class="card-icon">📄</div><div class="card-label">Proposals</div><div class="card-count"><?php echo count($proposals); ?></div></a>
-            <a href="/staff/create-agreement.php" class="portal-dash-card"><div class="card-icon">📑</div><div class="card-label">Project Agreements</div><div class="card-count"><?php echo count($agreements); ?></div></a>
+            <a href="/staff/estimate-requests.php" class="portal-dash-card"><div class="card-icon">📋</div><div class="card-label">Active Projects</div><div class="card-count"><?php echo $activeProjects; ?></div></a>
+            <a href="/staff/estimate-requests.php" class="portal-dash-card"><div class="card-icon">📥</div><div class="card-label">Pending Requests</div><div class="card-count"><?php echo $pendingRequests; ?></div></a>
+            <a href="/staff/estimate-requests.php" class="portal-dash-card"><div class="card-icon">📄</div><div class="card-label">Awaiting Approval</div><div class="card-count"><?php echo $awaitingApproval; ?></div><div class="card-sub">Proposals sent</div></a>
+            <a href="/staff/estimate-requests.php" class="portal-dash-card"><div class="card-icon">📑</div><div class="card-label">Awaiting Signature</div><div class="card-count"><?php echo $awaitingSignature; ?></div><div class="card-sub">Agreements sent</div></a>
+            <a href="/staff/estimate-requests.php" class="portal-dash-card"><div class="card-icon">✅</div><div class="card-label">Completed Projects</div><div class="card-count"><?php echo $completedProjects; ?></div></a>
             <a href="/staff/users.php" class="portal-dash-card"><div class="card-icon">👥</div><div class="card-label">Users</div><div class="card-count"><?php echo count(portalLoadUsers()); ?></div></a>
             <a href="/payments.php" class="portal-dash-card"><div class="card-icon">💳</div><div class="card-label">Payments</div><div class="card-sub">Payment docs</div></a>
             <a href="/staff/tools.php" class="portal-dash-card"><div class="card-icon">🛠️</div><div class="card-label">Runlevel Tools</div><div class="card-sub">Internal tools</div></a>
@@ -105,9 +135,11 @@ $header_class = 'inner-header';
 <?php elseif ($role === 'staff'): ?>
         <p class="portal-section-title">Staff Overview</p>
         <div class="portal-card-grid">
-            <a href="/staff/estimate-requests.php" class="portal-dash-card"><div class="card-icon">📥</div><div class="card-label">Project Requests</div><div class="card-count"><?php echo count($newRequests); ?></div></a>
-            <a href="/staff/create-proposal.php" class="portal-dash-card"><div class="card-icon">📄</div><div class="card-label">Proposals</div><div class="card-count"><?php echo count($proposals); ?></div></a>
-            <a href="/staff/create-agreement.php" class="portal-dash-card"><div class="card-icon">📑</div><div class="card-label">Project Agreements</div><div class="card-count"><?php echo count($agreements); ?></div></a>
+            <a href="/staff/estimate-requests.php" class="portal-dash-card"><div class="card-icon">📋</div><div class="card-label">Active Projects</div><div class="card-count"><?php echo $activeProjects; ?></div></a>
+            <a href="/staff/estimate-requests.php" class="portal-dash-card"><div class="card-icon">📥</div><div class="card-label">Pending Requests</div><div class="card-count"><?php echo $pendingRequests; ?></div></a>
+            <a href="/staff/estimate-requests.php" class="portal-dash-card"><div class="card-icon">📄</div><div class="card-label">Awaiting Approval</div><div class="card-count"><?php echo $awaitingApproval; ?></div><div class="card-sub">Proposals sent</div></a>
+            <a href="/staff/estimate-requests.php" class="portal-dash-card"><div class="card-icon">📑</div><div class="card-label">Awaiting Signature</div><div class="card-count"><?php echo $awaitingSignature; ?></div><div class="card-sub">Agreements sent</div></a>
+            <a href="/staff/estimate-requests.php" class="portal-dash-card"><div class="card-icon">✅</div><div class="card-label">Completed Projects</div><div class="card-count"><?php echo $completedProjects; ?></div></a>
             <a href="/payments.php" class="portal-dash-card"><div class="card-icon">💳</div><div class="card-label">Payments</div><div class="card-sub">Payment docs</div></a>
             <a href="/staff/tools.php" class="portal-dash-card"><div class="card-icon">🛠️</div><div class="card-label">Runlevel Tools</div><div class="card-sub">Internal tools</div></a>
         </div>
@@ -115,60 +147,41 @@ $header_class = 'inner-header';
 <?php else: ?>
         <p class="portal-section-title">My Dashboard</p>
         <div class="portal-card-grid">
-            <a href="/client/requests.php" class="portal-dash-card"><div class="card-icon">📥</div><div class="card-label">My Project Requests</div><div class="card-count"><?php echo count($myRequests); ?></div></a>
-            <a href="/client/proposals.php" class="portal-dash-card"><div class="card-icon">📄</div><div class="card-label">My Proposals</div><div class="card-count"><?php echo count($myProposals); ?></div></a>
-            <a href="/client/contracts.php" class="portal-dash-card"><div class="card-icon">📑</div><div class="card-label">My Project Agreements</div><div class="card-count"><?php echo count($myAgreements); ?></div></a>
+            <a href="/client/requests.php" class="portal-dash-card"><div class="card-icon">📋</div><div class="card-label">My Projects</div><div class="card-count"><?php echo count($myRequests); ?></div></a>
             <a href="/payments.php" class="portal-dash-card"><div class="card-icon">💳</div><div class="card-label">Payments</div><div class="card-sub">Payment info</div></a>
             <a href="/design-debug-deploy.php" class="portal-dash-card"><div class="card-icon">🛠️</div><div class="card-label">Runlevel Tools</div><div class="card-sub">Resources</div></a>
             <a href="/estimate.php" class="portal-dash-card"><div class="card-icon">➕</div><div class="card-label">Submit New Project Request</div><div class="card-sub">Start workflow</div></a>
         </div>
 
         <div class="panel">
-            <h3 style="margin:0 0 8px;color:#36f3ff;font-size:.9rem;text-transform:uppercase;">My Project Requests</h3>
+            <h3 style="margin:0 0 8px;color:#36f3ff;font-size:.9rem;text-transform:uppercase;">My Projects</h3>
             <table>
                 <thead>
                     <tr>
-                        <th>Request ID</th>
+                        <th>Project ID</th>
                         <th>Project Type</th>
                         <th>Status</th>
                         <th>Submitted Date</th>
-                        <th>Linked Proposal</th>
-                        <th>Linked Project Agreement</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php if (empty($myRequests)): ?>
-                    <tr><td colspan="6" style="color:#7a9ac0;">No project requests yet.</td></tr>
+                    <tr><td colspan="5" style="color:#7a9ac0;">No projects yet.</td></tr>
                 <?php else: ?>
                     <?php foreach ($myRequests as $req): ?>
-                        <?php
-                            $rid = portalGetRequestDisplayId((array)$req);
-                            $proposal = null;
-                            $agreement = null;
-                            foreach ($myProposals as $p) { if ((string)($p['request_id'] ?? '') === $rid) { $proposal = $p; break; } }
-                            foreach ($myAgreements as $a) { if ((string)($a['request_id'] ?? '') === $rid) { $agreement = $a; break; } }
-                        ?>
+                        <?php $rid = portalGetRequestDisplayId((array)$req); ?>
                         <tr>
-                            <td class="mono"><a style="color:#ffc600;" href="/client/request.php?request_id=<?php echo urlencode($rid); ?>"><?php echo pe($rid); ?></a></td>
+                            <td class="mono"><?php echo pe($rid); ?></td>
                             <td style="color:#a8bedc;"><?php echo pe($req['project_type'] ?? '—'); ?></td>
                             <td style="color:#a8bedc;"><?php echo pe(ucfirst((string)($req['status'] ?? 'new'))); ?></td>
                             <td style="color:#7a9ac0;"><?php echo pe(date('M j, Y', strtotime((string)($req['created_at'] ?? 'now')))); ?></td>
-                            <td>
-                                <?php if ($proposal): ?>
-                                    <a style="color:#36f3ff;" href="/client/proposal.php?proposal_id=<?php echo urlencode((string)($proposal['proposal_id'] ?? '')); ?>"><?php echo pe((string)($proposal['proposal_id'] ?? 'View')); ?></a>
-                                <?php else: ?>—<?php endif; ?>
-                            </td>
-                            <td>
-                                <?php if ($agreement): ?>
-                                    <a style="color:#36f3ff;" href="/client/agreement.php?agreement_id=<?php echo urlencode((string)($agreement['agreement_id'] ?? '')); ?>"><?php echo pe((string)($agreement['agreement_id'] ?? 'View')); ?></a>
-                                <?php else: ?>—<?php endif; ?>
-                            </td>
+                            <td><a style="color:#36f3ff;" href="/project.php?id=<?php echo urlencode($rid); ?>">Open Project</a></td>
                         </tr>
                     <?php endforeach; ?>
                 <?php endif; ?>
                 </tbody>
             </table>
-            <p style="margin:10px 0 0;color:#5a7a9e;font-size:.75rem;">TODO: Add online acceptance/signature workflow later.</p>
         </div>
 <?php endif; ?>
 
