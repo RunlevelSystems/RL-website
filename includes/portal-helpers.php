@@ -676,7 +676,18 @@ function portalNormalizeProjectRequest(array $request) {
     $request['estimated_time_range'] = (string)($request['estimated_time_range'] ?? '');
     $request['staff_summary'] = (string)($request['staff_summary'] ?? '');
     $request['recommended_next_step'] = (string)($request['recommended_next_step'] ?? '');
-    $request['internal_notes'] = (string)($request['internal_notes'] ?? ($request['notes'] ?? ''));
+    $request['admin_notes'] = (string)($request['admin_notes'] ?? ($request['internal_notes'] ?? ($request['notes'] ?? '')));
+    $request['internal_notes'] = $request['admin_notes'];
+    $request['admin_notes_updated_at'] = (string)($request['admin_notes_updated_at'] ?? '');
+    $request['client_notes'] = (string)($request['client_notes'] ?? '');
+    $request['client_notes_updated_at'] = (string)($request['client_notes_updated_at'] ?? '');
+    $request['invoice_reference'] = (string)($request['invoice_reference'] ?? '');
+    $request['invoice_status'] = (string)($request['invoice_status'] ?? '');
+    $request['amount_due'] = (string)($request['amount_due'] ?? '');
+    $request['amount_paid'] = (string)($request['amount_paid'] ?? '');
+    $request['balance_due'] = (string)($request['balance_due'] ?? '');
+    $request['payment_notes'] = (string)($request['payment_notes'] ?? '');
+    $request['payment_received_at'] = (string)($request['payment_received_at'] ?? '');
     $request['proposal_ids'] = isset($request['proposal_ids']) && is_array($request['proposal_ids']) ? array_values($request['proposal_ids']) : [];
     $request['agreement_ids'] = isset($request['agreement_ids']) && is_array($request['agreement_ids']) ? array_values($request['agreement_ids']) : [];
     if (!isset($request['created_at']) || trim((string)$request['created_at']) === '') {
