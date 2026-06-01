@@ -52,7 +52,7 @@ if ($proposal !== null && $_SERVER['REQUEST_METHOD'] === 'POST') {
         portalSaveProjectRequests($requests);
 
         $host = $_SERVER['HTTP_HOST'] ?? 'runlevel.systems';
-        $clientLink = 'https://' . $host . '/client/proposals.php';
+        $clientLink = 'https://' . $host . '/client/proposal-view.php?proposal_id=' . urlencode((string)($proposal['proposal_id'] ?? ''));
         $sent = send_project_proposal_email(
             (string)($proposal['client_email'] ?? ''),
             (string)($proposal['client_name'] ?? ''),

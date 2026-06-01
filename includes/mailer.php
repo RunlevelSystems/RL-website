@@ -121,6 +121,13 @@ function rlsNormalizeRecipients($to) {
     return ['valid' => array_values(array_unique($valid)), 'attempted' => $attempted];
 }
 
+function rlsMailerDomain($email) {
+    $email = trim((string)$email);
+    $domain = strpos($email, '@') !== false ? substr(strrchr($email, '@'), 1) : '';
+    $domain = preg_replace('/[^A-Za-z0-9.-]/', '', (string)$domain);
+    return $domain !== '' ? $domain : 'runlevelsystems.com';
+}
+
 function rlsBuildMessage(array $recipients, $subject, $textBody, $htmlBody, array $settings, array $options = []) {
     $fromName = rlsHeaderValue((string)($options['from_name'] ?? $settings['from_name'] ?? 'Runlevel Systems'));
     $fromEmail = trim((string)($options['from_email'] ?? $settings['from_email'] ?? ''));
@@ -130,7 +137,7 @@ function rlsBuildMessage(array $recipients, $subject, $textBody, $htmlBody, arra
 
     $headers = [
         'Date: ' . date('r'),
-        'Message-ID: <' . bin2hex(random_bytes(12)) . '@' . preg_replace('/[^A-Za-z0-9.-]/', '', parse_url('mailto:' . $fromEmail, PHP_URL_PATH) ?: 'runlevelsystems.com') . '>',
+        'Message-ID: <' . bin2hex(random_bytes(12)) . '@' . rlsMailerDomain($fromEmail) . '>',
         'MIME-Version: 1.0',
         'From: ' . ($fromName !== '' ? rlsEncodeHeader($fromName) . ' <' . $fromEmail . '>' : $fromEmail),
         'To: ' . $toHeader,
@@ -386,7 +393,10 @@ function rlsSendWithPhpMailer(array $recipients, $subject, $textBody, $htmlBody,
 }
 
 function rlsSendWithMailFallback(array $recipients, array $message, &$error) {
-    $result = @mail(implode(', ', $recipients), (string)$message['subject'], (string)$message['body'], (string)$message['headers_string']);
+    $headers = array_filter($message['headers'], function ($header) {
+        return stripos($header, 'To: ') !== 0 && stripos($header, 'Subject: ') !== 0;
+    });
+    $result = @mail(implode(', ', $recipients), (string)$message['subject'], (string)$message['body'], implode("\r\n", $headers));
     if (!$result) {
         $error = 'PHP mail() fallback failed.';
         return false;
