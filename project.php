@@ -258,7 +258,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$notFound && !$forbidden) {
         if ($action === 'send_proposal') {
             $host = $_SERVER['HTTP_HOST'] ?? 'runlevel.systems';
             $link = 'https://' . $host . '/project.php?id=' . urlencode($projectId);
-            send_project_proposal_email($record['client_email'], $record['client_name'], $projectId, $link);
+            send_project_proposal_email($record['client_email'], $record['client_name'], $projectId, $link, $proposalId);
             $notice = 'Proposal saved and sent by email.';
         } else {
             $notice = 'Proposal draft saved.';
@@ -365,6 +365,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$notFound && !$forbidden) {
         }
         unset($p);
         portalSaveProposals($allProposals);
+        $host = $_SERVER['HTTP_HOST'] ?? 'runlevel.systems';
+        $projectUrl = 'https://' . $host . '/project.php?id=' . urlencode($projectId);
+        send_proposal_accepted_customer_email(
+            (string)($currentProposal['client_email'] ?? ''),
+            (string)($currentProposal['client_name'] ?? ''),
+            $projectId,
+            $pid,
+            $projectUrl
+        );
+        send_proposal_accepted_staff_email(
+            $projectId,
+            $pid,
+            (string)($currentProposal['client_name'] ?? ''),
+            $projectUrl
+        );
         _reloadData($allRequests, $allProposals, $allAgreements,
                     $request, $linkedProposals, $linkedAgreements,
                     $currentProposal, $currentAgreement, $projectId);

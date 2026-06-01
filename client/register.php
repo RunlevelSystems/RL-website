@@ -2,6 +2,7 @@
 session_start();
 define('WDS_SYSTEM', true);
 require_once __DIR__ . '/../includes/portal-helpers.php';
+require_once __DIR__ . '/../includes/email.php';
 
 if (portalIsClientLoggedIn()) {
     header('Location: /client/dashboard.php');
@@ -23,6 +24,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
     } else {
         $err = '';
         if (portalRegisterClient($username, $password, $email, $displayName, $err)) {
+            $host = $_SERVER['HTTP_HOST'] ?? 'runlevel.systems';
+            send_account_created_email(
+                $email,
+                $displayName !== '' ? $displayName : $username,
+                $username,
+                'https://' . $host . '/client/login.php'
+            );
             header('Location: /client/login.php?msg=registered');
             exit;
         } else {

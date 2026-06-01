@@ -133,9 +133,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         portalSaveProjectRequests($requests);
 
         $host = $_SERVER['HTTP_HOST'] ?? 'runlevel.systems';
-        $clientLink = 'https://' . $host . '/client/proposals.php?proposal_id=' . urlencode($record['proposal_id']);
+        $clientLink = 'https://' . $host . '/client/proposal-view.php?proposal_id=' . urlencode($record['proposal_id']);
         if ($action === 'send_email') {
-            send_project_proposal_email($record['client_email'], $record['client_name'], $record['request_id'], $clientLink);
+            send_project_proposal_email($record['client_email'], $record['client_name'], $record['request_id'], $clientLink, $record['proposal_id']);
             $notice = 'Proposal saved and sent by email.';
         } else {
             $notice = 'Proposal draft saved.';
