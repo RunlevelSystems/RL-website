@@ -381,7 +381,7 @@ function rlsSendWithPhpMailer(array $recipients, $subject, $textBody, $htmlBody,
             $mailer->addAddress($recipient);
         }
         $mailer->Subject = (string)$subject;
-        $mailer->Body = (string)($htmlBody !== '' ? $htmlBody : nl2br(htmlspecialchars((string)$textBody, ENT_QUOTES, 'UTF-8')));
+        $mailer->Body = (string)($htmlBody !== '' ? $htmlBody : $textBody);
         $mailer->AltBody = (string)$textBody;
         $mailer->isHTML($htmlBody !== '');
         $mailer->send();
