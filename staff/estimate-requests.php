@@ -150,12 +150,11 @@ $header_class = 'inner-header';
                         <th>Status</th>
                         <th>Created</th>
                         <th>Last Updated</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php if (empty($requests)): ?>
-                    <tr><td colspan="8" style="text-align:center;color:#5a7a9e;padding:20px;">No project requests yet.</td></tr>
+                    <tr><td colspan="7" style="text-align:center;color:#5a7a9e;padding:20px;">No project requests yet.</td></tr>
                 <?php else: ?>
                     <?php foreach ($requests as $r): ?>
                         <?php
@@ -164,14 +163,13 @@ $header_class = 'inner-header';
                             $workspaceUrl = '/project.php?id=' . urlencode($rid);
                         ?>
                         <tr style="cursor:pointer;" onclick="window.location='<?php echo pe($workspaceUrl); ?>'">
-                            <td class="mono"><?php echo pe($rid); ?></td>
+                            <td class="mono"><a class="btn btn-teal" href="<?php echo pe($workspaceUrl); ?>" style="margin-right:6px;padding:4px 8px;font-size:.7rem;">Open</a><?php echo pe($rid); ?></td>
                             <td><?php echo pe($r['name'] ?? '—'); ?></td>
                             <td><?php echo pe($r['email'] ?? '—'); ?></td>
                             <td><?php echo pe($r['project_type'] ?? '—'); ?></td>
                             <td><span class="status"><?php echo pe($statuses[$status] ?? ucfirst($status)); ?></span></td>
                             <td><?php echo pe(date('M j, Y', strtotime((string)($r['created_at'] ?? 'now')))); ?></td>
                             <td><?php echo pe(!empty($r['updated_at']) ? date('M j, Y', strtotime((string)$r['updated_at'])) : '—'); ?></td>
-                            <td onclick="event.stopPropagation()"><a class="btn btn-teal" href="<?php echo pe($workspaceUrl); ?>">View</a></td>
                         </tr>
                     <?php endforeach; ?>
                 <?php endif; ?>

@@ -2,7 +2,7 @@
 session_start();
 define('WDS_SYSTEM', true);
 require_once __DIR__ . '/../includes/portal-helpers.php';
-portalRequireStaff();
+portalRequireStaff(['admin']);
 $current_page = 'staff-portal';
 $header_class = 'inner-header';
 ?>
@@ -13,7 +13,7 @@ $header_class = 'inner-header';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="../assets/images/RL-icon.png">
-    <title>PayPal Setup | Staff Portal | Runlevel Systems</title>
+    <title>PayPal Setup | Admin Portal | Runlevel Systems</title>
     <link href="../assets/css/coreloop.css" rel="stylesheet">
     <style>
         .portal-wrap { padding: 40px 0 80px; }
@@ -40,9 +40,9 @@ $header_class = 'inner-header';
 
 <section class="portal-wrap">
     <div class="container">
-        <a href="/staff/dashboard.php" class="portal-back">← Back to Dashboard</a>
+        <a href="/settings.php" class="portal-back">← Back to Settings</a>
         <h1 style="color:#ffc600; margin-bottom: 8px;">🅿️ PayPal Setup Instructions</h1>
-        <p style="color:#7a9ac0; margin-bottom: 24px;">Internal setup guide for configuring Runlevel Systems payments through PayPal. Staff access only.</p>
+        <p style="color:#7a9ac0; margin-bottom: 24px;">Internal setup guide for configuring Runlevel Systems payments through PayPal. Admin access only.</p>
 
         <div class="security-box">
             🔒 <strong>Security reminder:</strong> Never store PayPal API keys, client secrets, or credentials in public files or version control.

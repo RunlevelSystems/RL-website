@@ -226,6 +226,7 @@ define('PORTAL_PROJECT_REQUESTS_FILE', PORTAL_DATA_DIR . '/project_requests.json
 define('PORTAL_ESTIMATES_FILE',        PORTAL_DATA_DIR . '/estimate_requests.json');
 define('PORTAL_PROPOSALS_FILE',        PORTAL_DATA_DIR . '/proposals.json');
 define('PORTAL_PROJECT_AGREEMENTS_FILE', PORTAL_DATA_DIR . '/project_agreements.json');
+define('PORTAL_ADMIN_SETTINGS_FILE', PORTAL_DATA_DIR . '/admin_settings.json');
 
 // Session keys
 define('PORTAL_STAFF_SESSION',   'rls_portal_staff');
@@ -274,6 +275,64 @@ function portalSaveJson($file, $data) {
         return false;
     }
     return file_put_contents($file, $json, LOCK_EX) !== false;
+}
+
+function portalDefaultAdminSettings() {
+    return [
+        'paypal' => [
+            'client_id' => '',
+            'secret' => '',
+            'environment' => 'sandbox',
+            'business_email' => '',
+            'invoice_defaults' => '',
+        ],
+        'email' => [
+            'from_name' => '',
+            'from_email' => '',
+            'reply_to' => '',
+        ],
+        'site' => [
+            'company_name' => 'Runlevel Systems',
+            'support_email' => '',
+            'support_phone' => '',
+        ],
+        'business' => [
+            'legal_name' => '',
+            'address' => '',
+        ],
+        'updated_at' => '',
+        'updated_by' => '',
+    ];
+}
+
+function portalLoadAdminSettings() {
+    $stored = portalLoadJson(PORTAL_ADMIN_SETTINGS_FILE);
+    $defaults = portalDefaultAdminSettings();
+    $paypalStored = isset($stored['paypal']) && is_array($stored['paypal']) ? $stored['paypal'] : [];
+    $emailStored = isset($stored['email']) && is_array($stored['email']) ? $stored['email'] : [];
+    $siteStored = isset($stored['site']) && is_array($stored['site']) ? $stored['site'] : [];
+    $businessStored = isset($stored['business']) && is_array($stored['business']) ? $stored['business'] : [];
+    return [
+        'paypal' => array_merge($defaults['paypal'], $paypalStored),
+        'email' => array_merge($defaults['email'], $emailStored),
+        'site' => array_merge($defaults['site'], $siteStored),
+        'business' => array_merge($defaults['business'], $businessStored),
+        'updated_at' => (string)($stored['updated_at'] ?? ''),
+        'updated_by' => (string)($stored['updated_by'] ?? ''),
+    ];
+}
+
+function portalSaveAdminSettings(array $settings) {
+    $defaults = portalDefaultAdminSettings();
+    $payload = [
+        'paypal' => array_merge($defaults['paypal'], isset($settings['paypal']) && is_array($settings['paypal']) ? $settings['paypal'] : []),
+        'email' => array_merge($defaults['email'], isset($settings['email']) && is_array($settings['email']) ? $settings['email'] : []),
+        'site' => array_merge($defaults['site'], isset($settings['site']) && is_array($settings['site']) ? $settings['site'] : []),
+        'business' => array_merge($defaults['business'], isset($settings['business']) && is_array($settings['business']) ? $settings['business'] : []),
+        'updated_at' => (string)($settings['updated_at'] ?? ''),
+        'updated_by' => (string)($settings['updated_by'] ?? ''),
+    ];
+    return portalSaveJson(PORTAL_ADMIN_SETTINGS_FILE, $payload);
 }
 
 /**
@@ -681,6 +740,8 @@ function portalNormalizeProjectRequest(array $request) {
     $request['admin_notes_updated_at'] = (string)($request['admin_notes_updated_at'] ?? '');
     $request['client_notes'] = (string)($request['client_notes'] ?? '');
     $request['client_notes_updated_at'] = (string)($request['client_notes_updated_at'] ?? '');
+    $request['staff_response'] = (string)($request['staff_response'] ?? '');
+    $request['staff_response_updated_at'] = (string)($request['staff_response_updated_at'] ?? '');
     $request['invoice_reference'] = (string)($request['invoice_reference'] ?? '');
     $request['invoice_status'] = (string)($request['invoice_status'] ?? '');
     $request['amount_due'] = (string)($request['amount_due'] ?? '');
@@ -688,6 +749,9 @@ function portalNormalizeProjectRequest(array $request) {
     $request['balance_due'] = (string)($request['balance_due'] ?? '');
     $request['payment_notes'] = (string)($request['payment_notes'] ?? '');
     $request['payment_received_at'] = (string)($request['payment_received_at'] ?? '');
+    $request['payment_link'] = (string)($request['payment_link'] ?? '');
+    $request['invoice_sent_at'] = (string)($request['invoice_sent_at'] ?? '');
+    $request['attachments'] = isset($request['attachments']) && is_array($request['attachments']) ? array_values($request['attachments']) : [];
     $request['proposal_ids'] = isset($request['proposal_ids']) && is_array($request['proposal_ids']) ? array_values($request['proposal_ids']) : [];
     $request['agreement_ids'] = isset($request['agreement_ids']) && is_array($request['agreement_ids']) ? array_values($request['agreement_ids']) : [];
     if (!isset($request['created_at']) || trim((string)$request['created_at']) === '') {
