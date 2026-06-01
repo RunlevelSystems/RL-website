@@ -229,6 +229,7 @@ define('PORTAL_PAYMENTS_FILE',         PORTAL_DATA_DIR . '/payments.json');
 define('PORTAL_PAYPAL_WEBHOOK_LOG',    PORTAL_DATA_DIR . '/paypal-webhook-log.json');
 define('PORTAL_PROJECT_AGREEMENTS_FILE', PORTAL_DATA_DIR . '/project_agreements.json');
 define('PORTAL_ADMIN_SETTINGS_FILE', PORTAL_DATA_DIR . '/admin_settings.json');
+define('PORTAL_EMAIL_LOG_FILE', PORTAL_DATA_DIR . '/email-log.json');
 
 // Session keys
 define('PORTAL_STAFF_SESSION',   'rls_portal_staff');
@@ -311,9 +312,17 @@ function portalDefaultAdminSettings() {
             'invoice_defaults' => '',
         ],
         'email' => [
-            'from_name' => '',
-            'from_email' => '',
-            'reply_to' => '',
+            'from_name' => 'Runlevel Systems',
+            'from_email' => 'billing@runlevelsystems.com',
+            'reply_to' => 'billing@runlevelsystems.com',
+            'smtp_host' => 'mail.runlevelsystems.com',
+            'smtp_port' => 465,
+            'smtp_security' => 'ssl',
+            'smtp_auth' => true,
+            'smtp_username' => 'billing@runlevelsystems.com',
+            // TODO: Move secrets to environment variables or protected server config before production.
+            'smtp_password' => '',
+            'smtp_debug' => 'off',
         ],
         'site' => [
             'company_name' => 'Runlevel Systems',
@@ -329,6 +338,31 @@ function portalDefaultAdminSettings() {
     ];
 }
 
+function portalNormalizeEmailSettings(array $emailSettings) {
+    $defaults = portalDefaultAdminSettings()['email'];
+    $email = array_merge($defaults, $emailSettings);
+    $email['from_name'] = trim((string)($email['from_name'] ?? $defaults['from_name']));
+    $email['from_email'] = trim((string)($email['from_email'] ?? $defaults['from_email']));
+    $email['reply_to'] = trim((string)($email['reply_to'] ?? $defaults['reply_to']));
+    $email['smtp_host'] = trim((string)($email['smtp_host'] ?? $defaults['smtp_host']));
+    $email['smtp_port'] = (int)($email['smtp_port'] ?? $defaults['smtp_port']);
+    if ($email['smtp_port'] <= 0) {
+        $email['smtp_port'] = (int)$defaults['smtp_port'];
+    }
+    $security = strtolower(trim((string)($email['smtp_security'] ?? $defaults['smtp_security'])));
+    $email['smtp_security'] = in_array($security, ['ssl', 'tls', 'none'], true) ? $security : $defaults['smtp_security'];
+    $smtpAuth = $email['smtp_auth'] ?? $defaults['smtp_auth'];
+    $email['smtp_auth'] = filter_var($smtpAuth, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+    if ($email['smtp_auth'] === null) {
+        $email['smtp_auth'] = !empty($smtpAuth);
+    }
+    $email['smtp_username'] = trim((string)($email['smtp_username'] ?? $defaults['smtp_username']));
+    $email['smtp_password'] = (string)($email['smtp_password'] ?? '');
+    $debug = strtolower(trim((string)($email['smtp_debug'] ?? $defaults['smtp_debug'])));
+    $email['smtp_debug'] = in_array($debug, ['off', 'basic', 'verbose'], true) ? $debug : $defaults['smtp_debug'];
+    return $email;
+}
+
 function portalLoadAdminSettings() {
     $stored = portalLoadJson(PORTAL_ADMIN_SETTINGS_FILE);
     $defaults = portalDefaultAdminSettings();
@@ -342,7 +376,7 @@ function portalLoadAdminSettings() {
     $paypal['live']    = array_merge($defaults['paypal']['live'],    isset($paypalStored['live'])    && is_array($paypalStored['live'])    ? $paypalStored['live']    : []);
     return [
         'paypal' => $paypal,
-        'email' => array_merge($defaults['email'], $emailStored),
+        'email' => portalNormalizeEmailSettings($emailStored),
         'site' => array_merge($defaults['site'], $siteStored),
         'business' => array_merge($defaults['business'], $businessStored),
         'updated_at' => (string)($stored['updated_at'] ?? ''),
@@ -358,13 +392,51 @@ function portalSaveAdminSettings(array $settings) {
     $paypal['live']    = array_merge($defaults['paypal']['live'],    isset($paypalIn['live'])    && is_array($paypalIn['live'])    ? $paypalIn['live']    : []);
     $payload = [
         'paypal' => $paypal,
-        'email' => array_merge($defaults['email'], isset($settings['email']) && is_array($settings['email']) ? $settings['email'] : []),
+        'email' => portalNormalizeEmailSettings(isset($settings['email']) && is_array($settings['email']) ? $settings['email'] : []),
         'site' => array_merge($defaults['site'], isset($settings['site']) && is_array($settings['site']) ? $settings['site'] : []),
         'business' => array_merge($defaults['business'], isset($settings['business']) && is_array($settings['business']) ? $settings['business'] : []),
         'updated_at' => (string)($settings['updated_at'] ?? ''),
         'updated_by' => (string)($settings['updated_by'] ?? ''),
     ];
     return portalSaveJson(PORTAL_ADMIN_SETTINGS_FILE, $payload);
+}
+
+function portalLoadEmailLog() {
+    $data = portalLoadJson(PORTAL_EMAIL_LOG_FILE);
+    $items = isset($data['emails']) && is_array($data['emails']) ? $data['emails'] : [];
+    $emails = [];
+    foreach ($items as $item) {
+        if (!is_array($item)) {
+            continue;
+        }
+        $emails[] = [
+            'email_id' => (string)($item['email_id'] ?? ''),
+            'timestamp' => (string)($item['timestamp'] ?? ''),
+            'to' => (string)($item['to'] ?? ''),
+            'subject' => (string)($item['subject'] ?? ''),
+            'status' => (string)($item['status'] ?? ''),
+            'error_message' => (string)($item['error_message'] ?? ''),
+            'context' => (string)($item['context'] ?? ''),
+        ];
+    }
+    return $emails;
+}
+
+function portalAppendEmailLog(array $entry) {
+    $emails = portalLoadEmailLog();
+    $emails[] = [
+        'email_id' => (string)($entry['email_id'] ?? ''),
+        'timestamp' => (string)($entry['timestamp'] ?? date('c')),
+        'to' => (string)($entry['to'] ?? ''),
+        'subject' => (string)($entry['subject'] ?? ''),
+        'status' => (string)($entry['status'] ?? 'unknown'),
+        'error_message' => (string)($entry['error_message'] ?? ''),
+        'context' => (string)($entry['context'] ?? ''),
+    ];
+    if (count($emails) > 200) {
+        $emails = array_slice($emails, -200);
+    }
+    return portalSaveJson(PORTAL_EMAIL_LOG_FILE, ['emails' => array_values($emails)]);
 }
 
 /**

@@ -57,7 +57,8 @@ if ($proposal !== null && $_SERVER['REQUEST_METHOD'] === 'POST') {
             (string)($proposal['client_email'] ?? ''),
             (string)($proposal['client_name'] ?? ''),
             (string)($proposal['request_id'] ?? ''),
-            $clientLink
+            $clientLink,
+            (string)($proposal['proposal_id'] ?? '')
         );
         if ($sent) {
             $notice = 'Proposal sent to ' . htmlspecialchars((string)($proposal['client_email'] ?? ''), ENT_QUOTES, 'UTF-8') . '.';

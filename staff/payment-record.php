@@ -2,6 +2,7 @@
 session_start();
 define('WDS_SYSTEM', true);
 require_once __DIR__ . '/../includes/portal-helpers.php';
+require_once __DIR__ . '/../includes/email.php';
 
 portalRequireStaff();
 
@@ -129,6 +130,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         unset($p);
         portalSaveProposals($proposals);
+
+        if ($form['payment_status'] === 'received') {
+            $host = $_SERVER['HTTP_HOST'] ?? 'runlevel.systems';
+            $projectUrl = 'https://' . $host . '/project.php?id=' . urlencode((string)($linkedProposal['request_id'] ?? ''));
+            $amountLabel = '$' . number_format((float)$form['amount'], 2) . ' ' . strtoupper((string)($form['currency'] !== '' ? $form['currency'] : 'USD'));
+            send_payment_recorded_customer_email(
+                (string)($linkedProposal['client_email'] ?? ''),
+                (string)($linkedProposal['client_name'] ?? ''),
+                (string)($linkedProposal['request_id'] ?? ''),
+                (string)($linkedProposal['proposal_id'] ?? ''),
+                $paymentId,
+                $amountLabel,
+                ucfirst((string)$form['payment_status']),
+                $projectUrl
+            );
+            send_payment_recorded_staff_email(
+                (string)($linkedProposal['request_id'] ?? ''),
+                (string)($linkedProposal['proposal_id'] ?? ''),
+                $paymentId,
+                $amountLabel,
+                ucfirst((string)$form['payment_status']),
+                $projectUrl
+            );
+        }
 
         $notice = 'Payment recorded. Payment ID: ' . $paymentId;
         $form = array_fill_keys(array_keys($form), '');

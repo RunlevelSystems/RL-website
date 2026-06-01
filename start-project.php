@@ -206,14 +206,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_request'])) {
         } else {
             $success = true;
             $submitted = $request;
-            $subject = 'Start Project Request Received - ' . $requestId;
-            $body = "Hello {$form['name']},\n\n"
-                . "We received your Start Project request and will review it shortly.\n\n"
-                . "Request ID:\n{$requestId}\n\n"
-                . "After review, we will share recommendations, estimated timeline, and pricing options.\n\n"
-                . "Runlevel Systems\n"
-                . "DESIGN • DEBUG • DEPLOY\n";
-            send_email($form['email'], $subject, $body);
+            $host = $_SERVER['HTTP_HOST'] ?? 'runlevel.systems';
+            $dashboardUrl = 'https://' . $host . '/dashboard.php';
+            $staffUrl = 'https://' . $host . '/staff/estimate-requests.php';
+            send_project_request_confirmation_email($form['email'], $form['name'], $requestId, $dashboardUrl);
+            send_staff_new_request_email($requestId, $form['name'], $form['email'], $form['request_type'], $staffUrl);
         }
     }
 }

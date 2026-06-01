@@ -2,6 +2,7 @@
 session_start();
 define('WDS_SYSTEM', true);
 require_once __DIR__ . '/../includes/portal-helpers.php';
+require_once __DIR__ . '/../includes/email.php';
 
 portalRequireLogin();
 if (portalGetRole() !== 'client') {
@@ -75,6 +76,21 @@ if ($proposal !== null && $_SERVER['REQUEST_METHOD'] === 'POST') {
             unset($p);
             portalSaveProposals($proposals);
             $status = 'accepted';
+            $host = $_SERVER['HTTP_HOST'] ?? 'runlevel.systems';
+            $projectUrl = 'https://' . $host . '/client/proposal-view.php?proposal_id=' . urlencode($proposalId);
+            send_proposal_accepted_customer_email(
+                (string)($proposal['client_email'] ?? ''),
+                (string)($proposal['client_name'] ?? ''),
+                (string)($proposal['request_id'] ?? ''),
+                (string)($proposal['proposal_id'] ?? ''),
+                $projectUrl
+            );
+            send_proposal_accepted_staff_email(
+                (string)($proposal['request_id'] ?? ''),
+                (string)($proposal['proposal_id'] ?? ''),
+                (string)($proposal['client_name'] ?? ''),
+                'https://' . $host . '/staff/proposal-view.php?proposal_id=' . urlencode($proposalId)
+            );
             $notice = 'Proposal accepted. We will follow up with payment instructions.';
         }
     } elseif ($action === 'request_changes') {
@@ -106,6 +122,14 @@ if ($proposal !== null && $_SERVER['REQUEST_METHOD'] === 'POST') {
             unset($p);
             portalSaveProposals($proposals);
             $status = 'changes_requested';
+            $host = $_SERVER['HTTP_HOST'] ?? 'runlevel.systems';
+            send_proposal_change_requested_email(
+                (string)($proposal['proposal_id'] ?? ''),
+                (string)($proposal['request_id'] ?? ''),
+                (string)($proposal['client_name'] ?? ''),
+                $message,
+                'https://' . $host . '/staff/proposal-view.php?proposal_id=' . urlencode($proposalId)
+            );
             $notice = 'Your change request has been submitted. We will review and update the proposal.';
         }
     }

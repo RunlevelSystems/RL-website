@@ -19,13 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['resend_verification']
         } else {
             $verifyLink = 'https://' . ($_SERVER['HTTP_HOST'] ?? 'runlevel.systems') . '/verify-email.php?token=' . urlencode((string)$user['verification_token']);
             $name = trim((string)($user['display_name'] ?? $user['username'] ?? 'Customer'));
-            $body = "Hello {$name},\n\n"
-                  . "We received your request to resend account verification.\n\n"
-                  . "Please verify your email before logging in:\n\n"
-                  . $verifyLink . "\n\n"
-                  . "Runlevel Systems\n"
-                  . "DESIGN • DEBUG • DEPLOY\n";
-            send_email($email, 'Verify your Runlevel Systems account', $body);
+            send_verification_email($email, $name, $verifyLink);
             $message = 'Verification email sent. Please check your inbox.';
         }
     }

@@ -185,7 +185,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($action === 'send_to_customer') {
             $host = $_SERVER['HTTP_HOST'] ?? 'runlevel.systems';
             $clientLink = 'https://' . $host . '/client/proposals.php';
-            send_project_proposal_email($record['client_email'], $record['client_name'], $record['request_id'], $clientLink);
+            send_project_proposal_email($record['client_email'], $record['client_name'], $record['request_id'], $clientLink, $record['proposal_id']);
             $notice = 'Proposal sent to customer.';
         } else {
             $notice = 'Proposal saved.';
