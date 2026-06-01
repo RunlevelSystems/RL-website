@@ -9,6 +9,7 @@ $user = portalGetUser();
 $role = portalGetRole();
 $displayName = $user['display_name'] ?? $user['username'] ?? 'User';
 $isStaffRole = in_array($role, ['admin', 'staff'], true);
+$isAdminRole = $role === 'admin';
 
 $requests = portalLoadProjectRequests();
 $proposals = portalLoadProposals();
@@ -291,6 +292,8 @@ $header_class = 'inner-header';
         .portal-panel th { color:#5a7a9e;font-size:.68rem;text-transform:uppercase;border-top:none;letter-spacing:.04em; }
         .portal-muted { color:#7a9ac0;font-size:.8rem; }
         .portal-mono { font-family:monospace;color:#ffc600; }
+        .portal-primary-action { display:inline-block;border:1px solid rgba(54,243,255,.35);background:rgba(54,243,255,.08);color:#36f3ff;border-radius:4px;padding:2px 8px;font-size:.68rem;font-weight:700;margin-right:7px;text-transform:uppercase;letter-spacing:.04em; }
+        .portal-primary-action:hover { color:#ffc600;border-color:#ffc600;text-decoration:none; }
         .status-chip { display:inline-block;border:1px solid rgba(54,243,255,.28);background:rgba(54,243,255,.08);padding:2px 7px;border-radius:999px;color:#a8bedc;font-size:.68rem;font-weight:700; }
         .timeline-list,.message-list { list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px; }
         .timeline-list li,.message-list li { border:1px solid rgba(54,243,255,.12);border-radius:8px;padding:9px 10px;background:rgba(5,11,20,.44); }
@@ -317,6 +320,7 @@ $header_class = 'inner-header';
             <div class="portal-actions">
                 <a href="/estimate.php" class="portal-link-btn">Start Project</a>
                 <?php if ($isStaffRole): ?><a href="/staff/estimate-requests.php" class="portal-link-btn">All Projects</a><?php endif; ?>
+                <?php if ($isAdminRole): ?><a href="/settings.php" class="portal-link-btn">Settings</a><?php endif; ?>
                 <a href="/logout.php" class="portal-logout">Sign Out</a>
             </div>
         </div>
@@ -338,25 +342,23 @@ $header_class = 'inner-header';
                     <thead>
                         <tr>
                             <th>Project ID</th>
-                            <th>Project</th>
+                            <th>Project ID</th>
                             <th>Client</th>
                             <th>Status</th>
                             <th>Updated</th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                     <?php if (empty($recentProjects)): ?>
-                        <tr><td colspan="6" class="portal-muted">No projects yet.</td></tr>
+                        <tr><td colspan="5" class="portal-muted">No projects yet.</td></tr>
                     <?php else: ?>
                         <?php foreach ($recentProjects as $project): ?>
                             <tr>
-                                <td class="portal-mono"><?php echo pe($project['id']); ?></td>
+                                <td class="portal-mono"><a class="portal-primary-action" href="/project.php?id=<?php echo urlencode((string)$project['id']); ?>">Open</a><?php echo pe($project['id']); ?></td>
                                 <td><?php echo pe($project['name']); ?></td>
                                 <td><?php echo pe($project['client']); ?></td>
                                 <td><span class="status-chip"><?php echo pe($project['status_label']); ?></span></td>
                                 <td class="portal-muted"><?php echo $project['last_updated_ts'] > 0 ? pe(date('M j, Y', (int)$project['last_updated_ts'])) : '—'; ?></td>
-                                <td><a href="/project.php?id=<?php echo urlencode((string)$project['id']); ?>" style="color:#36f3ff;">Open</a></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>
@@ -370,23 +372,21 @@ $header_class = 'inner-header';
                     <thead>
                     <tr>
                         <th>Project ID</th>
-                        <th>Project</th>
+                        <th>Project ID</th>
                         <th>Proposal</th>
                         <th>Agreement</th>
-                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php if (empty($activeProjectRows)): ?>
-                        <tr><td colspan="5" class="portal-muted">No active projects right now.</td></tr>
+                        <tr><td colspan="4" class="portal-muted">No active projects right now.</td></tr>
                     <?php else: ?>
                         <?php foreach (array_slice($activeProjectRows, 0, 8) as $project): ?>
                             <tr>
-                                <td class="portal-mono"><?php echo pe($project['id']); ?></td>
+                                <td class="portal-mono"><a class="portal-primary-action" href="/project.php?id=<?php echo urlencode((string)$project['id']); ?>">Open</a><?php echo pe($project['id']); ?></td>
                                 <td><?php echo pe($project['name']); ?></td>
                                 <td><?php echo pe($project['proposal_status_label']); ?></td>
                                 <td><?php echo pe($project['agreement_status_label']); ?></td>
-                                <td><a href="/project.php?id=<?php echo urlencode((string)$project['id']); ?>" style="color:#36f3ff;">Open</a></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>
@@ -399,24 +399,22 @@ $header_class = 'inner-header';
                 <table>
                     <thead>
                     <tr>
-                        <th>Project ID</th>
+                        <th>Project</th>
                         <th>Project</th>
                         <th>Status</th>
                         <th>Created</th>
-                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php if (empty($pendingProjectRows)): ?>
-                        <tr><td colspan="5" class="portal-muted">No pending projects.</td></tr>
+                        <tr><td colspan="4" class="portal-muted">No pending projects.</td></tr>
                     <?php else: ?>
                         <?php foreach (array_slice($pendingProjectRows, 0, 8) as $project): ?>
                             <tr>
-                                <td class="portal-mono"><?php echo pe($project['id']); ?></td>
+                                <td class="portal-mono"><a class="portal-primary-action" href="/project.php?id=<?php echo urlencode((string)$project['id']); ?>">Open</a><?php echo pe($project['id']); ?></td>
                                 <td><?php echo pe($project['name']); ?></td>
                                 <td><span class="status-chip"><?php echo pe($project['status_label']); ?></span></td>
                                 <td class="portal-muted"><?php echo $project['created_ts'] > 0 ? pe(date('M j, Y', (int)$project['created_ts'])) : '—'; ?></td>
-                                <td><a href="/project.php?id=<?php echo urlencode((string)$project['id']); ?>" style="color:#36f3ff;">Open</a></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>
@@ -429,22 +427,20 @@ $header_class = 'inner-header';
                 <table>
                     <thead>
                     <tr>
-                        <th>Project ID</th>
+                        <th>Project</th>
                         <th>Project</th>
                         <th>Completed</th>
-                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php if (empty($completedProjectRows)): ?>
-                        <tr><td colspan="4" class="portal-muted">No completed projects yet.</td></tr>
+                        <tr><td colspan="3" class="portal-muted">No completed projects yet.</td></tr>
                     <?php else: ?>
                         <?php foreach (array_slice($completedProjectRows, 0, 8) as $project): ?>
                             <tr>
-                                <td class="portal-mono"><?php echo pe($project['id']); ?></td>
+                                <td class="portal-mono"><a class="portal-primary-action" href="/project.php?id=<?php echo urlencode((string)$project['id']); ?>">Open</a><?php echo pe($project['id']); ?></td>
                                 <td><?php echo pe($project['name']); ?></td>
                                 <td class="portal-muted"><?php echo $project['last_updated_ts'] > 0 ? pe(date('M j, Y', (int)$project['last_updated_ts'])) : '—'; ?></td>
-                                <td><a href="/project.php?id=<?php echo urlencode((string)$project['id']); ?>" style="color:#36f3ff;">Open</a></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>

@@ -22,6 +22,14 @@ if ($projectId === '') {
 $allRequests  = portalLoadProjectRequests();
 $allProposals = portalLoadProposals();
 $allAgreements = portalLoadProjectAgreements();
+$adminSettings = portalLoadAdminSettings();
+$paypalSettings = isset($adminSettings['paypal']) && is_array($adminSettings['paypal']) ? $adminSettings['paypal'] : [];
+$paypalEnv = (string)($paypalSettings['environment'] ?? 'sandbox');
+$paypalBusinessEmail = trim((string)($paypalSettings['business_email'] ?? ''));
+$paypalClientId = trim((string)($paypalSettings['client_id'] ?? ''));
+$paypalSecret = trim((string)($paypalSettings['secret'] ?? ''));
+$paypalInvoiceDefaults = trim((string)($paypalSettings['invoice_defaults'] ?? ''));
+$paypalApiConfigured = ($paypalClientId !== '' && $paypalSecret !== '' && $paypalBusinessEmail !== '');
 
 // -- Find the project request
 $request      = null;
@@ -96,6 +104,21 @@ function _genAgreementId(array $agreements) {
     foreach ($agreements as $a) {
         if (!empty($a['agreement_id'])) {
             $existing[(string)$a['agreement_id']] = true;
+        }
+
+        function _genInvoiceId(array $requests) {
+            $existing = [];
+            foreach ($requests as $row) {
+                $invoiceRef = trim((string)($row['invoice_reference'] ?? ''));
+                if ($invoiceRef !== '') {
+                    $existing[$invoiceRef] = true;
+                }
+            }
+            $d = date('Ymd');
+            do {
+                $id = 'INV-' . $d . '-' . str_pad((string) random_int(1, 9999), 4, '0', STR_PAD_LEFT);
+            } while (isset($existing[$id]));
+            return $id;
         }
     }
     $d = date('Ymd');
@@ -378,6 +401,126 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$notFound && !$forbidden) {
                     $currentProposal, $currentAgreement, $projectId);
         $notice = 'Agreement signed. Your project is now active.';
     }
+
+    if ($isStaff && in_array($action, ['create_invoice', 'send_invoice', 'create_payment_link', 'record_payment'], true)) {
+        $invoiceAmountDue = trim((string)($_POST['invoice_amount_due'] ?? ($request['amount_due'] ?? '')));
+        $invoiceNotes = trim((string)($_POST['invoice_notes'] ?? ($request['payment_notes'] ?? '')));
+        $invoiceReference = trim((string)($request['invoice_reference'] ?? ''));
+        if ($invoiceReference === '') {
+            $invoiceReference = _genInvoiceId($allRequests);
+        }
+
+        foreach ($allRequests as &$req) {
+            if (portalGetRequestDisplayId((array)$req) !== $projectId) {
+                continue;
+            }
+            if ($action === 'create_invoice') {
+                $req['invoice_reference'] = $invoiceReference;
+                $req['invoice_status'] = 'draft';
+                $req['amount_due'] = $invoiceAmountDue;
+                $req['payment_notes'] = $invoiceNotes;
+                $req['balance_due'] = $invoiceAmountDue;
+                $req['updated_at'] = date('c');
+                $notice = 'Invoice draft created.';
+            } elseif ($action === 'send_invoice') {
+                $req['invoice_reference'] = $invoiceReference;
+                $req['invoice_status'] = 'sent';
+                $req['invoice_sent_at'] = date('c');
+                $req['amount_due'] = $invoiceAmountDue;
+                $req['payment_notes'] = $invoiceNotes;
+                if (trim((string)($req['balance_due'] ?? '')) === '') {
+                    $req['balance_due'] = $invoiceAmountDue;
+                }
+                $req['updated_at'] = date('c');
+                $notice = 'Invoice marked as sent to client.';
+            } elseif ($action === 'create_payment_link') {
+                $payLink = trim((string)($_POST['payment_link'] ?? ''));
+                if ($payLink === '' || !filter_var($payLink, FILTER_VALIDATE_URL)) {
+                    $error = 'Enter a valid payment link URL.';
+                    break;
+                }
+                $req['invoice_reference'] = $invoiceReference;
+                $req['invoice_status'] = 'payment_link_sent';
+                $req['payment_link'] = $payLink;
+                $req['amount_due'] = $invoiceAmountDue;
+                $req['payment_notes'] = $invoiceNotes;
+                if (trim((string)($req['balance_due'] ?? '')) === '') {
+                    $req['balance_due'] = $invoiceAmountDue;
+                }
+                $req['updated_at'] = date('c');
+                $notice = 'Payment link saved and ready to send.';
+            } elseif ($action === 'record_payment') {
+                $amountPaid = trim((string)($_POST['amount_paid'] ?? ''));
+                $req['invoice_reference'] = $invoiceReference;
+                $req['invoice_status'] = 'paid';
+                $req['amount_due'] = $invoiceAmountDue;
+                $req['amount_paid'] = $amountPaid;
+                $req['balance_due'] = '';
+                $req['payment_notes'] = $invoiceNotes;
+                $req['payment_received_at'] = date('c');
+                if (in_array((string)($req['status'] ?? ''), ['proposal_sent', 'accepted'], true)) {
+                    $req['status'] = 'active';
+                }
+                $req['updated_at'] = date('c');
+                $notice = 'Payment recorded.';
+            }
+            break;
+        }
+        unset($req);
+
+        if ($error === '') {
+            portalSaveProjectRequests($allRequests);
+            _reloadData($allRequests, $allProposals, $allAgreements,
+                        $request, $linkedProposals, $linkedAgreements,
+                        $currentProposal, $currentAgreement, $projectId);
+        }
+    }
+
+    if ($isClient && $action === 'send_client_message') {
+        $message = trim((string)($_POST['client_message'] ?? ''));
+        if ($message === '') {
+            $error = 'Enter a message before sending.';
+        } else {
+            foreach ($allRequests as &$req) {
+                if (portalGetRequestDisplayId((array)$req) !== $projectId) {
+                    continue;
+                }
+                $req['client_notes'] = $message;
+                $req['client_notes_updated_at'] = date('c');
+                $req['updated_at'] = date('c');
+                break;
+            }
+            unset($req);
+            portalSaveProjectRequests($allRequests);
+            _reloadData($allRequests, $allProposals, $allAgreements,
+                        $request, $linkedProposals, $linkedAgreements,
+                        $currentProposal, $currentAgreement, $projectId);
+            $notice = 'Message sent to staff.';
+        }
+    }
+
+    if ($isStaff && $action === 'send_staff_message') {
+        $message = trim((string)($_POST['staff_message'] ?? ''));
+        if ($message === '') {
+            $error = 'Enter a reply before sending.';
+        } else {
+            foreach ($allRequests as &$req) {
+                if (portalGetRequestDisplayId((array)$req) !== $projectId) {
+                    continue;
+                }
+                $req['staff_response'] = $message;
+                $req['staff_response_updated_at'] = date('c');
+                $req['updated_at'] = date('c');
+                break;
+            }
+            unset($req);
+            portalSaveProjectRequests($allRequests);
+            _reloadData($allRequests, $allProposals, $allAgreements,
+                        $request, $linkedProposals, $linkedAgreements,
+                        $currentProposal, $currentAgreement, $projectId);
+            $notice = 'Reply sent to client.';
+        }
+    }
 }
 
 // ================================================================
@@ -473,6 +616,35 @@ function buildTimeline(array $request, ?array $proposal, ?array $agreement) {
                 $events[] = ['ts' => $signedAt, 'icon' => '✍️', 'text' => 'Agreement signed' . ($signedBy ? ' by ' . $signedBy : ''), 'color' => '#22c55e'];
             }
         }
+
+        $invoiceRef = trim((string)($request['invoice_reference'] ?? ''));
+        if ($invoiceRef !== '') {
+            $invoiceTs = strtotime((string)($request['invoice_sent_at'] ?? $request['updated_at'] ?? ''));
+            if ($invoiceTs) {
+                $events[] = ['ts' => $invoiceTs, 'icon' => '🧾', 'text' => 'Invoice prepared (' . $invoiceRef . ')', 'color' => '#60a5fa'];
+            }
+        }
+        $invoiceStatus = trim((string)($request['invoice_status'] ?? ''));
+        if (in_array($invoiceStatus, ['sent', 'payment_link_sent'], true)) {
+            $sentTs = strtotime((string)($request['invoice_sent_at'] ?? $request['updated_at'] ?? ''));
+            if ($sentTs) {
+                $events[] = ['ts' => $sentTs, 'icon' => '📨', 'text' => $invoiceStatus === 'payment_link_sent' ? 'Payment link sent to client' : 'Invoice sent to client', 'color' => '#fbbf24'];
+            }
+        }
+        if ($invoiceStatus === 'paid') {
+            $paidTs = strtotime((string)($request['payment_received_at'] ?? $request['updated_at'] ?? ''));
+            if ($paidTs) {
+                $events[] = ['ts' => $paidTs, 'icon' => '💸', 'text' => 'Payment received', 'color' => '#22c55e'];
+            }
+        }
+        $clientMsgTs = strtotime((string)($request['client_notes_updated_at'] ?? ''));
+        if ($clientMsgTs && trim((string)($request['client_notes'] ?? '')) !== '') {
+            $events[] = ['ts' => $clientMsgTs, 'icon' => '💬', 'text' => 'Client message sent', 'color' => '#36f3ff'];
+        }
+        $staffMsgTs = strtotime((string)($request['staff_response_updated_at'] ?? ''));
+        if ($staffMsgTs && trim((string)($request['staff_response'] ?? '')) !== '') {
+            $events[] = ['ts' => $staffMsgTs, 'icon' => '🗨️', 'text' => 'Staff reply sent', 'color' => '#a78bfa'];
+        }
     }
 
     $reqStatus = (string)($request['status'] ?? '');
@@ -497,17 +669,16 @@ function buildTimeline(array $request, ?array $proposal, ?array $agreement) {
 function buildTrackerSteps(array $request, ?array $proposal, ?array $agreement) {
     $reqStatus  = (string)($request['status'] ?? 'new');
     $propStatus = $proposal  ? (string)($proposal['status']  ?? '') : '';
-    $agrStatus  = $agreement ? (string)($agreement['status'] ?? '') : '';
+    $invoiceRef = trim((string)($request['invoice_reference'] ?? ''));
+    $invoiceStatus = trim((string)($request['invoice_status'] ?? ''));
 
     $steps = [];
 
-    $steps[] = ['label' => 'Request Submitted',  'done' => true];
-    $steps[] = ['label' => 'Proposal Created',   'done' => $proposal !== null];
-    $steps[] = ['label' => 'Proposal Sent',      'done' => in_array($propStatus, ['sent', 'accepted', 'rejected'], true)];
+    $steps[] = ['label' => 'Project Request',    'done' => true];
     $steps[] = ['label' => 'Proposal Approved',  'done' => $propStatus === 'accepted'];
-    $steps[] = ['label' => 'Agreement Created',  'done' => $agreement !== null];
-    $steps[] = ['label' => 'Agreement Sent',     'done' => in_array($agrStatus, ['sent', 'signed'], true)];
-    $steps[] = ['label' => 'Agreement Signed',   'done' => $agrStatus === 'signed'];
+    $steps[] = ['label' => 'Create Invoice',     'done' => $invoiceRef !== ''];
+    $steps[] = ['label' => 'Send Payment Link',  'done' => in_array($invoiceStatus, ['sent', 'payment_link_sent', 'paid'], true)];
+    $steps[] = ['label' => 'Payment Received',   'done' => $invoiceStatus === 'paid'];
     $steps[] = ['label' => 'Project Active',     'done' => in_array($reqStatus, ['active', 'accepted', 'completed', 'closed'], true)];
     $steps[] = ['label' => 'Project Completed',  'done' => in_array($reqStatus, ['completed', 'closed'], true)];
 
@@ -950,19 +1121,127 @@ $header_class = 'inner-header';
     <details class="pw-section">
         <summary>Payments</summary>
         <div class="pw-section-body">
-            <p style="color:#5a7a9e;font-size:.84rem;margin:0 0 8px;">Payments are managed via PayPal invoices or approved payment method.</p>
-            <?php if ($isStaff): ?>
-            <div style="display:flex;gap:8px;flex-wrap:wrap;" class="no-print">
-                <a href="/staff/paypal-setup.php" class="btn btn-teal">PayPal Setup</a>
-                <a href="/payments.php" class="btn btn-teal">Payment Info</a>
+            <?php
+                $invoiceStatus = trim((string)($request['invoice_status'] ?? ''));
+                $invoiceReference = trim((string)($request['invoice_reference'] ?? ''));
+                $amountDue = trim((string)($request['amount_due'] ?? ''));
+                $amountPaid = trim((string)($request['amount_paid'] ?? ''));
+                $paymentLink = trim((string)($request['payment_link'] ?? ''));
+                $paymentNotes = trim((string)($request['payment_notes'] ?? ''));
+                $paymentReceivedAt = trim((string)($request['payment_received_at'] ?? ''));
+                $invoiceSentAt = trim((string)($request['invoice_sent_at'] ?? ''));
+            ?>
+            <p style="color:#5a7a9e;font-size:.84rem;margin:0 0 10px;">Preferred workflow: Project → Proposal Approved → Create Invoice → Send Payment Link → Payment Received → Project Active.</p>
+            <div class="pw-grid" style="margin-bottom:10px;">
+                <div><span class="pw-lbl">Invoice Reference</span><div class="pw-val pw-mono"><?php echo pe($invoiceReference !== '' ? $invoiceReference : '—'); ?></div></div>
+                <div><span class="pw-lbl">Invoice Status</span><div class="pw-val"><?php echo pe($invoiceStatus !== '' ? strtoupper(str_replace('_', ' ', $invoiceStatus)) : 'Not started'); ?></div></div>
+                <div><span class="pw-lbl">Amount Due</span><div class="pw-val"><?php echo pe($amountDue !== '' ? $amountDue : '—'); ?></div></div>
+                <div><span class="pw-lbl">Amount Paid</span><div class="pw-val"><?php echo pe($amountPaid !== '' ? $amountPaid : '—'); ?></div></div>
+                <div><span class="pw-lbl">Invoice Sent</span><div class="pw-val"><?php echo $invoiceSentAt !== '' ? pe(date('M j, Y g:i A', strtotime($invoiceSentAt))) : '—'; ?></div></div>
+                <div><span class="pw-lbl">Payment Received</span><div class="pw-val"><?php echo $paymentReceivedAt !== '' ? pe(date('M j, Y g:i A', strtotime($paymentReceivedAt))) : '—'; ?></div></div>
             </div>
+            <?php if ($paymentNotes !== ''): ?>
+                <div style="margin-bottom:10px;"><span class="pw-lbl">Payment Notes</span><div class="pw-val" style="white-space:pre-wrap;"><?php echo pe($paymentNotes); ?></div></div>
+            <?php endif; ?>
+            <?php if ($paymentLink !== ''): ?>
+                <div style="margin-bottom:10px;"><span class="pw-lbl">Payment Link</span><div class="pw-val"><a href="<?php echo pe($paymentLink); ?>" target="_blank" rel="noopener noreferrer" style="color:#36f3ff;"><?php echo pe($paymentLink); ?></a></div></div>
+            <?php endif; ?>
+
+            <?php if ($isStaff): ?>
+                <div style="margin:0 0 10px;color:#a8bedc;font-size:.82rem;">
+                    <?php if ($paypalApiConfigured): ?>
+                        PayPal API configuration is set for <strong><?php echo pe(ucfirst($paypalEnv)); ?></strong>. Use invoice actions below to track status and payment records.
+                    <?php else: ?>
+                        PayPal API credentials are not fully configured. Use fallback payment link workflow, or configure PayPal in admin settings.
+                    <?php endif; ?>
+                </div>
+                <form method="post" class="no-print" style="margin-bottom:10px;">
+                    <div class="pw-grid">
+                        <div>
+                            <label>Amount Due</label>
+                            <input class="pw-input" type="text" name="invoice_amount_due" value="<?php echo pe($amountDue); ?>" placeholder="e.g. 1500.00 USD">
+                        </div>
+                        <div>
+                            <label>Amount Paid</label>
+                            <input class="pw-input" type="text" name="amount_paid" value="<?php echo pe($amountPaid); ?>" placeholder="e.g. 1500.00 USD">
+                        </div>
+                    </div>
+                    <div style="margin-top:8px;">
+                        <label>Invoice Defaults / Notes</label>
+                        <textarea class="pw-textarea" name="invoice_notes"><?php echo pe($paymentNotes !== '' ? $paymentNotes : $paypalInvoiceDefaults); ?></textarea>
+                    </div>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
+                        <button class="btn btn-blue" type="submit" name="action" value="create_invoice">Create Invoice</button>
+                        <button class="btn btn-gold" type="submit" name="action" value="send_invoice">Send Invoice</button>
+                        <button class="btn btn-green" type="submit" name="action" value="record_payment">Record Payment</button>
+                    </div>
+                </form>
+                <form method="post" class="no-print">
+                    <input type="hidden" name="invoice_amount_due" value="<?php echo pe($amountDue); ?>">
+                    <input type="hidden" name="invoice_notes" value="<?php echo pe($paymentNotes); ?>">
+                    <label>Fallback Payment Link (if Invoice API unavailable)</label>
+                    <input class="pw-input" type="url" name="payment_link" value="<?php echo pe($paymentLink); ?>" placeholder="https://paypal.com/invoice/p/#...">
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+                        <button class="btn btn-teal" type="submit" name="action" value="create_payment_link">Save Payment Link</button>
+                        <?php if ($role === 'admin'): ?><a href="/settings.php" class="btn btn-teal">PayPal Settings</a><?php endif; ?>
+                        <a href="/payments.php" class="btn btn-teal">Payment Info</a>
+                    </div>
+                </form>
             <?php else: ?>
-            <a href="/payments.php" class="btn btn-teal">Payment Information</a>
+                <?php if ($invoiceStatus === 'paid'): ?>
+                    <p style="color:#4ade80;font-size:.84rem;margin:0;">Payment received. Thank you.</p>
+                <?php elseif ($paymentLink !== ''): ?>
+                    <a href="<?php echo pe($paymentLink); ?>" target="_blank" rel="noopener noreferrer" class="btn btn-green">Open Payment Link</a>
+                <?php else: ?>
+                    <p style="color:#a8bedc;font-size:.84rem;margin:0 0 8px;">Payment details will appear here when your invoice or payment link is ready.</p>
+                <?php endif; ?>
+                <a href="/payments.php" class="btn btn-teal">Payment Information</a>
             <?php endif; ?>
         </div>
     </details>
 
-    <!-- SECTION 7 — COMMUNICATION TIMELINE -->
+    <!-- SECTION 7 — MESSAGES -->
+    <details class="pw-section">
+        <summary>Messages</summary>
+        <div class="pw-section-body">
+            <?php
+                $clientMessage = trim((string)($request['client_notes'] ?? ''));
+                $clientMessageTs = trim((string)($request['client_notes_updated_at'] ?? ''));
+                $staffMessage = trim((string)($request['staff_response'] ?? ''));
+                $staffMessageTs = trim((string)($request['staff_response_updated_at'] ?? ''));
+            ?>
+            <?php if ($clientMessage !== ''): ?>
+                <div style="margin-bottom:10px;">
+                    <span class="pw-lbl">Client Message<?php echo $clientMessageTs !== '' ? ' · ' . pe(date('M j, Y g:i A', strtotime($clientMessageTs))) : ''; ?></span>
+                    <div class="pw-val" style="white-space:pre-wrap;background:rgba(0,0,0,.24);border:1px solid rgba(54,243,255,.1);border-radius:6px;padding:10px;"><?php echo pe($clientMessage); ?></div>
+                </div>
+            <?php endif; ?>
+            <?php if ($staffMessage !== ''): ?>
+                <div style="margin-bottom:10px;">
+                    <span class="pw-lbl">Staff Reply<?php echo $staffMessageTs !== '' ? ' · ' . pe(date('M j, Y g:i A', strtotime($staffMessageTs))) : ''; ?></span>
+                    <div class="pw-val" style="white-space:pre-wrap;background:rgba(0,0,0,.24);border:1px solid rgba(167,139,250,.16);border-radius:6px;padding:10px;"><?php echo pe($staffMessage); ?></div>
+                </div>
+            <?php endif; ?>
+
+            <?php if ($isClient): ?>
+                <form method="post" class="no-print">
+                    <label>Send Message to Staff</label>
+                    <textarea class="pw-textarea" name="client_message" placeholder="Add project updates, questions, or clarifications."><?php echo pe($clientMessage); ?></textarea>
+                    <div style="margin-top:8px;"><button class="btn btn-blue" type="submit" name="action" value="send_client_message">Send Message</button></div>
+                </form>
+            <?php endif; ?>
+
+            <?php if ($isStaff): ?>
+                <form method="post" class="no-print" style="margin-top:8px;">
+                    <label>Reply to Client</label>
+                    <textarea class="pw-textarea" name="staff_message" placeholder="Send a project update or request additional information."><?php echo pe($staffMessage); ?></textarea>
+                    <div style="margin-top:8px;"><button class="btn btn-gold" type="submit" name="action" value="send_staff_message">Send Reply</button></div>
+                </form>
+            <?php endif; ?>
+        </div>
+    </details>
+
+    <!-- SECTION 8 — COMMUNICATION TIMELINE -->
     <details class="pw-section">
         <summary>Project Timeline</summary>
         <div class="pw-section-body">
@@ -984,13 +1263,23 @@ $header_class = 'inner-header';
         </div>
     </details>
 
-    <!-- SECTION 8 — FILES -->
+    <!-- SECTION 9 — FILES -->
     <details class="pw-section">
         <summary>Files &amp; Attachments</summary>
         <div class="pw-section-body">
-            <p class="pw-files-info">File attachments and document uploads are coming soon. Contact us directly to share files for this project.</p>
+            <p class="pw-files-info">Project files and attachments are tracked in this workspace.</p>
             <?php if ($request['repo_link'] ?? ''): ?>
             <div style="margin-top:8px;"><span class="pw-lbl">Repository / Project Link</span><div><a href="<?php echo pe($request['repo_link']); ?>" target="_blank" rel="noopener noreferrer" style="color:#36f3ff;font-size:.86rem;"><?php echo pe($request['repo_link']); ?></a></div></div>
+            <?php endif; ?>
+            <?php if (!empty($request['attachments']) && is_array($request['attachments'])): ?>
+                <div style="margin-top:10px;">
+                    <span class="pw-lbl">Submitted Attachments</span>
+                    <ul style="margin:6px 0 0;padding-left:18px;">
+                        <?php foreach ($request['attachments'] as $attachment): ?>
+                            <li style="color:#a8bedc;font-size:.82rem;"><?php echo pe((string)($attachment['original_name'] ?? 'Attachment')); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
             <?php endif; ?>
         </div>
     </details>
