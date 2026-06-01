@@ -3,11 +3,11 @@ session_start();
 define('WDS_SYSTEM', true);
 require_once __DIR__ . '/../includes/portal-helpers.php';
 
-portalRequireLogin();
-if (portalGetRole() !== 'client') {
-    header('Location: /dashboard.php');
-    exit;
-}
+// Forward to the new unified proposal view page
+$proposalId = isset($_GET['proposal_id']) ? '?proposal_id=' . urlencode((string)$_GET['proposal_id']) : '';
+header('Location: /client/proposal-view.php' . $proposalId);
+exit;
+
 
 $user = portalGetUser();
 $username = (string)($user['username'] ?? '');

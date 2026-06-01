@@ -225,6 +225,8 @@ define('PORTAL_COMMERCIAL_FILE', PORTAL_DATA_DIR . '/commercial_requests.json');
 define('PORTAL_PROJECT_REQUESTS_FILE', PORTAL_DATA_DIR . '/project_requests.json');
 define('PORTAL_ESTIMATES_FILE',        PORTAL_DATA_DIR . '/estimate_requests.json');
 define('PORTAL_PROPOSALS_FILE',        PORTAL_DATA_DIR . '/proposals.json');
+define('PORTAL_PAYMENTS_FILE',         PORTAL_DATA_DIR . '/payments.json');
+define('PORTAL_PAYPAL_WEBHOOK_LOG',    PORTAL_DATA_DIR . '/paypal-webhook-log.json');
 define('PORTAL_PROJECT_AGREEMENTS_FILE', PORTAL_DATA_DIR . '/project_agreements.json');
 define('PORTAL_ADMIN_SETTINGS_FILE', PORTAL_DATA_DIR . '/admin_settings.json');
 
@@ -280,10 +282,32 @@ function portalSaveJson($file, $data) {
 function portalDefaultAdminSettings() {
     return [
         'paypal' => [
-            'client_id' => '',
-            'secret' => '',
-            'environment' => 'sandbox',
-            'business_email' => '',
+            'mode' => 'manual',
+            'sandbox' => [
+                'client_id'    => '',
+                'secret'       => '',
+                'business_email' => '',
+                'webhook_id'   => '',
+                'payment_link' => '',
+            ],
+            'live' => [
+                'client_id'    => '',
+                'secret'       => '',
+                'business_email' => '',
+                'webhook_id'   => '',
+                'payment_link' => '',
+            ],
+            'currency'                     => 'USD',
+            'invoice_message'              => '',
+            'payment_instructions'         => '',
+            'require_payment_before_work'  => true,
+            'enable_manual_recording'      => true,
+            'enable_webhook_logging'       => false,
+            // Legacy flat fields kept for backward compat
+            'client_id'     => '',
+            'secret'        => '',
+            'environment'   => 'sandbox',
+            'business_email'=> '',
             'invoice_defaults' => '',
         ],
         'email' => [
@@ -312,8 +336,12 @@ function portalLoadAdminSettings() {
     $emailStored = isset($stored['email']) && is_array($stored['email']) ? $stored['email'] : [];
     $siteStored = isset($stored['site']) && is_array($stored['site']) ? $stored['site'] : [];
     $businessStored = isset($stored['business']) && is_array($stored['business']) ? $stored['business'] : [];
+    $paypal = array_merge($defaults['paypal'], $paypalStored);
+    // Ensure nested sandbox/live sub-arrays are merged properly
+    $paypal['sandbox'] = array_merge($defaults['paypal']['sandbox'], isset($paypalStored['sandbox']) && is_array($paypalStored['sandbox']) ? $paypalStored['sandbox'] : []);
+    $paypal['live']    = array_merge($defaults['paypal']['live'],    isset($paypalStored['live'])    && is_array($paypalStored['live'])    ? $paypalStored['live']    : []);
     return [
-        'paypal' => array_merge($defaults['paypal'], $paypalStored),
+        'paypal' => $paypal,
         'email' => array_merge($defaults['email'], $emailStored),
         'site' => array_merge($defaults['site'], $siteStored),
         'business' => array_merge($defaults['business'], $businessStored),
@@ -324,8 +352,12 @@ function portalLoadAdminSettings() {
 
 function portalSaveAdminSettings(array $settings) {
     $defaults = portalDefaultAdminSettings();
+    $paypalIn = isset($settings['paypal']) && is_array($settings['paypal']) ? $settings['paypal'] : [];
+    $paypal = array_merge($defaults['paypal'], $paypalIn);
+    $paypal['sandbox'] = array_merge($defaults['paypal']['sandbox'], isset($paypalIn['sandbox']) && is_array($paypalIn['sandbox']) ? $paypalIn['sandbox'] : []);
+    $paypal['live']    = array_merge($defaults['paypal']['live'],    isset($paypalIn['live'])    && is_array($paypalIn['live'])    ? $paypalIn['live']    : []);
     $payload = [
-        'paypal' => array_merge($defaults['paypal'], isset($settings['paypal']) && is_array($settings['paypal']) ? $settings['paypal'] : []),
+        'paypal' => $paypal,
         'email' => array_merge($defaults['email'], isset($settings['email']) && is_array($settings['email']) ? $settings['email'] : []),
         'site' => array_merge($defaults['site'], isset($settings['site']) && is_array($settings['site']) ? $settings['site'] : []),
         'business' => array_merge($defaults['business'], isset($settings['business']) && is_array($settings['business']) ? $settings['business'] : []),
@@ -802,6 +834,49 @@ function portalLoadProposals() {
 
 function portalSaveProposals(array $proposals) {
     return portalSaveJson(PORTAL_PROPOSALS_FILE, ['proposals' => array_values($proposals)]);
+}
+
+function portalGenerateUniqueProposalId() {
+    $proposals = portalLoadProposals();
+    $existing = [];
+    foreach ($proposals as $p) {
+        if (!empty($p['proposal_id'])) {
+            $existing[(string)$p['proposal_id']] = true;
+        }
+    }
+    $datePart = date('Ymd');
+    $attempts = 0;
+    do {
+        $id = 'PROP-' . $datePart . '-' . str_pad((string) random_int(1, 9999), 4, '0', STR_PAD_LEFT);
+        $attempts++;
+    } while (isset($existing[$id]) && $attempts < 10000);
+    return $id;
+}
+
+function portalGenerateUniquePaymentId() {
+    $payments = portalLoadPayments();
+    $existing = [];
+    foreach ($payments as $p) {
+        if (!empty($p['payment_id'])) {
+            $existing[(string)$p['payment_id']] = true;
+        }
+    }
+    $datePart = date('Ymd');
+    $attempts = 0;
+    do {
+        $id = 'PAY-' . $datePart . '-' . str_pad((string) random_int(1, 9999), 4, '0', STR_PAD_LEFT);
+        $attempts++;
+    } while (isset($existing[$id]) && $attempts < 10000);
+    return $id;
+}
+
+function portalLoadPayments() {
+    $data = portalLoadJson(PORTAL_PAYMENTS_FILE);
+    return isset($data['payments']) && is_array($data['payments']) ? $data['payments'] : [];
+}
+
+function portalSavePayments(array $payments) {
+    return portalSaveJson(PORTAL_PAYMENTS_FILE, ['payments' => array_values($payments)]);
 }
 
 function portalLoadProjectAgreements() {

@@ -114,6 +114,41 @@ $completedProjects = 0;
 $awaitingApproval = 0;
 $awaitingSignature = 0;
 
+// Proposal status counters (new workflow)
+$proposalsDraft = 0;
+$proposalsSent = 0;
+$proposalsChangesRequested = 0;
+$proposalsAccepted = 0;
+$proposalsAwaitingPayment = 0;
+$proposalsPaidStart = 0;
+$proposalsInProgress = 0;
+$proposalsMyReview = 0; // client-facing: proposals awaiting client action
+
+// Also count from all proposals directly for staff overview
+foreach ($proposals as $prop) {
+    $ps = (string)($prop['proposal_status'] ?? $prop['status'] ?? 'draft');
+    if ($isStaffRole) {
+        switch ($ps) {
+            case 'draft': $proposalsDraft++; break;
+            case 'sent': $proposalsSent++; break;
+            case 'changes_requested': $proposalsChangesRequested++; break;
+            case 'accepted': $proposalsAccepted++; break;
+            case 'payment_pending': $proposalsAwaitingPayment++; break;
+            case 'paid_start': $proposalsPaidStart++; break;
+            case 'in_progress': $proposalsInProgress++; break;
+        }
+    } elseif ($role === 'client') {
+        // Only count proposals the client owns
+        $ownerUsername = (string)($prop['client_username'] ?? '');
+        if ($ownerUsername !== $myUsername && $ownerUsername !== '') {
+            continue;
+        }
+        if (in_array($ps, ['sent', 'changes_requested'], true)) {
+            $proposalsMyReview++;
+        }
+    }
+}
+
 foreach ($visibleRequests as $request) {
     $projectId = portalGetRequestDisplayId((array)$request);
     $requestStatus = (string)($request['status'] ?? 'new');
@@ -162,6 +197,7 @@ foreach ($visibleRequests as $request) {
         'admin_notes_ts' => $dashboardTs((array)$request, ['admin_notes_updated_at', 'updated_at', 'created_at']),
     ];
 }
+
 
 usort($projectRows, function ($a, $b) {
     return ((int)$b['last_updated_ts']) <=> ((int)$a['last_updated_ts']);
@@ -319,21 +355,46 @@ $header_class = 'inner-header';
             </div>
             <div class="portal-actions">
                 <a href="/estimate.php" class="portal-link-btn">Start Project</a>
-                <?php if ($isStaffRole): ?><a href="/staff/estimate-requests.php" class="portal-link-btn">All Projects</a><?php endif; ?>
+                <?php if ($isStaffRole): ?>
+                    <a href="/staff/proposals.php" class="portal-link-btn">Proposals</a>
+                    <a href="/staff/proposal-edit.php" class="portal-link-btn">+ New Proposal</a>
+                    <a href="/staff/estimate-requests.php" class="portal-link-btn">All Requests</a>
+                    <a href="/staff/payment-record.php" class="portal-link-btn">Record Payment</a>
+                <?php endif; ?>
                 <?php if ($isAdminRole): ?><a href="/settings.php" class="portal-link-btn">Settings</a><?php endif; ?>
                 <a href="/logout.php" class="portal-logout">Sign Out</a>
             </div>
         </div>
 
+        <?php if ($isStaffRole): ?>
+        <p class="portal-section-title">Proposal Pipeline</p>
+        <div class="portal-card-grid">
+            <a href="/staff/proposals.php?status=draft" class="portal-dash-card"><div class="card-label">Draft</div><div class="card-count"><?php echo $proposalsDraft; ?></div></a>
+            <a href="/staff/proposals.php?status=sent" class="portal-dash-card"><div class="card-label">Sent</div><div class="card-count"><?php echo $proposalsSent; ?></div></a>
+            <a href="/staff/proposals.php?status=changes_requested" class="portal-dash-card" style="border-color:rgba(251,191,36,.35);"><div class="card-label" style="color:#fbbf24;">Changes Requested</div><div class="card-count" style="color:#fbbf24;"><?php echo $proposalsChangesRequested; ?></div></a>
+            <a href="/staff/proposals.php?status=accepted" class="portal-dash-card" style="border-color:rgba(34,197,94,.35);"><div class="card-label" style="color:#86efac;">Accepted</div><div class="card-count" style="color:#86efac;"><?php echo $proposalsAccepted; ?></div></a>
+            <a href="/staff/proposals.php?status=payment_pending" class="portal-dash-card" style="border-color:rgba(251,191,36,.35);"><div class="card-label" style="color:#fbbf24;">Awaiting Payment</div><div class="card-count" style="color:#fbbf24;"><?php echo $proposalsAwaitingPayment; ?></div></a>
+            <a href="/staff/proposals.php?status=paid_start" class="portal-dash-card" style="border-color:rgba(54,243,255,.35);"><div class="card-label" style="color:#36f3ff;">Paid / Ready</div><div class="card-count" style="color:#36f3ff;"><?php echo $proposalsPaidStart; ?></div></a>
+            <a href="/staff/proposals.php?status=in_progress" class="portal-dash-card"><div class="card-label">In Progress</div><div class="card-count"><?php echo $proposalsInProgress; ?></div></a>
+        </div>
+
         <p class="portal-section-title">Project Overview</p>
         <div class="portal-card-grid">
             <a href="#recent-projects" class="portal-dash-card"><div class="card-label">Recent Projects</div><div class="card-count"><?php echo count($recentProjects); ?></div></a>
-            <a href="#active-projects" class="portal-dash-card"><div class="card-label">Active Projects</div><div class="card-count"><?php echo $activeProjects; ?></div></a>
-            <a href="#pending-projects" class="portal-dash-card"><div class="card-label">Pending Projects</div><div class="card-count"><?php echo $pendingProjects; ?></div></a>
-            <a href="#completed-projects" class="portal-dash-card"><div class="card-label">Completed Projects</div><div class="card-count"><?php echo $completedProjects; ?></div></a>
-            <a href="#recent-activity" class="portal-dash-card"><div class="card-label">Awaiting Approval</div><div class="card-count"><?php echo $awaitingApproval; ?></div></a>
-            <a href="#recent-activity" class="portal-dash-card"><div class="card-label">Awaiting Signature</div><div class="card-count"><?php echo $awaitingSignature; ?></div></a>
+            <a href="#active-projects" class="portal-dash-card"><div class="card-label">Active</div><div class="card-count"><?php echo $activeProjects; ?></div></a>
+            <a href="#pending-projects" class="portal-dash-card"><div class="card-label">Pending</div><div class="card-count"><?php echo $pendingProjects; ?></div></a>
+            <a href="#completed-projects" class="portal-dash-card"><div class="card-label">Completed</div><div class="card-count"><?php echo $completedProjects; ?></div></a>
         </div>
+        <?php else: ?>
+        <p class="portal-section-title">My Overview</p>
+        <div class="portal-card-grid">
+            <a href="/client/proposals.php" class="portal-dash-card" style="<?php echo $proposalsMyReview > 0 ? 'border-color:rgba(251,191,36,.5);' : ''; ?>"><div class="card-label" style="<?php echo $proposalsMyReview > 0 ? 'color:#fbbf24;' : ''; ?>">Proposals to Review</div><div class="card-count" style="<?php echo $proposalsMyReview > 0 ? 'color:#fbbf24;' : ''; ?>"><?php echo $proposalsMyReview; ?></div></a>
+            <a href="/client/proposals.php" class="portal-dash-card"><div class="card-label">My Proposals</div><div class="card-count"><?php echo count(array_filter($proposals, function($p) use ($myUsername) { return (string)($p['client_username'] ?? '') === $myUsername || (string)($p['client_id'] ?? '') === $myUsername; })); ?></div></a>
+            <a href="#recent-projects" class="portal-dash-card"><div class="card-label">My Requests</div><div class="card-count"><?php echo count($visibleRequests); ?></div></a>
+            <a href="#active-projects" class="portal-dash-card"><div class="card-label">Active Projects</div><div class="card-count"><?php echo $activeProjects; ?></div></a>
+        </div>
+        <?php endif; ?>
+
 
         <div class="portal-layout">
             <div class="portal-panel" id="recent-projects">
