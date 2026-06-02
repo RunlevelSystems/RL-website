@@ -104,7 +104,7 @@
                         <article class="service-card-item project-card-item">
                             <img src="assets/images/RL-logo.png" alt="Neverwards placeholder image" class="project-image">
                             <h3>Neverwards</h3>
-                            <p>Ongoing fantasy game project that demonstrates long-cycle development, world systems, and production iteration.</p>
+                            <p>Ongoing fantasy game project solely created by our partner Crimsofall Technologies.</p>
                             <div class="service-actions">
                                 <a class="core-action tertiary" href="/projects/neverwards.php">View Project</a>
                             </div>
@@ -112,7 +112,7 @@
                         <article class="service-card-item project-card-item">
                             <img src="assets/images/code.png" alt="Mystical Islands placeholder image" class="project-image">
                             <h3>Mystical Islands</h3>
-                            <p>Interactive multiplayer project example that shows real-time systems, gameplay tooling, and continued development capability.</p>
+                            <p>Interactive multiplayer project co-developed by Runlevel Systems and Crimsofall Technologies.</p>
                             <div class="service-actions">
                                 <a class="core-action tertiary" href="/projects/mystical-islands.php">View Project</a>
                             </div>
