@@ -8,7 +8,7 @@
 
         <title>GameServers.World | Hosting Terms of Service</title>
         <meta name="description" content="Hosting Terms of Service for GameServers.World game server hosting and managed services.">
-        <link href="assets/css/coreloop.css" rel="stylesheet">
+        <link href="assets/css/coreloop.css?v=clean-20260602" rel="stylesheet">
     </head>
     <body>
         <?php

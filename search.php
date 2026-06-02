@@ -195,7 +195,7 @@ if (!empty($search_query)) {
     <title>Search Results - Runlevel Systems</title>
 
     <!-- CSS -->
-    <link href="assets/css/coreloop.css" rel="stylesheet">
+    <link href="assets/css/coreloop.css?v=clean-20260602" rel="stylesheet">
     
     <style>
         .search-results {

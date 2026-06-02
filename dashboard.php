@@ -55,11 +55,17 @@ $statusLabels = [
     'contacted' => 'Contacted',
     'needs_info' => 'Needs Info',
     'proposal_drafted' => 'Proposal Drafted',
-    'proposal_sent' => 'Awaiting Approval',
+    'proposal_sent' => 'Proposal Sent',
+    'changes_requested' => 'Changes Requested',
+    'proposal_accepted' => 'Proposal Accepted',
     'accepted' => 'Active',
+    'awaiting_payment' => 'Awaiting Payment',
+    'payment_received' => 'Payment Received',
     'active' => 'Active',
+    'waiting_on_customer' => 'Waiting on Customer',
     'completed' => 'Completed',
     'closed' => 'Completed',
+    'archived' => 'Archived',
     'declined' => 'Declined',
     'cancelled' => 'Cancelled',
 ];
@@ -77,9 +83,10 @@ $agreementStatusLabels = [
     'signed' => 'Signed',
 ];
 
-$pendingProjectStatuses = ['new', 'reviewing', 'contacted', 'needs_info', 'proposal_drafted'];
-$activeProjectStatuses = ['accepted', 'active', 'proposal_sent'];
+$pendingProjectStatuses = ['new', 'reviewing', 'contacted', 'needs_info', 'proposal_drafted', 'request_submitted', 'pending', 'proposal_sent', 'changes_requested', 'proposal_accepted', 'accepted', 'awaiting_payment'];
+$activeProjectStatuses = ['active', 'payment_received', 'waiting_on_customer'];
 $completedProjectStatuses = ['completed', 'closed'];
+$archivedProjectStatuses = ['archived', 'cancelled', 'declined'];
 
 $visibleRequests = array_values(array_filter($requests, function ($request) use ($role, $myUsername) {
     if ($role === 'client') {
@@ -130,6 +137,7 @@ $projectRows = [];
 $activeProjects = 0;
 $pendingProjects = 0;
 $completedProjects = 0;
+$archivedProjects = 0;
 $awaitingApproval = 0;
 $awaitingSignature = 0;
 
@@ -178,6 +186,8 @@ foreach ($visibleRequests as $request) {
         $activeProjects++;
     } elseif (in_array($requestStatus, $completedProjectStatuses, true)) {
         $completedProjects++;
+    } elseif (in_array($requestStatus, $archivedProjectStatuses, true)) {
+        $archivedProjects++;
     } else {
         $pendingProjects++;
     }
@@ -222,19 +232,23 @@ usort($projectRows, function ($a, $b) {
     return ((int)$b['last_updated_ts']) <=> ((int)$a['last_updated_ts']);
 });
 
-$recentProjects = array_slice($projectRows, 0, 6);
 $activeProjectRows = array_values(array_filter($projectRows, function ($project) use ($activeProjectStatuses) {
     return in_array((string)$project['status'], $activeProjectStatuses, true);
 }));
-$pendingProjectRows = array_values(array_filter($projectRows, function ($project) use ($pendingProjectStatuses, $activeProjectStatuses, $completedProjectStatuses) {
+$pendingProjectRows = array_values(array_filter($projectRows, function ($project) use ($pendingProjectStatuses, $activeProjectStatuses, $completedProjectStatuses, $archivedProjectStatuses) {
     $status = (string)$project['status'];
     if (in_array($status, $pendingProjectStatuses, true)) {
         return true;
     }
-    return !in_array($status, $activeProjectStatuses, true) && !in_array($status, $completedProjectStatuses, true);
+    return !in_array($status, $activeProjectStatuses, true)
+        && !in_array($status, $completedProjectStatuses, true)
+        && !in_array($status, $archivedProjectStatuses, true);
 }));
 $completedProjectRows = array_values(array_filter($projectRows, function ($project) use ($completedProjectStatuses) {
     return in_array((string)$project['status'], $completedProjectStatuses, true);
+}));
+$archivedProjectRows = array_values(array_filter($projectRows, function ($project) use ($archivedProjectStatuses) {
+    return in_array((string)$project['status'], $archivedProjectStatuses, true);
 }));
 
 $recentActivity = [];
@@ -330,7 +344,7 @@ $header_class = 'inner-header';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
     <title>Dashboard | Runlevel Systems</title>
-    <link href="assets/css/coreloop.css" rel="stylesheet">
+    <link href="assets/css/coreloop.css?v=clean-20260602" rel="stylesheet">
     <style>
         .portal-wrap { padding: 28px 0 70px; }
         .portal-header-bar { background:#0c1729;border:1px solid rgba(54,243,255,.16);border-radius:10px;padding:14px 18px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px; }
@@ -418,10 +432,10 @@ $header_class = 'inner-header';
 
         <p class="portal-section-title">Project Overview</p>
         <div class="portal-card-grid">
-            <a href="#recent-projects" class="portal-dash-card"><div class="card-label">Recent Projects</div><div class="card-count"><?php echo count($recentProjects); ?></div></a>
             <a href="#active-projects" class="portal-dash-card"><div class="card-label">Active</div><div class="card-count"><?php echo $activeProjects; ?></div></a>
             <a href="#pending-projects" class="portal-dash-card"><div class="card-label">Pending</div><div class="card-count"><?php echo $pendingProjects; ?></div></a>
             <a href="#completed-projects" class="portal-dash-card"><div class="card-label">Completed</div><div class="card-count"><?php echo $completedProjects; ?></div></a>
+            <a href="#archived-projects" class="portal-dash-card"><div class="card-label">Archived</div><div class="card-count"><?php echo $archivedProjects; ?></div></a>
         </div>
         <p class="portal-section-title">Client Verification</p>
         <div class="portal-card-grid">
@@ -433,7 +447,7 @@ $header_class = 'inner-header';
         <?php else: ?>
         <p class="portal-section-title">My Overview</p>
         <div class="portal-card-grid">
-            <a href="#recent-projects" class="portal-dash-card"><div class="card-label">My Project Requests</div><div class="card-count"><?php echo count($visibleRequests); ?></div></a>
+        <a href="#active-projects" class="portal-dash-card"><div class="card-label">My Project Requests</div><div class="card-count"><?php echo count($visibleRequests); ?></div></a>
             <a href="/client/proposals.php" class="portal-dash-card"><div class="card-label">My Proposals</div><div class="card-count"><?php echo count(array_filter($proposals, function($p) use ($myUsername) { return (string)($p['client_username'] ?? '') === $myUsername || (string)($p['client_id'] ?? '') === $myUsername; })); ?></div></a>
             <a href="#recent-messages" class="portal-dash-card"><div class="card-label">My Messages</div><div class="card-count"><?php echo count($recentMessages); ?></div></a>
             <a href="/project.php" class="portal-dash-card"><div class="card-label">My Files</div><div class="card-count"><?php echo $myFilesCount; ?></div></a>
@@ -444,36 +458,6 @@ $header_class = 'inner-header';
 
 
         <div class="portal-layout">
-            <div class="portal-panel" id="recent-projects">
-                <h3>Recent Projects</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Project ID</th>
-                            <th>Project ID</th>
-                            <th>Client</th>
-                            <th>Status</th>
-                            <th>Updated</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php if (empty($recentProjects)): ?>
-                        <tr><td colspan="5" class="portal-muted">No projects yet.</td></tr>
-                    <?php else: ?>
-                        <?php foreach ($recentProjects as $project): ?>
-                            <tr>
-                                <td class="portal-mono"><a class="portal-primary-action" href="/project.php?id=<?php echo urlencode((string)$project['id']); ?>">Open</a><?php echo pe($project['id']); ?></td>
-                                <td><?php echo pe($project['name']); ?></td>
-                                <td><?php echo pe($project['client']); ?></td>
-                                <td><span class="status-chip"><?php echo pe($project['status_label']); ?></span></td>
-                                <td class="portal-muted"><?php echo $project['last_updated_ts'] > 0 ? pe(date('M j, Y', (int)$project['last_updated_ts'])) : '—'; ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                    </tbody>
-                </table>
-            </div>
-
             <div class="portal-panel" id="active-projects">
                 <h3>Active Projects</h3>
                 <table>
@@ -548,6 +532,34 @@ $header_class = 'inner-header';
                             <tr>
                                 <td class="portal-mono"><a class="portal-primary-action" href="/project.php?id=<?php echo urlencode((string)$project['id']); ?>">Open</a><?php echo pe($project['id']); ?></td>
                                 <td><?php echo pe($project['name']); ?></td>
+                                <td class="portal-muted"><?php echo $project['last_updated_ts'] > 0 ? pe(date('M j, Y', (int)$project['last_updated_ts'])) : '—'; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="portal-panel" id="archived-projects">
+                <h3>Archived Projects</h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Project</th>
+                        <th>Project</th>
+                        <th>Status</th>
+                        <th>Updated</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php if (empty($archivedProjectRows)): ?>
+                        <tr><td colspan="4" class="portal-muted">No archived projects.</td></tr>
+                    <?php else: ?>
+                        <?php foreach (array_slice($archivedProjectRows, 0, 8) as $project): ?>
+                            <tr>
+                                <td class="portal-mono"><a class="portal-primary-action" href="/project.php?id=<?php echo urlencode((string)$project['id']); ?>">Open</a><?php echo pe($project['id']); ?></td>
+                                <td><?php echo pe($project['name']); ?></td>
+                                <td><span class="status-chip"><?php echo pe($project['status_label']); ?></span></td>
                                 <td class="portal-muted"><?php echo $project['last_updated_ts'] > 0 ? pe(date('M j, Y', (int)$project['last_updated_ts'])) : '—'; ?></td>
                             </tr>
                         <?php endforeach; ?>

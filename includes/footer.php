@@ -25,19 +25,23 @@ if ($is_in_wiki) {
                 <p class="footer-description">Runlevel Systems delivers software, infrastructure, and project execution from concept through launch.</p>
             </div>
             <div class="footer-col">
-                <h4>Services</h4>
+                <h4>What We Build</h4>
                 <ul class="footer-list">
-                    <li><a href="<?php echo $footer_base_path; ?>design-debug-deploy.php">Design • Debug • Deploy</a></li>
-                    <li><a href="<?php echo $footer_base_path; ?>gameserver-hosting.php">Game Server Hosting</a></li>
-                    <li><a href="<?php echo $footer_base_path; ?>game-server-panel.php">Game Server Panel</a></li>
-                    <li><a href="<?php echo $footer_base_path; ?>developer-workspaces.php">Developer Workspaces</a></li>
+                    <li><a href="<?php echo $footer_base_path; ?>software.php">Software Development</a></li>
+                    <li><a href="<?php echo $footer_base_path; ?>software.php#business-applications">Business Applications</a></li>
+                    <li><a href="<?php echo $footer_base_path; ?>software.php#web-applications">Web Applications</a></li>
+                    <li><a href="<?php echo $footer_base_path; ?>software.php#mobile-apps">Mobile Apps</a></li>
+                    <li><a href="<?php echo $footer_base_path; ?>software.php#backend-systems">Backend Systems</a></li>
+                    <li><a href="<?php echo $footer_base_path; ?>simulation.php">Training &amp; Simulation</a></li>
+                    <li><a href="<?php echo $footer_base_path; ?>software.php#infrastructure">Infrastructure Platforms</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Products</h4>
                 <ul class="footer-list">
+                    <li><a href="<?php echo $footer_base_path; ?>products.php">Runlevel Tools</a></li>
+                    <li><a href="<?php echo $footer_base_path; ?>game-server-panel.php">GSP Panel</a></li>
                     <li><a href="https://gameservers.world" target="_blank" rel="noopener noreferrer">GameServers.World</a></li>
-                    <li><a href="<?php echo $footer_base_path; ?>game-server-panel.php">Game Server Panel</a></li>
                     <li><a href="<?php echo $footer_base_path; ?>products.php#pureops">PureOPS</a></li>
                 </ul>
             </div>
@@ -53,8 +57,8 @@ if ($is_in_wiki) {
             <div class="footer-col">
                 <h4>Company</h4>
                 <ul class="footer-list">
-                    <li><a href="<?php echo $footer_base_path; ?>contact.php">Contact</a></li>
                     <li><a href="<?php echo $footer_base_path; ?>start-project.php">Start Project</a></li>
+                    <li><a href="<?php echo $footer_base_path; ?>contact.php">Contact</a></li>
                     <li><a href="<?php echo $footer_base_path; ?>runlevel-terms.php">Legal</a></li>
                 </ul>
             </div>
@@ -62,6 +66,7 @@ if ($is_in_wiki) {
                 <h4>Account</h4>
                 <ul class="footer-list">
                     <li><a href="<?php echo $footer_base_path; ?>dashboard.php">Dashboard</a></li>
+                    <li><a href="<?php echo $footer_base_path; ?>login.php">Login</a></li>
                 </ul>
             </div>
         </div>

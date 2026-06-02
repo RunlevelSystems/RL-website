@@ -11,7 +11,7 @@ $header_class = 'inner-header';
     <link rel="icon" type="image/png" href="assets/images/RL-icon.png">
     <title>Project Agreements | Runlevel Systems</title>
     <meta name="description" content="How Runlevel Systems handles project agreements.">
-    <link href="assets/css/coreloop.css" rel="stylesheet">
+    <link href="assets/css/coreloop.css?v=clean-20260602" rel="stylesheet">
     <style>
         .wrap{padding:54px 0 70px;}
         .box{max-width:860px;margin:0 auto;background:#0c1729;border:1px solid rgba(54,243,255,.18);border-radius:10px;padding:24px;}

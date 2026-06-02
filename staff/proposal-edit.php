@@ -209,7 +209,7 @@ $header_class = 'inner-header';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="../assets/images/RL-icon.png">
     <title><?php echo $form['proposal_id'] !== '' ? 'Edit Proposal' : 'New Proposal'; ?> | Staff | Runlevel Systems</title>
-    <link href="../assets/css/coreloop.css" rel="stylesheet">
+    <link href="../assets/css/coreloop.css?v=clean-20260602" rel="stylesheet">
     <style>
         .wrap{padding:28px 0 80px;}
         .card{background:#0c1729;border:1px solid rgba(54,243,255,.18);border-radius:10px;padding:18px;margin-bottom:14px;}

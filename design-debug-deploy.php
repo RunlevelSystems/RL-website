@@ -9,7 +9,7 @@
         <title>Dev+1 | Runlevel Systems</title>
         <meta name="description" content="Dev+1 gives you extra development help from Runlevel Systems when a project needs one more capable person or team.">
         <meta name="keywords" content="Dev+1, project rescue, software development help, runlevel tools, deployment support">
-        <link href="assets/css/coreloop.css" rel="stylesheet">
+        <link href="assets/css/coreloop.css?v=clean-20260602" rel="stylesheet">
     </head>
     <body>
         <?php

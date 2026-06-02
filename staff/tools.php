@@ -20,7 +20,7 @@ $page_description = 'Download scripts and deploy to servers via wget or manual c
     <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
     <title>Runlevel Systems | Staff Toolbox</title>
-    <link href="../assets/css/coreloop.css" rel="stylesheet">
+    <link href="../assets/css/coreloop.css?v=clean-20260602" rel="stylesheet">
     <style>
         .staff-login .download-all-box {
             background: #0d1a33 !important;
