@@ -12,14 +12,27 @@ if (portalIsLoggedIn()) {
 }
 
 $error_message = '';
+$info_message = '';
+
+if (isset($_GET['msg'])) {
+    $msg = (string)$_GET['msg'];
+    if ($msg === 'registered') {
+        $info_message = 'Account created successfully. You can sign in now and verify your email from the dashboard.';
+    } elseif ($msg === 'registered_no_email') {
+        $info_message = 'Account created. Email verification is not currently available. Staff may verify your account manually.';
+    }
+}
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_form'])) {
-    $username = trim($_POST['username'] ?? '');
+    $username = trim($_POST['username_or_email'] ?? '');
     $password = $_POST['password'] ?? '';
+    $csrfToken = $_POST['csrf_token'] ?? '';
 
-    if (empty($username) || empty($password)) {
-        $error_message = 'Please enter both username and password.';
+    if (!portalVerifyCsrfToken($csrfToken)) {
+        $error_message = 'Your session expired. Please refresh and try again.';
+    } elseif (empty($username) || empty($password)) {
+        $error_message = 'Please enter both username/email and password.';
     } else {
         // Authenticate against /data/users.json (all roles: admin, staff, client)
         $failureReason = '';
@@ -52,12 +65,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_form'])) {
             header('Location: ' . $redirect);
             exit;
         } else {
-            if ($failureReason === 'pending_verification') {
-                $error_message = 'Your account exists but email verification is required before login. Please check your email.';
-            } elseif ($failureReason === 'disabled' || $failureReason === 'inactive') {
+            if ($failureReason === 'disabled' || $failureReason === 'inactive') {
                 $error_message = 'Your account is currently disabled. Please contact Runlevel Systems.';
             } else {
-                $error_message = 'Incorrect username or password.';
+                $error_message = 'Incorrect username/email or password.';
             }
         }
     }
@@ -166,19 +177,28 @@ $header_class = 'login-header inner-header';
                                     <?php echo htmlspecialchars($error_message, ENT_QUOTES, 'UTF-8'); ?>
                                 </div>
                             <?php endif; ?>
+                            <?php if ($info_message): ?>
+                                <div style="background: rgba(16,185,129,0.15); color: #86efac; padding: 15px; border-radius: 8px; margin-bottom: 25px; border-left: 4px solid #10b981;">
+                                    <i class="ion-checkmark-circled" style="margin-right: 8px;"></i>
+                                    <?php echo htmlspecialchars($info_message, ENT_QUOTES, 'UTF-8'); ?>
+                                </div>
+                            <?php endif; ?>
 
                             <!-- Login Form -->
                             <form action="login.php<?php echo isset($_GET['return']) ? '?return=' . urlencode($_GET['return']) : (isset($_GET['redirect']) ? '?redirect=' . urlencode($_GET['redirect']) : ''); ?>" method="post" class="dashboard-login-form">
                                 <input type="hidden" name="login_form" value="1">
+                                <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(portalGetCsrfToken(), ENT_QUOTES, 'UTF-8'); ?>">
+
+                                <p style="color:#94a3b8;margin:0 0 20px 0;">New here? Create an account to submit a project request and track updates.</p>
 
                                 <div style="margin-bottom: 25px;">
                                     <label style="display: block; margin-bottom: 8px; font-weight: bold; font-size: 16px;">
-                                        <i class="ion-person" style="margin-right: 8px;"></i>Username
+                                        <i class="ion-person" style="margin-right: 8px;"></i>Username or Email
                                     </label>
-                                    <input type="text" name="username" required
+                                    <input type="text" name="username_or_email" required
                                            class="form-control"
-                                           value="<?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8') : ''; ?>"
-                                           placeholder="Enter your username"
+                                           value="<?php echo isset($_POST['username_or_email']) ? htmlspecialchars($_POST['username_or_email'], ENT_QUOTES, 'UTF-8') : ''; ?>"
+                                           placeholder="Enter your username or email"
                                            autocomplete="username">
                                 </div>
 
@@ -202,6 +222,10 @@ $header_class = 'login-header inner-header';
                                     <button type="submit" class="btn btn-primary">
                                         <i class="ion-log-in" style="margin-right: 10px;"></i>Sign In
                                     </button>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:18px;">
+                                    <a href="/client/register.php" style="color:#36f3ff;">Create Client Account</a>
+                                    <a href="#" style="color:#ffd166;">Forgot Password</a>
                                 </div>
                             </form>
 
