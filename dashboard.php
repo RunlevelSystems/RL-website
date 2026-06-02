@@ -10,10 +10,25 @@ $role = portalGetRole();
 $displayName = $user['display_name'] ?? $user['username'] ?? 'User';
 $isStaffRole = in_array($role, ['admin', 'staff'], true);
 $isAdminRole = $role === 'admin';
+$fullUserRecord = !empty($user['username']) ? portalFindUserByUsername((string)$user['username']) : null;
+$accountStatus = (string)($fullUserRecord['account_status'] ?? 'unverified');
+$isUnverifiedClient = $role === 'client' && $accountStatus === 'unverified';
 
 $requests = portalLoadProjectRequests();
 $proposals = portalLoadProposals();
 $agreements = portalLoadProjectAgreements();
+$allUsers = $isStaffRole ? portalLoadUsers() : [];
+$unverifiedClientsCount = 0;
+if ($isStaffRole) {
+    foreach ($allUsers as $loadedUser) {
+        if (
+            portalNormalizeUserRole((string)($loadedUser['role'] ?? 'client')) === 'client' &&
+            portalNormalizeAccountStatus((string)($loadedUser['account_status'] ?? 'unverified')) === 'unverified'
+        ) {
+            $unverifiedClientsCount++;
+        }
+    }
+}
 
 $myUsername = (string)($user['username'] ?? '');
 
@@ -292,6 +307,14 @@ usort($recentMessages, function ($a, $b) {
 });
 $recentMessages = array_slice($recentMessages, 0, 8);
 
+$myFilesCount = 0;
+foreach ($visibleRequests as $requestRow) {
+    $attachments = $requestRow['attachments'] ?? [];
+    if (is_array($attachments)) {
+        $myFilesCount += count($attachments);
+    }
+}
+
 $current_page = 'dashboard';
 $header_class = 'inner-header';
 ?>
@@ -354,7 +377,7 @@ $header_class = 'inner-header';
                 <div class="portal-user">Signed in as <strong><?php echo pe($displayName); ?></strong> <span class="role-badge"><?php echo pe(ucfirst($role)); ?></span></div>
             </div>
             <div class="portal-actions">
-                <a href="/estimate.php" class="portal-link-btn">Start Project</a>
+                <a href="/start-project.php" class="portal-link-btn">Start Project</a>
                 <?php if ($isStaffRole): ?>
                     <a href="/staff/proposals.php" class="portal-link-btn">Proposals</a>
                     <a href="/staff/proposal-edit.php" class="portal-link-btn">+ New Proposal</a>
@@ -365,6 +388,17 @@ $header_class = 'inner-header';
                 <a href="/logout.php" class="portal-logout">Sign Out</a>
             </div>
         </div>
+
+        <?php if ($isUnverifiedClient): ?>
+            <div class="portal-panel" style="margin-bottom:12px;border-color:rgba(251,191,36,.4);">
+                <h3 style="color:#fbbf24;">Your account is not verified yet.</h3>
+                <p class="portal-muted">You can still submit a project request, but please verify your email so we can send updates and proposals.</p>
+                <div class="portal-actions">
+                    <a href="/resend-verification.php" class="portal-link-btn">Resend Verification Email</a>
+                    <a href="/client/account.php" class="portal-link-btn">Update Email</a>
+                </div>
+            </div>
+        <?php endif; ?>
 
         <?php if ($isStaffRole): ?>
         <p class="portal-section-title">Proposal Pipeline</p>
@@ -385,13 +419,22 @@ $header_class = 'inner-header';
             <a href="#pending-projects" class="portal-dash-card"><div class="card-label">Pending</div><div class="card-count"><?php echo $pendingProjects; ?></div></a>
             <a href="#completed-projects" class="portal-dash-card"><div class="card-label">Completed</div><div class="card-count"><?php echo $completedProjects; ?></div></a>
         </div>
+        <p class="portal-section-title">Client Verification</p>
+        <div class="portal-card-grid">
+            <a href="/staff/users.php?role=client&account_status=unverified" class="portal-dash-card" style="border-color:rgba(251,191,36,.35);"><div class="card-label" style="color:#fbbf24;">Unverified Clients</div><div class="card-count" style="color:#fbbf24;"><?php echo $unverifiedClientsCount; ?></div></a>
+            <a href="/staff/users.php" class="portal-dash-card"><div class="card-label">Review Clients</div><div class="card-count">→</div></a>
+            <a href="/staff/users.php?account_status=unverified" class="portal-dash-card"><div class="card-label">Approve Accounts</div><div class="card-count">→</div></a>
+            <a href="/staff/estimate-requests.php" class="portal-dash-card"><div class="card-label">View New Requests</div><div class="card-count">→</div></a>
+        </div>
         <?php else: ?>
         <p class="portal-section-title">My Overview</p>
         <div class="portal-card-grid">
-            <a href="/client/proposals.php" class="portal-dash-card" style="<?php echo $proposalsMyReview > 0 ? 'border-color:rgba(251,191,36,.5);' : ''; ?>"><div class="card-label" style="<?php echo $proposalsMyReview > 0 ? 'color:#fbbf24;' : ''; ?>">Proposals to Review</div><div class="card-count" style="<?php echo $proposalsMyReview > 0 ? 'color:#fbbf24;' : ''; ?>"><?php echo $proposalsMyReview; ?></div></a>
+            <a href="#recent-projects" class="portal-dash-card"><div class="card-label">My Project Requests</div><div class="card-count"><?php echo count($visibleRequests); ?></div></a>
             <a href="/client/proposals.php" class="portal-dash-card"><div class="card-label">My Proposals</div><div class="card-count"><?php echo count(array_filter($proposals, function($p) use ($myUsername) { return (string)($p['client_username'] ?? '') === $myUsername || (string)($p['client_id'] ?? '') === $myUsername; })); ?></div></a>
-            <a href="#recent-projects" class="portal-dash-card"><div class="card-label">My Requests</div><div class="card-count"><?php echo count($visibleRequests); ?></div></a>
-            <a href="#active-projects" class="portal-dash-card"><div class="card-label">Active Projects</div><div class="card-count"><?php echo $activeProjects; ?></div></a>
+            <a href="#recent-messages" class="portal-dash-card"><div class="card-label">My Messages</div><div class="card-count"><?php echo count($recentMessages); ?></div></a>
+            <a href="/project.php" class="portal-dash-card"><div class="card-label">My Files</div><div class="card-count"><?php echo $myFilesCount; ?></div></a>
+            <a href="/client/proposals.php" class="portal-dash-card" style="<?php echo $proposalsMyReview > 0 ? 'border-color:rgba(251,191,36,.5);' : ''; ?>"><div class="card-label" style="<?php echo $proposalsMyReview > 0 ? 'color:#fbbf24;' : ''; ?>">Payments</div><div class="card-count" style="<?php echo $proposalsMyReview > 0 ? 'color:#fbbf24;' : ''; ?>"><?php echo $proposalsMyReview; ?></div></a>
+            <a href="/client/account.php" class="portal-dash-card"><div class="card-label">Account Settings</div><div class="card-count"><?php echo pe(ucfirst(str_replace('_', ' ', $accountStatus))); ?></div></a>
         </div>
         <?php endif; ?>
 

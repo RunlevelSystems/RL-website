@@ -4,34 +4,100 @@ define('WDS_SYSTEM', true);
 require_once __DIR__ . '/../includes/portal-helpers.php';
 require_once __DIR__ . '/../includes/email.php';
 
-if (portalIsClientLoggedIn()) {
-    header('Location: /client/dashboard.php');
+if (portalIsLoggedIn()) {
+    header('Location: /dashboard.php');
     exit;
 }
 
 $error   = '';
-$success = false;
+$successMessage = '';
+$smtpConfigured = function_exists('rlsMailerHasSmtpConfiguration') ? rlsMailerHasSmtpConfiguration(rlsMailerSettings()) : false;
+
+$form = [
+    'name' => '',
+    'email' => '',
+    'username' => '',
+    'phone' => '',
+    'company' => '',
+    'preferred_contact_method' => 'Email',
+    'marketing_opt_in' => false,
+];
+
+foreach ($form as $key => $value) {
+    if (isset($_POST[$key])) {
+        if ($key === 'marketing_opt_in') {
+            $form[$key] = $_POST[$key] === '1';
+        } else {
+            $form[$key] = trim((string)$_POST[$key]);
+        }
+    }
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
+    $name        = trim($_POST['name'] ?? '');
     $username    = trim($_POST['username'] ?? '');
     $password    = $_POST['password'] ?? '';
     $password2   = $_POST['password2'] ?? '';
-    $email       = trim($_POST['email'] ?? '');
-    $displayName = trim($_POST['display_name'] ?? '');
+    $email       = strtolower(trim($_POST['email'] ?? ''));
+    $phone       = trim($_POST['phone'] ?? '');
+    $company     = trim($_POST['company'] ?? '');
+    $preferred   = trim($_POST['preferred_contact_method'] ?? 'Email');
+    $agreement   = isset($_POST['acknowledge_portal']) && $_POST['acknowledge_portal'] === '1';
+    $marketingOptIn = isset($_POST['marketing_opt_in']) && $_POST['marketing_opt_in'] === '1';
+    $csrfToken   = $_POST['csrf_token'] ?? '';
 
-    if ($password !== $password2) {
+    if (!portalVerifyCsrfToken($csrfToken)) {
+        $error = 'Your session expired. Please refresh and try again.';
+    } elseif ($name === '') {
+        $error = 'Please enter your name.';
+    } elseif ($password !== $password2) {
         $error = 'Passwords do not match.';
+    } elseif (!in_array($preferred, ['Email', 'Phone', 'Dashboard Message'], true)) {
+        $error = 'Please select a preferred contact method.';
+    } elseif (!$agreement) {
+        $error = 'You must acknowledge account terms before creating an account.';
     } else {
+        if ($username === '') {
+            $username = portalGenerateUsernameFromEmail($email);
+        }
+        $verificationToken = portalGenerateVerificationToken();
         $err = '';
-        if (portalRegisterClient($username, $password, $email, $displayName, $err)) {
-            $host = $_SERVER['HTTP_HOST'] ?? 'runlevel.systems';
+        $registered = portalRegisterClient($username, $password, $email, $name, $err, [
+            'name' => $name,
+            'phone' => $phone,
+            'company' => $company,
+            'preferred_contact_method' => $preferred,
+            'marketing_opt_in' => $marketingOptIn,
+            'email_verification_token' => $verificationToken,
+        ]);
+        if ($registered) {
+            $baseUrl = rlsSiteBaseUrl();
+            $verifyUrl = $baseUrl . '/verify-email.php?token=' . urlencode($verificationToken);
+            if ($smtpConfigured) {
+                send_verification_email($email, $name !== '' ? $name : $username, $verifyUrl);
+            } else {
+                $successMessage = 'Account created. Email verification is not currently available. Runlevel Systems staff may verify your account manually.';
+            }
+
             send_account_created_email(
                 $email,
-                $displayName !== '' ? $displayName : $username,
+                $name !== '' ? $name : $username,
                 $username,
-                'https://' . $host . '/client/login.php'
+                $baseUrl . '/login.php'
             );
-            header('Location: /client/login.php?msg=registered');
+
+            $staffEmail = rlsInternalNotificationEmail();
+            if ($staffEmail !== '') {
+                send_rls_email(
+                    $staffEmail,
+                    'New Runlevel Systems client account',
+                    "A new client account was created.\n\nName: {$name}\nEmail: {$email}\nUsername: {$username}\n",
+                    ['context' => 'staff-new-account']
+                );
+            }
+
+            $message = $smtpConfigured ? 'registered' : 'registered_no_email';
+            header('Location: /login.php?msg=' . urlencode($message));
             exit;
         } else {
             $error = $err;
@@ -84,25 +150,46 @@ $header_class = 'inner-header';
                     <?php if ($error !== ''): ?>
                         <div class="portal-alert-error"><?php echo pe($error); ?></div>
                     <?php endif; ?>
+                    <?php if ($successMessage !== ''): ?>
+                        <div class="tos-note" style="margin-bottom:18px;"><?php echo pe($successMessage); ?></div>
+                    <?php endif; ?>
 
                     <form method="post">
                         <input type="hidden" name="register" value="1">
+                        <input type="hidden" name="csrf_token" value="<?php echo pe(portalGetCsrfToken()); ?>">
 
-                        <label for="reg_username">Username</label>
-                        <input id="reg_username" type="text" name="username" class="portal-input" required
-                               value="<?php echo pe($_POST['username'] ?? ''); ?>"
-                               autocomplete="username" placeholder="e.g. your-name">
-                        <p class="hint">Letters, numbers, dot, underscore, dash. At least 3 characters.</p>
-
-                        <label for="reg_display">Display Name (optional)</label>
-                        <input id="reg_display" type="text" name="display_name" class="portal-input"
-                               value="<?php echo pe($_POST['display_name'] ?? ''); ?>"
-                               placeholder="Your full name or handle">
+                        <label for="reg_name">Name</label>
+                        <input id="reg_name" type="text" name="name" class="portal-input" required
+                               value="<?php echo pe($form['name']); ?>"
+                               autocomplete="name" placeholder="Your full name">
 
                         <label for="reg_email">Email Address</label>
                         <input id="reg_email" type="email" name="email" class="portal-input" required
-                               value="<?php echo pe($_POST['email'] ?? ''); ?>"
+                               value="<?php echo pe($form['email']); ?>"
                                autocomplete="email" placeholder="you@example.com">
+
+                        <label for="reg_username">Username (optional)</label>
+                        <input id="reg_username" type="text" name="username" class="portal-input"
+                               value="<?php echo pe($form['username']); ?>"
+                               autocomplete="username" placeholder="e.g. your-name">
+                        <p class="hint">Leave blank to auto-generate from your email address.</p>
+
+                        <label for="reg_phone">Phone (optional)</label>
+                        <input id="reg_phone" type="text" name="phone" class="portal-input"
+                               value="<?php echo pe($form['phone']); ?>"
+                               autocomplete="tel" placeholder="Best callback number">
+
+                        <label for="reg_company">Company / Organization (optional)</label>
+                        <input id="reg_company" type="text" name="company" class="portal-input"
+                               value="<?php echo pe($form['company']); ?>"
+                               placeholder="Company or organization">
+
+                        <label for="reg_contact">Preferred Contact Method</label>
+                        <select id="reg_contact" name="preferred_contact_method" class="portal-input" required>
+                            <option value="Email" <?php echo $form['preferred_contact_method'] === 'Email' ? 'selected' : ''; ?>>Email</option>
+                            <option value="Phone" <?php echo $form['preferred_contact_method'] === 'Phone' ? 'selected' : ''; ?>>Phone</option>
+                            <option value="Dashboard Message" <?php echo $form['preferred_contact_method'] === 'Dashboard Message' ? 'selected' : ''; ?>>Dashboard Message</option>
+                        </select>
 
                         <label for="reg_password">Password</label>
                         <input id="reg_password" type="password" name="password" class="portal-input" required
@@ -113,16 +200,26 @@ $header_class = 'inner-header';
                                autocomplete="new-password" placeholder="Repeat your password">
 
                         <div class="tos-note">
+                            <label style="display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;">
+                                <input type="checkbox" name="acknowledge_portal" value="1" <?php echo isset($_POST['acknowledge_portal']) ? 'checked' : ''; ?> style="margin-top:3px;">
+                                <span>I understand that creating an account allows me to submit requests and view project updates.</span>
+                            </label>
+                            <label style="display:flex;align-items:flex-start;gap:8px;margin:0;">
+                                <input type="checkbox" name="marketing_opt_in" value="1" <?php echo $form['marketing_opt_in'] ? 'checked' : ''; ?> style="margin-top:3px;">
+                                <span>I agree to receive project-related email messages from Runlevel Systems.</span>
+                            </label>
+                        </div>
+
+                        <div class="tos-note">
                             By creating an account you agree to the
-                            <a href="/runlevel-terms.php" target="_blank" rel="noopener noreferrer" style="color:#36f3ff;">Runlevel Systems Terms of Service</a>
-                            and acknowledge that project requests are reviewed before a final quote is provided.
+                            <a href="/runlevel-terms.php" target="_blank" rel="noopener noreferrer" style="color:#36f3ff;">Runlevel Systems Terms of Service</a>.
                         </div>
 
                         <button type="submit" class="portal-btn">Create Account</button>
                     </form>
 
                     <div class="portal-link-row">
-                        Already have an account? <a href="/client/login.php" style="color:#36f3ff;">Sign in</a>
+                        Already have an account? <a href="/login.php" style="color:#36f3ff;">Sign in</a>
                     </div>
                 </div>
             </div>

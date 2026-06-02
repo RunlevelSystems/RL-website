@@ -32,7 +32,7 @@ function portalIsValidEstimateUsername($username) {
 }
 
 function portalGenerateVerificationToken() {
-    return bin2hex(random_bytes(16));
+    return bin2hex(random_bytes(32));
 }
 
 function portalGenerateTemporaryPassword($length = 12) {
@@ -119,22 +119,30 @@ function portalCreateClientUserFromEstimate($username, $name, $email, $phone = '
         return false;
     }
 
-    $temporaryPassword = portalGenerateTemporaryPassword(12);
+    $temporaryPassword = portalGenerateTemporaryPassword(16);
     $verificationToken = portalGenerateVerificationToken();
+    $timestamp = date('c');
     $users = portalLoadUsers();
-    $users[] = [
+    $users[] = portalNormalizeUserRecord([
+        'user_id' => bin2hex(random_bytes(8)),
         'username' => $username,
-        'password' => $temporaryPassword,
+        'password_hash' => password_hash($temporaryPassword, PASSWORD_DEFAULT),
         'role' => 'client',
-        'status' => 'pending_verification',
+        'status' => 'active',
+        'account_status' => 'unverified',
+        'email_verified' => false,
         'display_name' => $name,
+        'name' => $name,
         'email' => $email,
         'phone' => $phone,
         'discord_username' => $discordUsername,
-        'verification_token' => $verificationToken,
+        'preferred_contact_method' => 'Email',
+        'email_verification_token' => $verificationToken,
+        'email_verification_sent_at' => $timestamp,
         'verification_expires_at' => date('c', time() + (48 * 3600)),
-        'created_at' => date('c'),
-    ];
+        'created_at' => $timestamp,
+        'updated_at' => $timestamp,
+    ]);
     if (!portalSaveUsers($users)) {
         $error = 'Unable to create your account right now. Please try again.';
         return false;
@@ -157,7 +165,8 @@ function portalActivateUserByVerificationToken($token) {
     $updated = false;
     $matched = false;
     foreach ($users as &$user) {
-        if (($user['verification_token'] ?? '') !== $token) {
+        $storedToken = (string)($user['email_verification_token'] ?? ($user['verification_token'] ?? ''));
+        if ($storedToken === '' || !hash_equals($storedToken, $token)) {
             continue;
         }
         $matched = true;
@@ -166,9 +175,14 @@ function portalActivateUserByVerificationToken($token) {
             unset($user);
             return false;
         }
-        $user['status'] = 'active';
+        $user['email_verified'] = true;
+        if (($user['account_status'] ?? '') !== 'staff_approved') {
+            $user['account_status'] = 'verified';
+        }
+        $user['email_verification_token'] = '';
         $user['verification_token'] = '';
         $user['verification_expires_at'] = '';
+        $user['updated_at'] = date('c');
         $updated = true;
         break;
     }
@@ -193,13 +207,16 @@ function portalRefreshVerificationTokenByEmail($email, &$userOut = null) {
         if (strtolower(trim((string)($user['email'] ?? ''))) !== $email) {
             continue;
         }
-        if (($user['status'] ?? '') === 'active') {
+        if (portalUserBooleanValue($user['email_verified'] ?? null, false) || in_array((string)($user['account_status'] ?? ''), ['verified', 'staff_approved'], true)) {
             $userOut = $user;
             unset($user);
             return false;
         }
-        $user['verification_token'] = portalGenerateVerificationToken();
+        $user['email_verification_token'] = portalGenerateVerificationToken();
+        $user['verification_token'] = $user['email_verification_token'];
         $user['verification_expires_at'] = date('c', time() + (48 * 3600));
+        $user['email_verification_sent_at'] = date('c');
+        $user['updated_at'] = date('c');
         if (!portalSaveUsers($users)) {
             unset($user);
             return false;
@@ -446,6 +463,216 @@ function pe($str) {
     return htmlspecialchars((string)$str, ENT_QUOTES, 'UTF-8');
 }
 
+function portalGetCsrfToken() {
+    portalEnsureSession();
+    if (empty($_SESSION['rls_csrf_token']) || !is_string($_SESSION['rls_csrf_token'])) {
+        $_SESSION['rls_csrf_token'] = bin2hex(random_bytes(32));
+    }
+    return $_SESSION['rls_csrf_token'];
+}
+
+function portalVerifyCsrfToken($token) {
+    portalEnsureSession();
+    $sessionToken = (string)($_SESSION['rls_csrf_token'] ?? '');
+    $token = (string)$token;
+    if ($sessionToken === '' || $token === '') {
+        return false;
+    }
+    return hash_equals($sessionToken, $token);
+}
+
+function portalUserBooleanValue($value, $default = false) {
+    if ($value === null || $value === '') {
+        return (bool)$default;
+    }
+    if (is_bool($value)) {
+        return $value;
+    }
+    $normalized = strtolower(trim((string)$value));
+    if (in_array($normalized, ['1', 'true', 'yes', 'on'], true)) {
+        return true;
+    }
+    if (in_array($normalized, ['0', 'false', 'no', 'off'], true)) {
+        return false;
+    }
+    return (bool)$default;
+}
+
+function portalNormalizeUserRole($role) {
+    $role = strtolower(trim((string)$role));
+    if (!in_array($role, ['admin', 'staff', 'client'], true)) {
+        return 'client';
+    }
+    return $role;
+}
+
+function portalNormalizeUserStatus($status) {
+    $status = strtolower(trim((string)$status));
+    if ($status === 'pending_verification') {
+        $status = 'active';
+    }
+    if (!in_array($status, ['active', 'disabled'], true)) {
+        return 'active';
+    }
+    return $status;
+}
+
+function portalNormalizeAccountStatus($accountStatus, $emailVerified = false) {
+    $accountStatus = strtolower(trim((string)$accountStatus));
+    if ($accountStatus === 'pending_verification') {
+        $accountStatus = 'unverified';
+    }
+    if (!in_array($accountStatus, ['unverified', 'verified', 'staff_approved', 'rejected'], true)) {
+        $accountStatus = $emailVerified ? 'verified' : 'unverified';
+    }
+    return $accountStatus;
+}
+
+function portalNormalizeUserRecord(array $user) {
+    $now = date('c');
+    $username = strtolower(trim((string)($user['username'] ?? '')));
+    $email = strtolower(trim((string)($user['email'] ?? '')));
+    $role = portalNormalizeUserRole($user['role'] ?? 'client');
+    $status = portalNormalizeUserStatus($user['status'] ?? 'active');
+    $emailVerified = portalUserBooleanValue($user['email_verified'] ?? null, false);
+    $accountStatus = portalNormalizeAccountStatus($user['account_status'] ?? ($emailVerified ? 'verified' : 'unverified'), $emailVerified);
+    if ($accountStatus === 'verified' || $accountStatus === 'staff_approved') {
+        $emailVerified = true;
+    }
+    if ($accountStatus === 'rejected') {
+        $status = 'disabled';
+    }
+
+    $displayName = trim((string)($user['display_name'] ?? ''));
+    $name = trim((string)($user['name'] ?? ''));
+    if ($name === '' && $displayName !== '') {
+        $name = $displayName;
+    }
+    if ($displayName === '' && $name !== '') {
+        $displayName = $name;
+    }
+    if ($name === '') {
+        $name = $username;
+    }
+    if ($displayName === '') {
+        $displayName = $name;
+    }
+
+    $passwordHash = (string)($user['password_hash'] ?? '');
+    $legacyPassword = (string)($user['password'] ?? '');
+    if ($passwordHash === '' && $legacyPassword !== '' && password_get_info($legacyPassword)['algo'] !== 0) {
+        $passwordHash = $legacyPassword;
+        $legacyPassword = '';
+    }
+
+    return [
+        'user_id' => (string)($user['user_id'] ?? ($user['id'] ?? bin2hex(random_bytes(8)))),
+        'username' => $username,
+        'email' => $email,
+        'password_hash' => $passwordHash,
+        'password' => $legacyPassword,
+        'role' => $role,
+        'status' => $status,
+        'account_status' => $accountStatus,
+        'email_verified' => $emailVerified,
+        'email_verification_token' => (string)($user['email_verification_token'] ?? ($user['verification_token'] ?? '')),
+        'email_verification_sent_at' => (string)($user['email_verification_sent_at'] ?? ''),
+        'verification_expires_at' => (string)($user['verification_expires_at'] ?? ''),
+        'created_at' => (string)($user['created_at'] ?? $now),
+        'updated_at' => (string)($user['updated_at'] ?? ($user['created_at'] ?? $now)),
+        'last_login' => (string)($user['last_login'] ?? ''),
+        'name' => $name,
+        'display_name' => $displayName,
+        'phone' => trim((string)($user['phone'] ?? '')),
+        'company' => trim((string)($user['company'] ?? '')),
+        'preferred_contact_method' => trim((string)($user['preferred_contact_method'] ?? 'Email')) ?: 'Email',
+        'staff_notes' => trim((string)($user['staff_notes'] ?? '')),
+        'discord_username' => trim((string)($user['discord_username'] ?? '')),
+    ];
+}
+
+function portalFindUserIndexByUsername(array $users, $username) {
+    $username = strtolower(trim((string)$username));
+    foreach ($users as $index => $user) {
+        if (strtolower(trim((string)($user['username'] ?? ''))) === $username) {
+            return (int)$index;
+        }
+    }
+    return -1;
+}
+
+function portalFindUserIndexByUserId(array $users, $userId) {
+    $userId = trim((string)$userId);
+    if ($userId === '') {
+        return -1;
+    }
+    foreach ($users as $index => $user) {
+        if (trim((string)($user['user_id'] ?? '')) === $userId) {
+            return (int)$index;
+        }
+    }
+    return -1;
+}
+
+function portalFindUserByLoginIdentifier($identifier) {
+    $identifier = strtolower(trim((string)$identifier));
+    if ($identifier === '') {
+        return null;
+    }
+    foreach (portalLoadUsers() as $user) {
+        $username = strtolower(trim((string)($user['username'] ?? '')));
+        $email = strtolower(trim((string)($user['email'] ?? '')));
+        if ($identifier === $username || ($email !== '' && $identifier === $email)) {
+            return $user;
+        }
+    }
+    return null;
+}
+
+function portalPasswordMatches(array $user, $password) {
+    $password = (string)$password;
+    $hash = (string)($user['password_hash'] ?? '');
+    if ($hash !== '' && password_verify($password, $hash)) {
+        return true;
+    }
+    $legacy = (string)($user['password'] ?? '');
+    return $legacy !== '' && hash_equals($legacy, $password);
+}
+
+function portalUpgradeUserPasswordIfNeeded(array $user, $password) {
+    $needsUpgrade = (string)($user['password_hash'] ?? '') === '';
+    if (!$needsUpgrade) {
+        return;
+    }
+    $users = portalLoadUsers();
+    $index = portalFindUserIndexByUserId($users, (string)($user['user_id'] ?? ''));
+    if ($index < 0) {
+        $index = portalFindUserIndexByUsername($users, (string)($user['username'] ?? ''));
+    }
+    if ($index < 0) {
+        return;
+    }
+    $users[$index]['password_hash'] = password_hash((string)$password, PASSWORD_DEFAULT);
+    $users[$index]['password'] = '';
+    $users[$index]['updated_at'] = date('c');
+    portalSaveUsers($users);
+}
+
+function portalUserCanLogin(array $user, &$failureReason = '') {
+    $failureReason = '';
+    $status = portalNormalizeUserStatus($user['status'] ?? 'active');
+    if ($status !== 'active') {
+        $failureReason = ($status === 'disabled') ? 'disabled' : 'inactive';
+        return false;
+    }
+    $accountStatus = portalNormalizeAccountStatus($user['account_status'] ?? 'unverified', portalUserBooleanValue($user['email_verified'] ?? null, false));
+    if ($accountStatus === 'rejected') {
+        $failureReason = 'disabled';
+        return false;
+    }
+    return true;
+}
+
 /**
  * Allow only local relative paths beginning with "/".
  */
@@ -473,11 +700,20 @@ function portalSanitizeReturnPath($path, $default = '/dashboard.php') {
 
 function portalLoadUsers() {
     $data = portalLoadJson(PORTAL_USERS_FILE);
-    return isset($data['users']) && is_array($data['users']) ? $data['users'] : [];
+    $rows = isset($data['users']) && is_array($data['users']) ? $data['users'] : [];
+    $normalized = [];
+    foreach ($rows as $row) {
+        $normalized[] = portalNormalizeUserRecord((array)$row);
+    }
+    return $normalized;
 }
 
 function portalSaveUsers(array $users) {
-    return portalSaveJson(PORTAL_USERS_FILE, ['users' => array_values($users)]);
+    $normalized = [];
+    foreach ($users as $user) {
+        $normalized[] = portalNormalizeUserRecord((array)$user);
+    }
+    return portalSaveJson(PORTAL_USERS_FILE, ['users' => array_values($normalized)]);
 }
 
 function portalFindUserByUsername($username) {
@@ -490,6 +726,20 @@ function portalFindUserByUsername($username) {
     return null;
 }
 
+function portalUpdateUser(array $updatedUser) {
+    $users = portalLoadUsers();
+    $index = portalFindUserIndexByUserId($users, (string)($updatedUser['user_id'] ?? ''));
+    if ($index < 0) {
+        $index = portalFindUserIndexByUsername($users, (string)($updatedUser['username'] ?? ''));
+    }
+    if ($index < 0) {
+        return false;
+    }
+    $updatedUser['updated_at'] = date('c');
+    $users[$index] = portalNormalizeUserRecord($updatedUser);
+    return portalSaveUsers($users);
+}
+
 /**
  * Verify staff login credentials (admin and staff roles only).
  *
@@ -497,15 +747,9 @@ function portalFindUserByUsername($username) {
  *       Current plaintext storage is temporary for development only.
  */
 function portalVerifyStaffLogin($username, $password) {
-    $user = portalFindUserByUsername($username);
+    $failureReason = '';
+    $user = portalVerifyLogin($username, $password, $failureReason);
     if (!$user) {
-        return false;
-    }
-    if (($user['status'] ?? '') !== 'active') {
-        return false;
-    }
-    // TODO: Replace plaintext passwords with password_hash/password_verify before production.
-    if ($user['password'] !== $password) {
         return false;
     }
     $role = $user['role'] ?? '';
@@ -523,27 +767,22 @@ function portalVerifyStaffLogin($username, $password) {
  */
 function portalVerifyLogin($username, $password, &$failureReason = '') {
     $failureReason = '';
-    $user = portalFindUserByUsername($username);
+    $user = portalFindUserByLoginIdentifier($username);
     if (!$user) {
         $failureReason = 'invalid_credentials';
         return false;
     }
-    $status = (string)($user['status'] ?? '');
-    if ($status !== 'active') {
-        if ($status === 'pending_verification') {
-            $failureReason = 'pending_verification';
-        } elseif ($status === 'disabled') {
-            $failureReason = 'disabled';
-        } else {
-            $failureReason = 'inactive';
-        }
+    if (!portalUserCanLogin($user, $failureReason)) {
         return false;
     }
-    // TODO: Replace plaintext passwords with password_hash/password_verify before production.
-    if ($user['password'] !== $password) {
+    if (!portalPasswordMatches($user, $password)) {
         $failureReason = 'invalid_credentials';
         return false;
     }
+    portalUpgradeUserPasswordIfNeeded($user, $password);
+    $user['last_login'] = date('c');
+    $user['updated_at'] = date('c');
+    portalUpdateUser($user);
     return $user;
 }
 
@@ -706,10 +945,96 @@ function portalVerifyClientLogin($username, $password) {
     return $client;
 }
 
-function portalRegisterClient($username, $password, $email, $displayName, &$error = '') {
+function portalRegisterClient($username, $password, $email, $displayName, &$error = '', array $extras = []) {
+    $error = '';
     $username    = strtolower(trim((string)$username));
-    $email       = trim((string)$email);
+    $email       = strtolower(trim((string)$email));
     $displayName = trim((string)$displayName);
+    $name = trim((string)($extras['name'] ?? $displayName));
+    $phone = trim((string)($extras['phone'] ?? ''));
+    $company = trim((string)($extras['company'] ?? ''));
+    $preferredContactMethod = trim((string)($extras['preferred_contact_method'] ?? 'Email'));
+    if (!in_array($preferredContactMethod, ['Email', 'Phone', 'Dashboard Message'], true)) {
+        $preferredContactMethod = 'Email';
+    }
+
+    function portalGenerateUsernameFromEmail($email, $fallbackPrefix = 'client') {
+        $email = strtolower(trim((string)$email));
+        $localPart = $fallbackPrefix;
+        if (strpos($email, '@') !== false) {
+            $localPart = substr($email, 0, strpos($email, '@'));
+        }
+        $localPart = preg_replace('/[^a-z0-9._-]/', '-', $localPart);
+        $localPart = trim((string)$localPart, '-_.');
+        if ($localPart === '') {
+            $localPart = $fallbackPrefix;
+        }
+        if (strlen($localPart) < 3) {
+            $localPart .= '-rls';
+        }
+        $candidate = substr($localPart, 0, 24);
+        $suffix = 0;
+        while (portalFindUserByUsername($candidate)) {
+            $suffix++;
+            $candidate = substr($localPart, 0, max(3, 20 - strlen((string)$suffix))) . '-' . $suffix;
+        }
+        return $candidate;
+    }
+
+    function portalFindOrCreateClientByEmail($email, $name = '', $phone = '', $company = '', &$wasCreated = false, &$error = '') {
+        $error = '';
+        $wasCreated = false;
+        $email = strtolower(trim((string)$email));
+        if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $error = 'A valid email address is required.';
+            return null;
+        }
+
+        $existing = portalFindUserByEmail($email);
+        if ($existing) {
+            return $existing;
+        }
+
+        $username = portalGenerateUsernameFromEmail($email);
+        $temporaryPassword = portalGenerateTemporaryPassword(18);
+        $verificationToken = portalGenerateVerificationToken();
+        $timestamp = date('c');
+        $user = portalNormalizeUserRecord([
+            'user_id' => bin2hex(random_bytes(8)),
+            'username' => $username,
+            'email' => $email,
+            'password_hash' => password_hash($temporaryPassword, PASSWORD_DEFAULT),
+            'role' => 'client',
+            'status' => 'active',
+            'account_status' => 'unverified',
+            'email_verified' => false,
+            'email_verification_token' => $verificationToken,
+            'email_verification_sent_at' => $timestamp,
+            'verification_expires_at' => date('c', time() + (48 * 3600)),
+            'created_at' => $timestamp,
+            'updated_at' => $timestamp,
+            'name' => trim((string)$name) !== '' ? trim((string)$name) : $username,
+            'display_name' => trim((string)$name) !== '' ? trim((string)$name) : $username,
+            'phone' => trim((string)$phone),
+            'company' => trim((string)$company),
+            'preferred_contact_method' => 'Email',
+        ]);
+
+        $users = portalLoadUsers();
+        $users[] = $user;
+        if (!portalSaveUsers($users)) {
+            $error = 'Unable to create a client account right now.';
+            return null;
+        }
+
+        $wasCreated = true;
+        return $user;
+    }
+    $marketingOptIn = portalUserBooleanValue($extras['marketing_opt_in'] ?? false, false);
+    $verificationToken = trim((string)($extras['email_verification_token'] ?? ''));
+    if ($verificationToken === '') {
+        $verificationToken = portalGenerateVerificationToken();
+    }
 
     if ($username === '' || strlen($username) < 3 || !preg_match('/^[a-z0-9._-]+$/', $username)) {
         $error = 'Username must be at least 3 characters and use only letters, numbers, dot, underscore, or dash.';
@@ -723,23 +1048,39 @@ function portalRegisterClient($username, $password, $email, $displayName, &$erro
         $error = 'A valid email address is required.';
         return false;
     }
-    if (portalFindClientByUsername($username)) {
+    if (portalFindUserByUsername($username)) {
         $error = 'That username is already taken.';
         return false;
     }
+    if (portalFindUserByEmail($email)) {
+        $error = 'An account with that email already exists.';
+        return false;
+    }
 
-    $clients   = portalLoadClients();
-    $clients[] = [
-        'id'            => bin2hex(random_bytes(8)),
-        'username'      => $username,
+    $timestamp = date('c');
+    $users = portalLoadUsers();
+    $users[] = portalNormalizeUserRecord([
+        'user_id' => bin2hex(random_bytes(8)),
+        'username' => $username,
+        'email' => $email,
         'password_hash' => password_hash((string)$password, PASSWORD_DEFAULT),
-        'email'         => $email,
-        'display_name'  => $displayName !== '' ? $displayName : $username,
-        'role'          => 'client',
-        'status'        => 'active',
-        'created_at'    => date('c'),
-    ];
-    if (!portalSaveClients($clients)) {
+        'role' => 'client',
+        'status' => 'active',
+        'account_status' => 'unverified',
+        'email_verified' => false,
+        'email_verification_token' => $verificationToken,
+        'email_verification_sent_at' => $timestamp,
+        'verification_expires_at' => date('c', time() + (48 * 3600)),
+        'created_at' => $timestamp,
+        'updated_at' => $timestamp,
+        'name' => $name !== '' ? $name : ($displayName !== '' ? $displayName : $username),
+        'display_name' => $displayName !== '' ? $displayName : ($name !== '' ? $name : $username),
+        'phone' => $phone,
+        'company' => $company,
+        'preferred_contact_method' => $preferredContactMethod,
+        'staff_notes' => $marketingOptIn ? 'Client opted in to project-related email updates.' : '',
+    ]);
+    if (!portalSaveUsers($users)) {
         $error = 'Failed to save account. Please try again.';
         return false;
     }

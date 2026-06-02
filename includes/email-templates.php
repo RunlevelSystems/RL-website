@@ -154,8 +154,10 @@ function rlsEmailTemplate($template, array $data = []) {
         case 'verify-email':
             $subject = 'Verify your Runlevel Systems account';
             $text = "Hello {$recipientName},\n\n"
-                . "We received your request to verify your account.\n\n"
-                . ($verifyUrl !== '' ? "Verify your email here:\n{$verifyUrl}\n\n" : '')
+                . "Thanks for creating a Runlevel Systems account.\n\n"
+                . "Please verify your email address using the link below so we can contact you about project requests, proposals, files, and updates.\n\n"
+                . ($verifyUrl !== '' ? "{$verifyUrl}\n\n" : '')
+                . "If you did not create this account, you can ignore this email.\n\n"
                 . "{$company}";
             break;
 

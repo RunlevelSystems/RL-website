@@ -8,8 +8,11 @@ $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['resend_verification'])) {
     $email = trim($_POST['email'] ?? '');
+    $csrfToken = $_POST['csrf_token'] ?? '';
 
-    if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    if (!portalVerifyCsrfToken($csrfToken)) {
+        $error = 'Your session expired. Please refresh and try again.';
+    } elseif ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = 'Please enter a valid email address.';
     } else {
         $user = null;
@@ -17,7 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['resend_verification']
         if (!$refreshed || !$user) {
             $error = 'Verification link is invalid or expired. Please request a new verification email.';
         } else {
-            $verifyLink = 'https://' . ($_SERVER['HTTP_HOST'] ?? 'runlevel.systems') . '/verify-email.php?token=' . urlencode((string)$user['verification_token']);
+            $token = (string)($user['email_verification_token'] ?? $user['verification_token'] ?? '');
+            $verifyLink = 'https://' . ($_SERVER['HTTP_HOST'] ?? 'runlevel.systems') . '/verify-email.php?token=' . urlencode($token);
             $name = trim((string)($user['display_name'] ?? $user['username'] ?? 'Customer'));
             send_verification_email($email, $name, $verifyLink);
             $message = 'Verification email sent. Please check your inbox.';
@@ -57,6 +61,7 @@ $header_class = 'inner-header';
 
             <form method="post">
                 <input type="hidden" name="resend_verification" value="1">
+                <input type="hidden" name="csrf_token" value="<?php echo pe(portalGetCsrfToken()); ?>">
                 <label for="rv-email" style="display:block;color:#a8bedc;margin-bottom:6px;">Email</label>
                 <input id="rv-email" type="email" name="email" required value="<?php echo pe($_POST['email'] ?? ''); ?>" style="width:100%;background:#09111d;color:#eaf3ff;border:1px solid rgba(54,243,255,0.25);border-radius:6px;padding:10px 12px;">
                 <button type="submit" style="margin-top:12px;background:#ffc600;color:#08111f;border:none;border-radius:6px;padding:10px 18px;font-weight:700;">Send Verification Email</button>

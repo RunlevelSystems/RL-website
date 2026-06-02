@@ -37,8 +37,8 @@ $header_class = 'inner-header';
         <div style="background:#0c1729;border:1px solid rgba(54,243,255,0.2);border-radius:10px;padding:28px;max-width:760px;margin:0 auto;">
             <?php if ($verified): ?>
                 <h1 style="margin-top:0;color:#22c55e;">Email Verified</h1>
-                <p style="color:#a8bedc;">Your email has been verified. You can now log in to your dashboard.</p>
-                <p><a href="/login.php" style="color:#36f3ff;">Go to Login</a></p>
+                <p style="color:#a8bedc;">Your email has been verified. You can now access your dashboard.</p>
+                <p><a href="/dashboard.php" style="color:#36f3ff;">Go to Dashboard</a></p>
             <?php else: ?>
                 <h1 style="margin-top:0;color:#ffc600;">Verification Needed</h1>
                 <p style="color:#a8bedc;"><?php echo pe($error); ?></p>

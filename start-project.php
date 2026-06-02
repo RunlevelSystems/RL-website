@@ -35,12 +35,17 @@ $assetOptions = [
 ];
 
 $prefillType = trim((string)($_GET['type'] ?? ''));
+$sessionUser = portalGetUser();
+$fullSessionUser = null;
+if ($sessionUser && !empty($sessionUser['username'])) {
+    $fullSessionUser = portalFindUserByUsername((string)$sessionUser['username']);
+}
 
 $defaults = [
-    'name' => '',
-    'email' => '',
-    'phone' => '',
-    'company' => '',
+    'name' => trim((string)($fullSessionUser['name'] ?? $fullSessionUser['display_name'] ?? '')),
+    'email' => trim((string)($fullSessionUser['email'] ?? '')),
+    'phone' => trim((string)($fullSessionUser['phone'] ?? '')),
+    'company' => trim((string)($fullSessionUser['company'] ?? '')),
     'request_type' => in_array($prefillType, $requestTypes, true) ? $prefillType : '',
     'request_summary' => '',
     'problem_to_solve' => '',
@@ -60,9 +65,15 @@ foreach ($form as $key => $value) {
 $error = '';
 $success = false;
 $submitted = null;
+$createdClientAccount = false;
+$associatedClientUsername = '';
+$accountFollowupEmail = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_request'])) {
-    if ($form['name'] === '') {
+    $csrfToken = $_POST['csrf_token'] ?? '';
+    if (!portalVerifyCsrfToken($csrfToken)) {
+        $error = 'Your session expired. Please refresh and try again.';
+    } elseif ($form['name'] === '') {
         $error = 'Please enter your name.';
     } elseif ($form['email'] === '' || !filter_var($form['email'], FILTER_VALIDATE_EMAIL)) {
         $error = 'Please enter a valid email address.';
@@ -169,11 +180,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_request'])) {
     }
 
     if ($error === '') {
+        $matchedClient = null;
+        $matchedUsername = '';
+        $accountCreateError = '';
+        if ($sessionUser && !empty($sessionUser['username'])) {
+            $matchedUsername = (string)$sessionUser['username'];
+            $matchedClient = $fullSessionUser ?: portalFindUserByUsername($matchedUsername);
+        } else {
+            $matchedClient = portalFindUserByEmail($form['email']);
+            if (!$matchedClient) {
+                $matchedClient = portalFindOrCreateClientByEmail(
+                    $form['email'],
+                    $form['name'],
+                    $form['phone'],
+                    $form['company'],
+                    $createdClientAccount,
+                    $accountCreateError
+                );
+            }
+            if ($matchedClient) {
+                $matchedUsername = (string)($matchedClient['username'] ?? '');
+            }
+            if ($accountCreateError !== '') {
+                $error = $accountCreateError;
+            }
+        }
+    }
+
+    if ($error === '') {
         $request = [
             'id' => bin2hex(random_bytes(8)),
             'request_id' => $requestId,
             'estimate_id' => $requestId,
-            'client_username' => '',
+            'client_username' => $matchedUsername,
             'name' => $form['name'],
             'email' => $form['email'],
             'phone' => $form['phone'],
@@ -211,11 +250,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_request'])) {
         } else {
             $success = true;
             $submitted = $request;
+            $associatedClientUsername = $matchedUsername;
             $host = $_SERVER['HTTP_HOST'] ?? 'runlevel.systems';
             $dashboardUrl = 'https://' . $host . '/dashboard.php';
             $staffUrl = 'https://' . $host . '/staff/estimate-requests.php';
             send_project_request_confirmation_email($form['email'], $form['name'], $requestId, $dashboardUrl);
             send_staff_new_request_email($requestId, $form['name'], $form['email'], $form['request_type'], $staffUrl);
+            if ($createdClientAccount && $matchedClient) {
+                $token = (string)($matchedClient['email_verification_token'] ?? '');
+                if ($token !== '' && function_exists('rlsMailerHasSmtpConfiguration') && rlsMailerHasSmtpConfiguration(rlsMailerSettings())) {
+                    $verifyUrl = rlsSiteBaseUrl() . '/verify-email.php?token=' . urlencode($token);
+                    send_verification_email($form['email'], $form['name'] !== '' ? $form['name'] : ($matchedClient['display_name'] ?? $matchedClient['username'] ?? 'Client'), $verifyUrl);
+                }
+                $accountFollowupEmail = $form['email'];
+            }
         }
     }
 }
@@ -254,11 +302,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_request'])) {
                     <p>Your request has been saved for review.</p>
                     <div class="request-id"><?php echo pe($submitted['request_id']); ?></div>
                     <p>We will review your request and follow up with recommendations, timeline guidance, and pricing options.</p>
+                    <p>You do not need a verified account to submit a request. Verification helps us send updates, proposals, payment links, and project messages.</p>
+                    <?php if (!$sessionUser): ?>
+                        <p>Your project request was received. Create an account or sign in to track updates.</p>
+                    <?php endif; ?>
                     <div class="service-actions">
                         <a class="core-action primary" href="/start-project.php">Submit Another Request</a>
-                        <a class="core-action secondary" href="/dashboard.php">Open Dashboard</a>
+                        <?php if ($sessionUser): ?>
+                            <a class="core-action secondary" href="/dashboard.php">Open Dashboard</a>
+                        <?php else: ?>
+                            <a class="core-action secondary" href="/client/register.php">Create Account</a>
+                            <a class="core-action secondary" href="/login.php">Sign In</a>
+                        <?php endif; ?>
                         <a class="core-action secondary" href="/contact.php">Contact Runlevel Systems</a>
                     </div>
+                    <?php if ($associatedClientUsername !== ''): ?>
+                        <p class="request-helper" style="margin-top:14px;">Associated account: <?php echo pe($associatedClientUsername); ?></p>
+                    <?php endif; ?>
+                    <?php if ($accountFollowupEmail !== ''): ?>
+                        <p class="request-helper">A client account was prepared for <?php echo pe($accountFollowupEmail); ?>.</p>
+                    <?php endif; ?>
                 </div>
             <?php else: ?>
                 <?php if ($error !== ''): ?>
@@ -268,8 +331,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_request'])) {
                 <div class="request-section-card">
                     <h2>Submit Project Request</h2>
                     <p class="request-helper">Share the essentials and our team will take it from there.</p>
+                    <p class="request-helper">You do not need a verified account to submit a request. Verification helps us send updates, proposals, payment links, and project messages.</p>
                     <form method="post" class="request-shell" enctype="multipart/form-data">
                         <input type="hidden" name="submit_request" value="1">
+                        <input type="hidden" name="csrf_token" value="<?php echo pe(portalGetCsrfToken()); ?>">
                         <div class="request-form-grid">
                             <div class="request-field">
                                 <label for="name">Name *</label>
