@@ -157,7 +157,7 @@ if (!$smtpConfigured && $warning === '') {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
     <title>Settings | Admin | Runlevel Systems</title>
-    <link href="assets/css/coreloop.css" rel="stylesheet">
+    <link href="assets/css/coreloop.css?v=clean-20260602" rel="stylesheet">
     <style>
         .settings-wrap{padding:28px 0 70px;}
         .settings-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;}

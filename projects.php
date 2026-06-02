@@ -8,7 +8,7 @@
 
         <title>Projects &amp; Portfolio | Runlevel Systems</title>
         <meta name="description" content="Examples of software, simulation, games, and interactive systems built or developed by Runlevel Systems.">
-        <link href="assets/css/coreloop.css" rel="stylesheet">
+        <link href="assets/css/coreloop.css?v=clean-20260602" rel="stylesheet">
     </head>
     <body>
         <?php

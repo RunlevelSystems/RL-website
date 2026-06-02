@@ -11,7 +11,7 @@ $header_class = 'inner-header';
     <link rel="icon" type="image/png" href="assets/images/RL-icon.png">
     <title>Payment Details | Runlevel Systems</title>
     <meta name="description" content="How Runlevel Systems reviews requests, sends estimates, and handles project payments.">
-    <link href="assets/css/coreloop.css" rel="stylesheet">
+    <link href="assets/css/coreloop.css?v=clean-20260602" rel="stylesheet">
 </head>
 <body>
 <?php include 'includes/header.php'; ?>

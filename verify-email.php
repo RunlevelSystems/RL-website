@@ -26,7 +26,7 @@ $header_class = 'inner-header';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
     <title>Email Verification | Runlevel Systems</title>
-    <link href="assets/css/coreloop.css" rel="stylesheet">
+    <link href="assets/css/coreloop.css?v=clean-20260602" rel="stylesheet">
 </head>
 <body>
 <?php include __DIR__ . '/includes/header.php'; ?>

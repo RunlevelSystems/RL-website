@@ -10,7 +10,7 @@
         <meta name="description" content="Runlevel Systems designs, builds, tests, and deploys software solutions for businesses, organizations, creators, startups, and communities.">
         <meta name="keywords" content="software development, simulation software, business applications, web applications, mobile apps, infrastructure platforms, Runlevel Systems">
 
-        <link href="assets/css/coreloop.css" rel="stylesheet">
+        <link href="assets/css/coreloop.css?v=clean-20260602" rel="stylesheet">
     </head>
     <body>
         <?php

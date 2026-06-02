@@ -8,7 +8,7 @@
 
         <title>Runlevel Systems | Terms of Service</title>
         <meta name="description" content="Terms of Service for Runlevel Systems services including consulting, development, hosting, and support.">
-        <link href="assets/css/coreloop.css" rel="stylesheet">
+        <link href="assets/css/coreloop.css?v=clean-20260602" rel="stylesheet">
     </head>
     <body>
         <?php

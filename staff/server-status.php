@@ -110,7 +110,7 @@ $totalCount = count($servers);
         <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
     <meta http-equiv="refresh" content="60">
     <title>Runlevel Systems | Server Fleet Status</title>
-    <link href="../assets/css/coreloop.css" rel="stylesheet">
+    <link href="../assets/css/coreloop.css?v=clean-20260602" rel="stylesheet">
     <style>
         .staff-login .page-bgc {
             background-color: #071228 !important;

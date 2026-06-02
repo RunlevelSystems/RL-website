@@ -492,21 +492,24 @@ img {
 }
 
 /* ============================================================
-   Footer placeholder
+   Footer base
    ============================================================ */
 footer {
-  background-color: #000000;
-  color: var(--core-cyan);
+  background-color: #050a14;
+  color: #9ca9b8;
   padding: 2rem 1rem;
   margin-top: 3rem;
 }
 
 footer a {
-  color: var(--core-cyan);
+  color: #a8b8cc;
+  text-decoration: none;
 }
 
-footer a:hover {
+footer a:hover,
+footer a:focus {
   color: var(--core-gold);
+  text-decoration: underline;
 }
 
 /* ============================================================
@@ -1440,8 +1443,14 @@ body *[style*="color:#4cc9ff"] {
 }
 
 .site-footer a {
-  color: inherit;
+  color: #a8b8cc;
   text-decoration: none;
+}
+
+.site-footer a:hover,
+.site-footer a:focus {
+  color: var(--core-gold);
+  text-decoration: underline;
 }
 
 .site-footer .footer-links,
@@ -1473,7 +1482,7 @@ body *[style*="color:#4cc9ff"] {
 }
 
 .sitemap-footer .footer-col h4 {
-  color: #f5fbff;
+  color: #d6dce6;
   font-size: 0.95rem;
   margin: 0 0 0.65rem;
   text-align: center;
@@ -1488,7 +1497,7 @@ body *[style*="color:#4cc9ff"] {
 
 .sitemap-footer .footer-eyebrow {
   margin: 0 0 0.5rem;
-  color: #36f3ff;
+  color: #9ca9b8;
   font-size: 0.88rem;
   font-weight: 700;
 }
@@ -1516,7 +1525,7 @@ body *[style*="color:#4cc9ff"] {
 }
 
 .sitemap-footer .footer-list a {
-  color: #d7e7fb;
+  color: #a8b8cc;
   text-decoration: none;
   font-size: 0.84rem;
   line-height: 1.45;
@@ -1635,6 +1644,28 @@ body *[style*="color:#4cc9ff"] {
 .request-note,
 .request-helper {
   color: #bfd4ec;
+}
+
+/* ============================================================
+   Stacked checkbox layout — for agreement/signoff text
+   ============================================================ */
+.check-block {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.check-block input[type="checkbox"] {
+  display: inline-block;
+  width: auto;
+  margin: 0 0 0.5rem 0;
+  vertical-align: top;
+}
+
+.check-block label {
+  display: block;
+  line-height: 1.45;
+  color: #d8eafe;
+  font-size: 0.88rem;
 }
 
 .notice-card,

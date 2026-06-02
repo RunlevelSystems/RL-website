@@ -275,7 +275,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_request'])) {
     <link rel="icon" type="image/png" href="assets/images/RL-icon.png">
     <title>Start A Project | Runlevel Systems</title>
     <meta name="description" content="Submit a project request to Runlevel Systems for software development, fixes, websites, mobile apps, systems, and support.">
-    <link href="assets/css/coreloop.css" rel="stylesheet">
+    <link href="assets/css/coreloop.css?v=clean-20260602" rel="stylesheet">
 </head>
 <body>
 <?php include 'includes/header.php'; ?>

@@ -113,7 +113,7 @@ $header_class = 'inner-header';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="../assets/images/RL-icon.png">
     <title>Create Account | Client Portal | Runlevel Systems</title>
-    <link href="../assets/css/coreloop.css" rel="stylesheet">
+    <link href="../assets/css/coreloop.css?v=clean-20260602" rel="stylesheet">
     <style>
         .portal-wrap { padding: 60px 0 80px; }
         .portal-card { background: #0c1729; border: 1px solid rgba(54,243,255,0.2); border-radius: 12px; padding: 32px; }

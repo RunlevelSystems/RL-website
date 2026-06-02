@@ -25,7 +25,7 @@ $page_description = 'Centralize every password, host, tool and operating procedu
         <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
     <title>Runlevel Systems | Staff Control Room</title>
     <!-- CSS -->
-    <link href="assets/css/coreloop.css" rel="stylesheet">
+    <link href="assets/css/coreloop.css?v=clean-20260602" rel="stylesheet">
     <style>
         .staff-grid { display: flex; flex-wrap: wrap; gap: 20px; }
 

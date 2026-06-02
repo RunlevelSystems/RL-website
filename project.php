@@ -986,7 +986,7 @@ if (!$notFound && !$forbidden) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="/assets/images/RL-icon.png">
     <title>Project <?php echo pe($projectId); ?> | Runlevel Systems</title>
-    <link href="assets/css/coreloop.css" rel="stylesheet">
+    <link href="assets/css/coreloop.css?v=clean-20260602" rel="stylesheet">
     <style>
         .pw-wrap{padding:24px 0 70px;}
         .pw-card{background:#0c1729;border:1px solid rgba(54,243,255,.18);border-radius:10px;padding:16px;margin-bottom:12px;}
@@ -1215,7 +1215,7 @@ if (!$notFound && !$forbidden) {
                     <div class="mini-card">
                         <form method="post">
                             <input type="hidden" name="action" value="accept_proposal">
-                            <label style="display:flex;align-items:flex-start;gap:8px;color:#d8e7f7;font-size:.8rem;"><input type="checkbox" name="customer_agreement" value="1" required> I have reviewed this proposal and agree to the listed work, deliverables, price, payment terms, revision terms, and applicable Runlevel Systems Terms of Service.</label>
+                            <div class="check-block"><input type="checkbox" name="customer_agreement" value="1" required><label>I have reviewed this proposal and agree to the listed work, deliverables, price, payment terms, revision terms, and applicable Runlevel Systems Terms of Service.</label></div>
                             <label class="pw-lbl" style="margin-top:8px;">Customer Typed Name</label>
                             <input class="pw-input" type="text" name="customer_typed_name" required>
                             <label class="pw-lbl" style="margin-top:8px;">Customer Notes (Optional)</label>
@@ -1296,14 +1296,12 @@ if (!$notFound && !$forbidden) {
                             </div>
                         </form>
 
-                        <form method="post" style="margin-top:10px;display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;">
+                        <form method="post" style="margin-top:10px;">
                             <input type="hidden" name="action" value="staff_accept_proposal">
-                            <label style="display:flex;align-items:flex-start;gap:8px;color:#d8e7f7;font-size:.8rem;"><input type="checkbox" name="staff_agreement" value="1" required> Runlevel Systems approves this proposal and may begin work once required payment is received.</label>
-                            <div>
-                                <label class="pw-lbl">Staff Typed Name</label>
-                                <input class="pw-input" type="text" name="staff_typed_name" required>
-                            </div>
-                            <button class="btn btn-green" type="submit">Save Staff Signoff</button>
+                            <div class="check-block"><input type="checkbox" name="staff_agreement" value="1" required><label>Runlevel Systems approves this proposal and may begin work once required payment is received.</label></div>
+                            <label class="pw-lbl" style="margin-top:8px;">Staff Typed Name</label>
+                            <input class="pw-input" type="text" name="staff_typed_name" required>
+                            <div style="margin-top:8px;"><button class="btn btn-green" type="submit">Save Staff Signoff</button></div>
                         </form>
                     </div>
                 </details>
