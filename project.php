@@ -1106,8 +1106,11 @@ if (!$notFound && !$forbidden) {
                 <div class="mini-card"><span class="pw-lbl">Repository / File Link</span><div class="pw-val"><?php echo !empty($request['repo_link']) ? '<a href="' . pe((string)$request['repo_link']) . '" target="_blank" rel="noopener noreferrer" style="color:#36f3ff;">' . pe((string)$request['repo_link']) . '</a>' : '—'; ?></div><div class="pw-help">Optional link to code, website, repo, screenshots, files, or other information.</div></div>
             </div>
             <div class="pw-grid" style="margin-top:10px;">
-                <div class="mini-card"><span class="pw-lbl">Request Summary</span><div class="pw-val"><?php echo pe((string)($request['request_summary'] ?? '—')); ?></div><div class="pw-help">Customer’s plain-English description of what they need.</div></div>
-                <div class="mini-card"><span class="pw-lbl">Problem To Solve</span><div class="pw-val"><?php echo pe((string)($request['problem_to_solve'] ?? '—')); ?></div><div class="pw-help">What problem should this work fix or improve?</div></div>
+                <div class="mini-card">
+                    <span class="pw-lbl">What Is Needed</span>
+                    <div class="pw-val"><?php echo pe((string)($request['what_is_needed'] ?? $request['request_summary'] ?? $request['problem_to_solve'] ?? $request['description'] ?? '—')); ?></div>
+                    <div class="pw-help">Describe what you need built, fixed, improved, or finished.</div>
+                </div>
             </div>
             <div class="mini-card" style="margin-top:10px;"><span class="pw-lbl">Existing Work</span><div class="pw-val"><?php echo pe((string)($request['existing_work'] ?? '—')); ?></div><div class="pw-help">Does this project already exist, or are we starting from scratch?</div></div>
         </div>

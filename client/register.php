@@ -48,8 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
 
     if (!portalVerifyCsrfToken($csrfToken)) {
         $error = 'Your session expired. Please refresh and try again.';
-    } elseif ($name === '') {
-        $error = 'Please enter your name.';
+    } elseif ($username === '') {
+        $error = 'Please enter a username.';
     } elseif ($password !== $password2) {
         $error = 'Passwords do not match.';
     } elseif (!in_array($preferred, ['Email', 'Phone', 'Dashboard Message'], true)) {
@@ -57,9 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
     } elseif (!$agreement) {
         $error = 'You must acknowledge account terms before creating an account.';
     } else {
-        if ($username === '') {
-            $username = portalGenerateUsernameFromEmail($email);
-        }
         $verificationToken = portalGenerateVerificationToken();
         $err = '';
         $registered = portalRegisterClient($username, $password, $email, $name, $err, [
@@ -158,54 +155,58 @@ $header_class = 'inner-header';
                         <input type="hidden" name="register" value="1">
                         <input type="hidden" name="csrf_token" value="<?php echo pe(portalGetCsrfToken()); ?>">
 
-                        <label for="reg_name">Name</label>
-                        <input id="reg_name" type="text" name="name" class="portal-input" required
-                               value="<?php echo pe($form['name']); ?>"
-                               autocomplete="name" placeholder="Your full name">
+                        <label for="reg_username">Username *</label>
+                        <p class="hint" style="margin-top:0;margin-bottom:8px;">Choose a username for your account.</p>
+                        <input id="reg_username" type="text" name="username" class="portal-input"
+                               required
+                               value="<?php echo pe($form['username']); ?>"
+                               autocomplete="username" placeholder="Choose a username">
 
-                        <label for="reg_email">Email Address</label>
+                        <label for="reg_password">Password *</label>
+                        <p class="hint" style="margin-top:0;margin-bottom:8px;">At least 8 characters.</p>
+                        <input id="reg_password" type="password" name="password" class="portal-input" required
+                               autocomplete="new-password" placeholder="At least 8 characters">
+
+                        <label for="reg_password2">Confirm Password *</label>
+                        <p class="hint" style="margin-top:0;margin-bottom:8px;">Repeat your password.</p>
+                        <input id="reg_password2" type="password" name="password2" class="portal-input" required
+                               autocomplete="new-password" placeholder="Repeat your password">
+
+                        <label for="reg_email">Email Address *</label>
+                        <p class="hint" style="margin-top:0;margin-bottom:8px;">Used for project updates and account recovery.</p>
                         <input id="reg_email" type="email" name="email" class="portal-input" required
                                value="<?php echo pe($form['email']); ?>"
                                autocomplete="email" placeholder="you@example.com">
 
-                        <label for="reg_username">Username (optional)</label>
-                        <input id="reg_username" type="text" name="username" class="portal-input"
-                               value="<?php echo pe($form['username']); ?>"
-                               autocomplete="username" placeholder="e.g. your-name">
-                        <p class="hint">Leave blank to auto-generate from your email address.</p>
+                        <label for="reg_name">Name</label>
+                        <input id="reg_name" type="text" name="name" class="portal-input"
+                               value="<?php echo pe($form['name']); ?>"
+                               autocomplete="name" placeholder="Your full name">
 
-                        <label for="reg_phone">Phone (optional)</label>
+                        <label for="reg_phone">Phone</label>
                         <input id="reg_phone" type="text" name="phone" class="portal-input"
                                value="<?php echo pe($form['phone']); ?>"
                                autocomplete="tel" placeholder="Best callback number">
 
-                        <label for="reg_company">Company / Organization (optional)</label>
+                        <label for="reg_company">Company / Organization</label>
                         <input id="reg_company" type="text" name="company" class="portal-input"
                                value="<?php echo pe($form['company']); ?>"
                                placeholder="Company or organization">
 
                         <label for="reg_contact">Preferred Contact Method</label>
-                        <select id="reg_contact" name="preferred_contact_method" class="portal-input" required>
+                        <select id="reg_contact" name="preferred_contact_method" class="portal-input">
                             <option value="Email" <?php echo $form['preferred_contact_method'] === 'Email' ? 'selected' : ''; ?>>Email</option>
                             <option value="Phone" <?php echo $form['preferred_contact_method'] === 'Phone' ? 'selected' : ''; ?>>Phone</option>
                             <option value="Dashboard Message" <?php echo $form['preferred_contact_method'] === 'Dashboard Message' ? 'selected' : ''; ?>>Dashboard Message</option>
                         </select>
 
-                        <label for="reg_password">Password</label>
-                        <input id="reg_password" type="password" name="password" class="portal-input" required
-                               autocomplete="new-password" placeholder="At least 8 characters">
-
-                        <label for="reg_password2">Confirm Password</label>
-                        <input id="reg_password2" type="password" name="password2" class="portal-input" required
-                               autocomplete="new-password" placeholder="Repeat your password">
-
                         <div class="tos-note">
-                            <label style="display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;">
-                                <input type="checkbox" name="acknowledge_portal" value="1" <?php echo isset($_POST['acknowledge_portal']) ? 'checked' : ''; ?> style="margin-top:3px;">
+                            <label class="checkbox-row" style="margin-bottom:10px;">
+                                <input type="checkbox" name="acknowledge_portal" value="1" <?php echo isset($_POST['acknowledge_portal']) ? 'checked' : ''; ?>>
                                 <span>I understand that creating an account allows me to submit requests and view project updates.</span>
                             </label>
-                            <label style="display:flex;align-items:flex-start;gap:8px;margin:0;">
-                                <input type="checkbox" name="marketing_opt_in" value="1" <?php echo $form['marketing_opt_in'] ? 'checked' : ''; ?> style="margin-top:3px;">
+                            <label class="checkbox-row" style="margin:0;">
+                                <input type="checkbox" name="marketing_opt_in" value="1" <?php echo $form['marketing_opt_in'] ? 'checked' : ''; ?>>
                                 <span>I agree to receive project-related email messages from Runlevel Systems.</span>
                             </label>
                         </div>

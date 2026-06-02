@@ -69,11 +69,22 @@
                     <div class="service-card-grid two-columns">
                         <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">🧪</div>
-                            <h3>PureOPS</h3>
-                            <p>Virtual training and operations simulation concept based on interactive hardware training work.</p>
-                            <p>PureOPS represents the type of training and simulation platform Runlevel Systems can build for technical teams, employees, and customers.</p>
+                            <h3>Virtual Training Without Real-World Risk</h3>
+                            <p>PureOPS is an interactive hardware and procedure training simulator. It can model equipment, buttons, lights, removable parts, terminal sessions, maintenance steps, and guided procedures.</p>
+                            <p>This helps technicians and employees gain experience before working on real equipment.</p>
+                            <p style="margin: 0.85rem 0 0.45rem;"><strong>Use cases:</strong></p>
+                            <ul class="service-icon-list">
+                                <li>Employee training</li>
+                                <li>Hardware walkthroughs</li>
+                                <li>Installation practice</li>
+                                <li>Maintenance procedures</li>
+                                <li>Safety training</li>
+                                <li>Product demonstrations</li>
+                                <li>Customer education</li>
+                                <li>Virtual labs</li>
+                            </ul>
                             <div class="service-actions">
-                                <a class="core-action tertiary" href="/software.php#training-simulation">See Training Software</a>
+                                <a class="core-action tertiary" href="/software.php#training-simulation">See Training &amp; Simulation</a>
                             </div>
                         </article>
                     </div>
