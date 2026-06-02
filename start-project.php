@@ -47,8 +47,7 @@ $defaults = [
     'phone' => trim((string)($fullSessionUser['phone'] ?? '')),
     'company' => trim((string)($fullSessionUser['company'] ?? '')),
     'request_type' => in_array($prefillType, $requestTypes, true) ? $prefillType : '',
-    'request_summary' => '',
-    'problem_to_solve' => '',
+    'what_is_needed' => '',
     'existing_work' => '',
     'repo_link' => '',
     'budget_range' => 'Not sure yet',
@@ -79,10 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_request'])) {
         $error = 'Please enter a valid email address.';
     } elseif (!in_array($form['request_type'], $requestTypes, true)) {
         $error = 'Please select a project type.';
-    } elseif ($form['request_summary'] === '') {
-        $error = 'Please add a request summary.';
-    } elseif ($form['problem_to_solve'] === '') {
-        $error = 'Please describe the problem to solve.';
+    } elseif ($form['what_is_needed'] === '') {
+        $error = 'Please describe what is needed.';
     } elseif (!in_array($form['existing_work'], $assetOptions, true)) {
         $error = 'Please select whether this project already exists.';
     } elseif ($form['repo_link'] !== '' && !filter_var($form['repo_link'], FILTER_VALIDATE_URL)) {
@@ -220,9 +217,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_request'])) {
             'project_title' => $form['request_type'],
             'project_type' => $form['request_type'],
             'request_type' => $form['request_type'],
-            'description' => $form['request_summary'],
-            'request_summary' => $form['request_summary'],
-            'problem_to_solve' => $form['problem_to_solve'],
+            'description' => $form['what_is_needed'],
+            'request_summary' => $form['what_is_needed'],
+            'problem_to_solve' => $form['what_is_needed'],
+            'what_is_needed' => $form['what_is_needed'],
             'existing_assets' => $form['existing_work'],
             'existing_work' => $form['existing_work'],
             'repo_link' => $form['repo_link'],
@@ -338,79 +336,78 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_request'])) {
                         <div class="request-form-grid">
                             <div class="request-field">
                                 <label for="name">Name *</label>
+                                <p class="request-helper" style="margin:.45rem 0;">Who should we contact about this project?</p>
                                 <input id="name" type="text" name="name" value="<?php echo pe($form['name']); ?>" required>
                             </div>
                             <div class="request-field">
                                 <label for="company">Company</label>
+                                <p class="request-helper" style="margin:.45rem 0;">Business, organization, or team name (optional).</p>
                                 <input id="company" type="text" name="company" value="<?php echo pe($form['company']); ?>">
                             </div>
                             <div class="request-field">
                                 <label for="email">Email *</label>
+                                <p class="request-helper" style="margin:.45rem 0;">Where should we send updates and follow-up questions?</p>
                                 <input id="email" type="email" name="email" value="<?php echo pe($form['email']); ?>" required>
                             </div>
                             <div class="request-field">
                                 <label for="phone">Phone</label>
+                                <p class="request-helper" style="margin:.45rem 0;">Optional callback number if you prefer phone contact.</p>
                                 <input id="phone" type="text" name="phone" value="<?php echo pe($form['phone']); ?>">
                             </div>
                             <div class="request-field">
                                 <label for="request_type">Project Type *</label>
+                                <p class="request-helper" style="margin:.45rem 0;">What kind of work is this? Example: website, mobile app, business software, training simulator, game/server script, quick fix, or project rescue.</p>
                                 <select id="request_type" name="request_type" required>
                                     <option value="">Select a project type</option>
                                     <?php foreach ($requestTypes as $type): ?>
                                         <option value="<?php echo pe($type); ?>" <?php echo $form['request_type'] === $type ? 'selected' : ''; ?>><?php echo pe($type); ?></option>
                                     <?php endforeach; ?>
                                 </select>
-                                <p class="request-helper" style="margin:.45rem 0 0;">What kind of work is this? Example: website, mobile app, business software, training simulator, game/server script, quick fix, project rescue.</p>
                             </div>
                             <div class="request-field">
                                 <label for="existing_work">Existing Work *</label>
+                                <p class="request-helper" style="margin:.45rem 0;">Does this project already exist, or are we starting from scratch?</p>
                                 <select id="existing_work" name="existing_work" required>
                                     <option value="">Select one option</option>
                                     <?php foreach ($assetOptions as $option): ?>
                                         <option value="<?php echo pe($option); ?>" <?php echo $form['existing_work'] === $option ? 'selected' : ''; ?>><?php echo pe($option); ?></option>
                                     <?php endforeach; ?>
                                 </select>
-                                <p class="request-helper" style="margin:.45rem 0 0;">Does this project already exist, or are we starting from scratch?</p>
                             </div>
                             <div class="request-field request-field-full">
-                                <label for="request_summary">Request Summary *</label>
-                                <textarea id="request_summary" name="request_summary" required placeholder="Customer’s plain-English description of what they need."><?php echo pe($form['request_summary']); ?></textarea>
-                                <p class="request-helper" style="margin:.45rem 0 0;">Customer’s plain-English description of what they need.</p>
-                            </div>
-                            <div class="request-field request-field-full">
-                                <label for="problem_to_solve">Problem To Solve *</label>
-                                <textarea id="problem_to_solve" name="problem_to_solve" required placeholder="What problem should this work fix or improve?"><?php echo pe($form['problem_to_solve']); ?></textarea>
-                                <p class="request-helper" style="margin:.45rem 0 0;">What problem should this work fix or improve?</p>
+                                <label for="what_is_needed">What Is Needed *</label>
+                                <p class="request-helper" style="margin:.45rem 0;">Describe what you need built, fixed, improved, or finished.</p>
+                                <textarea id="what_is_needed" name="what_is_needed" required placeholder="Describe what you need built, fixed, improved, or finished."><?php echo pe($form['what_is_needed']); ?></textarea>
                             </div>
                             <div class="request-field request-field-full">
                                 <label for="repo_link">Repository / Website Link</label>
+                                <p class="request-helper" style="margin:.45rem 0;">Optional link to code, website, repo, screenshots, or files.</p>
                                 <input id="repo_link" type="url" name="repo_link" value="<?php echo pe($form['repo_link']); ?>" placeholder="https://github.com/example/project">
-                                <p class="request-helper" style="margin:.45rem 0 0;">Optional link to code, website, repo, screenshots, files, or other information.</p>
                             </div>
                             <div class="request-field">
                                 <label for="desired_timeline">Timeline *</label>
+                                <p class="request-helper" style="margin:.45rem 0;">When would you ideally like this completed?</p>
                                 <select id="desired_timeline" name="desired_timeline" required>
                                     <option value="">Select a timeline</option>
                                     <?php foreach ($timelineOptions as $option): ?>
                                         <option value="<?php echo pe($option); ?>" <?php echo $form['desired_timeline'] === $option ? 'selected' : ''; ?>><?php echo pe($option); ?></option>
                                     <?php endforeach; ?>
                                 </select>
-                                <p class="request-helper" style="margin:.45rem 0 0;">When would you ideally like this completed?</p>
                             </div>
                             <div class="request-field">
                                 <label for="budget_range">Budget Comfort *</label>
+                                <p class="request-helper" style="margin:.45rem 0;">This helps us recommend a realistic solution. It is not a final price.</p>
                                 <select id="budget_range" name="budget_range" required>
                                     <option value="">Select a budget range</option>
                                     <?php foreach ($budgetRanges as $range): ?>
                                         <option value="<?php echo pe($range); ?>" <?php echo $form['budget_range'] === $range ? 'selected' : ''; ?>><?php echo pe($range); ?></option>
                                     <?php endforeach; ?>
                                 </select>
-                                <p class="request-helper" style="margin:.45rem 0 0;">This helps us recommend a realistic solution. It is not a final price.</p>
                             </div>
                             <div class="request-field request-field-full">
                                 <label for="attachments">Optional Attachments</label>
+                                <p class="request-helper" style="margin:.45rem 0;">Up to 5 files, 10MB each. Supported: PDF, DOC, images, ZIP, CSV/XLSX.</p>
                                 <input id="attachments" type="file" name="attachments[]" multiple>
-                                <p class="request-helper" style="margin:.45rem 0 0;">Up to 5 files, 10MB each. Supported: PDF, DOC, images, ZIP, CSV/XLSX.</p>
                             </div>
                         </div>
                         <div class="service-actions">

@@ -3,6 +3,10 @@ session_start();
 define('WDS_SYSTEM', true);
 require_once 'includes/portal-helpers.php';
 
+header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+header('Pragma: no-cache');
+header('Expires: 0');
+
 portalRequireLogin();
 
 $user = portalGetUser();

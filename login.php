@@ -4,6 +4,10 @@ session_start();
 define('WDS_SYSTEM', true);
 require_once 'includes/portal-helpers.php';
 
+header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+header('Pragma: no-cache');
+header('Expires: 0');
+
 // If already logged in via unified session, redirect to dashboard
 if (portalIsLoggedIn()) {
     $redirect = portalSanitizeReturnPath($_GET['return'] ?? ($_GET['redirect'] ?? ''), '/dashboard.php');
@@ -41,6 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_form'])) {
             $role        = $user['role'] ?? 'staff';
             $displayName = $user['display_name'] ?? $user['username'];
 
+            session_regenerate_id(true);
+
             // Set unified dashboard session
             $_SESSION[PORTAL_UNIFIED_SESSION] = [
                 'username'     => $user['username'],
@@ -57,6 +63,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_form'])) {
                     'username'     => $user['username'],
                     'role'         => $role,
                     'display_name' => $displayName,
+                    'login_time'   => time(),
+                ];
+            }
+            if ($role === 'client') {
+                $_SESSION[PORTAL_CLIENT_SESSION] = [
+                    'id'           => $user['user_id'] ?? '',
+                    'username'     => $user['username'],
+                    'display_name' => $displayName,
+                    'email'        => $user['email'] ?? '',
                     'login_time'   => time(),
                 ];
             }
@@ -185,7 +200,7 @@ $header_class = 'login-header inner-header';
                             <?php endif; ?>
 
                             <!-- Login Form -->
-                            <form action="login.php<?php echo isset($_GET['return']) ? '?return=' . urlencode($_GET['return']) : (isset($_GET['redirect']) ? '?redirect=' . urlencode($_GET['redirect']) : ''); ?>" method="post" class="dashboard-login-form">
+                            <form action="/login.php<?php echo isset($_GET['return']) ? '?return=' . urlencode($_GET['return']) : (isset($_GET['redirect']) ? '?redirect=' . urlencode($_GET['redirect']) : ''); ?>" method="post" class="dashboard-login-form">
                                 <input type="hidden" name="login_form" value="1">
                                 <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(portalGetCsrfToken(), ENT_QUOTES, 'UTF-8'); ?>">
 

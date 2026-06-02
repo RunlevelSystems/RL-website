@@ -44,6 +44,16 @@
                     <h2>What We Build</h2>
                     <div class="six-block-grid">
                         <article class="service-card-item">
+                            <div class="service-icon" aria-hidden="true">🖧</div>
+                            <h3>Infrastructure Platforms</h3>
+                            <p>Systems for users, services, automation, deployments, hosted apps, containers, billing, and customer-facing operations.</p>
+                        </article>
+                        <article class="service-card-item">
+                            <div class="service-icon" aria-hidden="true">🧪</div>
+                            <h3>Training &amp; Simulation</h3>
+                            <p>Interactive training systems, virtual hardware, procedure practice, product demos, and safe learning environments.</p>
+                        </article>
+                        <article class="service-card-item">
                             <div class="service-icon" aria-hidden="true">💼</div>
                             <h3>Business Applications</h3>
                             <p>Software built around your workflow, customers, team, or internal process.</p>
@@ -58,21 +68,6 @@
                             <h3>Mobile Apps</h3>
                             <p>Android and iOS applications for businesses, communities, employees, and customers.</p>
                         </article>
-                        <article class="service-card-item">
-                            <div class="service-icon" aria-hidden="true">🧪</div>
-                            <h3>Training &amp; Simulation</h3>
-                            <p>Interactive training systems, virtual hardware, procedure practice, product demos, and safe learning environments.</p>
-                        </article>
-                        <article class="service-card-item">
-                            <div class="service-icon" aria-hidden="true">🖧</div>
-                            <h3>Infrastructure Platforms</h3>
-                            <p>Systems for users, services, automation, deployments, hosted apps, containers, and customer-facing operations.</p>
-                        </article>
-                        <article class="service-card-item">
-                            <div class="service-icon" aria-hidden="true">🎮</div>
-                            <h3>Interactive Experiences</h3>
-                            <p>Games, simulations, multiplayer systems, visualizers, and real-time interactive applications.</p>
-                        </article>
                     </div>
                 </div>
             </section>
@@ -82,28 +77,28 @@
                     <h2>Why Customers Work With Us</h2>
                     <div class="service-card-grid two-columns">
                         <article class="service-card-item">
-                            <h3>We Have An Idea</h3>
-                            <p>You know what you want built, but need a team that can turn it into working software.</p>
+                            <h3>You Have An Idea</h3>
+                            <p>You know what you want built, but you need a team that can turn it into working software.</p>
                         </article>
                         <article class="service-card-item">
-                            <h3>Our Process Is Manual</h3>
-                            <p>We can replace spreadsheets, repeated tasks, and manual workflows with software.</p>
+                            <h3>You Have A Manual Process</h3>
+                            <p>You are using spreadsheets, repeated tasks, or manual workflows that software could simplify.</p>
                         </article>
                         <article class="service-card-item">
-                            <h3>We Need Training Tools</h3>
-                            <p>We can create virtual training systems so people can practice safely before working on real equipment.</p>
+                            <h3>You Need Training Tools</h3>
+                            <p>You need people to practice procedures safely before working on real equipment.</p>
                         </article>
                         <article class="service-card-item">
-                            <h3>We Need A Mobile App</h3>
-                            <p>We can help create Android and iOS apps for customers, employees, or communities.</p>
+                            <h3>You Need A Mobile App</h3>
+                            <p>You need an Android or iOS app for customers, employees, or a community.</p>
                         </article>
                         <article class="service-card-item">
-                            <h3>Our Project Is Stuck</h3>
-                            <p>We can help fix, finish, rebuild, or recover existing projects.</p>
+                            <h3>Your Project Is Stuck</h3>
+                            <p>You have an existing project that needs to be fixed, finished, rebuilt, or rescued.</p>
                         </article>
                         <article class="service-card-item">
-                            <h3>We Need A Platform</h3>
-                            <p>We can create systems that manage users, services, content, billing, automation, or deployments.</p>
+                            <h3>You Need A Platform</h3>
+                            <p>You need a system that manages users, services, content, billing, automation, deployments, or customer operations.</p>
                         </article>
                     </div>
                 </div>
@@ -113,21 +108,10 @@
                 <div class="container">
                     <div class="featured-project-inner">
                         <div class="featured-project-text">
-                            <h2>Virtual Training Without Real-World Risk</h2>
-                            <p class="service-lead">Runlevel Systems created an interactive hardware training simulator with a virtual server rack, removable hardware, buttons, lights, and a simulated terminal session for practicing configuration commands.</p>
-                            <p>This type of software helps technicians and employees gain experience before touching real equipment.</p>
-                            <ul class="service-icon-list" style="margin-top: 0.8rem;">
-                                <li>Employee training</li>
-                                <li>Hardware walkthroughs</li>
-                                <li>Installation practice</li>
-                                <li>Maintenance procedures</li>
-                                <li>Safety training</li>
-                                <li>Product demonstrations</li>
-                                <li>Customer education</li>
-                                <li>Virtual labs</li>
-                            </ul>
+                            <h2>Training &amp; Simulation</h2>
+                            <p class="service-lead">We build virtual training systems that let employees practice procedures, hardware walkthroughs, maintenance, installation, and safety tasks before touching real equipment.</p>
                             <div class="service-actions">
-                                <a class="core-action primary" href="/simulation.php">See Training &amp; Simulation</a>
+                                <a class="core-action primary" href="/products.php#pureops">See PureOPS</a>
                             </div>
                         </div>
                         <div class="featured-project-badge">

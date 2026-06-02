@@ -15,7 +15,7 @@ if ($is_in_wiki) {
     $footer_base_path = '';
 }
 ?>
-<section id="footer-widget" class="footer-widget sitemap-footer">
+<section id="footer-widget" class="footer-widget sitemap-footer site-footer">
     <div class="footer-top-divider" aria-hidden="true"></div>
     <div class="container footer-widget-container">
         <div class="footer-sitemap-grid">
@@ -67,7 +67,7 @@ if ($is_in_wiki) {
         </div>
     </div>
 </section>
-<footer class="footer text-center footer-signoff">
+<footer class="footer text-center footer-signoff site-footer">
     <div>
         <p>&copy; 2026 Runlevel Systems. DESIGN • DEBUG • DEPLOY software, systems, simulations, apps, and infrastructure.</p>
     </div>
