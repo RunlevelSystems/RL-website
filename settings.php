@@ -237,7 +237,7 @@ if (!$smtpConfigured && $warning === '') {
                             <label class="settings-label">Sandbox Client ID</label>
                             <input class="settings-input" name="sandbox_client_id" type="text" value="<?php echo pe($settings['paypal']['sandbox']['client_id'] ?? ''); ?>">
                             <label class="settings-label">Sandbox Secret</label>
-                            <input class="settings-input" name="sandbox_secret" type="password" placeholder="<?php echo ($settings['paypal']['sandbox']['secret'] ?? '') !== '' ? maskSecret($settings['paypal']['sandbox']['secret']) : ''; ?>" autocomplete="new-password">
+                            <input class="settings-input" name="sandbox_secret" type="password" placeholder="<?php echo ($settings['paypal']['sandbox']['secret'] ?? '') !== '' ? 'Secret saved — leave blank to keep current secret.' : ''; ?>" autocomplete="new-password">
                             <label class="settings-label">Sandbox Business Email</label>
                             <input class="settings-input" name="sandbox_business_email" type="email" value="<?php echo pe($settings['paypal']['sandbox']['business_email'] ?? ''); ?>">
                             <label class="settings-label">Sandbox Webhook ID</label>
@@ -250,7 +250,7 @@ if (!$smtpConfigured && $warning === '') {
                             <label class="settings-label">Live Client ID</label>
                             <input class="settings-input" name="live_client_id" type="text" value="<?php echo pe($settings['paypal']['live']['client_id'] ?? ''); ?>">
                             <label class="settings-label">Live Secret</label>
-                            <input class="settings-input" name="live_secret" type="password" placeholder="<?php echo ($settings['paypal']['live']['secret'] ?? '') !== '' ? maskSecret($settings['paypal']['live']['secret']) : ''; ?>" autocomplete="new-password">
+                            <input class="settings-input" name="live_secret" type="password" placeholder="<?php echo ($settings['paypal']['live']['secret'] ?? '') !== '' ? 'Secret saved — leave blank to keep current secret.' : ''; ?>" autocomplete="new-password">
                             <label class="settings-label">Live Business Email</label>
                             <input class="settings-input" name="live_business_email" type="email" value="<?php echo pe($settings['paypal']['live']['business_email'] ?? ''); ?>">
                             <label class="settings-label">Live Webhook ID</label>

@@ -1,8 +1,8 @@
 <?php
 session_start();
 define('WDS_SYSTEM', true);
-require_once 'includes/portal-helpers.php';
-require_once 'includes/email.php';
+require_once __DIR__ . '/includes/portal-helpers.php';
+require_once __DIR__ . '/includes/email.php';
 
 portalRequireLogin();
 
@@ -18,690 +18,965 @@ if ($projectId === '') {
     exit;
 }
 
-// -- Load data
-$allRequests  = portalLoadProjectRequests();
-$allProposals = portalLoadProposals();
-$allAgreements = portalLoadProjectAgreements();
-$adminSettings = portalLoadAdminSettings();
-$paypalSettings = isset($adminSettings['paypal']) && is_array($adminSettings['paypal']) ? $adminSettings['paypal'] : [];
-$paypalEnv = (string)($paypalSettings['environment'] ?? 'sandbox');
-$paypalBusinessEmail = trim((string)($paypalSettings['business_email'] ?? ''));
-$paypalClientId = trim((string)($paypalSettings['client_id'] ?? ''));
-$paypalSecret = trim((string)($paypalSettings['secret'] ?? ''));
-$paypalInvoiceDefaults = trim((string)($paypalSettings['invoice_defaults'] ?? ''));
-$paypalApiConfigured = ($paypalClientId !== '' && $paypalSecret !== '' && $paypalBusinessEmail !== '');
+$allowedUploadExt = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'pdf', 'txt', 'md', 'zip', 'doc', 'docx', 'xls', 'xlsx', 'csv', 'json', 'log'];
+$milestoneStatuses = ['Not Started', 'In Progress', 'Ready For Review', 'Payment Due', 'Paid', 'Complete'];
 
-// -- Find the project request
-$request      = null;
-$requestIndex = null;
-foreach ($allRequests as $i => $r) {
-    if (portalGetRequestDisplayId((array)$r) === $projectId) {
-        $request      = portalNormalizeProjectRequest((array)$r);
-        $requestIndex = $i;
-        break;
-    }
+function projectNow() {
+    return date('c');
 }
 
-$notFound  = ($request === null);
-$forbidden = false;
-if (!$notFound && $isClient) {
-    if ((string)($request['client_username'] ?? '') !== $myUsername) {
-        $forbidden = true;
-    }
+function projectGenerateId($prefix, $len = 8) {
+    return strtoupper($prefix) . '-' . date('Ymd') . '-' . strtoupper(substr(bin2hex(random_bytes(8)), 0, $len));
 }
 
-// -- Find linked proposals and agreements
-$linkedProposals  = [];
-$linkedAgreements = [];
-if (!$notFound && !$forbidden) {
-    $linkedProposals = array_values(array_filter($allProposals, function ($p) use ($projectId) {
-        return (string)($p['request_id'] ?? '') === $projectId;
-    }));
-    $linkedAgreements = array_values(array_filter($allAgreements, function ($a) use ($projectId) {
-        return (string)($a['request_id'] ?? '') === $projectId;
-    }));
+function projectNormalizeMilestone(array $milestone, $index = 1) {
+    $name = trim((string)($milestone['name'] ?? 'Milestone ' . $index));
+    if ($name === '') {
+        $name = 'Milestone ' . $index;
+    }
+    $status = trim((string)($milestone['status'] ?? 'Not Started'));
+    $allowed = ['Not Started', 'In Progress', 'Ready For Review', 'Payment Due', 'Paid', 'Complete'];
+    if (!in_array($status, $allowed, true)) {
+        $status = 'Not Started';
+    }
+    return [
+        'milestone_id' => trim((string)($milestone['milestone_id'] ?? '')) !== '' ? (string)$milestone['milestone_id'] : projectGenerateId('MS', 6),
+        'name' => $name,
+        'description' => trim((string)($milestone['description'] ?? '')),
+        'deliverables' => trim((string)($milestone['deliverables'] ?? '')),
+        'amount' => trim((string)($milestone['amount'] ?? '')),
+        'payment_trigger' => trim((string)($milestone['payment_trigger'] ?? 'Upon completion and approval')),
+        'estimate' => trim((string)($milestone['estimate'] ?? '')),
+        'status' => $status,
+    ];
 }
 
-$currentProposal  = !empty($linkedProposals)  ? $linkedProposals[0]  : null;
-$currentAgreement = !empty($linkedAgreements) ? $linkedAgreements[0] : null;
-
-// -- Option lists
-$statusOptions = [
-    'new'              => 'Request Submitted',
-    'reviewing'        => 'Reviewing',
-    'contacted'        => 'Contacted',
-    'needs_info'       => 'Needs Info',
-    'proposal_drafted' => 'Proposal Drafted',
-    'proposal_sent'    => 'Proposal Sent',
-    'accepted'         => 'Active',
-    'active'           => 'Active',
-    'completed'        => 'Completed',
-    'declined'         => 'Declined',
-    'closed'           => 'Closed',
-    'cancelled'        => 'Cancelled',
-];
-
-$proposalStatuses  = ['draft' => 'Draft', 'sent' => 'Sent', 'accepted' => 'Approved', 'rejected' => 'Rejected'];
-$agreementStatuses = ['draft' => 'Draft', 'sent' => 'Sent', 'signed' => 'Signed'];
-
-// -- Local ID generators
-function _genProposalId(array $proposals) {
-    $existing = [];
-    foreach ($proposals as $p) {
-        if (!empty($p['proposal_id'])) {
-            $existing[(string)$p['proposal_id']] = true;
-        }
-    }
-    $d = date('Ymd');
-    do {
-        $id = 'PROP-' . $d . '-' . str_pad((string) random_int(1, 9999), 4, '0', STR_PAD_LEFT);
-    } while (isset($existing[$id]));
-    return $id;
-}
-
-function _genAgreementId(array $agreements) {
-    $existing = [];
-    foreach ($agreements as $a) {
-        if (!empty($a['agreement_id'])) {
-            $existing[(string)$a['agreement_id']] = true;
-        }
-
-        function _genInvoiceId(array $requests) {
-            $existing = [];
-            foreach ($requests as $row) {
-                $invoiceRef = trim((string)($row['invoice_reference'] ?? ''));
-                if ($invoiceRef !== '') {
-                    $existing[$invoiceRef] = true;
-                }
-            }
-            $d = date('Ymd');
-            do {
-                $id = 'INV-' . $d . '-' . str_pad((string) random_int(1, 9999), 4, '0', STR_PAD_LEFT);
-            } while (isset($existing[$id]));
-            return $id;
-        }
-    }
-    $d = date('Ymd');
-    do {
-        $id = 'AGR-' . $d . '-' . str_pad((string) random_int(1, 9999), 4, '0', STR_PAD_LEFT);
-    } while (isset($existing[$id]));
-    return $id;
-}
-
-// -- Reload helpers
-function _reloadData(&$allRequests, &$allProposals, &$allAgreements,
-                     &$request, &$linkedProposals, &$linkedAgreements,
-                     &$currentProposal, &$currentAgreement, $projectId) {
-    $allRequests  = portalLoadProjectRequests();
-    $allProposals = portalLoadProposals();
-    $allAgreements = portalLoadProjectAgreements();
-    foreach ($allRequests as $r) {
-        if (portalGetRequestDisplayId((array)$r) === $projectId) {
-            $request = portalNormalizeProjectRequest((array)$r);
-            break;
-        }
-    }
-    $linkedProposals = array_values(array_filter($allProposals, function ($p) use ($projectId) {
-        return (string)($p['request_id'] ?? '') === $projectId;
-    }));
-    $linkedAgreements = array_values(array_filter($allAgreements, function ($a) use ($projectId) {
-        return (string)($a['request_id'] ?? '') === $projectId;
-    }));
-    $currentProposal  = !empty($linkedProposals)  ? $linkedProposals[0]  : null;
-    $currentAgreement = !empty($linkedAgreements) ? $linkedAgreements[0] : null;
-}
-
-$notice = '';
-$error  = '';
-
-// ================================================================
-// POST HANDLER
-// ================================================================
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$notFound && !$forbidden) {
-    $action = trim((string)($_POST['action'] ?? ''));
-
-    // ---- Staff: save project meta / status / notes
-    if ($isStaff && $action === 'save_project') {
-        $newStatus = trim((string)($_POST['status'] ?? ''));
-        if (!array_key_exists($newStatus, $statusOptions)) {
-            $newStatus = (string)($request['status'] ?? 'new');
-        }
-        foreach ($allRequests as &$req) {
-            if (portalGetRequestDisplayId((array)$req) !== $projectId) continue;
-            $req['status']                = $newStatus;
-            $req['internal_notes']        = trim((string)($_POST['internal_notes']        ?? ''));
-            $req['staff_summary']         = trim((string)($_POST['staff_summary']         ?? ''));
-            $req['recommended_next_step'] = trim((string)($_POST['recommended_next_step'] ?? ''));
-            $req['estimated_cost_range']  = trim((string)($_POST['estimated_cost_range']  ?? ''));
-            $req['estimated_time_range']  = trim((string)($_POST['estimated_time_range']  ?? ''));
-            $req['updated_at']            = date('c');
-            break;
-        }
-        unset($req);
-        portalSaveProjectRequests($allRequests);
-        _reloadData($allRequests, $allProposals, $allAgreements,
-                    $request, $linkedProposals, $linkedAgreements,
-                    $currentProposal, $currentAgreement, $projectId);
-        $notice = 'Project details saved.';
+function projectNormalizeProposal(array $proposal, array $request, $projectId) {
+    $defaults = [
+        'proposal_id' => '',
+        'request_id' => $projectId,
+        'client_username' => (string)($request['client_username'] ?? ''),
+        'client_name' => (string)($request['name'] ?? ''),
+        'client_email' => (string)($request['email'] ?? ''),
+        'project_title' => (string)($request['project_type'] ?? 'Project'),
+        'proposal_summary' => '',
+        'proposed_work' => '',
+        'deliverables' => '',
+        'out_of_scope' => '',
+        'timeline_estimate' => (string)($request['timeline'] ?? ''),
+        'amount_due_to_start' => '',
+        'total_project_amount' => '',
+        'customer_responsibilities' => '',
+        'revision_terms' => '',
+        'terms_summary' => '',
+        'full_terms_link' => '/runlevel-terms.php',
+        'status' => 'draft',
+        'milestone_count' => 0,
+        'milestones' => [],
+        'change_requests' => [],
+        'customer_agreed' => false,
+        'customer_typed_name' => '',
+        'customer_acceptance_date' => '',
+        'customer_notes' => '',
+        'staff_agreed' => false,
+        'staff_typed_name' => '',
+        'staff_acceptance_date' => '',
+        'created_at' => projectNow(),
+        'updated_at' => projectNow(),
+    ];
+    $normalized = array_merge($defaults, $proposal);
+    if (trim((string)$normalized['proposal_id']) === '') {
+        $normalized['proposal_id'] = projectGenerateId('PROP', 6);
     }
 
-    // ---- Staff: save/send proposal
-    if ($isStaff && in_array($action, ['save_proposal', 'send_proposal'], true)) {
-        $proposalId = trim((string)($_POST['proposal_id'] ?? ($currentProposal['proposal_id'] ?? '')));
-        if ($proposalId === '') {
-            $proposalId = _genProposalId($allProposals);
-        }
-        $proposalStatus = ($action === 'send_proposal') ? 'sent'
-            : trim((string)($_POST['proposal_status'] ?? 'draft'));
-        if (!array_key_exists($proposalStatus, $proposalStatuses)) {
-            $proposalStatus = 'draft';
-        }
-
-        $record = [
-            'proposal_id'               => $proposalId,
-            'request_id'                => $projectId,
-            'client_username'           => (string)($request['client_username'] ?? ''),
-            'client_name'               => trim((string)($_POST['client_name']               ?? $request['name']  ?? '')),
-            'client_email'              => trim((string)($_POST['client_email']              ?? $request['email'] ?? '')),
-            'project_title'             => trim((string)($_POST['project_title']             ?? $request['project_type'] ?? '')),
-            'request_summary'           => trim((string)($_POST['request_summary']           ?? '')),
-            'proposed_work'             => trim((string)($_POST['proposed_work']             ?? '')),
-            'deliverables'              => trim((string)($_POST['deliverables']              ?? '')),
-            'estimated_cost'            => trim((string)($_POST['estimated_cost']            ?? '')),
-            'estimated_time'            => trim((string)($_POST['estimated_time']            ?? '')),
-            'payment_required_to_begin' => trim((string)($_POST['payment_required_to_begin'] ?? '')),
-            'revision_terms'            => trim((string)($_POST['revision_terms']            ?? '')),
-            'assumptions'               => trim((string)($_POST['assumptions']               ?? '')),
-            'customer_responsibilities' => trim((string)($_POST['customer_responsibilities'] ?? '')),
-            'next_steps'                => trim((string)($_POST['next_steps']                ?? '')),
-            'timeline'                  => trim((string)($_POST['timeline']                  ?? $request['timeline'] ?? '')),
-            'budget_comfort'            => trim((string)($_POST['budget_comfort']            ?? $request['budget_comfort'] ?? '')),
-            'repo_link'                 => trim((string)($_POST['repo_link']                 ?? $request['repo_link'] ?? '')),
-            'status'                    => $proposalStatus,
-            'updated_at'               => date('c'),
-        ];
-
-        $found = false;
-        foreach ($allProposals as &$p) {
-            if ((string)($p['proposal_id'] ?? '') === $proposalId) {
-                $record['created_at'] = (string)($p['created_at'] ?? date('c'));
-                $p = $record;
-                $found = true;
-                break;
-            }
-        }
-        unset($p);
-        if (!$found) {
-            $record['created_at'] = date('c');
-            $allProposals[] = $record;
-        }
-        portalSaveProposals($allProposals);
-
-        foreach ($allRequests as &$req) {
-            if (portalGetRequestDisplayId((array)$req) !== $projectId) continue;
-            $ids = isset($req['proposal_ids']) && is_array($req['proposal_ids']) ? $req['proposal_ids'] : [];
-            if (!in_array($proposalId, $ids, true)) {
-                $ids[] = $proposalId;
-            }
-            $req['proposal_ids'] = array_values($ids);
-            if ($action === 'send_proposal') {
-                $req['status'] = 'proposal_sent';
-            } elseif (in_array((string)($req['status'] ?? ''), ['new', 'reviewing'], true)) {
-                $req['status'] = 'proposal_drafted';
-            }
-            $req['updated_at'] = date('c');
-            break;
-        }
-        unset($req);
-        portalSaveProjectRequests($allRequests);
-
-        if ($action === 'send_proposal') {
-            $host = $_SERVER['HTTP_HOST'] ?? 'runlevel.systems';
-            $link = 'https://' . $host . '/project.php?id=' . urlencode($projectId);
-            send_project_proposal_email($record['client_email'], $record['client_name'], $projectId, $link, $proposalId);
-            $notice = 'Proposal saved and sent by email.';
-        } else {
-            $notice = 'Proposal draft saved.';
-        }
-
-        _reloadData($allRequests, $allProposals, $allAgreements,
-                    $request, $linkedProposals, $linkedAgreements,
-                    $currentProposal, $currentAgreement, $projectId);
+    $status = trim((string)$normalized['status']);
+    $allowedStatuses = ['draft', 'sent', 'changes_requested', 'accepted', 'awaiting_payment', 'payment_received', 'project_active', 'milestones', 'completed'];
+    if (!in_array($status, $allowedStatuses, true)) {
+        $normalized['status'] = 'draft';
     }
 
-    // ---- Staff: save/send agreement
-    if ($isStaff && in_array($action, ['save_agreement', 'send_agreement'], true)) {
-        $agreementId = trim((string)($_POST['agreement_id'] ?? ($currentAgreement['agreement_id'] ?? '')));
-        if ($agreementId === '') {
-            $agreementId = _genAgreementId($allAgreements);
-        }
-        $agreementStatus = ($action === 'send_agreement') ? 'sent'
-            : trim((string)($_POST['agreement_status'] ?? 'draft'));
-        if (!in_array($agreementStatus, ['draft', 'sent', 'signed'], true)) {
-            $agreementStatus = 'draft';
-        }
-
-        $record = [
-            'agreement_id'               => $agreementId,
-            'proposal_id'                => (string)($currentProposal['proposal_id'] ?? ''),
-            'request_id'                 => $projectId,
-            'client_username'            => (string)($request['client_username'] ?? ''),
-            'client_name'                => trim((string)($_POST['a_client_name']               ?? $request['name']  ?? '')),
-            'client_email'               => trim((string)($_POST['a_client_email']              ?? $request['email'] ?? '')),
-            'project_title'              => trim((string)($_POST['a_project_title']             ?? $currentProposal['project_title'] ?? $request['project_type'] ?? '')),
-            'effective_date'             => trim((string)($_POST['effective_date']              ?? date('Y-m-d'))),
-            'scope_of_work'              => trim((string)($_POST['scope_of_work']               ?? '')),
-            'deliverables'               => trim((string)($_POST['a_deliverables']              ?? '')),
-            'timeline'                   => trim((string)($_POST['a_timeline']                  ?? $currentProposal['estimated_time'] ?? $request['timeline'] ?? '')),
-            'payment_terms'              => trim((string)($_POST['payment_terms']               ?? $currentProposal['payment_required_to_begin'] ?? '')),
-            'revision_terms'             => trim((string)($_POST['a_revision_terms']            ?? $currentProposal['revision_terms'] ?? '')),
-            'change_request_policy'      => trim((string)($_POST['change_request_policy']       ?? 'Changes outside scope require approval and may affect timeline and cost.')),
-            'customer_responsibilities'  => trim((string)($_POST['a_customer_responsibilities'] ?? $currentProposal['customer_responsibilities'] ?? '')),
-            'third_party_licenses'       => trim((string)($_POST['third_party_licenses']        ?? 'Client supplies or approves all required third-party licenses and assets.')),
-            'source_code_ownership_terms'=> trim((string)($_POST['source_code_ownership_terms'] ?? 'Ownership terms follow approved proposal and Runlevel Systems Terms of Service.')),
-            'testing_and_acceptance'     => trim((string)($_POST['testing_and_acceptance']      ?? 'Client reviews deliverables within agreed review window and confirms acceptance in writing.')),
-            'termination'                => trim((string)($_POST['termination']                 ?? 'Either party may terminate with written notice; completed work remains billable.')),
-            'legal_notice'               => trim((string)($_POST['legal_notice']               ?? '')),
-            'signature_placeholder'      => trim((string)($_POST['signature_placeholder']       ?? 'Client Signature: ____________________   Date: __________')),
-            'status'                     => $agreementStatus,
-            'updated_at'                => date('c'),
-        ];
-
-        $found = false;
-        foreach ($allAgreements as &$a) {
-            if ((string)($a['agreement_id'] ?? '') === $agreementId) {
-                $record['created_at'] = (string)($a['created_at'] ?? date('c'));
-                $a = $record;
-                $found = true;
-                break;
-            }
-        }
-        unset($a);
-        if (!$found) {
-            $record['created_at'] = date('c');
-            $allAgreements[] = $record;
-        }
-        portalSaveProjectAgreements($allAgreements);
-
-        foreach ($allRequests as &$req) {
-            if (portalGetRequestDisplayId((array)$req) !== $projectId) continue;
-            $ids = isset($req['agreement_ids']) && is_array($req['agreement_ids']) ? $req['agreement_ids'] : [];
-            if (!in_array($agreementId, $ids, true)) {
-                $ids[] = $agreementId;
-            }
-            $req['agreement_ids'] = array_values($ids);
-            if ($action === 'send_agreement') {
-                $req['status'] = 'accepted';
-            }
-            $req['updated_at'] = date('c');
-            break;
-        }
-        unset($req);
-        portalSaveProjectRequests($allRequests);
-
-        if ($action === 'send_agreement') {
-            $host = $_SERVER['HTTP_HOST'] ?? 'runlevel.systems';
-            $link = 'https://' . $host . '/project.php?id=' . urlencode($projectId);
-            send_project_agreement_email($record['client_email'], $record['client_name'], $projectId, $link);
-            $notice = 'Project agreement saved and sent by email.';
-        } else {
-            $notice = 'Agreement draft saved.';
-        }
-
-        _reloadData($allRequests, $allProposals, $allAgreements,
-                    $request, $linkedProposals, $linkedAgreements,
-                    $currentProposal, $currentAgreement, $projectId);
-    }
-
-    // ---- Client: approve proposal
-    if ($isClient && $action === 'approve_proposal' && $currentProposal !== null) {
-        $pid = (string)($currentProposal['proposal_id'] ?? '');
-        foreach ($allProposals as &$p) {
-            if ((string)($p['proposal_id'] ?? '') === $pid) {
-                $p['status']     = 'accepted';
-                $p['updated_at'] = date('c');
-                break;
-            }
-        }
-        unset($p);
-        portalSaveProposals($allProposals);
-        $host = $_SERVER['HTTP_HOST'] ?? 'runlevel.systems';
-        $projectUrl = 'https://' . $host . '/project.php?id=' . urlencode($projectId);
-        send_proposal_accepted_customer_email(
-            (string)($currentProposal['client_email'] ?? ''),
-            (string)($currentProposal['client_name'] ?? ''),
-            $projectId,
-            $pid,
-            $projectUrl
-        );
-        send_proposal_accepted_staff_email(
-            $projectId,
-            $pid,
-            (string)($currentProposal['client_name'] ?? ''),
-            $projectUrl
-        );
-        _reloadData($allRequests, $allProposals, $allAgreements,
-                    $request, $linkedProposals, $linkedAgreements,
-                    $currentProposal, $currentAgreement, $projectId);
-        $notice = 'Proposal approved.';
-    }
-
-    // ---- Client: sign agreement
-    if ($isClient && $action === 'sign_agreement' && $currentAgreement !== null) {
-        $aid        = (string)($currentAgreement['agreement_id'] ?? '');
-        $signedName = trim((string)($_POST['signed_name'] ?? ''));
-        foreach ($allAgreements as &$a) {
-            if ((string)($a['agreement_id'] ?? '') === $aid) {
-                $a['status']     = 'signed';
-                $a['signed_at']  = date('c');
-                $a['signed_by']  = $signedName !== '' ? $signedName : $myUsername;
-                $a['updated_at'] = date('c');
-                break;
-            }
-        }
-        unset($a);
-        portalSaveProjectAgreements($allAgreements);
-
-        foreach ($allRequests as &$req) {
-            if (portalGetRequestDisplayId((array)$req) !== $projectId) continue;
-            $req['status']     = 'active';
-            $req['updated_at'] = date('c');
-            break;
-        }
-        unset($req);
-        portalSaveProjectRequests($allRequests);
-
-        _reloadData($allRequests, $allProposals, $allAgreements,
-                    $request, $linkedProposals, $linkedAgreements,
-                    $currentProposal, $currentAgreement, $projectId);
-        $notice = 'Agreement signed. Your project is now active.';
-    }
-
-    if ($isStaff && in_array($action, ['create_invoice', 'send_invoice', 'create_payment_link', 'record_payment'], true)) {
-        $invoiceAmountDue = trim((string)($_POST['invoice_amount_due'] ?? ($request['amount_due'] ?? '')));
-        $invoiceNotes = trim((string)($_POST['invoice_notes'] ?? ($request['payment_notes'] ?? '')));
-        $invoiceReference = trim((string)($request['invoice_reference'] ?? ''));
-        if ($invoiceReference === '') {
-            $invoiceReference = _genInvoiceId($allRequests);
-        }
-
-        foreach ($allRequests as &$req) {
-            if (portalGetRequestDisplayId((array)$req) !== $projectId) {
+    $milestones = [];
+    if (isset($normalized['milestones']) && is_array($normalized['milestones'])) {
+        $idx = 1;
+        foreach ($normalized['milestones'] as $milestone) {
+            if (!is_array($milestone)) {
                 continue;
             }
-            if ($action === 'create_invoice') {
-                $req['invoice_reference'] = $invoiceReference;
-                $req['invoice_status'] = 'draft';
-                $req['amount_due'] = $invoiceAmountDue;
-                $req['payment_notes'] = $invoiceNotes;
-                $req['balance_due'] = $invoiceAmountDue;
-                $req['updated_at'] = date('c');
-                $notice = 'Invoice draft created.';
-            } elseif ($action === 'send_invoice') {
-                $req['invoice_reference'] = $invoiceReference;
-                $req['invoice_status'] = 'sent';
-                $req['invoice_sent_at'] = date('c');
-                $req['amount_due'] = $invoiceAmountDue;
-                $req['payment_notes'] = $invoiceNotes;
-                if (trim((string)($req['balance_due'] ?? '')) === '') {
-                    $req['balance_due'] = $invoiceAmountDue;
-                }
-                $req['updated_at'] = date('c');
-                $notice = 'Invoice marked as sent to client.';
-            } elseif ($action === 'create_payment_link') {
-                $payLink = trim((string)($_POST['payment_link'] ?? ''));
-                if ($payLink === '' || !filter_var($payLink, FILTER_VALIDATE_URL)) {
-                    $error = 'Enter a valid payment link URL.';
-                    break;
-                }
-                $req['invoice_reference'] = $invoiceReference;
-                $req['invoice_status'] = 'payment_link_sent';
-                $req['payment_link'] = $payLink;
-                $req['amount_due'] = $invoiceAmountDue;
-                $req['payment_notes'] = $invoiceNotes;
-                if (trim((string)($req['balance_due'] ?? '')) === '') {
-                    $req['balance_due'] = $invoiceAmountDue;
-                }
-                $req['updated_at'] = date('c');
-                $notice = 'Payment link saved and ready to send.';
-            } elseif ($action === 'record_payment') {
-                $amountPaid = trim((string)($_POST['amount_paid'] ?? ''));
-                $req['invoice_reference'] = $invoiceReference;
-                $req['invoice_status'] = 'paid';
-                $req['amount_due'] = $invoiceAmountDue;
-                $req['amount_paid'] = $amountPaid;
-                $req['balance_due'] = '';
-                $req['payment_notes'] = $invoiceNotes;
-                $req['payment_received_at'] = date('c');
-                if (in_array((string)($req['status'] ?? ''), ['proposal_sent', 'accepted'], true)) {
-                    $req['status'] = 'active';
-                }
-                $req['updated_at'] = date('c');
-                $notice = 'Payment recorded.';
+            $milestones[] = projectNormalizeMilestone($milestone, $idx++);
+        }
+    }
+    $normalized['milestones'] = $milestones;
+    $normalized['milestone_count'] = min(5, max(0, (int)($normalized['milestone_count'] ?? count($milestones))));
+
+    $changes = [];
+    if (isset($normalized['change_requests']) && is_array($normalized['change_requests'])) {
+        foreach ($normalized['change_requests'] as $row) {
+            if (!is_array($row)) {
+                continue;
             }
+            $changes[] = [
+                'change_id' => trim((string)($row['change_id'] ?? '')) !== '' ? (string)$row['change_id'] : projectGenerateId('CHG', 6),
+                'request_text' => trim((string)($row['request_text'] ?? '')),
+                'budget_concern' => trim((string)($row['budget_concern'] ?? '')),
+                'timeline_concern' => trim((string)($row['timeline_concern'] ?? '')),
+                'deliverable_change' => trim((string)($row['deliverable_change'] ?? '')),
+                'other_note' => trim((string)($row['other_note'] ?? '')),
+                'requested_by' => trim((string)($row['requested_by'] ?? '')),
+                'requested_by_role' => trim((string)($row['requested_by_role'] ?? 'client')),
+                'requested_at' => trim((string)($row['requested_at'] ?? projectNow())),
+            ];
+        }
+    }
+    $normalized['change_requests'] = $changes;
+
+    $normalized['customer_agreed'] = !empty($normalized['customer_agreed']);
+    $normalized['staff_agreed'] = !empty($normalized['staff_agreed']);
+
+    return $normalized;
+}
+
+function projectNormalizeRequest(array $request) {
+    $request = portalNormalizeProjectRequest($request);
+
+    $request['project_files'] = isset($request['project_files']) && is_array($request['project_files']) ? array_values($request['project_files']) : [];
+    $request['messages'] = isset($request['messages']) && is_array($request['messages']) ? array_values($request['messages']) : [];
+    $request['timeline_events'] = isset($request['timeline_events']) && is_array($request['timeline_events']) ? array_values($request['timeline_events']) : [];
+    $request['payment_records'] = isset($request['payment_records']) && is_array($request['payment_records']) ? array_values($request['payment_records']) : [];
+    $request['project_active_at'] = (string)($request['project_active_at'] ?? '');
+    $request['project_completed_at'] = (string)($request['project_completed_at'] ?? '');
+    $request['request_summary'] = (string)($request['request_summary'] ?? ($request['description'] ?? ''));
+    $request['problem_to_solve'] = (string)($request['problem_to_solve'] ?? '');
+    $request['existing_work'] = (string)($request['existing_work'] ?? ($request['existing_assets'] ?? ''));
+    $request['next_action_override'] = (string)($request['next_action_override'] ?? '');
+
+    return $request;
+}
+
+function projectAppendTimeline(array &$request, $event, $label, $visibility = 'customer_visible') {
+    $request['timeline_events'][] = [
+        'event_id' => projectGenerateId('EVT', 7),
+        'event' => (string)$event,
+        'label' => (string)$label,
+        'timestamp' => projectNow(),
+        'visibility' => $visibility,
+    ];
+}
+
+function projectProposalStatusLabel($status) {
+    $map = [
+        'draft' => 'Proposal Draft',
+        'sent' => 'Proposal Sent',
+        'changes_requested' => 'Changes Requested',
+        'accepted' => 'Proposal Accepted',
+        'awaiting_payment' => 'Awaiting Payment',
+        'payment_received' => 'Payment Received',
+        'project_active' => 'Active',
+        'milestones' => 'Milestone Review',
+        'completed' => 'Completed',
+    ];
+    return $map[$status] ?? ucfirst(str_replace('_', ' ', (string)$status));
+}
+
+function projectStatusBadge(array $request, ?array $proposal) {
+    $status = (string)($proposal['status'] ?? 'draft');
+    if ((string)($request['status'] ?? '') === 'completed') {
+        $status = 'completed';
+    }
+    $map = [
+        'draft' => ['Proposal Draft', '#60a5fa', 'rgba(96,165,250,.14)'],
+        'sent' => ['Proposal Sent', '#fbbf24', 'rgba(251,191,36,.14)'],
+        'changes_requested' => ['Changes Requested', '#fb923c', 'rgba(251,146,60,.14)'],
+        'accepted' => ['Proposal Accepted', '#34d399', 'rgba(52,211,153,.14)'],
+        'awaiting_payment' => ['Awaiting Payment', '#f97316', 'rgba(249,115,22,.14)'],
+        'payment_received' => ['Payment Received', '#10b981', 'rgba(16,185,129,.14)'],
+        'project_active' => ['Active', '#22c55e', 'rgba(34,197,94,.14)'],
+        'milestones' => ['Milestone Review', '#a78bfa', 'rgba(167,139,250,.14)'],
+        'completed' => ['Completed', '#4ade80', 'rgba(74,222,128,.14)'],
+    ];
+    $row = $map[$status] ?? ['Request Submitted', '#36f3ff', 'rgba(54,243,255,.14)'];
+    return '<span class="status-pill" style="border-color:' . $row[1] . ';color:' . $row[1] . ';background:' . $row[2] . ';">' . htmlspecialchars($row[0], ENT_QUOTES, 'UTF-8') . '</span>';
+}
+
+function projectCurrentWorkflowStep(array $request, ?array $proposal) {
+    $requestSubmitted = true;
+    $proposalSent = $proposal !== null && in_array((string)($proposal['status'] ?? 'draft'), ['sent', 'changes_requested', 'accepted', 'awaiting_payment', 'payment_received', 'project_active', 'milestones', 'completed'], true);
+    $proposalAccepted = $proposal !== null && !empty($proposal['customer_agreed']) && !empty($proposal['staff_agreed']);
+    $payments = isset($request['payment_records']) && is_array($request['payment_records']) ? $request['payment_records'] : [];
+    $hasStartPayment = false;
+    foreach ($payments as $payment) {
+        if (!is_array($payment)) {
+            continue;
+        }
+        if ((string)($payment['payment_for'] ?? '') === 'start_payment' && in_array((string)($payment['status'] ?? ''), ['recorded', 'paid'], true)) {
+            $hasStartPayment = true;
             break;
         }
-        unset($req);
-
-        if ($error === '') {
-            portalSaveProjectRequests($allRequests);
-            _reloadData($allRequests, $allProposals, $allAgreements,
-                        $request, $linkedProposals, $linkedAgreements,
-                        $currentProposal, $currentAgreement, $projectId);
-        }
     }
 
-    if ($isClient && $action === 'send_client_message') {
-        $message = trim((string)($_POST['client_message'] ?? ''));
-        if ($message === '') {
-            $error = 'Enter a message before sending.';
-        } else {
-            foreach ($allRequests as &$req) {
-                if (portalGetRequestDisplayId((array)$req) !== $projectId) {
-                    continue;
-                }
-                $req['client_notes'] = $message;
-                $req['client_notes_updated_at'] = date('c');
-                $req['updated_at'] = date('c');
+    $projectActive = (string)($request['status'] ?? '') === 'active' || trim((string)($request['project_active_at'] ?? '')) !== '';
+    $projectCompleted = (string)($request['status'] ?? '') === 'completed' || trim((string)($request['project_completed_at'] ?? '')) !== '';
+
+    $milestonesExist = $proposal !== null && !empty($proposal['milestones']);
+    $allMilestonesComplete = false;
+    if ($milestonesExist) {
+        $allMilestonesComplete = true;
+        foreach ($proposal['milestones'] as $milestone) {
+            if ((string)($milestone['status'] ?? '') !== 'Complete') {
+                $allMilestonesComplete = false;
                 break;
             }
-            unset($req);
-            portalSaveProjectRequests($allRequests);
-            _reloadData($allRequests, $allProposals, $allAgreements,
-                        $request, $linkedProposals, $linkedAgreements,
-                        $currentProposal, $currentAgreement, $projectId);
-            $notice = 'Message sent to staff.';
         }
     }
 
-    if ($isStaff && $action === 'send_staff_message') {
-        $message = trim((string)($_POST['staff_message'] ?? ''));
-        if ($message === '') {
-            $error = 'Enter a reply before sending.';
+    $steps = [
+        ['label' => 'Project Request', 'done' => $requestSubmitted],
+        ['label' => 'Proposal Sent', 'done' => $proposalSent],
+        ['label' => 'Proposal Accepted', 'done' => $proposalAccepted],
+        ['label' => 'Payment Received', 'done' => $hasStartPayment],
+        ['label' => 'Project Active', 'done' => $projectActive],
+        ['label' => 'Milestones', 'done' => $milestonesExist ? $allMilestonesComplete : false, 'partial' => $milestonesExist && !$allMilestonesComplete],
+        ['label' => 'Project Completed', 'done' => $projectCompleted],
+    ];
+
+    $currentIndex = 0;
+    foreach ($steps as $idx => $step) {
+        if (!$step['done']) {
+            $currentIndex = $idx;
+            break;
+        }
+        $currentIndex = $idx;
+    }
+
+    if ($projectCompleted) {
+        $currentIndex = count($steps) - 1;
+    }
+
+    foreach ($steps as $idx => &$step) {
+        if ($step['done']) {
+            $step['state'] = 'completed';
+        } elseif ($idx === $currentIndex) {
+            $step['state'] = 'current';
         } else {
-            foreach ($allRequests as &$req) {
-                if (portalGetRequestDisplayId((array)$req) !== $projectId) {
-                    continue;
-                }
-                $req['staff_response'] = $message;
-                $req['staff_response_updated_at'] = date('c');
-                $req['updated_at'] = date('c');
-                break;
-            }
-            unset($req);
-            portalSaveProjectRequests($allRequests);
-            _reloadData($allRequests, $allProposals, $allAgreements,
-                        $request, $linkedProposals, $linkedAgreements,
-                        $currentProposal, $currentAgreement, $projectId);
-            $notice = 'Reply sent to client.';
+            $step['state'] = 'future';
+        }
+        if (!isset($step['partial'])) {
+            $step['partial'] = false;
         }
     }
-}
-
-// ================================================================
-// HELPERS
-// ================================================================
-
-function statusBadge($status) {
-    static $map = [
-        'new'              => ['Request Submitted', '#36f3ff',  'rgba(54,243,255,0.10)'],
-        'reviewing'        => ['Reviewing',          '#a78bfa',  'rgba(167,139,250,0.10)'],
-        'contacted'        => ['Contacted',           '#60a5fa',  'rgba(96,165,250,0.10)'],
-        'needs_info'       => ['Needs Info',          '#fb923c',  'rgba(251,146,60,0.10)'],
-        'proposal_drafted' => ['Proposal Pending',    '#fbbf24',  'rgba(251,191,36,0.10)'],
-        'proposal_sent'    => ['Awaiting Approval',   '#ffc600',  'rgba(255,198,0,0.14)'],
-        'accepted'         => ['Active',              '#22c55e',  'rgba(34,197,94,0.10)'],
-        'active'           => ['Active',              '#22c55e',  'rgba(34,197,94,0.10)'],
-        'completed'        => ['Completed',           '#4ade80',  'rgba(74,222,128,0.10)'],
-        'declined'         => ['Declined',            '#f87171',  'rgba(248,113,113,0.10)'],
-        'closed'           => ['Closed',              '#6b7280',  'rgba(107,114,128,0.10)'],
-        'cancelled'        => ['Cancelled',           '#ef4444',  'rgba(239,68,68,0.10)'],
-    ];
-    $s = $map[$status] ?? [ucfirst(str_replace('_', ' ', $status)), '#a8bedc', 'rgba(168,190,220,0.10)'];
-    return '<span style="display:inline-block;border:1px solid ' . $s[1] . ';background:' . $s[2]
-        . ';color:' . $s[1] . ';border-radius:5px;padding:3px 10px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;">'
-        . pe($s[0]) . '</span>';
-}
-
-function proposalStatusBadge($status) {
-    static $map = [
-        'draft'    => ['Draft',    '#7a9ac0', 'rgba(122,154,192,0.10)'],
-        'sent'     => ['Sent',     '#fbbf24', 'rgba(251,191,36,0.10)'],
-        'accepted' => ['Approved', '#22c55e', 'rgba(34,197,94,0.10)'],
-        'rejected' => ['Rejected', '#f87171', 'rgba(248,113,113,0.10)'],
-    ];
-    $s = $map[$status] ?? [ucfirst($status), '#a8bedc', 'rgba(168,190,220,0.10)'];
-    return '<span style="display:inline-block;border:1px solid ' . $s[1] . ';background:' . $s[2]
-        . ';color:' . $s[1] . ';border-radius:5px;padding:2px 9px;font-size:.7rem;font-weight:700;text-transform:uppercase;">'
-        . pe($s[0]) . '</span>';
-}
-
-function agreementStatusBadge($status) {
-    static $map = [
-        'draft'  => ['Draft',  '#7a9ac0', 'rgba(122,154,192,0.10)'],
-        'sent'   => ['Sent',   '#fbbf24', 'rgba(251,191,36,0.10)'],
-        'signed' => ['Signed', '#22c55e', 'rgba(34,197,94,0.10)'],
-    ];
-    $s = $map[$status] ?? [ucfirst($status), '#a8bedc', 'rgba(168,190,220,0.10)'];
-    return '<span style="display:inline-block;border:1px solid ' . $s[1] . ';background:' . $s[2]
-        . ';color:' . $s[1] . ';border-radius:5px;padding:2px 9px;font-size:.7rem;font-weight:700;text-transform:uppercase;">'
-        . pe($s[0]) . '</span>';
-}
-
-// -- Build communication timeline from existing data
-function buildTimeline(array $request, ?array $proposal, ?array $agreement) {
-    $events = [];
-
-    if (!empty($request['created_at'])) {
-        $events[] = ['ts' => strtotime((string)$request['created_at']), 'icon' => '📥', 'text' => 'Project request submitted', 'color' => '#36f3ff'];
-    }
-
-    if ($proposal !== null) {
-        $pCreated = strtotime((string)($proposal['created_at'] ?? ''));
-        if ($pCreated) {
-            $events[] = ['ts' => $pCreated, 'icon' => '📄', 'text' => 'Proposal created', 'color' => '#a78bfa'];
-        }
-        $pStatus = (string)($proposal['status'] ?? '');
-        $pUpdated = strtotime((string)($proposal['updated_at'] ?? ''));
-        if ($pStatus === 'sent' && $pUpdated) {
-            $events[] = ['ts' => $pUpdated, 'icon' => '📤', 'text' => 'Proposal sent to client', 'color' => '#fbbf24'];
-        }
-        if ($pStatus === 'accepted' && $pUpdated) {
-            $events[] = ['ts' => $pUpdated, 'icon' => '✅', 'text' => 'Proposal approved by client', 'color' => '#22c55e'];
-        }
-        if ($pStatus === 'rejected' && $pUpdated) {
-            $events[] = ['ts' => $pUpdated, 'icon' => '❌', 'text' => 'Proposal rejected', 'color' => '#f87171'];
-        }
-    }
-
-    if ($agreement !== null) {
-        $aCreated = strtotime((string)($agreement['created_at'] ?? ''));
-        if ($aCreated) {
-            $events[] = ['ts' => $aCreated, 'icon' => '📑', 'text' => 'Project agreement created', 'color' => '#60a5fa'];
-        }
-        $aStatus  = (string)($agreement['status'] ?? '');
-        $aUpdated = strtotime((string)($agreement['updated_at'] ?? ''));
-        if ($aStatus === 'sent' && $aUpdated) {
-            $events[] = ['ts' => $aUpdated, 'icon' => '📤', 'text' => 'Agreement sent to client', 'color' => '#fbbf24'];
-        }
-        if ($aStatus === 'signed') {
-            $signedAt = strtotime((string)($agreement['signed_at'] ?? ($agreement['updated_at'] ?? '')));
-            if ($signedAt) {
-                $signedBy = (string)($agreement['signed_by'] ?? '');
-                $events[] = ['ts' => $signedAt, 'icon' => '✍️', 'text' => 'Agreement signed' . ($signedBy ? ' by ' . $signedBy : ''), 'color' => '#22c55e'];
-            }
-        }
-
-        $invoiceRef = trim((string)($request['invoice_reference'] ?? ''));
-        if ($invoiceRef !== '') {
-            $invoiceTs = strtotime((string)($request['invoice_sent_at'] ?? $request['updated_at'] ?? ''));
-            if ($invoiceTs) {
-                $events[] = ['ts' => $invoiceTs, 'icon' => '🧾', 'text' => 'Invoice prepared (' . $invoiceRef . ')', 'color' => '#60a5fa'];
-            }
-        }
-        $invoiceStatus = trim((string)($request['invoice_status'] ?? ''));
-        if (in_array($invoiceStatus, ['sent', 'payment_link_sent'], true)) {
-            $sentTs = strtotime((string)($request['invoice_sent_at'] ?? $request['updated_at'] ?? ''));
-            if ($sentTs) {
-                $events[] = ['ts' => $sentTs, 'icon' => '📨', 'text' => $invoiceStatus === 'payment_link_sent' ? 'Payment link sent to client' : 'Invoice sent to client', 'color' => '#fbbf24'];
-            }
-        }
-        if ($invoiceStatus === 'paid') {
-            $paidTs = strtotime((string)($request['payment_received_at'] ?? $request['updated_at'] ?? ''));
-            if ($paidTs) {
-                $events[] = ['ts' => $paidTs, 'icon' => '💸', 'text' => 'Payment received', 'color' => '#22c55e'];
-            }
-        }
-        $clientMsgTs = strtotime((string)($request['client_notes_updated_at'] ?? ''));
-        if ($clientMsgTs && trim((string)($request['client_notes'] ?? '')) !== '') {
-            $events[] = ['ts' => $clientMsgTs, 'icon' => '💬', 'text' => 'Client message sent', 'color' => '#36f3ff'];
-        }
-        $staffMsgTs = strtotime((string)($request['staff_response_updated_at'] ?? ''));
-        if ($staffMsgTs && trim((string)($request['staff_response'] ?? '')) !== '') {
-            $events[] = ['ts' => $staffMsgTs, 'icon' => '🗨️', 'text' => 'Staff reply sent', 'color' => '#a78bfa'];
-        }
-    }
-
-    $reqStatus = (string)($request['status'] ?? '');
-    if (in_array($reqStatus, ['active', 'accepted'], true)) {
-        $ts = strtotime((string)($request['updated_at'] ?? $request['created_at'] ?? ''));
-        if ($ts) {
-            $events[] = ['ts' => $ts, 'icon' => '🚀', 'text' => 'Project marked active', 'color' => '#22c55e'];
-        }
-    }
-    if (in_array($reqStatus, ['completed', 'closed'], true)) {
-        $ts = strtotime((string)($request['updated_at'] ?? $request['created_at'] ?? ''));
-        if ($ts) {
-            $events[] = ['ts' => $ts, 'icon' => '🏁', 'text' => 'Project completed', 'color' => '#4ade80'];
-        }
-    }
-
-    usort($events, function ($a, $b) { return $a['ts'] - $b['ts']; });
-    return $events;
-}
-
-// -- Build status tracker steps
-function buildTrackerSteps(array $request, ?array $proposal, ?array $agreement) {
-    $reqStatus  = (string)($request['status'] ?? 'new');
-    $propStatus = $proposal  ? (string)($proposal['status']  ?? '') : '';
-    $invoiceRef = trim((string)($request['invoice_reference'] ?? ''));
-    $invoiceStatus = trim((string)($request['invoice_status'] ?? ''));
-
-    $steps = [];
-
-    $steps[] = ['label' => 'Project Request',    'done' => true];
-    $steps[] = ['label' => 'Proposal Approved',  'done' => $propStatus === 'accepted'];
-    $steps[] = ['label' => 'Create Invoice',     'done' => $invoiceRef !== ''];
-    $steps[] = ['label' => 'Send Payment Link',  'done' => in_array($invoiceStatus, ['sent', 'payment_link_sent', 'paid'], true)];
-    $steps[] = ['label' => 'Payment Received',   'done' => $invoiceStatus === 'paid'];
-    $steps[] = ['label' => 'Project Active',     'done' => in_array($reqStatus, ['active', 'accepted', 'completed', 'closed'], true)];
-    $steps[] = ['label' => 'Project Completed',  'done' => in_array($reqStatus, ['completed', 'closed'], true)];
+    unset($step);
 
     return $steps;
 }
 
+function projectNextAction(array $request, ?array $proposal, $isStaff) {
+    if ($proposal === null) {
+        return $isStaff ? 'Staff needs to create proposal.' : 'Runlevel Systems is preparing your proposal.';
+    }
+
+    $status = (string)($proposal['status'] ?? 'draft');
+    if ($status === 'draft') {
+        return $isStaff ? 'Staff needs to send proposal to customer.' : 'Proposal draft is being finalized.';
+    }
+    if (in_array($status, ['sent', 'changes_requested'], true)) {
+        return $isStaff ? 'Customer needs to review proposal.' : 'Please review the proposal and accept or request changes.';
+    }
+
+    $bothAccepted = !empty($proposal['customer_agreed']) && !empty($proposal['staff_agreed']);
+    if (!$bothAccepted) {
+        if ($isStaff) {
+            return empty($proposal['staff_agreed']) ? 'Staff needs to approve proposal signoff.' : 'Waiting for customer signoff.';
+        }
+        return empty($proposal['customer_agreed']) ? 'Please complete proposal signoff.' : 'Waiting for staff approval.';
+    }
+
+    $hasStartPayment = false;
+    foreach (($request['payment_records'] ?? []) as $payment) {
+        if (!is_array($payment)) {
+            continue;
+        }
+        if ((string)($payment['payment_for'] ?? '') === 'start_payment' && in_array((string)($payment['status'] ?? ''), ['recorded', 'paid'], true)) {
+            $hasStartPayment = true;
+            break;
+        }
+    }
+    if (!$hasStartPayment) {
+        return $isStaff ? 'Waiting for starting payment.' : 'Please complete starting payment.';
+    }
+
+    if ((string)($request['status'] ?? '') !== 'active') {
+        return $isStaff ? 'Set project active when work starts.' : 'Payment received. Project starts when staff marks active.';
+    }
+
+    if ((string)($request['status'] ?? '') === 'completed') {
+        return 'Project is completed.';
+    }
+
+    return 'Project is active.';
+}
+
+function projectOpenSections(array $request, ?array $proposal) {
+    $status = (string)($proposal['status'] ?? 'draft');
+    $requestStatus = (string)($request['status'] ?? 'new');
+
+    return [
+        'request' => true,
+        'proposal' => in_array($status, ['draft', 'sent', 'changes_requested', 'accepted'], true),
+        'payments' => in_array($status, ['accepted', 'awaiting_payment', 'payment_received'], true) || in_array($requestStatus, ['proposal_sent', 'accepted'], true),
+        'messages' => true,
+        'timeline' => in_array($requestStatus, ['active', 'completed'], true),
+        'files' => false,
+    ];
+}
+
+function projectCanViewFile(array $file, $isStaff) {
+    $visibility = (string)($file['visibility'] ?? 'customer_visible');
+    if ($visibility === 'staff_only' && !$isStaff) {
+        return false;
+    }
+    return true;
+}
+
+function projectUploadBaseDir() {
+    return __DIR__ . '/data/uploads';
+}
+
+function projectEnsureUploadProtection() {
+    $base = projectUploadBaseDir();
+    if (!is_dir($base)) {
+        @mkdir($base, 0755, true);
+    }
+    $htaccess = $base . '/.htaccess';
+    if (!is_file($htaccess)) {
+        $rules = "Options -Indexes\nRemoveHandler .php .phtml .php3 .php4 .php5 .php7 .phar\nphp_flag engine off\n";
+        @file_put_contents($htaccess, $rules);
+    }
+}
+
+function projectStoreUpload($projectId, $fileBag, array $allowedExtensions, &$error = '') {
+    if (!is_array($fileBag) || !isset($fileBag['name'], $fileBag['tmp_name'], $fileBag['error'])) {
+        $error = 'No file upload found.';
+        return null;
+    }
+
+    if ((int)$fileBag['error'] !== UPLOAD_ERR_OK) {
+        $error = 'Upload failed with error code ' . (int)$fileBag['error'] . '.';
+        return null;
+    }
+
+    if (!is_uploaded_file((string)$fileBag['tmp_name'])) {
+        $error = 'Invalid uploaded file.';
+        return null;
+    }
+
+    $original = trim((string)$fileBag['name']);
+    $ext = strtolower(pathinfo($original, PATHINFO_EXTENSION));
+    if ($ext === '' || !in_array($ext, $allowedExtensions, true)) {
+        $error = 'Unsupported file type.';
+        return null;
+    }
+
+    $size = (int)($fileBag['size'] ?? 0);
+    if ($size <= 0 || $size > (15 * 1024 * 1024)) {
+        $error = 'File size must be between 1 byte and 15 MB.';
+        return null;
+    }
+
+    projectEnsureUploadProtection();
+    $safeProject = preg_replace('/[^A-Za-z0-9_-]/', '', (string)$projectId);
+    if ($safeProject === '') {
+        $safeProject = 'project';
+    }
+    $projectDir = projectUploadBaseDir() . '/' . $safeProject;
+    if (!is_dir($projectDir) && !@mkdir($projectDir, 0755, true)) {
+        $error = 'Unable to create upload directory.';
+        return null;
+    }
+
+    $storedName = date('His') . '-' . bin2hex(random_bytes(6)) . '.' . $ext;
+    $targetPath = $projectDir . '/' . $storedName;
+
+    if (!move_uploaded_file((string)$fileBag['tmp_name'], $targetPath)) {
+        $error = 'Unable to move uploaded file.';
+        return null;
+    }
+    @chmod($targetPath, 0644);
+
+    $cleanOriginal = preg_replace('/[^A-Za-z0-9._ -]/', '_', basename($original));
+    if ($cleanOriginal === '') {
+        $cleanOriginal = 'file.' . $ext;
+    }
+
+    return [
+        'file_id' => projectGenerateId('FILE', 8),
+        'project_id' => $projectId,
+        'original_filename' => $cleanOriginal,
+        'stored_filename' => $storedName,
+        'relative_path' => 'data/uploads/' . $safeProject . '/' . $storedName,
+        'file_size' => $size,
+        'mime_type' => (string)($fileBag['type'] ?? ''),
+        'upload_time' => projectNow(),
+    ];
+}
+
+function projectPersistProposal(array &$allProposals, array $proposal) {
+    $proposalId = (string)($proposal['proposal_id'] ?? '');
+    $found = false;
+    foreach ($allProposals as $idx => $existing) {
+        if ((string)($existing['proposal_id'] ?? '') !== $proposalId) {
+            continue;
+        }
+        $allProposals[$idx] = $proposal;
+        $found = true;
+        break;
+    }
+    if (!$found) {
+        $allProposals[] = $proposal;
+    }
+}
+
+$allRequests = portalLoadProjectRequests();
+$allProposals = portalLoadProposals();
+$allAgreements = portalLoadProjectAgreements();
+$adminSettings = portalLoadAdminSettings();
+
+$request = null;
+$requestIndex = null;
+foreach ($allRequests as $idx => $row) {
+    if (portalGetRequestDisplayId((array)$row) === $projectId) {
+        $request = projectNormalizeRequest((array)$row);
+        $requestIndex = $idx;
+        break;
+    }
+}
+
+$notFound = ($request === null);
+$forbidden = false;
+if (!$notFound && $isClient && (string)($request['client_username'] ?? '') !== $myUsername) {
+    $forbidden = true;
+}
+
+$currentProposal = null;
+if (!$notFound && !$forbidden) {
+    foreach ($allProposals as $proposalRow) {
+        if ((string)($proposalRow['request_id'] ?? '') === $projectId) {
+            $proposalCandidate = projectNormalizeProposal((array)$proposalRow, $request, $projectId);
+            if ($currentProposal === null) {
+                $currentProposal = $proposalCandidate;
+                continue;
+            }
+            $currTs = strtotime((string)($currentProposal['updated_at'] ?? '')) ?: 0;
+            $candTs = strtotime((string)($proposalCandidate['updated_at'] ?? '')) ?: 0;
+            if ($candTs >= $currTs) {
+                $currentProposal = $proposalCandidate;
+            }
+        }
+    }
+}
+
+$notice = '';
+$error = '';
+
+if (!$notFound && !$forbidden && isset($_GET['download']) && trim((string)$_GET['download']) !== '') {
+    $downloadId = trim((string)$_GET['download']);
+    $targetFile = null;
+    foreach (($request['project_files'] ?? []) as $file) {
+        if ((string)($file['file_id'] ?? '') === $downloadId) {
+            $targetFile = $file;
+            break;
+        }
+    }
+
+    if ($targetFile === null || !projectCanViewFile((array)$targetFile, $isStaff)) {
+        http_response_code(403);
+        echo 'File access denied.';
+        exit;
+    }
+
+    $path = __DIR__ . '/' . ltrim((string)($targetFile['relative_path'] ?? ''), '/');
+    if (!is_file($path)) {
+        http_response_code(404);
+        echo 'File not found.';
+        exit;
+    }
+
+    header('Content-Type: application/octet-stream');
+    header('Content-Disposition: attachment; filename="' . basename((string)($targetFile['original_filename'] ?? 'download.bin')) . '"');
+    header('Content-Length: ' . filesize($path));
+    readfile($path);
+    exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$notFound && !$forbidden) {
+    $action = trim((string)($_POST['action'] ?? ''));
+
+    if ($action === 'save_request_next_action' && $isStaff) {
+        $request['next_action_override'] = trim((string)($_POST['next_action_override'] ?? ''));
+        $request['updated_at'] = projectNow();
+        projectAppendTimeline($request, 'staff-updated-request', 'Staff updated request details', 'staff_only');
+        $notice = 'Request details updated.';
+    }
+
+    if ($isStaff && in_array($action, ['save_proposal', 'send_proposal'], true)) {
+        $proposal = $currentProposal !== null ? $currentProposal : [];
+        $proposal = projectNormalizeProposal($proposal, $request, $projectId);
+
+        $proposal['client_name'] = trim((string)($_POST['client_name'] ?? ($request['name'] ?? '')));
+        $proposal['client_email'] = trim((string)($_POST['client_email'] ?? ($request['email'] ?? '')));
+        $proposal['project_title'] = trim((string)($_POST['project_title'] ?? ($request['project_type'] ?? 'Project')));
+        $proposal['proposal_summary'] = trim((string)($_POST['proposal_summary'] ?? ''));
+        $proposal['proposed_work'] = trim((string)($_POST['proposed_work'] ?? ''));
+        $proposal['deliverables'] = trim((string)($_POST['deliverables'] ?? ''));
+        $proposal['out_of_scope'] = trim((string)($_POST['out_of_scope'] ?? ''));
+        $proposal['timeline_estimate'] = trim((string)($_POST['timeline_estimate'] ?? ($request['timeline'] ?? '')));
+        $proposal['amount_due_to_start'] = trim((string)($_POST['amount_due_to_start'] ?? ''));
+        $proposal['total_project_amount'] = trim((string)($_POST['total_project_amount'] ?? ''));
+        $proposal['customer_responsibilities'] = trim((string)($_POST['customer_responsibilities'] ?? ''));
+        $proposal['revision_terms'] = trim((string)($_POST['revision_terms'] ?? ''));
+        $proposal['terms_summary'] = trim((string)($_POST['terms_summary'] ?? ''));
+        $proposal['full_terms_link'] = trim((string)($_POST['full_terms_link'] ?? '/runlevel-terms.php'));
+        $proposal['updated_at'] = projectNow();
+
+        $milestoneCount = max(0, min(5, (int)($_POST['milestone_count'] ?? 0)));
+        $proposal['milestone_count'] = $milestoneCount;
+        $proposalMilestones = [];
+        for ($i = 0; $i < $milestoneCount; $i++) {
+            $proposalMilestones[] = projectNormalizeMilestone([
+                'milestone_id' => trim((string)($_POST['milestone_id'][$i] ?? '')),
+                'name' => trim((string)($_POST['milestone_name'][$i] ?? '')),
+                'description' => trim((string)($_POST['milestone_description'][$i] ?? '')),
+                'deliverables' => trim((string)($_POST['milestone_deliverables'][$i] ?? '')),
+                'amount' => trim((string)($_POST['milestone_amount'][$i] ?? '')),
+                'payment_trigger' => trim((string)($_POST['milestone_trigger'][$i] ?? 'Upon completion and approval')),
+                'estimate' => trim((string)($_POST['milestone_estimate'][$i] ?? '')),
+                'status' => trim((string)($_POST['milestone_status'][$i] ?? 'Not Started')),
+            ], $i + 1);
+        }
+        $proposal['milestones'] = $proposalMilestones;
+
+        if ($action === 'send_proposal') {
+            $proposal['status'] = 'sent';
+            $request['status'] = 'proposal_sent';
+            projectAppendTimeline($request, 'proposal-sent', 'Proposal sent to customer');
+            $host = $_SERVER['HTTP_HOST'] ?? 'runlevel.systems';
+            $projectUrl = 'https://' . $host . '/project.php?id=' . urlencode($projectId);
+            send_project_proposal_email($proposal['client_email'], $proposal['client_name'], $projectId, $projectUrl, $proposal['proposal_id']);
+            $notice = 'Proposal sent to customer.';
+        } else {
+            $proposal['status'] = 'draft';
+            $request['status'] = 'proposal_drafted';
+            projectAppendTimeline($request, 'proposal-updated', 'Proposal updated by staff');
+            $notice = 'Proposal saved.';
+        }
+
+        projectPersistProposal($allProposals, $proposal);
+        $currentProposal = $proposal;
+
+        $proposalIds = isset($request['proposal_ids']) && is_array($request['proposal_ids']) ? $request['proposal_ids'] : [];
+        if (!in_array($proposal['proposal_id'], $proposalIds, true)) {
+            $proposalIds[] = $proposal['proposal_id'];
+        }
+        $request['proposal_ids'] = array_values($proposalIds);
+        $request['updated_at'] = projectNow();
+    }
+
+    if ($isClient && $action === 'request_changes') {
+        if ($currentProposal === null) {
+            $error = 'No proposal available yet.';
+        } else {
+            $changeText = trim((string)($_POST['change_request_text'] ?? ''));
+            if ($changeText === '') {
+                $error = 'Please tell us what changes you would like.';
+            } else {
+                $proposal = projectNormalizeProposal($currentProposal, $request, $projectId);
+                $proposal['status'] = 'changes_requested';
+                $proposal['updated_at'] = projectNow();
+                $proposal['change_requests'][] = [
+                    'change_id' => projectGenerateId('CHG', 6),
+                    'request_text' => $changeText,
+                    'budget_concern' => trim((string)($_POST['change_budget_concern'] ?? '')),
+                    'timeline_concern' => trim((string)($_POST['change_timeline_concern'] ?? '')),
+                    'deliverable_change' => trim((string)($_POST['change_deliverable_change'] ?? '')),
+                    'other_note' => trim((string)($_POST['change_other_note'] ?? '')),
+                    'requested_by' => $myUsername,
+                    'requested_by_role' => 'client',
+                    'requested_at' => projectNow(),
+                ];
+                projectPersistProposal($allProposals, $proposal);
+                $currentProposal = $proposal;
+                $request['status'] = 'needs_info';
+                $request['updated_at'] = projectNow();
+                projectAppendTimeline($request, 'customer-requested-changes', 'Customer requested proposal changes');
+
+                $host = $_SERVER['HTTP_HOST'] ?? 'runlevel.systems';
+                $projectUrl = 'https://' . $host . '/project.php?id=' . urlencode($projectId);
+                send_proposal_change_requested_email($proposal['proposal_id'], $projectId, (string)($request['name'] ?? $myUsername), $changeText, $projectUrl);
+                $notice = 'Change request sent to staff.';
+            }
+        }
+    }
+
+    if ($isClient && $action === 'accept_proposal') {
+        if ($currentProposal === null) {
+            $error = 'No proposal available yet.';
+        } else {
+            $agreeChecked = !empty($_POST['customer_agreement']);
+            $typedName = trim((string)($_POST['customer_typed_name'] ?? ''));
+            if (!$agreeChecked || $typedName === '') {
+                $error = 'Please check the agreement box and type your name.';
+            } else {
+                $proposal = projectNormalizeProposal($currentProposal, $request, $projectId);
+                $proposal['customer_agreed'] = true;
+                $proposal['customer_typed_name'] = $typedName;
+                $proposal['customer_acceptance_date'] = projectNow();
+                $proposal['customer_notes'] = trim((string)($_POST['customer_notes'] ?? ''));
+                $proposal['updated_at'] = projectNow();
+
+                if (!empty($proposal['staff_agreed'])) {
+                    $proposal['status'] = 'accepted';
+                    $request['status'] = 'accepted';
+                } else {
+                    $proposal['status'] = 'sent';
+                    $request['status'] = 'proposal_sent';
+                }
+
+                projectPersistProposal($allProposals, $proposal);
+                $currentProposal = $proposal;
+                $request['updated_at'] = projectNow();
+                projectAppendTimeline($request, 'customer-accepted-proposal', 'Customer accepted proposal');
+
+                $host = $_SERVER['HTTP_HOST'] ?? 'runlevel.systems';
+                $projectUrl = 'https://' . $host . '/project.php?id=' . urlencode($projectId);
+                send_proposal_accepted_customer_email($proposal['client_email'], $proposal['client_name'], $projectId, $proposal['proposal_id'], $projectUrl);
+                send_proposal_accepted_staff_email($projectId, $proposal['proposal_id'], (string)($request['name'] ?? ''), $projectUrl);
+
+                $notice = !empty($proposal['staff_agreed']) ? 'Proposal accepted and signoff complete. Awaiting payment.' : 'Proposal accepted. Waiting for staff approval.';
+            }
+        }
+    }
+
+    if ($isStaff && $action === 'staff_accept_proposal') {
+        if ($currentProposal === null) {
+            $error = 'No proposal available yet.';
+        } else {
+            $agreeChecked = !empty($_POST['staff_agreement']);
+            $typedName = trim((string)($_POST['staff_typed_name'] ?? ''));
+            if (!$agreeChecked || $typedName === '') {
+                $error = 'Please check the agreement box and type your name.';
+            } else {
+                $proposal = projectNormalizeProposal($currentProposal, $request, $projectId);
+                $proposal['staff_agreed'] = true;
+                $proposal['staff_typed_name'] = $typedName;
+                $proposal['staff_acceptance_date'] = projectNow();
+                $proposal['updated_at'] = projectNow();
+
+                if (!empty($proposal['customer_agreed'])) {
+                    $proposal['status'] = 'accepted';
+                    $request['status'] = 'accepted';
+                    projectAppendTimeline($request, 'proposal-accepted', 'Proposal accepted by both parties');
+                    $notice = 'Staff acceptance saved. Proposal is now accepted and awaiting payment.';
+                } else {
+                    $proposal['status'] = 'sent';
+                    $request['status'] = 'proposal_sent';
+                    projectAppendTimeline($request, 'staff-accepted-proposal', 'Staff approved proposal signoff');
+                    $notice = 'Staff acceptance saved.';
+                }
+
+                projectPersistProposal($allProposals, $proposal);
+                $currentProposal = $proposal;
+                $request['updated_at'] = projectNow();
+            }
+        }
+    }
+
+    if ($isStaff && in_array($action, ['create_invoice', 'send_payment_link', 'record_payment', 'mark_project_active', 'mark_project_completed', 'set_waiting_customer'], true)) {
+        if ($action === 'create_invoice') {
+            $request['invoice_reference'] = trim((string)($_POST['invoice_reference'] ?? ''));
+            if ($request['invoice_reference'] === '') {
+                $request['invoice_reference'] = projectGenerateId('INV', 6);
+            }
+            $request['invoice_status'] = 'draft';
+            $request['amount_due'] = trim((string)($_POST['amount_due'] ?? ($currentProposal['amount_due_to_start'] ?? '')));
+            $request['payment_notes'] = trim((string)($_POST['payment_notes'] ?? ''));
+            $request['updated_at'] = projectNow();
+            projectAppendTimeline($request, 'invoice-created', 'Invoice created');
+            $notice = 'Invoice created.';
+        }
+
+        if ($action === 'send_payment_link') {
+            $paymentLink = trim((string)($_POST['payment_link'] ?? ''));
+            if ($paymentLink === '' || !filter_var($paymentLink, FILTER_VALIDATE_URL)) {
+                $error = 'Enter a valid payment link.';
+            } else {
+                $request['payment_link'] = $paymentLink;
+                $request['invoice_status'] = 'payment_link_sent';
+                $request['invoice_sent_at'] = projectNow();
+                $request['updated_at'] = projectNow();
+                projectAppendTimeline($request, 'payment-link-sent', 'Payment link sent');
+                $notice = 'Payment link saved.';
+            }
+        }
+
+        if ($action === 'record_payment' && $error === '') {
+            $paymentAmount = trim((string)($_POST['payment_amount'] ?? ''));
+            $paymentFor = trim((string)($_POST['payment_for'] ?? 'start_payment'));
+            $validPaymentFor = ['start_payment', 'milestone_payment', 'final_payment'];
+            if (!in_array($paymentFor, $validPaymentFor, true)) {
+                $paymentFor = 'start_payment';
+            }
+
+            $paymentRecord = [
+                'payment_id' => projectGenerateId('PAY', 7),
+                'payment_for' => $paymentFor,
+                'milestone_index' => max(0, (int)($_POST['payment_milestone_index'] ?? 0)),
+                'amount' => $paymentAmount,
+                'status' => 'recorded',
+                'paypal_transaction_id' => trim((string)($_POST['paypal_transaction_id'] ?? '')),
+                'paypal_invoice_id' => trim((string)($_POST['paypal_invoice_id'] ?? '')),
+                'recorded_at' => projectNow(),
+                'recorded_by' => $myUsername,
+                'note' => trim((string)($_POST['payment_note'] ?? '')),
+            ];
+
+            $request['payment_records'][] = $paymentRecord;
+            $request['amount_paid'] = $paymentAmount;
+            $request['payment_received_at'] = projectNow();
+            $request['invoice_status'] = 'paid';
+            $request['updated_at'] = projectNow();
+
+            if ($paymentFor === 'start_payment') {
+                if ($currentProposal !== null) {
+                    $currentProposal['status'] = 'payment_received';
+                    $currentProposal['updated_at'] = projectNow();
+                    projectPersistProposal($allProposals, $currentProposal);
+                }
+                projectAppendTimeline($request, 'payment-received', 'Starting payment received');
+            } elseif ($paymentFor === 'milestone_payment') {
+                projectAppendTimeline($request, 'milestone-paid', 'Milestone payment recorded');
+            } else {
+                projectAppendTimeline($request, 'final-payment', 'Final payment recorded');
+            }
+
+            $host = $_SERVER['HTTP_HOST'] ?? 'runlevel.systems';
+            $projectUrl = 'https://' . $host . '/project.php?id=' . urlencode($projectId);
+            $proposalId = (string)($currentProposal['proposal_id'] ?? '');
+            send_payment_recorded_customer_email((string)($request['email'] ?? ''), (string)($request['name'] ?? ''), $projectId, $proposalId, $paymentRecord['payment_id'], $paymentAmount, 'recorded', $projectUrl);
+            send_payment_recorded_staff_email($projectId, $proposalId, $paymentRecord['payment_id'], $paymentAmount, 'recorded', $projectUrl);
+
+            $notice = 'Payment recorded.';
+        }
+
+        if ($action === 'mark_project_active' && $error === '') {
+            $hasStartPayment = false;
+            foreach (($request['payment_records'] ?? []) as $payment) {
+                if (!is_array($payment)) {
+                    continue;
+                }
+                if ((string)($payment['payment_for'] ?? '') === 'start_payment') {
+                    $hasStartPayment = true;
+                    break;
+                }
+            }
+            if (!$hasStartPayment) {
+                $error = 'Record the starting payment before marking project active.';
+            } else {
+                $request['status'] = 'active';
+                $request['project_active_at'] = projectNow();
+                $request['updated_at'] = projectNow();
+                if ($currentProposal !== null) {
+                    $currentProposal['status'] = !empty($currentProposal['milestones']) ? 'milestones' : 'project_active';
+                    $currentProposal['updated_at'] = projectNow();
+                    projectPersistProposal($allProposals, $currentProposal);
+                }
+                projectAppendTimeline($request, 'project-active', 'Project marked active');
+                $notice = 'Project marked active.';
+            }
+        }
+
+        if ($action === 'mark_project_completed' && $error === '') {
+            $request['status'] = 'completed';
+            $request['project_completed_at'] = projectNow();
+            $request['updated_at'] = projectNow();
+            if ($currentProposal !== null) {
+                $currentProposal['status'] = 'completed';
+                $currentProposal['updated_at'] = projectNow();
+                projectPersistProposal($allProposals, $currentProposal);
+            }
+            projectAppendTimeline($request, 'project-completed', 'Project marked complete');
+            $notice = 'Project marked completed.';
+        }
+
+        if ($action === 'set_waiting_customer' && $error === '') {
+            $request['status'] = 'needs_info';
+            $request['updated_at'] = projectNow();
+            projectAppendTimeline($request, 'waiting-customer', 'Waiting on customer response');
+            $notice = 'Project status set to waiting on customer.';
+        }
+    }
+
+    if ($isStaff && $action === 'update_milestone_status' && $currentProposal !== null) {
+        $idx = max(0, (int)($_POST['milestone_index'] ?? 0));
+        $newStatus = trim((string)($_POST['milestone_status'] ?? 'Not Started'));
+        if (!in_array($newStatus, $milestoneStatuses, true)) {
+            $newStatus = 'Not Started';
+        }
+
+        $proposal = projectNormalizeProposal($currentProposal, $request, $projectId);
+        if (isset($proposal['milestones'][$idx])) {
+            $proposal['milestones'][$idx]['status'] = $newStatus;
+            $proposal['updated_at'] = projectNow();
+            if ($newStatus === 'Ready For Review') {
+                $request['status'] = 'needs_info';
+                projectAppendTimeline($request, 'milestone-ready-for-review', ($proposal['milestones'][$idx]['name'] ?? 'Milestone') . ' ready for review');
+            }
+            if ($newStatus === 'Paid') {
+                projectAppendTimeline($request, 'milestone-paid', ($proposal['milestones'][$idx]['name'] ?? 'Milestone') . ' marked paid');
+            }
+            if ($newStatus === 'Complete') {
+                projectAppendTimeline($request, 'milestone-complete', ($proposal['milestones'][$idx]['name'] ?? 'Milestone') . ' completed');
+            }
+            projectPersistProposal($allProposals, $proposal);
+            $currentProposal = $proposal;
+            $request['updated_at'] = projectNow();
+            $notice = 'Milestone updated.';
+        }
+    }
+
+    if ($action === 'upload_file') {
+        if (isset($_FILES['project_file'])) {
+            $uploadError = '';
+            $stored = projectStoreUpload($projectId, $_FILES['project_file'], $allowedUploadExt, $uploadError);
+            if ($stored === null) {
+                $error = $uploadError;
+            } else {
+                $visibility = $isStaff ? trim((string)($_POST['file_visibility'] ?? 'customer_visible')) : 'customer_visible';
+                if (!in_array($visibility, ['staff_only', 'customer_visible'], true)) {
+                    $visibility = 'customer_visible';
+                }
+                $stored['uploaded_by'] = $myUsername;
+                $stored['uploaded_by_role'] = $role;
+                $stored['description'] = trim((string)($_POST['file_description'] ?? ''));
+                $stored['visibility'] = $visibility;
+                $request['project_files'][] = $stored;
+                $request['updated_at'] = projectNow();
+                projectAppendTimeline($request, 'files-uploaded', 'File uploaded: ' . $stored['original_filename'], $visibility === 'staff_only' ? 'staff_only' : 'customer_visible');
+                $notice = 'File uploaded.';
+            }
+        }
+    }
+
+    if (in_array($action, ['send_message', 'send_message_email'], true)) {
+        $messageText = trim((string)($_POST['message_text'] ?? ''));
+        if ($messageText === '') {
+            $error = 'Enter a message before sending.';
+        } else {
+            $visibility = $isStaff ? trim((string)($_POST['message_visibility'] ?? 'customer_visible')) : 'customer_visible';
+            if (!in_array($visibility, ['staff_only', 'customer_visible'], true)) {
+                $visibility = 'customer_visible';
+            }
+
+            $attachmentIds = [];
+            if (isset($_FILES['message_attachment']) && (int)($_FILES['message_attachment']['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_NO_FILE) {
+                $uploadError = '';
+                $stored = projectStoreUpload($projectId, $_FILES['message_attachment'], $allowedUploadExt, $uploadError);
+                if ($stored === null) {
+                    $error = $uploadError;
+                } else {
+                    $stored['uploaded_by'] = $myUsername;
+                    $stored['uploaded_by_role'] = $role;
+                    $stored['description'] = 'Message attachment';
+                    $stored['visibility'] = $visibility;
+                    $request['project_files'][] = $stored;
+                    $attachmentIds[] = $stored['file_id'];
+                }
+            }
+
+            if ($error === '') {
+                $sendEmailToo = $isStaff && $action === 'send_message_email';
+                $request['messages'][] = [
+                    'message_id' => projectGenerateId('MSG', 8),
+                    'sender' => $myUsername,
+                    'role' => $role,
+                    'sent_at' => projectNow(),
+                    'text' => $messageText,
+                    'visibility' => $visibility,
+                    'attachments' => $attachmentIds,
+                    'email_sent' => $sendEmailToo,
+                ];
+                $request['updated_at'] = projectNow();
+                projectAppendTimeline($request, 'message-sent', ($isStaff ? 'Staff' : 'Customer') . ' message sent', $visibility === 'staff_only' ? 'staff_only' : 'customer_visible');
+
+                if ($sendEmailToo) {
+                    $recipient = trim((string)($request['email'] ?? ''));
+                    if ($recipient !== '' && filter_var($recipient, FILTER_VALIDATE_EMAIL)) {
+                        $subject = 'Project Message - ' . $projectId;
+                        $body = "Project: {$projectId}\nSender: {$myUsername} ({$role})\n\n{$messageText}";
+                        send_email($recipient, $subject, nl2br(htmlspecialchars($body, ENT_QUOTES, 'UTF-8')), ['context' => 'project-message']);
+                    }
+                }
+                $notice = 'Message sent.';
+            }
+        }
+    }
+
+    if ($error === '') {
+        $allRequests[$requestIndex] = $request;
+        portalSaveProjectRequests($allRequests);
+        portalSaveProposals($allProposals);
+
+        $allRequests = portalLoadProjectRequests();
+        foreach ($allRequests as $idx => $row) {
+            if (portalGetRequestDisplayId((array)$row) === $projectId) {
+                $request = projectNormalizeRequest((array)$row);
+                $requestIndex = $idx;
+                break;
+            }
+        }
+        $allProposals = portalLoadProposals();
+        $currentProposal = null;
+        foreach ($allProposals as $row) {
+            if ((string)($row['request_id'] ?? '') !== $projectId) {
+                continue;
+            }
+            $candidate = projectNormalizeProposal((array)$row, $request, $projectId);
+            if ($currentProposal === null) {
+                $currentProposal = $candidate;
+                continue;
+            }
+            $currentTs = strtotime((string)($currentProposal['updated_at'] ?? '')) ?: 0;
+            $candidateTs = strtotime((string)($candidate['updated_at'] ?? '')) ?: 0;
+            if ($candidateTs >= $currentTs) {
+                $currentProposal = $candidate;
+            }
+        }
+    }
+}
+
 $current_page = 'dashboard';
 $header_class = 'inner-header';
+
+$trackerSteps = (!$notFound && !$forbidden) ? projectCurrentWorkflowStep($request, $currentProposal) : [];
+$nextAction = (!$notFound && !$forbidden) ? ($request['next_action_override'] !== '' ? $request['next_action_override'] : projectNextAction($request, $currentProposal, $isStaff)) : '';
+$openSections = (!$notFound && !$forbidden) ? projectOpenSections($request, $currentProposal) : [];
+
+$timeline = [];
+if (!$notFound && !$forbidden) {
+    if (!empty($request['created_at'])) {
+        $timeline[] = ['timestamp' => (string)$request['created_at'], 'label' => 'Project request submitted', 'visibility' => 'customer_visible'];
+    }
+    foreach (($request['timeline_events'] ?? []) as $event) {
+        if (!is_array($event)) {
+            continue;
+        }
+        $timeline[] = [
+            'timestamp' => (string)($event['timestamp'] ?? projectNow()),
+            'label' => (string)($event['label'] ?? (string)($event['event'] ?? 'Project event')),
+            'visibility' => (string)($event['visibility'] ?? 'customer_visible'),
+        ];
+    }
+    usort($timeline, function ($a, $b) {
+        return (strtotime((string)$b['timestamp']) ?: 0) <=> (strtotime((string)$a['timestamp']) ?: 0);
+    });
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -713,599 +988,558 @@ $header_class = 'inner-header';
     <title>Project <?php echo pe($projectId); ?> | Runlevel Systems</title>
     <link href="assets/css/coreloop.css" rel="stylesheet">
     <style>
-        .pw-wrap{padding:26px 0 70px;}
-        .pw-card{background:#0c1729;border:1px solid rgba(54,243,255,.18);border-radius:10px;padding:18px;margin-bottom:14px;}
-        .pw-section-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
-        .pw-section-title{color:#36f3ff;font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin:0;}
+        .pw-wrap{padding:24px 0 70px;}
+        .pw-card{background:#0c1729;border:1px solid rgba(54,243,255,.18);border-radius:10px;padding:16px;margin-bottom:12px;}
+        .pw-header{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;align-items:flex-start;}
+        .pw-id{font-family:monospace;color:#ffc600;font-size:1rem;font-weight:700;}
+        .pw-name{color:#eaf3ff;font-size:1.15rem;font-weight:700;margin:4px 0;}
+        .status-pill{display:inline-block;border:1px solid rgba(54,243,255,.4);padding:4px 10px;border-radius:999px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
         .pw-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
-        @media(max-width:720px){.pw-grid{grid-template-columns:1fr;}}
-        .pw-lbl{color:#5a7a9e;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;display:block;margin-bottom:3px;}
-        .pw-val{color:#eaf3ff;font-size:.86rem;word-break:break-word;}
-        .pw-mono{font-family:monospace;color:#ffc600;font-weight:700;}
-        .pw-input,.pw-textarea,.pw-select{background:#09111d;color:#eaf3ff;border:1px solid rgba(54,243,255,.22);border-radius:6px;padding:8px 10px;width:100%;font-size:.85rem;box-sizing:border-box;}
+        @media(max-width:760px){.pw-grid{grid-template-columns:1fr;}}
+        .pw-lbl{color:#7a9ac0;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;display:block;margin-bottom:3px;}
+        .pw-help{color:#5a7a9e;font-size:.75rem;line-height:1.4;margin-top:2px;}
+        .pw-val{color:#eaf3ff;font-size:.86rem;white-space:pre-wrap;word-break:break-word;}
+        .pw-input,.pw-textarea,.pw-select{width:100%;background:#09111d;border:1px solid rgba(54,243,255,.22);border-radius:6px;color:#eaf3ff;padding:8px 10px;font-size:.84rem;}
         .pw-textarea{min-height:90px;resize:vertical;}
-        label{color:#a8bedc;font-size:.77rem;display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;}
-        .btn{display:inline-block;border-radius:5px;padding:7px 11px;font-size:.8rem;border:none;font-weight:700;text-decoration:none;cursor:pointer;line-height:1.3;}
+        .btn{display:inline-block;border:none;border-radius:6px;padding:8px 12px;font-size:.8rem;font-weight:700;cursor:pointer;text-decoration:none;}
         .btn-blue{background:#0a84ff;color:#fff;}
         .btn-gold{background:#ffc600;color:#08111f;}
-        .btn-teal{background:rgba(54,243,255,.1);border:1px solid rgba(54,243,255,.3);color:#36f3ff;}
-        .btn-green{background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.4);color:#4ade80;}
+        .btn-teal{background:rgba(54,243,255,.11);border:1px solid rgba(54,243,255,.3);color:#36f3ff;}
+        .btn-green{background:rgba(34,197,94,.14);border:1px solid rgba(34,197,94,.35);color:#6ee7b7;}
         .btn-red{background:rgba(239,68,68,.14);border:1px solid rgba(239,68,68,.35);color:#fca5a5;}
-        .notice{background:rgba(34,197,94,.14);border:1px solid rgba(34,197,94,.35);color:#86efac;border-radius:6px;padding:10px 14px;margin-bottom:14px;font-size:.84rem;}
-        .error-box{background:rgba(239,68,68,.14);border:1px solid rgba(239,68,68,.35);color:#fecaca;border-radius:6px;padding:10px 14px;margin-bottom:14px;font-size:.84rem;}
-        .pw-header-bar{background:#07111f;border:1px solid rgba(54,243,255,.15);border-radius:10px;padding:16px 18px;margin-bottom:14px;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:10px;}
-        .pw-project-id{font-family:monospace;color:#ffc600;font-size:1rem;font-weight:700;}
-        .pw-project-name{color:#eaf3ff;font-size:1.15rem;font-weight:700;margin:4px 0;}
-        .pw-client-name{color:#7a9ac0;font-size:.84rem;}
-        .tracker{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;}
-        .tracker-step{display:flex;align-items:center;gap:5px;font-size:.74rem;color:#5a7a9e;white-space:nowrap;}
-        .tracker-step.done{color:#eaf3ff;}
-        .tracker-step .dot{width:10px;height:10px;border-radius:50%;background:#1a2a3a;border:1px solid #2a3a4a;flex-shrink:0;}
-        .tracker-step.done .dot{background:#22c55e;border-color:#22c55e;}
-        .pw-timeline{list-style:none;padding:0;margin:0;}
-        .pw-timeline li{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid rgba(54,243,255,.08);}
-        .pw-timeline li:last-child{border-bottom:none;}
-        .pw-timeline .tl-icon{font-size:.9rem;flex-shrink:0;padding-top:1px;}
-        .pw-timeline .tl-text{color:#a8bedc;font-size:.82rem;}
-        .pw-timeline .tl-date{color:#5a7a9e;font-size:.72rem;margin-top:2px;}
-        .pw-files-info{color:#5a7a9e;font-size:.82rem;font-style:italic;}
-        .int-notes-box{background:rgba(255,198,0,.04);border:1px solid rgba(255,198,0,.18);border-radius:8px;padding:12px;}
-        details.pw-section{margin-bottom:14px;}
-        details.pw-section summary{cursor:pointer;list-style:none;background:#0c1729;border:1px solid rgba(54,243,255,.18);border-radius:10px;padding:14px 18px;color:#36f3ff;font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;display:flex;align-items:center;justify-content:space-between;}
+        .notice{background:rgba(34,197,94,.14);border:1px solid rgba(34,197,94,.35);color:#86efac;border-radius:8px;padding:10px 12px;margin-bottom:12px;font-size:.83rem;}
+        .error{background:rgba(239,68,68,.14);border:1px solid rgba(239,68,68,.35);color:#fecaca;border-radius:8px;padding:10px 12px;margin-bottom:12px;font-size:.83rem;}
+        .tracker{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;}
+        .tracker-step{border:1px solid rgba(54,243,255,.18);border-radius:8px;padding:8px 6px;text-align:center;font-size:.72rem;color:#7a9ac0;background:#09111d;line-height:1.3;}
+        .tracker-step.completed{border-color:rgba(34,197,94,.45);background:rgba(34,197,94,.12);color:#86efac;}
+        .tracker-step.current{border-color:rgba(255,198,0,.45);background:rgba(255,198,0,.14);color:#ffc600;}
+        .tracker-step.future{opacity:.85;}
+        .tracker-step.partial{border-style:dashed;}
+        @media(max-width:980px){.tracker{grid-template-columns:repeat(2,minmax(0,1fr));}}
+        .next-action{background:#09111d;border:1px solid rgba(54,243,255,.18);border-radius:8px;padding:10px;}
+        details.pw-section{margin-bottom:12px;}
+        details.pw-section summary{cursor:pointer;list-style:none;background:#0c1729;border:1px solid rgba(54,243,255,.18);border-radius:10px;padding:13px 16px;color:#36f3ff;font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;display:flex;justify-content:space-between;align-items:center;}
         details.pw-section summary::-webkit-details-marker{display:none;}
-        details.pw-section summary::after{content:"▼";font-size:.65rem;color:#5a7a9e;}
-        details.pw-section[open] summary{border-radius:10px 10px 0 0;border-bottom-color:transparent;}
-        details.pw-section[open] summary::after{content:"▲";}
-        .pw-section-body{background:#0c1729;border:1px solid rgba(54,243,255,.18);border-top:none;border-radius:0 0 10px 10px;padding:16px 18px;}
+        details.pw-section summary::after{content:'▼';font-size:.65rem;color:#5a7a9e;}
+        details.pw-section[open] summary{border-bottom-color:transparent;border-radius:10px 10px 0 0;}
+        details.pw-section[open] summary::after{content:'▲';}
+        .pw-body{background:#0c1729;border:1px solid rgba(54,243,255,.18);border-top:none;border-radius:0 0 10px 10px;padding:14px 16px;}
+        .mini-card{background:#09111d;border:1px solid rgba(54,243,255,.14);border-radius:8px;padding:10px;}
+        .thread-item{background:#09111d;border:1px solid rgba(54,243,255,.14);border-radius:8px;padding:10px;margin-bottom:8px;}
+        .thread-meta{display:flex;gap:10px;flex-wrap:wrap;color:#7a9ac0;font-size:.73rem;margin-bottom:6px;}
+        .timeline{list-style:none;margin:0;padding:0;}
+        .timeline li{padding:8px 0;border-bottom:1px solid rgba(54,243,255,.1);}
+        .timeline li:last-child{border-bottom:none;}
         @media print{
             .no-print,#header,#footer-widget,footer,nav{display:none !important;}
-            body{background:#fff;color:#000;}
-            .pw-card,.pw-header-bar,.pw-section-body{border:1px solid #ccc;background:#fff;}
-            .pw-val,.pw-mono,.pw-project-name{color:#111 !important;}
+            body{background:#fff;color:#111;}
+            .pw-card,.pw-body,.mini-card,.thread-item{background:#fff;border:1px solid #ccc;color:#111;}
+            .pw-val,.pw-name,.pw-id{color:#111 !important;}
+            .staff-only{display:none !important;}
         }
     </style>
 </head>
 <body>
-<?php include 'includes/header.php'; ?>
-<?php include 'includes/navigation.php'; ?>
-
+<?php include __DIR__ . '/includes/header.php'; ?>
+<?php include __DIR__ . '/includes/navigation.php'; ?>
 <section class="pw-wrap">
 <div class="container">
-
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:6px;" class="no-print">
+    <div class="no-print" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
         <a href="/dashboard.php" style="color:#36f3ff;font-size:.84rem;">← Dashboard</a>
-        <?php if ($isStaff): ?>
-            <a href="/staff/estimate-requests.php" style="color:#5a7a9e;font-size:.8rem;">All Project Requests</a>
-        <?php endif; ?>
+        <?php if ($isStaff): ?><a href="/staff/estimate-requests.php" style="color:#7a9ac0;font-size:.78rem;">All Requests</a><?php endif; ?>
     </div>
 
 <?php if ($notFound): ?>
-    <div class="pw-card"><p style="color:#fecaca;">Project not found.</p></div>
+    <div class="pw-card"><p class="pw-val">Project not found.</p></div>
 <?php elseif ($forbidden): ?>
-    <div class="pw-card"><p style="color:#fecaca;">You do not have permission to view this project.</p></div>
-<?php else:
-    $st           = (string)($request['status'] ?? 'new');
-    $projectName  = (string)($currentProposal['project_title'] ?? $request['project_type'] ?? 'Project');
-    $clientName   = (string)($request['name']   ?? $currentProposal['client_name']  ?? '');
-    $clientEmail  = (string)($request['email']  ?? $currentProposal['client_email'] ?? '');
-    $trackerSteps = buildTrackerSteps($request, $currentProposal, $currentAgreement);
-    $timeline     = buildTimeline($request, $currentProposal, $currentAgreement);
-?>
+    <div class="pw-card"><p class="pw-val">You do not have permission to view this project.</p></div>
+<?php else: ?>
 
     <?php if ($notice !== ''): ?><div class="notice no-print"><?php echo pe($notice); ?></div><?php endif; ?>
-    <?php if ($error !== ''): ?><div class="error-box no-print"><?php echo pe($error); ?></div><?php endif; ?>
+    <?php if ($error !== ''): ?><div class="error no-print"><?php echo pe($error); ?></div><?php endif; ?>
 
-    <!-- PROJECT HEADER -->
-    <div class="pw-header-bar">
+    <div class="pw-card pw-header">
         <div>
-            <div class="pw-project-id"><?php echo pe($projectId); ?></div>
-            <div class="pw-project-name"><?php echo pe($projectName); ?></div>
-            <div class="pw-client-name"><?php echo pe($clientName); ?><?php if ($clientEmail): ?> &middot; <?php echo pe($clientEmail); ?><?php endif; ?></div>
+            <div class="pw-id"><?php echo pe($projectId); ?></div>
+            <div class="pw-name"><?php echo pe((string)($currentProposal['project_title'] ?? $request['project_type'] ?? 'Project')); ?></div>
+            <div class="pw-val" style="white-space:normal;"><?php echo pe((string)($request['name'] ?? '')); ?><?php if (!empty($request['email'])): ?> · <?php echo pe((string)$request['email']); ?><?php endif; ?></div>
         </div>
         <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
-            <?php echo statusBadge($st); ?>
-            <button type="button" class="btn btn-teal no-print" onclick="window.print()" style="font-size:.75rem;padding:5px 9px;">Print / PDF</button>
+            <?php echo projectStatusBadge($request, $currentProposal); ?>
+            <button class="btn btn-teal no-print" type="button" onclick="window.print();">Print / PDF</button>
         </div>
     </div>
 
-    <!-- SECTION 9 — STATUS TRACKER (shown near top for at-a-glance) -->
-    <div class="pw-card" style="padding:14px 18px;">
-        <div class="pw-section-title" style="margin-bottom:10px;">Project Progress</div>
+    <div class="pw-card">
+        <div class="pw-lbl" style="margin-bottom:8px;">Project Progress</div>
         <div class="tracker">
             <?php foreach ($trackerSteps as $step): ?>
-                <div class="tracker-step <?php echo $step['done'] ? 'done' : ''; ?>">
-                    <div class="dot"></div>
+                <div class="tracker-step <?php echo pe($step['state']); ?><?php echo !empty($step['partial']) ? ' partial' : ''; ?>">
                     <?php echo pe($step['label']); ?>
                 </div>
-                <?php if ($step !== end($trackerSteps)): ?><span style="color:#2a3a4a;font-size:.7rem;">›</span><?php endif; ?>
             <?php endforeach; ?>
         </div>
     </div>
 
-    <!-- SECTION 1 — CLIENT INFORMATION -->
-    <details class="pw-section" open>
-        <summary>Client Information</summary>
-        <div class="pw-section-body">
+    <div class="pw-card">
+        <div class="pw-lbl">Next Action</div>
+        <div class="next-action pw-val"><?php echo pe($nextAction); ?></div>
+        <?php if ($isStaff): ?>
+            <form method="post" class="no-print" style="margin-top:8px;display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;">
+                <input type="hidden" name="action" value="save_request_next_action">
+                <div style="flex:1;min-width:220px;">
+                    <label class="pw-lbl">Override Next Action</label>
+                    <input class="pw-input" type="text" name="next_action_override" value="<?php echo pe((string)($request['next_action_override'] ?? '')); ?>" placeholder="Leave blank to use automatic next action">
+                </div>
+                <button class="btn btn-blue" type="submit">Save</button>
+            </form>
+        <?php endif; ?>
+    </div>
+
+    <details class="pw-section" <?php echo !empty($openSections['request']) ? 'open' : ''; ?>>
+        <summary>Project Request</summary>
+        <div class="pw-body">
             <div class="pw-grid">
-                <div><span class="pw-lbl">Client Name</span><div class="pw-val"><?php echo pe($clientName ?: '—'); ?></div></div>
-                <div><span class="pw-lbl">Email</span><div class="pw-val"><?php echo pe($clientEmail ?: '—'); ?></div></div>
-                <div><span class="pw-lbl">Phone</span><div class="pw-val"><?php echo pe($request['phone'] ?? '—'); ?></div></div>
-                <div><span class="pw-lbl">Discord</span><div class="pw-val"><?php echo pe($request['discord_username'] ?? '—'); ?></div></div>
-                <div><span class="pw-lbl">Company / Website</span><div class="pw-val"><?php echo pe($request['company'] ?? $request['website'] ?? '—'); ?></div></div>
-                <div><span class="pw-lbl">Preferred Contact</span><div class="pw-val"><?php echo pe($request['contact_method'] ?? '—'); ?></div></div>
-                <?php if ($request['repo_link'] ?? ''): ?>
-                <div><span class="pw-lbl">Repository / Project Link</span><div class="pw-val"><a href="<?php echo pe($request['repo_link']); ?>" target="_blank" rel="noopener noreferrer" style="color:#36f3ff;"><?php echo pe($request['repo_link']); ?></a></div></div>
-                <?php endif; ?>
-                <div><span class="pw-lbl">Username</span><div class="pw-val pw-mono"><?php echo pe($request['client_username'] ?? '—'); ?></div></div>
+                <div class="mini-card"><span class="pw-lbl">Project Type</span><div class="pw-val"><?php echo pe((string)($request['project_type'] ?? '—')); ?></div><div class="pw-help">What kind of work is this? Example: website, mobile app, business software, training simulator, game/server script, quick fix, project rescue.</div></div>
+                <div class="mini-card"><span class="pw-lbl">Budget Comfort</span><div class="pw-val"><?php echo pe((string)($request['budget_comfort'] ?? '—')); ?></div><div class="pw-help">This helps us recommend a realistic solution. It is not a final price.</div></div>
+                <div class="mini-card"><span class="pw-lbl">Timeline</span><div class="pw-val"><?php echo pe((string)($request['timeline'] ?? '—')); ?></div><div class="pw-help">When would you ideally like this completed?</div></div>
+                <div class="mini-card"><span class="pw-lbl">Repository / File Link</span><div class="pw-val"><?php echo !empty($request['repo_link']) ? '<a href="' . pe((string)$request['repo_link']) . '" target="_blank" rel="noopener noreferrer" style="color:#36f3ff;">' . pe((string)$request['repo_link']) . '</a>' : '—'; ?></div><div class="pw-help">Optional link to code, website, repo, screenshots, files, or other information.</div></div>
             </div>
+            <div class="pw-grid" style="margin-top:10px;">
+                <div class="mini-card"><span class="pw-lbl">Request Summary</span><div class="pw-val"><?php echo pe((string)($request['request_summary'] ?? '—')); ?></div><div class="pw-help">Customer’s plain-English description of what they need.</div></div>
+                <div class="mini-card"><span class="pw-lbl">Problem To Solve</span><div class="pw-val"><?php echo pe((string)($request['problem_to_solve'] ?? '—')); ?></div><div class="pw-help">What problem should this work fix or improve?</div></div>
+            </div>
+            <div class="mini-card" style="margin-top:10px;"><span class="pw-lbl">Existing Work</span><div class="pw-val"><?php echo pe((string)($request['existing_work'] ?? '—')); ?></div><div class="pw-help">Does this project already exist, or are we starting from scratch?</div></div>
         </div>
     </details>
 
-    <!-- SECTION 2 — PROJECT DETAILS -->
-    <details class="pw-section" open>
-        <summary>Project Details</summary>
-        <div class="pw-section-body">
-            <div class="pw-grid">
-                <div><span class="pw-lbl">Request ID</span><div class="pw-val pw-mono"><?php echo pe($projectId); ?></div></div>
-                <div><span class="pw-lbl">Project Type</span><div class="pw-val"><?php echo pe($request['project_type'] ?? '—'); ?></div></div>
-                <div><span class="pw-lbl">Project Stage</span><div class="pw-val"><?php echo pe($request['project_stage'] ?? '—'); ?></div></div>
-                <div><span class="pw-lbl">Project Size</span><div class="pw-val"><?php echo pe($request['project_size'] ?? '—'); ?></div></div>
-                <div><span class="pw-lbl">Timeline</span><div class="pw-val"><?php echo pe($request['timeline'] ?? '—'); ?></div></div>
-                <div><span class="pw-lbl">Budget</span><div class="pw-val"><?php echo pe($request['budget_comfort'] ?? '—'); ?></div></div>
-                <div><span class="pw-lbl">Submitted</span><div class="pw-val"><?php echo pe(date('M j, Y g:i A', strtotime((string)($request['created_at'] ?? 'now')))); ?></div></div>
-                <div><span class="pw-lbl">Last Updated</span><div class="pw-val"><?php echo pe($request['updated_at'] ? date('M j, Y g:i A', strtotime((string)$request['updated_at'])) : '—'); ?></div></div>
-            </div>
-            <div style="margin-top:10px;">
-                <span class="pw-lbl">Description / Requirements</span>
-                <div style="background:rgba(0,0,0,.3);border:1px solid rgba(54,243,255,.08);border-radius:6px;padding:10px;white-space:pre-wrap;" class="pw-val"><?php echo pe($request['description'] ?? ''); ?></div>
-            </div>
-
-            <?php if ($isStaff): ?>
-            <!-- Staff edit form for project status / admin fields -->
-            <form method="post" style="margin-top:14px;" class="no-print">
-                <input type="hidden" name="action" value="save_project">
+    <details class="pw-section" <?php echo !empty($openSections['proposal']) ? 'open' : ''; ?>>
+        <summary>Proposal <?php if ($currentProposal !== null): ?><span style="font-weight:400;text-transform:none;color:#7a9ac0;">· <?php echo pe(projectProposalStatusLabel((string)$currentProposal['status'])); ?></span><?php endif; ?></summary>
+        <div class="pw-body">
+            <?php if ($currentProposal === null): ?>
+                <p class="pw-val">No proposal yet.</p>
+            <?php else: ?>
                 <div class="pw-grid">
-                    <div>
-                        <label>Project Status</label>
-                        <select name="status" class="pw-select">
-                            <?php foreach ($statusOptions as $k => $v): ?>
-                                <option value="<?php echo pe($k); ?>" <?php echo $st === $k ? 'selected' : ''; ?>><?php echo pe($v); ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                    <div>
-                        <label>Estimated Cost Range</label>
-                        <input class="pw-input" type="text" name="estimated_cost_range" value="<?php echo pe($request['estimated_cost_range'] ?? ''); ?>">
-                    </div>
-                    <div>
-                        <label>Estimated Time Range</label>
-                        <input class="pw-input" type="text" name="estimated_time_range" value="<?php echo pe($request['estimated_time_range'] ?? ''); ?>">
-                    </div>
-                    <div>
-                        <label>Recommended Next Step</label>
-                        <input class="pw-input" type="text" name="recommended_next_step" value="<?php echo pe($request['recommended_next_step'] ?? ''); ?>">
-                    </div>
+                    <div class="mini-card"><span class="pw-lbl">Proposal Summary</span><div class="pw-val"><?php echo pe((string)$currentProposal['proposal_summary']); ?></div><div class="pw-help">Short overview of what Runlevel Systems is offering to do.</div></div>
+                    <div class="mini-card"><span class="pw-lbl">Timeline Estimate</span><div class="pw-val"><?php echo pe((string)$currentProposal['timeline_estimate']); ?></div><div class="pw-help">Expected completion time or schedule.</div></div>
+                    <div class="mini-card"><span class="pw-lbl">Amount Due To Start</span><div class="pw-val"><?php echo pe((string)$currentProposal['amount_due_to_start']); ?></div><div class="pw-help">Payment required before work begins.</div></div>
+                    <div class="mini-card"><span class="pw-lbl">Total Project Amount</span><div class="pw-val"><?php echo pe((string)$currentProposal['total_project_amount']); ?></div><div class="pw-help">Estimated total price for the agreed work.</div></div>
                 </div>
-                <div style="margin-top:8px;">
-                    <label>Staff Summary</label>
-                    <textarea class="pw-textarea" name="staff_summary"><?php echo pe($request['staff_summary'] ?? ''); ?></textarea>
+                <div class="pw-grid" style="margin-top:10px;">
+                    <div class="mini-card"><span class="pw-lbl">Proposed Work</span><div class="pw-val"><?php echo pe((string)$currentProposal['proposed_work']); ?></div><div class="pw-help">Plain-English explanation of the work we will perform.</div></div>
+                    <div class="mini-card"><span class="pw-lbl">Deliverables</span><div class="pw-val"><?php echo pe((string)$currentProposal['deliverables']); ?></div><div class="pw-help">What the customer will receive when the work is completed.</div></div>
                 </div>
-                <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;">
-                    <button class="btn btn-blue" type="submit">Save Project Details</button>
+                <div class="pw-grid" style="margin-top:10px;">
+                    <div class="mini-card"><span class="pw-lbl">Out Of Scope</span><div class="pw-val"><?php echo pe((string)$currentProposal['out_of_scope']); ?></div><div class="pw-help">What is not included unless separately approved.</div></div>
+                    <div class="mini-card"><span class="pw-lbl">Customer Responsibilities</span><div class="pw-val"><?php echo pe((string)$currentProposal['customer_responsibilities']); ?></div><div class="pw-help">What the customer must provide, such as files, logins, screenshots, code access, app store accounts, or feedback.</div></div>
                 </div>
-            </form>
-            <?php endif; ?>
-        </div>
-    </details>
-
-    <!-- SECTION 3 — INTERNAL NOTES (staff only) -->
-    <?php if ($isStaff): ?>
-    <details class="pw-section">
-        <summary>Internal Notes <span style="font-size:.68rem;color:#ffc600;font-weight:400;text-transform:none;letter-spacing:0;margin-left:6px;">(not visible to client)</span></summary>
-        <div class="pw-section-body">
-            <div class="int-notes-box">
-                <form method="post" class="no-print">
-                    <input type="hidden" name="action" value="save_project">
-                    <!-- Carry forward other fields at their current values so this partial POST doesn't wipe them -->
-                    <input type="hidden" name="status" value="<?php echo pe($st); ?>">
-                    <input type="hidden" name="staff_summary" value="<?php echo pe($request['staff_summary'] ?? ''); ?>">
-                    <input type="hidden" name="recommended_next_step" value="<?php echo pe($request['recommended_next_step'] ?? ''); ?>">
-                    <input type="hidden" name="estimated_cost_range" value="<?php echo pe($request['estimated_cost_range'] ?? ''); ?>">
-                    <input type="hidden" name="estimated_time_range" value="<?php echo pe($request['estimated_time_range'] ?? ''); ?>">
-                    <label>Internal Notes</label>
-                    <textarea class="pw-textarea" name="internal_notes" style="min-height:120px;"><?php echo pe($request['internal_notes'] ?? ''); ?></textarea>
-                    <div style="margin-top:8px;"><button class="btn btn-gold" type="submit">Save Notes</button></div>
-                </form>
-            </div>
-            <?php if (!empty($request['internal_notes'])): ?>
-            <div style="margin-top:12px;">
-                <span class="pw-lbl">Current Notes</span>
-                <div style="white-space:pre-wrap;color:#a8bedc;font-size:.85rem;background:rgba(0,0,0,.2);border-radius:6px;padding:10px;border:1px solid rgba(54,243,255,.08);"><?php echo pe($request['internal_notes']); ?></div>
-            </div>
-            <?php endif; ?>
-        </div>
-    </details>
-    <?php endif; ?>
-
-    <!-- SECTION 4 — PROPOSAL -->
-    <details class="pw-section" <?php echo ($currentProposal !== null || $isStaff) ? 'open' : ''; ?>>
-        <summary>
-            Proposal
-            <?php if ($currentProposal): ?>
-                &nbsp;&nbsp;<?php echo proposalStatusBadge((string)($currentProposal['status'] ?? 'draft')); ?>
-            <?php else: ?>
-                <span style="font-size:.68rem;color:#5a7a9e;font-weight:400;text-transform:none;letter-spacing:0;margin-left:6px;">Not started</span>
-            <?php endif; ?>
-        </summary>
-        <div class="pw-section-body">
-
-        <?php if ($currentProposal !== null): ?>
-            <!-- Proposal exists: show summary -->
-            <div class="pw-grid" style="margin-bottom:12px;">
-                <div><span class="pw-lbl">Proposal ID</span><div class="pw-val pw-mono"><?php echo pe($currentProposal['proposal_id'] ?? ''); ?></div></div>
-                <div><span class="pw-lbl">Status</span><div><?php echo proposalStatusBadge((string)($currentProposal['status'] ?? 'draft')); ?></div></div>
-                <div><span class="pw-lbl">Project Title</span><div class="pw-val"><?php echo pe($currentProposal['project_title'] ?? '—'); ?></div></div>
-                <div><span class="pw-lbl">Estimated Cost</span><div class="pw-val"><?php echo pe($currentProposal['estimated_cost'] ?? '—'); ?></div></div>
-                <div><span class="pw-lbl">Estimated Time</span><div class="pw-val"><?php echo pe($currentProposal['estimated_time'] ?? '—'); ?></div></div>
-                <div><span class="pw-lbl">Payment to Begin</span><div class="pw-val"><?php echo pe($currentProposal['payment_required_to_begin'] ?? '—'); ?></div></div>
-            </div>
-            <?php if ($currentProposal['proposed_work'] ?? ''): ?>
-            <div style="margin-bottom:10px;"><span class="pw-lbl">Proposed Work</span><div class="pw-val" style="white-space:pre-wrap;"><?php echo pe($currentProposal['proposed_work']); ?></div></div>
-            <?php endif; ?>
-            <?php if ($currentProposal['deliverables'] ?? ''): ?>
-            <div style="margin-bottom:10px;"><span class="pw-lbl">Deliverables</span><div class="pw-val" style="white-space:pre-wrap;"><?php echo pe($currentProposal['deliverables']); ?></div></div>
-            <?php endif; ?>
-            <?php if ($currentProposal['next_steps'] ?? ''): ?>
-            <div style="margin-bottom:10px;"><span class="pw-lbl">Next Steps</span><div class="pw-val" style="white-space:pre-wrap;"><?php echo pe($currentProposal['next_steps']); ?></div></div>
-            <?php endif; ?>
-
-            <?php if ($isClient && (string)($currentProposal['status'] ?? '') === 'sent'): ?>
-            <form method="post" style="margin-top:10px;" class="no-print">
-                <input type="hidden" name="action" value="approve_proposal">
-                <p style="color:#a8bedc;font-size:.84rem;margin:0 0 8px;">Please review the proposal above. Click below to approve.</p>
-                <button class="btn btn-green" type="submit">✓ Approve Proposal</button>
-            </form>
-            <?php endif; ?>
-
-            <?php if ($isClient && (string)($currentProposal['status'] ?? '') === 'accepted'): ?>
-            <div style="margin-top:8px;color:#4ade80;font-size:.84rem;">✓ You approved this proposal.</div>
-            <?php endif; ?>
-        <?php else: ?>
-            <p style="color:#5a7a9e;font-size:.84rem;margin:0 0 10px;">No proposal created yet.</p>
-        <?php endif; ?>
-
-        <?php if ($isStaff): ?>
-            <!-- Staff proposal form -->
-            <details style="margin-top:12px;" class="no-print">
-                <summary style="cursor:pointer;color:#36f3ff;font-size:.82rem;font-weight:700;list-style:none;background:rgba(54,243,255,.06);border:1px solid rgba(54,243,255,.15);border-radius:6px;padding:8px 12px;">
-                    <?php echo $currentProposal ? '✏️ Edit Proposal' : '＋ Create Proposal'; ?>
-                </summary>
-                <div style="padding:12px 0 0;">
-                <form method="post">
-                    <input type="hidden" name="action" value="save_proposal">
-                    <input type="hidden" name="proposal_id" value="<?php echo pe($currentProposal['proposal_id'] ?? ''); ?>">
-                    <div class="pw-grid">
-                        <div><label>Client Name</label><input class="pw-input" type="text" name="client_name" value="<?php echo pe($currentProposal['client_name'] ?? $clientName); ?>"></div>
-                        <div><label>Client Email</label><input class="pw-input" type="email" name="client_email" value="<?php echo pe($currentProposal['client_email'] ?? $clientEmail); ?>"></div>
-                        <div><label>Project Title</label><input class="pw-input" type="text" name="project_title" value="<?php echo pe($currentProposal['project_title'] ?? ($request['project_type'] ?? '')); ?>"></div>
-                        <div>
-                            <label>Proposal Status</label>
-                            <select name="proposal_status" class="pw-select">
-                                <?php foreach ($proposalStatuses as $k => $v): ?>
-                                    <option value="<?php echo pe($k); ?>" <?php echo ($currentProposal['status'] ?? 'draft') === $k ? 'selected' : ''; ?>><?php echo pe($v); ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-                        <div><label>Estimated Cost</label><input class="pw-input" type="text" name="estimated_cost" value="<?php echo pe($currentProposal['estimated_cost'] ?? ($request['estimated_cost_range'] ?? '')); ?>"></div>
-                        <div><label>Estimated Time</label><input class="pw-input" type="text" name="estimated_time" value="<?php echo pe($currentProposal['estimated_time'] ?? ($request['estimated_time_range'] ?? '')); ?>"></div>
-                        <div><label>Payment Required to Begin</label><input class="pw-input" type="text" name="payment_required_to_begin" value="<?php echo pe($currentProposal['payment_required_to_begin'] ?? ''); ?>"></div>
-                        <div><label>Timeline</label><input class="pw-input" type="text" name="timeline" value="<?php echo pe($currentProposal['timeline'] ?? ($request['timeline'] ?? '')); ?>"></div>
-                        <div><label>Budget Comfort</label><input class="pw-input" type="text" name="budget_comfort" value="<?php echo pe($currentProposal['budget_comfort'] ?? ($request['budget_comfort'] ?? '')); ?>"></div>
-                        <div><label>Repository Link</label><input class="pw-input" type="url" name="repo_link" value="<?php echo pe($currentProposal['repo_link'] ?? ($request['repo_link'] ?? '')); ?>"></div>
-                    </div>
-                    <div style="margin-top:8px;"><label>Request Summary</label><textarea class="pw-textarea" name="request_summary"><?php echo pe($currentProposal['request_summary'] ?? ($request['description'] ?? '')); ?></textarea></div>
-                    <div style="margin-top:8px;"><label>Proposed Work</label><textarea class="pw-textarea" name="proposed_work"><?php echo pe($currentProposal['proposed_work'] ?? ''); ?></textarea></div>
-                    <div style="margin-top:8px;"><label>Deliverables</label><textarea class="pw-textarea" name="deliverables"><?php echo pe($currentProposal['deliverables'] ?? ''); ?></textarea></div>
-                    <div style="margin-top:8px;"><label>Revision Terms</label><textarea class="pw-textarea" name="revision_terms"><?php echo pe($currentProposal['revision_terms'] ?? ''); ?></textarea></div>
-                    <div style="margin-top:8px;"><label>Assumptions</label><textarea class="pw-textarea" name="assumptions"><?php echo pe($currentProposal['assumptions'] ?? ''); ?></textarea></div>
-                    <div style="margin-top:8px;"><label>Customer Responsibilities</label><textarea class="pw-textarea" name="customer_responsibilities"><?php echo pe($currentProposal['customer_responsibilities'] ?? ''); ?></textarea></div>
-                    <div style="margin-top:8px;"><label>Next Steps</label><textarea class="pw-textarea" name="next_steps"><?php echo pe($currentProposal['next_steps'] ?? ($request['recommended_next_step'] ?? '')); ?></textarea></div>
-                    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">
-                        <button class="btn btn-blue" type="submit" name="action" value="save_proposal">Save Draft</button>
-                        <button class="btn btn-gold" type="submit" name="action" value="send_proposal">Send to Client</button>
-                    </div>
-                </form>
+                <div class="pw-grid" style="margin-top:10px;">
+                    <div class="mini-card"><span class="pw-lbl">Revision Terms</span><div class="pw-val"><?php echo pe((string)$currentProposal['revision_terms']); ?></div><div class="pw-help">What small corrections are included and what counts as new work.</div></div>
+                    <div class="mini-card"><span class="pw-lbl">Terms Summary</span><div class="pw-val"><?php echo pe((string)$currentProposal['terms_summary']); ?></div><div class="pw-help">Short summary of payment, acceptance, revisions, and project limits.</div></div>
                 </div>
-            </details>
-        <?php endif; ?>
-        </div>
-    </details>
+                <div class="mini-card" style="margin-top:10px;"><span class="pw-lbl">Full Terms Link</span><div class="pw-val"><?php if ((string)$currentProposal['full_terms_link'] !== ''): ?><a href="<?php echo pe((string)$currentProposal['full_terms_link']); ?>" target="_blank" rel="noopener noreferrer" style="color:#36f3ff;">View Terms of Service</a><?php else: ?>—<?php endif; ?></div></div>
 
-    <!-- SECTION 5 — PROJECT AGREEMENT -->
-    <details class="pw-section" <?php echo ($currentAgreement !== null && $isClient) ? 'open' : ''; ?>>
-        <summary>
-            Project Agreement
-            <?php if ($currentAgreement): ?>
-                &nbsp;&nbsp;<?php echo agreementStatusBadge((string)($currentAgreement['status'] ?? 'draft')); ?>
-            <?php else: ?>
-                <span style="font-size:.68rem;color:#5a7a9e;font-weight:400;text-transform:none;letter-spacing:0;margin-left:6px;">Not started</span>
-            <?php endif; ?>
-        </summary>
-        <div class="pw-section-body">
-
-        <?php if ($currentAgreement !== null): ?>
-            <div class="pw-grid" style="margin-bottom:12px;">
-                <div><span class="pw-lbl">Agreement ID</span><div class="pw-val pw-mono"><?php echo pe($currentAgreement['agreement_id'] ?? ''); ?></div></div>
-                <div><span class="pw-lbl">Status</span><div><?php echo agreementStatusBadge((string)($currentAgreement['status'] ?? 'draft')); ?></div></div>
-                <div><span class="pw-lbl">Project Title</span><div class="pw-val"><?php echo pe($currentAgreement['project_title'] ?? '—'); ?></div></div>
-                <div><span class="pw-lbl">Effective Date</span><div class="pw-val"><?php echo pe($currentAgreement['effective_date'] ?? '—'); ?></div></div>
-                <div><span class="pw-lbl">Timeline</span><div class="pw-val"><?php echo pe($currentAgreement['timeline'] ?? '—'); ?></div></div>
-                <div><span class="pw-lbl">Payment Terms</span><div class="pw-val"><?php echo pe($currentAgreement['payment_terms'] ?? '—'); ?></div></div>
-                <?php if (!empty($currentAgreement['signed_by'])): ?>
-                <div><span class="pw-lbl">Signed By</span><div class="pw-val"><?php echo pe($currentAgreement['signed_by']); ?></div></div>
-                <div><span class="pw-lbl">Signed At</span><div class="pw-val"><?php echo pe(date('M j, Y g:i A', strtotime((string)($currentAgreement['signed_at'] ?? 'now')))); ?></div></div>
-                <?php endif; ?>
-            </div>
-            <?php if ($currentAgreement['scope_of_work'] ?? ''): ?>
-            <div style="margin-bottom:10px;"><span class="pw-lbl">Scope of Work</span><div class="pw-val" style="white-space:pre-wrap;"><?php echo pe($currentAgreement['scope_of_work']); ?></div></div>
-            <?php endif; ?>
-            <?php if ($currentAgreement['deliverables'] ?? ''): ?>
-            <div style="margin-bottom:10px;"><span class="pw-lbl">Deliverables</span><div class="pw-val" style="white-space:pre-wrap;"><?php echo pe($currentAgreement['deliverables']); ?></div></div>
-            <?php endif; ?>
-            <?php if ($currentAgreement['revision_terms'] ?? ''): ?>
-            <div style="margin-bottom:10px;"><span class="pw-lbl">Revision Terms</span><div class="pw-val" style="white-space:pre-wrap;"><?php echo pe($currentAgreement['revision_terms']); ?></div></div>
-            <?php endif; ?>
-            <?php if ($currentAgreement['customer_responsibilities'] ?? ''): ?>
-            <div style="margin-bottom:10px;"><span class="pw-lbl">Customer Responsibilities</span><div class="pw-val" style="white-space:pre-wrap;"><?php echo pe($currentAgreement['customer_responsibilities']); ?></div></div>
-            <?php endif; ?>
-
-            <?php if ($isClient && (string)($currentAgreement['status'] ?? '') === 'sent'): ?>
-            <form method="post" style="margin-top:12px;" class="no-print">
-                <input type="hidden" name="action" value="sign_agreement">
-                <p style="color:#a8bedc;font-size:.84rem;margin:0 0 8px;">Please review the agreement above. Enter your full name to sign.</p>
-                <div style="display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;">
-                    <div style="flex:1;min-width:180px;">
-                        <label>Full Name</label>
-                        <input class="pw-input" type="text" name="signed_name" placeholder="Your full name" required>
-                    </div>
-                    <button class="btn btn-green" type="submit">✍️ Sign Agreement</button>
-                </div>
-            </form>
-            <?php endif; ?>
-
-            <?php if ($isClient && (string)($currentAgreement['status'] ?? '') === 'signed'): ?>
-            <div style="margin-top:8px;color:#4ade80;font-size:.84rem;">✓ Agreement signed.</div>
-            <?php endif; ?>
-        <?php else: ?>
-            <p style="color:#5a7a9e;font-size:.84rem;margin:0 0 10px;">No agreement created yet.</p>
-        <?php endif; ?>
-
-        <?php if ($isStaff): ?>
-            <details style="margin-top:12px;" class="no-print">
-                <summary style="cursor:pointer;color:#36f3ff;font-size:.82rem;font-weight:700;list-style:none;background:rgba(54,243,255,.06);border:1px solid rgba(54,243,255,.15);border-radius:6px;padding:8px 12px;">
-                    <?php echo $currentAgreement ? '✏️ Edit Agreement' : '＋ Create Agreement'; ?>
-                </summary>
-                <div style="padding:12px 0 0;">
-                <form method="post">
-                    <input type="hidden" name="action" value="save_agreement">
-                    <input type="hidden" name="agreement_id" value="<?php echo pe($currentAgreement['agreement_id'] ?? ''); ?>">
-                    <div class="pw-grid">
-                        <div><label>Client Name</label><input class="pw-input" type="text" name="a_client_name" value="<?php echo pe($currentAgreement['client_name'] ?? $clientName); ?>"></div>
-                        <div><label>Client Email</label><input class="pw-input" type="email" name="a_client_email" value="<?php echo pe($currentAgreement['client_email'] ?? $clientEmail); ?>"></div>
-                        <div><label>Project Title</label><input class="pw-input" type="text" name="a_project_title" value="<?php echo pe($currentAgreement['project_title'] ?? ($currentProposal['project_title'] ?? ($request['project_type'] ?? ''))); ?>"></div>
-                        <div><label>Effective Date</label><input class="pw-input" type="date" name="effective_date" value="<?php echo pe($currentAgreement['effective_date'] ?? date('Y-m-d')); ?>"></div>
-                        <div>
-                            <label>Agreement Status</label>
-                            <select name="agreement_status" class="pw-select">
-                                <?php foreach ($agreementStatuses as $k => $v): ?>
-                                    <option value="<?php echo pe($k); ?>" <?php echo ($currentAgreement['status'] ?? 'draft') === $k ? 'selected' : ''; ?>><?php echo pe($v); ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-                        <div><label>Timeline</label><input class="pw-input" type="text" name="a_timeline" value="<?php echo pe($currentAgreement['timeline'] ?? ($currentProposal['estimated_time'] ?? ($request['timeline'] ?? ''))); ?>"></div>
-                        <div><label>Payment Terms</label><input class="pw-input" type="text" name="payment_terms" value="<?php echo pe($currentAgreement['payment_terms'] ?? ($currentProposal['payment_required_to_begin'] ?? '')); ?>"></div>
-                    </div>
-                    <div style="margin-top:8px;"><label>Scope of Work</label><textarea class="pw-textarea" name="scope_of_work"><?php echo pe($currentAgreement['scope_of_work'] ?? ($currentProposal['proposed_work'] ?? '')); ?></textarea></div>
-                    <div style="margin-top:8px;"><label>Deliverables</label><textarea class="pw-textarea" name="a_deliverables"><?php echo pe($currentAgreement['deliverables'] ?? ($currentProposal['deliverables'] ?? '')); ?></textarea></div>
-                    <div style="margin-top:8px;"><label>Revision Terms</label><textarea class="pw-textarea" name="a_revision_terms"><?php echo pe($currentAgreement['revision_terms'] ?? ($currentProposal['revision_terms'] ?? '')); ?></textarea></div>
-                    <div style="margin-top:8px;"><label>Change Request Policy</label><textarea class="pw-textarea" name="change_request_policy"><?php echo pe($currentAgreement['change_request_policy'] ?? 'Changes outside scope require approval and may affect timeline and cost.'); ?></textarea></div>
-                    <div style="margin-top:8px;"><label>Customer Responsibilities</label><textarea class="pw-textarea" name="a_customer_responsibilities"><?php echo pe($currentAgreement['customer_responsibilities'] ?? ($currentProposal['customer_responsibilities'] ?? '')); ?></textarea></div>
-                    <details style="margin-top:8px;">
-                        <summary style="cursor:pointer;color:#5a7a9e;font-size:.78rem;">Standard Legal Terms (click to expand)</summary>
-                        <div style="padding-top:8px;">
-                            <div><label>Third-Party Licenses</label><textarea class="pw-textarea" name="third_party_licenses"><?php echo pe($currentAgreement['third_party_licenses'] ?? 'Client supplies or approves all required third-party licenses and assets.'); ?></textarea></div>
-                            <div style="margin-top:8px;"><label>Source Code / Ownership Terms</label><textarea class="pw-textarea" name="source_code_ownership_terms"><?php echo pe($currentAgreement['source_code_ownership_terms'] ?? 'Ownership terms follow approved proposal and Runlevel Systems Terms of Service.'); ?></textarea></div>
-                            <div style="margin-top:8px;"><label>Testing and Acceptance</label><textarea class="pw-textarea" name="testing_and_acceptance"><?php echo pe($currentAgreement['testing_and_acceptance'] ?? 'Client reviews deliverables within agreed review window and confirms acceptance in writing.'); ?></textarea></div>
-                            <div style="margin-top:8px;"><label>Termination</label><textarea class="pw-textarea" name="termination"><?php echo pe($currentAgreement['termination'] ?? 'Either party may terminate with written notice; completed work remains billable.'); ?></textarea></div>
-                            <div style="margin-top:8px;"><label>Legal Notice</label><textarea class="pw-textarea" name="legal_notice"><?php echo pe($currentAgreement['legal_notice'] ?? ''); ?></textarea></div>
-                            <div style="margin-top:8px;"><label>Signature Placeholder</label><textarea class="pw-textarea" name="signature_placeholder"><?php echo pe($currentAgreement['signature_placeholder'] ?? 'Client Signature: ____________________   Date: __________'); ?></textarea></div>
-                        </div>
-                    </details>
-                    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">
-                        <button class="btn btn-blue" type="submit" name="action" value="save_agreement">Save Draft</button>
-                        <button class="btn btn-gold" type="submit" name="action" value="send_agreement">Send to Client</button>
-                    </div>
-                </form>
-                </div>
-            </details>
-        <?php endif; ?>
-        </div>
-    </details>
-
-    <!-- SECTION 6 — PAYMENTS -->
-    <details class="pw-section">
-        <summary>Payments</summary>
-        <div class="pw-section-body">
-            <?php
-                $invoiceStatus = trim((string)($request['invoice_status'] ?? ''));
-                $invoiceReference = trim((string)($request['invoice_reference'] ?? ''));
-                $amountDue = trim((string)($request['amount_due'] ?? ''));
-                $amountPaid = trim((string)($request['amount_paid'] ?? ''));
-                $paymentLink = trim((string)($request['payment_link'] ?? ''));
-                $paymentNotes = trim((string)($request['payment_notes'] ?? ''));
-                $paymentReceivedAt = trim((string)($request['payment_received_at'] ?? ''));
-                $invoiceSentAt = trim((string)($request['invoice_sent_at'] ?? ''));
-            ?>
-            <p style="color:#5a7a9e;font-size:.84rem;margin:0 0 10px;">Preferred workflow: Project → Proposal Approved → Create Invoice → Send Payment Link → Payment Received → Project Active.</p>
-            <div class="pw-grid" style="margin-bottom:10px;">
-                <div><span class="pw-lbl">Invoice Reference</span><div class="pw-val pw-mono"><?php echo pe($invoiceReference !== '' ? $invoiceReference : '—'); ?></div></div>
-                <div><span class="pw-lbl">Invoice Status</span><div class="pw-val"><?php echo pe($invoiceStatus !== '' ? strtoupper(str_replace('_', ' ', $invoiceStatus)) : 'Not started'); ?></div></div>
-                <div><span class="pw-lbl">Amount Due</span><div class="pw-val"><?php echo pe($amountDue !== '' ? $amountDue : '—'); ?></div></div>
-                <div><span class="pw-lbl">Amount Paid</span><div class="pw-val"><?php echo pe($amountPaid !== '' ? $amountPaid : '—'); ?></div></div>
-                <div><span class="pw-lbl">Invoice Sent</span><div class="pw-val"><?php echo $invoiceSentAt !== '' ? pe(date('M j, Y g:i A', strtotime($invoiceSentAt))) : '—'; ?></div></div>
-                <div><span class="pw-lbl">Payment Received</span><div class="pw-val"><?php echo $paymentReceivedAt !== '' ? pe(date('M j, Y g:i A', strtotime($paymentReceivedAt))) : '—'; ?></div></div>
-            </div>
-            <?php if ($paymentNotes !== ''): ?>
-                <div style="margin-bottom:10px;"><span class="pw-lbl">Payment Notes</span><div class="pw-val" style="white-space:pre-wrap;"><?php echo pe($paymentNotes); ?></div></div>
-            <?php endif; ?>
-            <?php if ($paymentLink !== ''): ?>
-                <div style="margin-bottom:10px;"><span class="pw-lbl">Payment Link</span><div class="pw-val"><a href="<?php echo pe($paymentLink); ?>" target="_blank" rel="noopener noreferrer" style="color:#36f3ff;"><?php echo pe($paymentLink); ?></a></div></div>
-            <?php endif; ?>
-
-            <?php if ($isStaff): ?>
-                <div style="margin:0 0 10px;color:#a8bedc;font-size:.82rem;">
-                    <?php if ($paypalApiConfigured): ?>
-                        PayPal API configuration is set for <strong><?php echo pe(ucfirst($paypalEnv)); ?></strong>. Use invoice actions below to track status and payment records.
+                <div class="mini-card" style="margin-top:10px;">
+                    <span class="pw-lbl">Milestones</span>
+                    <?php if (empty($currentProposal['milestones'])): ?>
+                        <div class="pw-val">No milestones for this project.</div>
                     <?php else: ?>
-                        PayPal API credentials are not fully configured. Use fallback payment link workflow, or configure PayPal in admin settings.
+                        <?php foreach ($currentProposal['milestones'] as $index => $milestone): ?>
+                            <div style="margin-top:8px;border-top:1px solid rgba(54,243,255,.12);padding-top:8px;">
+                                <div class="pw-val" style="font-weight:700;">Milestone <?php echo (int)$index + 1; ?>: <?php echo pe((string)$milestone['name']); ?></div>
+                                <div class="pw-help"><?php echo pe((string)$milestone['description']); ?></div>
+                                <div class="pw-help">Deliverables: <?php echo pe((string)$milestone['deliverables']); ?></div>
+                                <div class="pw-help">Amount Due Upon Completion: <?php echo pe((string)$milestone['amount']); ?></div>
+                                <div class="pw-help">Payment Trigger: <?php echo pe((string)$milestone['payment_trigger']); ?></div>
+                                <div class="pw-help">Estimated Date / Timeframe: <?php echo pe((string)$milestone['estimate']); ?></div>
+                                <div class="pw-help">Status: <?php echo pe((string)$milestone['status']); ?></div>
+                                <?php if ($isStaff): ?>
+                                    <form method="post" class="no-print" style="margin-top:6px;display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;">
+                                        <input type="hidden" name="action" value="update_milestone_status">
+                                        <input type="hidden" name="milestone_index" value="<?php echo (int)$index; ?>">
+                                        <div>
+                                            <label class="pw-lbl">Milestone Status</label>
+                                            <select name="milestone_status" class="pw-select">
+                                                <?php foreach ($milestoneStatuses as $statusOption): ?>
+                                                    <option value="<?php echo pe($statusOption); ?>" <?php echo $statusOption === (string)$milestone['status'] ? 'selected' : ''; ?>><?php echo pe($statusOption); ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                        <button class="btn btn-teal" type="submit">Update</button>
+                                    </form>
+                                <?php endif; ?>
+                            </div>
+                        <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
-                <form method="post" class="no-print" style="margin-bottom:10px;">
+
+                <div class="mini-card" style="margin-top:10px;">
+                    <span class="pw-lbl">Agreement / Signoff</span>
                     <div class="pw-grid">
                         <div>
-                            <label>Amount Due</label>
-                            <input class="pw-input" type="text" name="invoice_amount_due" value="<?php echo pe($amountDue); ?>" placeholder="e.g. 1500.00 USD">
+                            <div class="pw-help">Customer Agreement: <?php echo !empty($currentProposal['customer_agreed']) ? 'Accepted' : 'Pending'; ?></div>
+                            <div class="pw-help">Customer Typed Name: <?php echo pe((string)$currentProposal['customer_typed_name']); ?></div>
+                            <div class="pw-help">Customer Acceptance Date: <?php echo pe((string)$currentProposal['customer_acceptance_date']); ?></div>
+                            <div class="pw-help">Customer Notes: <?php echo pe((string)$currentProposal['customer_notes']); ?></div>
                         </div>
                         <div>
-                            <label>Amount Paid</label>
-                            <input class="pw-input" type="text" name="amount_paid" value="<?php echo pe($amountPaid); ?>" placeholder="e.g. 1500.00 USD">
+                            <div class="pw-help">Staff Agreement: <?php echo !empty($currentProposal['staff_agreed']) ? 'Accepted' : 'Pending'; ?></div>
+                            <div class="pw-help">Staff Typed Name: <?php echo pe((string)$currentProposal['staff_typed_name']); ?></div>
+                            <div class="pw-help">Staff Acceptance Date: <?php echo pe((string)$currentProposal['staff_acceptance_date']); ?></div>
                         </div>
                     </div>
-                    <div style="margin-top:8px;">
-                        <label>Invoice Defaults / Notes</label>
-                        <textarea class="pw-textarea" name="invoice_notes"><?php echo pe($paymentNotes !== '' ? $paymentNotes : $paypalInvoiceDefaults); ?></textarea>
+                </div>
+
+                <?php if (!empty($currentProposal['change_requests'])): ?>
+                    <div class="mini-card" style="margin-top:10px;">
+                        <span class="pw-lbl">Change Request History</span>
+                        <?php foreach (array_reverse($currentProposal['change_requests']) as $change): ?>
+                            <div style="margin-top:8px;border-top:1px solid rgba(54,243,255,.12);padding-top:8px;">
+                                <div class="pw-help"><?php echo pe((string)$change['requested_at']); ?> · <?php echo pe((string)$change['requested_by_role']); ?> · <?php echo pe((string)$change['requested_by']); ?></div>
+                                <div class="pw-val"><?php echo pe((string)$change['request_text']); ?></div>
+                                <?php if ((string)$change['budget_concern'] !== ''): ?><div class="pw-help">Budget concern: <?php echo pe((string)$change['budget_concern']); ?></div><?php endif; ?>
+                                <?php if ((string)$change['timeline_concern'] !== ''): ?><div class="pw-help">Timeline concern: <?php echo pe((string)$change['timeline_concern']); ?></div><?php endif; ?>
+                                <?php if ((string)$change['deliverable_change'] !== ''): ?><div class="pw-help">Deliverable change: <?php echo pe((string)$change['deliverable_change']); ?></div><?php endif; ?>
+                                <?php if ((string)$change['other_note'] !== ''): ?><div class="pw-help">Other note: <?php echo pe((string)$change['other_note']); ?></div><?php endif; ?>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
-                    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
-                        <button class="btn btn-blue" type="submit" name="action" value="create_invoice">Create Invoice</button>
-                        <button class="btn btn-gold" type="submit" name="action" value="send_invoice">Send Invoice</button>
-                        <button class="btn btn-green" type="submit" name="action" value="record_payment">Record Payment</button>
-                    </div>
-                </form>
-                <form method="post" class="no-print">
-                    <input type="hidden" name="invoice_amount_due" value="<?php echo pe($amountDue); ?>">
-                    <input type="hidden" name="invoice_notes" value="<?php echo pe($paymentNotes); ?>">
-                    <label>Fallback Payment Link (if Invoice API unavailable)</label>
-                    <input class="pw-input" type="url" name="payment_link" value="<?php echo pe($paymentLink); ?>" placeholder="https://paypal.com/invoice/p/#...">
-                    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
-                        <button class="btn btn-teal" type="submit" name="action" value="create_payment_link">Save Payment Link</button>
-                        <?php if ($role === 'admin'): ?><a href="/settings.php" class="btn btn-teal">PayPal Settings</a><?php endif; ?>
-                        <a href="/payments.php" class="btn btn-teal">Payment Info</a>
-                    </div>
-                </form>
-            <?php else: ?>
-                <?php if ($invoiceStatus === 'paid'): ?>
-                    <p style="color:#4ade80;font-size:.84rem;margin:0;">Payment received. Thank you.</p>
-                <?php elseif ($paymentLink !== ''): ?>
-                    <a href="<?php echo pe($paymentLink); ?>" target="_blank" rel="noopener noreferrer" class="btn btn-green">Open Payment Link</a>
-                <?php else: ?>
-                    <p style="color:#a8bedc;font-size:.84rem;margin:0 0 8px;">Payment details will appear here when your invoice or payment link is ready.</p>
                 <?php endif; ?>
-                <a href="/payments.php" class="btn btn-teal">Payment Information</a>
-            <?php endif; ?>
-        </div>
-    </details>
-
-    <!-- SECTION 7 — MESSAGES -->
-    <details class="pw-section">
-        <summary>Messages</summary>
-        <div class="pw-section-body">
-            <?php
-                $clientMessage = trim((string)($request['client_notes'] ?? ''));
-                $clientMessageTs = trim((string)($request['client_notes_updated_at'] ?? ''));
-                $staffMessage = trim((string)($request['staff_response'] ?? ''));
-                $staffMessageTs = trim((string)($request['staff_response_updated_at'] ?? ''));
-            ?>
-            <?php if ($clientMessage !== ''): ?>
-                <div style="margin-bottom:10px;">
-                    <span class="pw-lbl">Client Message<?php echo $clientMessageTs !== '' ? ' · ' . pe(date('M j, Y g:i A', strtotime($clientMessageTs))) : ''; ?></span>
-                    <div class="pw-val" style="white-space:pre-wrap;background:rgba(0,0,0,.24);border:1px solid rgba(54,243,255,.1);border-radius:6px;padding:10px;"><?php echo pe($clientMessage); ?></div>
-                </div>
-            <?php endif; ?>
-            <?php if ($staffMessage !== ''): ?>
-                <div style="margin-bottom:10px;">
-                    <span class="pw-lbl">Staff Reply<?php echo $staffMessageTs !== '' ? ' · ' . pe(date('M j, Y g:i A', strtotime($staffMessageTs))) : ''; ?></span>
-                    <div class="pw-val" style="white-space:pre-wrap;background:rgba(0,0,0,.24);border:1px solid rgba(167,139,250,.16);border-radius:6px;padding:10px;"><?php echo pe($staffMessage); ?></div>
-                </div>
             <?php endif; ?>
 
-            <?php if ($isClient): ?>
-                <form method="post" class="no-print">
-                    <label>Send Message to Staff</label>
-                    <textarea class="pw-textarea" name="client_message" placeholder="Add project updates, questions, or clarifications."><?php echo pe($clientMessage); ?></textarea>
-                    <div style="margin-top:8px;"><button class="btn btn-blue" type="submit" name="action" value="send_client_message">Send Message</button></div>
-                </form>
+            <?php if ($isClient && $currentProposal !== null): ?>
+                <div class="pw-grid no-print" style="margin-top:12px;">
+                    <div class="mini-card">
+                        <form method="post">
+                            <input type="hidden" name="action" value="accept_proposal">
+                            <label style="display:flex;align-items:flex-start;gap:8px;color:#d8e7f7;font-size:.8rem;"><input type="checkbox" name="customer_agreement" value="1" required> I have reviewed this proposal and agree to the listed work, deliverables, price, payment terms, revision terms, and applicable Runlevel Systems Terms of Service.</label>
+                            <label class="pw-lbl" style="margin-top:8px;">Customer Typed Name</label>
+                            <input class="pw-input" type="text" name="customer_typed_name" required>
+                            <label class="pw-lbl" style="margin-top:8px;">Customer Notes (Optional)</label>
+                            <textarea class="pw-textarea" name="customer_notes"></textarea>
+                            <div style="margin-top:8px;"><button class="btn btn-green" type="submit">Accept Proposal</button></div>
+                        </form>
+                    </div>
+                    <div class="mini-card">
+                        <form method="post">
+                            <input type="hidden" name="action" value="request_changes">
+                            <label class="pw-lbl">What would you like changed?</label>
+                            <textarea class="pw-textarea" name="change_request_text" required></textarea>
+                            <label class="pw-lbl" style="margin-top:8px;">Budget concern (optional)</label>
+                            <input class="pw-input" type="text" name="change_budget_concern">
+                            <label class="pw-lbl" style="margin-top:8px;">Timeline concern (optional)</label>
+                            <input class="pw-input" type="text" name="change_timeline_concern">
+                            <label class="pw-lbl" style="margin-top:8px;">Deliverable change (optional)</label>
+                            <input class="pw-input" type="text" name="change_deliverable_change">
+                            <label class="pw-lbl" style="margin-top:8px;">Other note (optional)</label>
+                            <textarea class="pw-textarea" name="change_other_note"></textarea>
+                            <div style="margin-top:8px;"><button class="btn btn-gold" type="submit">Request Changes</button></div>
+                        </form>
+                    </div>
+                </div>
             <?php endif; ?>
 
             <?php if ($isStaff): ?>
-                <form method="post" class="no-print" style="margin-top:8px;">
-                    <label>Reply to Client</label>
-                    <textarea class="pw-textarea" name="staff_message" placeholder="Send a project update or request additional information."><?php echo pe($staffMessage); ?></textarea>
-                    <div style="margin-top:8px;"><button class="btn btn-gold" type="submit" name="action" value="send_staff_message">Send Reply</button></div>
+                <details class="no-print" style="margin-top:12px;">
+                    <summary style="cursor:pointer;color:#36f3ff;font-size:.8rem;">Edit Proposal</summary>
+                    <div style="padding-top:10px;">
+                        <form method="post">
+                            <input type="hidden" name="action" value="save_proposal">
+                            <div class="pw-grid">
+                                <div><label class="pw-lbl">Client Name</label><input class="pw-input" type="text" name="client_name" value="<?php echo pe((string)($currentProposal['client_name'] ?? $request['name'] ?? '')); ?>"></div>
+                                <div><label class="pw-lbl">Client Email</label><input class="pw-input" type="email" name="client_email" value="<?php echo pe((string)($currentProposal['client_email'] ?? $request['email'] ?? '')); ?>"></div>
+                                <div><label class="pw-lbl">Project Title</label><input class="pw-input" type="text" name="project_title" value="<?php echo pe((string)($currentProposal['project_title'] ?? $request['project_type'] ?? 'Project')); ?>"></div>
+                                <div><label class="pw-lbl">Milestones</label><select class="pw-select" name="milestone_count" id="milestone_count" onchange="toggleMilestones();"><?php for ($i = 0; $i <= 5; $i++): ?><option value="<?php echo $i; ?>" <?php echo ((int)($currentProposal['milestone_count'] ?? 0) === $i) ? 'selected' : ''; ?>><?php echo $i; ?></option><?php endfor; ?></select></div>
+                            </div>
+
+                            <div style="margin-top:8px;"><label class="pw-lbl">Proposal Summary</label><textarea class="pw-textarea" name="proposal_summary"><?php echo pe((string)($currentProposal['proposal_summary'] ?? '')); ?></textarea></div>
+                            <div style="margin-top:8px;"><label class="pw-lbl">Proposed Work</label><textarea class="pw-textarea" name="proposed_work"><?php echo pe((string)($currentProposal['proposed_work'] ?? '')); ?></textarea></div>
+                            <div style="margin-top:8px;"><label class="pw-lbl">Deliverables</label><textarea class="pw-textarea" name="deliverables"><?php echo pe((string)($currentProposal['deliverables'] ?? '')); ?></textarea></div>
+                            <div style="margin-top:8px;"><label class="pw-lbl">Out Of Scope</label><textarea class="pw-textarea" name="out_of_scope"><?php echo pe((string)($currentProposal['out_of_scope'] ?? '')); ?></textarea></div>
+
+                            <div class="pw-grid" style="margin-top:8px;">
+                                <div><label class="pw-lbl">Timeline Estimate</label><input class="pw-input" type="text" name="timeline_estimate" value="<?php echo pe((string)($currentProposal['timeline_estimate'] ?? $request['timeline'] ?? '')); ?>"></div>
+                                <div><label class="pw-lbl">Amount Due To Start</label><input class="pw-input" type="text" name="amount_due_to_start" value="<?php echo pe((string)($currentProposal['amount_due_to_start'] ?? '')); ?>"></div>
+                                <div><label class="pw-lbl">Total Project Amount</label><input class="pw-input" type="text" name="total_project_amount" value="<?php echo pe((string)($currentProposal['total_project_amount'] ?? '')); ?>"></div>
+                                <div><label class="pw-lbl">Full Terms Link</label><input class="pw-input" type="url" name="full_terms_link" value="<?php echo pe((string)($currentProposal['full_terms_link'] ?? '/runlevel-terms.php')); ?>"></div>
+                            </div>
+
+                            <div style="margin-top:8px;"><label class="pw-lbl">Customer Responsibilities</label><textarea class="pw-textarea" name="customer_responsibilities"><?php echo pe((string)($currentProposal['customer_responsibilities'] ?? '')); ?></textarea></div>
+                            <div style="margin-top:8px;"><label class="pw-lbl">Revision Terms</label><textarea class="pw-textarea" name="revision_terms"><?php echo pe((string)($currentProposal['revision_terms'] ?? '')); ?></textarea></div>
+                            <div style="margin-top:8px;"><label class="pw-lbl">Terms Summary</label><textarea class="pw-textarea" name="terms_summary"><?php echo pe((string)($currentProposal['terms_summary'] ?? '')); ?></textarea></div>
+
+                            <div id="milestone_fields" style="margin-top:8px;">
+                                <?php for ($i = 0; $i < 5; $i++):
+                                    $milestone = isset($currentProposal['milestones'][$i]) ? $currentProposal['milestones'][$i] : ['milestone_id' => '', 'name' => '', 'description' => '', 'deliverables' => '', 'amount' => '', 'payment_trigger' => '', 'estimate' => '', 'status' => 'Not Started'];
+                                ?>
+                                    <div class="mini-card milestone-row" data-index="<?php echo $i; ?>" style="margin-top:8px;">
+                                        <input type="hidden" name="milestone_id[]" value="<?php echo pe((string)$milestone['milestone_id']); ?>">
+                                        <div class="pw-grid">
+                                            <div><label class="pw-lbl">Milestone Name</label><input class="pw-input" type="text" name="milestone_name[]" value="<?php echo pe((string)$milestone['name']); ?>"></div>
+                                            <div><label class="pw-lbl">Milestone Amount</label><input class="pw-input" type="text" name="milestone_amount[]" value="<?php echo pe((string)$milestone['amount']); ?>"></div>
+                                            <div><label class="pw-lbl">Payment Trigger</label><input class="pw-input" type="text" name="milestone_trigger[]" value="<?php echo pe((string)$milestone['payment_trigger']); ?>"></div>
+                                            <div><label class="pw-lbl">Estimated Date / Timeframe</label><input class="pw-input" type="text" name="milestone_estimate[]" value="<?php echo pe((string)$milestone['estimate']); ?>"></div>
+                                            <div><label class="pw-lbl">Milestone Status</label><select class="pw-select" name="milestone_status[]"><?php foreach ($milestoneStatuses as $statusOption): ?><option value="<?php echo pe($statusOption); ?>" <?php echo $statusOption === (string)$milestone['status'] ? 'selected' : ''; ?>><?php echo pe($statusOption); ?></option><?php endforeach; ?></select></div>
+                                        </div>
+                                        <div style="margin-top:8px;"><label class="pw-lbl">Milestone Description</label><textarea class="pw-textarea" name="milestone_description[]"><?php echo pe((string)$milestone['description']); ?></textarea></div>
+                                        <div style="margin-top:8px;"><label class="pw-lbl">Deliverables For This Milestone</label><textarea class="pw-textarea" name="milestone_deliverables[]"><?php echo pe((string)$milestone['deliverables']); ?></textarea></div>
+                                    </div>
+                                <?php endfor; ?>
+                            </div>
+
+                            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
+                                <button class="btn btn-blue" type="submit" name="action" value="save_proposal">Save Proposal</button>
+                                <button class="btn btn-gold" type="submit" name="action" value="send_proposal">Send Proposal</button>
+                            </div>
+                        </form>
+
+                        <form method="post" style="margin-top:10px;display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;">
+                            <input type="hidden" name="action" value="staff_accept_proposal">
+                            <label style="display:flex;align-items:flex-start;gap:8px;color:#d8e7f7;font-size:.8rem;"><input type="checkbox" name="staff_agreement" value="1" required> Runlevel Systems approves this proposal and may begin work once required payment is received.</label>
+                            <div>
+                                <label class="pw-lbl">Staff Typed Name</label>
+                                <input class="pw-input" type="text" name="staff_typed_name" required>
+                            </div>
+                            <button class="btn btn-green" type="submit">Save Staff Signoff</button>
+                        </form>
+                    </div>
+                </details>
+            <?php endif; ?>
+        </div>
+    </details>
+
+    <details class="pw-section" <?php echo !empty($openSections['payments']) ? 'open' : ''; ?>>
+        <summary>Payments</summary>
+        <div class="pw-body">
+            <div class="pw-grid">
+                <div class="mini-card"><span class="pw-lbl">Amount Due To Start</span><div class="pw-val"><?php echo pe((string)($currentProposal['amount_due_to_start'] ?? '—')); ?></div></div>
+                <div class="mini-card"><span class="pw-lbl">Payment Status</span><div class="pw-val"><?php echo pe((string)($request['invoice_status'] ?? 'Not started')); ?></div></div>
+                <div class="mini-card"><span class="pw-lbl">PayPal Invoice Link / Payment Link</span><div class="pw-val"><?php if (!empty($request['payment_link'])): ?><a href="<?php echo pe((string)$request['payment_link']); ?>" target="_blank" rel="noopener noreferrer" style="color:#36f3ff;">Open Payment Link</a><?php else: ?>—<?php endif; ?></div></div>
+                <div class="mini-card"><span class="pw-lbl">Invoice Reference</span><div class="pw-val"><?php echo pe((string)($request['invoice_reference'] ?? '—')); ?></div></div>
+            </div>
+
+            <div class="mini-card" style="margin-top:10px;">
+                <span class="pw-lbl">Payment Records</span>
+                <?php if (empty($request['payment_records'])): ?>
+                    <div class="pw-val">No payments recorded yet.</div>
+                <?php else: ?>
+                    <?php foreach (array_reverse($request['payment_records']) as $payment): ?>
+                        <div style="margin-top:8px;border-top:1px solid rgba(54,243,255,.12);padding-top:8px;">
+                            <div class="pw-help">Payment ID: <?php echo pe((string)$payment['payment_id']); ?> · Type: <?php echo pe((string)$payment['payment_for']); ?> · Amount: <?php echo pe((string)$payment['amount']); ?></div>
+                            <div class="pw-help">Recorded: <?php echo pe((string)$payment['recorded_at']); ?> · By: <?php echo pe((string)$payment['recorded_by']); ?></div>
+                            <?php if ((string)$payment['paypal_transaction_id'] !== ''): ?><div class="pw-help">PayPal Transaction ID: <?php echo pe((string)$payment['paypal_transaction_id']); ?></div><?php endif; ?>
+                            <?php if ((string)$payment['paypal_invoice_id'] !== ''): ?><div class="pw-help">PayPal Invoice ID: <?php echo pe((string)$payment['paypal_invoice_id']); ?></div><?php endif; ?>
+                            <?php if ((string)$payment['note'] !== ''): ?><div class="pw-help">Note: <?php echo pe((string)$payment['note']); ?></div><?php endif; ?>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+
+            <?php if ($isStaff): ?>
+                <div class="pw-grid no-print" style="margin-top:10px;">
+                    <form method="post" class="mini-card">
+                        <input type="hidden" name="action" value="create_invoice">
+                        <label class="pw-lbl">Invoice Reference</label>
+                        <input class="pw-input" type="text" name="invoice_reference" value="<?php echo pe((string)($request['invoice_reference'] ?? '')); ?>" placeholder="Auto if blank">
+                        <label class="pw-lbl" style="margin-top:8px;">Amount Due</label>
+                        <input class="pw-input" type="text" name="amount_due" value="<?php echo pe((string)($request['amount_due'] ?? ($currentProposal['amount_due_to_start'] ?? ''))); ?>">
+                        <label class="pw-lbl" style="margin-top:8px;">Payment Notes</label>
+                        <textarea class="pw-textarea" name="payment_notes"><?php echo pe((string)($request['payment_notes'] ?? '')); ?></textarea>
+                        <div style="margin-top:8px;"><button class="btn btn-blue" type="submit">Create Invoice</button></div>
+                    </form>
+
+                    <form method="post" class="mini-card">
+                        <input type="hidden" name="action" value="send_payment_link">
+                        <label class="pw-lbl">Payment Link</label>
+                        <input class="pw-input" type="url" name="payment_link" value="<?php echo pe((string)($request['payment_link'] ?? '')); ?>" placeholder="https://paypal.com/...">
+                        <div style="margin-top:8px;"><button class="btn btn-teal" type="submit">Send Payment Link</button></div>
+                    </form>
+                </div>
+
+                <form method="post" class="mini-card no-print" style="margin-top:10px;">
+                    <input type="hidden" name="action" value="record_payment">
+                    <div class="pw-grid">
+                        <div><label class="pw-lbl">Payment Amount</label><input class="pw-input" type="text" name="payment_amount" required></div>
+                        <div><label class="pw-lbl">Associate Payment With</label><select class="pw-select" name="payment_for"><option value="start_payment">Start Payment</option><option value="milestone_payment">Milestone Payment</option><option value="final_payment">Final Payment</option></select></div>
+                        <div><label class="pw-lbl">Milestone Number (optional)</label><input class="pw-input" type="number" min="0" name="payment_milestone_index" value="0"></div>
+                        <div><label class="pw-lbl">PayPal Transaction ID</label><input class="pw-input" type="text" name="paypal_transaction_id"></div>
+                        <div><label class="pw-lbl">PayPal Invoice ID</label><input class="pw-input" type="text" name="paypal_invoice_id"></div>
+                    </div>
+                    <div style="margin-top:8px;"><label class="pw-lbl">Payment Note</label><textarea class="pw-textarea" name="payment_note"></textarea></div>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+                        <button class="btn btn-green" type="submit">Record Payment</button>
+                        <button class="btn btn-teal" type="submit" name="action" value="mark_project_active">Mark Project Active</button>
+                        <button class="btn btn-teal" type="submit" name="action" value="set_waiting_customer">Set Waiting On Customer</button>
+                        <button class="btn btn-red" type="submit" name="action" value="mark_project_completed">Mark Completed</button>
+                    </div>
                 </form>
             <?php endif; ?>
         </div>
     </details>
 
-    <!-- SECTION 8 — COMMUNICATION TIMELINE -->
-    <details class="pw-section">
-        <summary>Project Timeline</summary>
-        <div class="pw-section-body">
-            <?php if (empty($timeline)): ?>
-                <p style="color:#5a7a9e;font-size:.84rem;margin:0;">No activity recorded yet.</p>
-            <?php else: ?>
-            <ul class="pw-timeline">
-                <?php foreach (array_reverse($timeline) as $ev): ?>
-                <li>
-                    <div class="tl-icon" style="color:<?php echo pe($ev['color']); ?>"><?php echo $ev['icon']; ?></div>
-                    <div>
-                        <div class="tl-text" style="color:<?php echo pe($ev['color']); ?>"><?php echo pe($ev['text']); ?></div>
-                        <div class="tl-date"><?php echo pe(date('M j, Y g:i A', $ev['ts'])); ?></div>
-                    </div>
-                </li>
-                <?php endforeach; ?>
-            </ul>
-            <?php endif; ?>
+    <details class="pw-section" <?php echo !empty($openSections['files']) ? 'open' : ''; ?>>
+        <summary>Files &amp; Attachments</summary>
+        <div class="pw-body">
+            <p class="pw-help" style="margin-top:0;">Uploads support jpg, jpeg, png, gif, webp, pdf, txt, md, zip, doc, docx, xls, xlsx, csv, json, and log files. Files are stored in protected project upload storage.</p>
+            <div class="mini-card">
+                <span class="pw-lbl">Uploaded Files</span>
+                <?php
+                    $visibleFiles = [];
+                    foreach (($request['project_files'] ?? []) as $file) {
+                        if (projectCanViewFile((array)$file, $isStaff)) {
+                            $visibleFiles[] = $file;
+                        }
+                    }
+                ?>
+                <?php if (empty($visibleFiles)): ?>
+                    <div class="pw-val">No files uploaded yet.</div>
+                <?php else: ?>
+                    <ul style="padding-left:18px;margin:8px 0 0;">
+                        <?php foreach (array_reverse($visibleFiles) as $file): ?>
+                            <li style="margin-bottom:6px;">
+                                <a href="/project.php?id=<?php echo urlencode($projectId); ?>&download=<?php echo urlencode((string)$file['file_id']); ?>" style="color:#36f3ff;"><?php echo pe((string)$file['original_filename']); ?></a>
+                                <span class="pw-help">(<?php echo pe((string)$file['uploaded_by_role']); ?> · <?php echo pe((string)$file['uploaded_by']); ?> · <?php echo pe((string)$file['upload_time']); ?> · <?php echo pe((string)$file['visibility']); ?>)</span>
+                                <?php if ((string)($file['description'] ?? '') !== ''): ?><div class="pw-help"><?php echo pe((string)$file['description']); ?></div><?php endif; ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </div>
+
+            <form method="post" enctype="multipart/form-data" class="mini-card no-print" style="margin-top:10px;">
+                <input type="hidden" name="action" value="upload_file">
+                <label class="pw-lbl">Upload File</label>
+                <input class="pw-input" type="file" name="project_file" required>
+                <label class="pw-lbl" style="margin-top:8px;">Description</label>
+                <input class="pw-input" type="text" name="file_description" placeholder="Optional file note">
+                <?php if ($isStaff): ?>
+                    <label class="pw-lbl" style="margin-top:8px;">Visibility</label>
+                    <select class="pw-select" name="file_visibility">
+                        <option value="customer_visible">Customer Visible</option>
+                        <option value="staff_only">Staff Only</option>
+                    </select>
+                <?php endif; ?>
+                <div style="margin-top:8px;"><button class="btn btn-blue" type="submit">Upload File</button></div>
+            </form>
         </div>
     </details>
 
-    <!-- SECTION 9 — FILES -->
-    <details class="pw-section">
-        <summary>Files &amp; Attachments</summary>
-        <div class="pw-section-body">
-            <p class="pw-files-info">Project files and attachments are tracked in this workspace.</p>
-            <?php if ($request['repo_link'] ?? ''): ?>
-            <div style="margin-top:8px;"><span class="pw-lbl">Repository / Project Link</span><div><a href="<?php echo pe($request['repo_link']); ?>" target="_blank" rel="noopener noreferrer" style="color:#36f3ff;font-size:.86rem;"><?php echo pe($request['repo_link']); ?></a></div></div>
-            <?php endif; ?>
-            <?php if (!empty($request['attachments']) && is_array($request['attachments'])): ?>
-                <div style="margin-top:10px;">
-                    <span class="pw-lbl">Submitted Attachments</span>
-                    <ul style="margin:6px 0 0;padding-left:18px;">
-                        <?php foreach ($request['attachments'] as $attachment): ?>
-                            <li style="color:#a8bedc;font-size:.82rem;"><?php echo pe((string)($attachment['original_name'] ?? 'Attachment')); ?></li>
-                        <?php endforeach; ?>
-                    </ul>
+    <details class="pw-section" <?php echo !empty($openSections['messages']) ? 'open' : ''; ?>>
+        <summary>Messages</summary>
+        <div class="pw-body">
+            <?php
+                $visibleMessages = [];
+                foreach (($request['messages'] ?? []) as $msg) {
+                    if (!is_array($msg)) {
+                        continue;
+                    }
+                    if ((string)($msg['visibility'] ?? 'customer_visible') === 'staff_only' && !$isStaff) {
+                        continue;
+                    }
+                    $visibleMessages[] = $msg;
+                }
+                usort($visibleMessages, function ($a, $b) {
+                    return (strtotime((string)($b['sent_at'] ?? '')) ?: 0) <=> (strtotime((string)($a['sent_at'] ?? '')) ?: 0);
+                });
+            ?>
+
+            <div class="mini-card">
+                <span class="pw-lbl">Conversation</span>
+                <?php if (empty($visibleMessages)): ?>
+                    <div class="pw-val">No messages yet.</div>
+                <?php else: ?>
+                    <?php foreach ($visibleMessages as $msg): ?>
+                        <div class="thread-item <?php echo ((string)($msg['visibility'] ?? '') === 'staff_only') ? 'staff-only' : ''; ?>">
+                            <div class="thread-meta">
+                                <span>Sender: <?php echo pe((string)($msg['sender'] ?? '')); ?></span>
+                                <span>Role: <?php echo pe((string)($msg['role'] ?? '')); ?></span>
+                                <span>Date: <?php echo pe((string)($msg['sent_at'] ?? '')); ?></span>
+                                <span>Visibility: <?php echo pe((string)($msg['visibility'] ?? 'customer_visible')); ?></span>
+                                <?php if (!empty($msg['email_sent'])): ?><span>Email sent</span><?php endif; ?>
+                            </div>
+                            <div class="pw-val"><?php echo pe((string)($msg['text'] ?? '')); ?></div>
+                            <?php
+                                $msgAttachments = [];
+                                if (!empty($msg['attachments']) && is_array($msg['attachments'])) {
+                                    foreach ($msg['attachments'] as $fileId) {
+                                        foreach (($request['project_files'] ?? []) as $file) {
+                                            if ((string)($file['file_id'] ?? '') === (string)$fileId && projectCanViewFile((array)$file, $isStaff)) {
+                                                $msgAttachments[] = $file;
+                                            }
+                                        }
+                                    }
+                                }
+                            ?>
+                            <?php if (!empty($msgAttachments)): ?>
+                                <div class="pw-help" style="margin-top:6px;">Attachments:</div>
+                                <ul style="margin:4px 0 0;padding-left:18px;">
+                                    <?php foreach ($msgAttachments as $attachment): ?>
+                                        <li><a href="/project.php?id=<?php echo urlencode($projectId); ?>&download=<?php echo urlencode((string)$attachment['file_id']); ?>" style="color:#36f3ff;"><?php echo pe((string)$attachment['original_filename']); ?></a></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            <?php endif; ?>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+
+            <form method="post" enctype="multipart/form-data" class="mini-card no-print" style="margin-top:10px;">
+                <input type="hidden" name="action" value="send_message">
+                <label class="pw-lbl">Message</label>
+                <textarea class="pw-textarea" name="message_text" placeholder="Send a project message..." required></textarea>
+                <label class="pw-lbl" style="margin-top:8px;">Attachment (optional)</label>
+                <input class="pw-input" type="file" name="message_attachment">
+                <?php if ($isStaff): ?>
+                    <label class="pw-lbl" style="margin-top:8px;">Visibility</label>
+                    <select class="pw-select" name="message_visibility">
+                        <option value="customer_visible">Customer Visible</option>
+                        <option value="staff_only">Staff Only</option>
+                    </select>
+                <?php endif; ?>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+                    <button class="btn btn-blue" type="submit" name="action" value="send_message">Send Message</button>
+                    <?php if ($isStaff): ?><button class="btn btn-gold" type="submit" name="action" value="send_message_email">Send Message + Email</button><?php endif; ?>
+                    <a class="btn btn-teal" href="mailto:<?php echo pe((string)($request['email'] ?? '')); ?>?subject=Project%20<?php echo urlencode($projectId); ?>">Email Client</a>
                 </div>
+            </form>
+        </div>
+    </details>
+
+    <details class="pw-section" <?php echo !empty($openSections['timeline']) ? 'open' : ''; ?>>
+        <summary>Project Timeline</summary>
+        <div class="pw-body">
+            <?php if (empty($timeline)): ?>
+                <div class="pw-val">No timeline events yet.</div>
+            <?php else: ?>
+                <ul class="timeline">
+                    <?php foreach ($timeline as $item): ?>
+                        <?php if ((string)($item['visibility'] ?? 'customer_visible') === 'staff_only' && !$isStaff) { continue; } ?>
+                        <li>
+                            <div class="pw-val"><?php echo pe((string)$item['label']); ?></div>
+                            <div class="pw-help"><?php echo pe((string)$item['timestamp']); ?></div>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
             <?php endif; ?>
         </div>
     </details>
 
 <?php endif; ?>
-
 </div>
 </section>
-
-<?php include 'includes/footer.php'; ?>
+<?php include __DIR__ . '/includes/footer.php'; ?>
 <script src="assets/js/jquery-1.12.3.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
+<script>
+function toggleMilestones() {
+    var select = document.getElementById('milestone_count');
+    var count = select ? parseInt(select.value || '0', 10) : 0;
+    var rows = document.querySelectorAll('.milestone-row');
+    rows.forEach(function (row, index) {
+        row.style.display = index < count ? '' : 'none';
+    });
+}
+document.addEventListener('DOMContentLoaded', toggleMilestones);
+</script>
 </body>
 </html>
